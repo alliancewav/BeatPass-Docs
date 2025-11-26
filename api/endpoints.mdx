@@ -1,369 +1,373 @@
 ---
 title: "API Endpoints"
-description: "Complete reference for all available BeatPass API endpoints."
+description: "Complete reference for BeatPass API endpoints."
 ---
 
 ## Overview
 
-This page documents all available API endpoints. All endpoints use the base URL `https://beta.beatpass.ca/api/v1`.
+This page documents the primary API endpoints available at `https://beta.beatpass.ca/api/v1`. Endpoints are grouped by functionality.
 
 <Info>
-  Endpoints marked with a lock icon require authentication.
+  🔒 = Requires authentication | 🔓 = Optional auth (enhanced response when authenticated)
 </Info>
 
 ---
 
 ## Tracks
 
-### List Tracks
+### Core Track Endpoints
 
-Retrieve a paginated list of public tracks.
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/tracks` | 🔓 | List paginated tracks |
+| GET | `/tracks/{track}` | 🔓 | Get track details |
+| POST | `/tracks` | 🔒 | Upload new track |
+| PUT | `/tracks/{track}` | 🔒 | Update track |
+| DELETE | `/tracks/{ids}` | 🔒 | Delete track(s) |
+| GET | `/tracks/{track}/download` | 🔓 | Download track file |
+| GET | `/tracks/{track}/wave` | 🔓 | Get waveform data |
+| POST | `/tracks/{track}/plays` | 🔓 | Log track play |
 
-```http
-GET /tracks
-```
+### Track Analytics
 
-**Query Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `page` | integer | Page number (default: 1) |
-| `per_page` | integer | Results per page (max: 50, default: 15) |
-| `genre` | string | Filter by genre slug |
-| `bpm_min` | integer | Minimum BPM |
-| `bpm_max` | integer | Maximum BPM |
-| `key` | string | Musical key (e.g., "C", "F#") |
-| `scale` | string | "major" or "minor" |
-| `sort` | string | Sort field: "newest", "popular", "trending" |
-
-**Response:**
-
-```json
-{
-  "status": "success",
-  "data": [
-    {
-      "id": 1234,
-      "name": "Midnight Chase",
-      "duration": 180,
-      "bpm": 145,
-      "key": "C",
-      "scale": "minor",
-      "genres": ["trap", "dark"],
-      "artist": {
-        "id": 56,
-        "name": "ProducerName",
-        "image_url": "https://..."
-      },
-      "image_url": "https://...",
-      "plays_count": 1250,
-      "created_at": "2024-01-15T10:30:00Z"
-    }
-  ],
-  "pagination": {
-    "current_page": 1,
-    "per_page": 15,
-    "total": 500,
-    "last_page": 34
-  }
-}
-```
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/tracks/{track}/producer-analytics` | 🔓 | Track performance analytics |
+| GET | `/tracks/{track}/engagement-metrics` | 🔓 | Engagement metrics |
+| PUT | `/tracks/{track}/posted-status` | 🔒 | Update posted status |
 
 ---
 
-### Get Track Details
+## Track Purchases (Stripe Connect)
 
-Retrieve details for a specific track.
+All purchase endpoints require authentication.
 
-```http
-GET /tracks/{id}
-```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/tracks/{track}/purchase/calculate-price` | Calculate price with fees |
+| POST | `/tracks/{track}/purchase/initiate` | Start purchase flow |
+| GET | `/tracks/{track}/purchase/status` | Check purchase status |
+| GET | `/purchases` | List user's purchases |
+| GET | `/artist/sales` | Artist's sales history |
 
-**Path Parameters:**
+### Purchase Flow
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `id` | integer | Track ID |
-
-**Response:**
-
-```json
-{
-  "status": "success",
-  "data": {
-    "id": 1234,
-    "name": "Midnight Chase",
-    "description": "Dark melodic trap beat...",
-    "duration": 180,
-    "bpm": 145,
-    "key": "C",
-    "scale": "minor",
-    "genres": ["trap", "dark"],
-    "tags": ["melodic", "808", "atmospheric"],
-    "artists": [
-      {
-        "id": 56,
-        "name": "ProducerName",
-        "verified": true
-      }
-    ],
-    "album": {
-      "id": 12,
-      "name": "Album Name"
-    },
-    "image_url": "https://...",
-    "waveform_url": "https://...",
-    "plays_count": 1250,
-    "likes_count": 89,
-    "created_at": "2024-01-15T10:30:00Z",
-    "licensing": {
-      "available": true,
-      "types": ["non_exclusive", "exclusive"]
-    }
-  }
-}
-```
+<Steps>
+  <Step title="Calculate Price">
+    ```http
+    POST /tracks/{track}/purchase/calculate-price
+    ```
+    Returns price breakdown including platform fees.
+  </Step>
+  
+  <Step title="Initiate Purchase">
+    ```http
+    POST /tracks/{track}/purchase/initiate
+    ```
+    Creates Stripe PaymentIntent, returns client secret.
+  </Step>
+  
+  <Step title="Confirm Payment">
+    Complete payment on client using Stripe.js with client secret.
+  </Step>
+  
+  <Step title="Check Status">
+    ```http
+    GET /tracks/{track}/purchase/status
+    ```
+    Verify purchase completed successfully.
+  </Step>
+</Steps>
 
 ---
 
-### Get Stream URL
+## License Certificates
 
-Get the streaming URL for a track.
-
-```http
-GET /tracks/{id}/stream
-```
-
-<Note>
-  Stream URLs are temporary and expire. Do not cache them long-term.
-</Note>
-
-**Response:**
-
-```json
-{
-  "status": "success",
-  "data": {
-    "url": "https://cdn.beatpass.ca/stream/...",
-    "expires_at": "2024-01-15T11:30:00Z"
-  }
-}
-```
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/tracks/{track}/generate-license` | 🔒 | Generate license certificate |
+| GET | `/tracks/{track}/check-license` | 🔒 | Check if user has license |
+| GET | `/tracks/{track}/download-license-pdf` | 🔒 | Download PDF certificate |
+| GET | `/verify-license/{uuid}` | 🔓 | Public license verification |
+| POST | `/licenses/{uuid}/revoke` | 🔒 | Revoke a license |
+| GET | `/user/licenses` | 🔒 | List user's licenses |
 
 ---
 
 ## Artists
 
-### List Artists
+### Core Artist Endpoints
 
-Retrieve a paginated list of artists/producers.
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/artists` | 🔓 | List artists |
+| GET | `/artists/{artist}` | 🔓 | Get artist details |
+| POST | `/artists` | 🔒 | Create artist |
+| PUT | `/artists/{artist}` | 🔒 | Update artist |
+| DELETE | `/artists/{ids}` | 🔒 | Delete artist(s) |
+| GET | `/artists/{artist}/tracks` | 🔓 | Artist's tracks |
+| GET | `/artists/{artist}/albums` | 🔓 | Artist's albums |
+| GET | `/artists/{artist}/followers` | 🔓 | Artist's followers |
 
-```http
-GET /artists
-```
+### Artist Follow System
 
-**Query Parameters:**
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/artists/{artistId}/follow` | 🔒 | Follow artist |
+| POST | `/artists/{artistId}/unfollow` | 🔒 | Unfollow artist |
+| GET | `/artists/{artistId}/follow-status` | 🔓 | Check follow status |
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `page` | integer | Page number |
-| `per_page` | integer | Results per page (max: 50) |
-| `verified` | boolean | Filter verified artists only |
-| `sort` | string | "popular", "newest", "name" |
+### Artist Analytics
 
-**Response:**
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/artists/{artist}/producer-analytics` | 🔓 | Producer analytics |
+| GET | `/artists/{artist}/downloads-analytics` | 🔓 | Downloads breakdown |
+| GET | `/artists/{artist}/producer-achievements` | 🔓 | Achievement list |
 
-```json
-{
-  "status": "success",
-  "data": [
-    {
-      "id": 56,
-      "name": "ProducerName",
-      "bio": "Music producer from...",
-      "image_url": "https://...",
-      "verified": true,
-      "tracks_count": 45,
-      "followers_count": 1200
-    }
-  ],
-  "pagination": {...}
-}
-```
+### Track Pinning
 
----
-
-### Get Artist Details
-
-```http
-GET /artists/{id}
-```
-
-**Response:**
-
-```json
-{
-  "status": "success",
-  "data": {
-    "id": 56,
-    "name": "ProducerName",
-    "bio": "Music producer specializing in...",
-    "image_url": "https://...",
-    "header_image_url": "https://...",
-    "verified": true,
-    "tracks_count": 45,
-    "albums_count": 3,
-    "followers_count": 1200,
-    "genres": ["trap", "hip-hop", "r&b"],
-    "social_links": {
-      "instagram": "https://...",
-      "twitter": "https://..."
-    },
-    "created_at": "2023-06-01T00:00:00Z"
-  }
-}
-```
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/artists/{artistId}/tracks/{trackId}/pin` | 🔒 | Pin track to profile |
+| POST | `/artists/{artistId}/tracks/{trackId}/unpin` | 🔒 | Unpin track |
+| GET | `/artists/{artistId}/pinned-track` | 🔓 | Get pinned track |
 
 ---
 
-### Get Artist Tracks
+## Albums
 
-```http
-GET /artists/{id}/tracks
-```
-
-Returns paginated tracks belonging to the specified artist.
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/albums` | 🔓 | List albums |
+| GET | `/albums/{album}` | 🔓 | Get album details |
+| POST | `/albums` | 🔒 | Create album |
+| PUT | `/albums/{album}` | 🔒 | Update album |
+| DELETE | `/albums/{ids}` | 🔒 | Delete album(s) |
+| GET | `/albums/{album}/producer-analytics` | 🔓 | Album analytics |
 
 ---
 
-### Get Artist Albums
+## Playlists
 
-```http
-GET /artists/{id}/albums
-```
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/playlists` | 🔓 | List playlists |
+| GET | `/playlists/{id}` | 🔓 | Get playlist details |
+| POST | `/playlists` | 🔒 | Create playlist |
+| PUT | `/playlists/{playlist}` | 🔒 | Update playlist |
+| DELETE | `/playlists/{ids}` | 🔒 | Delete playlist(s) |
+| POST | `/playlists/{id}/follow` | 🔒 | Follow playlist |
+| POST | `/playlists/{id}/unfollow` | 🔒 | Unfollow playlist |
 
-Returns albums by the specified artist.
+### Playlist Tracks
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/playlists/{id}/tracks` | 🔓 | Get playlist tracks |
+| POST | `/playlists/{playlist}/tracks/add` | 🔒 | Add tracks |
+| POST | `/playlists/{playlist}/tracks/remove` | 🔒 | Remove tracks |
+| POST | `/playlists/{playlist}/tracks/order` | 🔒 | Reorder tracks |
+
+### Collaborative Playlists
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/playlists/{playlist}/invite` | 🔒 | Invite editor |
+| POST | `/playlists/{playlist}/accept-invite` | 🔒 | Accept invite |
+| POST | `/playlists/{playlist}/decline-invite` | 🔒 | Decline invite |
+| POST | `/playlists/{playlist}/remove-editor` | 🔒 | Remove editor |
 
 ---
 
 ## Search
 
-### Search Tracks and Artists
-
-```http
-GET /search
-```
-
-**Query Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `query` | string | Search term (required) |
-| `type` | string | "all", "tracks", "artists", "albums" |
-| `limit` | integer | Max results per type (default: 10) |
-
-**Response:**
-
-```json
-{
-  "status": "success",
-  "data": {
-    "tracks": [...],
-    "artists": [...],
-    "albums": [...]
-  }
-}
-```
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/search` | 🔓 | Full-text search |
+| GET | `/search/audio/{trackId}/{artistName}/{trackName}` | 🔓 | Audio search |
+| GET | `/search/suggestions/artist` | 🔓 | Artist suggestions |
+| GET | `/search/suggestions/album` | 🔓 | Album suggestions |
 
 ---
 
-## User (Authenticated)
+## Messaging
 
-### Get Current User
+All messaging endpoints require authentication.
 
-```http
-GET /user
-```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/messaging/conversations` | List conversations |
+| GET | `/messaging/conversations/{id}/messages` | Get messages |
+| GET | `/messaging/conversations/{id}/messages-with-receipts` | Messages with read receipts |
+| POST | `/messaging/messages` | Send message |
+| POST | `/messaging/conversations/start` | Start new conversation |
+| POST | `/messaging/conversations/{id}/read` | Mark conversation read |
+| POST | `/messaging/messages/{id}/read` | Mark message read |
+| DELETE | `/messaging/conversations/{id}` | Delete conversation |
+| GET | `/messaging/unread-count` | Get unread count |
+| GET | `/messaging/search-users` | Search users to message |
+| GET | `/messaging/followed-users` | Get followed users |
 
-<Warning>
-  Requires authentication.
-</Warning>
+### Typing Indicators
 
-**Response:**
-
-```json
-{
-  "status": "success",
-  "data": {
-    "id": 123,
-    "email": "user@example.com",
-    "display_name": "Username",
-    "avatar_url": "https://...",
-    "roles": ["user"],
-    "created_at": "2024-01-01T00:00:00Z"
-  }
-}
-```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/messaging/conversations/{id}/typing` | Set typing status |
+| GET | `/messaging/conversations/{id}/typing` | Get typing status |
 
 ---
 
-### Get User Library
+## Beat Requests
 
-```http
-GET /user/library
-```
+All beat request endpoints require authentication.
 
-Returns tracks saved to the authenticated user's library.
-
----
-
-### Get User Playlists
-
-```http
-GET /user/playlists
-```
-
-Returns playlists created by or followed by the authenticated user.
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/beat-requests` | List beat requests |
+| POST | `/beat-requests` | Create beat request |
+| GET | `/beat-requests/{id}` | Get request details |
+| DELETE | `/beat-requests/{id}` | Delete request |
+| POST | `/beat-requests/{id}/fulfill` | Fulfill request |
+| GET | `/beat-requests/user/my-requests` | User's own requests |
+| GET | `/beat-requests/user/rate-limit-status` | Check rate limit |
+| GET | `/beat-requests/statistics` | Platform statistics |
 
 ---
 
-## Genres
+## Producer Intelligence
 
-### List Genres
+### Public Endpoints (No Auth Required)
 
-```http
-GET /genres
-```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/producer-intelligence/leaderboard` | Global leaderboards |
+| GET | `/producer-intelligence/collaboration-leaderboard` | Collaboration rankings |
+| POST | `/producer-intelligence/tracks/growth-batch` | Batch track growth rates |
+| GET | `/producer-intelligence/track/{trackId}/growth` | Single track growth |
 
-Returns all available genres for filtering.
+### Authenticated Endpoints
 
-**Response:**
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/producer-intelligence/dashboard` | Full dashboard data |
+| GET | `/producer-intelligence/xp-sources` | XP breakdown |
+| GET | `/producer-intelligence/achievements` | User achievements |
+| GET | `/producer-intelligence/achievements/{id}/details` | Achievement details |
+| GET | `/producer-intelligence/producer-level` | Current level/XP |
+| GET | `/producer-intelligence/progress-data` | Combined progress |
 
-```json
-{
-  "status": "success",
-  "data": [
-    {
-      "id": 1,
-      "name": "Hip Hop",
-      "slug": "hip-hop",
-      "tracks_count": 2500
-    },
-    {
-      "id": 2,
-      "name": "Trap",
-      "slug": "trap",
-      "tracks_count": 1800
-    }
-  ]
-}
-```
+### Social Analytics
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/producer-intelligence/social-analytics` | Social metrics |
+| GET | `/producer-intelligence/social-activity-feed` | Activity feed |
+| GET | `/producer-intelligence/collaboration-network` | Network graph |
+| GET | `/producer-intelligence/trending-collaborations` | Trending collabs |
+| GET | `/producer-intelligence/collaboration-opportunities` | Suggested collabs |
+
+---
+
+## Contribution & Payouts
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/producer/earnings` | 🔓 | Earnings estimate |
+| GET | `/producer/track-breakdown` | 🔓 | Per-track breakdown |
+| GET | `/tracks/{track}/contribution` | 🔓 | Track contribution |
+| POST | `/producer/update-contributions` | 🔒 | Update contributions |
+| GET | `/platform/stats` | 🔓 | Platform statistics |
+| GET | `/platform/top-tracks` | 🔓 | Top performing tracks |
+
+### Payout Analytics
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/payout/analytics` | 🔓 | Payout analytics |
+| GET | `/payout/projections` | 🔓 | Earnings projections |
+| GET | `/payout/trends` | 🔓 | Trend data |
+| GET | `/payout/leaderboard` | 🔓 | Payout leaderboard |
+| GET | `/payout-cycle` | 🔓 | Current payout cycle |
+| GET | `/producer/payout-history` | 🔓 | History |
+| GET | `/producer/contribution-trends` | 🔓 | Contribution trends |
+
+---
+
+## Stripe Connect (Artists)
+
+All endpoints require authentication.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/artist/stripe-connect/status` | Onboarding status |
+| POST | `/artist/stripe-connect/onboard` | Create onboarding link |
+| GET | `/artist/stripe-connect/finances` | Financial overview |
+| GET | `/artist/subscription-payouts` | Subscription payouts |
+| GET | `/artist/subscription-payouts/summary` | Payout summary |
+| GET | `/artist/unified-transactions` | All transactions |
+
+---
+
+## User Profile & Library
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/user-profile/{user}` | 🔓 | Get user profile |
+| PUT | `/users/profile/update` | 🔒 | Update profile |
+| GET | `/users/{user}/liked-tracks` | 🔓 | Liked tracks |
+| GET | `/users/{user}/liked-albums` | 🔓 | Liked albums |
+| GET | `/users/{user}/liked-artists` | 🔓 | Liked artists |
+| GET | `/users/{user}/playlists` | 🔓 | User playlists |
+| GET | `/users/{user}/followers` | 🔓 | User followers |
+| GET | `/users/{user}/followed-users` | 🔓 | Following list |
+| POST | `/users/me/add-to-library` | 🔒 | Add to library |
+| POST | `/users/me/remove-from-library` | 🔒 | Remove from library |
+
+### User Following
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/users/{id}/follow` | 🔒 | Follow user |
+| POST | `/users/{id}/unfollow` | 🔒 | Unfollow user |
+| GET | `/users/{id}/follow-status` | 🔓 | Check follow status |
+
+---
+
+## Audio Fingerprinting
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/tracks/{track}/fingerprint` | 🔒 | Generate fingerprint |
+| GET | `/tracks/{track}/fingerprint/status` | 🔒 | Check status |
+| POST | `/tracks/check-duplicates` | 🔒 | Check for duplicates |
+
+---
+
+## Genres & Tags
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/genres` | 🔓 | List genres |
+| GET | `/genres/{name}` | 🔓 | Genre details |
+| GET | `/tags/{tagName}/tracks` | 🔓 | Tracks by tag |
+| GET | `/tags/{tagName}/albums` | 🔓 | Albums by tag |
+
+---
+
+## Leaderboards
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/leaderboard/stats` | 🔓 | Leaderboard statistics |
+| GET | `/leaderboards/global` | 🔓 | Global rankings |
+| GET | `/leaderboards/genre/{genre}` | 🔓 | Genre rankings |
+| GET | `/leaderboards/rising-stars` | 🔓 | Rising producers |
+| GET | `/leaderboards/achievements` | 🔓 | Achievement leaders |
 
 ---
 
 ## Error Codes
-
-All endpoints may return these errors:
 
 | Code | Status | Description |
 |------|--------|-------------|
@@ -371,6 +375,7 @@ All endpoints may return these errors:
 | 401 | Unauthorized | Missing or invalid token |
 | 403 | Forbidden | Insufficient permissions |
 | 404 | Not Found | Resource doesn't exist |
+| 422 | Unprocessable Entity | Validation failed |
 | 429 | Too Many Requests | Rate limit exceeded |
 | 500 | Server Error | Internal error |
 

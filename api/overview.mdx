@@ -1,14 +1,14 @@
 ---
 title: "API Overview"
-description: "Introduction to the BeatPass API for developers and integrators."
+description: "Introduction to the BeatPass API for first-party application development."
 ---
 
 ## Overview
 
-The BeatPass API provides programmatic access to platform data and functionality. This documentation covers public API capabilities for approved integrators.
+The BeatPass API powers the platform's frontend and is available for authenticated users. This is a **first-party API** designed for the BeatPass web and mobile applications—not a public developer API.
 
 <Warning>
-  The API is currently in beta. Endpoints may change. Contact us before building integrations.
+  This API is for internal BeatPass applications only. There is no public developer program or third-party API access at this time.
 </Warning>
 
 ---
@@ -23,23 +23,48 @@ https://beta.beatpass.ca/api/v1
 
 ---
 
-## API Capabilities
+## API Surface
 
-### Available Features
+The BeatPass API provides comprehensive functionality across the platform:
 
-| Capability | Description |
-|------------|-------------|
-| Track Data | Access public track information |
-| Artist Profiles | Retrieve artist and producer data |
-| Search | Query tracks and artists |
-| User Data | Access authenticated user information |
+### Content & Discovery
 
-### Coming Soon
+| Category | Capabilities |
+|----------|-------------|
+| **Tracks** | List, view, upload, update, delete tracks |
+| **Albums** | Album management and metadata |
+| **Artists** | Artist profiles, followers, tracks |
+| **Playlists** | Create, manage, share playlists |
+| **Search** | Full-text search across content types |
+| **Genres** | Genre listing and filtering |
 
-- Webhook notifications
-- Bulk data exports
-- Analytics API
-- Upload API
+### Commerce & Licensing
+
+| Category | Capabilities |
+|----------|-------------|
+| **Track Purchases** | Per-track purchase flow via Stripe Connect |
+| **License Certificates** | Generate, verify, revoke licenses |
+| **Exclusive Licenses** | Preset management for exclusive sales |
+| **Subscription Payouts** | Artist earnings from subscriptions |
+
+### Producer Tools
+
+| Category | Capabilities |
+|----------|-------------|
+| **Producer Intelligence** | XP, achievements, leaderboards |
+| **Analytics** | Track performance, engagement metrics |
+| **Contribution Pool** | Earnings estimates, track breakdowns |
+| **Payout Analytics** | History, projections, trends |
+| **Audio Fingerprinting** | Duplicate detection, content ID |
+
+### Social & Collaboration
+
+| Category | Capabilities |
+|----------|-------------|
+| **Messaging** | Direct messages with typing indicators |
+| **Beat Requests** | Custom beat request marketplace |
+| **Following** | User and artist follow system |
+| **Reposts** | Content sharing within platform |
 
 ---
 
@@ -50,23 +75,21 @@ https://beta.beatpass.ca/api/v1
 | Method | Usage |
 |--------|-------|
 | GET | Retrieve data |
-| POST | Create resources |
-| PUT/PATCH | Update resources |
+| POST | Create resources or perform actions |
+| PUT | Update resources |
 | DELETE | Remove resources |
 
-### Headers
-
-Required headers for all requests:
+### Required Headers
 
 ```http
 Accept: application/json
 Content-Type: application/json
 ```
 
-For authenticated endpoints:
+For authenticated endpoints, include the Sanctum token:
 
 ```http
-Authorization: Bearer YOUR_ACCESS_TOKEN
+Authorization: Bearer YOUR_SANCTUM_TOKEN
 ```
 
 ---
@@ -75,12 +98,13 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 ### Success Response
 
+Responses vary by endpoint. Most return data directly:
+
 ```json
 {
-  "status": "success",
-  "data": {
-    // Response data
-  }
+  "id": 1234,
+  "name": "Track Name",
+  "artist": {...}
 }
 ```
 
@@ -88,95 +112,92 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 ```json
 {
-  "status": "error",
   "message": "Error description",
   "errors": {
-    // Field-specific errors if applicable
+    "field": ["Validation error"]
   }
 }
 ```
 
 ### Pagination
 
-Paginated endpoints return:
+Paginated endpoints use Laravel's standard pagination:
 
 ```json
 {
   "data": [...],
-  "pagination": {
-    "current_page": 1,
-    "per_page": 15,
-    "total": 150,
-    "last_page": 10
-  }
+  "current_page": 1,
+  "per_page": 15,
+  "total": 150,
+  "last_page": 10,
+  "links": {...}
 }
 ```
 
 ---
 
-## Common Endpoints
+## Authentication Model
 
-### Tracks
+BeatPass uses **Laravel Sanctum** for authentication. This provides:
+
+- Session-based authentication for web (SPA)
+- Token-based authentication for API requests
+- No OAuth flow or third-party app authorization
+
+See [Authentication](/api/auth) for details on obtaining and using tokens.
+
+---
+
+## Key Endpoint Groups
+
+### Public Endpoints (Optional Auth)
+
+These endpoints work without authentication but return enhanced data when authenticated:
 
 ```http
-GET /tracks              # List tracks
-GET /tracks/{id}         # Get track details
-GET /tracks/{id}/stream  # Stream URL
-```
-
-### Artists
-
-```http
+GET /tracks              # List public tracks
+GET /tracks/{id}         # Track details
 GET /artists             # List artists
-GET /artists/{id}        # Get artist details
-GET /artists/{id}/tracks # Artist's tracks
+GET /artists/{id}        # Artist profile
+GET /search              # Search content
+GET /genres              # Available genres
 ```
 
-### Search
+### Authenticated Endpoints
+
+These require a valid Sanctum token:
 
 ```http
-GET /search?query=term   # Search tracks and artists
+POST /tracks                           # Upload track
+POST /tracks/{track}/purchase/initiate # Start purchase
+GET  /purchases                        # User's purchases
+GET  /messaging/conversations          # User's messages
+GET  /producer-intelligence/dashboard  # Producer analytics
+POST /beat-requests                    # Create beat request
 ```
 
 ---
 
-## Getting Started
+## Rate Limiting
 
-<Steps>
-  <Step title="Request Access">
-    Contact support to request API access for your use case.
-  </Step>
-  
-  <Step title="Receive Credentials">
-    Upon approval, receive your API credentials.
-  </Step>
-  
-  <Step title="Authenticate">
-    Implement authentication per the [Auth guide](/api/auth).
-  </Step>
-  
-  <Step title="Make Requests">
-    Start making API calls to available endpoints.
-  </Step>
-</Steps>
+The API uses route-specific throttling. Key limits:
+
+| Route Group | Limit |
+|-------------|-------|
+| Producer Intelligence (public) | 300 requests/minute |
+| Producer Intelligence (auth) | 500 requests/minute |
+| Social Analytics | 120 requests/minute |
+| Legacy Producer Dashboard | 60 requests/minute |
+
+See [Rate Limits](/api/rate-limits) for complete details.
 
 ---
 
-## Use Cases
+## Webhooks
 
-### Approved Use Cases
+BeatPass receives **inbound webhooks** from Stripe for payment processing. There is no outbound webhook system for external integrations.
 
-- Building music discovery tools
-- Creating producer portfolio sites
-- Analytics and reporting integrations
-- Playlist management applications
-
-### Prohibited Use Cases
-
-- Scraping or bulk downloading
-- Bypassing licensing systems
-- Creating competing platforms
-- Any illegal activity
+See [Webhooks](/api/webhooks) for Stripe webhook details.
 
 ---
 
@@ -184,9 +205,9 @@ GET /search?query=term   # Search tracks and artists
 
 <CardGroup cols={2}>
   <Card title="Authentication" icon="key" href="/api/auth">
-    Learn how to authenticate.
+    Learn how Sanctum authentication works.
   </Card>
-  <Card title="Rate Limits" icon="gauge" href="/api/rate-limits">
-    Understand usage limits.
+  <Card title="Endpoints" icon="code" href="/api/endpoints">
+    Complete endpoint reference.
   </Card>
 </CardGroup>

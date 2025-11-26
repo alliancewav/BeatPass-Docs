@@ -43,13 +43,21 @@ Quick share to popular platforms:
 
 ## Embedding Beats
 
-### Basic Embed
+### Track Embed URL
+
+BeatPass supports track embedding using the following URL format:
+
+```
+https://beta.beatpass.ca/track/{track-id}/{track-slug}/embed
+```
+
+### Basic Embed Code
 
 Embed a player on any website:
 
 ```html
 <iframe 
-  src="https://beta.beatpass.ca/embed/track/{track-id}"
+  src="https://beta.beatpass.ca/track/123/midnight-chase/embed"
   width="100%"
   height="152"
   frameborder="0"
@@ -57,7 +65,11 @@ Embed a player on any website:
 ></iframe>
 ```
 
-### Embed Sizes
+<Note>
+  The embed URL uses the same track path as the track page, with `/embed` appended. You can find the exact URL from the share menu on any track.
+</Note>
+
+### Embed Sizing
 
 | Size | Dimensions | Best For |
 |------|------------|----------|
@@ -65,57 +77,19 @@ Embed a player on any website:
 | Standard | 100% × 152px | Most use cases |
 | Visual | 100% × 300px | Featured showcases |
 
-### Customization Options
-
-Add parameters to customize appearance:
-
-```
-?theme=dark       # Dark theme
-?theme=light      # Light theme
-?autoplay=false   # Disable autoplay
-?color=6366f1     # Custom accent color (hex)
-```
-
-**Example with Options:**
-
-```html
-<iframe 
-  src="https://beta.beatpass.ca/embed/track/123?theme=dark&color=6366f1"
-  width="100%"
-  height="152"
-  frameborder="0"
-></iframe>
-```
-
 ---
 
-## Profile Embed
+## Supported Embed Types
 
-### Embedding Your Profile
+<Warning>
+  BeatPass currently only supports **track embeds**. Artist profile and playlist embeds are not available at this time.
+</Warning>
 
-Showcase your full producer profile:
-
-```html
-<iframe 
-  src="https://beta.beatpass.ca/embed/artist/{artist-id}"
-  width="100%"
-  height="400"
-  frameborder="0"
-></iframe>
-```
-
-### Playlist Embed
-
-Embed a collection of tracks:
-
-```html
-<iframe 
-  src="https://beta.beatpass.ca/embed/playlist/{playlist-id}"
-  width="100%"
-  height="400"
-  frameborder="0"
-></iframe>
-```
+| Embed Type | Status |
+|------------|--------|
+| Track | ✅ Supported |
+| Artist Profile | ❌ Not available |
+| Playlist | ❌ Not available |
 
 ---
 
@@ -181,14 +155,17 @@ Embed directly in HTML or use JavaScript:
 
 ```javascript
 // Dynamic embed creation
-function embedBeatPassTrack(containerId, trackId) {
+function embedBeatPassTrack(containerId, trackId, trackSlug) {
   const iframe = document.createElement('iframe');
-  iframe.src = `https://beta.beatpass.ca/embed/track/${trackId}`;
+  iframe.src = `https://beta.beatpass.ca/track/${trackId}/${trackSlug}/embed`;
   iframe.width = '100%';
   iframe.height = '152';
   iframe.frameBorder = '0';
   document.getElementById(containerId).appendChild(iframe);
 }
+
+// Usage example
+embedBeatPassTrack('player-container', 123, 'midnight-chase');
 ```
 
 ---
@@ -252,25 +229,51 @@ Embedded players include automatic BeatPass branding. This cannot be removed wit
 
 ---
 
+## Technical Constraints
+
+### HTTPS Required
+
+Embeds must be served over HTTPS. The embed will not load on HTTP-only sites.
+
+### Content Security Policy (CSP)
+
+If your site uses CSP headers, you must allow framing from BeatPass:
+
+```http
+Content-Security-Policy: frame-src https://beta.beatpass.ca;
+```
+
+### Browser Autoplay Policies
+
+Modern browsers restrict autoplay. The embedded player:
+
+- Will not autoplay audio without user interaction
+- Requires a click/tap to begin playback
+- May show a play button overlay until interaction
+
+This is a browser security feature, not a BeatPass limitation.
+
+---
+
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="Embed not loading">
-    - Check for HTTPS on your site (required)
-    - Verify embed URL is correct
-    - Check for CSP restrictions
+    - **HTTPS required:** Your site must use HTTPS
+    - **CSP blocking:** Check for Content-Security-Policy headers blocking frames
+    - **URL format:** Ensure URL follows `track/{id}/{slug}/embed` pattern
   </Accordion>
   
   <Accordion title="Audio not playing">
-    - Autoplay may be blocked by browser
-    - User interaction required on some platforms
-    - Check browser audio permissions
+    - **Autoplay blocked:** User must click to play (browser policy)
+    - **Permissions:** Check browser audio permissions
+    - **Mobile:** Some mobile browsers require explicit user gesture
   </Accordion>
   
   <Accordion title="Sizing issues">
     - Use percentage widths for responsiveness
-    - Set explicit heights
-    - Check container CSS
+    - Set explicit pixel heights
+    - Wrap in container div with max-width
   </Accordion>
 </AccordionGroup>
 

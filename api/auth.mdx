@@ -1,70 +1,182 @@
 ---
 title: "Authentication"
-description: "How to authenticate with the BeatPass API."
+description: "How authentication works on the BeatPass API using Laravel Sanctum."
 ---
 
 ## Overview
 
-The BeatPass API uses token-based authentication. All authenticated endpoints require a valid access token.
+BeatPass uses **Laravel Sanctum** for API authentication. Sanctum provides a simple token-based authentication system for SPAs (single-page applications) and mobile applications.
+
+<Note>
+  BeatPass does not use OAuth or issue third-party API keys. Authentication is for first-party BeatPass applications only.
+</Note>
 
 ---
 
 ## Authentication Methods
 
-### Bearer Token
+### Session-Based (Web SPA)
 
-Include your access token in the Authorization header:
+The BeatPass web application uses cookie-based session authentication:
+
+1. User logs in via `/login` endpoint
+2. Laravel creates an authenticated session
+3. Subsequent requests include session cookie
+4. CSRF protection applies to mutating requests
+
+### Token-Based (API)
+
+For direct API access, use Bearer token authentication:
 
 ```http
-Authorization: Bearer YOUR_ACCESS_TOKEN
-```
-
-### Example Request
-
-```bash
-curl -X GET "https://beta.beatpass.ca/api/v1/user" \
-  -H "Accept: application/json" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+Authorization: Bearer YOUR_SANCTUM_TOKEN
 ```
 
 ---
 
 ## Obtaining Tokens
 
-### For Users (OAuth Flow)
+### Web Login
 
-Standard users authenticate through the platform's OAuth flow:
+Users authenticate through the standard login flow:
 
 <Steps>
-  <Step title="Redirect to Auth">
-    Redirect users to BeatPass login.
+  <Step title="Navigate to Login">
+    Go to `https://beta.beatpass.ca/login`
   </Step>
   
-  <Step title="User Authorizes">
-    User grants your application permission.
+  <Step title="Enter Credentials">
+    Provide email and password.
   </Step>
   
-  <Step title="Receive Code">
-    Receive authorization code via callback.
+  <Step title="Two-Factor (if enabled)">
+    Enter TOTP code from authenticator app.
   </Step>
   
-  <Step title="Exchange for Token">
-    Exchange code for access token.
+  <Step title="Session Created">
+    Authenticated session begins with cookie.
   </Step>
 </Steps>
 
-### For Integrations (API Key)
+### API Token Generation
 
-Approved integrators receive API keys:
+Sanctum tokens can be created for authenticated users:
 
-1. Contact support for API access
-2. Describe your integration use case
-3. Receive credentials upon approval
-4. Use key as bearer token
+```http
+POST /api/sanctum/token
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "your-password",
+  "device_name": "my-app"
+}
+```
+
+**Response:**
+
+```json
+{
+  "token": "1|abc123...",
+  "user": {
+    "id": 123,
+    "email": "user@example.com",
+    "display_name": "Username"
+  }
+}
+```
 
 <Warning>
-  Never expose API keys in client-side code or public repositories.
+  Store tokens securely. Never expose them in client-side code, URLs, or logs.
 </Warning>
+
+---
+
+## Using Tokens
+
+### Bearer Token Header
+
+Include the token in the Authorization header:
+
+```bash
+curl -X GET "https://beta.beatpass.ca/api/v1/user-profile/123" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer 1|abc123..."
+```
+
+### Example Authenticated Request
+
+```javascript
+const response = await fetch('https://beta.beatpass.ca/api/v1/purchases', {
+  headers: {
+    'Accept': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }
+});
+```
+
+---
+
+## Optional vs Required Auth
+
+### Optional Auth Endpoints
+
+Many endpoints use `optionalAuth:sanctum` middleware—they work without authentication but return more data when authenticated:
+
+```http
+GET /tracks           # Public track list
+GET /tracks/{id}      # Track details (shows purchase status if authed)
+GET /artists/{id}     # Artist profile (shows follow status if authed)
+GET /search           # Search results
+```
+
+### Required Auth Endpoints
+
+These endpoints require a valid token:
+
+```http
+POST /tracks                           # Upload track
+PUT  /tracks/{track}                   # Update track
+POST /tracks/{track}/purchase/initiate # Purchase flow
+GET  /purchases                        # User purchases
+GET  /messaging/conversations          # Messages
+POST /beat-requests                    # Create request
+GET  /producer-intelligence/dashboard  # Analytics
+```
+
+---
+
+## Two-Factor Authentication
+
+When 2FA is enabled, the login flow requires an additional step:
+
+### Initial Login Response (2FA Required)
+
+```json
+{
+  "two_factor": true,
+  "message": "Two factor authentication required"
+}
+```
+
+### Submit 2FA Code
+
+```http
+POST /two-factor-challenge
+Content-Type: application/json
+
+{
+  "code": "123456"
+}
+```
+
+Or use a recovery code:
+
+```json
+{
+  "recovery_code": "abcd-efgh-ijkl"
+}
+```
 
 ---
 
@@ -73,31 +185,26 @@ Approved integrators receive API keys:
 ### Best Practices
 
 <AccordionGroup>
-  <Accordion title="Keep Tokens Secret">
-    Never commit tokens to version control. Use environment variables.
+  <Accordion title="Store Securely">
+    Use secure storage (Keychain, encrypted preferences). Never localStorage for sensitive apps.
   </Accordion>
   
-  <Accordion title="Use HTTPS">
-    All API requests must use HTTPS to protect tokens in transit.
+  <Accordion title="HTTPS Only">
+    All API requests must use HTTPS. Tokens sent over HTTP can be intercepted.
   </Accordion>
   
-  <Accordion title="Rotate Regularly">
-    Rotate tokens periodically. Contact support to regenerate if compromised.
+  <Accordion title="Token Revocation">
+    Revoke tokens when logging out or if compromise is suspected.
   </Accordion>
   
-  <Accordion title="Minimize Scope">
-    Request only the permissions your application needs.
+  <Accordion title="Short-Lived Sessions">
+    Web sessions expire based on server configuration. Re-authenticate as needed.
   </Accordion>
 </AccordionGroup>
 
-### If Compromised
+### Revoking Tokens
 
-If you believe your token is compromised:
-
-1. Contact support immediately
-2. Request token revocation
-3. Generate new credentials
-4. Update your application
+Users can revoke all tokens from account settings, or revoke specific sessions.
 
 ---
 
@@ -105,81 +212,41 @@ If you believe your token is compromised:
 
 | Status | Meaning | Solution |
 |--------|---------|----------|
-| 401 | Unauthorized | Check token validity |
-| 403 | Forbidden | Token lacks required permissions |
+| 401 | Unauthenticated | Token missing, invalid, or expired |
+| 403 | Forbidden | User lacks permission for this resource |
+| 419 | Session Expired | CSRF token mismatch (web SPA) |
 
 ### Error Response
 
 ```json
 {
-  "status": "error",
-  "message": "Unauthenticated.",
-  "code": 401
+  "message": "Unauthenticated."
 }
 ```
 
 ---
 
-## Token Lifetime
+## Social Login
 
-| Token Type | Lifetime |
-|------------|----------|
-| Access Token | Varies by grant type |
-| API Key | Until revoked |
+BeatPass supports social authentication providers:
 
-<Note>
-  Implement token refresh logic in your application to handle expiration gracefully.
-</Note>
+| Provider | Available |
+|----------|-----------|
+| Google | Yes |
+| Facebook | Yes |
+| Apple | Yes |
 
----
-
-## Scopes
-
-Available permission scopes:
-
-| Scope | Description |
-|-------|-------------|
-| `read:tracks` | Access track data |
-| `read:artists` | Access artist data |
-| `read:user` | Access authenticated user data |
-| `write:user` | Modify user data |
-
-Request only the scopes you need.
-
----
-
-## Testing Authentication
-
-Verify your setup with a simple request:
-
-```bash
-curl -X GET "https://beta.beatpass.ca/api/v1/user" \
-  -H "Accept: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-Successful response:
-
-```json
-{
-  "status": "success",
-  "data": {
-    "id": 123,
-    "email": "user@example.com",
-    "display_name": "Username"
-  }
-}
-```
+Social logins create a BeatPass account and session automatically.
 
 ---
 
 ## Next Steps
 
 <CardGroup cols={2}>
+  <Card title="API Endpoints" icon="code" href="/api/endpoints">
+    See available endpoints.
+  </Card>
   <Card title="Rate Limits" icon="gauge" href="/api/rate-limits">
     Understand request limits.
-  </Card>
-  <Card title="Webhooks" icon="webhook" href="/api/webhooks">
-    Receive event notifications.
   </Card>
 </CardGroup>

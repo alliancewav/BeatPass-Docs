@@ -116,18 +116,22 @@ After purchase:
 
 <Steps>
   <Step title="Select License Tier">
-    Click "License" or "Buy" on the track page.
+    Click **Buy License** on the track page and choose Non-Exclusive or Exclusive.
   </Step>
-  <Step title="Review Cart">
-    Confirm selection and pricing.
+  <Step title="Review Price">
+    Confirm the license type and final price (including any platform fees).
   </Step>
   <Step title="Complete Payment">
-    Secure checkout via Stripe.
+    Enter payment details via Stripe's secure checkout.
   </Step>
   <Step title="Download Files">
-    Access high-quality files and license certificate immediately.
+    Access high-quality audio files and license certificate immediately.
   </Step>
 </Steps>
+
+<Note>
+  BeatPass uses per-track purchasing—there is no cart. Each license is a separate transaction.
+</Note>
 
 ### After Purchase
 
@@ -191,20 +195,51 @@ After purchase:
 
 Your license certificate includes:
 
-- Unique license ID
-- Purchase date
-- License type
-- Track details
+- Unique license UUID
+- Purchase date and time
+- License type (Non-Exclusive/Exclusive)
+- Track and artist details
+- QR code linking to verification page
 - Verification URL
 
-### For Third Parties
+### Public Verification Page
 
-Anyone can verify a license at `/verify-license/{id}`:
+Anyone can verify a license using the UUID at:
 
-- Confirms license is valid
-- Shows license type and date
-- Displays track and licensee info
-- Does not reveal payment details
+```
+https://beta.beatpass.ca/verify-license/{uuid}
+```
+
+The verification page shows:
+
+- License validity status (active/revoked)
+- License type and date issued
+- Track information
+- Licensee display name
+- Does **not** reveal payment amounts or personal details
+
+### License API Actions
+
+BeatPass provides API endpoints for license management:
+
+| Action       | Endpoint                                   | Description                     |
+| ------------ | ------------------------------------------ | ------------------------------- |
+| Generate     | `POST /tracks/{track}/generate-license`    | Create license after purchase   |
+| Check        | `GET /tracks/{track}/check-license`        | Check if user has valid license |
+| Download PDF | `GET /tracks/{track}/download-license-pdf` | Get certificate PDF             |
+| Verify       | `GET /verify-license/{uuid}`               | Public verification (no auth)   |
+| Revoke       | `POST /licenses/{uuid}/revoke`             | Revoke a license (admin/owner)  |
+| List         | `GET /user/licenses`                       | Get all user's licenses         |
+
+### Certificate Regeneration
+
+If you need a new copy of your license certificate:
+
+1. Go to your **Library \> Licenses**
+2. Find the track
+3. Click **Download Certificate**
+
+The certificate PDF is regenerated with the same license UUID and details.
 
 ---
 

@@ -1,44 +1,112 @@
-# Mintlify Starter Kit
+# BeatPass Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+This is the official documentation site for BeatPass, built with [Mintlify](https://mintlify.com).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
-
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
-
-[**Follow the full quickstart guide**](https://starter.mintlify.com/quickstart)
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+## Documentation Structure
 
 ```
-npm i -g mint
+docs/
+├── api/                    # API reference documentation
+├── account/                # Account settings and management
+├── analytics/              # Analytics dashboards and metrics
+├── changelog/              # Platform update history
+├── contribution/           # Contribution pool and payouts
+├── getting-started/        # Onboarding guides by role
+├── legal/                  # Legal policies and terms
+├── overview/               # Platform overview and concepts
+├── producer-guides/        # Producer-specific guides
+├── product-guides/         # Feature documentation
+├── security/               # Security and privacy guides
+└── support/                # Help and troubleshooting
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+## Local Development
 
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Setup
+
+1. Install the Mintlify CLI:
+
+```bash
+npm i -g mintlify
 ```
-mint dev
+
+2. Navigate to the docs directory:
+
+```bash
+cd docs/BeatPass\ Mintlify\ Docs\ site
 ```
 
-View your local preview at `http://localhost:3000`.
+3. Start the development server:
 
-## Publishing changes
+```bash
+mintlify dev
+```
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+4. Open `http://localhost:3000` in your browser.
 
-## Need help?
+### Making Changes
 
-### Troubleshooting
+1. Edit `.mdx` files in the appropriate directory
+2. Preview changes locally with `mintlify dev`
+3. Commit and push to deploy
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Content Guidelines
 
-### Resources
+### Writing Style
 
-- [Mintlify documentation](https://mintlify.com/docs)
+- Use clear, concise language
+- Write for the target audience (see `<Info>` tags for audience)
+- Use present tense and active voice
+- Include code examples where relevant
+
+### MDX Components
+
+Common Mintlify components used in this documentation:
+
+```mdx
+<Note>Informational callout</Note>
+<Warning>Important warning</Warning>
+<Info>Contextual information</Info>
+<Tip>Helpful suggestion</Tip>
+
+<Steps>
+  <Step title="Step Name">Content</Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Title">Content</Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Title" icon="icon-name" href="/path">
+    Description
+  </Card>
+</CardGroup>
+```
+
+### Keeping Docs in Sync
+
+When platform features change:
+
+1. **API changes**: Update `api/endpoints.mdx` and related auth/rate-limit docs
+2. **New features**: Add to relevant product-guide and update changelog
+3. **UI changes**: Update screenshots and step-by-step guides
+4. **Removed features**: Remove documentation and add deprecation notes
+
+## Deployment
+
+Documentation is automatically deployed when changes are pushed to the main branch via Mintlify's GitHub integration.
+
+### Manual Deployment
+
+If needed, trigger a manual deployment from the [Mintlify Dashboard](https://dashboard.mintlify.com).
+
+## Support
+
+- **Mintlify docs**: https://mintlify.com/docs
+- **BeatPass team**: Contact via internal channels

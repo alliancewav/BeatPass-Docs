@@ -59,6 +59,14 @@ Your BeatPass account contains valuable content, earnings data, and personal inf
 
 Two-factor authentication adds a second layer of security beyond your password. Even if someone obtains your password, they can't access your account without the second factor.
 
+### TOTP-Based Authentication
+
+BeatPass uses **Time-based One-Time Password (TOTP)** for two-factor authentication. This requires an authenticator app on your phone or computer.
+
+<Note>
+  SMS-based 2FA is not available. TOTP apps are more secure as they don't rely on phone carrier security.
+</Note>
+
 ### Setting Up 2FA
 
 <Steps>
@@ -70,37 +78,41 @@ Two-factor authentication adds a second layer of security beyond your password. 
     Click **Enable Two-Factor Authentication**.
   </Step>
   
-  <Step title="Choose Method">
-    Select your preferred method:
-    - **Authenticator App** (recommended): Google Authenticator, Authy, or similar
-    - **SMS** (less secure): Receive codes via text message
-  </Step>
-  
   <Step title="Scan QR Code">
-    For authenticator apps, scan the QR code displayed.
+    Open your authenticator app and scan the QR code displayed on screen.
   </Step>
   
-  <Step title="Verify">
-    Enter the code from your app to confirm setup.
+  <Step title="Enter Verification Code">
+    Enter the 6-digit code from your authenticator app to confirm setup.
   </Step>
   
-  <Step title="Save Backup Codes">
-    Download and securely store your backup codes for account recovery.
+  <Step title="Save Recovery Codes">
+    Download and securely store your recovery codes. These are your backup if you lose access to your authenticator.
   </Step>
 </Steps>
 
 <Warning>
-  Store backup codes in a secure location. Without them, you may lose access to your account if you lose your 2FA device.
+  **Save your recovery codes!** Store them in a secure location (password manager, safe, etc.). Without them, you may permanently lose access to your account if you lose your 2FA device.
 </Warning>
 
 ### Recommended Authenticator Apps
 
 | App | Platform | Features |
 |-----|----------|----------|
-| Google Authenticator | iOS, Android | Simple, reliable |
-| Authy | iOS, Android, Desktop | Cloud backup, multi-device |
+| Google Authenticator | iOS, Android | Simple, reliable, free |
+| Authy | iOS, Android, Desktop | Cloud backup, multi-device sync |
 | 1Password | All platforms | Integrated with password manager |
-| Microsoft Authenticator | iOS, Android | Works with Microsoft accounts too |
+| Microsoft Authenticator | iOS, Android | Free, works with Microsoft accounts |
+| Bitwarden | All platforms | Open source, password manager integration |
+
+### Using Recovery Codes
+
+If you lose access to your authenticator app:
+
+1. On the 2FA prompt, click **Use recovery code**
+2. Enter one of your saved recovery codes
+3. Each code can only be used once
+4. After login, set up a new authenticator or generate new recovery codes
 
 ---
 
