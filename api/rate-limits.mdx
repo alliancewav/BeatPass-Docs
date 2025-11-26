@@ -1,0 +1,203 @@
+---
+title: "Rate Limits"
+description: "Understanding API rate limits and best practices for staying within limits."
+---
+
+## Overview
+
+To ensure fair usage and platform stability, the BeatPass API enforces rate limits on all requests.
+
+---
+
+## Rate Limit Tiers
+
+### Standard Limits
+
+| Tier | Requests per Minute | Requests per Day |
+|------|--------------------:|------------------:|
+| Public | 60 | 1,000 |
+| Authenticated | 120 | 10,000 |
+| Approved Integration | 300 | 50,000 |
+
+### Endpoint-Specific Limits
+
+Some endpoints have stricter limits:
+
+| Endpoint | Limit |
+|----------|-------|
+| Search | 30/min |
+| Upload | 10/min |
+| Authentication | 10/min |
+
+---
+
+## Rate Limit Headers
+
+Every API response includes rate limit information:
+
+```http
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 115
+X-RateLimit-Reset: 1700000000
+```
+
+| Header | Description |
+|--------|-------------|
+| `X-RateLimit-Limit` | Maximum requests allowed |
+| `X-RateLimit-Remaining` | Requests remaining in window |
+| `X-RateLimit-Reset` | Unix timestamp when limit resets |
+
+---
+
+## Exceeding Limits
+
+### 429 Response
+
+When you exceed rate limits:
+
+```http
+HTTP/1.1 429 Too Many Requests
+Retry-After: 60
+```
+
+```json
+{
+  "status": "error",
+  "message": "Rate limit exceeded",
+  "retry_after": 60
+}
+```
+
+### What to Do
+
+1. Stop making requests immediately
+2. Wait for the `Retry-After` duration
+3. Implement exponential backoff
+4. Resume with reduced request rate
+
+---
+
+## Best Practices
+
+### Optimize Requests
+
+<AccordionGroup>
+  <Accordion title="Cache Responses">
+    Cache data locally to reduce API calls. Most data doesn't change frequently.
+  </Accordion>
+  
+  <Accordion title="Use Pagination">
+    Fetch only the data you need. Use pagination parameters effectively.
+  </Accordion>
+  
+  <Accordion title="Batch Where Possible">
+    Combine multiple items into single requests when supported.
+  </Accordion>
+  
+  <Accordion title="Avoid Polling">
+    Use webhooks instead of polling for real-time updates.
+  </Accordion>
+</AccordionGroup>
+
+### Implement Backoff
+
+When rate limited, use exponential backoff:
+
+```javascript
+async function fetchWithBackoff(url, attempt = 1) {
+  try {
+    const response = await fetch(url);
+    if (response.status === 429) {
+      const retryAfter = response.headers.get('Retry-After') || Math.pow(2, attempt);
+      await sleep(retryAfter * 1000);
+      return fetchWithBackoff(url, attempt + 1);
+    }
+    return response;
+  } catch (error) {
+    if (attempt < 5) {
+      await sleep(Math.pow(2, attempt) * 1000);
+      return fetchWithBackoff(url, attempt + 1);
+    }
+    throw error;
+  }
+}
+```
+
+---
+
+## Monitoring Usage
+
+### Track Your Usage
+
+- Monitor `X-RateLimit-Remaining` in responses
+- Log all API requests with timestamps
+- Set alerts before hitting limits
+- Review usage patterns regularly
+
+### Sample Tracking
+
+```javascript
+function logRequest(response) {
+  const limit = response.headers.get('X-RateLimit-Limit');
+  const remaining = response.headers.get('X-RateLimit-Remaining');
+  const reset = response.headers.get('X-RateLimit-Reset');
+  
+  console.log(`Rate limit: ${remaining}/${limit}, resets at ${reset}`);
+  
+  if (remaining < 10) {
+    console.warn('Approaching rate limit!');
+  }
+}
+```
+
+---
+
+## Requesting Higher Limits
+
+If you need higher rate limits:
+
+<Steps>
+  <Step title="Document Your Use Case">
+    Explain why you need increased limits.
+  </Step>
+  
+  <Step title="Show Current Usage">
+    Provide metrics on your current API usage patterns.
+  </Step>
+  
+  <Step title="Contact Support">
+    Submit a request with your documentation.
+  </Step>
+  
+  <Step title="Review">
+    We'll review and respond with a decision.
+  </Step>
+</Steps>
+
+Higher limits are granted for legitimate use cases that benefit the platform ecosystem.
+
+---
+
+## Fair Use Policy
+
+Rate limits exist to:
+
+- Ensure platform stability
+- Prevent abuse
+- Provide fair access to all users
+- Maintain service quality
+
+Attempting to circumvent rate limits (multiple accounts, distributed requests) may result in API access revocation.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="API Overview" icon="code" href="/api/overview">
+    Full API documentation.
+  </Card>
+  <Card title="Webhooks" icon="webhook" href="/api/webhooks">
+    Real-time event notifications.
+  </Card>
+</CardGroup>

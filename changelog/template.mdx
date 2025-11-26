@@ -1,0 +1,156 @@
+---
+title: "Changelog Template"
+description: "Template and guidelines for writing changelog entries."
+---
+
+## Overview
+
+This template provides structure for documenting platform updates consistently.
+
+<Note>
+  This page is for documentation maintainers. Regular users can ignore this template.
+</Note>
+
+---
+
+## Entry Structure
+
+### Frontmatter
+
+```yaml
+---
+title: "Update Title"
+date: "YYYY-MM-DD"
+version: "X.X.X" # Optional
+audience: "All | Creators | Producers | Artists"
+tags: ["feature", "improvement", "bugfix", "deprecation"]
+---
+```
+
+### Content Sections
+
+Each changelog entry should include:
+
+<Steps>
+  <Step title="Summary">
+    2-3 sentence overview of what changed.
+  </Step>
+  
+  <Step title="What's New/Changed">
+    Bullet points of specific changes:
+    - Feature additions
+    - Behavior changes
+    - UI updates
+  </Step>
+  
+  <Step title="Why It Matters">
+    Brief explanation of user benefit.
+  </Step>
+  
+  <Step title="How to Use (if applicable)">
+    Quick instructions for new features.
+  </Step>
+  
+  <Step title="Known Issues (if any)">
+    Current limitations or bugs being tracked.
+  </Step>
+  
+  <Step title="Links">
+    Related documentation pages.
+  </Step>
+</Steps>
+
+---
+
+## Example Entry
+
+```mdx
+---
+title: "Producer Analytics Dashboard"
+date: "2025-11-15"
+audience: "Producers"
+tags: ["feature", "analytics"]
+---
+
+## Summary
+
+New comprehensive analytics dashboard for producers with detailed performance metrics.
+
+## What's New
+
+- Real-time play and completion tracking
+- Contribution value visualization
+- XP and tier progression display
+- Achievement milestone tracking
+
+## Why It Matters
+
+Producers can now understand their performance at a glance and track progress toward goals.
+
+## How to Use
+
+1. Navigate to Backstage > Insights
+2. Select your artist profile
+3. Explore the new dashboard tabs
+
+## Known Issues
+
+- Geographic data may be delayed for new tracks
+- Some historical data may not be available
+
+## Related
+
+- [Analytics Guide](/analytics/dashboards)
+- [Contribution Formula](/contribution/formula)
+```
+
+---
+
+## Writing Guidelines
+
+### Tone
+
+- Clear and direct
+- User-focused (benefits, not technical details)
+- Professional but approachable
+
+### Length
+
+- Summary: 2-3 sentences
+- What's New: 3-7 bullet points
+- Total entry: 200-400 words
+
+### Categories
+
+| Tag | Use For |
+|-----|---------|
+| `feature` | New functionality |
+| `improvement` | Enhancements to existing features |
+| `bugfix` | Resolved issues |
+| `deprecation` | Features being removed |
+| `security` | Security-related updates |
+
+---
+
+## File Naming
+
+Use format: `YYYY-MM-DD-short-title.mdx`
+
+Examples:
+- `2025-11-15-producer-dashboard.mdx`
+- `2025-11-20-licensing-update.mdx`
+
+---
+
+## Review Checklist
+
+Before publishing:
+
+- [ ] Frontmatter is complete
+- [ ] Summary is clear and concise
+- [ ] All changed features are documented
+- [ ] User benefit is explained
+- [ ] Links to related docs are included
+- [ ] No sensitive information exposed
+- [ ] Screenshots are redacted if needed
+- [ ] Navigation updated in docs.json

@@ -1,0 +1,192 @@
+---
+title: "API Overview"
+description: "Introduction to the BeatPass API for developers and integrators."
+---
+
+## Overview
+
+The BeatPass API provides programmatic access to platform data and functionality. This documentation covers public API capabilities for approved integrators.
+
+<Warning>
+  The API is currently in beta. Endpoints may change. Contact us before building integrations.
+</Warning>
+
+---
+
+## Base URL
+
+All API requests use the base URL:
+
+```
+https://beta.beatpass.ca/api/v1
+```
+
+---
+
+## API Capabilities
+
+### Available Features
+
+| Capability | Description |
+|------------|-------------|
+| Track Data | Access public track information |
+| Artist Profiles | Retrieve artist and producer data |
+| Search | Query tracks and artists |
+| User Data | Access authenticated user information |
+
+### Coming Soon
+
+- Webhook notifications
+- Bulk data exports
+- Analytics API
+- Upload API
+
+---
+
+## Request Format
+
+### HTTP Methods
+
+| Method | Usage |
+|--------|-------|
+| GET | Retrieve data |
+| POST | Create resources |
+| PUT/PATCH | Update resources |
+| DELETE | Remove resources |
+
+### Headers
+
+Required headers for all requests:
+
+```http
+Accept: application/json
+Content-Type: application/json
+```
+
+For authenticated endpoints:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+---
+
+## Response Format
+
+### Success Response
+
+```json
+{
+  "status": "success",
+  "data": {
+    // Response data
+  }
+}
+```
+
+### Error Response
+
+```json
+{
+  "status": "error",
+  "message": "Error description",
+  "errors": {
+    // Field-specific errors if applicable
+  }
+}
+```
+
+### Pagination
+
+Paginated endpoints return:
+
+```json
+{
+  "data": [...],
+  "pagination": {
+    "current_page": 1,
+    "per_page": 15,
+    "total": 150,
+    "last_page": 10
+  }
+}
+```
+
+---
+
+## Common Endpoints
+
+### Tracks
+
+```http
+GET /tracks              # List tracks
+GET /tracks/{id}         # Get track details
+GET /tracks/{id}/stream  # Stream URL
+```
+
+### Artists
+
+```http
+GET /artists             # List artists
+GET /artists/{id}        # Get artist details
+GET /artists/{id}/tracks # Artist's tracks
+```
+
+### Search
+
+```http
+GET /search?query=term   # Search tracks and artists
+```
+
+---
+
+## Getting Started
+
+<Steps>
+  <Step title="Request Access">
+    Contact support to request API access for your use case.
+  </Step>
+  
+  <Step title="Receive Credentials">
+    Upon approval, receive your API credentials.
+  </Step>
+  
+  <Step title="Authenticate">
+    Implement authentication per the [Auth guide](/api/auth).
+  </Step>
+  
+  <Step title="Make Requests">
+    Start making API calls to available endpoints.
+  </Step>
+</Steps>
+
+---
+
+## Use Cases
+
+### Approved Use Cases
+
+- Building music discovery tools
+- Creating producer portfolio sites
+- Analytics and reporting integrations
+- Playlist management applications
+
+### Prohibited Use Cases
+
+- Scraping or bulk downloading
+- Bypassing licensing systems
+- Creating competing platforms
+- Any illegal activity
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api/auth">
+    Learn how to authenticate.
+  </Card>
+  <Card title="Rate Limits" icon="gauge" href="/api/rate-limits">
+    Understand usage limits.
+  </Card>
+</CardGroup>

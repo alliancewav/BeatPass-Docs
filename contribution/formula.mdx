@@ -1,0 +1,192 @@
+---
+title: "Contribution Formula"
+description: "How BeatPass calculates your contribution value and distributes earnings fairly."
+---
+
+## Overview
+
+The contribution formula determines how platform revenue is distributed among producers. Instead of a fixed per-play rate, your share is calculated based on multiple engagement signals that reflect genuine value.
+
+<Info>
+  **Audience:** Producers
+</Info>
+
+---
+
+## How It Works
+
+### The Contribution Pool
+
+Each month, a portion of platform subscription revenue forms the **contribution pool**. This pool is distributed to producers based on their **contribution value** relative to all producers.
+
+```
+Your Payout = (Your Contribution Value / Total Contribution Value) × Pool Amount
+```
+
+---
+
+## Input Signals
+
+Your contribution value is calculated from multiple engagement metrics:
+
+### Primary Signals
+
+| Signal | Description | Weight |
+|--------|-------------|--------|
+| Plays | Total streams of your tracks | High |
+| Completions | Plays reaching 80%+ duration | Higher |
+| Saves | Users adding to their library | Medium |
+
+### Quality Signals
+
+| Signal | Description | Impact |
+|--------|-------------|--------|
+| Completion Rate | % of plays that complete | Positive |
+| Skip Rate | % of plays skipped early | Negative |
+| Repeat Listens | Same user plays again | Positive |
+
+<Tip>
+  Completions are weighted significantly higher than partial plays. A track with fewer plays but high completions may earn more than a track with many plays but frequent skips.
+</Tip>
+
+---
+
+## Fairness Mechanisms
+
+### Why Not Just Plays?
+
+A simple per-play model creates problems:
+
+- Encourages short, skippable tracks
+- Rewards artificial inflation
+- Doesn't reflect genuine engagement
+
+### Our Approach
+
+The formula is designed to:
+
+<AccordionGroup>
+  <Accordion title="Reward Quality">
+    Tracks that listeners enjoy and complete earn more than those frequently skipped.
+  </Accordion>
+  
+  <Accordion title="Prevent Gaming">
+    Signals are normalized and capped to limit artificial manipulation.
+  </Accordion>
+  
+  <Accordion title="Support Diverse Content">
+    Different track lengths and styles can succeed based on genuine engagement.
+  </Accordion>
+  
+  <Accordion title="Maintain Transparency">
+    Producers can see their metrics and understand their earnings.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Example Scenarios
+
+### Scenario 1: High Quality, Moderate Plays
+
+> **Track A**: 500 plays, 85% completion rate, 50 saves  
+> **Result**: Strong contribution value due to high engagement quality
+
+### Scenario 2: High Plays, Low Quality
+
+> **Track B**: 2,000 plays, 30% completion rate, 10 saves  
+> **Result**: Lower contribution value despite higher play count due to poor engagement
+
+### Scenario 3: Balanced Performance
+
+> **Track C**: 1,000 plays, 60% completion rate, 100 saves  
+> **Result**: Good contribution value from balanced engagement signals
+
+<Note>
+  These are illustrative examples. Exact calculations depend on many factors including the overall pool and total platform engagement.
+</Note>
+
+---
+
+## Calculation Timing
+
+### When Values Update
+
+| Event | Timing |
+|-------|--------|
+| Play recorded | Near real-time |
+| Contribution calculated | Hourly aggregation |
+| Monthly total | End of calendar month |
+| Payout processed | First week of following month |
+
+### Viewing Your Contribution
+
+Check your current contribution value in **Backstage > Insights**:
+
+- Real-time contribution estimate
+- Breakdown by track
+- Historical trends
+- Comparison to previous periods
+
+---
+
+## Improving Your Contribution
+
+### What You Control
+
+<CardGroup cols={2}>
+  <Card title="Quality Content" icon="gem">
+    Create beats that listeners want to hear completely.
+  </Card>
+  <Card title="Complete Metadata" icon="tags">
+    Help the right listeners find your beats.
+  </Card>
+  <Card title="Consistent Uploads" icon="upload">
+    Regular releases maintain engagement momentum.
+  </Card>
+  <Card title="Audience Building" icon="users">
+    Engaged followers drive quality plays.
+  </Card>
+</CardGroup>
+
+### What You Can't Control
+
+- Other producers' performance (affects relative share)
+- Total pool size (depends on platform revenue)
+- Listener behavior patterns
+- Algorithm adjustments
+
+---
+
+## Transparency Commitment
+
+### What We Share
+
+- Your contribution value and breakdown
+- Metric definitions and weights (in general terms)
+- Monthly pool information
+- Calculation methodology
+
+### What Remains Proprietary
+
+- Exact weighting coefficients
+- Fraud detection thresholds
+- Internal scoring algorithms
+- Competitive benchmarks
+
+<Note>
+  Exact formula weights may be adjusted periodically to maintain fairness. Changes are communicated in the changelog.
+</Note>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="XP & Levels" icon="chart-line" href="/contribution/xp-levels">
+    Understand the gamification system.
+  </Card>
+  <Card title="Eligibility" icon="check" href="/contribution/eligibility">
+    Requirements for receiving payouts.
+  </Card>
+</CardGroup>

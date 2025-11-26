@@ -1,0 +1,235 @@
+---
+title: "Metric Definitions"
+description: "Understanding the metrics and data points tracked by BeatPass analytics."
+---
+
+## Overview
+
+BeatPass tracks various metrics to help producers understand their performance and earnings. This guide defines each metric and explains how it's calculated.
+
+<Info>
+  **Audience:** Producers
+</Info>
+
+---
+
+## Engagement Metrics
+
+### Plays
+
+**Definition:** The total number of times your tracks have been streamed.
+
+| Type | Definition |
+|------|------------|
+| Total Plays | All streaming events |
+| Unique Plays | Distinct users who played |
+| Repeat Plays | Same user playing again |
+
+### Completions
+
+**Definition:** Plays that reach at least 80% of the track duration.
+
+- Completions indicate genuine interest
+- Weighted higher in contribution calculations
+- High completion rate signals quality
+
+### Completion Rate
+
+**Definition:** Percentage of plays that become completions.
+
+```
+Completion Rate = (Completions / Total Plays) × 100
+```
+
+| Rating | Range |
+|--------|-------|
+| Excellent | 70%+ |
+| Good | 50-70% |
+| Average | 30-50% |
+| Low | Below 30% |
+
+### Saves
+
+**Definition:** Number of users who added your track to their library.
+
+- Indicates intent to return
+- Stronger engagement signal than plays
+- Contributes to discovery algorithms
+
+### Save Rate
+
+**Definition:** Percentage of listeners who saved the track.
+
+```
+Save Rate = (Saves / Unique Plays) × 100
+```
+
+---
+
+## Performance Metrics
+
+### Contribution Value
+
+**Definition:** Your calculated share of the platform revenue pool.
+
+- Based on engagement metrics
+- Relative to total platform engagement
+- Updates hourly
+
+<Card title="Contribution Formula" icon="calculator" href="/contribution/formula">
+  Learn how contribution value is calculated.
+</Card>
+
+### Estimated Earnings
+
+**Definition:** Projected payout based on current contribution value.
+
+- Estimate only, not guaranteed
+- Final amount determined at month end
+- Depends on total pool and platform engagement
+
+### Quality Score
+
+**Definition:** Composite score based on metadata completeness and audio quality.
+
+| Factor | Impact |
+|--------|--------|
+| Complete metadata | Positive |
+| High audio bitrate | Positive |
+| Cover art present | Positive |
+| Missing BPM/Key | Negative |
+
+---
+
+## Audience Metrics
+
+### Listener Demographics
+
+Where available, see breakdowns of your audience:
+
+| Metric | Description |
+|--------|-------------|
+| Geographic | Top listening regions |
+| Platform | Web vs mobile |
+| Source | How listeners found your tracks |
+
+### Follower Count
+
+**Definition:** Users who follow your producer profile.
+
+- Followers see your new uploads in their feed
+- Indicates audience building progress
+- Quality of followers matters more than quantity
+
+### Follower Growth
+
+**Definition:** Net change in followers over time.
+
+```
+Growth Rate = (New Followers - Lost Followers) / Previous Total × 100
+```
+
+---
+
+## Track-Level Metrics
+
+### Per-Track Analytics
+
+Each track shows:
+
+| Metric | Description |
+|--------|-------------|
+| Total Plays | Lifetime stream count |
+| Completions | Full listens |
+| Saves | Library additions |
+| Peak Day | Highest single-day plays |
+| Trend | Rising, stable, or declining |
+
+### Track Performance Score
+
+**Definition:** Calculated score combining multiple signals.
+
+```
+Performance = (Plays × Weight) + (Completions × Weight) + (Saves × Weight)
+```
+
+Exact weights are not disclosed to prevent gaming.
+
+---
+
+## Time-Based Metrics
+
+### Time Periods
+
+Analytics can be viewed across:
+
+| Period | Use Case |
+|--------|----------|
+| 24 Hours | Immediate performance |
+| 7 Days | Weekly trends |
+| 30 Days | Monthly performance |
+| 90 Days | Quarterly analysis |
+| Lifetime | Overall performance |
+
+### Trend Indicators
+
+| Indicator | Meaning |
+|-----------|---------|
+| Rising | Metric increasing vs previous period |
+| Stable | Metric relatively unchanged |
+| Declining | Metric decreasing vs previous period |
+
+---
+
+## XP and Progression Metrics
+
+### Experience Points (XP)
+
+**Definition:** Points earned through platform activity.
+
+<Card title="XP & Levels" icon="chart-line" href="/contribution/xp-levels">
+  Full XP system documentation.
+</Card>
+
+### Tier Progress
+
+**Definition:** Progress toward next producer tier.
+
+- Shows current tier
+- XP to next level
+- Visual progress bar
+
+### Achievement Progress
+
+**Definition:** Progress toward unlocking achievements.
+
+- Shows completed achievements
+- In-progress milestones
+- Available achievements
+
+---
+
+## Data Freshness
+
+### Update Frequency
+
+| Metric | Update Frequency |
+|--------|------------------|
+| Plays/Completions | Near real-time |
+| Contribution Value | Hourly |
+| Audience Data | Daily |
+| Rankings | Every 4 hours |
+| Monthly Totals | End of month |
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Dashboards" icon="chart-bar" href="/analytics/dashboards">
+    Navigate your analytics dashboard.
+  </Card>
+  <Card title="Reporting FAQ" icon="circle-question" href="/analytics/reporting-faq">
+    Common analytics questions.
+  </Card>
+</CardGroup>

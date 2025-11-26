@@ -1,0 +1,235 @@
+---
+title: "Webhooks"
+description: "Receive real-time notifications about BeatPass events."
+---
+
+## Overview
+
+Webhooks allow your application to receive real-time notifications when events occur on BeatPass. Instead of polling the API, webhooks push data to your endpoint.
+
+<Note>
+  Webhooks are available for approved integrators. Contact support to enable webhooks for your application.
+</Note>
+
+---
+
+## How Webhooks Work
+
+<Steps>
+  <Step title="Event Occurs">
+    Something happens on BeatPass (e.g., track uploaded, license purchased).
+  </Step>
+  
+  <Step title="Webhook Sent">
+    BeatPass sends an HTTP POST to your configured endpoint.
+  </Step>
+  
+  <Step title="Your Server Processes">
+    Your application receives and processes the event data.
+  </Step>
+  
+  <Step title="Respond Quickly">
+    Return a 2xx status code to acknowledge receipt.
+  </Step>
+</Steps>
+
+---
+
+## Available Events
+
+### Track Events
+
+| Event | Description |
+|-------|-------------|
+| `track.created` | New track uploaded |
+| `track.updated` | Track metadata changed |
+| `track.deleted` | Track removed |
+
+### License Events
+
+| Event | Description |
+|-------|-------------|
+| `license.purchased` | License transaction completed |
+
+### User Events
+
+| Event | Description |
+|-------|-------------|
+| `user.followed` | User gained a follower |
+
+---
+
+## Webhook Payload
+
+### Structure
+
+```json
+{
+  "event": "track.created",
+  "timestamp": "2025-11-25T12:00:00Z",
+  "data": {
+    "id": 12345,
+    "title": "Track Title",
+    // Event-specific data
+  }
+}
+```
+
+### Example: Track Created
+
+```json
+{
+  "event": "track.created",
+  "timestamp": "2025-11-25T12:00:00Z",
+  "data": {
+    "id": 12345,
+    "title": "Summer Vibes",
+    "artist": {
+      "id": 100,
+      "name": "Producer Name"
+    },
+    "bpm": 140,
+    "key": "C",
+    "genre": "Trap"
+  }
+}
+```
+
+---
+
+## Setting Up Webhooks
+
+### Configuration
+
+<Steps>
+  <Step title="Request Access">
+    Contact support to enable webhooks for your account.
+  </Step>
+  
+  <Step title="Provide Endpoint">
+    Give us your HTTPS endpoint URL to receive webhooks.
+  </Step>
+  
+  <Step title="Receive Secret">
+    We'll provide a webhook secret for signature verification.
+  </Step>
+  
+  <Step title="Configure Events">
+    Specify which events you want to receive.
+  </Step>
+</Steps>
+
+### Endpoint Requirements
+
+Your webhook endpoint must:
+
+- Use HTTPS
+- Return 2xx status within 30 seconds
+- Be publicly accessible
+- Handle POST requests with JSON body
+
+---
+
+## Security
+
+### Signature Verification
+
+Verify webhook authenticity using the signature header:
+
+```http
+X-BeatPass-Signature: sha256=SIGNATURE_HASH
+```
+
+### Verification Code
+
+```javascript
+const crypto = require('crypto');
+
+function verifySignature(payload, signature, secret) {
+  const hash = crypto
+    .createHmac('sha256', secret)
+    .update(payload)
+    .digest('hex');
+  return `sha256=${hash}` === signature;
+}
+```
+
+<Warning>
+  Always verify webhook signatures before processing events.
+</Warning>
+
+---
+
+## Handling Webhooks
+
+### Best Practices
+
+<AccordionGroup>
+  <Accordion title="Respond Quickly">
+    Return 2xx immediately, then process asynchronously. Long processing blocks retries.
+  </Accordion>
+  
+  <Accordion title="Handle Duplicates">
+    Webhooks may be sent multiple times. Implement idempotency using event IDs.
+  </Accordion>
+  
+  <Accordion title="Log Everything">
+    Log incoming webhooks for debugging and audit purposes.
+  </Accordion>
+  
+  <Accordion title="Handle Failures Gracefully">
+    If processing fails, return 5xx to trigger retry.
+  </Accordion>
+</AccordionGroup>
+
+### Example Handler
+
+```javascript
+app.post('/webhooks/beatpass', (req, res) => {
+  // Verify signature first
+  const isValid = verifySignature(
+    JSON.stringify(req.body),
+    req.headers['x-beatpass-signature'],
+    process.env.WEBHOOK_SECRET
+  );
+  
+  if (!isValid) {
+    return res.status(401).send('Invalid signature');
+  }
+  
+  // Acknowledge receipt immediately
+  res.status(200).send('OK');
+  
+  // Process asynchronously
+  processEvent(req.body);
+});
+```
+
+---
+
+## Retry Policy
+
+If your endpoint fails to respond:
+
+| Attempt | Delay |
+|---------|-------|
+| 1st retry | 1 minute |
+| 2nd retry | 5 minutes |
+| 3rd retry | 30 minutes |
+| 4th retry | 2 hours |
+| Final | 24 hours |
+
+After 5 failed attempts, the webhook is marked as failed.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Rate Limits" icon="gauge" href="/api/rate-limits">
+    Understand API limits.
+  </Card>
+  <Card title="API Overview" icon="code" href="/api/overview">
+    Full API documentation.
+  </Card>
+</CardGroup>

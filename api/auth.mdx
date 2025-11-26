@@ -1,0 +1,185 @@
+---
+title: "Authentication"
+description: "How to authenticate with the BeatPass API."
+---
+
+## Overview
+
+The BeatPass API uses token-based authentication. All authenticated endpoints require a valid access token.
+
+---
+
+## Authentication Methods
+
+### Bearer Token
+
+Include your access token in the Authorization header:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+### Example Request
+
+```bash
+curl -X GET "https://beta.beatpass.ca/api/v1/user" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+---
+
+## Obtaining Tokens
+
+### For Users (OAuth Flow)
+
+Standard users authenticate through the platform's OAuth flow:
+
+<Steps>
+  <Step title="Redirect to Auth">
+    Redirect users to BeatPass login.
+  </Step>
+  
+  <Step title="User Authorizes">
+    User grants your application permission.
+  </Step>
+  
+  <Step title="Receive Code">
+    Receive authorization code via callback.
+  </Step>
+  
+  <Step title="Exchange for Token">
+    Exchange code for access token.
+  </Step>
+</Steps>
+
+### For Integrations (API Key)
+
+Approved integrators receive API keys:
+
+1. Contact support for API access
+2. Describe your integration use case
+3. Receive credentials upon approval
+4. Use key as bearer token
+
+<Warning>
+  Never expose API keys in client-side code or public repositories.
+</Warning>
+
+---
+
+## Token Security
+
+### Best Practices
+
+<AccordionGroup>
+  <Accordion title="Keep Tokens Secret">
+    Never commit tokens to version control. Use environment variables.
+  </Accordion>
+  
+  <Accordion title="Use HTTPS">
+    All API requests must use HTTPS to protect tokens in transit.
+  </Accordion>
+  
+  <Accordion title="Rotate Regularly">
+    Rotate tokens periodically. Contact support to regenerate if compromised.
+  </Accordion>
+  
+  <Accordion title="Minimize Scope">
+    Request only the permissions your application needs.
+  </Accordion>
+</AccordionGroup>
+
+### If Compromised
+
+If you believe your token is compromised:
+
+1. Contact support immediately
+2. Request token revocation
+3. Generate new credentials
+4. Update your application
+
+---
+
+## Authentication Errors
+
+| Status | Meaning | Solution |
+|--------|---------|----------|
+| 401 | Unauthorized | Check token validity |
+| 403 | Forbidden | Token lacks required permissions |
+
+### Error Response
+
+```json
+{
+  "status": "error",
+  "message": "Unauthenticated.",
+  "code": 401
+}
+```
+
+---
+
+## Token Lifetime
+
+| Token Type | Lifetime |
+|------------|----------|
+| Access Token | Varies by grant type |
+| API Key | Until revoked |
+
+<Note>
+  Implement token refresh logic in your application to handle expiration gracefully.
+</Note>
+
+---
+
+## Scopes
+
+Available permission scopes:
+
+| Scope | Description |
+|-------|-------------|
+| `read:tracks` | Access track data |
+| `read:artists` | Access artist data |
+| `read:user` | Access authenticated user data |
+| `write:user` | Modify user data |
+
+Request only the scopes you need.
+
+---
+
+## Testing Authentication
+
+Verify your setup with a simple request:
+
+```bash
+curl -X GET "https://beta.beatpass.ca/api/v1/user" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+Successful response:
+
+```json
+{
+  "status": "success",
+  "data": {
+    "id": 123,
+    "email": "user@example.com",
+    "display_name": "Username"
+  }
+}
+```
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Rate Limits" icon="gauge" href="/api/rate-limits">
+    Understand request limits.
+  </Card>
+  <Card title="Webhooks" icon="webhook" href="/api/webhooks">
+    Receive event notifications.
+  </Card>
+</CardGroup>
