@@ -1,0 +1,54 @@
+---
+title: "Developer Notes | BeatPass"
+description: "Technical overview of the BeatPass platform architecture, scheduling, and API standards."
+---
+
+## Overview
+
+This section provides high-level technical details for developers integrating with BeatPass or interested in our platform architecture.
+
+---
+
+## Job Scheduling & Queues
+
+BeatPass uses a robust, orchestrated background job system to handle resource-intensive tasks without impacting user experience.
+
+### The Orchestrator
+A single intelligent command (`jobs:orchestrate`) manages all background processes. It dynamically prioritizes tasks based on system load and urgency.
+
+### Priority Levels
+1. **Real-time**: Critical user actions (e.g., checkout, immediate notifications).
+2. **High**: Important but async tasks (e.g., emails, transloads).
+3. **Default**: Standard background work (e.g., metadata updates).
+4. **Analytics**: Data aggregation and reporting (lowest priority).
+
+### Batched Processing
+To ensure database stability, heavy operations like contribution calculations are processed in optimized batches. This eliminates "N+1" query issues and keeps the database responsive even during peak load.
+
+---
+
+## Caching Strategy
+
+We employ a multi-layer caching strategy to deliver sub-second response times.
+
+- **Edge Cache**: Static assets (images, audio) are cached at the edge for global performance.
+- **Application Cache**: API responses for high-traffic endpoints (like the Producer Dashboard) are cached with smart invalidation.
+- **Query Cache**: Complex database queries are cached for short durations to prevent redundant load.
+
+<Note>
+  **Cache Invalidation**: Our system uses event-driven invalidation. When you update a track or profile, relevant caches are cleared instantly to show new data.
+</Note>
+
+---
+
+## API Rate Limits
+
+To protect the platform and ensure fair usage, the BeatPass API implements rate limiting.
+
+- **Standard Limit**: 60 requests per minute per user.
+- **Burst Limit**: Short bursts of higher traffic are allowed for navigation.
+- **Graceful Degradation**: If limits are reached, the API returns a `429 Too Many Requests` status with a `Retry-After` header.
+
+<Tip>
+  If you encounter rate limits, please implement exponential backoff in your client application.
+</Tip>

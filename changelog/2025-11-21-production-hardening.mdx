@@ -1,0 +1,45 @@
+---
+title: "Production Hardening & Reliability Updates"
+date: "2025-11-21"
+audience: "All"
+tags: ["improvement", "reliability", "security"]
+---
+
+## Summary
+
+A comprehensive set of updates focused on system reliability, data integrity, and operational monitoring across Gamification, Subscription Splits, and Financial Reporting.
+
+## What's New
+
+### Gamification & XP
+- **100% Achievement Coverage**: All 39 achievements are now fully mapped and tracking correctly.
+- **Zero-XP Badges**: Clear "No XP" indicators for seasonal or milestone badges that don't award points.
+- **Manual Refresh**: Added a refresh button to the Producer Progress page for real-time updates.
+- **Collaborator Rules**: Clarified that collaborators must have completed profiles to earn XP from plays.
+
+### Subscription Splits & Billing
+- **Accurate Split Calculation**: Fixed critical bugs in how artist contributions are calculated for subscription revenue.
+- **Metadata Reliability**: Enhanced detection of subscription metadata to ensure no revenue is missed.
+- **Stripe Connect Transfers**: Automated transfers now include robust retry logic for failed payouts.
+
+### Financial Reporting
+- **Pagination Fixes**: Resolved an issue where high-volume transaction history was truncated silently. Now fetches up to 1,000 records consistently.
+- **Multi-Currency Transparency**: Clearer breakdown of balances by currency, with warnings about non-converted totals.
+- **Cache Accuracy**: "Last Updated" timestamps now accurately reflect the data age.
+
+## Why It Matters
+
+These updates are "under the hood" but critical for trust and reliability.
+- **For Artists**: You can trust that your XP, achievements, and revenue splits are calculated accurately.
+- **For Everyone**: The platform is more stable, with better error handling and data visibility.
+
+## Known Issues
+
+- **Transaction History Limit**: Financial history is currently capped at the most recent 1,000 records per source. We are working on pagination for full history access.
+- **Multi-Currency Totals**: Aggregate totals show the primary currency only. Please refer to the per-currency breakdown for exact figures.
+
+## Related
+
+- [XP & Levels](/contribution/xp-levels)
+- [Payouts & Splits](/contribution/payouts)
+- [Analytics Metrics](/analytics/metrics)

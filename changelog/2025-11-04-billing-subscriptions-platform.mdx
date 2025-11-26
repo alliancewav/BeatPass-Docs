@@ -1,0 +1,32 @@
+---
+title: "Billing Platform Security & Reliability"
+date: "2025-11-04"
+audience: "Developers"
+tags: ["billing", "security", "critical"]
+---
+
+## Summary
+
+A major security and reliability update for the billing system, addressing critical vulnerabilities in payment method handling and subscription upgrades.
+
+## What's New
+
+- **Strict Payment Validation**: Immediate upgrades now require successful payment confirmation before the plan change is applied.
+- **Scheduled Upgrades**: Fixed a bug where scheduled plan changes (e.g., at renewal) could apply without charging the user.
+- **Payment Method Security**: Implemented strict ownership validation to prevent unauthorized payment method updates.
+- **Invoice Generation**: Guaranteed invoice creation for all successful upgrades and renewals.
+
+## Why It Matters
+
+- **Revenue Protection**: Ensures that all premium features are paid for.
+- **Security**: Prevents malicious actors from manipulating subscription states.
+- **Trust**: Users receive accurate invoices and transparent error messages if payments fail.
+
+## Technical Details
+
+- **Gateway**: Updates apply to Stripe integration.
+- **Cron Jobs**: `ApplyScheduledPlanChanges` command updated to handle payment failures gracefully with auto-retry.
+
+## Related
+
+- [Billing & Subscriptions](/account/billing)

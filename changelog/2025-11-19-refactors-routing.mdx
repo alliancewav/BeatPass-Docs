@@ -1,0 +1,32 @@
+---
+title: "Codebase Refactoring & Routing Improvements"
+date: "2025-11-19"
+audience: "Developers"
+tags: ["refactor", "cleanup", "maintenance"]
+---
+
+## Summary
+
+A focused refactoring session to improve codebase maintainability, fix critical security vulnerabilities, and clean up legacy technical debt.
+
+## What's New
+
+- **Security Fix**: Patched a critical vulnerability in `ContentInsightsController` that could have allowed unauthorized access to analytics.
+- **Routing Cleanup**: Fixed typos in radio routes and removed duplicate route definitions for admin pages.
+- **Legacy Code Removal**: Deleted over 190 lines of unused licensing components and archived 14 obsolete frontend files.
+- **Context-Aware Redirects**: Admin analytics links now correctly redirect to the specific track, album, or artist insights page instead of a generic dashboard.
+
+## Why It Matters
+
+- **Security**: Ensures that sensitive data is only accessible to authorized users.
+- **Maintainability**: Removing dead code makes the codebase easier to understand and reduces the risk of bugs.
+- **Developer Experience**: Cleaner routing and file structure improve navigation and development speed.
+
+## Technical Details
+
+- **Files Archived**: Moved legacy fingerprinting dashboards to `docs/archive/frontend-2024`.
+- **Route Fix**: Corrected `:seeName` to `:seedName` in radio feature routes.
+
+## Related
+
+- [Contribution Guidelines](/contribution/guidelines)
