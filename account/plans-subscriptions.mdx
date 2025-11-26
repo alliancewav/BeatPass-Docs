@@ -177,22 +177,59 @@ Producers receive their share of the pool based on the [Contribution Formula](/c
 ### Subscribe
 
 1. Go to **Settings > Subscription**
-2. Choose your plan (monthly or annual)
-3. Complete payment via Stripe
-4. Benefits activate immediately
+2. Choose your plan (Classic, Plus, or Pro)
+3. Select billing frequency (monthly or annual)
+4. Complete payment via Stripe
+5. Benefits activate immediately
 
-### Cancel
+### Upgrade Your Plan
+
+Upgrading (e.g., Classic → Plus) works as follows:
+
+| Aspect | How It Works |
+|--------|-------------|
+| **Timing** | Takes effect immediately |
+| **Proration** | You're charged the prorated difference for remaining days |
+| **Beat Request Tokens** | Reset immediately to new plan's limit |
+| **Payment Required** | Must have valid payment method on file |
+
+<Note>
+  If your payment fails during an upgrade attempt, the upgrade is rejected and you remain on your current plan.
+</Note>
+
+### Downgrade Your Plan
+
+Downgrading (e.g., Pro → Classic) works as follows:
+
+| Aspect | How It Works |
+|--------|-------------|
+| **Timing** | Scheduled for your next renewal date |
+| **Immediate Effect** | None—you keep current plan until renewal |
+| **Proration** | No charge or refund; change applies at renewal |
+| **Cancel Pending Change** | You can cancel a scheduled downgrade before renewal |
+
+<Warning>
+  Downgrades are **never** applied immediately. They are always scheduled for the next billing cycle to avoid refund complications.
+</Warning>
+
+### Cancel Subscription
 
 1. Go to **Settings > Subscription**
 2. Click **Manage Subscription**
 3. Select **Cancel**
-4. Access continues until current period ends
+4. Access continues until the end of your current billing period (grace period)
 
-### Change Plan
+### Resume a Cancelled Subscription
 
-- Switch from monthly to annual (or vice versa)
-- Changes take effect at next billing date
-- Prorated adjustments may apply
+If you cancelled but are still within your billing period (grace period):
+
+1. Go to **Settings > Subscription**
+2. Click **Resume Subscription**
+3. Your subscription continues with no interruption
+
+<Note>
+  You can only resume during the grace period. Once the billing period ends, you must subscribe again.
+</Note>
 
 ---
 
@@ -211,12 +248,39 @@ Producers receive their share of the pool based on the [Contribution Formula](/c
 
 ### Failed Payments
 
-If payment fails:
+If your subscription payment fails:
 
-1. You'll receive an email notification
-2. Card will be retried automatically
-3. Update payment method if needed
-4. Subscription may pause if unresolved
+| Step | What Happens |
+|------|-------------|
+| **Immediate** | Email notification sent to you |
+| **Automatic Retry** | Stripe retries the charge after 1-3 days |
+| **Continued Access** | You retain access during retry attempts |
+| **Final Failure** | Subscription marked as unpaid; access may be suspended |
+
+**To restore access after payment failure:**
+
+1. Go to **Settings > Subscription**
+2. Click **Update Payment Method**
+3. Enter new card details
+4. Payment will be retried automatically
+
+<Warning>
+  If payment remains failed after multiple retries, your subscription will be cancelled by Stripe. You'll need to resubscribe to restore access.
+</Warning>
+
+### Grace Period
+
+After cancellation, you enter a **grace period**:
+
+- **Duration**: Until the end of your current billing period
+- **Access**: Full subscriber benefits continue
+- **Downloads**: You can still download beats during grace period
+- **Licenses**: Any beats downloaded remain licensed forever
+
+Once the grace period ends:
+- Streaming reverts to preview-only (free tier)
+- You cannot download new beats
+- Previously downloaded beats and licenses are unaffected
 
 ---
 
