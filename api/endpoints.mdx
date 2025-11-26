@@ -469,6 +469,202 @@ All endpoints require authentication.
 
 ---
 
+## Notifications (First-Party Only)
+
+<Warning>
+  The notifications stream is for first-party BeatPass applications only.
+</Warning>
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/notifications/stream` | 🔒 | SSE stream for real-time notifications |
+
+### SSE Notifications Stream
+
+The notifications stream uses Server-Sent Events (SSE) to deliver real-time notifications.
+
+```http
+GET /api/v1/notifications/stream
+Authorization: Bearer YOUR_TOKEN
+Accept: text/event-stream
+```
+
+**Event Format:**
+
+```
+event: notification
+data: {"type": "new_follower", "message": "...", "created_at": "..."}
+```
+
+<Note>
+  Keep the connection open to receive notifications. Reconnect with exponential backoff if disconnected.
+</Note>
+
+---
+
+## Collections
+
+Collections are curated groups of tracks. All collection endpoints require authentication.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/collections` | List all collections |
+| GET | `/collections/featured` | Get featured collections |
+| GET | `/collections/user` | Get current user's collections |
+| GET | `/collections/recommendations` | Get recommended collections |
+| POST | `/collections` | Create a new collection |
+| GET | `/collections/{id}` | Get collection details |
+| PUT | `/collections/{id}` | Update a collection |
+| DELETE | `/collections/{id}` | Delete a collection |
+| POST | `/collections/{id}/play` | Log collection play |
+
+### Collection Visibility
+
+- **Public**: Visible to all users
+- **Private**: Only visible to the creator
+- **Featured**: Curated by platform editors (read-only for users)
+
+---
+
+## Radio & Recommendations
+
+<Note>
+  Radio endpoints generate track recommendations based on seed content. These are internal recommendation algorithms.
+</Note>
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/radio/{type}/{id}` | 🔓 | Get recommendations based on seed |
+
+### Supported Types
+
+| Type | Description |
+|------|-------------|
+| `track` | Recommendations similar to a track |
+| `artist` | Recommendations from/similar to an artist |
+| `genre` | Recommendations within a genre |
+
+---
+
+## Lyrics
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/lyrics` | 🔓 | List lyrics entries |
+| POST | `/lyrics` | 🔒 | Add lyrics to a track |
+| GET | `/tracks/{id}/lyrics` | 🔓 | Get lyrics for a track |
+| PUT | `/lyrics/{id}` | 🔒 | Update lyrics |
+| DELETE | `/lyrics/{ids}` | 🔒 | Delete lyrics |
+
+<Note>
+  Only track owners can add or edit lyrics for their tracks.
+</Note>
+
+---
+
+## Coupons & Discounts
+
+<Note>
+  Coupon endpoints are available for subscription and track purchases. Admin-only creation endpoints are not documented here.
+</Note>
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/coupons` | 🔓 | List available coupons |
+| POST | `/coupons/validate` | 🔓 | Validate a coupon code |
+| GET | `/coupons/available-for-product/{product}` | 🔓 | Get coupons for a product |
+| GET | `/plans/{planId}/coupons` | 🔒 | Get coupons for a subscription plan |
+
+### Coupon Validation
+
+```http
+POST /api/v1/coupons/validate
+Content-Type: application/json
+
+{
+  "code": "SAVE20",
+  "product_type": "track",
+  "product_id": 123
+}
+```
+
+**Response:**
+
+```json
+{
+  "valid": true,
+  "discount_type": "percentage",
+  "discount_value": 20,
+  "applies_to": "first_payment"
+}
+```
+
+---
+
+## Reposts
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/reposts/toggle` | 🔒 | Repost or un-repost content |
+| GET | `/users/{user}/reposts` | 🔓 | Get user's reposts |
+
+### Toggle Repost
+
+```http
+POST /api/v1/reposts/toggle
+Content-Type: application/json
+
+{
+  "repostable_type": "track",
+  "repostable_id": 123
+}
+```
+
+Reposts share content to your profile, making it visible to your followers.
+
+---
+
+## Player (First-Party Only)
+
+<Warning>
+  Player endpoints are for the official BeatPass player only.
+</Warning>
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/player/tracks` | 🔓 | Load tracks for playback |
+| POST | `/tracks/{track}/plays` | 🔓 | Log a track play |
+| POST | `/tracks/plays/{track}/log` | 🔓 | Log play event |
+| POST | `/tracks/plays/{track}/update-duration` | 🔓 | Update play duration |
+
+---
+
+## User Streaming Quota
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/users/{user}/minutes-left` | 🔓 | Check remaining streaming minutes |
+
+<Note>
+  Free-tier users may have streaming limits. This endpoint returns remaining quota and reset timing.
+</Note>
+
+---
+
+## Error Codes
+
+| Code | Status | Description |
+|------|--------|-------------|
+| 400 | Bad Request | Invalid parameters |
+| 401 | Unauthorized | Missing or invalid token |
+| 403 | Forbidden | Insufficient permissions |
+| 404 | Not Found | Resource doesn't exist |
+| 422 | Unprocessable Entity | Validation failed |
+| 429 | Too Many Requests | Rate limit exceeded |
+| 500 | Server Error | Internal error |
+
+---
+
 ## Next Steps
 
 <CardGroup cols={2}>

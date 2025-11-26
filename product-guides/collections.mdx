@@ -1,0 +1,198 @@
+---
+title: "Collections"
+description: "Organize and discover curated groups of tracks on BeatPass."
+---
+
+## Overview
+
+Collections are curated groups of tracks that help organize and showcase content on BeatPass. They differ from playlists in that they're designed for discovery and curation rather than personal listening queues.
+
+<Info>
+  **Audience:** All users (creation requires authentication)
+</Info>
+
+---
+
+## Types of Collections
+
+### User Collections
+
+Collections you create to organize tracks:
+
+| Feature | Description |
+|---------|-------------|
+| **Public** | Visible to all users, appears in search |
+| **Private** | Only visible to you |
+| **Unlimited** | No limit on collection count |
+
+### Featured Collections
+
+Platform-curated collections showcasing:
+
+- New releases
+- Genre spotlights
+- Trending tracks
+- Seasonal content
+
+<Note>
+  Featured collections are curated by BeatPass editors and cannot be created by users.
+</Note>
+
+---
+
+## Creating a Collection
+
+<Steps>
+  <Step title="Navigate to Collections">
+    Go to your profile or the Collections section.
+  </Step>
+  
+  <Step title="Click Create Collection">
+    Start a new collection.
+  </Step>
+  
+  <Step title="Add Details">
+    | Field | Description |
+    |-------|-------------|
+    | Name | Collection title |
+    | Description | What the collection is about |
+    | Cover Image | Optional custom artwork |
+    | Visibility | Public or private |
+  </Step>
+  
+  <Step title="Add Tracks">
+    Browse or search for tracks to add.
+  </Step>
+  
+  <Step title="Save">
+    Your collection is now available.
+  </Step>
+</Steps>
+
+---
+
+## Managing Collections
+
+### Adding Tracks
+
+Add tracks to your collections from:
+
+- Track page (click "Add to Collection")
+- Search results
+- Artist pages
+- Within the collection editor
+
+### Reordering Tracks
+
+Drag and drop tracks within a collection to change their order.
+
+### Editing Collections
+
+Update collection details anytime:
+
+1. Open the collection
+2. Click **Edit**
+3. Modify name, description, or visibility
+4. Save changes
+
+### Deleting Collections
+
+<Warning>
+  Deleting a collection is permanent. The tracks themselves are not affected.
+</Warning>
+
+1. Open the collection
+2. Click **Delete**
+3. Confirm deletion
+
+---
+
+## Discovering Collections
+
+### Browse Featured
+
+Explore platform-curated collections on the home page and discovery sections.
+
+### Search
+
+Search for collections by name or description.
+
+### Recommendations
+
+BeatPass suggests collections based on:
+
+- Your listening history
+- Followed artists
+- Genre preferences
+
+---
+
+## Collections vs Playlists
+
+| Feature | Collections | Playlists |
+|---------|-------------|-----------|
+| **Purpose** | Curation & discovery | Personal listening |
+| **Visibility** | Public/private | Public/private |
+| **Featured** | Can be featured | Not featured |
+| **Playback** | Browse-focused | Queue-focused |
+| **Collaboration** | Single owner | Can invite editors |
+
+---
+
+## API Access
+
+Collections are accessible via the API for authenticated users.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/collections` | List collections |
+| GET | `/collections/featured` | Featured collections |
+| GET | `/collections/recommendations` | Personalized suggestions |
+| POST | `/collections` | Create collection |
+| PUT | `/collections/{id}` | Update collection |
+| DELETE | `/collections/{id}` | Delete collection |
+
+For full API documentation, see [API Endpoints - Collections](/api/endpoints#collections).
+
+---
+
+## Best Practices
+
+### For Creators
+
+<AccordionGroup>
+  <Accordion title="Use Descriptive Names">
+    Choose names that clearly communicate the collection's theme or purpose.
+  </Accordion>
+  
+  <Accordion title="Write Good Descriptions">
+    Help users understand what they'll find—genre, mood, use case.
+  </Accordion>
+  
+  <Accordion title="Curate Thoughtfully">
+    Quality over quantity. A focused 20-track collection often outperforms a random 100-track dump.
+  </Accordion>
+  
+  <Accordion title="Update Regularly">
+    Keep collections fresh by adding new releases and removing outdated tracks.
+  </Accordion>
+</AccordionGroup>
+
+### For Listeners
+
+- Follow collections you enjoy to get updates
+- Use collections to discover new artists
+- Check featured collections for platform highlights
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Playlists" icon="list-music" href="/product-guides/releases">
+    Create personal listening queues.
+  </Card>
+  <Card title="Discovery" icon="compass" href="/overview/platform-map">
+    Explore the platform.
+  </Card>
+</CardGroup>

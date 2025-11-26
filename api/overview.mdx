@@ -213,11 +213,35 @@ See [Webhooks](/api/webhooks) for Stripe webhook details.
 
 This documentation covers **user-facing endpoints only**. The following are intentionally excluded:
 
+### Admin & Staff Endpoints
+
+These routes require staff roles and are not available to regular users:
+
+| Route Prefix | Purpose |
+|--------------|---------|
+| `/admin/fingerprints/*` | Audio fingerprinting administration |
+| `/admin/licenses/*` | License management and bulk operations |
+| `/admin/subscription-splits/*` | Stripe Connect split monitoring |
+| `/admin/artist-onboarding/*` | Stripe Connect onboarding management |
+| `/admin/promotional-emails/*` | Marketing email campaigns |
+| `/admin/track-pricing/*` | Bulk track pricing management |
+| `/admin/track-purchases/*` | Purchase analytics and reporting |
+| `/admin/failed-jobs/*` | Queue job management |
+
+### Internal Tooling
+
+| Category | Description |
+|----------|-------------|
+| **Video generation** | `/video/mux-audio`, `/video/chunk`, `/video/complete`, `/video/history` |
+| **Audio proxy** | `/audio/proxy` for CORS workarounds |
+| **Import tooling** | `/import-media/*` for content ingestion |
+| **Cover art admin** | Template management and scanning |
+| **Carousel management** | Featured content curation |
+
 ### Not Documented
 
 | Category | Reason |
 |----------|--------|
-| **Admin endpoints** | Staff-only routes for platform management |
 | **Internal analytics** | Backend reporting and metrics collection |
 | **Fraud detection** | Security-sensitive rate limits and patterns |
 | **Webhook secrets** | Stripe signing secrets and internal tokens |

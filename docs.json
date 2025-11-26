@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "willow",
   "name": "BeatPass Documentation",
   "colors": {
     "primary": "#6366F1",
@@ -58,6 +58,7 @@
             "pages": [
               "product-guides/uploads",
               "product-guides/beat-requests",
+              "product-guides/collections",
               "product-guides/releases"
             ]
           },
@@ -73,6 +74,13 @@
             "pages": [
               "product-guides/collaboration",
               "product-guides/messaging"
+            ]
+          },
+          {
+            "group": "Tools",
+            "pages": [
+              "product-guides/embedding",
+              "product-guides/mobile"
             ]
           }
         ]

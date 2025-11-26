@@ -28,9 +28,15 @@ description: "Platform version history, features, and improvements."
     - Per-track purchase flow via Stripe Connect
     - Stripe webhook improvements and reliability fixes
     - Track sold status tracking
-    - Coupon system with first-payment-only logic
-    - Coupon verification and validation
     - Purchase flow optimization
+  </Accordion>
+  
+  <Accordion title="Coupons & Discounts" icon="tag">
+    - Coupon system for purchases and subscriptions
+    - First-payment-only coupon logic
+    - Coupon validation endpoint
+    - Plan-specific coupon support
+    - Product-specific coupon availability
   </Accordion>
 </AccordionGroup>
 
@@ -69,6 +75,38 @@ description: "Platform version history, features, and improvements."
     - Custom beat request marketplace
     - Request fulfillment workflow
     - Rate limiting and statistics
+    - Rate limit status endpoint
+  </Accordion>
+  
+  <Accordion title="Collections" icon="layer-group">
+    - User-created track collections
+    - Featured collections (platform-curated)
+    - Collection recommendations
+    - Public/private visibility settings
+  </Accordion>
+  
+  <Accordion title="Radio & Recommendations" icon="radio">
+    - Seed-based track recommendations
+    - Support for track, artist, and genre seeds
+    - Personalized discovery
+  </Accordion>
+  
+  <Accordion title="Lyrics Management" icon="microphone-lines">
+    - Add and edit track lyrics
+    - Lyrics display on track pages
+    - Owner-only editing
+  </Accordion>
+  
+  <Accordion title="Reposts" icon="retweet">
+    - Repost tracks to your profile
+    - Repost feed visibility
+    - Toggle repost on/off
+  </Accordion>
+  
+  <Accordion title="Real-Time Notifications" icon="bell">
+    - Server-Sent Events (SSE) stream
+    - Instant notification delivery
+    - First-party application support
   </Accordion>
   
   <Accordion title="Code Quality & Security" icon="shield-check">
@@ -90,6 +128,11 @@ This release includes a complete rewrite of public documentation:
 - **Embedding docs** corrected to `track/{id}/{slug}/embed` format
 - **Security docs** updated to TOTP-only 2FA (no SMS)
 - **Messaging docs** now include read receipts and typing indicators
+- **Collections guide** added with full API reference
+- **Notifications docs** now reference SSE stream
+- **Beat requests** now include rate limit documentation
+- **API endpoints** expanded with: collections, radio, lyrics, coupons, reposts, player, streaming quota
+- **Admin exclusions** explicitly documented in API overview
 
 ---
 

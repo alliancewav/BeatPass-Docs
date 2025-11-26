@@ -185,6 +185,36 @@ If issues arise:
 
 ---
 
+## Rate Limits & Throttling
+
+Beat requests are subject to rate limiting to prevent spam and ensure fair access.
+
+### Request Creation Limits
+
+| User Type | Limit |
+|-----------|-------|
+| Free users | 3 active requests |
+| Subscribers | 10 active requests |
+
+### Check Your Status
+
+You can check your current rate limit status:
+
+```http
+GET /api/v1/beat-requests/user/rate-limit-status
+```
+
+Returns:
+- Current active request count
+- Maximum allowed requests
+- Time until next slot available (if at limit)
+
+<Note>
+  Expired requests (30+ days old) don't count toward your limit. Close fulfilled requests promptly to free up slots.
+</Note>
+
+---
+
 ## Next Steps
 
 <CardGroup cols={2}>
