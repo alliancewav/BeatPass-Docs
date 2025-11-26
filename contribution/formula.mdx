@@ -21,7 +21,9 @@ The contribution formula determines how platform subscription revenue is distrib
 
 ### The Contribution Pool
 
-Each month, a portion of platform subscription revenue forms the **contribution pool**. This pool is distributed to producers based on their **contribution value** relative to all producers.
+For each paid subscription invoice, BeatPass allocates a portion of the base subscription price to the **contribution pool**. In dashboards this is often shown as a monthly pool, but under the hood it is built invoice-by-invoice as Stripe fires `invoice.paid` events.
+
+The pool represents subscription revenue available to producers before any downstream Stripe payout fees. Your share is distributed based on your **contribution value** relative to all producers.
 
 ```
 Your Payout = (Your Contribution Value / Total Contribution Value) × Pool Amount
@@ -170,7 +172,7 @@ When multiple producers collaborate, contribution splits equally—but strategic
 
 ### Example 3: Payout Calculation
 
-**Scenario**: Monthly pool is $10,000. Total platform contribution is 5,000 points.
+**Scenario**: The contribution pool for a given period (for example, the sum of eligible subscription invoices in a month, before any additional payout-related Stripe fees) is $10,000. Total platform contribution is 5,000 points.
 
 | Producer | Total Contribution | Share % | Payout |
 |----------|-------------------|---------|--------|
@@ -183,7 +185,7 @@ Producer A Payout = (250 / 5,000) × $10,000 = $500
 ```
 
 <Note>
-  These are simplified examples. Actual payouts depend on the total pool size and all producers' combined contribution values.
+  These are simplified examples. Actual payouts depend on the total pool size, all producers' combined contribution values, and Stripe processing/payout fees.
 </Note>
 
 ### Direct Sales vs Contribution
@@ -192,20 +194,21 @@ BeatPass offers two distinct revenue streams. Smart producers leverage both:
 
 <CardGroup cols={2}>
   <Card title="License Sales" icon="money-bill">
-    **You set the price, you keep it all**
+    **You set the price; buyers pay your price plus a platform fee**
     
-    - Immediate payout when sold
+    - BeatPass adds a platform fee on top and keeps that fee
+    - Standard Stripe processing fees are deducted from your portion before funds reach your Stripe Connect account
     - Works best for premium/exclusive beats
     - Great for established brands
-    - Example: $150 beat → $150 to you
+    - Example: $150 beat → you receive slightly less than $150 after Stripe fees
   </Card>
   <Card title="Contribution Earnings" icon="chart-line">
     **Passive income from streaming**
     
-    - Monthly recurring revenue
+    - Recurring revenue as long as subscribers keep paying
     - Works best for high-volume catalogs
     - Rewards engagement quality
-    - Example: 5% of $10K pool → $500/month
+    - Example: A 5% share of a $10K contribution pool for a given period → $500 allocated to you before any payout-related Stripe fees
   </Card>
 </CardGroup>
 
@@ -223,8 +226,8 @@ BeatPass offers two distinct revenue streams. Smart producers leverage both:
 |-------|--------|
 | Play recorded | Near real-time |
 | Contribution calculated | Every 6 hours |
-| Monthly total | End of calendar month |
-| Payout processed | First week of following month |
+| Pool totals | Updated continuously as subscription invoices are paid |
+| Subscription splits processed | Shortly after each `invoice.paid` event via the subscription split job; payouts to Stripe Connect and then your bank follow your Stripe payout schedule |
 
 ### Viewing Your Contribution
 
