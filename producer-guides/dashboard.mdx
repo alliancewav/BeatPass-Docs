@@ -1,0 +1,471 @@
+---
+title: "Producer Dashboard | BeatPass"
+description: "Master your Producer Dashboard on BeatPass. Track progress, analyze performance, manage finances, compete on leaderboards, and organize your tracks and albums."
+keywords: ["producer dashboard","producer analytics","beatpass dashboard","track management","producer earnings","leaderboards"]
+og:title: "Producer Dashboard - BeatPass Producer Guide"
+og:description: "Master your Producer Dashboard on BeatPass. Track progress, analyze performance, and manage your music business."
+twitter:card: "summary_large_image"
+---
+
+## Overview
+
+The **Producer Dashboard** is your command center for managing and growing your music business on BeatPass. Access comprehensive analytics, track your progress, manage finances, and compete with other producers.
+
+<Info>
+  **Location:** `/producer-dashboard`
+
+  **Requirement:** Approved Producer account with at least one artist profile
+</Info>
+
+---
+
+## Accessing Your Dashboard
+
+<Steps>
+  <Step title="Navigate to Dashboard">
+    Click **Producer Dashboard** in the main navigation, or visit `/producer-dashboard` directly.
+  </Step>
+  <Step title="View Your Overview">
+    The home page shows key metrics, recent activity, and quick actions.
+  </Step>
+  <Step title="Explore Sections">
+    Use the sidebar to navigate between Progress, Activity, Finances, Leaderboards, Tracks, and Albums.
+  </Step>
+</Steps>
+
+---
+
+## Dashboard Home
+
+The main dashboard provides an at-a-glance overview of your producer activity:
+
+<CardGroup cols={3}>
+  <Card title="Quick Stats" icon="chart-simple">
+    - Total plays
+    - Track count
+    - Follower count
+    - Recent earnings
+  </Card>
+  <Card title="Recent Activity" icon="clock">
+    - Latest plays
+    - New followers
+    - Recent downloads
+    - Beat request responses
+  </Card>
+  <Card title="Quick Actions" icon="bolt">
+    - Upload new track
+    - View analytics
+    - Check earnings
+    - Browse requests
+  </Card>
+</CardGroup>
+
+---
+
+## Progress
+
+Track your growth as a producer with the XP and achievement system.
+
+**Location:** `/producer-dashboard/progress`
+
+### XP & Levels
+
+Your producer level reflects your overall platform engagement and success:
+
+| Level Range | Title       | XP Required      |
+| ----------- | ----------- | ---------------- |
+| 1-5         | Newcomer    | 0-500 XP         |
+| 6-10        | Rising      | 500-2,500 XP     |
+| 11-20       | Established | 2,500-10,000 XP  |
+| 21-35       | Veteran     | 10,000-50,000 XP |
+| 36-50       | Elite       | 50,000+ XP       |
+
+### Earning XP
+
+<CardGroup cols={2}>
+  <Card title="Upload Activities" icon="cloud-arrow-up">
+    - Upload a track: **\+25 XP**
+    - Complete metadata: **\+10 XP**
+    - Add cover art: **\+5 XP**
+    - Create album: **\+50 XP**
+  </Card>
+  <Card title="Engagement Activities" icon="users">
+    - Receive a play: **\+1 XP**
+    - Gain a follower: **\+5 XP**
+    - Track saved: **\+3 XP**
+    - License sold: **\+100 XP**
+  </Card>
+</CardGroup>
+
+### Achievements
+
+Unlock achievements for reaching milestones:
+
+<AccordionGroup>
+  <Accordion title="Upload Achievements" icon="music">
+    | Achievement     | Requirement       | Reward   |
+    | --------------- | ----------------- | -------- |
+    | First Beat      | Upload 1 track    | 50 XP    |
+    | Prolific        | Upload 10 tracks  | 200 XP   |
+    | Catalog Builder | Upload 50 tracks  | 1,000 XP |
+    | Hit Machine     | Upload 100 tracks | 5,000 XP |
+  </Accordion>
+  <Accordion title="Play Achievements" icon="play">
+    | Achievement     | Requirement         | Reward    |
+    | --------------- | ------------------- | --------- |
+    | First Spin      | 100 total plays     | 100 XP    |
+    | Getting Noticed | 1,000 total plays   | 500 XP    |
+    | Popular         | 10,000 total plays  | 2,500 XP  |
+    | Viral           | 100,000 total plays | 10,000 XP |
+  </Accordion>
+  <Accordion title="Engagement Achievements" icon="heart">
+    | Achievement       | Requirement          | Reward   |
+    | ----------------- | -------------------- | -------- |
+    | First Fan         | Gain 1 follower      | 25 XP    |
+    | Growing Following | Gain 100 followers   | 500 XP   |
+    | Influencer        | Gain 1,000 followers | 2,500 XP |
+  </Accordion>
+  <Accordion title="Sales Achievements" icon="dollar-sign">
+    | Achievement | Requirement       | Reward    |
+    | ----------- | ----------------- | --------- |
+    | First Sale  | Sell 1 license    | 200 XP    |
+    | Consistent  | Sell 10 licenses  | 1,000 XP  |
+    | Top Seller  | Sell 100 licenses | 10,000 XP |
+  </Accordion>
+</AccordionGroup>
+
+### Progress Display
+
+Your progress page shows:
+
+- **Current Level** with progress bar to next level
+- **Total XP** earned lifetime
+- **Achievement Showcase** with completed and locked achievements
+- **Recent XP Gains** activity feed
+
+---
+
+## Activity
+
+Deep dive into your performance analytics.
+
+**Location:** `/producer-dashboard/activity`
+
+### Key Metrics
+
+<CardGroup cols={4}>
+  <Card title="Plays" icon="play">
+    Total track plays across all your content
+  </Card>
+  <Card title="Unique Listeners" icon="users">
+    Individual users who played your tracks
+  </Card>
+  <Card title="Saves" icon="bookmark">
+    Times your tracks were saved to libraries
+  </Card>
+  <Card title="Downloads" icon="download">
+    Licensed downloads of your tracks
+  </Card>
+</CardGroup>
+
+### Time Period Filters
+
+View analytics for different time periods:
+
+| Period       | View                  |
+| ------------ | --------------------- |
+| **Today**    | Real-time daily stats |
+| **7 Days**   | Weekly performance    |
+| **30 Days**  | Monthly overview      |
+| **All Time** | Lifetime statistics   |
+
+### Performance Charts
+
+The activity page includes visual charts showing:
+
+- **Play trends** over time
+- **Top performing tracks**
+- **Audience engagement patterns**
+- **Geographic distribution** (where listeners are located)
+
+---
+
+## Finances
+
+Manage your earnings and Stripe Connect integration.
+
+**Location:** `/producer-dashboard/finances`
+
+### Stripe Connect Setup
+
+To receive earnings, you must connect a Stripe account:
+
+<Steps>
+  <Step title="Navigate to Finances">
+    Go to **Producer Dashboard \> Finances**.
+  </Step>
+  <Step title="Connect Stripe">
+    Click **Connect Stripe Account** to begin onboarding.
+  </Step>
+  <Step title="Complete Verification">
+    Follow Stripe's onboarding process:
+
+    - Verify identity
+    - Add bank account
+    - Confirm business information
+  </Step>
+  <Step title="Ready to Earn">
+    Once verified, you'll see your dashboard with balance and transactions.
+  </Step>
+</Steps>
+
+<Warning>
+  **Required for Earnings** — You cannot receive payouts until Stripe Connect is fully set up and verified. Start this process early to avoid delays.
+</Warning>
+
+### Finance Dashboard
+
+Once connected, your finance page displays:
+
+| Section                 | Information                 |
+| ----------------------- | --------------------------- |
+| **Available Balance**   | Funds ready for payout      |
+| **Pending Balance**     | Funds in processing         |
+| **Recent Transactions** | Individual earnings events  |
+| **Payout History**      | Past transfers to your bank |
+
+### Revenue Sources
+
+<CardGroup cols={2}>
+  <Card title="Contribution Pool" icon="chart-pie">
+    **Subscription Revenue Share**
+
+    Earn from the monthly subscription pool based on your tracks' performance. Your share is calculated using the [Contribution Formula](/contribution/formula).
+  </Card>
+  <Card title="Direct Sales" icon="cart-shopping">
+    **License Purchases**
+
+    Receive direct payments when artists purchase exclusive licenses for your tracks (minus platform fee).
+  </Card>
+</CardGroup>
+
+### Transaction Types
+
+| Type                    | Description                            |
+| ----------------------- | -------------------------------------- |
+| **contribution_payout** | Monthly subscription pool distribution |
+| **exclusive_sale**      | One-time exclusive license purchase    |
+| **platform_fee**        | Platform commission deduction          |
+| **transfer**            | Payout to your bank account            |
+
+---
+
+## Leaderboards
+
+Compete with other producers across multiple categories.
+
+**Location:** `/producer-dashboard/leaderboards`
+
+### Leaderboard Categories
+
+<Tabs>
+  <Tab title="Overall">
+    **Composite Ranking**
+
+    Combined score based on:
+
+    - XP Points (40%)
+    - Total Plays (30%)
+    - Upload Count (20%)
+    - Achievements (10%)
+  </Tab>
+  <Tab title="Quality">
+    **Metadata Completion**
+
+    Ranked by metadata completeness across your catalog:
+
+    - BPM accuracy
+    - Key/Scale information
+    - Tags and descriptions
+    - Cover art
+
+    <Tip>
+      Complete all metadata fields to improve your Quality ranking. See the [Metadata Guide](/producer-guides/metadata) for best practices.
+    </Tip>
+  </Tab>
+  <Tab title="Uploads">
+    **Track Count**
+
+    Ranked by:
+
+    - Total tracks published
+    - Recent uploads (last 30 days)
+    - Consistent upload schedule
+  </Tab>
+  <Tab title="Plays">
+    **Engagement**
+
+    Ranked by:
+
+    - Total lifetime plays
+    - Average plays per track
+    - Recent play momentum
+  </Tab>
+  <Tab title="Earnings">
+    **Platform Share**
+
+    Ranked by contribution to the platform:
+
+    - Contribution points earned
+    - Track performance in pool
+    - Consistent earning
+  </Tab>
+  <Tab title="Collaboration">
+    **Teamwork**
+
+    Ranked by collaborative activity:
+
+    - Joint tracks released
+    - Unique collaborators
+    - Collaborative achievements
+  </Tab>
+</Tabs>
+
+### Leaderboard Benefits
+
+<CardGroup cols={2}>
+  <Card title="Visibility" icon="eye">
+    Top-ranked producers get featured placement and increased discovery.
+  </Card>
+  <Card title="Credibility" icon="trophy">
+    Rankings demonstrate your track record to potential collaborators and clients.
+  </Card>
+</CardGroup>
+
+### Rankings Guide
+
+View detailed information about how each category is calculated by clicking **How Rankings Work** on the leaderboard page.
+
+---
+
+## Tracks
+
+Manage all your uploaded tracks from one place.
+
+**Location:** `/producer-dashboard/tracks`
+
+### Track Management Features
+
+| Action        | Description                                       |
+| ------------- | ------------------------------------------------- |
+| **View All**  | See your complete catalog with filters and search |
+| **Edit**      | Update track metadata, pricing, licensing options |
+| **Analytics** | View per-track performance metrics                |
+| **Archive**   | Hide tracks from public without deleting          |
+| **Delete**    | Permanently remove tracks                         |
+
+### Track List Information
+
+Each track displays:
+
+- **Cover Art** thumbnail
+- **Title** and artist name
+- **Play Count** and save count
+- **Upload Date**
+- **License Status** (available, sold, etc.)
+- **Quick Actions** (edit, view, analytics)
+
+### Filtering and Sorting
+
+Filter your tracks by:
+
+- **Status**: Published, Draft, Archived
+- **License Type**: Non-exclusive, Exclusive, Both
+- **Date Range**: Upload date
+- **Performance**: Sort by plays, saves, or recency
+
+---
+
+## Albums
+
+Organize your tracks into cohesive collections.
+
+**Location:** `/producer-dashboard/albums`
+
+### Album Management
+
+<Steps>
+  <Step title="Create Album">
+    Click **Create Album** to start a new collection.
+  </Step>
+  <Step title="Add Details">
+    Provide album title, description, cover art, and release date.
+  </Step>
+  <Step title="Add Tracks">
+    Select tracks from your catalog to include in the album.
+  </Step>
+  <Step title="Arrange Order">
+    Drag and drop to set the track order.
+  </Step>
+  <Step title="Publish">
+    Release your album for listeners to discover.
+  </Step>
+</Steps>
+
+### Album Benefits
+
+<CardGroup cols={2}>
+  <Card title="Organization" icon="folder">
+    Group related beats into themed collections (e.g., "Summer Vibes Pack", "Dark Trap Vol. 1").
+  </Card>
+  <Card title="Discovery" icon="compass">
+    Albums appear in search and recommendations, increasing visibility for multiple tracks.
+  </Card>
+  <Card title="Branding" icon="palette">
+    Create a cohesive brand with matching cover art and themed releases.
+  </Card>
+  <Card title="Cross-Selling" icon="arrows-rotate">
+    Listeners who find one track may explore the full album.
+  </Card>
+</CardGroup>
+
+---
+
+## Dashboard Tips
+
+<AccordionGroup>
+  <Accordion title="Check analytics regularly">
+    Visit your Activity page weekly to understand what's working. Look for patterns in your top-performing tracks.
+  </Accordion>
+  <Accordion title="Complete your Stripe setup early">
+    Don't wait until you have earnings to set up Stripe Connect. Complete verification now to avoid payout delays.
+  </Accordion>
+  <Accordion title="Focus on quality metadata">
+    The Quality leaderboard rewards complete metadata. Well-tagged tracks also perform better in search.
+  </Accordion>
+  <Accordion title="Engage with beat requests">
+    Responding to beat requests can generate direct sales and new followers. Check the requests page regularly.
+  </Accordion>
+  <Accordion title="Create albums strategically">
+    Group tracks by theme, mood, or style. Release albums consistently to build anticipation.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Pricing Strategy" icon="tags" href="/producer-guides/pricing-strategy">
+    Optimize your beat pricing.
+  </Card>
+  <Card title="Metadata Guide" icon="tag" href="/producer-guides/metadata">
+    Best practices for track metadata.
+  </Card>
+  <Card title="Contribution Formula" icon="calculator" href="/contribution/formula">
+    How earnings are calculated.
+  </Card>
+  <Card title="Payouts" icon="money-bill-wave" href="/contribution/payouts">
+    Understand the payout process.
+  </Card>
+</CardGroup>

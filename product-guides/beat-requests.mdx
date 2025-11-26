@@ -340,6 +340,107 @@ Returns:
 
 ---
 
+## Your Beat Requests (Library)
+
+All your submitted beat requests are accessible from your Library:
+
+### Accessing Your Requests
+
+<Steps>
+  <Step title="Open Your Library">
+    Click **Library** in the main navigation.
+  </Step>
+  
+  <Step title="Select Beat Requests">
+    Choose **Beat requests** from the library menu, or navigate directly to `/library/custom-requests`.
+  </Step>
+  
+  <Step title="View and Manage">
+    See all your active and past beat requests in one place.
+  </Step>
+</Steps>
+
+### Request Card Information
+
+Each request card displays:
+
+| Field | Description |
+|-------|-------------|
+| **Content** | Your description of what you're looking for |
+| **Genre** | Primary genre requested |
+| **Mood** | Emotional tone specified |
+| **BPM Range** | Tempo requirements |
+| **Key/Scale** | Musical key preferences (if set) |
+| **Budget** | Budget range (if specified) |
+| **Reference Track** | Link to similar track (if provided) |
+| **Status** | Active or Expired |
+| **Responses** | Number of producer responses |
+
+### Managing Your Requests
+
+<CardGroup cols={2}>
+  <Card title="Delete Request" icon="trash">
+    Remove a request you no longer need. If deleted while active, your token is **refunded** to use again.
+  </Card>
+  <Card title="View Responses" icon="reply">
+    See all producer responses with their submitted tracks and messages.
+  </Card>
+</CardGroup>
+
+<Tip>
+  **Token Refunds** — Deleting an active request (before expiry) refunds your token immediately. This lets you submit a new, revised request if your needs change.
+</Tip>
+
+### Token Status Display
+
+The library page shows your current token status:
+
+- **Tokens Used**: How many requests you've submitted this month
+- **Tokens Remaining**: How many more requests you can submit
+- **Reset Date**: When your tokens refresh (1st of each month, UTC)
+
+---
+
+## Creating Effective Requests
+
+### Request Form Fields
+
+When creating a beat request, you'll fill out:
+
+<ResponseField name="Description" type="string" required>
+  Detailed description of what you're looking for. Be specific about vibe, instrumentation, and use case.
+</ResponseField>
+
+<ResponseField name="Genre" type="select" required>
+  Primary genre from available options. Choose the closest match to your vision.
+</ResponseField>
+
+<ResponseField name="BPM Range" type="string">
+  Tempo requirements (e.g., "140-150"). Leave blank for flexible tempo.
+</ResponseField>
+
+<ResponseField name="Key Signature" type="select">
+  Musical key preference (C, D, E, F, G, A, B with sharps/flats).
+</ResponseField>
+
+<ResponseField name="Scale" type="select">
+  Major or Minor scale preference.
+</ResponseField>
+
+<ResponseField name="Mood" type="select">
+  Emotional tone: Energetic, Chill, Dark, Uplifting, Melancholic, Aggressive, Dreamy, Romantic, Mysterious, Happy, Sad, Intense.
+</ResponseField>
+
+<ResponseField name="Budget" type="string">
+  Optional budget indication. Helps producers understand your price range.
+</ResponseField>
+
+<ResponseField name="Reference Track" type="string">
+  Link to a similar track for reference. Helps producers understand your vision.
+</ResponseField>
+
+---
+
 ## Next Steps
 
 <CardGroup cols={2}>
@@ -348,5 +449,11 @@ Returns:
   </Card>
   <Card title="Licensing" icon="file-contract" href="/product-guides/licensing">
     Understand licensing options.
+  </Card>
+  <Card title="Your Library" icon="folder" href="/product-guides/library">
+    Explore your library features.
+  </Card>
+  <Card title="License Manager" icon="file-certificate" href="/product-guides/license-manager">
+    Manage your track licenses.
   </Card>
 </CardGroup>

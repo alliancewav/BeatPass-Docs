@@ -23,6 +23,11 @@
   "metadata": {
     "timestamp": true
   },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://beatpass.ca"
+  },
   "navigation": {
     "tabs": [
       {
@@ -92,6 +97,8 @@
             "pages": [
               "product-guides/buying-beats",
               "product-guides/licensing",
+              "product-guides/sample-safe",
+              "product-guides/license-manager",
               "product-guides/licensing-uses",
               "product-guides/payments",
               "product-guides/receipts"
@@ -117,6 +124,12 @@
         "tab": "Producer Guides",
         "icon": "sliders",
         "groups": [
+          {
+            "group": "Your Dashboard",
+            "pages": [
+              "producer-guides/dashboard"
+            ]
+          },
           {
             "group": "Growing Your Business",
             "pages": [
@@ -263,6 +276,11 @@
     "global": {
       "anchors": [
         {
+          "anchor": "Home",
+          "href": "https://beatpass.ca",
+          "icon": "home"
+        },
+        {
           "anchor": "Platform",
           "href": "https://open.beatpass.ca",
           "icon": "music"
@@ -279,10 +297,6 @@
         }
       ]
     }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
   },
   "navbar": {
     "links": [
@@ -338,6 +352,7 @@
   },
   "footer": {
     "socials": {
+      "website": "https://beatpass.ca",
       "x": "https://x.com/beatpasswav",
       "instagram": "https://www.instagram.com/beatpass.wav",
       "youtube": "https://www.youtube.com/@beatpass.",
@@ -347,6 +362,7 @@
       {
         "header": "Platform",
         "items": [
+          { "label": "BeatPass Home", "href": "https://beatpass.ca" },
           { "label": "Open BeatPass", "href": "https://open.beatpass.ca" },
           { "label": "Producer Program", "href": "https://open.beatpass.ca/producer-program" },
           { "label": "Pricing", "href": "https://open.beatpass.ca/pricing" },

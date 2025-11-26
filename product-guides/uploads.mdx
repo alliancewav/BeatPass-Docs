@@ -234,6 +234,140 @@ If transcoding fails:
 
 ---
 
+## Track Form Fields
+
+The upload form contains several sections. Here's a complete reference of all available fields:
+
+### Basic Information
+
+<ResponseField name="Track Name" type="string" required>
+  The title of your track. Keep it memorable and searchable (2-4 words recommended).
+</ResponseField>
+
+<ResponseField name="Description" type="string">
+  Describe the vibe, inspiration, and ideal use cases for your beat. Helps with discovery and gives buyers context.
+</ResponseField>
+
+<ResponseField name="Artists" type="array" required>
+  Primary artist(s) for the track. Your artist profile is added by default. Add collaborators if applicable.
+</ResponseField>
+
+<ResponseField name="Album" type="reference">
+  Optionally assign the track to an album for organization.
+</ResponseField>
+
+### Music Properties
+
+<ResponseField name="Key" type="select" required>
+  Musical key of the track. Options: C, C#/Db, D, D#/Eb, E, F, F#/Gb, G, G#/Ab, A, A#/Bb, B
+</ResponseField>
+
+<ResponseField name="Scale" type="select" required>
+  Major or Minor scale.
+</ResponseField>
+
+<ResponseField name="BPM" type="number" required>
+  Tempo in beats per minute (50-200 range).
+</ResponseField>
+
+### Classification
+
+<ResponseField name="Genres" type="array" required>
+  Primary and secondary genres. Add multiple for better discovery.
+</ResponseField>
+
+<ResponseField name="Tags" type="array">
+  Descriptive tags for mood, style, and use cases. Aim for 5-10 relevant tags.
+</ResponseField>
+
+### Sample-Safe™ Section
+
+Every track requires Sample-Safe™ certification before publishing.
+
+<ResponseField name="Sample Status" type="select" required>
+  Declare the sample clearance status:
+
+  | Status              | Description                                    |
+  | ------------------- | ---------------------------------------------- |
+  | **Cleared**         | 100% original or all samples properly licensed |
+  | **Needs Clearance** | Contains uncleared third-party samples         |
+</ResponseField>
+
+<ResponseField name="Sample Notes" type="string">
+  If "Needs Clearance" is selected, provide details about which samples are used and what clearance may be required.
+</ResponseField>
+
+<ResponseField name="Policy Agreement" type="checkbox" required>
+  You must agree to the Sample-Safe™ Policy before publishing. This legally affirms your track complies with copyright laws.
+</ResponseField>
+
+<Card title="Sample-Safe™ Guide" icon="shield" href="/product-guides/sample-safe">
+  Learn more about the Sample-Safe™ Warranty and your obligations.
+</Card>
+
+### Licensing Configuration
+
+Configure how your track can be licensed:
+
+<ResponseField name="Licensing Type" type="select" required>
+  Available licensing options:
+
+  | Option                 | Description                                            |
+  | ---------------------- | ------------------------------------------------------ |
+  | **Non-Exclusive Only** | Multiple buyers can license; track stays available     |
+  | **Exclusive Only**     | Single buyer gets all rights; track removed after sale |
+  | **Both**               | Offer both non-exclusive and exclusive options         |
+</ResponseField>
+
+<ResponseField name="Exclusive Status" type="select">
+  For exclusive licensing:
+
+  | Status            | Description                   |
+  | ----------------- | ----------------------------- |
+  | **Available**     | Open for exclusive purchase   |
+  | **Not Available** | Exclusive rights not offered  |
+  | **Sold**          | Already purchased exclusively |
+</ResponseField>
+
+<ResponseField name="Exclusive Price" type="number">
+  Price for exclusive rights (if offered).
+</ResponseField>
+
+<ResponseField name="Exclusive Contact Email" type="string">
+  Email for exclusive license inquiries.
+</ResponseField>
+
+### Cover Art
+
+<ResponseField name="Cover Art" type="image">
+  Upload custom artwork or use auto-generated cover art.
+
+  - **Recommended size**: 1400×1400 pixels
+  - **Formats**: JPG, PNG
+  - **Auto-generate**: System can create artwork using templates
+</ResponseField>
+
+### Audio Fingerprinting
+
+BeatPassID™ automatically processes your track:
+
+<ResponseField name="Fingerprint Status" type="readonly">
+  Shows the fingerprinting progress:
+
+  | Status        | Meaning                                |
+  | ------------- | -------------------------------------- |
+  | **Checking**  | Analyzing audio file                   |
+  | **Analyzing** | Generating unique fingerprint          |
+  | **Complete**  | Fingerprint registered successfully    |
+  | **Failed**    | Error during processing (retry upload) |
+</ResponseField>
+
+<Note>
+  Audio fingerprinting helps detect duplicates and protects your content. The system automatically checks for existing copies before allowing upload.
+</Note>
+
+---
+
 ## Metadata Best Practices
 
 ### Title Guidelines

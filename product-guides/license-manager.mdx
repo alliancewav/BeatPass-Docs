@@ -1,0 +1,348 @@
+---
+title: "License Manager | BeatPass"
+description: "Manage all your track licenses in one place. View acquired licenses, track licenses granted to others, download certificates, and verify license authenticity."
+keywords: ["license manager","track licenses","license certificate","license verification","beat license","music licensing"]
+og:title: "License Manager - BeatPass Help Center"
+og:description: "Manage all your track licenses in one place. View, download, and verify beat licenses."
+twitter:card: "summary_large_image"
+---
+
+## Overview
+
+The **License Manager** is your central hub for managing all track licenses on BeatPass. Whether you're an artist who has licensed beats or a producer tracking licenses granted to others, everything is organized in one place.
+
+<Info>
+  **Location:** Library \> Licenses (`/library/licenses`)
+
+  **Audience:** Artists (viewing acquired licenses) and Producers (tracking granted licenses)
+</Info>
+
+---
+
+## Accessing the License Manager
+
+<Steps>
+  <Step title="Open Your Library">
+    Click on **Library** in the main navigation.
+  </Step>
+  <Step title="Select Licenses">
+    Choose **Licenses** from the library menu, or navigate directly to `/library/licenses`.
+  </Step>
+  <Step title="View Your Licenses">
+    All your licenses appear in a searchable, filterable list.
+  </Step>
+</Steps>
+
+---
+
+## What You'll See
+
+The License Manager displays two types of licenses:
+
+<CardGroup cols={2}>
+  <Card title="Licenses You've Acquired" icon="download">
+    **As a Buyer/Artist**
+
+    Licenses for beats you've downloaded or purchased:
+
+    - Non-exclusive subscription downloads
+    - Exclusive license purchases
+    - Download certificates anytime
+  </Card>
+  <Card title="Licenses You've Granted" icon="upload">
+    **As a Producer**
+
+    Licenses granted to others for your tracks:
+
+    - See who licensed your beats
+    - Track exclusive vs. non-exclusive
+    - Monitor license status
+  </Card>
+</CardGroup>
+
+---
+
+## License Card Information
+
+Each license displays:
+
+| Field            | Description                               |
+| ---------------- | ----------------------------------------- |
+| **Track Name**   | The licensed track title (clickable link) |
+| **Artists**      | Producer(s) who created the track         |
+| **License Type** | Non-Exclusive or Exclusive                |
+| **Issued Date**  | When the license was generated            |
+| **Status**       | Active, Expired, or Revoked               |
+| **License ID**   | Unique UUID for verification              |
+
+### License Types
+
+<Tabs>
+  <Tab title="Non-Exclusive License">
+    <Card title="Non-Exclusive" icon="users">
+      **Green Border Indicator**
+
+      - Multiple artists can license the same track
+      - Generated automatically with subscription downloads
+      - Full commercial rights per license terms
+      - Track remains available to others
+    </Card>
+  </Tab>
+  <Tab title="Exclusive License">
+    <Card title="Exclusive" icon="lock">
+      **Blue Border Indicator**
+
+      - Only one artist owns exclusive rights
+      - Generated with exclusive purchases
+      - Track removed from marketplace after sale
+      - Premium pricing and enhanced rights
+    </Card>
+  </Tab>
+</Tabs>
+
+### License Statuses
+
+| Status      | Indicator     | Meaning                                              |
+| ----------- | ------------- | ---------------------------------------------------- |
+| **Active**  | 🟢 Green dot  | License is valid and in effect                       |
+| **Expired** | 🟡 Yellow dot | License term has ended (rare for perpetual licenses) |
+| **Revoked** | 🔴 Red dot    | License has been revoked due to violation or dispute |
+
+---
+
+## Managing Your Licenses
+
+### Searching and Filtering
+
+Use the search bar to find licenses by:
+
+- Track name
+- Artist name
+- Licensee name (for granted licenses)
+- License UUID
+
+### Downloading Certificates
+
+For licenses you've acquired, you can download a professional PDF certificate:
+
+<Steps>
+  <Step title="Find the License">
+    Locate the license in your License Manager.
+  </Step>
+  <Step title="Click Download">
+    Click the **Download** button on the license card.
+  </Step>
+  <Step title="Save Your Certificate">
+    A branded PDF certificate opens in a new tab. Use your browser's print function to save as PDF.
+  </Step>
+</Steps>
+
+<Tip>
+  **Keep Your Certificates!** Download and store your license certificates locally. They serve as proof of licensing rights and may be required by distributors, labels, or in dispute situations.
+</Tip>
+
+### Certificate Contents
+
+Your license certificate includes:
+
+| Element               | Details                       |
+| --------------------- | ----------------------------- |
+| **BeatPass Branding** | Official certification header |
+| **Track Information** | Name, artists, duration       |
+| **License Details**   | Type, issue date, terms       |
+| **License UUID**      | Unique verification code      |
+| **QR Code**           | Quick verification link       |
+| **Verification URL**  | Direct link to verify license |
+
+---
+
+## License Verification
+
+Every license can be verified publicly using its unique UUID.
+
+### Verifying a License
+
+<Steps>
+  <Step title="Get the License UUID">
+    Find the UUID on the license card or certificate.
+  </Step>
+  <Step title="Visit Verification Page">
+    Navigate to `https://open.beatpass.ca/verify-license/{UUID}`
+
+    Or click the **Verify License** button on the license card.
+  </Step>
+  <Step title="View Verification Results">
+    The page displays:
+
+    - License validity status
+    - Track information
+    - License type and terms
+    - Issue date
+  </Step>
+</Steps>
+
+### Why Verification Matters
+
+<CardGroup cols={2}>
+  <Card title="For Artists" icon="user-check">
+    - Prove licensing rights to distributors
+    - Resolve copyright disputes
+    - Document chain of ownership
+  </Card>
+  <Card title="For Producers" icon="shield-check">
+    - Verify license authenticity
+    - Track who has licensed your work
+    - Support dispute resolution
+  </Card>
+</CardGroup>
+
+<Note>
+  **Public Verification** — Anyone with a license UUID can verify its authenticity. This allows labels, distributors, and platforms to confirm licensing rights.
+</Note>
+
+---
+
+## For Producers: Granted Licenses View
+
+When viewing licenses granted to others, you see additional information:
+
+### Licensee Information
+
+| Field            | Details                                     |
+| ---------------- | ------------------------------------------- |
+| **Licensed To**  | Name of the artist who acquired the license |
+| **License Type** | What type of license they received          |
+| **Date**         | When they downloaded/purchased              |
+
+<Info>
+  For privacy, licensee email addresses are not displayed. Only the licensee's display name or username is shown.
+</Info>
+
+### Tracking Exclusive Sales
+
+Exclusive licenses are highlighted with blue borders and include:
+
+- Buyer information
+- Sale price (if applicable)
+- Exclusive transfer date
+
+---
+
+## License Generation
+
+Licenses are automatically generated in these scenarios:
+
+### Subscription Downloads
+
+When a subscriber downloads a track:
+
+1. Download initiated from track page
+2. License automatically generated
+3. License appears in both parties' License Managers
+4. Certificate available immediately
+
+### Exclusive Purchases
+
+When an exclusive license is purchased:
+
+1. Purchase completed via Stripe
+2. Exclusive license generated
+3. Track marked as "Exclusively Licensed"
+4. Both parties notified
+5. Certificate available immediately
+
+---
+
+## BeatPassID™ Integration
+
+All licenses are enhanced with **BeatPassID™** audio fingerprinting:
+
+<Card title="Fingerprint Verification" icon="fingerprint">
+  - Each track has a unique audio fingerprint
+  - Fingerprint links to license records
+  - Enables automated copyright verification
+  - Supports dispute resolution
+</Card>
+
+---
+
+## Common Questions
+
+<AccordionGroup>
+  <Accordion title="How long do licenses last?">
+    Most BeatPass licenses are **perpetual** — they don't expire as long as they remain in good standing. The license terms specify exact duration and usage rights.
+  </Accordion>
+  <Accordion title="Can a license be revoked?">
+    Licenses can be revoked in cases of:
+
+    - Terms of service violations
+    - Fraudulent activity
+    - Successful copyright disputes
+    - Payment chargebacks
+
+    You'll be notified if a license status changes.
+  </Accordion>
+  <Accordion title="I can't find my license">
+    If a recently acquired license isn't showing:
+
+    1. Wait a few minutes for processing
+    2. Refresh the page
+    3. Check your email for license confirmation
+    4. Contact support if issues persist
+  </Accordion>
+  <Accordion title="Can I transfer a license to someone else?">
+    License transfers depend on your license type. Non-exclusive licenses are generally non-transferable. Exclusive licenses may have transfer provisions — check your license terms or contact support.
+  </Accordion>
+  <Accordion title="What if the producer deletes the track?">
+    Your license remains valid even if the original track is removed from the platform. Keep your downloaded files and license certificates as documentation.
+  </Accordion>
+  <Accordion title="Do I need a license for every track I download?">
+    Yes. Each download generates a separate license. This ensures clear documentation of your rights to use each track commercially.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Distributor & Label Requirements
+
+Many distributors and labels require proof of licensing. Here's how to provide it:
+
+<Steps>
+  <Step title="Download Your Certificate">
+    Get the PDF certificate from your License Manager.
+  </Step>
+  <Step title="Note the Verification URL">
+    Include the verification URL in your submission materials.
+  </Step>
+  <Step title="Submit Documentation">
+    Provide both the certificate and verification URL to your distributor.
+  </Step>
+</Steps>
+
+### What Distributors Need
+
+| Requirement       | Where to Find             |
+| ----------------- | ------------------------- |
+| Proof of License  | PDF Certificate           |
+| License ID        | UUID on certificate/card  |
+| Verification Link | `/verify-license/{UUID}`  |
+| Track Information | Certificate or track page |
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Licensing Guide" icon="file-contract" href="/product-guides/licensing">
+    Understand license types and terms.
+  </Card>
+  <Card title="Buying Beats" icon="cart-shopping" href="/product-guides/buying-beats">
+    How to purchase and download beats.
+  </Card>
+  <Card title="Sample-Safe™" icon="shield" href="/product-guides/sample-safe">
+    Copyright protection for tracks.
+  </Card>
+  <Card title="Disputes" icon="gavel" href="/contribution/disputes">
+    Handle licensing disputes.
+  </Card>
+</CardGroup>
