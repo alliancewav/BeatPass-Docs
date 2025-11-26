@@ -62,14 +62,17 @@
               "product-guides/collections",
               "product-guides/releases",
               "product-guides/search",
-              "product-guides/audio-quality"
+              "product-guides/audio-quality",
+              "product-guides/library"
             ]
           },
           {
             "group": "Business",
             "pages": [
               "product-guides/licensing",
-              "product-guides/payments"
+              "product-guides/licensing-uses",
+              "product-guides/payments",
+              "product-guides/receipts"
             ]
           },
           {
@@ -108,6 +111,7 @@
             "group": "Earnings",
             "pages": [
               "contribution/formula",
+              "contribution/payouts",
               "contribution/xp-levels",
               "contribution/eligibility",
               "contribution/disputes"
@@ -135,6 +139,7 @@
             "group": "Settings",
             "pages": [
               "account/settings",
+              "account/plans-subscriptions",
               "account/notifications"
             ]
           },
@@ -189,6 +194,8 @@
               "support/status",
               "support/reporting",
               "support/usage-limits",
+              "support/account-actions",
+              "support/accessibility",
               "support/policies"
             ]
           }

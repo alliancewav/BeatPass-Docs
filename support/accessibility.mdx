@@ -1,0 +1,234 @@
+---
+title: "Accessibility"
+description: "Accessibility features and keyboard navigation on BeatPass."
+---
+
+## Overview
+
+BeatPass is committed to making our platform accessible to all users. This guide covers available accessibility features, keyboard navigation, and how to report accessibility issues.
+
+---
+
+## Keyboard Shortcuts
+
+### Player Controls
+
+| Shortcut | Action |
+|----------|--------|
+| `Space` | Play/Pause |
+| `→` (Right Arrow) | Skip forward 10 seconds |
+| `←` (Left Arrow) | Skip back 10 seconds |
+| `↑` (Up Arrow) | Volume up |
+| `↓` (Down Arrow) | Volume down |
+| `M` | Mute/Unmute |
+| `N` | Next track |
+| `P` | Previous track |
+| `L` | Toggle loop |
+| `S` | Toggle shuffle |
+
+### Navigation
+
+| Shortcut | Action |
+|----------|--------|
+| `Tab` | Move to next focusable element |
+| `Shift + Tab` | Move to previous element |
+| `Enter` | Activate focused element |
+| `Escape` | Close modal/dialog |
+| `/` | Focus search (on some pages) |
+
+### Browse & Lists
+
+| Shortcut | Action |
+|----------|--------|
+| `↑` / `↓` | Navigate list items |
+| `Enter` | Select item |
+| `Space` | Play highlighted track |
+
+<Note>
+  Keyboard shortcuts work when focus is not in a text input field.
+</Note>
+
+---
+
+## Screen Reader Support
+
+### Current Status
+
+| Feature | Screen Reader Support |
+|---------|----------------------|
+| Navigation menus | Supported |
+| Track listings | Supported |
+| Player controls | Supported |
+| Forms and inputs | Supported |
+| Modal dialogs | Supported |
+| Dynamic content | Partial support |
+
+### Tested Screen Readers
+
+| Screen Reader | Platform | Status |
+|---------------|----------|--------|
+| VoiceOver | macOS/iOS | Supported |
+| NVDA | Windows | Supported |
+| JAWS | Windows | Supported |
+| TalkBack | Android | Supported |
+
+### Tips for Screen Reader Users
+
+- Use landmark navigation to jump between sections
+- Headings are structured hierarchically (H1 → H2 → H3)
+- Interactive elements have descriptive labels
+- Live regions announce player state changes
+
+---
+
+## Visual Accessibility
+
+### Theme Support
+
+| Option | Description |
+|--------|-------------|
+| Light mode | High contrast light theme |
+| Dark mode | Reduced brightness, easier on eyes |
+| System default | Follows OS preference |
+
+Change theme in **Settings > Appearance**.
+
+### Text & Display
+
+| Feature | Status |
+|---------|--------|
+| Browser zoom support | Full (up to 200%) |
+| Font scaling | Respects system settings |
+| High contrast mode | Partial support |
+| Reduced motion | Respects `prefers-reduced-motion` |
+
+---
+
+## Audio & Captions
+
+### Lyrics
+
+| Feature | Availability |
+|---------|--------------|
+| Lyrics display | Available on supported tracks |
+| Synced lyrics | When provided by producer |
+| Static lyrics | Fallback when timing unavailable |
+
+<Note>
+  Lyrics availability depends on whether the producer uploaded them. Not all tracks have lyrics.
+</Note>
+
+### Audio Descriptions
+
+Audio descriptions for non-music content (tutorials, announcements) are not currently available but are being considered for future updates.
+
+---
+
+## Motor Accessibility
+
+### Navigation
+
+- All features accessible via keyboard
+- No time-limited actions for essential features
+- Drag-and-drop has keyboard alternatives (where applicable)
+
+### Focus Indicators
+
+- Visible focus indicators on all interactive elements
+- Focus order follows logical page structure
+
+---
+
+## Known Limitations
+
+| Area | Limitation | Workaround |
+|------|------------|------------|
+| Waveform scrubbing | Visual-only | Use keyboard arrow keys |
+| Drag-and-drop playlists | Mouse-only | Use context menu options |
+| Some visualizations | Not accessible | Focus on audio content |
+| Complex filters | May be challenging | Use basic search |
+
+---
+
+## Requesting Accommodations
+
+If you need specific accommodations not currently available:
+
+1. Email **accessibility@beatpass.ca**
+2. Describe the accommodation needed
+3. Include any assistive technology you use
+4. We'll work to find solutions
+
+---
+
+## Reporting Accessibility Issues
+
+### What to Report
+
+- Features that don't work with assistive technology
+- Missing or incorrect labels
+- Keyboard navigation problems
+- Color contrast issues
+- Any barriers to access
+
+### How to Report
+
+Email **accessibility@beatpass.ca** with:
+
+- Description of the issue
+- Page/feature affected
+- Assistive technology used (if any)
+- Browser and operating system
+- Steps to reproduce
+- Screenshot if helpful
+
+### Response Time
+
+| Priority | Response Target |
+|----------|-----------------|
+| Critical barrier | 2 business days |
+| Significant issue | 5 business days |
+| Enhancement request | Acknowledged, prioritized |
+
+---
+
+## Ongoing Improvements
+
+We're continuously working to improve accessibility:
+
+- Regular accessibility audits
+- User feedback integration
+- WCAG 2.1 AA compliance goal
+- Testing with assistive technologies
+
+### Planned Improvements
+
+| Feature | Status |
+|---------|--------|
+| Improved keyboard navigation | In progress |
+| Enhanced screen reader announcements | Planned |
+| Better high contrast support | Planned |
+| Skip links | In progress |
+
+---
+
+## External Resources
+
+For general accessibility information:
+
+- [WebAIM](https://webaim.org/) — Web accessibility resources
+- [WCAG Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/) — Accessibility standards
+- [A11Y Project](https://www.a11yproject.com/) — Accessibility checklist
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Settings" icon="gear" href="/account/settings">
+    Customize your experience.
+  </Card>
+  <Card title="Contact Support" icon="headset" href="/support/contact">
+    Get help with accessibility.
+  </Card>
+</CardGroup>

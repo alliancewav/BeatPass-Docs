@@ -1,0 +1,308 @@
+---
+title: "How Payouts Work"
+description: "Complete guide to receiving earnings from BeatPass via Stripe Connect."
+---
+
+## Overview
+
+BeatPass uses Stripe Connect to process producer payouts. This guide walks through the entire flow from first sale to money in your bank.
+
+<Info>
+  **Audience:** Producers with backstage access
+</Info>
+
+---
+
+## Payout Flow
+
+### The Complete Journey
+
+<Steps>
+  <Step title="Earn Revenue">
+    Revenue accumulates from:
+    - **License sales** — Direct purchases of your beats
+    - **Contribution earnings** — Share of subscription revenue based on engagement
+  </Step>
+  
+  <Step title="Funds Reach Your Stripe Account">
+    - License sales: Funds transfer after payment succeeds
+    - Contribution splits: Processed monthly after billing cycle closes
+  </Step>
+  
+  <Step title="Stripe Holds Funds">
+    Stripe holds funds in your connected account balance:
+    - **Available balance** — Ready for payout
+    - **Pending balance** — Processing (typically 2-7 days)
+  </Step>
+  
+  <Step title="Payout Initiated">
+    Stripe automatically initiates payouts to your bank:
+    - Default: Daily automatic payouts (when balance available)
+    - Can be configured to weekly or monthly in Stripe Dashboard
+  </Step>
+  
+  <Step title="Bank Receives Funds">
+    Funds arrive in your linked bank account:
+    - US: 1-2 business days
+    - Canada: 2-3 business days
+    - International: 3-7 business days
+  </Step>
+</Steps>
+
+---
+
+## Stripe Connect Onboarding
+
+### Setting Up Your Account
+
+<Steps>
+  <Step title="Access Finances">
+    Go to **Backstage > Finances** in your producer dashboard.
+  </Step>
+  
+  <Step title="Connect Stripe">
+    Click **Connect with Stripe** to start onboarding.
+  </Step>
+  
+  <Step title="Provide Information">
+    Stripe will ask for:
+    - Personal information (name, date of birth, address)
+    - Identity verification (government ID)
+    - Tax information (SSN/EIN for US, or equivalent)
+    - Bank account details
+  </Step>
+  
+  <Step title="Complete Verification">
+    Stripe reviews your information. This typically takes:
+    - Instant for most users
+    - 1-3 business days if additional review needed
+  </Step>
+  
+  <Step title="Start Receiving Payouts">
+    Once verified, your account is active and ready to receive funds.
+  </Step>
+</Steps>
+
+### Verification Requirements
+
+| Document | Purpose |
+|----------|---------|
+| Government-issued ID | Identity verification |
+| Proof of address | Location verification (may be required) |
+| Tax ID (SSN/EIN/equivalent) | Tax reporting compliance |
+| Bank account | Where payouts are deposited |
+
+<Note>
+  Requirements vary by country. Stripe guides you through exactly what's needed for your location.
+</Note>
+
+---
+
+## Payout Statuses
+
+### Understanding Status Labels
+
+| Status | Meaning |
+|--------|---------|
+| **Awaiting Transfer** | Split calculated, waiting to be sent to your Stripe account |
+| **Transfer In Progress** | Currently being transferred to your Stripe account |
+| **Paid** | Successfully transferred to your Stripe account |
+| **Transfer Failed** | Transfer encountered an error (see below) |
+| **Excluded** | Not eligible (no active Stripe account) |
+
+### In Your Stripe Account
+
+| Stripe Status | Meaning |
+|---------------|---------|
+| **Pending** | Funds received but held (standard holding period) |
+| **Available** | Ready to be paid out to your bank |
+| **In Transit** | Payout initiated, traveling to your bank |
+| **Paid** | Deposited in your bank account |
+| **Failed** | Bank rejected the transfer |
+
+---
+
+## Typical Timelines
+
+### License Sales
+
+| Stage | Timeline |
+|-------|----------|
+| Sale completed | Immediate |
+| Funds available in Stripe | 2-7 days (Stripe standard) |
+| Payout to bank initiated | Daily (default) |
+| Arrives in bank | 1-7 days (region dependent) |
+
+**Total: 3-14 days from sale to bank**
+
+### Contribution Earnings (Subscription Splits)
+
+| Stage | Timeline |
+|-------|----------|
+| Billing period ends | Last day of month |
+| Splits calculated | 1st-5th of following month |
+| Transfer initiated | Within 1 week of calculation |
+| Funds available | 2-7 days after transfer |
+| Payout to bank | Daily (default) |
+| Arrives in bank | 1-7 days (region dependent) |
+
+**Total: ~2-3 weeks from month end**
+
+### By Region
+
+| Region | Bank Transfer Time |
+|--------|-------------------|
+| United States | 1-2 business days |
+| Canada | 2-3 business days |
+| United Kingdom | 2-3 business days |
+| Europe (SEPA) | 2-4 business days |
+| Australia | 2-4 business days |
+| Other | 3-7 business days |
+
+---
+
+## When Payouts Fail
+
+### Common Failure Reasons
+
+| Reason | Resolution |
+|--------|------------|
+| **Bank account closed** | Update bank details in Stripe Dashboard |
+| **Incorrect account info** | Verify and correct bank account number/routing |
+| **Account not verified** | Complete pending Stripe verification |
+| **Currency mismatch** | Ensure bank accepts the payout currency |
+| **Bank rejected transfer** | Contact your bank; may need different account |
+
+### What Happens on Failure
+
+1. Transfer marked as **Failed** in BeatPass
+2. Funds return to your Stripe available balance
+3. Retry scheduled (up to 5 attempts)
+4. You receive email notification
+5. If all retries fail, manual resolution needed
+
+### Resolving Failed Payouts
+
+<Steps>
+  <Step title="Check Failure Reason">
+    View failure details in **Backstage > Finances** or Stripe Dashboard.
+  </Step>
+  
+  <Step title="Fix the Issue">
+    Update bank details, complete verification, or contact your bank.
+  </Step>
+  
+  <Step title="Wait for Retry">
+    System automatically retries after 24 hours.
+  </Step>
+  
+  <Step title="Contact Support">
+    If retries continue to fail, contact support with:
+    - Your Stripe account email
+    - The failed payout date and amount
+    - Error message if available
+  </Step>
+</Steps>
+
+---
+
+## Viewing Your Payouts
+
+### In BeatPass (Backstage > Finances)
+
+| View | Shows |
+|------|-------|
+| **Summary** | Total earned, pending, available |
+| **Transaction history** | All splits and license sales |
+| **Split details** | Per-track breakdown for contribution earnings |
+
+### In Stripe Dashboard
+
+Access your full Stripe dashboard for:
+
+- Complete transaction history
+- Payout schedule settings
+- Bank account management
+- Tax documents (1099s, etc.)
+
+---
+
+## Minimum Payout Threshold
+
+| Region | Minimum |
+|--------|---------|
+| US/Canada | $10.00 USD |
+| Other regions | Varies (typically $10 equivalent) |
+
+If your balance doesn't reach the minimum, it carries over to the next period.
+
+---
+
+## Tax Considerations
+
+### BeatPass Reporting
+
+- BeatPass reports payouts to tax authorities as required
+- US: 1099-K may be issued if you exceed thresholds
+- International: Varies by jurisdiction
+
+### Your Responsibility
+
+- Report all earnings to your tax authority
+- Keep records of payouts received
+- Consult a tax professional for your situation
+- Stripe provides tax documents in your dashboard
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I made a sale but don't see the funds">
+    - License sale funds take 2-7 days to become available
+    - Check your Stripe Dashboard for pending balance
+    - Ensure the purchase was completed (not cancelled/refunded)
+  </Accordion>
+  
+  <Accordion title="My payout says 'Excluded'">
+    Your Stripe Connect account isn't active. Complete verification:
+    1. Go to **Backstage > Finances**
+    2. Click **Complete Setup** or check for pending requirements
+    3. Follow Stripe's verification steps
+  </Accordion>
+  
+  <Accordion title="Payout stuck in 'Transfer In Progress'">
+    Transfers typically complete within 24 hours. If stuck longer:
+    - Check your Stripe Dashboard for status
+    - Contact support if no update after 48 hours
+  </Accordion>
+  
+  <Accordion title="I don't see my contribution earnings">
+    Contribution splits are processed monthly:
+    - Calculated in the first week of the following month
+    - Must have an active Stripe account to receive
+    - Must meet minimum threshold ($10)
+  </Accordion>
+  
+  <Accordion title="Bank rejected my payout">
+    Common causes:
+    - Incorrect account/routing number
+    - Account doesn't accept the currency
+    - Account is closed or restricted
+    
+    Update your bank details in Stripe Dashboard and wait for retry.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Contribution Formula" icon="calculator" href="/contribution/formula">
+    How subscription earnings are calculated.
+  </Card>
+  <Card title="Eligibility" icon="check" href="/contribution/eligibility">
+    Requirements for receiving payouts.
+  </Card>
+</CardGroup>
