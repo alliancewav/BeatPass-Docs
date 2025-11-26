@@ -15,19 +15,13 @@ BeatPass implements usage limits to ensure fair access, prevent abuse, and maint
 
 <CardGroup cols={3}>
   <Card title="Formats" icon="file-audio">
-    **WAV, FLAC** (lossless only)
+    **WAV, FLAC** (lossless formats recommended for best quality)
   </Card>
-  <Card title="Max Size" icon="weight-hanging">
-    **100 MB** per file
+  <Card title="Practical Guidelines" icon="clock">
+    Most uploads work best when files are reasonably sized (for example, under ~100MB and under ~15 minutes) to keep processing fast. These are **guidelines, not hard platform limits**—very large files may be constrained by browser, network, or infrastructure limits.
   </Card>
-  <Card title="Duration" icon="clock">
-    **30 sec – 15 min**
-  </Card>
-  <Card title="Files" icon="file">
-    **1** per track (mixdown)
-  </Card>
-  <Card title="Daily Limit" icon="calendar">
-    **No hard limit**\*
+  <Card title="Upload Volume" icon="calendar">
+    Approved producers are not subject to a fixed daily upload cap. Upload activity is monitored for abuse, but there is no enforced per-day or per-track quota.
   </Card>
 </CardGroup>
 
@@ -79,10 +73,10 @@ BeatPass implements usage limits to ensure fair access, prevent abuse, and maint
 
 <Tabs>
   <Tab title="Free Users">
-    Up to **3 active requests** at a time
+    Monthly beat request quota included. You can submit a limited number of beat requests each calendar month. Check the pricing page or your account settings for your current limit.
   </Tab>
   <Tab title="Subscribers">
-    Up to **10 active requests** at a time
+    Higher monthly beat request quota that depends on your subscription plan. See the pricing page or your plan details for exact limits.
   </Tab>
 </Tabs>
 
@@ -306,10 +300,10 @@ See [API Rate Limits](/api/rate-limits) for complete details.
     **No hard limit**
   </Card>
   <Card title="Checkouts" icon="credit-card">
-    **1** concurrent
+    Designed to work best with one checkout flow per browser session. Multiple simultaneous checkouts are not explicitly rate-limited but may be harder to track.
   </Card>
   <Card title="Payment Retries" icon="rotate">
-    **3** attempts
+    Retries are handled by Stripe's standard payment retry behavior. BeatPass does not impose an additional hard retry count.
   </Card>
 </CardGroup>
 
@@ -320,10 +314,10 @@ See [API Rate Limits](/api/rate-limits) for complete details.
     **\$10** threshold
   </Card>
   <Card title="Frequency" icon="calendar-check">
-    **Monthly** payouts
+    Payouts follow your Stripe payout schedule (for example, daily or weekly), after each eligible license sale or subscription split
   </Card>
   <Card title="Method Changes" icon="bank">
-    **1** per payout cycle
+    Managed in your Stripe account; BeatPass does not impose an additional method-change limit
   </Card>
 </CardGroup>
 
@@ -366,7 +360,7 @@ X-RateLimit-Reset: 1700000000
   <Tab title="Free">
     <CardGroup cols={3}>
       <Card title="Beat Requests" icon="music">
-        **3** active
+        Monthly beat request quota (see pricing page or your account for your current limit)
       </Card>
       <Card title="Support" icon="headset">
         Standard priority
@@ -379,7 +373,7 @@ X-RateLimit-Reset: 1700000000
   <Tab title="Subscriber">
     <CardGroup cols={3}>
       <Card title="Beat Requests" icon="music" color="#22c55e">
-        **10** active
+        Monthly beat request quota (see pricing page or your account for your current limit)
       </Card>
       <Card title="Support" icon="headset" color="#22c55e">
         Fast-track priority

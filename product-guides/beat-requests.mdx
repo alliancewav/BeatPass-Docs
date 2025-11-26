@@ -318,10 +318,10 @@ Beat requests are subject to rate limiting to prevent spam and ensure fair acces
 
 ### Monthly Token Limits
 
-Beat request tokens control how many requests you can submit per month. The number of tokens you receive depends on your subscription plan.
+Beat request tokens control how many requests you can submit per month. The number of tokens you receive depends on your subscription plan and may change over time.
 
 <Info>
-  Token limits vary by subscription tier. Check your account settings to see your current token allocation. Tokens reset on the **first day of each calendar month (UTC)**. Unused tokens do not carry over.
+  Token limits vary by subscription tier. Check your account settings to see your current token allocation and reset date. Tokens reset on the **reset date** shown in your account (typically once per calendar month, UTC)\*\*. Unused tokens do not carry over.
 </Info>
 
 ### Check Your Status
@@ -332,14 +332,15 @@ You can check your current rate limit status:
 GET /api/v1/beat-requests/user/rate-limit-status
 ```
 
-Returns:
+Returns (example):
 
-- Current active request count
-- Maximum allowed requests
-- Time until next slot available (if at limit)
+- Total requests submitted this period
+- Your monthly request limit (tokens)
+- Tokens remaining
+- Reset date for your quota
 
 <Note>
-  Expired requests (30+ days old) don't count toward your limit. Close fulfilled requests promptly to free up slots.
+  Beat requests are limited by a **monthly submission quota**, not a concurrent "active requests" cap. Deleting or expiring a request does not restore tokens; your quota refreshes on the reset date shown in your account.
 </Note>
 
 ---
@@ -400,7 +401,7 @@ Each request card displays:
 
 <CardGroup cols={2}>
   <Card title="Delete Request" icon="trash">
-    Remove a request you no longer need. If deleted while active, your token is **refunded** to use again.
+    Remove a request you no longer need. Deleting a request can refund the token used (up to your plans monthly token limit), letting you reuse that slot for a new request.
   </Card>
   <Card title="View Responses" icon="reply">
     See all producer responses with their submitted tracks and messages.
@@ -408,7 +409,7 @@ Each request card displays:
 </CardGroup>
 
 <Tip>
-  **Token Refunds** — Deleting an active request (before expiry) refunds your token immediately. This lets you submit a new, revised request if your needs change.
+  **Token Usage**  Each request you submit consumes a token from your monthly allocation. Deleting a request can refund that token (up to your plans monthly token limit), but requests that simply expire after 24 hours do **not** refund tokens. Your tokens refresh on the reset date shown in your account.
 </Tip>
 
 ### Token Status Display
@@ -417,7 +418,7 @@ The library page shows your current token status:
 
 - **Tokens Used**: How many requests you've submitted this month
 - **Tokens Remaining**: How many more requests you can submit
-- **Reset Date**: When your tokens refresh (1st of each month, UTC)
+- **Reset Date**: When your tokens refresh (according to the reset date shown in your account, typically once per calendar month, UTC)
 
 ---
 

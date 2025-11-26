@@ -139,37 +139,32 @@ keywords: ["beatpass faq", "beat marketplace help", "music licensing questions",
 
 <AccordionGroup>
   <Accordion title="Are there streaming limits?">
-    Free-tier users have monthly streaming limits based on their account type:
+    BeatPass does not currently enforce a metered streaming-minute quota. Instead, access is permission-based:
     
-    | Tier | Monthly Limit |
-    |------|---------------|
-    | Free | 300 minutes |
-    | Subscriber | Unlimited |
+    - Free accounts can stream **full tracks**
+    - Subscribers can stream **full tracks**
+    - Playback is not limited to one device at a time per account
     
-    **Checking your balance:**
-    - In the app: Look for the streaming meter in your profile or player
-    - Via API: `GET /users/{user}/minutes-left`
+    There is no "minutes left" meter for streaming time; any future streaming quotas would be documented here.
   </Accordion>
   
   <Accordion title="When do streaming limits reset?">
-    Streaming quotas reset at the start of each calendar month (UTC midnight on the 1st).
+    BeatPass does not currently enforce a monthly streaming-minute quota, so there is nothing to reset. If streaming quotas are introduced in the future, reset behavior will be documented here.
   </Accordion>
   
   <Accordion title="What happens when I hit the limit?">
-    When you reach your streaming limit:
-    - Playback stops after the current track
-    - A "Limit reached" message appears
-    - You can still browse, like, and save tracks
-    - Upgrade to a subscription to continue streaming
+    BeatPass does not currently meter streaming minutes. If playback stops unexpectedly, it's usually due to:
+    - Network or device issues
+    - Account changes (for example, subscription expired)
+    - Anti-abuse systems (for example, unusual automated activity)
     
-    The API returns a `quota_exceeded` error if you attempt to start new playback.
+    If you repeatedly see playback errors, contact support with the error code shown in the player.
   </Accordion>
   
   <Accordion title="How do I see remaining minutes in the UI?">
-    Your remaining streaming time is shown in:
-    - **Profile menu** — Quick view of minutes left
-    - **Player controls** — Warning appears when low (< 30 min)
-    - **Account settings** — Detailed usage breakdown
+    There is currently no streaming-minute balance or meter in the UI. You can see:
+    - Whether you're on the free tier (previews only) or a subscription (full tracks)
+    - Your general streaming history and analytics in Backstage (for producers)
   </Accordion>
   
   <Accordion title="What counts as a play?">

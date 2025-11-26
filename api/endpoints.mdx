@@ -949,29 +949,15 @@ Reposts share content to your profile, making it visible to your followers.
 
 ---
 
-## User Streaming Quota
+## User Upload/Usage Quota
 
-| Method | Endpoint                     | Auth | Description                       |
-| ------ | ---------------------------- | ---- | --------------------------------- |
-| GET    | `/users/{user}/minutes-left` | 🔓   | Check remaining streaming minutes |
+| Method | Endpoint                     | Auth | Description                                                              |
+| ------ | ---------------------------- | ---- | ------------------------------------------------------------------------ |
+| GET    | `/users/{user}/minutes-left` | 🔓   | Check remaining usage minutes (for example, upload or processing budget) |
 
 <Note>
-  Free-tier users may have streaming limits. This endpoint returns remaining quota and reset timing.
+  This endpoint does **not** control or report streaming playback time. It is used for internal usage budgeting (such as upload or processing time) and may not be exposed in the public UI.
 </Note>
-
----
-
-## Error Codes
-
-| Code | Status               | Description              |
-| ---- | -------------------- | ------------------------ |
-| 400  | Bad Request          | Invalid parameters       |
-| 401  | Unauthorized         | Missing or invalid token |
-| 403  | Forbidden            | Insufficient permissions |
-| 404  | Not Found            | Resource doesn't exist   |
-| 422  | Unprocessable Entity | Validation failed        |
-| 429  | Too Many Requests    | Rate limit exceeded      |
-| 500  | Server Error         | Internal error           |
 
 ---
 
