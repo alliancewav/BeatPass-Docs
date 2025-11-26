@@ -1,0 +1,245 @@
+---
+title: "Audio Quality & Playback"
+description: "Streaming quality, download formats, and playback behavior on BeatPass."
+---
+
+## Overview
+
+BeatPass delivers high-quality audio for streaming and downloads. This guide covers quality settings, format specifications, and playback behavior.
+
+---
+
+## Streaming Quality Ladder
+
+### Quality Tiers
+
+| Tier | Bitrate | Format | When Used |
+|------|---------|--------|-----------|
+| **Standard** | 128 kbps | AAC | Default streaming |
+| **High Quality** | 256 kbps | AAC | HQ mode enabled |
+| **Preview** | 128 kbps | AAC + watermark | Unlicensed playback |
+
+<Note>
+  Quality selection is automatic based on your settings and network conditions. There's no manual per-track quality selection.
+</Note>
+
+### Enabling High Quality
+
+1. Go to **Settings > Playback**
+2. Toggle **High Quality Streaming**
+3. Save changes
+
+<Tip>
+  High Quality streaming uses approximately 2x the data. Consider this on mobile data plans.
+</Tip>
+
+---
+
+## Download Formats
+
+### Licensed Downloads
+
+When you purchase a license, you receive:
+
+| License Tier | Formats Included |
+|--------------|------------------|
+| **Basic/Standard** | MP3 (320 kbps) |
+| **Premium** | MP3 (320 kbps) + WAV |
+| **Exclusive** | MP3 (320 kbps) + WAV + Stems |
+
+### Format Specifications
+
+| Format | Quality | File Size (3 min track) |
+|--------|---------|-------------------------|
+| MP3 320kbps | Lossy, high quality | ~7 MB |
+| WAV 16-bit/44.1kHz | Lossless, CD quality | ~30 MB |
+| WAV 24-bit/48kHz | Lossless, studio quality | ~50 MB |
+| FLAC | Lossless, compressed | ~20 MB |
+
+### Stems
+
+| Stem | Format | Included With |
+|------|--------|---------------|
+| Full Mix | WAV | All tiers with stems |
+| Drums | WAV | If uploaded by producer |
+| Melody | WAV | If uploaded by producer |
+| Bass | WAV | If uploaded by producer |
+| FX/Other | WAV | If uploaded by producer |
+
+---
+
+## Playback States & Errors
+
+### Normal States
+
+| State | Description |
+|-------|-------------|
+| **Playing** | Audio streaming normally |
+| **Buffering** | Loading next segment |
+| **Paused** | User paused playback |
+| **Ended** | Track finished |
+
+### Error States
+
+| Error | Meaning | Resolution |
+|-------|---------|------------|
+| **Track Unavailable** | Track removed by uploader or moderation | Cannot play; track no longer exists |
+| **License Required** | Track requires purchase to play full version | Purchase a license or play preview |
+| **Exclusive Sold** | Track was sold as exclusive and removed | Track no longer available |
+| **Quota Exceeded** | Rate limit or streaming quota hit | Wait and retry; see [Usage Limits](/support/usage-limits) |
+| **Network Error** | Connection issue | Check internet connection; retry |
+| **Processing** | Track still being transcoded | Wait a few minutes; refresh |
+| **Restricted** | Content restricted in your region (if applicable) | May not be playable in your location |
+
+### Handling Errors
+
+<AccordionGroup>
+  <Accordion title="Track says 'Unavailable'">
+    The producer removed the track, or it was taken down for guideline violations. This is permanent—find an alternative track.
+  </Accordion>
+  
+  <Accordion title="Track says 'Processing'">
+    The track was recently uploaded and is still being transcoded. Wait 5-10 minutes and refresh the page.
+  </Accordion>
+  
+  <Accordion title="Playback stutters or buffers constantly">
+    Try lowering quality settings, check your internet connection, or try a different browser.
+  </Accordion>
+  
+  <Accordion title="Audio sounds distorted">
+    Report the issue via the track's menu. The source file may have quality issues.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Watermarks & Previews
+
+### How Watermarks Work
+
+| Scenario | Audio |
+|----------|-------|
+| Browsing (not logged in) | Watermarked preview |
+| Browsing (logged in, no license) | Watermarked preview |
+| Purchased license | Clean, no watermark |
+| Streaming subscription | Clean streaming, no watermark |
+
+### Preview Limitations
+
+- Previews play the full track length but with periodic watermarks
+- Watermarks cannot be removed from preview streams
+- Watermarks are not present in purchased/licensed downloads
+
+---
+
+## Geographic Restrictions
+
+### Current Policy
+
+<Info>
+  **No Geofencing** — BeatPass does not currently implement geographic restrictions (geo-blocking) on content. All tracks are available worldwide.
+</Info>
+
+### Future Considerations
+
+If geographic restrictions are implemented in the future:
+
+- Affected tracks would show "Not available in your region"
+- VPN use to circumvent restrictions violates Terms of Service
+- Documentation will be updated if policies change
+
+---
+
+## DRM Policy
+
+### No DRM on Downloads
+
+<Info>
+  **No DRM** — BeatPass does not apply Digital Rights Management (DRM) to downloaded files. Licensed files are delivered without copy protection.
+</Info>
+
+This means:
+
+- Downloaded files play on any device/software
+- No special player required
+- You're responsible for using content per license terms
+
+<Warning>
+  The absence of DRM doesn't grant additional rights. Use content only as your license permits. Misuse can result in legal action.
+</Warning>
+
+---
+
+## Data Usage
+
+### Streaming Data Consumption
+
+| Quality | Data per Minute | Data per Hour |
+|---------|-----------------|---------------|
+| Data Saver | ~0.5 MB | ~30 MB |
+| Standard | ~1 MB | ~60 MB |
+| High Quality | ~2 MB | ~120 MB |
+
+### Reducing Data Usage
+
+1. Enable **Data Saver** mode in Settings > Playback
+2. Download licensed tracks for offline listening
+3. Use Wi-Fi when possible
+
+---
+
+## Playback Settings
+
+### Available Controls
+
+| Setting | Options |
+|---------|---------|
+| Quality | Standard / High Quality / Data Saver |
+| Autoplay | On / Off |
+| Crossfade | 0-12 seconds |
+| Normalize Volume | On / Off |
+
+### Where to Configure
+
+Navigate to **Settings > Playback** to adjust all audio settings.
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Audio quality sounds poor">
+    - Check your quality settings (Settings > Playback)
+    - Ensure you're not in Data Saver mode
+    - Try a different browser or clear cache
+    - Check if your headphones/speakers are the issue
+  </Accordion>
+  
+  <Accordion title="Track won't load at all">
+    - Refresh the page
+    - Check internet connection
+    - Try incognito/private mode
+    - Clear browser cache
+    - Contact support if persistent
+  </Accordion>
+  
+  <Accordion title="Download file is corrupted">
+    - Re-download from Purchases
+    - Try a different browser
+    - Check available disk space
+    - Contact support if issue persists
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Uploading Beats" icon="upload" href="/product-guides/uploads">
+    Audio specs for uploaders.
+  </Card>
+  <Card title="Mobile Experience" icon="mobile" href="/product-guides/mobile">
+    Mobile playback details.
+  </Card>
+</CardGroup>

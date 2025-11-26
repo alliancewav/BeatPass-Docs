@@ -90,6 +90,146 @@ Before uploading:
 
 ---
 
+## Stems & Track Files
+
+### Stem Uploads
+
+Include separate stems to increase licensing appeal:
+
+| Stem Type   | Format       | Notes                 |
+| ----------- | ------------ | --------------------- |
+| Full Mix    | WAV/MP3/FLAC | Required - main track |
+| Drum Stem   | WAV          | Recommended           |
+| Melody Stem | WAV          | Recommended           |
+| Bass Stem   | WAV          | Recommended           |
+| FX/Ambient  | WAV          | Optional              |
+
+<Tip>
+  Stems are only available to license purchasers. Including stems significantly increases perceived value and sale conversion.
+</Tip>
+
+### Supported Stem Formats
+
+| Format          | Support | Notes                     |
+| --------------- | ------- | ------------------------- |
+| WAV (16/24-bit) | Full    | Preferred for stems       |
+| FLAC            | Full    | Accepted alternative      |
+| MP3 (320kbps)   | Limited | Not recommended for stems |
+
+### Watermarks
+
+BeatPass automatically adds audio watermarks to preview streams:
+
+| Setting                | Behavior                          |
+| ---------------------- | --------------------------------- |
+| **Preview streams**    | Watermarked by default            |
+| **Licensed downloads** | No watermark                      |
+| **Toggle**             | Cannot disable preview watermarks |
+
+<Note>
+  Watermarks protect your work from unauthorized use. Purchased/licensed files are always delivered without watermarks.
+</Note>
+
+---
+
+## Audio Encoding & Processing
+
+### Transcode Process
+
+After upload, BeatPass processes your audio:
+
+| Step              | Description                |
+| ----------------- | -------------------------- |
+| 1. Validation     | Format and quality check   |
+| 2. Fingerprinting | Duplicate detection        |
+| 3. Transcoding    | Generate streaming formats |
+| 4. Waveform       | Visual waveform generation |
+| 5. Indexing       | Search index update        |
+
+### Encoding Specifications
+
+| Output              | Bitrate              | Use                        |
+| ------------------- | -------------------- | -------------------------- |
+| Streaming (default) | 128 kbps AAC         | Standard playback          |
+| Streaming (HQ)      | 256 kbps AAC         | High-quality streaming     |
+| Preview             | 128 kbps + watermark | Unlicensed playback        |
+| Download (MP3)      | 320 kbps MP3         | Licensed MP3 delivery      |
+| Download (WAV)      | Original             | Licensed lossless delivery |
+
+### Upload Limits
+
+| Parameter                | Limit               |
+| ------------------------ | ------------------- |
+| Max file size (WAV/FLAC) | 100 MB              |
+| Max file size (MP3)      | 50 MB               |
+| Max duration             | 15 minutes          |
+| Min duration             | 30 seconds          |
+| Min bitrate (MP3)        | 128 kbps            |
+| Recommended bitrate      | 320 kbps / Lossless |
+
+### Transcode Failures
+
+If transcoding fails:
+
+| Issue              | Resolution                                    |
+| ------------------ | --------------------------------------------- |
+| Corrupted file     | Re-export from DAW and re-upload              |
+| Unsupported codec  | Convert to WAV/FLAC first                     |
+| Duration exceeded  | Trim to under 15 minutes                      |
+| Processing timeout | Wait and retry; contact support if persistent |
+
+<Warning>
+  If transcoding fails, your track will not be published. You'll receive an email notification with the specific error.
+</Warning>
+
+---
+
+## Replacing Audio
+
+### When to Replace Audio
+
+- Fixed mixing/mastering issues
+- Updated arrangement
+- Corrected audio glitches
+- Improved stem quality
+
+### Replace Audio Flow
+
+<Steps>
+  <Step title="Navigate to Track">
+    Go to **Backstage \> Tracks** and select the track.
+  </Step>
+  <Step title="Edit Track">
+    Click **Edit** to open the track editor.
+  </Step>
+  <Step title="Replace Audio File">
+    Upload the new audio file. This replaces the existing file entirely.
+  </Step>
+  <Step title="Confirm Replacement">
+    Review changes and save. The track will be re-processed.
+  </Step>
+</Steps>
+
+### Important: What Happens on Replacement
+
+<Warning>
+  Audio replacement has significant implications:
+</Warning>
+
+| Aspect                | Impact                                                              |
+| --------------------- | ------------------------------------------------------------------- |
+| **Analytics**         | Play counts and engagement data are **preserved**                   |
+| **Existing licenses** | Previous license holders retain their **original** downloaded files |
+| **New licenses**      | New purchasers receive the **updated** audio                        |
+| **Fingerprint**       | New fingerprint generated; may flag as duplicate of your own track  |
+| **Streaming**         | All streams switch to new audio immediately                         |
+
+<Note>
+  If you've sold licenses, consider whether replacement is appropriate. License holders purchased the original version. For major changes, uploading a new track may be more appropriate.
+</Note>
+
+---
+
 ## Metadata Best Practices
 
 ### Title Guidelines
@@ -201,6 +341,15 @@ Check your track's performance in Backstage Insights:
   </Accordion>
   <Accordion title="Track not appearing in search">
     Allow 5-10 minutes for indexing. Verify metadata is complete. Check that track is published, not drafted.
+  </Accordion>
+  <Accordion title="Transcode failed">
+    Re-export from your DAW as WAV (44.1kHz, 16/24-bit). Ensure file isn't corrupted. Try a smaller file if timeout occurs.
+  </Accordion>
+  <Accordion title="Stems not showing for buyers">
+    Verify stems were uploaded in supported formats (WAV/FLAC). Check that the license tier includes stem access.
+  </Accordion>
+  <Accordion title="Watermark still audible after purchase">
+    Ensure you downloaded from the Purchases section, not streamed. Re-download if issue persists. Contact support if problem continues.
   </Accordion>
 </AccordionGroup>
 

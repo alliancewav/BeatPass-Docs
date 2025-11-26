@@ -1,0 +1,277 @@
+---
+title: "Search & Discovery"
+description: "How to find beats on BeatPass using search, filters, and discovery features."
+---
+
+## Overview
+
+BeatPass provides powerful search and discovery tools to help artists find the perfect beat. This guide explains how search works, what fields are indexed, and how to use filters effectively.
+
+---
+
+## How Search Works
+
+### Indexed Fields
+
+When you search, BeatPass looks across these fields:
+
+| Field | Indexed | Weight |
+|-------|---------|--------|
+| **Track title** | Yes | High |
+| **Artist/producer name** | Yes | High |
+| **Tags** | Yes | High |
+| **Genre** | Yes | Medium |
+| **Description** | Yes | Medium |
+| **Lyrics** | Yes | Low |
+| **Album name** | Yes | Medium |
+
+<Note>
+  Search is case-insensitive. "Dark Trap" and "dark trap" return the same results.
+</Note>
+
+### Search Behavior
+
+| Feature | Behavior |
+|---------|----------|
+| **Multi-word queries** | Matches tracks containing all words |
+| **Partial matches** | Supported (e.g., "trap" matches "trapped") |
+| **Exact phrases** | Use quotes: `"dark melodic"` |
+| **Typo tolerance** | Limited; spell correctly for best results |
+
+---
+
+## Default Sort Order
+
+When no sort is specified, results are ordered by **relevance**:
+
+| Factor | Impact on Ranking |
+|--------|-------------------|
+| Query match quality | High |
+| Field matched (title vs description) | High |
+| Track popularity (plays, saves) | Medium |
+| Recency | Low |
+
+### Available Sort Options
+
+| Sort | Description |
+|------|-------------|
+| **Relevance** | Best match to your query (default) |
+| **Newest** | Most recently uploaded |
+| **Popular** | Highest play counts |
+| **Trending** | Rising engagement velocity |
+
+---
+
+## Search Filters
+
+### Genre Filter
+
+Filter by musical genre:
+
+| Category | Examples |
+|----------|----------|
+| **Hip Hop** | Boom Bap, Trap, Drill |
+| **R&B** | Contemporary R&B, Neo-Soul |
+| **Electronic** | House, Techno, EDM |
+| **Pop** | Pop, Synth Pop |
+| **Other** | Lo-Fi, Experimental |
+
+### BPM Filter
+
+Filter by tempo range:
+
+| Range | Use Case |
+|-------|----------|
+| 60-80 | Slow R&B, ballads |
+| 80-100 | Hip hop, boom bap |
+| 100-130 | Pop, uptempo R&B |
+| 130-150 | Trap, drill |
+| 150+ | Fast trap, drum & bass |
+
+<Tip>
+  Use the BPM slider to set a specific range (e.g., 140-145 BPM) for precise matching.
+</Tip>
+
+### Key Filter
+
+Filter by musical key:
+
+| Key Type | Options |
+|----------|---------|
+| **Major keys** | C, D, E, F, G, A, B (and sharps/flats) |
+| **Minor keys** | Am, Bm, Cm, Dm, Em, Fm, Gm (and sharps/flats) |
+
+### Additional Filters
+
+| Filter | Options |
+|--------|---------|
+| **Mood** | Dark, Uplifting, Chill, Aggressive, Emotional |
+| **Price range** | Free, $1-50, $50-100, $100+, Exclusive only |
+| **License type** | Non-exclusive, Exclusive available |
+| **Has stems** | Yes / No |
+| **Upload date** | Last 24h, Last week, Last month, Last year |
+
+---
+
+## Using Filters Effectively
+
+### Combining Filters
+
+Filters are **additive** (AND logic):
+
+```
+Genre: Trap + BPM: 140-150 + Key: Minor
+→ Returns trap beats at 140-150 BPM in a minor key
+```
+
+### Filter Reset
+
+Click **Clear Filters** to reset all filters and start fresh.
+
+---
+
+## Search Suggestions
+
+### How Suggestions Work
+
+As you type, BeatPass suggests:
+
+| Suggestion Type | Source |
+|-----------------|--------|
+| **Popular searches** | Trending queries from other users |
+| **Your recent searches** | Your search history |
+| **Artist/producer names** | Matching usernames |
+| **Track titles** | Matching track names |
+| **Tags** | Popular matching tags |
+
+### Suggestion Ranking
+
+Suggestions prioritize:
+1. Exact prefix matches
+2. Your recent searches
+3. Popular searches
+4. Related terms
+
+<Note>
+  Suggestions are personalized when logged in, showing your history first.
+</Note>
+
+---
+
+## Discovery Features
+
+### Browse by Genre
+
+Explore curated genre sections:
+
+1. Click **Discover** in navigation
+2. Select a genre category
+3. Browse featured and trending tracks
+
+### Trending & Charts
+
+| Section | What It Shows |
+|---------|---------------|
+| **Trending** | Tracks with rising engagement |
+| **Top Charts** | Highest plays this week/month |
+| **New Releases** | Recently uploaded tracks |
+| **Staff Picks** | Curated selections |
+
+### For You (Personalized)
+
+When logged in:
+
+| Signal | How It's Used |
+|--------|---------------|
+| Listening history | Recommend similar styles |
+| Saved tracks | Suggest related beats |
+| Followed producers | Surface their new releases |
+| Genre preferences | Weight discovery results |
+
+---
+
+## Search Tips
+
+### Finding Specific Styles
+
+| Goal | Search Strategy |
+|------|-----------------|
+| Drake-style beats | Search "drake type" or filter R&B/Trap + 80-100 BPM |
+| Dark trap | Search "dark trap" or use Mood: Dark + Genre: Trap |
+| Lo-fi study beats | Search "lo-fi chill" or filter Lo-Fi + 70-90 BPM |
+| Festival EDM | Search "festival" or filter Electronic + 128 BPM |
+
+### Using Tags Effectively
+
+Tags are highly weighted in search. Try:
+
+- Mood tags: "dark", "chill", "aggressive"
+- Style tags: "melodic", "hard", "bouncy"
+- Influence tags: "metro boomin type", "pierre bourne style"
+- Use case: "freestyle", "hook", "commercial"
+
+### Exact Phrase Search
+
+For specific phrases, use quotes:
+
+```
+"summer vibes"     → Matches exact phrase
+summer vibes       → Matches tracks with both words anywhere
+```
+
+---
+
+## Search Limitations
+
+| Limitation | Details |
+|------------|---------|
+| **Min query length** | 2 characters |
+| **Max query length** | 100 characters |
+| **Rate limit** | 60 searches/minute |
+| **Results per page** | 20 (paginated) |
+| **Max results** | 1,000 per query |
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Search returns no results">
+    - Check spelling
+    - Try broader terms
+    - Remove some filters
+    - Use fewer/different keywords
+  </Accordion>
+  
+  <Accordion title="Can't find a specific track">
+    - Search by exact title in quotes
+    - Search by producer name
+    - Check if track was removed
+    - It may still be processing (wait 5-10 min for new uploads)
+  </Accordion>
+  
+  <Accordion title="Filters not working">
+    - Ensure filters aren't too restrictive
+    - Some combinations yield few results
+    - Try resetting filters and adding one at a time
+  </Accordion>
+  
+  <Accordion title="Results seem irrelevant">
+    - Use more specific search terms
+    - Add filters to narrow results
+    - Try the Relevance sort (default)
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Uploading Beats" icon="upload" href="/product-guides/uploads">
+    Optimize your metadata for discovery.
+  </Card>
+  <Card title="Producer Marketing" icon="bullhorn" href="/producer-guides/marketing">
+    Get your beats discovered.
+  </Card>
+</CardGroup>

@@ -221,6 +221,62 @@ If you need analytics data for accounting, tax reporting, or business purposes:
 
 ---
 
+## Analytics Scope & Availability
+
+### What's Available to Producers
+
+The public dashboards in Backstage Insights provide access to:
+
+| Data Category        | Available | Notes                 |
+| -------------------- | --------- | --------------------- |
+| Play counts          | Yes       | Total and per-track   |
+| Unique listeners     | Yes       | Deduplicated by user  |
+| Completion rates     | Yes       | % reaching 80%+       |
+| Save counts          | Yes       | Library saves         |
+| Contribution value   | Yes       | Estimated earnings    |
+| Top tracks           | Yes       | Ranked by performance |
+| Date range filtering | Yes       | Up to 24 months       |
+| Basic trends         | Yes       | Period-over-period    |
+
+### What's NOT Available (Internal Only)
+
+<Warning>
+  The following analytics features are internal and not exposed to end users:
+</Warning>
+
+| Feature                     | Reason                             |
+| --------------------------- | ---------------------------------- |
+| **Real-time analytics**     | Reserved for platform monitoring   |
+| **Live listener counts**    | Performance and privacy concerns   |
+| **Advanced charts API**     | Internal tooling only              |
+| **Data exports (CSV/JSON)** | Not yet available for self-service |
+| **Geographic breakdowns**   | Aggregated only, no granular data  |
+| **Demographic data**        | Not exposed to producers           |
+| **Per-play timestamps**     | Privacy protected                  |
+| **Revenue per stream**      | Contribution formula internals     |
+
+### Why Some Data Is Internal
+
+| Reason          | Explanation                                             |
+| --------------- | ------------------------------------------------------- |
+| **Privacy**     | Listener-level data is protected                        |
+| **Performance** | Real-time queries are expensive                         |
+| **Fairness**    | Prevents gaming and manipulation                        |
+| **Complexity**  | Some metrics are difficult to interpret without context |
+
+### Setting Expectations
+
+- **Public dashboards are the only analytics available** to producers
+- Internal analytics exist for platform operations but aren't user-facing
+- Export features may be added in future but aren't currently roadmapped
+- If you need data we don't expose, contact support to discuss options
+
+<Note>
+  We're committed to providing useful analytics while protecting user privacy and platform integrity. If you have feedback on what metrics would help your business, let us know via support.
+</Note>
+
+---
+
 ## Next Steps
 
 <CardGroup cols={2}>

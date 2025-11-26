@@ -1,0 +1,317 @@
+---
+title: "Error Catalog"
+description: "Common API error codes, messages, and suggested resolutions across BeatPass features."
+---
+
+## Overview
+
+This catalog documents common errors you may encounter across BeatPass API endpoints, along with their meanings and suggested resolutions.
+
+---
+
+## Error Response Format
+
+All errors follow this structure:
+
+```json
+{
+  "message": "Human-readable error description",
+  "errors": {
+    "field_name": ["Specific validation error"]
+  }
+}
+```
+
+---
+
+## HTTP Status Codes
+
+| Code | Name | General Meaning |
+|------|------|-----------------|
+| 400 | Bad Request | Malformed request syntax |
+| 401 | Unauthorized | Authentication required or invalid |
+| 403 | Forbidden | Authenticated but not permitted |
+| 404 | Not Found | Resource doesn't exist |
+| 409 | Conflict | Resource state conflict |
+| 422 | Unprocessable Entity | Validation failed |
+| 429 | Too Many Requests | Rate limit exceeded |
+| 500 | Internal Server Error | Server-side error |
+
+---
+
+## Authentication Errors
+
+### Login & Session
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Invalid credentials` | 401 | Wrong email/password | Verify credentials |
+| `Account disabled` | 403 | Account suspended | Contact support |
+| `Email not verified` | 403 | Email verification pending | Check inbox for verification link |
+| `Session expired` | 401 | Token/session timed out | Re-authenticate |
+| `CSRF token mismatch` | 419 | Missing/invalid CSRF token | Refresh page, get new token |
+
+### Token Errors
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Unauthenticated` | 401 | Missing auth token/cookie | Include valid Authorization header |
+| `Token expired` | 401 | Bearer token no longer valid | Obtain new token |
+| `Invalid token` | 401 | Malformed or revoked token | Re-authenticate |
+
+---
+
+## Track & Upload Errors
+
+### Upload Validation
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `File too large` | 422 | Exceeds max file size | Reduce file size (WAV: 100MB, MP3: 50MB) |
+| `Invalid file format` | 422 | Unsupported audio format | Use WAV, MP3, or FLAC |
+| `Duration too short` | 422 | Under 30 seconds | Upload longer track |
+| `Duration too long` | 422 | Over 15 minutes | Trim to under 15 minutes |
+| `Bitrate too low` | 422 | MP3 under 128kbps | Re-export at 320kbps |
+| `Title is required` | 422 | Missing track title | Provide title |
+| `BPM is required` | 422 | Missing BPM | Provide BPM value |
+| `Genre is required` | 422 | Missing genre | Select genre |
+
+### Processing Errors
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Transcode failed` | 500 | Audio processing error | Re-export and re-upload |
+| `Fingerprint collision` | 409 | Duplicate detected | Track may already exist |
+| `Processing timeout` | 504 | File took too long | Try smaller file or retry later |
+
+### Track Access
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Track not found` | 404 | ID doesn't exist or deleted | Verify track ID |
+| `Track unavailable` | 410 | Removed by owner/moderation | Track no longer accessible |
+| `Private track` | 403 | Track not published | Only owner can access |
+
+---
+
+## Purchase & Licensing Errors
+
+### Purchase Flow
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Track not for sale` | 400 | No license configured | Contact producer |
+| `Already purchased` | 409 | User already owns license | Check purchases |
+| `Exclusive already sold` | 410 | Exclusive no longer available | Track sold exclusively |
+| `Price changed` | 409 | Price updated since page load | Refresh and retry |
+| `Checkout session expired` | 400 | Took too long to complete | Start new checkout |
+
+### Payment Errors
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Payment failed` | 402 | Card declined | Try different payment method |
+| `Card declined` | 402 | Issuer declined transaction | Contact card issuer |
+| `Insufficient funds` | 402 | Not enough balance | Use different card |
+| `Invalid card` | 422 | Card number invalid | Check card details |
+| `Expired card` | 422 | Card past expiration | Update card info |
+| `Processing error` | 500 | Stripe communication issue | Retry in a moment |
+
+### License Errors
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `License not found` | 404 | Invalid license ID | Verify license ID |
+| `License revoked` | 410 | License was revoked | Contact support |
+| `Download expired` | 403 | Download link timed out | Get new download link |
+
+---
+
+## Beat Request Errors
+
+### Creation
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Request limit reached` | 429 | Max active requests | Close old requests first |
+| `Title is required` | 422 | Missing title | Provide title |
+| `Description too short` | 422 | Under minimum length | Add more detail |
+
+### Response
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Request not found` | 404 | Invalid request ID | Verify ID |
+| `Request closed` | 410 | Request no longer accepting responses | Find open request |
+| `Already responded` | 409 | User already submitted response | Cannot submit twice |
+| `Request expired` | 410 | Past 30-day limit | Request auto-expired |
+
+### Status Changes
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Cannot close` | 403 | Not request owner | Only owner can close |
+| `Already fulfilled` | 409 | Request already completed | No action needed |
+
+---
+
+## Messaging Errors
+
+### Sending Messages
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Recipient not found` | 404 | Invalid user ID | Verify recipient |
+| `User blocked you` | 403 | Recipient blocked sender | Cannot message this user |
+| `You blocked user` | 403 | Sender blocked recipient | Unblock to message |
+| `Message too long` | 422 | Over 5,000 characters | Shorten message |
+| `Rate limited` | 429 | Too many messages | Wait before sending more |
+
+### Conversation
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Conversation not found` | 404 | Invalid conversation ID | Verify ID |
+| `Not a participant` | 403 | User not in conversation | Cannot access |
+
+---
+
+## Collection & Library Errors
+
+### Saves & Playlists
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Library full` | 429 | Max saved items (10,000) | Remove old items |
+| `Playlist full` | 429 | Max tracks per playlist (500) | Create new playlist |
+| `Playlist limit reached` | 429 | Max playlists (100) | Delete unused playlists |
+| `Track already saved` | 409 | Already in library | No action needed |
+| `Track already in playlist` | 409 | Duplicate in playlist | Track exists |
+
+### Collaborative Playlists
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Max editors reached` | 429 | 10 collaborators max | Remove editor first |
+| `Invitation expired` | 410 | 7-day expiry passed | Send new invitation |
+| `Already invited` | 409 | Pending invitation exists | Wait for response |
+| `Cannot re-invite yet` | 429 | 24-hour cooldown | Wait to re-invite |
+
+---
+
+## Social & Following Errors
+
+### Following
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Already following` | 409 | Already followed | No action needed |
+| `Not following` | 404 | Cannot unfollow if not following | Check following status |
+| `Follow limit reached` | 429 | Max 5,000 following | Unfollow some accounts |
+| `Follow rate limited` | 429 | Too many follows | Wait before following more |
+
+### Reposts
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Already reposted` | 409 | Track already reposted | No action needed |
+| `Repost limit reached` | 429 | 100/day or 20/hour | Wait for limit reset |
+| `Cannot repost own track` | 400 | Self-repost not allowed | N/A |
+
+---
+
+## Radio Errors
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Skip limit reached` | 429 | 6 skips/hour | Wait for reset |
+| `Station not found` | 404 | Invalid station | Choose valid station |
+| `Concurrent stream limit` | 429 | Already streaming elsewhere | Stop other stream |
+
+---
+
+## Rate Limiting
+
+### Rate Limit Response
+
+```json
+{
+  "message": "Too Many Requests",
+  "retry_after": 60
+}
+```
+
+### Rate Limit Headers
+
+```http
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1700000060
+Retry-After: 60
+```
+
+### Handling Rate Limits
+
+| Strategy | Implementation |
+|----------|----------------|
+| Exponential backoff | Wait, double delay on retry |
+| Check headers | Monitor remaining requests |
+| Queue requests | Space out API calls |
+| Cache responses | Reduce redundant calls |
+
+---
+
+## Server Errors (5xx)
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| `Internal Server Error` | 500 | Unexpected server issue | Retry; report if persistent |
+| `Service Unavailable` | 503 | Platform maintenance | Check status page |
+| `Gateway Timeout` | 504 | Request took too long | Retry with smaller payload |
+
+<Note>
+  500 errors are logged automatically. If you encounter persistent 500 errors, contact support with the approximate time and endpoint.
+</Note>
+
+---
+
+## Troubleshooting Checklist
+
+<Steps>
+  <Step title="Check Error Message">
+    Read the `message` field for human-readable explanation.
+  </Step>
+  
+  <Step title="Check Validation Errors">
+    Review `errors` object for field-specific issues.
+  </Step>
+  
+  <Step title="Verify Authentication">
+    Ensure token is valid and included correctly.
+  </Step>
+  
+  <Step title="Check Rate Limits">
+    Review `X-RateLimit-*` headers.
+  </Step>
+  
+  <Step title="Retry with Backoff">
+    For transient errors, wait and retry.
+  </Step>
+  
+  <Step title="Contact Support">
+    For persistent issues, provide error details and timestamps.
+  </Step>
+</Steps>
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="API Overview" icon="book" href="/api/overview">
+    API fundamentals.
+  </Card>
+  <Card title="Rate Limits" icon="gauge" href="/api/rate-limits">
+    Throttling details.
+  </Card>
+</CardGroup>

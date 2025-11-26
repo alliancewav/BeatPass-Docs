@@ -158,6 +158,76 @@ Browse requests that match your style:
 
 ---
 
+## Request Lifecycle & States
+
+### Request States
+
+| State | Description | Artist Action | Producer Action |
+|-------|-------------|---------------|-----------------|
+| **Open** | Accepting responses | Edit, close, or wait | Submit response |
+| **Fulfilled** | Artist found a beat | Marked complete | No new responses |
+| **Expired** | 30 days passed | Create new request | Find other requests |
+| **Closed** | Manually closed by artist | Reopen or create new | Find other requests |
+
+### Fulfillment Flow
+
+<Steps>
+  <Step title="Producer Submits Response">
+    Producer links a track and sends message explaining fit.
+  </Step>
+  
+  <Step title="Artist Reviews">
+    Artist listens to submissions and evaluates matches.
+  </Step>
+  
+  <Step title="Artist Accepts or Declines">
+    **Accept**: Initiates licensing conversation  
+    **Decline**: Producer notified; can submit different track  
+    **No response**: Producer can follow up via message
+  </Step>
+  
+  <Step title="Purchase Complete">
+    Artist purchases license through normal flow.
+  </Step>
+  
+  <Step title="Mark Fulfilled">
+    Artist marks request as fulfilled. Request closes to new responses.
+  </Step>
+</Steps>
+
+### After Fulfillment
+
+| What Happens | Details |
+|--------------|---------|
+| Request visibility | Removed from browse; visible in history |
+| Other responses | Producers notified request was fulfilled |
+| Producer credit | Fulfillment contributes to producer metrics |
+| Track status | Track remains available unless sold exclusively |
+
+### Auto-Expiry Behavior
+
+| Timeline | What Happens |
+|----------|--------------|
+| Day 25 | Artist receives reminder email |
+| Day 30 | Request auto-expires |
+| After expiry | Doesn't count toward active limit |
+| Re-opening | Not supported; create new request |
+
+<Note>
+  Expired requests remain in your history for reference but cannot be reopened. If you still need the beat, create a new request.
+</Note>
+
+### Visibility After State Changes
+
+| State | Visible in Browse | Visible to Artist | Visible to Responding Producers |
+|-------|-------------------|-------------------|--------------------------------|
+| Open | Yes | Yes | Yes |
+| Fulfilled | No | Yes (history) | Yes (their response history) |
+| Expired | No | Yes (history) | Yes (their response history) |
+| Closed | No | Yes (history) | Yes (their response history) |
+
+---
+
 ## Communication Guidelines
 
 <Warning>

@@ -13,39 +13,66 @@ BeatPass sends notifications to keep you informed about activity, earnings, and 
 
 ### Activity Notifications
 
-| Notification | Description |
-|--------------|-------------|
-| New Follower | Someone followed your profile |
-| Track Like | Someone liked your track |
-| Track Save | Someone saved your track to library |
-| Comment | Someone commented on your track |
-| Mention | Someone mentioned you |
+| Notification | Description | Default (Email) | Default (Push) |
+|--------------|-------------|-----------------|----------------|
+| New Follower | Someone followed your profile | Off | On |
+| Track Like | Someone liked your track | Off | On |
+| Track Save | Someone saved your track to library | Off | Off |
+| Comment | Someone commented on your track | On | On |
+| Mention | Someone mentioned you | On | On |
+| Repost | Someone reposted your track | Off | On |
 
 ### Message Notifications
 
-| Notification | Description |
-|--------------|-------------|
-| New Message | Direct message received |
-| Beat Request Response | Producer responded to your request |
-| Collaboration Invite | Someone invited you to collaborate |
+| Notification | Description | Default (Email) | Default (Push) |
+|--------------|-------------|-----------------|----------------|
+| New Message | Direct message received | On | On |
+| Beat Request Response | Producer responded to your request | On | On |
+| Collaboration Invite | Someone invited you to collaborate | On | On |
+| Message Read | Recipient read your message | Off | Off |
 
 ### Earnings Notifications (Producers)
 
-| Notification | Description |
-|--------------|-------------|
-| Payout Processed | Monthly payout sent |
-| License Purchased | Someone bought a license |
-| Earnings Milestone | Hit earnings threshold |
-| Contribution Update | Monthly contribution summary |
+| Notification | Description | Default (Email) | Default (Push) |
+|--------------|-------------|-----------------|----------------|
+| License Purchased | Someone bought a license | On | On |
+| Payout Processed | Monthly payout sent | On | On |
+| Payout Failed | Payout could not be processed | On | On |
+| Earnings Milestone | Hit earnings threshold ($100, $500, etc.) | On | Off |
+| Contribution Update | Monthly contribution summary | On | Off |
+| Exclusive Sold | Exclusive license purchased | On | On |
+
+### Beat Request Notifications
+
+| Notification | Description | Default (Email) | Default (Push) |
+|--------------|-------------|-----------------|----------------|
+| New Response | Producer responded to your request | On | On |
+| Request Expiring | Request expires in 5 days | On | Off |
+| Request Fulfilled | Artist marked request fulfilled | On | On |
+| Request Match | New request matches your style (producers) | Off | Off |
+
+### Achievement Notifications
+
+| Notification | Description | Default (Email) | Default (Push) |
+|--------------|-------------|-----------------|----------------|
+| Achievement Unlocked | New achievement earned | On | On |
+| Level Up | XP level increased | On | On |
+| Leaderboard Change | Rank changed significantly | Off | Off |
 
 ### System Notifications
 
-| Notification | Description |
-|--------------|-------------|
-| Security Alert | Unusual login activity |
-| Account Update | Profile or settings changed |
-| Platform Announcement | Important platform news |
-| Feature Update | New features available |
+| Notification | Description | Default (Email) | Default (Push) |
+|--------------|-------------|-----------------|----------------|
+| Security Alert | Unusual login activity | **Always On** | **Always On** |
+| Password Changed | Password was updated | **Always On** | Off |
+| Account Update | Profile or settings changed | Off | Off |
+| Platform Announcement | Important platform news | On | Off |
+| Feature Update | New features available | Off | Off |
+| Scheduled Maintenance | Upcoming downtime | On | Off |
+
+<Note>
+  Security notifications cannot be disabled. You will always receive alerts for suspicious login activity and password changes.
+</Note>
 
 ---
 

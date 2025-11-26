@@ -1,0 +1,328 @@
+---
+title: "Developer Onboarding"
+description: "Getting started guide for developers working with the BeatPass codebase and API."
+---
+
+## Overview
+
+This guide helps developers understand the BeatPass technical environment, authentication model, and safe testing practices.
+
+<Warning>
+  **First-Party Only** — BeatPass does not offer a public API for third-party applications. This documentation is for internal development and authorized partners only.
+</Warning>
+
+---
+
+## Authentication Model
+
+### How Auth Works
+
+BeatPass uses **Laravel Sanctum** for authentication:
+
+| Component | Technology |
+|-----------|------------|
+| Session auth | Cookie-based (SPA) |
+| API auth | Bearer token |
+| CSRF protection | Required for mutations |
+
+### Cookie + CSRF Flow
+
+For web applications:
+
+<Steps>
+  <Step title="Get CSRF Cookie">
+    ```http
+    GET /sanctum/csrf-cookie
+    ```
+    This sets the `XSRF-TOKEN` cookie.
+  </Step>
+  
+  <Step title="Include CSRF Token">
+    For POST/PUT/DELETE requests, include the token:
+    ```http
+    X-XSRF-TOKEN: {token from cookie}
+    ```
+  </Step>
+  
+  <Step title="Authenticate">
+    ```http
+    POST /api/v1/auth/login
+    Content-Type: application/json
+    
+    {"email": "...", "password": "..."}
+    ```
+  </Step>
+  
+  <Step title="Make Authenticated Requests">
+    Session cookie is automatically included in subsequent requests.
+  </Step>
+</Steps>
+
+### Token-Based Auth
+
+For non-browser clients:
+
+```http
+Authorization: Bearer YOUR_SANCTUM_TOKEN
+```
+
+<Note>
+  Tokens are obtained via login and should be stored securely. Never expose tokens in client-side code or version control.
+</Note>
+
+---
+
+## Environment
+
+### No Public Sandbox
+
+<Warning>
+  **No Public Sandbox** — BeatPass does not provide a public sandbox or test environment. All API calls hit production systems.
+</Warning>
+
+This means:
+
+| Action | Impact |
+|--------|--------|
+| POST/PUT/DELETE requests | **Real data is modified** |
+| Purchases | **Real charges occur** |
+| Uploads | **Real content is published** |
+| Messages | **Real users receive messages** |
+
+### Development Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Use personal test accounts | Avoid affecting real users |
+| Test with minimal data | Don't create spam content |
+| Clean up test data | Delete test uploads promptly |
+| Never test payments with real cards | Use Stripe test mode when available |
+
+---
+
+## Testing Purchases
+
+### Stripe Test Mode
+
+<Info>
+  Contact your team lead to determine if Stripe test mode is enabled for your environment.
+</Info>
+
+| Environment | Payment Behavior |
+|-------------|------------------|
+| Production | Real charges |
+| Test mode (if enabled) | Stripe test cards accepted |
+
+### Test Card Numbers (Stripe Test Mode Only)
+
+If test mode is available:
+
+| Card Number | Behavior |
+|-------------|----------|
+| `4242 4242 4242 4242` | Succeeds |
+| `4000 0000 0000 0002` | Declines |
+| `4000 0000 0000 9995` | Insufficient funds |
+
+<Warning>
+  Never use test card numbers on production. They will fail and may flag your account.
+</Warning>
+
+---
+
+## Using Placeholder IDs
+
+When developing or documenting:
+
+### Recommended Placeholders
+
+| Entity | Placeholder Format | Example |
+|--------|-------------------|---------|
+| Track ID | `{track_id}` | `/tracks/{track_id}` |
+| User ID | `{user_id}` | `/users/{user_id}` |
+| Artist ID | `{artist_id}` | `/artists/{artist_id}` |
+| Album ID | `{album_id}` | `/albums/{album_id}` |
+
+### In Code Examples
+
+```javascript
+// Good - uses placeholder
+const trackId = process.env.TEST_TRACK_ID || '{track_id}';
+
+// Bad - hardcodes production ID
+const trackId = 12345;
+```
+
+### In Documentation
+
+```http
+GET /api/v1/tracks/{track_id}
+```
+
+Not:
+
+```http
+GET /api/v1/tracks/12345
+```
+
+---
+
+## Off-Limits Routes
+
+### Admin & Internal Routes
+
+<Warning>
+  **Do Not Call** — The following routes are restricted to staff and internal systems. Unauthorized access attempts are logged and may result in account termination.
+</Warning>
+
+| Route Prefix | Purpose |
+|--------------|---------|
+| `/admin/*` | Admin panel and operations |
+| `/api/v1/admin/*` | Admin API endpoints |
+| `/import-media/*` | Content ingestion tools |
+| `/video/*` | Video generation (internal) |
+| `/audio/proxy` | CORS proxy (internal) |
+
+### Analytics Export Routes
+
+| Route | Why Off-Limits |
+|-------|----------------|
+| `/producer-intelligence/export/*` | Internal reporting |
+| `/producer-intelligence/report/*` | Staff analytics |
+| `/v2/analytics/*` | Internal v2 system |
+| `*/charts` | Advanced charts (internal) |
+| `*/real-time` | Live analytics (internal) |
+
+### What Happens If You Try
+
+| Attempt | Result |
+|---------|--------|
+| Unauthenticated | 401 Unauthorized |
+| Wrong role | 403 Forbidden |
+| Repeated attempts | Rate limited, logged |
+| Abuse pattern detected | Account flagged for review |
+
+---
+
+## Safe API Usage
+
+### Do
+
+- Use documented endpoints only
+- Respect rate limits
+- Handle errors gracefully
+- Clean up test data
+- Log responsibly (no sensitive data)
+
+### Don't
+
+- Scrape or crawl the platform
+- Hammer endpoints with excessive requests
+- Store user credentials
+- Bypass authentication
+- Share API tokens
+
+---
+
+## Error Handling
+
+### Standard Error Format
+
+```json
+{
+  "message": "Human-readable error",
+  "errors": {
+    "field": ["Validation error message"]
+  }
+}
+```
+
+### HTTP Status Codes
+
+| Code | Meaning | Action |
+|------|---------|--------|
+| 200 | Success | Process response |
+| 201 | Created | Resource created |
+| 400 | Bad Request | Fix request format |
+| 401 | Unauthorized | Re-authenticate |
+| 403 | Forbidden | Check permissions |
+| 404 | Not Found | Resource doesn't exist |
+| 422 | Validation Error | Fix input data |
+| 429 | Rate Limited | Back off and retry |
+| 500 | Server Error | Report to support |
+
+See [Error Catalog](/api/error-catalog) for feature-specific errors.
+
+---
+
+## Getting Help
+
+### For Developers
+
+| Resource | Contact |
+|----------|---------|
+| Technical questions | Internal Slack / dev team |
+| API issues | File internal ticket |
+| Security concerns | security@beatpass.ca |
+
+### Documentation
+
+| Topic | Location |
+|-------|----------|
+| API Overview | [/api/overview](/api/overview) |
+| Endpoints | [/api/endpoints](/api/endpoints) |
+| Authentication | [/api/auth](/api/auth) |
+| Rate Limits | [/api/rate-limits](/api/rate-limits) |
+| Error Catalog | [/api/error-catalog](/api/error-catalog) |
+
+---
+
+## Checklist for New Developers
+
+<Steps>
+  <Step title="Get Access">
+    - Obtain development account credentials
+    - Set up local environment
+    - Get necessary API tokens
+  </Step>
+  
+  <Step title="Understand the Stack">
+    - Laravel backend
+    - React frontend
+    - Laravel Sanctum auth
+    - Stripe for payments
+  </Step>
+  
+  <Step title="Review Documentation">
+    - Read API Overview
+    - Understand auth flow
+    - Note rate limits
+    - Review off-limits routes
+  </Step>
+  
+  <Step title="Set Up Safe Testing">
+    - Create test account(s)
+    - Use placeholder IDs in code
+    - Confirm test mode status for payments
+    - Plan for cleanup
+  </Step>
+  
+  <Step title="Start Building">
+    - Begin with read-only endpoints
+    - Test auth flow first
+    - Add mutations carefully
+    - Monitor rate limit headers
+  </Step>
+</Steps>
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="API Overview" icon="book" href="/api/overview">
+    Full API introduction.
+  </Card>
+  <Card title="Error Catalog" icon="triangle-exclamation" href="/api/error-catalog">
+    Error codes and resolutions.
+  </Card>
+</CardGroup>

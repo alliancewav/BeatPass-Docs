@@ -160,11 +160,120 @@ Configure at: Settings \> Playback \> Audio Quality
 
 ### Known Limitations
 
-| Device/Browser    | Limitation                 |
-| ----------------- | -------------------------- |
-| Older Android     | May have playback issues   |
-| In-app browsers   | Some features may not work |
-| Private/Incognito | Session won't persist      |
+| Device/Browser    | Limitation                             |
+| ----------------- | -------------------------------------- |
+| Older Android     | May have playback issues               |
+| In-app browsers   | Some features may not work (see below) |
+| Private/Incognito | Session won't persist                  |
+
+---
+
+## Background Playback
+
+### How It Works
+
+BeatPass supports background audio playback on mobile devices:
+
+| Platform          | Background Playback | Lock Screen Controls |
+| ----------------- | ------------------- | -------------------- |
+| iOS (Safari)      | Supported           | Play/pause, skip     |
+| Android (Chrome)  | Supported           | Play/pause, skip     |
+| PWA (Home Screen) | Best experience     | Full controls        |
+
+### Enabling Background Playback
+
+<Tabs>
+  <Tab title="iOS">
+    1. Audio plays automatically in background when you lock or switch apps
+    2. Control playback from lock screen or Control Center
+    3. No special settings required
+
+    <Note>
+      If audio stops when you lock your phone, check that Focus/Do Not Disturb isn't blocking media.
+    </Note>
+  </Tab>
+  <Tab title="Android">
+    1. Audio continues when you switch apps or lock screen
+    2. Control from notification shade or lock screen
+    3. Ensure BeatPass isn't restricted by battery optimization
+
+    <Tip>
+      Add BeatPass to your battery optimization whitelist for uninterrupted playback.
+    </Tip>
+  </Tab>
+</Tabs>
+
+### Lock Screen Controls
+
+| Control      | iOS | Android |
+| ------------ | --- | ------- |
+| Play/Pause   | Yes | Yes     |
+| Skip Forward | Yes | Yes     |
+| Skip Back    | Yes | Yes     |
+| Seek         | No  | No      |
+| Track Info   | Yes | Yes     |
+| Album Art    | Yes | Yes     |
+
+### Background Playback Limitations
+
+| Scenario                  | Behavior                     |
+| ------------------------- | ---------------------------- |
+| Browser closed completely | Audio stops                  |
+| Phone call received       | Audio pauses, resumes after  |
+| Low memory                | OS may stop background audio |
+| Data saver mode           | May affect streaming quality |
+
+---
+
+## In-App Browser Limitations
+
+<Warning>
+  Opening BeatPass in in-app browsers (Instagram, TikTok, Twitter, Facebook) may cause issues. Use your device's default browser for the best experience.
+</Warning>
+
+### Common In-App Browser Issues
+
+| Browser               | Known Issues                                 |
+| --------------------- | -------------------------------------------- |
+| **Instagram WebView** | Login may fail; audio playback unreliable    |
+| **TikTok WebView**    | Limited functionality; session issues        |
+| **Twitter/X WebView** | Generally works but may have playback issues |
+| **Facebook WebView**  | Login redirects may fail                     |
+| **Snapchat WebView**  | Severely limited functionality               |
+
+### How to Open in Default Browser
+
+<Tabs>
+  <Tab title="iOS">
+    1. Tap the **⋮** or **...** menu in the in-app browser
+    2. Select **Open in Safari** or **Open in Browser**
+    3. BeatPass will open in Safari with full functionality
+  </Tab>
+  <Tab title="Android">
+    1. Tap the **⋮** menu in the in-app browser
+    2. Select **Open in Chrome** or **Open in Browser**
+    3. BeatPass will open in your default browser
+  </Tab>
+</Tabs>
+
+### Recommended Approach
+
+When sharing BeatPass links to social media:
+
+1. Users clicking from social apps may land in in-app browser
+2. Encourage them to open in their default browser
+3. Consider adding "Open in browser for best experience" to descriptions
+
+### Features Affected in WebViews
+
+| Feature            | Status in WebViews |
+| ------------------ | ------------------ |
+| Browse & Search    | Usually works      |
+| Playback           | May be unreliable  |
+| Login/Signup       | Often fails        |
+| Purchases          | Not recommended    |
+| File uploads       | Usually fails      |
+| Push notifications | Not supported      |
 
 ---
 

@@ -60,7 +60,9 @@
               "product-guides/lyrics",
               "product-guides/beat-requests",
               "product-guides/collections",
-              "product-guides/releases"
+              "product-guides/releases",
+              "product-guides/search",
+              "product-guides/audio-quality"
             ]
           },
           {
@@ -165,10 +167,12 @@
             "group": "Reference",
             "pages": [
               "api/overview",
+              "api/developer-onboarding",
               "api/endpoints",
               "api/auth",
               "api/webhooks",
-              "api/rate-limits"
+              "api/rate-limits",
+              "api/error-catalog"
             ]
           }
         ]
@@ -183,6 +187,8 @@
               "support/troubleshooting",
               "support/contact",
               "support/status",
+              "support/reporting",
+              "support/usage-limits",
               "support/policies"
             ]
           }

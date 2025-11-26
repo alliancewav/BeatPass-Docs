@@ -1,0 +1,296 @@
+---
+title: "Usage Limits"
+description: "Platform rate limits, quotas, and usage caps across all BeatPass features."
+---
+
+## Overview
+
+BeatPass implements usage limits to ensure fair access, prevent abuse, and maintain platform performance. This page consolidates all per-feature limits in one reference.
+
+---
+
+## Upload Limits
+
+### Track Uploads
+
+| Parameter | Limit |
+|-----------|-------|
+| Max file size (WAV/FLAC) | 100 MB |
+| Max file size (MP3) | 50 MB |
+| Max duration | 15 minutes |
+| Min duration | 30 seconds |
+| Min bitrate (MP3) | 128 kbps |
+| Uploads per day | No hard limit* |
+
+*Excessive uploads in a short period may trigger rate limiting. Upload at a reasonable pace.
+
+### Stem Files
+
+| Parameter | Limit |
+|-----------|-------|
+| Stems per track | 10 files max |
+| Stem file size | 100 MB each |
+| Total stems per track | 500 MB combined |
+
+---
+
+## Messaging Limits
+
+### Direct Messages
+
+| Parameter | Limit |
+|-----------|-------|
+| Messages per hour | Platform rate limit applies |
+| Message length | 5,000 characters |
+| Conversations | No hard limit |
+
+### New Account Restrictions
+
+| Account Age | Limitation |
+|-------------|------------|
+| < 24 hours | Reduced messaging capabilities |
+| < 7 days | May have lower rate limits |
+| 7+ days | Full messaging access |
+
+<Note>
+  Verified accounts and subscribers have higher messaging allowances.
+</Note>
+
+---
+
+## Beat Requests
+
+### Request Creation
+
+| User Type | Active Requests |
+|-----------|-----------------|
+| Free users | 3 active requests |
+| Subscribers | 10 active requests |
+
+### Request Lifecycle
+
+| Parameter | Value |
+|-----------|-------|
+| Auto-expiry | 30 days from creation |
+| Max responses per request | No limit |
+| Responses per producer per request | 1 |
+
+---
+
+## Reposts
+
+### Repost Limits
+
+| Timeframe | Limit |
+|-----------|-------|
+| Per hour | 20 reposts |
+| Per day | 100 reposts |
+
+<Tip>
+  Reposts are for sharing content you genuinely appreciate. Excessive reposting may appear spammy to your followers.
+</Tip>
+
+---
+
+## Collections & Library
+
+### Saved Items
+
+| Collection Type | Limit |
+|-----------------|-------|
+| Saved tracks | 10,000 items |
+| Custom playlists | 100 playlists |
+| Tracks per playlist | 500 tracks |
+
+### Collaborative Playlists
+
+| Parameter | Limit |
+|-----------|-------|
+| Editors per playlist | 10 collaborators |
+| Invitation expiry | 7 days |
+| Pending invitations | 5 per playlist |
+| Re-invite after decline | Wait 24 hours |
+
+---
+
+## Following
+
+### Follow Limits
+
+| Timeframe | Limit |
+|-----------|-------|
+| Follows per hour | 50 |
+| Follows per day | 200 |
+| Total following | 5,000 accounts |
+
+### Follower Limits
+
+| Parameter | Value |
+|-----------|-------|
+| Max followers | No limit |
+
+---
+
+## Radio & Discovery
+
+### Radio Listening
+
+| Parameter | Limit |
+|-----------|-------|
+| Skip limit | 6 skips per hour |
+| Station requests | 30 per minute |
+| Concurrent streams | 1 per account |
+
+### Discovery
+
+| Parameter | Limit |
+|-----------|-------|
+| Search queries | 60 per minute |
+| Filter combinations | No limit |
+
+---
+
+## Streaming Quotas
+
+### Playback
+
+| Parameter | Limit |
+|-----------|-------|
+| Concurrent streams | 1 device at a time |
+| Monthly streaming | Unlimited |
+| Offline downloads | Purchased content only |
+
+### Data Usage
+
+| Quality | Approx. Usage |
+|---------|---------------|
+| Standard | ~1 MB/minute |
+| High Quality | ~2 MB/minute |
+| Data Saver | ~0.5 MB/minute |
+
+---
+
+## API Rate Limits
+
+For developers and technical users:
+
+| Route Group | Requests/Minute |
+|-------------|-----------------|
+| General API | 60 |
+| Producer Intelligence (public) | 300 |
+| Producer Intelligence (auth) | 500 |
+| Social Analytics | 120 |
+| Search | 60 |
+
+See [API Rate Limits](/api/rate-limits) for complete details.
+
+---
+
+## Account Limits
+
+### Profile
+
+| Parameter | Limit |
+|-----------|-------|
+| Username changes | 1 per 30 days |
+| Bio length | 500 characters |
+| Profile links | 5 external links |
+
+### Security
+
+| Parameter | Limit |
+|-----------|-------|
+| Login attempts | 5 per 15 minutes |
+| Password reset requests | 3 per hour |
+| Active sessions | 10 devices |
+
+---
+
+## Payment & Licensing
+
+### Purchases
+
+| Parameter | Limit |
+|-----------|-------|
+| Purchases per day | No hard limit |
+| Concurrent checkouts | 1 |
+| Payment retries | 3 attempts |
+
+### Payouts
+
+| Parameter | Value |
+|-----------|-------|
+| Minimum payout | $10 |
+| Payout frequency | Monthly |
+| Payout method changes | 1 per payout cycle |
+
+---
+
+## What Happens at Limits
+
+| Scenario | Behavior |
+|----------|----------|
+| Rate limit hit | 429 error; retry after cooldown |
+| Storage limit hit | Cannot save more items; remove old items first |
+| Daily limit hit | Wait until next day (UTC) |
+| Account limit hit | Feature disabled until resolved |
+
+### Rate Limit Headers
+
+API responses include rate limit information:
+
+```http
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 45
+X-RateLimit-Reset: 1700000000
+```
+
+---
+
+## Increasing Limits
+
+### Subscription Benefits
+
+| Feature | Free | Subscriber |
+|---------|------|------------|
+| Beat requests | 3 active | 10 active |
+| Priority support | Standard | Fast-track |
+| API rate limits | Standard | Elevated |
+
+### Special Requests
+
+For legitimate business needs exceeding standard limits:
+
+1. Contact support with your use case
+2. Explain why increased limits are needed
+3. Provide account verification if requested
+
+<Note>
+  Limit increases are granted on a case-by-case basis for verified business accounts.
+</Note>
+
+---
+
+## Abuse Prevention
+
+Attempting to circumvent rate limits may result in:
+
+| Violation | Consequence |
+|-----------|-------------|
+| Automated scraping | IP ban, account suspension |
+| Multi-account abuse | All accounts terminated |
+| API abuse | API access revoked |
+| Spam behavior | Account restrictions |
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="API Rate Limits" icon="gauge" href="/api/rate-limits">
+    Technical API throttling details.
+  </Card>
+  <Card title="Content Guidelines" icon="book" href="/legal/content-guidelines">
+    Community standards and enforcement.
+  </Card>
+</CardGroup>
