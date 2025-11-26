@@ -21,15 +21,29 @@ BeatPass rewards your work with a fair contribution-based revenue system. Upload
 
 ### What You Get
 
-| Benefit                     | Details                                                                                       |
-| --------------------------- | --------------------------------------------------------------------------------------------- |
-| **100% Revenue Share**      | 100% of subscription revenue goes to the producer pool (15% fee added on top for subscribers) |
-| **100% of License Sales**   | Keep 100% of your exclusive license prices (15% fee added on top for buyers)                  |
-| **Free Producer Access**    | No subscription required to upload and earn                                                   |
-| **BeatPassID Verification** | Your beats are fingerprinted for copyright protection                                         |
-| **Real-Time Analytics**     | Track plays, earnings, and audience insights                                                  |
-| **Unlimited Uploads**       | No limits on how many beats you can publish                                                   |
-| **Monthly Payouts**         | Automatic payouts via Stripe Connect                                                          |
+<CardGroup cols={2}>
+  <Card title="100% Revenue Share" icon="dollar-sign" color="#22c55e">
+    100% of subscription revenue goes to producers (15% fee added on top for subscribers)
+  </Card>
+  <Card title="100% of License Sales" icon="file-contract" color="#22c55e">
+    Keep 100% of your exclusive license prices (15% fee added on top for buyers)
+  </Card>
+  <Card title="Free Producer Access" icon="unlock">
+    No subscription required to upload and earn
+  </Card>
+  <Card title="BeatPassID Verification" icon="fingerprint">
+    Your beats are fingerprinted for copyright protection
+  </Card>
+  <Card title="Real-Time Analytics" icon="chart-line">
+    Track plays, earnings, and audience insights
+  </Card>
+  <Card title="Unlimited Uploads" icon="infinity">
+    No limits on how many beats you can publish
+  </Card>
+  <Card title="Monthly Payouts" icon="money-bill-wave">
+    Automatic payouts via Stripe Connect
+  </Card>
+</CardGroup>
 
 ### Eligibility Requirements
 
@@ -108,7 +122,7 @@ If rejected, you can reapply after addressing the issues:
 Before you begin:
 
 - Active BeatPass account with verified email
-- Original beats ready for upload (WAV or high-quality MP3)
+- Original beats ready for upload (WAV or FLAC — lossless only)
 - Basic metadata for each track (BPM, key, genre)
 - Acceptance of the Producer Agreement
 
@@ -178,14 +192,17 @@ Before you begin:
 
 ### Audio Requirements
 
-| Format | Quality  | Recommendation          |
-| ------ | -------- | ----------------------- |
-| WAV    | Lossless | Preferred for licensing |
-| MP3    | 320kbps+ | Acceptable minimum      |
-| FLAC   | Lossless | Accepted                |
+<CardGroup cols={2}>
+  <Card title="WAV" icon="file-audio" color="#22c55e">
+    **Lossless** — Preferred format
+  </Card>
+  <Card title="FLAC" icon="file-audio" color="#22c55e">
+    **Lossless Compressed** — Also accepted
+  </Card>
+</CardGroup>
 
 <Warning>
-  Low-quality audio affects your Quality Score and listener experience.
+  **Lossless formats only.** BeatPass does not accept MP3 or other compressed formats. This ensures the highest quality for streaming and licensed downloads.
 </Warning>
 
 ### Metadata Excellence
@@ -244,12 +261,20 @@ Your share of the subscription pool is based on:
 
 BeatPassID is our producer verification and content protection system:
 
-| Feature                        | Description                                                          |
-| ------------------------------ | -------------------------------------------------------------------- |
-| **Verified Badge**             | Blue checkmark displayed on your profile and tracks                  |
-| **Audio Fingerprinting**       | Your beats are fingerprinted for duplicate detection                 |
-| **License Certificates**       | Verifiable certificates with cryptographic signatures                |
-| **Beat Request Notifications** | Verified producers receive email notifications for new beat requests |
+<CardGroup cols={2}>
+  <Card title="Verified Badge" icon="badge-check">
+    Blue checkmark displayed on your profile and tracks
+  </Card>
+  <Card title="Audio Fingerprinting" icon="fingerprint">
+    Your beats are fingerprinted for duplicate detection
+  </Card>
+  <Card title="License Certificates" icon="certificate">
+    Verifiable certificates with cryptographic signatures
+  </Card>
+  <Card title="Beat Request Notifications" icon="bell">
+    Verified producers receive email alerts for new requests
+  </Card>
+</CardGroup>
 
 ### How to Get Verified
 
@@ -320,16 +345,24 @@ Verification is done through our Discord community:
 3. **Respond to requests** - Builds relationships with artists
 4. **Share externally** - Drive traffic from your socials
 
-### XP and Tiers
+### XP and Levels
 
 Earn XP through activity:
 
-| Action               | XP Earned  |
-| -------------------- | ---------- |
-| Upload track         | 100 XP     |
-| Track played         | 1 XP       |
-| Track saved          | 5 XP       |
-| Achievement unlocked | 100-500 XP |
+<CardGroup cols={2}>
+  <Card title="Upload Track" icon="upload">
+    **\+100 XP** per track
+  </Card>
+  <Card title="Track Played" icon="play">
+    **\+1 XP** per play
+  </Card>
+  <Card title="Complete Metadata" icon="tag">
+    **\+50 XP** for BPM, key, scale
+  </Card>
+  <Card title="Collaboration" icon="handshake">
+    **\+25 XP** per credit
+  </Card>
+</CardGroup>
 
 <Card title="XP & Levels" icon="chart-line" href="/contribution/xp-levels">
   Full guide to XP and tier progression.

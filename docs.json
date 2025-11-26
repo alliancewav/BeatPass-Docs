@@ -4,9 +4,12 @@
   "name": "BeatPass Help Center",
   "description": "Official documentation and help center for BeatPass - the beat licensing and music collaboration platform for producers, artists, and curators.",
   "colors": {
-    "primary": "#6366F1",
-    "light": "#818CF8",
-    "dark": "#4F46E5"
+    "primary": "#48B0E4",
+    "light": "#48B0E4",
+    "dark": "#94A3B8"
+  },
+  "appearance": {
+    "default": "system"
   },
   "favicon": "/favicon.svg",
   "styling": {
@@ -26,7 +29,7 @@
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "href": "https://beatpass.ca"
+    "href": "https://docs.beatpass.ca"
   },
   "navigation": {
     "tabs": [
@@ -141,7 +144,7 @@
         ]
       },
       {
-        "tab": "Contribution & Payouts",
+        "tab": "Earnings & Analytics",
         "icon": "coins",
         "groups": [
           {
@@ -158,15 +161,9 @@
               "contribution/eligibility",
               "contribution/disputes"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Analytics",
-        "icon": "chart-line",
-        "groups": [
+          },
           {
-            "group": "Insights",
+            "group": "Analytics",
             "pages": [
               "analytics/metrics",
               "analytics/dashboards",
@@ -197,21 +194,7 @@
         ]
       },
       {
-        "tab": "Legal",
-        "icon": "scale-balanced",
-        "groups": [
-          {
-            "group": "Policies",
-            "pages": [
-              "legal/copyright",
-              "legal/content-guidelines",
-              "legal/license-terms"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Support",
+        "tab": "Support & Legal",
         "icon": "circle-question",
         "groups": [
           {
@@ -237,6 +220,14 @@
               "support/account-actions",
               "support/accessibility",
               "support/policies"
+            ]
+          },
+          {
+            "group": "Legal",
+            "pages": [
+              "legal/copyright",
+              "legal/content-guidelines",
+              "legal/license-terms"
             ]
           }
         ]
@@ -318,7 +309,9 @@
   "contextual": {
     "options": [
       "copy",
-      "view"
+      "view",
+      "chatgpt",
+      "claude"
     ]
   },
   "seo": {

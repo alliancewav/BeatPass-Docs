@@ -23,10 +23,18 @@ BeatPass uses Stripe Connect to process producer payouts. This guide walks throu
 
 **Producers receive 100% of all revenue.** The 15% platform fee is added on top—paid by subscribers and buyers, not deducted from producers.
 
-| Revenue Source | Your Share | Platform Fee |
-|----------------|------------|-------------|
-| **Subscription pool** | 100% of base subscription | 15% added on top (paid by subscriber) |
-| **Exclusive license sales** | 100% of your listed price | 15% added on top (paid by buyer) |
+<CardGroup cols={2}>
+  <Card title="Subscription Pool" icon="users">
+    You receive **100%** of base subscription revenue
+    
+    *15% fee added on top (paid by subscriber)*
+  </Card>
+  <Card title="License Sales" icon="file-contract">
+    You receive **100%** of your listed price
+    
+    *15% fee added on top (paid by buyer)*
+  </Card>
+</CardGroup>
 
 <Tip>
   Both revenue streams use the same model: you get 100% of the base price, and BeatPass adds 15% on top for the customer.
@@ -108,12 +116,20 @@ Your share of the subscription pool is calculated by the [Contribution Formula](
 
 ### Verification Requirements
 
-| Document | Purpose |
-|----------|---------|
-| Government-issued ID | Identity verification |
-| Proof of address | Location verification (may be required) |
-| Tax ID (SSN/EIN/equivalent) | Tax reporting compliance |
-| Bank account | Where payouts are deposited |
+<CardGroup cols={2}>
+  <Card title="Government ID" icon="id-card">
+    Identity verification
+  </Card>
+  <Card title="Proof of Address" icon="location-dot">
+    Location verification (may be required)
+  </Card>
+  <Card title="Tax ID" icon="file-invoice">
+    SSN/EIN or equivalent for compliance
+  </Card>
+  <Card title="Bank Account" icon="building-columns">
+    Where payouts are deposited
+  </Card>
+</CardGroup>
 
 <Note>
   Requirements vary by country. Stripe guides you through exactly what's needed for your location.
@@ -125,23 +141,43 @@ Your share of the subscription pool is calculated by the [Contribution Formula](
 
 ### Understanding Status Labels
 
-| Status | Meaning |
-|--------|---------|
-| **Awaiting Transfer** | Split calculated, waiting to be sent to your Stripe account |
-| **Transfer In Progress** | Currently being transferred to your Stripe account |
-| **Paid** | Successfully transferred to your Stripe account |
-| **Transfer Failed** | Transfer encountered an error (see below) |
-| **Excluded** | Not eligible (no active Stripe account) |
+<AccordionGroup>
+  <Accordion title="Awaiting Transfer" icon="hourglass">
+    Split calculated, waiting to be sent to your Stripe account
+  </Accordion>
+  <Accordion title="Transfer In Progress" icon="spinner">
+    Currently being transferred to your Stripe account
+  </Accordion>
+  <Accordion title="Paid" icon="circle-check" color="#22c55e">
+    Successfully transferred to your Stripe account
+  </Accordion>
+  <Accordion title="Transfer Failed" icon="circle-xmark" color="#ef4444">
+    Transfer encountered an error (see troubleshooting below)
+  </Accordion>
+  <Accordion title="Excluded" icon="ban" color="#6b7280">
+    Not eligible (no active Stripe account)
+  </Accordion>
+</AccordionGroup>
 
 ### In Your Stripe Account
 
-| Stripe Status | Meaning |
-|---------------|---------|
-| **Pending** | Funds received but held (standard holding period) |
-| **Available** | Ready to be paid out to your bank |
-| **In Transit** | Payout initiated, traveling to your bank |
-| **Paid** | Deposited in your bank account |
-| **Failed** | Bank rejected the transfer |
+<AccordionGroup>
+  <Accordion title="Pending" icon="clock">
+    Funds received but held (standard holding period)
+  </Accordion>
+  <Accordion title="Available" icon="wallet">
+    Ready to be paid out to your bank
+  </Accordion>
+  <Accordion title="In Transit" icon="truck">
+    Payout initiated, traveling to your bank
+  </Accordion>
+  <Accordion title="Paid" icon="circle-check" color="#22c55e">
+    Deposited in your bank account
+  </Accordion>
+  <Accordion title="Failed" icon="circle-xmark" color="#ef4444">
+    Bank rejected the transfer
+  </Accordion>
+</AccordionGroup>
 
 ---
 
