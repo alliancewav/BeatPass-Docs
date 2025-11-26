@@ -768,27 +768,23 @@ data: {"type": "new_follower", "message": "...", "created_at": "..."}
 
 ---
 
-## Collections
+## Collections (Albums & Library)
 
-Collections are curated groups of tracks. All collection endpoints require authentication.
+There is no separate `/collections` resource in the public API. What the BeatPass UI calls **collections** are implemented as:
 
-| Method | Endpoint                       | Description                    |
-| ------ | ------------------------------ | ------------------------------ |
-| GET    | `/collections`                 | List all collections           |
-| GET    | `/collections/featured`        | Get featured collections       |
-| GET    | `/collections/user`            | Get current user's collections |
-| GET    | `/collections/recommendations` | Get recommended collections    |
-| POST   | `/collections`                 | Create a new collection        |
-| GET    | `/collections/{id}`            | Get collection details         |
-| PUT    | `/collections/{id}`            | Update a collection            |
-| DELETE | `/collections/{id}`            | Delete a collection            |
-| POST   | `/collections/{id}/play`       | Log collection play            |
+- **Albums** – canonical releases created by producers.
+- **Liked albums** – a users saved collections in their library.
 
-### Collection Visibility
+Use the following sections for API access:
 
-- **Public**: Visible to all users
-- **Private**: Only visible to the creator
-- **Featured**: Curated by platform editors (read-only for users)
+- [Albums](#albums) for listing and managing album data.
+- [User Profile & Library](#user-profile--library) for a users liked albums and playlists.
+
+For featured collections on the homepage and discovery surfaces, the client consumes:
+
+- `GET /api/v1/carousel/albums` (not listed in detail here) to fetch curated album carousels.
+
+Refer to the [Albums](#albums) table above for the primary album endpoints.
 
 ---
 

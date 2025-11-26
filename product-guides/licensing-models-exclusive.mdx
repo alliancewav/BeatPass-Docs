@@ -1,0 +1,304 @@
+---
+title: "Licensing Models & Exclusive Availability | BeatPass"
+description: "How Standard vs Exclusive licensing works on BeatPass, including Standard + Exclusive, Exclusive Only, exclusive presets, and what happens after an exclusive sale."
+keywords: ["exclusive license", "non-exclusive", "standard licensing", "exclusive sale", "licensing models", "beat licensing", "exclusive presets"]
+"og:title": "Licensing Models & Exclusive Availability - BeatPass Help Center"
+"og:description": "Understand Standard vs Standard + Exclusive vs Exclusive Only, how exclusive pricing and presets work, and what happens to your beat after an exclusive sale."
+"twitter:card": "summary_large_image"
+---
+
+## Overview
+
+BeatPass supports multiple **licensing models** per track so you can combine subscription-powered non-exclusive usage with one-time exclusive sales. This page explains how Standard, Standard + Exclusive, and Exclusive Only behave in the Backstage form and in the buyer experience.
+
+<Info>
+  **Audience:** Producers configuring licensing for their tracks (Backstage)
+</Info>
+
+For buyer-facing terms and legal definitions, see:
+
+- [License Terms Explained](/legal/license-terms)
+- [Beat Licensing Guide](/product-guides/licensing)
+
+---
+
+## Licensing Models at a Glance
+
+In Backstage, each track has a **Licensing Model** setting. It maps to the following internal values:
+
+| UI Label | Internal value | Description |
+|----------|----------------|-------------|
+| **Standard Licensing** | `non_exclusive_only` | Beat is available for non-exclusive use only (subscription / standard licensing). No direct exclusive sale is offered. |
+| **Standard + Exclusive** | `both` | Beat is available for both non-exclusive use and an optional exclusive purchase. |
+| **Exclusive Only** | `exclusive_only` | Beat is only available as an exclusive purchase (no new non-exclusive licenses). |
+
+<Note>
+  Non-exclusive ("Standard") licenses on BeatPass are **not customized per track**. They follow the platforms standard non-exclusive terms described in [License Terms Explained](/legal/license-terms) and [Beat Licensing Guide](/product-guides/licensing).
+</Note>
+
+---
+
+## Standard Licensing (Non-Exclusive Only)
+
+**When to use:** You want people to stream and download your beat non-exclusively (for example, via subscription), and you **do not** want to sell exclusives for this track.
+
+- **Licensing Model:** `Standard Licensing` (non-exclusive only)
+- **Availability:**
+  - Beat remains in the catalog.
+  - Subscribers can download and receive non-exclusive licenses per BeatPass standard terms.
+- **Exclusive price & config:**
+  - Exclusive-specific fields are hidden or ignored in this mode.
+
+This is the safest default for catalog tracks you plan to keep widely available.
+
+---
+
+## Standard + Exclusive
+
+**When to use:** You want to keep earning from non-exclusive usage **and** optionally sell a one-time exclusive license.
+
+- **Licensing Model:** `Standard + Exclusive` (`both`)
+- **Before exclusive sale:**
+  - Subscribers and non-exclusive buyers can obtain non-exclusive licenses.
+  - An exclusive buyer can purchase once if you set:
+    - **Exclusive price** and **currency**
+    - A valid **exclusive license configuration** (preset or custom)
+- **After exclusive sale:**
+  - The tracks `exclusive_status` is set to **Sold**.
+  - Backstage locks exclusive pricing and availability controls.
+  - **No new non-exclusive licenses** are issued after the exclusive sale.
+  - Existing non-exclusive licenses remain valid for their full terms.
+  - Download access is limited to:
+    - The exclusive buyer, and
+    - The tracks artists/owners.
+
+<Warning>
+  Treat exclusives as **final**. Once a track is sold exclusively, BeatPass blocks new non-exclusive licenses and restricts downloads to the exclusive buyer and owners. Existing non-exclusive licenses issued before the exclusive sale remain valid and are not revoked.
+</Warning>
+
+---
+
+## Exclusive Only
+
+**When to use:** You want to offer a track only as a high-value exclusive and not include it in non-exclusive catalogs.
+
+- **Licensing Model:** `Exclusive Only` (`exclusive_only`)
+- **Before exclusive sale:**
+  - The track can be discoverable (streamed) depending on your global settings.
+  - No non-exclusive licenses are issued; usage is tied to the exclusive purchase.
+- **Exclusive availability:**
+  - Controlled by **Exclusive Status**:
+    - **Available**  track can be purchased exclusively.
+    - **Private (Not available)**  exclusive purchase button is disabled; you can still keep the track online or private in your catalog.
+- **After exclusive sale (status = Sold):**
+  - Same post-sale rules as Standard + Exclusive:
+    - No new licenses are issued.
+    - Only the exclusive buyer and owners can download.
+
+There is no separate "offer only" or "price on request" mode today. If you want to discuss custom pricing, use your profile/contact info and keep the status set to **Private** until youre ready to enable the exclusive price publicly.
+
+---
+
+## Exclusive Pricing & Availability (Backstage UI)
+
+In the **Exclusive Pricing & Availability** section of the Backstage track form, you control how exclusive sales appear.
+
+Key fields:
+
+- **Exclusive Price**
+  - One-time upfront amount the buyer pays for the exclusive.
+  - Must be greater than 0 to enable purchases.
+
+- **Currency**
+  - One of the supported major currencies (for example, USD, EUR, GBP, CAD).
+  - Determines the checkout currency for exclusive purchases.
+
+- **Contact Email for Licensing Inquiries**
+  - Shown to potential buyers.
+  - Auto-filled from your account email if left blank.
+
+- **Exclusive Status**
+  - **Available**  exclusive purchase is offered.
+  - **Sold**  exclusive has been purchased; pricing and status are locked.
+  - **Private**  exclusive is not currently offered, even if a price is set.
+
+<Note>
+  The combination of **Licensing Model** and **Exclusive Status** controls whether an exclusive can be purchased:
+
+  - `Standard + Exclusive` or `Exclusive Only` **and** status = `Available` and a valid price/config = **purchasable**.
+  - Status = `Private` or `Sold` = **not purchasable**.
+</Note>
+
+---
+
+## Exclusive License Configuration
+
+Exclusive licenses on BeatPass are customizable by the producer. The configuration controls **what rights buyers receive** when they purchase exclusively.
+
+Configuration covers:
+
+- **Publishing split** (producer vs licensee percentages)
+- **Territory & governing law**
+- **Distribution and streaming caps** (typically set to unlimited)
+- **Video and broadcast rights**
+- **Performance rights** (for-profit and non-profit)
+- **Files to deliver** (e.g., WAV, tagged WAV, MP3s, stems, multitracks, MIDI)
+- **Producer royalty percentage**
+- Flags such as **exclusive rights**, **transferability**, and **content ID registration**.
+
+When an exclusive license is issued:
+
+- BeatPass stores a **snapshot** of the exact terms at the time of purchase.
+- Future changes to your presets/configuration do **not** alter existing certificates; they only affect **later** licenses.
+
+For legal wording of these rights, see [License Terms Explained](/legal/license-terms).
+
+---
+
+## Exclusive Presets & Defaults
+
+To avoid re-configuring every track from scratch, you can use **presets** and **defaults**.
+
+- **Exclusive License Presets**
+  - Saved templates that include a full exclusive configuration.
+  - Managed under **Backstage → Settings → License Presets**.
+  - Each preset tracks how many tracks are using it.
+
+- **Artist Default Exclusive Config**
+  - A personal default exclusive configuration stored for your account.
+  - Used to auto-populate new tracks when you enable exclusive licensing.
+
+### How They Interact with the Track Form
+
+When you open the exclusive configuration for a track:
+
+1. If the track already has a custom config, that config is shown.
+2. Otherwise, if you have a saved **artist default**, it is applied.
+3. If not, BeatPass falls back to the **system default** exclusive config.
+
+You can then:
+
+- Select a different preset to overwrite the config for that track.
+- Click **Use Default** to reset to the global default.
+
+<Note>
+  Presets and defaults only control the **terms** of an exclusive license. They do **not** change your Standard (non-exclusive) subscription license, which remains fixed and managed by BeatPass.
+</Note>
+
+---
+
+## What Happens When an Exclusive Sells?
+
+When an exclusive purchase succeeds:
+
+- The tracks **exclusive status** is set to **Sold**.
+- Backstage locks:
+  - Licensing Model options that would re-enable non-exclusive sales
+  - Exclusive status and price
+  - Exclusive currency and buyer info fields
+- BeatPass generates an **exclusive license certificate** with:
+  - The buyers info
+  - The track details
+  - The snapshot of exclusive terms
+  - A linkable verification ID
+
+### Impact on Other Listeners
+
+- **New non-exclusive licenses**
+  - Are **no longer issued** after the exclusive sale.
+  - Subscribers cannot newly download/licence the beat once it is sold exclusively.
+
+- **Existing non-exclusive licenses**
+  - **Remain valid** for their original terms.
+  - They are not revoked or downgraded.
+
+- **Downloads**
+  - Allowed for:
+    - The exclusive buyer (with an active exclusive license), and
+    - The tracks artists/owners.
+  - Blocked for other users, even if they subscribe.
+
+<Warning>
+  Selling exclusives on popular catalog beats can permanently restrict future non-exclusive monetization. Consider using **Standard + Exclusive** with careful pricing and timing if you want to earn from both phases (non-exclusive first, exclusive later).
+</Warning>
+
+---
+
+## Coupons, Taxes & Pricing Behavior
+
+Direct track purchases (including exclusives) use a simple pricing model:
+
+- **Track price**
+  - For exclusives: `exclusive_price`.
+  - For non-exclusive direct sales (if offered): `price`.
+- **Platform fee**
+  - A percentage added **on top** of your price.
+  - Kept by BeatPass to fund the platform.
+- **Artist amount**
+  - Equal to your base track price; Stripe processing fees are deducted from this portion.
+
+The `POST /tracks/{track}/purchase/calculate-price` API returns:
+
+- `track_price`, `platform_fee`, `total_amount`, `artist_amount`, `currency`.
+
+### Coupons & Discounts
+
+- Today, BeatPass does **not** apply coupons or promotional discounts directly to track purchases.
+- Any coupons you see in the app apply to subscriptions or other flows, not to exclusive track pricing.
+
+### Taxes & VAT
+
+- Any applicable taxes are handled by Stripe based on your and the buyers region and account configuration.
+- They are not itemized in the `calculate-price` response; tax lines appear in Stripes checkout.
+
+For a deeper look at subscription revenue and platform fees, see [Plans & Subscriptions](/account/plans-subscriptions).
+
+---
+
+## FAQ: Common Licensing Scenarios
+
+<AccordionGroup>
+  <Accordion title="What happens to my non-exclusive buyers if I sell an exclusive?">
+    Existing non-exclusive licenses remain valid for their full terms. The exclusive sale **stops new non-exclusive licenses from being issued**, but it does not cancel or downgrade licenses that were granted before the exclusive sale.
+  </Accordion>
+  
+  <Accordion title="Can I pause exclusive availability without unlisting my track?">
+    Yes. Set your **Exclusive Status** to **Private** (Not available). This keeps the track online (for streaming and any allowed non-exclusive usage) while hiding the exclusive purchase option.
+  </Accordion>
+  
+  <Accordion title="Can I re-enable standard sales after an exclusive sale?">
+    No. Once a track is sold exclusively and marked as **Sold**, BeatPass treats that sale as final:
+    
+    - New non-exclusive licenses are not issued.
+    - The track cannot be re-opened for fresh non-exclusive or exclusive sales through normal Backstage controls.
+    
+    Existing non-exclusive licenses granted before the exclusive sale remain valid.
+  </Accordion>
+  
+  <Accordion title="Do subscription downloads count as non-exclusive licenses?">
+    Yes. When a subscriber downloads a beat that supports non-exclusive licensing, they receive a non-exclusive license under BeatPasss standard terms. These licenses remain valid even if the track is later sold exclusively.
+  </Accordion>
+  
+  <Accordion title="Can coupons apply to exclusive purchases?">
+    Not currently. Track purchasesincluding exclusivesdo not support promotional coupons or discounts in the checkout flow. Any coupons you see apply to subscriptions or other non-track flows.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Backstage Track Form" icon="sliders" href="/product-guides/tracks-upload-edit">
+    Learn how to configure all track fields, including licensing, before you publish.
+  </Card>
+  <Card title="License Terms" icon="scale-balanced" href="/legal/license-terms">
+    Read the full legal terms for non-exclusive and exclusive licenses.
+  </Card>
+  <Card title="Licensing Guide" icon="file-contract" href="/product-guides/licensing">
+    See end-to-end examples for buyers and producers.
+  </Card>
+  <Card title="Plans & Subscriptions" icon="credit-card" href="/account/plans-subscriptions">
+    Understand how subscription tiers interact with non-exclusive licensing.
+  </Card>
+</CardGroup>

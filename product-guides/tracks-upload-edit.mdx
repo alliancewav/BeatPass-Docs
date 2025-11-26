@@ -1,0 +1,279 @@
+---
+title: "Tracks: Upload & Edit (Backstage) | BeatPass"
+description: "How producers upload, edit, and manage tracks in Backstage, including form fields, processing, duplicates, and post-publish rules."
+keywords: ["backstage","upload tracks","edit tracks","producer dashboard","track form","audio fingerprint","waveform","duplicate detection"]
+og:title: "Tracks: Upload & Edit (Backstage) - BeatPass Help Center"
+og:description: "Step-by-step guide to uploading and editing tracks in Backstage, with details on required fields, processing, and editing after publish."
+twitter:card: "summary_large_image"
+---
+
+## Overview
+
+Backstage is where producers upload, edit, and manage their tracks. This guide explains the Backstage track form, how processing works (waveforms, fingerprints, duplicates), and what you can safely edit after publishing.
+
+<Info>
+  **Audience:** Producers with Backstage access (uploading/managing beats)
+</Info>
+
+---
+
+## Access & Where to Edit
+
+- **Upload new track**
+  - Go to **Backstage → Tracks → New Track**.
+- **Edit an existing track**
+  - Go to **Backstage → Tracks**, search or filter, then click **Edit** on a track.
+- **Posting & visibility**
+  - Track visibility on the public catalog is controlled by a combination of:
+    - Whether the track is uploaded and saved
+    - Whether you or BeatPass choose to feature/pin it
+    - Optional posting/video tools (for social clips)
+
+> This page focuses on the **Backstage form experience** (uploading/editing). For licensing options and what fans see when you enable Standard vs Exclusive, see [Licensing Models & Exclusive Availability](/product-guides/licensing-models-exclusive).
+
+---
+
+## Track Form: Required vs Optional Fields
+
+### Core Metadata
+
+These fields are required for a valid track and enforced by the backend.
+
+- **Track Name**
+  - Required, 1–255 characters.
+  - The title must be a **clean name** (no file extensions, metadata, or artist names). Obvious file names like `Beat_v3_final.mp3` will be rejected.
+- **Artists**
+  - At least **one artist** is required.
+  - The uploader can be added via a "current user" shortcut; collaborators can be added by searching existing profiles.
+  - Saved tracks store a primary artist plus collaborators and use this for ownership, payouts, and analytics.
+- **Music Properties**
+  - **Key** – Single selection (e.g., `C`, `D# / Eb`, `A# / Bb`).
+  - **Scale** – `Major` or `Minor`.
+  - **BPM** – Integer tempo. The system expects values in a typical modern range (about 60–200 BPM).
+- **Duration**
+  - Internally stored in **milliseconds**.
+  - Displayed in minutes:seconds on the public site.
+
+### Recommended Metadata
+
+These fields are optional but highly recommended; they improve search, recommendations, and AI features.
+
+- **Description** – A short paragraph describing mood, use case, and sonic references.
+- **Album** – Attach the track to an existing album or project (if you manage albums).
+- **Genres** – Primary styles (e.g., Trap, R&B, Drill). You can mix canonical genres with custom tags.
+- **Tags** – Additional descriptors (e.g., "dark", "guitar", "club"). Helpful for search and playlists.
+
+---
+
+## Cover Art
+
+Cover art is required for new tracks and helps keep the catalog visually consistent.
+
+- **New tracks**
+  - You must select or upload cover art on first save.
+- **Existing tracks**
+  - You can replace cover art later; it will update wherever the track appears.
+
+### Manual vs Auto Cover Art
+
+- **Manual mode**
+  - You upload a custom image or pick from your existing assets.
+  - Any AI/automatic cover-art template is cleared; the track uses your explicit image.
+- **Auto mode (AI/preset-based)**
+  - You can select an AI preset or let BeatPass auto-pick a cover template.
+  - The system applies a generated cover using the chosen template and track metadata (title, artists, genres).
+
+<Note>
+  Recommended specs (dimensions, aspect ratio, safe areas) may evolve over time. See the design guidelines in Backstage when you select or upload art for the latest recommendations.
+</Note>
+
+---
+
+## Audio Upload & Files
+
+The track form is connected to an upload button that handles audio file upload and storage.
+
+- **Supported formats**
+  - Lossless audio is recommended (for example, WAV or FLAC) for best quality.
+- **File size & duration**
+  - There is no strict, hard-coded per-track size cap in the upload form.
+  - For a smooth experience, aim for **files under ~100MB and under ~15 minutes**; very large files may be constrained by browser, connection, or infrastructure.
+- **Single mixdown per track**
+  - Backstage currently treats each track as a single main audio file. Alternate versions and stems are managed via exclusive license deliverables or manual delivery.
+
+<Warning>
+  If upload stalls or fails repeatedly, check:
+
+  - Your network connection
+  - Browser/network upload limits
+  - Any proxy or VPN that might interrupt long uploads
+</Warning>
+
+---
+
+## Processing: Waveforms & Fingerprints
+
+### Waveform Generation
+
+BeatPass stores a **waveform JSON file** per track:
+
+- When you upload a track (or the UI provides wave data), Backstage sends waveform data to the backend.
+- The backend writes the waveform to `waves/{trackId}.json` on its internal storage.
+- The public player and analytics use this file to render the waveform and for some timing UI.
+
+> If a waveform fails to generate, your track can still be streamed and licensed. The visual waveform may appear missing or fall back to a basic placeholder until regenerated.
+
+### Audio Fingerprinting
+
+BeatPass creates an **audio fingerprint** to:
+
+- Detect duplicates across the catalog
+- Anchor license certificates to a specific recording
+- Improve rights management and dispute resolution
+
+Key behaviors:
+
+- A fingerprint is generated when the track has a valid audio source URL.
+- On **re-upload** (when you change the source file), the fingerprint is refreshed.
+- Failure to fingerprint is logged but does **not** block the upload itself.
+
+The following API endpoints power this system (for reference):
+
+- `POST /tracks/{track}/fingerprint` – generate a fingerprint
+- `GET /tracks/{track}/fingerprint/status` – check status
+- `POST /tracks/check-duplicates` – check for potential duplicates before publishing
+
+<Warning>
+  Fingerprinting must succeed before a license can be generated for that track. If you see errors about missing fingerprints when licensing, re-run fingerprinting or contact support.
+</Warning>
+
+---
+
+## Duplicate Detection
+
+BeatPass uses the fingerprint to detect potential duplicate uploads:
+
+- When you upload or re-upload audio, the backend checks for existing tracks with a matching fingerprint.
+- If a strong match is found, the system may:
+  - Reject the upload as a duplicate
+  - Flag it for review (depending on internal rules)
+
+Common reasons a track is flagged:
+
+- Re-uploading the exact same mix as a new track instead of editing the existing one
+- Uploading someone elses beat from another platform
+- Attempted spam uploads or mirrored content
+
+<Note>
+  If you are re-uploading your **own** track (for example, to fix a mix), edit the existing track in Backstage rather than creating a duplicate. This preserves analytics, playlists, and licenses.
+</Note>
+
+---
+
+## Collections & Relationships
+
+Backstage lets you connect tracks to other entities on BeatPass.
+
+- **Albums**
+  - Attach tracks to albums or projects you manage.
+  - Album ownership is validated; you can only add tracks to albums you own or are linked to as an artist.
+- **Playlists**
+  - After uploading, you can add tracks to playlists for promotion and curation.
+- **Pinned Track on Artist Page**
+  - The pinned track feature is managed via separate controls (not the upload form itself), but the underlying track metadata comes from this form.
+
+Edits you make in Backstage (title, cover, artists, genres, etc.) propagate to:
+
+- Search and recommendations
+- Artist and album views
+- Personalized radios and playlists
+
+---
+
+## Licensing Fields (High-Level)
+
+Backstage includes a dedicated **Licensing** section in the track form.
+
+- **Licensing Model**
+  - Standard only (non-exclusive)
+  - Standard + Exclusive
+  - Exclusive Only
+- **Exclusive Pricing & Availability** (only when exclusive is enabled)
+  - Exclusive price and currency
+  - Contact email for licensing inquiries
+  - Exclusive status (Available, Sold, or Private)
+- **Exclusive License Configuration**
+  - Optional advanced form that controls exclusive license terms (publishing split, territory, deliverables, royalty, etc.).
+  - Can be populated from **presets** or your **artist default configuration**.
+
+For a full explanation of how these options affect buyers and what happens when an exclusive sells, see [Licensing Models & Exclusive Availability](/product-guides/licensing-models-exclusive).
+
+---
+
+## Editing After Publish
+
+You can safely edit most metadata after a track is live:
+
+- **Always editable**
+  - Title, description
+  - Artists and collaborators (subject to ownership rules)
+  - Genres and tags
+  - Album assignment
+  - Cover art
+- **Audio re-uploads**
+  - You can replace the underlying audio file by re-uploading.
+  - The new file will be used for future streams and downloads.
+  - Existing license certificates keep their original **terms** but point to the current audio file.
+
+### After Exclusive Sale
+
+Once a track has been sold exclusively:
+
+- The track's exclusive status is set to **Sold**.
+- Exclusive pricing and availability fields become locked in the Backstage form.
+- No new non-exclusive licenses are issued.
+- Existing non-exclusive licenses remain valid (they are not revoked).
+- Download access is restricted to:
+  - The exclusive buyer
+  - The tracks artists/owners
+
+<Warning>
+  Treat exclusive sales as **final**. If you intend to keep a beat available to subscribers or non-exclusive buyers, use the **Standard + Exclusive** model and plan your exclusive pricing carefully.
+</Warning>
+
+---
+
+## Common Errors & How to Fix Them
+
+- **"Cover art is required"**
+  - Upload or select cover art before saving a new track.
+- **"Could not automatically determine track artists"**
+  - Add at least one artist manually in the Artists field.
+- **Title validation errors (file names, metadata)**
+  - Rename the track to a clean, listener-facing title (e.g., `Night Drive`, not `NightDrive_FinalMix_v3.wav`).
+- **Exclusive licensing validation errors**
+  - Ensure the licensing model and exclusive fields are consistent:
+    - If you enable exclusive, provide a price and contact email.
+    - Make sure your exclusive license configuration has a valid governing law country and publishing split.
+- **Duplicate or fingerprint errors**
+  - If you intentionally re-uploaded your own track, edit the existing record instead of creating a new one.
+  - If you receive a duplicate warning for a track you believe is original, contact support with details.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Licensing Models" icon="file-contract" href="/product-guides/licensing-models-exclusive">
+    Learn how Standard vs Exclusive models behave after publishing.
+  </Card>
+  <Card title="Licensing Guide" icon="file-certificate" href="/product-guides/licensing">
+    Understand license types, certificates, and buyer experience.
+  </Card>
+  <Card title="Producer Analytics" icon="chart-line" href="/analytics/dashboards">
+    See how your tracks perform after upload.
+  </Card>
+  <Card title="First Payout Checklist" icon="dollar-sign" href="/getting-started/first-payout-checklist">
+    Make sure you're set up to receive earnings.
+  </Card>
+</CardGroup>

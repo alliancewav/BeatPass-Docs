@@ -1,215 +1,197 @@
 ---
 title: "Collections"
-description: "Organize and discover curated groups of tracks on BeatPass."
+description: "Organize and discover curated albums (collections) on BeatPass."
 ---
 
 ## Overview
 
-Collections are curated groups of tracks that help organize and showcase content on BeatPass. They differ from playlists in that they're designed for discovery and curation rather than personal listening queues.
+On BeatPass, **Collections** are how we present **albums**: curated releases of beats from one or more producers.
+They are tied to artists, have a fixed tracklist defined by the creators, and power carousels and discovery experiences across the platform.
 
 <Info>
-  **Audience:** All users (creation requires authentication)
+  **Audience:** Listeners and producers  
+  **Create/edit:** Only producers (via album upload & edit tools). Listeners can save and play collections but can't change their contents.
 </Info>
 
 ---
 
 ## Types of Collections
 
-### User Collections
+### Your Collections (Liked Albums)
 
-Collections you create to organize tracks:
+When you like an album, it becomes part of **your collections**:
 
-| Feature | Description |
-|---------|-------------|
-| **Public** | Visible to all users, appears in search |
-| **Private** | Only visible to you |
+- Appears in **Library → Albums** as “Your favorite collections”.
+- Lets you quickly reopen the album page and play all tracks.
+- Does **not** change the album for other users.
 
-### Collection Limits
-
-| Limit | Value |
-|-------|-------|
-| Max collections per user | 50 |
-| Max tracks per collection | 200 |
-| Name length | 100 characters |
-| Description length | 500 characters |
+| Action | Effect |
+|--------|--------|
+| **Like an album** | Adds the collection to your library |
+| **Unlike an album** | Removes it from your library (album itself remains available) |
 
 ### Featured Collections
 
-Platform-curated collections showcasing:
+BeatPass highlights selected albums as featured collections in:
 
-- New releases
-- Genre spotlights
-- Trending tracks
-- Seasonal content
+- Home page carousels
+- Discovery sections
+- Genre or mood-based channels
 
 <Note>
-  Featured collections are curated by BeatPass editors and cannot be created by users.
+  Featured collections are curated by BeatPass using editorial choices and platform analytics. They can't be created or edited directly by listeners.
 </Note>
 
-### How Featured/Recommended Are Chosen
+---
 
-| Type | Selection Method |
-|------|------------------|
-| **Featured** | Editorial curation by BeatPass team based on quality, relevance, and timeliness |
-| **Recommended** | Algorithmic suggestions based on your listening history, followed artists, and genre preferences |
+## How Collections Are Created
 
-Featured collections appear on the homepage and discovery pages. Recommendations are personalized and shown in your feed.
+Collections are created when producers upload and manage **albums**.
+
+### For Producers
+
+Albums are created via the upload/backstage tools:
+
+1. Upload beats as tracks.
+2. Group tracks into an album.
+3. Set album name, cover art, release date, genres, and tags.
+4. Publish the album to make it available on BeatPass.
+
+Under the hood, albums are stored as `Album` records with related `Track`, `Artist`, `Tag`, and `Genre` data. 
+The platform surfaces these albums as “collections” in:
+
+- Artist discography panels
+- Library → Albums
+- Collection carousels (featured/recommended)
+
+### For Listeners
+
+Listeners **do not** create new collection objects directly. Instead, you:
+
+- Discover collections via home, search, channels, and artist pages.
+- Like collections (albums) you enjoy to keep them in your library.
+- Use **playlists** to create your own flexible, cross-album groupings of tracks.
 
 ---
 
-## Creating a Collection
+## Working With Collections
 
-<Steps>
-  <Step title="Navigate to Collections">
-    Go to your profile or the Collections section.
-  </Step>
-  
-  <Step title="Click Create Collection">
-    Start a new collection.
-  </Step>
-  
-  <Step title="Add Details">
-    | Field | Description |
-    |-------|-------------|
-    | Name | Collection title |
-    | Description | What the collection is about |
-    | Cover Image | Optional custom artwork |
-    | Visibility | Public or private |
-  </Step>
-  
-  <Step title="Add Tracks">
-    Browse or search for tracks to add.
-  </Step>
-  
-  <Step title="Save">
-    Your collection is now available.
-  </Step>
-</Steps>
+### What You Can and Can't Change
 
----
+As a **listener**:
 
-## Managing Collections
+- You **can**:
+  - Like or unlike collections.
+  - Play the full collection or individual tracks.
+  - Add tracks from a collection into your own playlists.
+- You **cannot**:
+  - Change the collection track order.
+  - Remove or add tracks directly to a collection.
+  - Edit the collection’s name, image, or description.
 
-### Adding Tracks
+As a **producer/album owner**:
 
-Add tracks to your collections from:
-
-- Track page (click "Add to Collection")
-- Search results
-- Artist pages
-- Within the collection editor
-
-### Reordering Tracks
-
-Drag and drop tracks within a collection to change their order.
-
-### Editing Collections
-
-Update collection details anytime:
-
-1. Open the collection
-2. Click **Edit**
-3. Modify name, description, or visibility
-4. Save changes
-
-### Deleting Collections
+- You can edit album metadata and tracklist via the album editor:
+  - Change track order (track `number`).
+  - Add or remove tracks from the album.
+  - Update artwork, description, and tags.
+- Deleting an album removes the collection and its tracks from discovery for all users.
 
 <Warning>
-  Deleting a collection is permanent. The tracks themselves are not affected.
+  Deleting a collection (album) is permanent for listeners.  
+  Saved references (likes, library entries) will no longer be playable because the underlying album and its tracks are removed.
 </Warning>
-
-1. Open the collection
-2. Click **Delete**
-3. Confirm deletion
 
 ---
 
 ## Discovering Collections
 
-### Browse Featured
+### Browse & Home
 
-Explore platform-curated collections on the home page and discovery sections.
+- See featured collections in carousels on the homepage.
+- Explore genre or mood-based channels that surface curated collections.
 
 ### Search
 
-Search for collections by name or description.
+- Search by album/collection name.
+- Search by artist to browse their discography (albums/collections).
+- Use tags and genres to find collections that match specific moods or styles.
 
-### Recommendations
+### Library
 
-BeatPass suggests collections based on:
-
-- Your listening history
-- Followed artists
-- Genre preferences
+- Go to **Library → Albums** to view:
+  - Albums you’ve liked.
+  - Quick access to your favorite collections.
 
 ---
 
 ## Collections vs Playlists
 
-| Feature | Collections | Playlists |
-|---------|-------------|-----------|
-| **Purpose** | Curation & discovery | Personal listening |
-| **Visibility** | Public/private | Public/private |
-| **Featured** | Can be featured | Not featured |
-| **Playback** | Browse-focused | Queue-focused |
-| **Collaboration** | Single owner | Can invite editors |
+| Feature | Collections (Albums) | Playlists |
+|---------|----------------------|-----------|
+| **Source** | Created and owned by producers as album releases | Created by listeners or curators |
+| **Contents** | Fixed tracklist defined by the creator | Any tracks from any albums |
+| **Editing** | Only album owners/linked artists can edit | Owner and invited editors (on collaborative playlists) can edit |
+| **Visibility** | Public, appear in artist pages, search, and carousels | Private or public; public playlists may show up in search and library views |
+| **Collaboration** | No collaboration; tracklist controlled by the creator | Optional collaboration via invites on collaborative playlists |
+| **Use case** | Canonical releases, discography, catalog organization | Personal or team curation, project buckets, mood/genre mixes |
+
+If you want to **change track order or mix tracks from multiple producers**, use a **playlist** instead of a collection.
 
 ---
 
-## API Access
+## API Access (Albums as Collections)
 
-Collections are accessible via the API for authenticated users.
+Collections map to **albums** in the API.
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/collections` | List collections |
-| GET | `/collections/featured` | Featured collections |
-| GET | `/collections/recommendations` | Personalized suggestions |
-| POST | `/collections` | Create collection |
-| PUT | `/collections/{id}` | Update collection |
-| DELETE | `/collections/{id}` | Delete collection |
+| GET | `/api/v1/albums` | List albums (collections) with filters and sorting |
+| GET | `/api/v1/albums/{album}` | Get one album with its tracks and metadata |
+| GET | `/api/v1/users/{user}/liked-albums` | Get a user’s liked albums (their saved collections) |
+| GET | `/api/v1/carousel/albums` | Get featured albums for collection carousels |
 
-For full API documentation, see [API Endpoints - Collections](/api/endpoints#collections).
+For full API documentation, see [API Endpoints - Albums](/api/endpoints#albums).
 
 ---
 
 ## Best Practices
 
-### For Creators
+### For Producers
 
 <AccordionGroup>
-  <Accordion title="Use Descriptive Names">
-    Choose names that clearly communicate the collection's theme or purpose.
+  <Accordion title="Use descriptive collection titles">
+    Choose names that clearly communicate the release’s theme or concept.
   </Accordion>
   
-  <Accordion title="Write Good Descriptions">
-    Help users understand what they'll find—genre, mood, use case.
+  <Accordion title="Write helpful descriptions">
+    Explain the story, genre, mood, and ideal use cases for the collection.
   </Accordion>
   
-  <Accordion title="Curate Thoughtfully">
-    Quality over quantity. A focused 20-track collection often outperforms a random 100-track dump.
+  <Accordion title="Keep metadata clean">
+    Accurate genres, tags, and artwork improve discovery and recommendations.
   </Accordion>
   
-  <Accordion title="Update Regularly">
-    Keep collections fresh by adding new releases and removing outdated tracks.
+  <Accordion title="Update rather than duplicate">
+    If you need to adjust an album, use the editor where possible instead of creating near-duplicates.
   </Accordion>
 </AccordionGroup>
 
 ### For Listeners
 
-- Follow collections you enjoy to get updates
-- Use collections to discover new artists
-- Check featured collections for platform highlights
+- Like collections you enjoy to keep them in **Library → Albums**
+- Use playlists for custom sequences, A/B testing beats, or cross-artist mixes
+- Check featured collections regularly to discover new producers and sounds
 
 ---
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Playlists" icon="list-music" href="/product-guides/releases">
-    Create personal listening queues.
+  <Card title="Playlists" icon="list-music" href="/product-guides/playlists-following">
+    Learn how to build personal and collaborative playlists.
   </Card>
-  <Card title="Discovery" icon="compass" href="/overview/platform-map">
-    Explore the platform.
+  <Card title="Releases & Uploading" icon="upload" href="/product-guides/tracks-upload-edit">
+    See how producers create albums and manage their catalog.
   </Card>
 </CardGroup>
