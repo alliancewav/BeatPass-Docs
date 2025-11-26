@@ -9,11 +9,7 @@ twitter:card: "summary_large_image"
 twitter:title: "BeatPass Help Center - Documentation & Support"
 ---
 
-BeatPass is a **music licensing and beat marketplace** that connects producers who create beats with artists who need them, powered by a fair contribution-based revenue system. 
-
-<Frame>
-  ![Hero Banner Jp](/images/hero-banner.jpg)
-</Frame>
+BeatPass is a **music licensing and beat marketplace** that connects producers who create beats with artists who need them, powered by a fair contribution-based revenue system.
 
 <CardGroup cols={3}>
   <Card title="Upload & Earn" icon="upload" href="/product-guides/uploads">
@@ -58,8 +54,8 @@ BeatPass is a **music licensing and beat marketplace** that connects producers w
   <Accordion title="How do I earn money on BeatPass?" defaultOpen icon="coins">
     Producers earn through two revenue streams:
 
-    1. **Contribution Pool** — Your share of monthly subscription revenue based on plays, engagement quality, and recency
-    2. **Direct License Sales** — Keep 100% of your listed price when artists purchase exclusive or non-exclusive licenses
+    1. **Contribution Pool**: Your share of subscription revenue based on plays, engagement quality, and recency, funded from each paid subscription invoice
+    2. **Direct License Sales**: Earnings from exclusive license purchases. Buyers pay your listed price plus a platform fee; you receive the price you set minus Stripe processing fees.
 
     <Card title="Learn the Contribution Formula" icon="calculator" horizontal href="/contribution/formula">
       
@@ -99,12 +95,11 @@ BeatPass is a **music licensing and beat marketplace** that connects producers w
     </Card>
   </Accordion>
   <Accordion title="When do I get paid?" icon="credit-card">
-    Payouts are processed monthly via Stripe Connect:
+    Payout timing depends on what you're earning from:
 
-    - **Earnings accumulate** throughout the month
-    - **Calculations finalize** on the 1st-5th
-    - **Transfers sent** within 1 week
-    - **Minimum threshold**: \$10 USD
+    - **License sales**  Funds flow to your Stripe Connect account after each successful purchase (minus fees), then to your bank according to your Stripe payout schedule
+    - **Subscription splits**  Calculated after each paid subscription invoice (`invoice.paid`) and transferred via Stripe Connect
+    - **Minimum threshold**: \$10 USD (or regional equivalent)
 
     <Card title="Payout Details" icon="money-bill" horizontal href="/contribution/payouts">
       

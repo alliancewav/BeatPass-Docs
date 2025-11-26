@@ -16,7 +16,7 @@ Common questions and answers about BeatPass analytics, data accuracy, and report
     - **Plays/Completions**: Near real-time (within minutes)
     - **Contribution Value**: Every 6 hours
     - **Rankings**: Every 30 minutes
-    - **Monthly totals**: Finalized at month end
+    - **Totals**: Updated continuously as new plays and `invoice.paid` events are processed
   </Accordion>
   
   <Accordion title="Why do my play counts seem low?">
@@ -52,7 +52,7 @@ Common questions and answers about BeatPass analytics, data accuracy, and report
     - Total platform engagement (which changes constantly)
     - Pool size estimates
     
-    Final amounts are calculated at month end.
+    Final amounts are calculated each time a subscription invoice is paid and the subscription split job runs; dashboard month views aggregate those invoice-level earnings.
   </Accordion>
   
   <Accordion title="Why is my contribution value different from plays?">
@@ -66,7 +66,7 @@ Common questions and answers about BeatPass analytics, data accuracy, and report
   </Accordion>
   
   <Accordion title="When are earnings finalized?">
-    Monthly earnings are calculated after the calendar month ends, typically in the first week of the following month. Payouts process shortly after.
+    Earnings from direct license sales are finalized when payments succeed. Subscription earnings are finalized per subscription invoice once Stripe marks the invoice as paid (`invoice.paid`) and the subscription split job completes; payouts to your Stripe Connect account and then your bank depend on your Stripe payout schedule.
   </Accordion>
   
   <Accordion title="Can I see earnings per track?">

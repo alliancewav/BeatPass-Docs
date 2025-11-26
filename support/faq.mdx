@@ -91,7 +91,7 @@ keywords: ["beatpass faq", "beat marketplace help", "music licensing questions",
 
 <AccordionGroup>
   <Accordion title="How do I get paid?">
-    Set up Stripe Connect in Backstage > Finances. Payouts are processed monthly after meeting minimum thresholds.
+    Set up Stripe Connect in Backstage > Finances. Earnings from license sales flow after each successful purchase, and subscription splits are processed after each paid subscription invoice. Stripe then pays out to your bank on its normal payout schedule once you meet minimum thresholds.
   </Accordion>
   
   <Accordion title="What's the minimum payout?">
@@ -99,7 +99,7 @@ keywords: ["beatpass faq", "beat marketplace help", "music licensing questions",
   </Accordion>
   
   <Accordion title="When are payouts processed?">
-    Monthly earnings are calculated at month end and paid in the first week of the following month.
+    Earnings from direct license sales are finalized when payments succeed. Subscription earnings are finalized per subscription invoice when Stripe fires `invoice.paid` and the split job runs; payouts to your Stripe account and then your bank follow your Stripe payout schedule (for example, daily or weekly), not a single monthly batch.
   </Accordion>
   
   <Accordion title="Why is my contribution value low?">

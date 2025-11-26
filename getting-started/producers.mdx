@@ -22,11 +22,11 @@ BeatPass rewards your work with a fair contribution-based revenue system. Upload
 ### What You Get
 
 <CardGroup cols={2}>
-  <Card title="100% Revenue Share" icon="dollar-sign" color="#22c55e">
-    100% of subscription revenue goes to producers (15% fee added on top for subscribers)
+  <Card title="Subscription Revenue Splits" icon="dollar-sign" color="#22c55e">
+    Earn from subscriber payments via a contribution-based revenue pool funded from each paid subscription invoice.
   </Card>
-  <Card title="100% of License Sales" icon="file-contract" color="#22c55e">
-    Keep 100% of your exclusive license prices (15% fee added on top for buyers)
+  <Card title="Direct License Sales" icon="file-contract" color="#22c55e">
+    Set your own prices for exclusive licenses. Buyers pay your price plus a platform fee; you receive the price you set minus Stripe processing fees.
   </Card>
   <Card title="Free Producer Access" icon="unlock">
     No subscription required to upload and earn
@@ -40,8 +40,8 @@ BeatPass rewards your work with a fair contribution-based revenue system. Upload
   <Card title="Unlimited Uploads" icon="infinity">
     No limits on how many beats you can publish
   </Card>
-  <Card title="Monthly Payouts" icon="money-bill-wave">
-    Automatic payouts via Stripe Connect
+  <Card title="Payouts via Stripe Connect" icon="money-bill-wave">
+    Earnings from license sales and subscription splits are paid out to your Stripe Connect account and then your bank on Stripe's normal payout schedule.
   </Card>
 </CardGroup>
 
@@ -236,18 +236,17 @@ Complete metadata dramatically improves discovery:
 
 ### Revenue Share Model
 
-**Producers receive 100% of all revenue.** The 15% platform fee is added on top—paid by customers, not deducted from producers.
+Producers earn from **subscription revenue splits** and **direct exclusive license sales**. BeatPass adds a platform fee on top of prices and does not deduct that fee from your listed license price. However, standard Stripe processing fees apply to payments.
 
-| Revenue Source              | Your Share                                                      |
-| --------------------------- | --------------------------------------------------------------- |
-| **Subscription pool**       | 100% of base subscription (15% fee added on top for subscriber) |
-| **Exclusive license sales** | 100% of your listed price (15% fee added on top for buyer)      |
+| Revenue Source              | Your Share (Conceptually)                                                                                         |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Subscription pool**       | Portion of each paid subscription invoice allocated to the producer pool and split using the contribution formula |
+| **Exclusive license sales** | The price you set for the license, minus Stripe processing fees (the platform fee is charged on top to the buyer) |
 
 Your share of the subscription pool is based on:
 
 - **Plays** — How often your beats are streamed
 - **Time decay** — Recent plays count more than old ones
-- **Collaboration splits** — Shared fairly among credited producers
 
 <Card title="Contribution Formula" icon="calculator" href="/contribution/formula">
   Learn exactly how earnings are calculated.
@@ -321,12 +320,11 @@ Verification is done through our Discord community:
 
 ### Payout Schedule
 
-| Timing               | What Happens                             |
-| -------------------- | ---------------------------------------- |
-| **Throughout month** | Earnings accumulate from plays and sales |
-| **1st-5th of month** | Contribution splits calculated           |
-| **Within 1 week**    | Transfers sent to Stripe accounts        |
-| **Stripe to bank**   | 1-7 days depending on region             |
+| Timing                                   | What Happens                                                                                                 |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **After each license sale**              | Earnings from exclusive purchases flow to your Stripe Connect account once the payment succeeds (minus fees) |
+| **After each paid subscription invoice** | Contribution splits are calculated and Stripe Connect transfers are queued by the subscription split job     |
+| **Stripe to bank**                       | Stripe pays out to your bank on its normal payout schedule (typically 17 days depending on region)          |
 
 **Requirements:**
 
