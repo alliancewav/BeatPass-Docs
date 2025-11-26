@@ -1,0 +1,228 @@
+---
+title: "Payments"
+description: "How payments and payouts work on BeatPass for both buyers and sellers."
+---
+
+## Overview
+
+BeatPass handles two types of financial transactions: payments from buyers and payouts to producers. All transactions are processed securely through Stripe.
+
+<Info>
+  **Audience:** Artists (buyers) and Producers (sellers)
+</Info>
+
+---
+
+## For Buyers: Making Payments
+
+### Payment Methods
+
+BeatPass accepts:
+
+- Credit and debit cards (Visa, Mastercard, Amex)
+- Digital wallets where available
+
+### Checkout Process
+
+<Steps>
+  <Step title="Add to Cart">
+    Select the license tier you want to purchase.
+  </Step>
+  
+  <Step title="Review Order">
+    Confirm track details, license type, and pricing.
+  </Step>
+  
+  <Step title="Enter Payment">
+    Provide payment details via secure Stripe checkout.
+  </Step>
+  
+  <Step title="Confirm Purchase">
+    Complete the transaction and receive confirmation.
+  </Step>
+  
+  <Step title="Access Downloads">
+    Immediately download files and license certificate.
+  </Step>
+</Steps>
+
+### Security
+
+<AccordionGroup>
+  <Accordion title="PCI Compliance">
+    All payment processing is PCI DSS compliant through Stripe.
+  </Accordion>
+  
+  <Accordion title="No Stored Card Data">
+    BeatPass never stores your full card details. Stripe handles all sensitive data.
+  </Accordion>
+  
+  <Accordion title="Encryption">
+    All transactions use TLS encryption.
+  </Accordion>
+</AccordionGroup>
+
+### Receipts & Records
+
+After each purchase:
+
+- Email receipt sent automatically
+- Transaction appears in your account history
+- License certificate available for download
+- Records accessible for tax purposes
+
+---
+
+## For Producers: Receiving Payouts
+
+### Earning Revenue
+
+Producers earn through:
+
+| Source | Description |
+|--------|-------------|
+| Contribution Pool | Share of subscription revenue based on engagement |
+| License Sales | Direct payment from beat purchases |
+
+### Payout Requirements
+
+Before receiving payouts:
+
+<Steps>
+  <Step title="Set Up Stripe Connect">
+    Link or create a Stripe account for receiving funds.
+  </Step>
+  
+  <Step title="Complete Verification">
+    Provide identity verification as required by Stripe.
+  </Step>
+  
+  <Step title="Add Payout Method">
+    Connect a bank account or debit card.
+  </Step>
+  
+  <Step title="Meet Minimum Threshold">
+    Accumulate at least the minimum payout amount.
+  </Step>
+</Steps>
+
+### Payout Schedule
+
+| Aspect | Details |
+|--------|---------|
+| Calculation Period | Monthly (1st to end of month) |
+| Processing | First week of following month |
+| Arrival | 2-5 business days after processing |
+| Minimum | Varies by region |
+
+<Note>
+  Contribution earnings are calculated after the month ends and processed in the following payout cycle.
+</Note>
+
+### Payout Dashboard
+
+Track your earnings in **Backstage > Finances**:
+
+- Current balance
+- Pending payouts
+- Payout history
+- Earnings breakdown by source
+
+---
+
+## Fees & Splits
+
+### Platform Fees
+
+| Transaction Type | Fee Structure |
+|------------------|---------------|
+| License Sales | Platform takes percentage of sale |
+| Contribution Payouts | Paid from contribution pool |
+
+<Tip>
+  Exact fee percentages are detailed in your Producer Agreement.
+</Tip>
+
+### Stripe Fees
+
+Standard Stripe processing fees apply to payouts. These are deducted automatically.
+
+---
+
+## Tax Information
+
+### For Producers
+
+- You are responsible for reporting income
+- BeatPass may issue tax forms based on earnings
+- Keep records of all payouts received
+- Consult a tax professional for your jurisdiction
+
+### For Buyers
+
+- Purchases may include applicable taxes
+- Receipts provided for business expense tracking
+- Digital goods tax rules vary by location
+
+<Warning>
+  BeatPass does not provide tax advice. Consult with a qualified tax professional.
+</Warning>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Payment declined">
+    Check card details, available balance, and try again. Contact your bank if issues persist.
+  </Accordion>
+  
+  <Accordion title="Payout not received">
+    Verify your Stripe Connect setup. Check payout history for status. Allow 2-5 business days after processing.
+  </Accordion>
+  
+  <Accordion title="Missing earnings">
+    Contribution calculations complete after the month ends. License sales process within 24-48 hours.
+  </Accordion>
+  
+  <Accordion title="Wrong amount">
+    Review the earnings breakdown in your dashboard. Contact support if discrepancies remain.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Refunds & Disputes
+
+### Buyer Refunds
+
+Digital licenses are generally non-refundable. Exceptions may apply for:
+
+- Technical issues preventing download
+- Duplicate purchases
+- Unauthorized transactions
+
+### Producer Disputes
+
+If you believe earnings are incorrect:
+
+1. Review your analytics dashboard
+2. Check contribution calculation dates
+3. Contact support with specific details
+
+<Card title="Dispute Process" icon="gavel" href="/contribution/disputes">
+  Learn about the dispute resolution process.
+</Card>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Contribution Formula" icon="calculator" href="/contribution/formula">
+    Understand how earnings are calculated.
+  </Card>
+  <Card title="Eligibility" icon="check" href="/contribution/eligibility">
+    Requirements for receiving payouts.
+  </Card>
+</CardGroup>
