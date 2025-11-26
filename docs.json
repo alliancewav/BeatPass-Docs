@@ -1,7 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "BeatPass Documentation",
+  "name": "BeatPass Help Center",
+  "description": "Official documentation and help center for BeatPass - the beat licensing and music collaboration platform for producers, artists, and curators.",
   "colors": {
     "primary": "#6366F1",
     "light": "#818CF8",
@@ -238,13 +239,18 @@
       "anchors": [
         {
           "anchor": "Platform",
-          "href": "https://beta.beatpass.ca",
+          "href": "https://open.beatpass.ca",
           "icon": "music"
         },
         {
           "anchor": "Status",
           "href": "https://status.beatpass.ca",
           "icon": "signal"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://blog.beatpass.ca",
+          "icon": "newspaper"
         }
       ]
     }
@@ -256,14 +262,18 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:support@beatpass.ca"
+        "label": "Blog",
+        "href": "https://blog.beatpass.ca"
+      },
+      {
+        "label": "Contact",
+        "href": "https://open.beatpass.ca/contact"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Open BeatPass",
-      "href": "https://beta.beatpass.ca"
+      "href": "https://open.beatpass.ca"
     }
   },
   "contextual": {
@@ -272,10 +282,41 @@
       "view"
     ]
   },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "canonical": "https://docs.beatpass.ca",
+      "description": "Official documentation and help center for BeatPass - the beat licensing and music collaboration platform for producers, artists, and curators.",
+      "keywords": "beatpass, beat licensing, music production, beat marketplace, producer platform, buy beats, sell beats, music collaboration, beat documentation, help center",
+      "author": "BeatPass",
+      "robots": "index, follow",
+      "googlebot": "index, follow",
+      "language": "en",
+      "category": "Music Technology",
+      "copyright": "Copyright 2025 BeatPass",
+      "distribution": "global",
+      "coverage": "Worldwide",
+      "revisit-after": "7 days",
+      "rating": "general",
+      "og:title": "BeatPass Help Center - Documentation & Support",
+      "og:description": "Official documentation and help center for BeatPass - the beat licensing and music collaboration platform for producers, artists, and curators.",
+      "og:type": "website",
+      "og:url": "https://docs.beatpass.ca",
+      "og:site_name": "BeatPass Help Center",
+      "og:locale": "en_US",
+      "twitter:card": "summary_large_image",
+      "twitter:site": "@beatpasswav",
+      "twitter:creator": "@beatpasswav",
+      "twitter:title": "BeatPass Help Center - Documentation & Support",
+      "twitter:description": "Official documentation and help center for BeatPass - the beat licensing and music collaboration platform."
+    }
+  },
   "footer": {
     "socials": {
-      "x": "https://x.com/beatpass",
-      "instagram": "https://instagram.com/beatpass"
+      "x": "https://x.com/beatpasswav",
+      "instagram": "https://www.instagram.com/beatpass.wav",
+      "youtube": "https://www.youtube.com/@beatpass.",
+      "discord": "https://discord.com/invite/N257QBkSeg"
     }
   }
 }

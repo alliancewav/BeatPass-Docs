@@ -1,6 +1,10 @@
 ---
-title: "Sharing & Embedding"
-description: "How to share your beats and embed players on external websites."
+title: "Sharing & Embedding | BeatPass"
+description: "How to share your beats and embed players on external websites. Learn about track embeds, social sharing, and promotional tools."
+keywords: ["embed beats", "share beats", "beat player embed", "music embed", "producer promotion", "beat sharing"]
+"og:title": "Sharing & Embedding - BeatPass Help Center"
+"og:description": "How to share your beats and embed players on external websites."
+"twitter:card": "summary_large_image"
 ---
 
 ## Overview
@@ -20,7 +24,7 @@ BeatPass provides tools to share your beats and embed players on websites, blogs
 Every track has a shareable URL:
 
 ```
-https://beta.beatpass.ca/track/{track-id}/{track-slug}
+https://open.beatpass.ca/track/{track-id}/{track-slug}
 ```
 
 **How to Get It:**
@@ -48,7 +52,7 @@ Quick share to popular platforms:
 BeatPass supports track embedding using the following URL format:
 
 ```
-https://beta.beatpass.ca/track/{track-id}/{track-slug}/embed
+https://open.beatpass.ca/track/{track-id}/{track-slug}/embed
 ```
 
 ### Basic Embed Code
@@ -57,7 +61,7 @@ Embed a player on any website:
 
 ```html
 <iframe 
-  src="https://beta.beatpass.ca/track/123/midnight-chase/embed"
+  src="https://open.beatpass.ca/track/123/midnight-chase/embed"
   width="100%"
   height="152"
   frameborder="0"
@@ -157,7 +161,7 @@ Embed directly in HTML or use JavaScript:
 // Dynamic embed creation
 function embedBeatPassTrack(containerId, trackId, trackSlug) {
   const iframe = document.createElement('iframe');
-  iframe.src = `https://beta.beatpass.ca/track/${trackId}/${trackSlug}/embed`;
+  iframe.src = `https://open.beatpass.ca/track/${trackId}/${trackSlug}/embed`;
   iframe.width = '100%';
   iframe.height = '152';
   iframe.frameBorder = '0';
@@ -209,7 +213,7 @@ View share analytics in Backstage:
 Add tracking parameters for detailed analytics:
 
 ```
-https://beta.beatpass.ca/track/123?utm_source=website&utm_campaign=promo
+https://open.beatpass.ca/track/123?utm_source=website&utm_campaign=promo
 ```
 
 ---
@@ -240,7 +244,7 @@ Embeds must be served over HTTPS. The embed will not load on HTTP-only sites.
 If your site uses CSP headers, you must allow framing from BeatPass:
 
 ```http
-Content-Security-Policy: frame-src https://beta.beatpass.ca;
+Content-Security-Policy: frame-src https://open.beatpass.ca;
 ```
 
 ### Browser Autoplay Policies
