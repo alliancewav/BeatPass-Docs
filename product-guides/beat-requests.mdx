@@ -1,10 +1,10 @@
 ---
 title: "Beat Requests | BeatPass"
 description: "How to post and respond to beat requests on BeatPass. Connect with producers for custom beats or find artists looking for your sound."
-keywords: ["beat requests", "custom beats", "find producers", "commission beats", "beat marketplace"]
-"og:title": "Beat Requests - BeatPass Help Center"
-"og:description": "How to post and respond to beat requests on BeatPass."
-"twitter:card": "summary_large_image"
+keywords: ["beat requests","custom beats","find producers","commission beats","beat marketplace"]
+og:title: "Beat Requests - BeatPass Help Center"
+og:description: "How to post and respond to beat requests on BeatPass."
+twitter:card: "summary_large_image"
 ---
 
 ## Overview
@@ -34,14 +34,12 @@ Beat Requests are ideal when:
   <Step title="Navigate to Beat Requests">
     Go to **Beat Requests** from the main navigation.
   </Step>
-  
   <Step title="Click Create Request">
     Start a new request form.
   </Step>
-  
   <Step title="Describe Your Needs">
     Be specific about what you're looking for:
-    
+
     - **Title**: Short, descriptive name (e.g., "Dark Melodic Trap Beat")
     - **Genre**: Primary style (Trap, R&B, Drill, etc.)
     - **BPM Range**: Tempo requirements (e.g., 140-150)
@@ -50,13 +48,12 @@ Beat Requests are ideal when:
     - **Reference**: Links to similar tracks for context
     - **Budget**: Optional but helps filter serious producers
   </Step>
-  
   <Step title="Set Visibility">
     Choose who can see your request:
+
     - **Public**: All producers can respond
     - **Following Only**: Only producers you follow
   </Step>
-  
   <Step title="Submit">
     Your request goes live for **24 hours**. All verified producers receive a notification (no genre/budget filtering).
   </Step>
@@ -85,7 +82,6 @@ Beat Requests are ideal when:
     - Project context (commercial, mixtape, etc.)
     - Timeline if relevant
   </Accordion>
-  
   <Accordion title="Avoid">
     - Vague descriptions ("something fire")
     - Unrealistic budgets
@@ -96,12 +92,12 @@ Beat Requests are ideal when:
 
 ### Example Request
 
-> **Title:** Dark Melodic Trap Beat  
-> **Genre:** Trap  
-> **BPM:** 140-150  
-> **Mood:** Dark, atmospheric, emotional  
-> **Description:** Looking for a moody trap beat with heavy 808s and a memorable melody. Something in the style of Metro Boomin or Southside. Need it for an upcoming EP track. Open to exclusive licensing if the beat is right.  
-> **Budget:** $200-400 exclusive
+> **Title:** Dark Melodic Trap Beat\
+> **Genre:** Trap\
+> **BPM:** 140-150\
+> **Mood:** Dark, atmospheric, emotional\
+> **Description:** Looking for a moody trap beat with heavy 808s and a memorable melody. Something in the style of Metro Boomin or Southside. Need it for an upcoming EP track. Open to exclusive licensing if the beat is right.\
+> **Budget:** \$200-400 exclusive
 
 ---
 
@@ -122,19 +118,18 @@ Browse requests that match your style:
   <Step title="Find a Matching Request">
     Look for requests that align with your catalog or style.
   </Step>
-  
   <Step title="Prepare Your Response">
     Either:
+
     - Link an existing track from your catalog
     - Create a new beat specifically for the request
   </Step>
-  
   <Step title="Submit Your Response">
     Include a message explaining why your beat fits their needs.
   </Step>
-  
   <Step title="Wait for Feedback">
     The artist will review submissions and may:
+
     - Accept and purchase
     - Request modifications
     - Pass and continue searching
@@ -193,14 +188,14 @@ Beat requests have only two possible states:
 <CardGroup cols={2}>
   <Card title="Active" icon="clock">
     **Accepting responses** (first 24 hours)
-    
+
     - Artists can edit or wait for responses
     - Producers can submit matching beats
     - All verified producers received notification
   </Card>
   <Card title="Expired" icon="hourglass-end">
     **24 hours passed**
-    
+
     - Artists can create a new request
     - Producers should find other active requests
     - History remains viewable for reference
@@ -221,15 +216,12 @@ Beat requests have only two possible states:
   <Step title="Producer Submits Response">
     Producer links a track and sends message explaining fit.
   </Step>
-  
   <Step title="Artist Reviews">
     Artist listens to submissions and evaluates matches.
   </Step>
-  
   <Step title="Artist Contacts Producer">
     If interested, artist messages producer to discuss licensing.
   </Step>
-  
   <Step title="Purchase Complete">
     Artist purchases license through normal licensing flow (separate from beat request system).
   </Step>
@@ -262,10 +254,34 @@ Beat requests have only two possible states:
 
 ### Visibility After Expiry
 
-| State | Visible in Browse | Visible to Artist | Visible to Responding Producers |
-|-------|-------------------|-------------------|--------------------------------|
-| Active | Yes | Yes | Yes |
-| Expired | No | Yes (history) | Yes (their response history) |
+<Tabs>
+  <Tab title="Active Requests">
+    <CardGroup cols={3}>
+      <Card title="Browse" icon="eye" color="#22c55e">
+        ✅ Visible to all producers
+      </Card>
+      <Card title="Artist" icon="user" color="#22c55e">
+        ✅ Visible in your dashboard
+      </Card>
+      <Card title="Responders" icon="users" color="#22c55e">
+        ✅ Visible with responses
+      </Card>
+    </CardGroup>
+  </Tab>
+  <Tab title="Expired Requests">
+    <CardGroup cols={3}>
+      <Card title="Browse" icon="eye-slash" color="#ef4444">
+        ❌ Hidden from browse
+      </Card>
+      <Card title="Artist" icon="user" color="#22c55e">
+        ✅ In your history
+      </Card>
+      <Card title="Responders" icon="users" color="#22c55e">
+        ✅ In their response history
+      </Card>
+    </CardGroup>
+  </Tab>
+</Tabs>
 
 ---
 
@@ -330,6 +346,7 @@ GET /api/v1/beat-requests/user/rate-limit-status
 ```
 
 Returns:
+
 - Current active request count
 - Maximum allowed requests
 - Time until next slot available (if at limit)
@@ -350,11 +367,9 @@ All your submitted beat requests are accessible from your Library:
   <Step title="Open Your Library">
     Click **Library** in the main navigation.
   </Step>
-  
   <Step title="Select Beat Requests">
     Choose **Beat requests** from the library menu, or navigate directly to `/library/custom-requests`.
   </Step>
-  
   <Step title="View and Manage">
     See all your active and past beat requests in one place.
   </Step>
@@ -364,17 +379,35 @@ All your submitted beat requests are accessible from your Library:
 
 Each request card displays:
 
-| Field | Description |
-|-------|-------------|
-| **Content** | Your description of what you're looking for |
-| **Genre** | Primary genre requested |
-| **Mood** | Emotional tone specified |
-| **BPM Range** | Tempo requirements |
-| **Key/Scale** | Musical key preferences (if set) |
-| **Budget** | Budget range (if specified) |
-| **Reference Track** | Link to similar track (if provided) |
-| **Status** | Active or Expired |
-| **Responses** | Number of producer responses |
+<CardGroup cols={3}>
+  <Card title="Content" icon="align-left">
+    Your description of what you're looking for
+  </Card>
+  <Card title="Genre" icon="music">
+    Primary genre requested
+  </Card>
+  <Card title="Mood" icon="face-smile">
+    Emotional tone specified
+  </Card>
+  <Card title="BPM Range" icon="gauge">
+    Tempo requirements
+  </Card>
+  <Card title="Key/Scale" icon="piano-keyboard">
+    Musical key preferences (if set)
+  </Card>
+  <Card title="Budget" icon="dollar-sign">
+    Budget range (if specified)
+  </Card>
+  <Card title="Reference Track" icon="link">
+    Link to similar track (if provided)
+  </Card>
+  <Card title="Status" icon="circle-info">
+    Active or Expired
+  </Card>
+  <Card title="Responses" icon="comments">
+    Number of producer responses
+  </Card>
+</CardGroup>
 
 ### Managing Your Requests
 

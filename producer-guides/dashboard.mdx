@@ -72,13 +72,33 @@ Track your growth as a producer with the XP and achievement system.
 
 Your producer level reflects your overall platform engagement and success:
 
-| Level Range | Title       | XP Required      |
-| ----------- | ----------- | ---------------- |
-| 1-5         | Newcomer    | 0-500 XP         |
-| 6-10        | Rising      | 500-2,500 XP     |
-| 11-20       | Established | 2,500-10,000 XP  |
-| 21-35       | Veteran     | 10,000-50,000 XP |
-| 36-50       | Elite       | 50,000+ XP       |
+<CardGroup cols={5}>
+  <Card title="Newcomer" icon="seedling">
+    **Levels 1-5**
+
+    0 - 500 XP
+  </Card>
+  <Card title="Rising" icon="arrow-trend-up">
+    **Levels 6-10**
+
+    500 - 2,500 XP
+  </Card>
+  <Card title="Established" icon="star">
+    **Levels 11-20**
+
+    2,500 - 10,000 XP
+  </Card>
+  <Card title="Veteran" icon="medal">
+    **Levels 21-35**
+
+    10,000 - 50,000 XP
+  </Card>
+  <Card title="Elite" icon="crown">
+    **Levels 36-50**
+
+    50,000+ XP
+  </Card>
+</CardGroup>
 
 ### Earning XP
 
@@ -103,34 +123,62 @@ Unlock achievements for reaching milestones:
 
 <AccordionGroup>
   <Accordion title="Upload Achievements" icon="music">
-    | Achievement     | Requirement       | Reward   |
-    | --------------- | ----------------- | -------- |
-    | First Beat      | Upload 1 track    | 50 XP    |
-    | Prolific        | Upload 10 tracks  | 200 XP   |
-    | Catalog Builder | Upload 50 tracks  | 1,000 XP |
-    | Hit Machine     | Upload 100 tracks | 5,000 XP |
+    <Steps>
+      <Step title="First Beat" icon="circle-1">
+        Upload 1 track → **\+50 XP**
+      </Step>
+      <Step title="Prolific" icon="circle-2">
+        Upload 10 tracks → **\+200 XP**
+      </Step>
+      <Step title="Catalog Builder" icon="circle-3">
+        Upload 50 tracks → **\+1,000 XP**
+      </Step>
+      <Step title="Hit Machine" icon="circle-4">
+        Upload 100 tracks → **\+5,000 XP**
+      </Step>
+    </Steps>
   </Accordion>
   <Accordion title="Play Achievements" icon="play">
-    | Achievement     | Requirement         | Reward    |
-    | --------------- | ------------------- | --------- |
-    | First Spin      | 100 total plays     | 100 XP    |
-    | Getting Noticed | 1,000 total plays   | 500 XP    |
-    | Popular         | 10,000 total plays  | 2,500 XP  |
-    | Viral           | 100,000 total plays | 10,000 XP |
+    <Steps>
+      <Step title="First Spin" icon="circle-1">
+        100 total plays → **\+100 XP**
+      </Step>
+      <Step title="Getting Noticed" icon="circle-2">
+        1,000 total plays → **\+500 XP**
+      </Step>
+      <Step title="Popular" icon="circle-3">
+        10,000 total plays → **\+2,500 XP**
+      </Step>
+      <Step title="Viral" icon="circle-4">
+        100,000 total plays → **\+10,000 XP**
+      </Step>
+    </Steps>
   </Accordion>
   <Accordion title="Engagement Achievements" icon="heart">
-    | Achievement       | Requirement          | Reward   |
-    | ----------------- | -------------------- | -------- |
-    | First Fan         | Gain 1 follower      | 25 XP    |
-    | Growing Following | Gain 100 followers   | 500 XP   |
-    | Influencer        | Gain 1,000 followers | 2,500 XP |
+    <Steps>
+      <Step title="First Fan" icon="circle-1">
+        Gain 1 follower → **\+25 XP**
+      </Step>
+      <Step title="Growing Following" icon="circle-2">
+        Gain 100 followers → **\+500 XP**
+      </Step>
+      <Step title="Influencer" icon="circle-3">
+        Gain 1,000 followers → **\+2,500 XP**
+      </Step>
+    </Steps>
   </Accordion>
   <Accordion title="Sales Achievements" icon="dollar-sign">
-    | Achievement | Requirement       | Reward    |
-    | ----------- | ----------------- | --------- |
-    | First Sale  | Sell 1 license    | 200 XP    |
-    | Consistent  | Sell 10 licenses  | 1,000 XP  |
-    | Top Seller  | Sell 100 licenses | 10,000 XP |
+    <Steps>
+      <Step title="First Sale" icon="circle-1">
+        Sell 1 license → **\+200 XP**
+      </Step>
+      <Step title="Consistent" icon="circle-2">
+        Sell 10 licenses → **\+1,000 XP**
+      </Step>
+      <Step title="Top Seller" icon="circle-3">
+        Sell 100 licenses → **\+10,000 XP**
+      </Step>
+    </Steps>
   </Accordion>
 </AccordionGroup>
 
@@ -172,12 +220,20 @@ Deep dive into your performance analytics.
 
 View analytics for different time periods:
 
-| Period       | View                  |
-| ------------ | --------------------- |
-| **Today**    | Real-time daily stats |
-| **7 Days**   | Weekly performance    |
-| **30 Days**  | Monthly overview      |
-| **All Time** | Lifetime statistics   |
+<Tabs>
+  <Tab title="Today">
+    **Real-time daily stats** — See what's happening right now with live play counts and engagement.
+  </Tab>
+  <Tab title="7 Days">
+    **Weekly performance** — Review the past week's trends and identify patterns.
+  </Tab>
+  <Tab title="30 Days">
+    **Monthly overview** — Comprehensive monthly stats for business planning.
+  </Tab>
+  <Tab title="All Time">
+    **Lifetime statistics** — Your complete history on the platform.
+  </Tab>
+</Tabs>
 
 ### Performance Charts
 
@@ -227,12 +283,20 @@ To receive earnings, you must connect a Stripe account:
 
 Once connected, your finance page displays:
 
-| Section                 | Information                 |
-| ----------------------- | --------------------------- |
-| **Available Balance**   | Funds ready for payout      |
-| **Pending Balance**     | Funds in processing         |
-| **Recent Transactions** | Individual earnings events  |
-| **Payout History**      | Past transfers to your bank |
+<CardGroup cols={2}>
+  <Card title="Available Balance" icon="wallet">
+    Funds ready for immediate payout to your bank account
+  </Card>
+  <Card title="Pending Balance" icon="hourglass-half">
+    Funds currently in processing (typically 2-7 days)
+  </Card>
+  <Card title="Recent Transactions" icon="list">
+    Individual earnings events with details and timestamps
+  </Card>
+  <Card title="Payout History" icon="clock-rotate-left">
+    Past transfers to your bank with dates and amounts
+  </Card>
+</CardGroup>
 
 ### Revenue Sources
 
@@ -251,12 +315,20 @@ Once connected, your finance page displays:
 
 ### Transaction Types
 
-| Type                    | Description                            |
-| ----------------------- | -------------------------------------- |
-| **contribution_payout** | Monthly subscription pool distribution |
-| **exclusive_sale**      | One-time exclusive license purchase    |
-| **platform_fee**        | Platform commission deduction          |
-| **transfer**            | Payout to your bank account            |
+<AccordionGroup>
+  <Accordion title="contribution_payout" icon="chart-pie">
+    Monthly subscription pool distribution based on your tracks' performance share.
+  </Accordion>
+  <Accordion title="exclusive_sale" icon="star">
+    One-time payment when an artist purchases exclusive rights to your track.
+  </Accordion>
+  <Accordion title="platform_fee" icon="percent">
+    Platform commission deducted from sales and payouts.
+  </Accordion>
+  <Accordion title="transfer" icon="building-columns">
+    Payout transferred to your connected bank account.
+  </Accordion>
+</AccordionGroup>
 
 ---
 
@@ -356,13 +428,23 @@ Manage all your uploaded tracks from one place.
 
 ### Track Management Features
 
-| Action        | Description                                       |
-| ------------- | ------------------------------------------------- |
-| **View All**  | See your complete catalog with filters and search |
-| **Edit**      | Update track metadata, pricing, licensing options |
-| **Analytics** | View per-track performance metrics                |
-| **Archive**   | Hide tracks from public without deleting          |
-| **Delete**    | Permanently remove tracks                         |
+<CardGroup cols={2}>
+  <Card title="View All" icon="list">
+    See your complete catalog with powerful filters and search
+  </Card>
+  <Card title="Edit" icon="pen-to-square">
+    Update track metadata, pricing, and licensing options
+  </Card>
+  <Card title="Analytics" icon="chart-line">
+    View per-track performance metrics and trends
+  </Card>
+  <Card title="Archive" icon="box-archive">
+    Hide tracks from public without permanently deleting
+  </Card>
+  <Card title="Delete" icon="trash" color="#ef4444">
+    Permanently remove tracks from the platform
+  </Card>
+</CardGroup>
 
 ### Track List Information
 

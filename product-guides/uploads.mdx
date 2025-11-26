@@ -38,12 +38,17 @@ Before uploading:
   <Step title="Upload Audio File">
     Drag and drop your file or click to browse:
 
-    | Format | Quality   | Max Size |
-    | ------ | --------- | -------- |
-    | WAV    | Lossless  | 100 MB   |
-    | MP3    | 320 kbps+ | 50 MB    |
-    | FLAC   | Lossless  | 100 MB   |
-
+    <CardGroup cols={3}>
+      <Card title="WAV" icon="file-audio">
+        **Lossless** • Max 100 MB
+      </Card>
+      <Card title="MP3" icon="file-audio">
+        **320 kbps+** • Max 50 MB
+      </Card>
+      <Card title="FLAC" icon="file-audio">
+        **Lossless** • Max 100 MB
+      </Card>
+    </CardGroup>
     <Warning>
       Files under 128kbps will be rejected. Low-quality audio affects your Quality Score.
     </Warning>
@@ -100,13 +105,23 @@ Before uploading:
 
 Include separate stems to increase licensing appeal:
 
-| Stem Type   | Format       | Notes                 |
-| ----------- | ------------ | --------------------- |
-| Full Mix    | WAV/MP3/FLAC | Required - main track |
-| Drum Stem   | WAV          | Recommended           |
-| Melody Stem | WAV          | Recommended           |
-| Bass Stem   | WAV          | Recommended           |
-| FX/Ambient  | WAV          | Optional              |
+<CardGroup cols={2}>
+  <Card title="Full Mix" icon="music" color="#22c55e">
+    **Required** • WAV/MP3/FLAC • Main track file
+  </Card>
+  <Card title="Drum Stem" icon="drum">
+    **Recommended** • WAV • Isolated drums and percussion
+  </Card>
+  <Card title="Melody Stem" icon="piano-keyboard">
+    **Recommended** • WAV • Lead melodies and harmonies
+  </Card>
+  <Card title="Bass Stem" icon="wave-sine">
+    **Recommended** • WAV • Bass and 808s
+  </Card>
+  <Card title="FX/Ambient" icon="waveform-lines">
+    **Optional** • WAV • Effects and atmospheric elements
+  </Card>
+</CardGroup>
 
 <Tip>
   Stems are only available to license purchasers. Including stems significantly increases perceived value and sale conversion.
@@ -114,21 +129,33 @@ Include separate stems to increase licensing appeal:
 
 ### Supported Stem Formats
 
-| Format          | Support | Notes                     |
-| --------------- | ------- | ------------------------- |
-| WAV (16/24-bit) | Full    | Preferred for stems       |
-| FLAC            | Full    | Accepted alternative      |
-| MP3 (320kbps)   | Limited | Not recommended for stems |
+<Tabs>
+  <Tab title="WAV (Preferred)">
+    **16/24-bit WAV** — Full support. Industry standard for stems. Preserves all audio quality.
+  </Tab>
+  <Tab title="FLAC">
+    **Lossless compression** — Full support. Good alternative when file size matters.
+  </Tab>
+  <Tab title="MP3">
+    **320kbps only** — Limited support. Not recommended for stems due to compression artifacts.
+  </Tab>
+</Tabs>
 
 ### Watermarks
 
 BeatPass automatically adds audio watermarks to preview streams:
 
-| Setting                | Behavior                          |
-| ---------------------- | --------------------------------- |
-| **Preview streams**    | Watermarked by default            |
-| **Licensed downloads** | No watermark                      |
-| **Toggle**             | Cannot disable preview watermarks |
+<CardGroup cols={3}>
+  <Card title="Preview Streams" icon="play" color="#eab308">
+    Watermarked by default to protect your work
+  </Card>
+  <Card title="Licensed Downloads" icon="download" color="#22c55e">
+    Clean, watermark-free files for buyers
+  </Card>
+  <Card title="Toggle" icon="toggle-off" color="#6b7280">
+    Cannot disable preview watermarks
+  </Card>
+</CardGroup>
 
 <Note>
   Watermarks protect your work from unauthorized use. Purchased/licensed files are always delivered without watermarks.
@@ -142,45 +169,82 @@ BeatPass automatically adds audio watermarks to preview streams:
 
 After upload, BeatPass processes your audio:
 
-| Step              | Description                |
-| ----------------- | -------------------------- |
-| 1. Validation     | Format and quality check   |
-| 2. Fingerprinting | Duplicate detection        |
-| 3. Transcoding    | Generate streaming formats |
-| 4. Waveform       | Visual waveform generation |
-| 5. Indexing       | Search index update        |
+<Steps>
+  <Step title="Validation" icon="circle-check">
+    Format and quality check to ensure your file meets requirements
+  </Step>
+  <Step title="Fingerprinting" icon="fingerprint">
+    BeatPassID™ duplicate detection and content identification
+  </Step>
+  <Step title="Transcoding" icon="arrows-rotate">
+    Generate optimized streaming formats for all devices
+  </Step>
+  <Step title="Waveform" icon="wave-sine">
+    Visual waveform generation for the player interface
+  </Step>
+  <Step title="Indexing" icon="magnifying-glass">
+    Search index update for discoverability
+  </Step>
+</Steps>
 
 ### Encoding Specifications
 
-| Output              | Bitrate              | Use                        |
-| ------------------- | -------------------- | -------------------------- |
-| Streaming (default) | 128 kbps AAC         | Standard playback          |
-| Streaming (HQ)      | 256 kbps AAC         | High-quality streaming     |
-| Preview             | 128 kbps + watermark | Unlicensed playback        |
-| Download (MP3)      | 320 kbps MP3         | Licensed MP3 delivery      |
-| Download (WAV)      | Original             | Licensed lossless delivery |
+<AccordionGroup>
+  <Accordion title="Streaming (Default)" icon="wifi">
+    **128 kbps AAC** — Standard playback quality for efficient streaming
+  </Accordion>
+  <Accordion title="Streaming (HQ)" icon="signal">
+    **256 kbps AAC** — High-quality streaming for premium listeners
+  </Accordion>
+  <Accordion title="Preview" icon="eye">
+    **128 kbps + watermark** — Protected preview for unlicensed playback
+  </Accordion>
+  <Accordion title="Download (MP3)" icon="file-arrow-down">
+    **320 kbps MP3** — High-quality MP3 for licensed downloads
+  </Accordion>
+  <Accordion title="Download (WAV)" icon="file-audio">
+    **Original quality** — Lossless delivery for professional use
+  </Accordion>
+</AccordionGroup>
 
 ### Upload Limits
 
-| Parameter                | Limit               |
-| ------------------------ | ------------------- |
-| Max file size (WAV/FLAC) | 100 MB              |
-| Max file size (MP3)      | 50 MB               |
-| Max duration             | 15 minutes          |
-| Min duration             | 30 seconds          |
-| Min bitrate (MP3)        | 128 kbps            |
-| Recommended bitrate      | 320 kbps / Lossless |
+<CardGroup cols={3}>
+  <Card title="File Size (WAV/FLAC)" icon="file">
+    Max **100 MB**
+  </Card>
+  <Card title="File Size (MP3)" icon="file">
+    Max **50 MB**
+  </Card>
+  <Card title="Duration" icon="clock">
+    **30 sec** – **15 min**
+  </Card>
+  <Card title="Min Bitrate" icon="signal">
+    **128 kbps** minimum
+  </Card>
+  <Card title="Recommended" icon="star" color="#22c55e">
+    **320 kbps** or Lossless
+  </Card>
+</CardGroup>
 
 ### Transcode Failures
 
 If transcoding fails:
 
-| Issue              | Resolution                                    |
-| ------------------ | --------------------------------------------- |
-| Corrupted file     | Re-export from DAW and re-upload              |
-| Unsupported codec  | Convert to WAV/FLAC first                     |
-| Duration exceeded  | Trim to under 15 minutes                      |
-| Processing timeout | Wait and retry; contact support if persistent |
+<AccordionGroup>
+  <Accordion title="Corrupted file" icon="file-circle-exclamation">
+    Re-export from your DAW and re-upload. Ensure the file plays correctly locally before uploading.
+  </Accordion>
+  <Accordion title="Unsupported codec" icon="file-circle-xmark">
+    Convert to WAV or FLAC first using your DAW or a converter tool.
+  </Accordion>
+  <Accordion title="Duration exceeded" icon="clock">
+    Trim your track to under 15 minutes. Consider splitting longer compositions.
+  </Accordion>
+  <Accordion title="Processing timeout" icon="hourglass">
+    Wait a few minutes and retry. Contact support if the problem persists.
+  </Accordion>
+</AccordionGroup>
 
 <Warning>
   If transcoding fails, your track will not be published. You'll receive an email notification with the specific error.
@@ -220,13 +284,23 @@ If transcoding fails:
   Audio replacement has significant implications:
 </Warning>
 
-| Aspect                | Impact                                                              |
-| --------------------- | ------------------------------------------------------------------- |
-| **Analytics**         | Play counts and engagement data are **preserved**                   |
-| **Existing licenses** | Previous license holders retain their **original** downloaded files |
-| **New licenses**      | New purchasers receive the **updated** audio                        |
-| **Fingerprint**       | New fingerprint generated; may flag as duplicate of your own track  |
-| **Streaming**         | All streams switch to new audio immediately                         |
+<CardGroup cols={2}>
+  <Card title="Analytics" icon="chart-line" color="#22c55e">
+    Play counts and engagement data are **preserved**
+  </Card>
+  <Card title="Existing Licenses" icon="file-shield" color="#22c55e">
+    Previous holders retain their **original** downloaded files
+  </Card>
+  <Card title="New Licenses" icon="file-arrow-down" color="#3b82f6">
+    New purchasers receive the **updated** audio
+  </Card>
+  <Card title="Fingerprint" icon="fingerprint" color="#eab308">
+    New fingerprint generated; may flag as duplicate
+  </Card>
+  <Card title="Streaming" icon="play" color="#3b82f6">
+    All streams switch to new audio **immediately**
+  </Card>
+</CardGroup>
 
 <Note>
   If you've sold licenses, consider whether replacement is appropriate. License holders purchased the original version. For major changes, uploading a new track may be more appropriate.
@@ -287,10 +361,14 @@ Every track requires Sample-Safe™ certification before publishing.
 <ResponseField name="Sample Status" type="select" required>
   Declare the sample clearance status:
 
-  | Status              | Description                                    |
-  | ------------------- | ---------------------------------------------- |
-  | **Cleared**         | 100% original or all samples properly licensed |
-  | **Needs Clearance** | Contains uncleared third-party samples         |
+  <Tabs>
+    <Tab title="Cleared">
+      100% original or all samples properly licensed with documentation
+    </Tab>
+    <Tab title="Needs Clearance">
+      Contains uncleared third-party samples that buyers should know about
+    </Tab>
+  </Tabs>
 </ResponseField>
 
 <ResponseField name="Sample Notes" type="string">
@@ -312,21 +390,33 @@ Configure how your track can be licensed:
 <ResponseField name="Licensing Type" type="select" required>
   Available licensing options:
 
-  | Option                 | Description                                            |
-  | ---------------------- | ------------------------------------------------------ |
-  | **Non-Exclusive Only** | Multiple buyers can license; track stays available     |
-  | **Exclusive Only**     | Single buyer gets all rights; track removed after sale |
-  | **Both**               | Offer both non-exclusive and exclusive options         |
+  <Tabs>
+    <Tab title="Non-Exclusive Only">
+      Multiple buyers can license the track; it stays available after each sale
+    </Tab>
+    <Tab title="Exclusive Only">
+      Single buyer gets all rights; track is removed after purchase
+    </Tab>
+    <Tab title="Both">
+      Offer both non-exclusive and exclusive options to buyers
+    </Tab>
+  </Tabs>
 </ResponseField>
 
 <ResponseField name="Exclusive Status" type="select">
   For exclusive licensing:
 
-  | Status            | Description                   |
-  | ----------------- | ----------------------------- |
-  | **Available**     | Open for exclusive purchase   |
-  | **Not Available** | Exclusive rights not offered  |
-  | **Sold**          | Already purchased exclusively |
+  <Tabs>
+    <Tab title="Available">
+      Open for exclusive purchase at your set price
+    </Tab>
+    <Tab title="Not Available">
+      Exclusive rights are not offered for this track
+    </Tab>
+    <Tab title="Sold">
+      Already purchased exclusively by another buyer
+    </Tab>
+  </Tabs>
 </ResponseField>
 
 <ResponseField name="Exclusive Price" type="number">

@@ -670,15 +670,29 @@ All endpoints require authentication.
 
 ## Error Codes
 
-| Code | Status               | Description              |
-| ---- | -------------------- | ------------------------ |
-| 400  | Bad Request          | Invalid parameters       |
-| 401  | Unauthorized         | Missing or invalid token |
-| 403  | Forbidden            | Insufficient permissions |
-| 404  | Not Found            | Resource doesn't exist   |
-| 422  | Unprocessable Entity | Validation failed        |
-| 429  | Too Many Requests    | Rate limit exceeded      |
-| 500  | Server Error         | Internal error           |
+<AccordionGroup>
+  <Accordion title="400 - Bad Request" icon="circle-exclamation">
+    Invalid parameters provided. Check your request body and query parameters match the expected format.
+  </Accordion>
+  <Accordion title="401 - Unauthorized" icon="lock">
+    Missing or invalid authentication token. Include a valid `Authorization: Bearer` header.
+  </Accordion>
+  <Accordion title="403 - Forbidden" icon="ban">
+    Insufficient permissions for this action. The authenticated user cannot access this resource.
+  </Accordion>
+  <Accordion title="404 - Not Found" icon="question">
+    The requested resource doesn't exist. Verify the endpoint path and resource ID.
+  </Accordion>
+  <Accordion title="422 - Unprocessable Entity" icon="triangle-exclamation">
+    Validation failed. The request format is correct but the data doesn't pass validation rules.
+  </Accordion>
+  <Accordion title="429 - Too Many Requests" icon="gauge-high">
+    Rate limit exceeded. Wait before retrying. Check `Retry-After` header for timing.
+  </Accordion>
+  <Accordion title="500 - Server Error" icon="server">
+    Internal server error. Contact support if the issue persists.
+  </Accordion>
+</AccordionGroup>
 
 ---
 
@@ -711,17 +725,35 @@ data: {"type": "new_follower", "message": "...", "created_at": "..."}
 
 ### Event Types
 
-| Event Type             | Description                           |
-| ---------------------- | ------------------------------------- |
-| `new_follower`         | Someone followed your profile         |
-| `track_like`           | Someone liked your track              |
-| `track_save`           | Someone saved your track to library   |
-| `message_received`     | New direct message                    |
-| `purchase_completed`   | Track license purchased               |
-| `payout_processed`     | Earnings payout sent                  |
-| `request_fulfilled`    | Beat request you posted was fulfilled |
-| `achievement_unlocked` | New achievement earned                |
-| `comment_received`     | Comment on your track                 |
+<CardGroup cols={3}>
+  <Card title="new_follower" icon="user-plus">
+    Someone followed your profile
+  </Card>
+  <Card title="track_like" icon="heart">
+    Someone liked your track
+  </Card>
+  <Card title="track_save" icon="bookmark">
+    Track saved to library
+  </Card>
+  <Card title="message_received" icon="envelope">
+    New direct message
+  </Card>
+  <Card title="purchase_completed" icon="cart-shopping">
+    Track license purchased
+  </Card>
+  <Card title="payout_processed" icon="money-bill-wave">
+    Earnings payout sent
+  </Card>
+  <Card title="request_fulfilled" icon="check-circle">
+    Beat request fulfilled
+  </Card>
+  <Card title="achievement_unlocked" icon="trophy">
+    New achievement earned
+  </Card>
+  <Card title="comment_received" icon="comment">
+    Comment on your track
+  </Card>
+</CardGroup>
 
 ### Reconnection Strategy
 
@@ -772,11 +804,17 @@ Collections are curated groups of tracks. All collection endpoints require authe
 
 ### Supported Seed Types
 
-| Type     | ID Value   | Description                                         |
-| -------- | ---------- | --------------------------------------------------- |
-| `track`  | Track ID   | Similar tracks based on audio features and metadata |
-| `artist` | Artist ID  | Tracks from the artist and similar producers        |
-| `genre`  | Genre slug | Popular tracks within the genre                     |
+<Tabs>
+  <Tab title="track">
+    **Track ID** — Returns similar tracks based on audio features, metadata, and listener patterns.
+  </Tab>
+  <Tab title="artist">
+    **Artist ID** — Returns tracks from the specified artist and similar producers in the same genre.
+  </Tab>
+  <Tab title="genre">
+    **Genre slug** — Returns popular and trending tracks across the entire genre.
+  </Tab>
+</Tabs>
 
 ### Request Parameters
 

@@ -66,14 +66,29 @@ The License Manager displays two types of licenses:
 
 Each license displays:
 
-| Field            | Description                               |
-| ---------------- | ----------------------------------------- |
-| **Track Name**   | The licensed track title (clickable link) |
-| **Artists**      | Producer(s) who created the track         |
-| **License Type** | Non-Exclusive or Exclusive                |
-| **Issued Date**  | When the license was generated            |
-| **Status**       | Active, Expired, or Revoked               |
-| **License ID**   | Unique UUID for verification              |
+<ResponseField name="Track Name" type="string">
+  The licensed track title — click to view the track page
+</ResponseField>
+
+<ResponseField name="Artists" type="array">
+  Producer(s) who created the track
+</ResponseField>
+
+<ResponseField name="License Type" type="badge">
+  Non-Exclusive (green) or Exclusive (blue)
+</ResponseField>
+
+<ResponseField name="Issued Date" type="date">
+  When the license was generated
+</ResponseField>
+
+<ResponseField name="Status" type="indicator">
+  Active, Expired, or Revoked
+</ResponseField>
+
+<ResponseField name="License ID" type="uuid">
+  Unique identifier for verification
+</ResponseField>
 
 ### License Types
 
@@ -102,11 +117,17 @@ Each license displays:
 
 ### License Statuses
 
-| Status      | Indicator     | Meaning                                              |
-| ----------- | ------------- | ---------------------------------------------------- |
-| **Active**  | 🟢 Green dot  | License is valid and in effect                       |
-| **Expired** | 🟡 Yellow dot | License term has ended (rare for perpetual licenses) |
-| **Revoked** | 🔴 Red dot    | License has been revoked due to violation or dispute |
+<CardGroup cols={3}>
+  <Card title="Active" icon="circle-check" color="#22c55e">
+    🟢 License is valid and in effect. Full commercial rights available.
+  </Card>
+  <Card title="Expired" icon="clock" color="#eab308">
+    🟡 License term has ended. Rare for perpetual licenses.
+  </Card>
+  <Card title="Revoked" icon="ban" color="#ef4444">
+    🔴 License revoked due to violation or dispute.
+  </Card>
+</CardGroup>
 
 ---
 
@@ -145,14 +166,26 @@ For licenses you've acquired, you can download a professional PDF certificate:
 
 Your license certificate includes:
 
-| Element               | Details                       |
-| --------------------- | ----------------------------- |
-| **BeatPass Branding** | Official certification header |
-| **Track Information** | Name, artists, duration       |
-| **License Details**   | Type, issue date, terms       |
-| **License UUID**      | Unique verification code      |
-| **QR Code**           | Quick verification link       |
-| **Verification URL**  | Direct link to verify license |
+<CardGroup cols={2}>
+  <Card title="BeatPass Branding" icon="certificate">
+    Official certification header with platform authentication
+  </Card>
+  <Card title="Track Information" icon="music">
+    Track name, artists, and duration details
+  </Card>
+  <Card title="License Details" icon="file-contract">
+    License type, issue date, and terms of use
+  </Card>
+  <Card title="License UUID" icon="key">
+    Unique verification code for authenticity
+  </Card>
+  <Card title="QR Code" icon="qrcode">
+    Quick scan for instant verification
+  </Card>
+  <Card title="Verification URL" icon="link">
+    Direct link to verify license online
+  </Card>
+</CardGroup>
 
 ---
 
@@ -208,11 +241,17 @@ When viewing licenses granted to others, you see additional information:
 
 ### Licensee Information
 
-| Field            | Details                                     |
-| ---------------- | ------------------------------------------- |
-| **Licensed To**  | Name of the artist who acquired the license |
-| **License Type** | What type of license they received          |
-| **Date**         | When they downloaded/purchased              |
+<ResponseField name="Licensed To" type="string">
+  Name of the artist who acquired the license
+</ResponseField>
+
+<ResponseField name="License Type" type="badge">
+  Type of license received (non-exclusive or exclusive)
+</ResponseField>
+
+<ResponseField name="Date" type="date">
+  When they downloaded or purchased the license
+</ResponseField>
 
 <Info>
   For privacy, licensee email addresses are not displayed. Only the licensee's display name or username is shown.
@@ -321,12 +360,20 @@ Many distributors and labels require proof of licensing. Here's how to provide i
 
 ### What Distributors Need
 
-| Requirement       | Where to Find             |
-| ----------------- | ------------------------- |
-| Proof of License  | PDF Certificate           |
-| License ID        | UUID on certificate/card  |
-| Verification Link | `/verify-license/{UUID}`  |
-| Track Information | Certificate or track page |
+<AccordionGroup>
+  <Accordion title="Proof of License" icon="file-pdf">
+    Download the **PDF Certificate** from your License Manager. This is your primary proof of licensing rights.
+  </Accordion>
+  <Accordion title="License ID" icon="fingerprint">
+    Find the **UUID** on your license card or certificate. This unique identifier proves authenticity.
+  </Accordion>
+  <Accordion title="Verification Link" icon="link">
+    Provide the URL: `https://open.beatpass.ca/verify-license/{UUID}` — distributors can verify instantly.
+  </Accordion>
+  <Accordion title="Track Information" icon="info-circle">
+    Track details are on the certificate or the track page. Include artist name, track title, and duration.
+  </Accordion>
+</AccordionGroup>
 
 ---
 
