@@ -1,0 +1,40 @@
+---
+title: 'Version 3.0.0'
+date: '2023-03-18'
+version: '3.0.0'
+audience: All
+tags: ['feature', 'improvement']
+---
+
+## March 2023 - Version 3.0.0
+
+### Summary
+
+- Major BeatPass 3.0 rewrite with a new React frontend, performance gains, updated billing, and improved admin tools.
+
+### New Features
+
+- Sitewide play statistics in the admin area, plus stats per artist, album, and track.
+- Ability to list artists, albums, and tracks of a specific genre in the same channel.
+- BeatPass frontend fully rewritten in React for better performance, smaller bundles, and smoother animations.
+- Refreshed design for most pages across the site.
+- Direct browser uploads to S3 and S3 compatible providers.
+
+### Enhancements
+
+- Bulk track reordering in playlists and performance improvements in large track tables.
+- Faster admin datatables for artists, albums, and tracks.
+- Improved upload forms with time remaining indicators and better empty states.
+- Updated landing page design with more layout options and inline pricing tables.
+- Editable admin sidebar menus via the menu manager.
+- Updated to latest Laravel, Stripe, and PayPal integrations including Apple Pay and Google Pay support.
+- Many subscription flow improvements and compatibility with PHP 8.2 plus.
+- New admin files page with preview support and better email confirmation flows.
+- Appearance editor improvements, more available icons, better GDPR controls, and richer translation coverage.
+
+### Bug Fixes
+
+- Player loading, waveform synchronization, playlist duration, and chart timezone issues corrected.
+- More reliable admin table sorting and login state handling when changing passwords.
+- Browser language selection now respects admin configured defaults.
+- Registration disabling now correctly blocks API registration routes.
