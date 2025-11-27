@@ -186,7 +186,7 @@
           },
           {
             "group": "API Reference",
-            "openapi": "/swagger.yaml",
+            "openapi": "swagger.yaml",
             "pages": [
               "developers/reference/endpoints",
               {
