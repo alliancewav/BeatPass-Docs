@@ -1,0 +1,25 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Public profile spotlight track placement">
+  <rect width="1400" height="900" fill="#0b1220"/>
+  <rect x="30" y="30" width="1340" height="120" fill="none" stroke="#48B0E4" stroke-width="4" rx="12"/>
+  <text x="60" y="105" fill="#E2E8F0" font-family="Inter, Arial" font-size="38" font-weight="700">Public Artist Profile</text>
+
+  <g transform="translate(30,170)">
+    <rect width="1340" height="160" fill="#101b2e" stroke="#334155" stroke-width="2" rx="12"/>
+    <text x="30" y="70" fill="#E2E8F0" font-family="Inter, Arial" font-size="36" font-weight="700">Spotlight Track</text>
+    <text x="30" y="110" fill="#cbd5e1" font-family="Inter, Arial" font-size="26">Appears above releases and playlists. Visitors see full controls.</text>
+    <rect x="1160" y="40" width="170" height="70" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="3"/>
+    <text x="1180" y="85" fill="#0f172a" font-family="Inter, Arial" font-size="24" font-weight="700">Pinned</text>
+  </g>
+
+  <g transform="translate(30,370)">
+    <rect width="1340" height="180" fill="#0f172a" stroke="#1e293b" stroke-width="2" rx="12"/>
+    <text x="30" y="70" fill="#E2E8F0" font-family="Inter, Arial" font-size="32" font-weight="700">Releases</text>
+    <text x="30" y="115" fill="#94a3b8" font-family="Inter, Arial" font-size="24">Albums, packs, and playlists appear after the spotlight.</text>
+  </g>
+
+  <g transform="translate(30,590)">
+    <rect width="1340" height="150" fill="#0f172a" stroke="#1e293b" stroke-width="2" rx="12"/>
+    <text x="30" y="70" fill="#E2E8F0" font-family="Inter, Arial" font-size="32" font-weight="700">Analytics Banner</text>
+    <text x="30" y="110" fill="#94a3b8" font-family="Inter, Arial" font-size="24">Pinned track impressions and plays are tracked separately.</text>
+  </g>
+</svg>

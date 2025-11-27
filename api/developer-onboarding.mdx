@@ -22,7 +22,8 @@ BeatPass uses **Laravel Sanctum** for authentication:
 | Component | Technology |
 |-----------|------------|
 | Session auth | Cookie-based (SPA) |
-| API auth | Bearer token |
+| API tokens | Not issued (no `/sanctum/token`) |
+| Third-party integrations | Not supported |
 | CSRF protection | Required for mutations |
 
 ### Cookie + CSRF Flow
@@ -45,30 +46,42 @@ For web applications:
   </Step>
   
   <Step title="Authenticate">
+    Submit credentials to the session login route shown in the Auth guide:
     ```http
-    POST /api/v1/auth/login
+    POST /login
     Content-Type: application/json
-    
+    X-XSRF-TOKEN: {token from cookie}
+
     {"email": "...", "password": "..."}
     ```
   </Step>
-  
+
   <Step title="Make Authenticated Requests">
-    Session cookie is automatically included in subsequent requests.
+    Session cookies are automatically included in subsequent requests by the browser.
   </Step>
 </Steps>
 
-### Token-Based Auth
+<Warning>
+  BeatPass does not issue Sanctum personal access tokens and does not support third-party integrations. Use the session-based fl
+ow above.
+</Warning>
 
-For non-browser clients:
+### Example Request Flow
+
+Send credentials with the CSRF token, then rely on browser-managed cookies for later calls:
 
 ```http
-Authorization: Bearer YOUR_SANCTUM_TOKEN
-```
+GET /sanctum/csrf-cookie
 
-<Note>
-  Tokens are obtained via login and should be stored securely. Never expose tokens in client-side code or version control.
-</Note>
+POST /login
+Content-Type: application/json
+X-XSRF-TOKEN: {token-from-cookie}
+
+{"email": "user@example.com", "password": "secret"}
+
+GET /tracks
+# Cookies from the login response are sent automatically by the browser
+```
 
 ---
 

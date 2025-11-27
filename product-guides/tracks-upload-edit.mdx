@@ -1,10 +1,10 @@
 ---
 title: "Tracks: Upload & Edit (Backstage) | BeatPass"
 description: "How producers upload, edit, and manage tracks in Backstage, including form fields, processing, duplicates, and post-publish rules."
-keywords: ["backstage","upload tracks","edit tracks","producer dashboard","track form","audio fingerprint","waveform","duplicate detection"]
-og:title: "Tracks: Upload & Edit (Backstage) - BeatPass Help Center"
-og:description: "Step-by-step guide to uploading and editing tracks in Backstage, with details on required fields, processing, and editing after publish."
-twitter:card: "summary_large_image"
+keywords: ["backstage", "upload tracks", "edit tracks", "producer dashboard", "track form", "audio fingerprint", "waveform", "duplicate detection"]
+"og:title": "Tracks: Upload & Edit (Backstage) - BeatPass Help Center"
+"og:description": "Step-by-step guide to uploading and editing tracks in Backstage, with details on required fields, processing, and editing after publish."
+"twitter:card": "summary_large_image"
 ---
 
 ## Overview
@@ -42,14 +42,17 @@ These fields are required for a valid track and enforced by the backend.
 - **Track Name**
   - Required, 1–255 characters.
   - The title must be a **clean name** (no file extensions, metadata, or artist names). Obvious file names like `Beat_v3_final.mp3` will be rejected.
+
 - **Artists**
   - At least **one artist** is required.
   - The uploader can be added via a "current user" shortcut; collaborators can be added by searching existing profiles.
   - Saved tracks store a primary artist plus collaborators and use this for ownership, payouts, and analytics.
+
 - **Music Properties**
   - **Key** – Single selection (e.g., `C`, `D# / Eb`, `A# / Bb`).
   - **Scale** – `Major` or `Minor`.
   - **BPM** – Integer tempo. The system expects values in a typical modern range (about 60–200 BPM).
+
 - **Duration**
   - Internally stored in **milliseconds**.
   - Displayed in minutes:seconds on the public site.
@@ -79,6 +82,7 @@ Cover art is required for new tracks and helps keep the catalog visually consist
 - **Manual mode**
   - You upload a custom image or pick from your existing assets.
   - Any AI/automatic cover-art template is cleared; the track uses your explicit image.
+
 - **Auto mode (AI/preset-based)**
   - You can select an AI preset or let BeatPass auto-pick a cover template.
   - The system applies a generated cover using the chosen template and track metadata (title, artists, genres).
@@ -103,7 +107,6 @@ The track form is connected to an upload button that handles audio file upload a
 
 <Warning>
   If upload stalls or fails repeatedly, check:
-
   - Your network connection
   - Browser/network upload limits
   - Any proxy or VPN that might interrupt long uploads
@@ -177,10 +180,32 @@ Backstage lets you connect tracks to other entities on BeatPass.
 - **Albums**
   - Attach tracks to albums or projects you manage.
   - Album ownership is validated; you can only add tracks to albums you own or are linked to as an artist.
+
 - **Playlists**
   - After uploading, you can add tracks to playlists for promotion and curation.
+
 - **Pinned Track on Artist Page**
   - The pinned track feature is managed via separate controls (not the upload form itself), but the underlying track metadata comes from this form.
+
+### Pinning a Track to Your Artist Page
+
+Pinning highlights one track at the top of your artist page. You can manage it directly from the artist dashboard (not the upload form).
+
+1. Go to **Backstage → Artists → [Your Artist] → Tracks**.
+2. Find the track you want to feature (it must already be linked to this artist in the track form).
+3. Click **•••** (actions) → **Pin to artist**.
+4. To remove it, click **•••** → **Unpin from artist** on the pinned track.
+
+Behavior and rules (from `TrackPinController` validation):
+
+- **One pinned track at a time.** Pinning a new track automatically unpins any previously pinned track.
+- **Track must belong to the artist.** Only tracks already linked to this artist can be pinned.
+- **Who can pin/unpin.** Artist owners and admins with the `artists.update` permission can pin/unpin. Collaborators without management access will see a permission error.
+
+Quick troubleshooting:
+
+- **“This track does not belong to this artist.”** Add the artist to the track in the Backstage track form, save, then try pinning again.
+- **“You do not have permission to manage this artist.”** Ask an artist owner or an admin to pin/unpin, or request the required access.
 
 Edits you make in Backstage (title, cover, artists, genres, etc.) propagate to:
 
@@ -198,10 +223,12 @@ Backstage includes a dedicated **Licensing** section in the track form.
   - Standard only (non-exclusive)
   - Standard + Exclusive
   - Exclusive Only
+
 - **Exclusive Pricing & Availability** (only when exclusive is enabled)
   - Exclusive price and currency
   - Contact email for licensing inquiries
   - Exclusive status (Available, Sold, or Private)
+
 - **Exclusive License Configuration**
   - Optional advanced form that controls exclusive license terms (publishing split, territory, deliverables, royalty, etc.).
   - Can be populated from **presets** or your **artist default configuration**.
@@ -220,6 +247,7 @@ You can safely edit most metadata after a track is live:
   - Genres and tags
   - Album assignment
   - Cover art
+
 - **Audio re-uploads**
   - You can replace the underlying audio file by re-uploading.
   - The new file will be used for future streams and downloads.
@@ -229,7 +257,7 @@ You can safely edit most metadata after a track is live:
 
 Once a track has been sold exclusively:
 
-- The track's exclusive status is set to **Sold**.
+- The tracks exclusive status is set to **Sold**.
 - Exclusive pricing and availability fields become locked in the Backstage form.
 - No new non-exclusive licenses are issued.
 - Existing non-exclusive licenses remain valid (they are not revoked).
@@ -247,14 +275,18 @@ Once a track has been sold exclusively:
 
 - **"Cover art is required"**
   - Upload or select cover art before saving a new track.
+
 - **"Could not automatically determine track artists"**
   - Add at least one artist manually in the Artists field.
+
 - **Title validation errors (file names, metadata)**
   - Rename the track to a clean, listener-facing title (e.g., `Night Drive`, not `NightDrive_FinalMix_v3.wav`).
+
 - **Exclusive licensing validation errors**
   - Ensure the licensing model and exclusive fields are consistent:
     - If you enable exclusive, provide a price and contact email.
     - Make sure your exclusive license configuration has a valid governing law country and publishing split.
+
 - **Duplicate or fingerprint errors**
   - If you intentionally re-uploaded your own track, edit the existing record instead of creating a new one.
   - If you receive a duplicate warning for a track you believe is original, contact support with details.

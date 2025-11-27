@@ -33,7 +33,7 @@ With a paid subscription (Classic, Plus, or Pro), you can:
 | **Offline streaming** | Streaming requires internet; downloaded files work offline |
 
 <Warning>
-  **Free accounts cannot download beats.** Free users can browse, preview, and save to library, but downloading requires a paid subscription.
+  **Free accounts cannot download beats via subscription.** Free users can browse, preview, and save to library. Any track you purchase is always downloadable regardless of subscription status, but subscription-based downloads still require the `music.download` permission.
 </Warning>
 
 ---
@@ -161,6 +161,10 @@ After purchase, download your files immediately:
 <Warning>
   Download and save your files immediately. Keep your license certificate—it's your proof of rights.
 </Warning>
+
+<Note>
+  **Purchases vs. subscriptions:** Tracks you buy remain downloadable forever (they bypass subscription checks), while subscription-based downloads still require the `music.download` permission, matching the `TrackPolicy::download` rules.
+</Note>
 
 ---
 

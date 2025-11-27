@@ -20,10 +20,19 @@ BeatPass receives webhooks from Stripe to process payment events for track purch
 ### Webhook Endpoint
 
 ```
-POST /stripe/webhook
+POST /api/stripe/webhook
 ```
 
-This endpoint is registered in Stripe's dashboard and receives all payment-related events.
+This endpoint is registered in Stripe's dashboard (and wired via `mapWebhookRoutes` and `routes/webhooks.php`) to receive all payment-related events.
+
+Example `curl` request (replace the payload with an actual Stripe event JSON when testing):
+
+```bash
+curl -X POST https://beta.beatpass.ca/api/stripe/webhook \
+  -H "Content-Type: application/json" \
+  -H "Stripe-Signature: <generated-signature>" \
+  -d '{"type": "payment_intent.succeeded", "data": {}}'
+```
 
 ---
 
@@ -67,7 +76,7 @@ This endpoint is registered in Stripe's dashboard and receives all payment-relat
   </Step>
   
   <Step title="Webhook Sent">
-    Stripe sends a webhook to BeatPass at `/stripe/webhook`.
+    Stripe sends a webhook to BeatPass at `/api/stripe/webhook`.
   </Step>
   
   <Step title="BeatPass Processes">
@@ -118,8 +127,11 @@ brew install stripe/stripe-cli/stripe
 # Login
 stripe login
 
-# Forward webhooks to local server
-stripe listen --forward-to localhost:8000/stripe/webhook
+# Forward webhooks to a local development server
+stripe listen --forward-to localhost:8000/api/stripe/webhook
+
+# Forward webhooks to a remote dev server (example)
+stripe listen --forward-to https://dev.example.com/api/stripe/webhook
 ```
 
 ### Webhook Events in Stripe Dashboard

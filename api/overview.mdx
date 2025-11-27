@@ -98,11 +98,7 @@ Accept: application/json
 Content-Type: application/json
 ```
 
-For authenticated endpoints, include the Sanctum token:
-
-```http
-Authorization: Bearer YOUR_SANCTUM_TOKEN
-```
+Authenticated requests use Sanctum's stateful session cookies. State-changing requests must include CSRF protection (`XSRF-TOKEN` cookie + `X-XSRF-TOKEN` header). See the [Authentication guide](/api/auth) for the SPA login flow and CSRF requirements.
 
 ---
 
@@ -150,13 +146,13 @@ Paginated endpoints use Laravel's standard pagination:
 
 ## Authentication Model
 
-BeatPass uses **Laravel Sanctum** for authentication. This provides:
+BeatPass uses **Laravel Sanctum** for authentication. This is a **stateful SPA session** model with CSRF/XSRF cookies. The API:
 
-- Session-based authentication for web (SPA)
-- Token-based authentication for API requests
-- No OAuth flow or third-party app authorization
+- Uses session cookies for authentication
+- Does **not** issue personal access tokens
+- Is only available to the first-party BeatPass web application (no third-party/OAuth)
 
-See [Authentication](/api/auth) for details on obtaining and using tokens.
+See [Authentication](/api/auth) for the SPA login flow and CSRF requirements.
 
 ---
 
@@ -177,7 +173,7 @@ GET /genres              # Available genres
 
 ### Authenticated Endpoints
 
-These require a valid Sanctum token:
+These require an authenticated Sanctum session:
 
 ```http
 POST /tracks                           # Upload track

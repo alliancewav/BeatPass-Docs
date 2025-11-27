@@ -1,0 +1,251 @@
+---
+title: "Producer & Artist Dashboard Help | BeatPass"
+description: "Access your Backstage dashboard, understand the metrics (plays, followers, upload health), and map them to the BeatPass API for producers and artists."
+keywords: ["beatpass dashboard", "backstage", "artist analytics", "producer analytics", "upload insights", "track performance", "follower metrics"]
+"og:title": "Producer & Artist Dashboard Help"
+"og:description": "How to open your Backstage dashboard, see plays, followers, upload health, and query the same data via the BeatPass API."
+"twitter:card": "summary_large_image"
+---
+
+## Overview
+
+The **Producer & Artist Dashboard** in Backstage is the fastest way to see how your catalog is performing. It surfaces **plays**, **followers**, and **upload health** so you can understand what is growing, what needs attention, and where collaborations are working.
+
+<Info>
+  - **Where:** Backstage → Insights → Dashboard
+  - **Who:** Approved producers/artists with Backstage access
+  - **API:** Authenticated endpoints under `/api/v1/artist/*` with the `artist.dashboard:read` scope
+</Info>
+
+---
+
+## Open the dashboard in Backstage
+
+<Steps>
+  <Step title="Sign in and go to Backstage">
+    From the main BeatPass nav, click **Backstage**. This opens the producer workspace.
+  </Step>
+
+  <Step title="Open Insights → Dashboard">
+    In the left sidebar choose **Insights**, then select **Dashboard**. This view aggregates your plays, follower trendlines, and upload health cards.
+  </Step>
+
+  <Step title="Filter by artist (if you manage multiple)">
+    Use the artist switcher in the header to pick the profile you want to analyze. The cards refresh for that artist only.
+  </Step>
+</Steps>
+
+<Note>
+  If you collaborate under multiple artist profiles, switch to the right profile before reviewing stats. The API endpoints below mirror the same selection logic and require the `artist.dashboard:read` scope on your authenticated session.
+</Note>
+
+---
+
+## What you see on the dashboard
+
+<Cards>
+  <Card title="Plays & engagement" icon="chart-line">
+    Total plays, average plays per track, top track with its play count, and play growth vs last month are surfaced from `/api/v1/artist/dashboard-stats`.
+  </Card>
+  <Card title="Followers" icon="users">
+    Current follower count and recent followers come from `/artists/{artist}/followers`. Use the **Followers** widget to see whether recent uploads convert listeners.
+  </Card>
+  <Card title="Upload health" icon="heart-pulse">
+    Upload velocity and quality recommendations (uploads this month vs last month, average plays per upload, best performing month, and suggested cadence) are powered by `/api/v1/artist/upload-insights`.
+  </Card>
+  <Card title="Collaborations" icon="handshake">
+    The **Collaborations** tile links to `/api/v1/artist/{artist}/collaborative-tracks`, so you can inspect co-produced tracks alongside your own uploads.
+  </Card>
+</Cards>
+
+<Warning>
+  Upload health requires **upload access** on the artist profile. If you lose upload permissions, the dashboard hides these cards and the API returns `403 Upload access required`.
+</Warning>
+
+---
+
+## API mapping for dashboard widgets
+
+Use these endpoints to recreate the Backstage dashboard in a custom view or to automate reporting.
+
+### Authentication & scope
+
+All endpoints below require an authenticated **Backstage session** and the `artist.dashboard:read` scope. Upload insights also require the profile to have `upload_access` enabled.
+
+---
+
+### Artist profile summary — `/api/v1/artist/profile`
+
+Returns the active artist profile tied to the authenticated user.
+
+<ResponseField name="id" type="integer" required>
+  Artist ID associated with the current user.
+</ResponseField>
+<ResponseField name="name" type="string" required>
+  Artist display name.
+</ResponseField>
+<ResponseField name="upload_access" type="boolean" required>
+  Whether the profile can upload/manage tracks (gates upload health widgets).
+</ResponseField>
+<ResponseField name="total_tracks" type="integer" required>
+  Count of tracks linked to the artist.
+</ResponseField>
+<ResponseField name="total_plays" type="integer" required>
+  Aggregate plays across all linked tracks.
+</ResponseField>
+<ResponseField name="member_since" type="string" format="ISO8601" required>
+  ISO timestamp when the artist profile was created.
+</ResponseField>
+<ResponseField name="bio" type="string">
+  Current bio text.
+</ResponseField>
+<ResponseField name="website" type="string">
+  Website URL if set.
+</ResponseField>
+<ResponseField name="social_links" type="object">
+  Social handles/URLs (twitter, instagram, soundcloud, youtube).
+</ResponseField>
+
+---
+
+### Dashboard stats — `/api/v1/artist/dashboard-stats`
+
+Summarizes headline metrics used on the dashboard.
+
+<ResponseField name="total_tracks" type="integer" required>
+  How many tracks the artist has published.
+</ResponseField>
+<ResponseField name="total_plays" type="integer" required>
+  Total lifetime plays.
+</ResponseField>
+<ResponseField name="total_contribution" type="number" format="decimal" required>
+  Sum of contribution values across tracks (used for earnings splits).
+</ResponseField>
+<ResponseField name="recent_uploads" type="integer" required>
+  Tracks uploaded in the last 30 days.
+</ResponseField>
+<ResponseField name="play_growth_percentage" type="number" required>
+  Month-over-month play growth percentage.
+</ResponseField>
+<ResponseField name="top_track" type="object">
+  <Expandable title="Top track object">
+    <ResponseField name="id" type="integer" required>
+      Track ID with the most plays.
+    </ResponseField>
+    <ResponseField name="name" type="string" required>
+      Track name.
+    </ResponseField>
+    <ResponseField name="plays" type="integer" required>
+      Play count for the top track.
+    </ResponseField>
+    <ResponseField name="contribution_value" type="number" required>
+      Contribution value for the top track.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="average_plays_per_track" type="integer" required>
+  Rounded average plays per track.
+</ResponseField>
+<ResponseField name="tracks_with_plays" type="integer" required>
+  How many tracks have at least one play.
+</ResponseField>
+
+---
+
+### Track performance — `/api/v1/artist/track-performance`
+
+Returns the most recent 20 tracks with their performance signals for timeline charts.
+
+<ResponseField name="[].track_id" type="integer" required>
+  Track ID.
+</ResponseField>
+<ResponseField name="[].track_name" type="string" required>
+  Track title.
+</ResponseField>
+<ResponseField name="[].plays" type="integer" required>
+  Total plays for the track.
+</ResponseField>
+<ResponseField name="[].contribution_value" type="number" required>
+  Contribution value for the track.
+</ResponseField>
+<ResponseField name="[].months_since_upload" type="integer" required>
+  Age of the track in months (used for cohorting performance).
+</ResponseField>
+<ResponseField name="[].upload_date" type="string" format="ISO8601" required>
+  Upload timestamp.
+</ResponseField>
+<ResponseField name="[].last_updated" type="string" format="ISO8601">
+  When contribution was last recalculated (null if pending).
+</ResponseField>
+
+---
+
+### Upload insights — `/api/v1/artist/upload-insights`
+
+Highlights upload cadence and health to recommend when to release next.
+
+<ResponseField name="total_uploads" type="integer" required>
+  Total tracks uploaded by the artist.
+</ResponseField>
+<ResponseField name="uploads_this_month" type="integer" required>
+  Uploads in the current calendar month.
+</ResponseField>
+<ResponseField name="uploads_last_month" type="integer" required>
+  Uploads in the previous calendar month.
+</ResponseField>
+<ResponseField name="average_plays_per_upload" type="integer" required>
+  Rounded average plays per upload.
+</ResponseField>
+<ResponseField name="best_performing_month" type="object">
+  <Expandable title="Best performing month object">
+    <ResponseField name="month" type="string" required>
+      Month key in `YYYY-MM` format.
+    </ResponseField>
+    <ResponseField name="total_plays" type="integer" required>
+      Total plays earned that month.
+    </ResponseField>
+    <ResponseField name="track_count" type="integer" required>
+      Number of tracks uploaded that month.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="upload_frequency_days" type="integer">
+  Average days between uploads (null when fewer than two uploads exist).
+</ResponseField>
+<ResponseField name="recommended_upload_time" type="string" required>
+  Text recommendation for how often to upload next.
+</ResponseField>
+
+<Warning>
+  Returns `403` if `upload_access` is false on the artist profile.
+</Warning>
+
+---
+
+### Collaborative tracks — `/api/v1/artist/{artist}/collaborative-tracks`
+
+Use this alongside the dashboard calls to surface co-produced content.
+
+<ParamField path="artist" type="integer" required>
+  Artist ID to fetch collaborations for.
+</ParamField>
+
+<ResponseField name="[].track_id" type="integer" required>
+  Collaborative track ID.
+</ResponseField>
+<ResponseField name="[].title" type="string" required>
+  Track name.
+</ResponseField>
+<ResponseField name="[].primary_artist" type="string" required>
+  Primary artist credit.
+</ResponseField>
+<ResponseField name="[].collaborators" type="array" required>
+  List of collaborating artists on the track.
+</ResponseField>
+<ResponseField name="[].plays" type="integer">
+  Play count for the collaborative track.
+</ResponseField>
+
+<LinkButton variant="outline" href="/api/endpoints#artist-dashboard-insights" icon="code">
+  View all dashboard-related endpoints
+</LinkButton>

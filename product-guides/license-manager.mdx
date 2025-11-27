@@ -214,6 +214,41 @@ Every license can be verified publicly using its unique UUID.
   </Step>
 </Steps>
 
+### Verification outcomes
+
+When you verify a license, the status will show one of three outcomes:
+
+<CardGroup cols={3}>
+  <Card title="Active" icon="circle-check" color="#22c55e">
+    🟢 The license is valid and currently usable.
+  </Card>
+  <Card title="Revoked" icon="ban" color="#ef4444">
+    🔴 The license was invalidated (for example, due to chargebacks, fraud investigations, or a dispute ruling).
+  </Card>
+  <Card title="Expired" icon="clock" color="#eab308">
+    🟡 The license term has ended. For non-exclusive licenses, this only appears if the license was issued with a fixed term and the `expires_at` date has passed.
+  </Card>
+</CardGroup>
+
+### Understanding `expires_at` for non-exclusive licenses
+
+Most non-exclusive licenses on BeatPass are perpetual. When a non-exclusive license includes a term limit, the verification page will show an `expires_at` timestamp indicating when the allowed usage window ends. If that date is blank, the license does not have a fixed expiry.
+
+### What to do if a license shows as invalid or expired
+
+<CardGroup cols={2}>
+  <Card title="For Buyers / Artists" icon="user-exclamation" color="#f97316">
+    - Double-check that you entered the correct license UUID from your certificate.
+    - If status is **Expired**, consider purchasing a new license or contacting the producer to discuss renewal options.
+    - If status is **Revoked**, stop using the track commercially and reach out to support with your purchase receipt and certificate.
+  </Card>
+  <Card title="For Producers" icon="shield-exclamation" color="#fb7185">
+    - Confirm the license UUID belongs to your catalog and matches the intended licensee.
+    - If you revoked the license, ensure you have documented the reason (chargeback, dispute, or terms violation) in case of inquiries.
+    - For expired non-exclusive licenses with `expires_at`, reach out to the buyer with renewal or upgrade options if appropriate.
+  </Card>
+</CardGroup>
+
 ### Why Verification Matters
 
 <CardGroup cols={2}>

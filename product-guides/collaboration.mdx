@@ -213,6 +213,28 @@ Many collaborations start from beat request interactions:
 - Engage through messaging
 - Propose collaboration opportunities
 
+### Use API signals to target the right partners
+
+BeatPass exposes two artist-scoped endpoints you can call from internal tools or integrations to speed up collaboration matchmaking and profile stewardship:
+
+1) **Collaboration recommendations** — `GET /api/v1/artists/{artistId}/collaboration-recommendations`
+
+- **What it returns:** A ranked list of recommended artists (`recommendations`) with `id`, `name`, `avatar`, `verified`, `track_count`, `common_genres`, and a `similarity_score` percentage. It also echoes the detected `artist_genres` it used for matching and the `total_found` count.
+- **How to use it:** Call the endpoint with your artist ID (authentication is optional). The service looks at your album/title patterns, filters out existing collaborators, and suggests genre-adjacent artists you have not worked with yet.
+- **Practical workflow:**
+  - Pull the top 3–5 results and open their profiles directly from the returned IDs.
+  - Prioritize high `similarity_score` matches with verified badges to improve response rates.
+  - Use the `common_genres` tags in your outreach message to show why the pairing makes sense.
+
+2) **Profile ownership check** — `GET /api/v1/artists/{artist}/check-ownership`
+
+- **What it validates:** Whether an artist profile is already claimed by a BeatPass account. The response includes `owned` (boolean), `artist_id`, and `artist_name` so you can show clear messaging in claim or merge flows.
+- **Who can call it:** It is available publicly (optional auth), but updates that depend on the result—such as linking a user to an unclaimed profile—should still require an authenticated session.
+- **Troubleshooting failed checks:**
+  - If `owned` is `true` but you believe the profile is yours, contact support with proof of control before requesting a transfer.
+  - A `404` typically means the artist ID is invalid; confirm you are using the numeric `artist` path param, not a slug.
+  - Any `500` or empty payloads should be retried after a short delay; persistent issues usually indicate a backend outage.
+
 ---
 
 ## Reposts

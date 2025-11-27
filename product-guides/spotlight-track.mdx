@@ -1,0 +1,91 @@
+---
+title: "Spotlight Track Pinning | BeatPass"
+description: "Learn how to pin or unpin a spotlight track on your BeatPass profile, what visitors see on public vs. private profiles, and how pinned tracks affect layout and analytics."
+keywords: ["spotlight track", "pin track", "profile pin", "artist spotlight", "beatpass profile"]
+"og:title": "Spotlight Track Pinning - BeatPass Help"
+"og:description": "Pin a spotlight track to the top of your profile, control visibility, and monitor performance."
+"twitter:card": "summary_large_image"
+---
+
+## Overview
+
+Spotlight track pinning lets you feature a single track at the top of your profile. It is ideal for new releases, licensing campaigns, or highlighting your best-selling beat.
+
+<Info>
+  **Audience:** Artists & producers with published tracks
+  **Time to complete:** 1-2 minutes
+</Info>
+
+---
+
+## Pin a Spotlight Track
+
+<Steps>
+  <Step title="Open Backstage Catalog">
+    Go to **Backstage → Catalog** to see your published tracks. Hover or tap a track row to reveal the **Pin to profile** control.
+    
+    ![Pin control inside Backstage catalog](/images/spotlight-pin-catalog.svg)
+  </Step>
+
+  <Step title="Confirm the Spotlight">
+    Select **Pin to profile**. The current spotlight (if any) is replaced immediately. Only one track can be pinned at a time.
+  </Step>
+
+  <Step title="Verify on Your Profile">
+    Visit your public profile to confirm the spotlight renders above releases, playlists, and other modules.
+    
+    ![Pinned track shown above the profile layout](/images/spotlight-pin-profile.svg)
+  </Step>
+</Steps>
+
+---
+
+## Unpin or Replace
+
+- **Replace**: Pinning a new track automatically unpins the previous spotlight.
+- **Unpin**: Use **Unpin track** from the same catalog control to return your profile to a standard layout with no hero track.
+- **Drafts & archived tracks**: Draft or archived tracks cannot be pinned. If a pinned track is archived, the spotlight slot hides until you pin another.
+
+---
+
+## Visibility Rules
+
+- **Public profiles**: The spotlight appears to all visitors, including anonymous listeners. Plays, saves, and purchases from the spotlight are tracked normally.
+- **Private profiles**: The pinned track is visible only to you and collaborators with backstage access. Public visitors see a standard layout with no spotlight slot until you make the profile public again.
+- **Blocked or geofenced regions**: Users who cannot stream the track due to blocks or territory limits see the slot hidden to avoid broken playback.
+
+<Warning>
+  Switching a profile from public to private hides the spotlight for visitors, but the pin remains stored. When you return to public mode, the spotlight immediately reactivates.
+</Warning>
+
+---
+
+## Layout & Playback Behavior
+
+- The spotlight tile renders above releases, playlists, and the follow banner so it is the first playable element on desktop and mobile.
+- On mobile, the spotlight remains sticky while scrolling through the top of the page; once the visitor scrolls past, the standard layout resumes.
+- If you embed your profile elsewhere, the embedded layout uses the same pinned track so your brand stays consistent.
+
+---
+
+## Analytics & Reporting
+
+- **Impressions & plays**: Spotlight impressions are tracked separately from regular grid tiles to measure hero placement performance.
+- **Engagement split**: Saves, follows, and purchases initiated from the spotlight count toward overall track metrics and producer contribution formulas.
+- **Change history**: When you re-pin a different track, analytics continue per-track; no historical data is lost for previously pinned tracks.
+
+<Note>
+  You can view spotlight performance in **Backstage → Analytics → Track Breakdown**. Look for the **Spotlight** badge in the per-track table.
+</Note>
+
+---
+
+## API Access (Advanced)
+
+Programmatically manage the spotlight for automations or A/B tests using the artist endpoints:
+
+- **Pin**: `POST /artists/{artistId}/tracks/{trackId}/pin`
+- **Unpin**: `POST /artists/{artistId}/tracks/{trackId}/unpin`
+- **Check**: `GET /artists/{artistId}/pinned-track`
+
+See [API Endpoints – Track Pinning](/api/endpoints#track-pinning) for request/response schemas, auth requirements, and rate limits.
