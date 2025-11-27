@@ -152,13 +152,6 @@
               "help/legal/content-guidelines",
               "help/legal/license-terms"
             ]
-          },
-          {
-            "group": "Release Notes",
-            "pages": [
-              "help/release-notes/index",
-              "help/release-notes/template"
-            ]
           }
         ]
       },
