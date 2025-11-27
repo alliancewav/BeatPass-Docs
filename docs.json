@@ -165,7 +165,7 @@
       {
         "tab": "Developers",
         "icon": "code",
-        "openapi": "api-reference/openapi.json",
+        "openapi": "/api-reference/openapi.json",
         "groups": [
           {
             "group": "Getting Started",
