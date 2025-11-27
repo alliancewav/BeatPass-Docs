@@ -184,7 +184,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -471,7 +475,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "perPage",
@@ -548,7 +556,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -613,7 +625,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -768,7 +784,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "with",
@@ -888,7 +908,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "perPage",
@@ -965,7 +989,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "perPage",
@@ -1042,7 +1070,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "perPage",
@@ -1119,7 +1151,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the album",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "with",
@@ -1196,7 +1232,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the track",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "with",
@@ -1276,7 +1316,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the track",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
             "name": "perPage",
@@ -1353,7 +1397,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the track",
-            "example": 1
+            "example": 1,
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -1397,7 +1445,11 @@
             "name": "name",
             "in": "path",
             "description": "Name of the tag",
-            "example": "mellow"
+            "example": "mellow",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "perPage",
@@ -1477,7 +1529,11 @@
             "name": "name",
             "in": "path",
             "description": "Name of the tag",
-            "example": "mellow"
+            "example": "mellow",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "perPage",
@@ -1608,7 +1664,11 @@
             "name": "id",
             "in": "path",
             "description": "ID of the user or \"me\" for currently logged in user.",
-            "example": "me"
+            "example": "me",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
