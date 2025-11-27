@@ -164,10 +164,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -246,10 +246,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       },
@@ -289,10 +289,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -363,17 +363,17 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "422": {
             "description": "Invalid data specified",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Response422"
+                  "$ref": "#/components/responses/Response422"
                 }
               }
             }
@@ -445,17 +445,17 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "422": {
             "description": "Invalid data specified",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Response422"
+                  "$ref": "#/components/responses/Response422"
                 }
               }
             }
@@ -536,10 +536,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -605,10 +605,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -674,10 +674,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -719,10 +719,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -764,10 +764,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -888,10 +888,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -969,10 +969,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1050,10 +1050,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1131,10 +1131,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1212,10 +1212,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1296,10 +1296,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1377,10 +1377,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1425,10 +1425,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1506,13 +1506,13 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -1590,13 +1590,13 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -1644,10 +1644,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1692,13 +1692,13 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -1766,10 +1766,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1837,10 +1837,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1908,10 +1908,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -1979,10 +1979,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -2050,10 +2050,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -2121,10 +2121,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -2158,17 +2158,17 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "422": {
             "description": "Invalid data specified",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Response422"
+                  "$ref": "#/components/responses/Response422"
                 }
               }
             }
@@ -2230,17 +2230,17 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "422": {
             "description": "Invalid data specified",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Response422"
+                  "$ref": "#/components/responses/Response422"
                 }
               }
             }
@@ -2348,10 +2348,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -2400,7 +2400,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -2437,10 +2437,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -2489,7 +2489,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -2531,10 +2531,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -2580,7 +2580,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -2632,7 +2632,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -2691,7 +2691,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -2768,7 +2768,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       },
@@ -2838,10 +2838,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "422": {
-            "$ref": "#/components/schemas/Response422"
+            "$ref": "#/components/responses/Response422"
           }
         }
       }
@@ -2878,13 +2878,13 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -2952,7 +2952,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       },
@@ -3012,10 +3012,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "422": {
-            "$ref": "#/components/schemas/Response422"
+            "$ref": "#/components/responses/Response422"
           }
         }
       }
@@ -3083,7 +3083,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       },
@@ -3138,10 +3138,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "422": {
-            "$ref": "#/components/schemas/Response422"
+            "$ref": "#/components/responses/Response422"
           }
         }
       }
@@ -3204,13 +3204,13 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           },
           "422": {
-            "$ref": "#/components/schemas/Response422"
+            "$ref": "#/components/responses/Response422"
           }
         }
       }
@@ -3255,10 +3255,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -3300,10 +3300,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "404": {
-            "$ref": "#/components/schemas/Response404"
+            "$ref": "#/components/responses/Response404"
           }
         }
       }
@@ -3362,10 +3362,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "$ref": "#/components/schemas/Response403"
+            "$ref": "#/components/responses/Response403"
           }
         }
       }
@@ -3422,7 +3422,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3464,7 +3464,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3506,7 +3506,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3556,7 +3556,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3598,7 +3598,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3656,7 +3656,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3706,7 +3706,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           }
         }
       }
@@ -3764,10 +3764,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/schemas/Response401"
+            "$ref": "#/components/responses/Response401"
           },
           "422": {
-            "$ref": "#/components/schemas/Response422"
+            "$ref": "#/components/responses/Response422"
           }
         }
       }
@@ -4083,7 +4083,15 @@
             "type": "string"
           }
         }
-      },
+      }
+    },
+    "securitySchemes": {
+      "accessToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "responses": {
       "Response401": {
         "description": "Unauthenticated. Either access token is not provided or is invalid."
       },
@@ -4118,12 +4126,6 @@
             }
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "accessToken": {
-        "type": "http",
-        "scheme": "bearer"
       }
     }
   }
