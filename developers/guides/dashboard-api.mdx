@@ -1,32 +1,31 @@
 ---
-title: "Dashboard API Integration | BeatPass Developer Docs"
-description: "Integrate BeatPass dashboard metrics into your application using the Artist Dashboard API endpoints. Retrieve plays, followers, upload insights, and collaboration data."
-keywords: ["beatpass api", "dashboard api", "artist analytics api", "producer api", "track performance api", "upload insights api"]
+title: "Dashboard API Integration"
+sidebarTitle: "Dashboard API"
+description: "Integrate BeatPass dashboard metrics using the Artist Dashboard API endpoints. Retrieve plays, followers, upload insights, and collaboration data."
+keywords: ["beatpass api", "dashboard api", "artist analytics api", "producer api", "track performance api"]
 "og:title": "Dashboard API Integration"
 "og:description": "Access BeatPass dashboard data programmatically through the Artist Dashboard API endpoints."
-"twitter:card": "summary_large_image"
-audience: developer
 ---
 
 ## Overview
 
-The **Artist Dashboard API** enables you to programmatically access the same metrics displayed in the Backstage dashboard. Use these endpoints to build custom reporting tools, automate performance tracking, or integrate BeatPass analytics into your own applications.
+The **Artist Dashboard API** provides programmatic access to producer analytics displayed in the Producer Dashboard. These endpoints return plays, followers, upload insights, and collaboration data for authenticated producers.
 
 <Info>
-  **Base URL:** `https://api.beatpass.ca/v1`
+  **Base URL:** `https://open.beatpass.ca/api/v1`
   
-  **Authentication:** All endpoints require an authenticated Backstage session with the `artist.dashboard:read` scope.
+  **Authentication:** All endpoints require an authenticated session. The user must have a producer profile (be linked to an artist).
 </Info>
 
 ---
 
-## Authentication & Scope
+## Authentication Requirements
 
 All dashboard endpoints require:
 
-- **Active session:** User must be authenticated via Backstage
-- **Scope:** `artist.dashboard:read` permission
-- **Upload access:** Some endpoints (upload insights) additionally require the artist profile to have `upload_access` enabled
+- **Authenticated session:** User must be logged in via the standard Sanctum auth flow
+- **Producer profile:** User must have an associated artist profile (created via the Producer Program)
+- **Upload access:** Some endpoints (upload insights) additionally require the artist profile to have upload access enabled
 
 ---
 
@@ -231,15 +230,16 @@ Retrieves tracks where the artist has collaborated with other producers.
 ## Integration Example
 
 ```javascript
-// Example: Fetch dashboard stats for authenticated artist
+// Example: Fetch dashboard stats for authenticated producer
+// Note: Uses session cookies, not Bearer tokens
 async function getDashboardStats() {
-  const response = await fetch('https://api.beatpass.ca/v1/artist/dashboard-stats', {
+  const response = await fetch('https://open.beatpass.ca/api/v1/artist/dashboard-stats', {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${sessionToken}`,
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    credentials: 'include'
+    credentials: 'include' // Include session cookies
   });
   
   if (!response.ok) {
@@ -257,7 +257,7 @@ async function getDashboardStats() {
 
 <CardGroup cols={2}>
   <Card title="Authentication" icon="key" href="/developers/auth">
-    Learn about session management and scopes
+    Understand session-based authentication
   </Card>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
     Understand API rate limiting
@@ -265,7 +265,7 @@ async function getDashboardStats() {
   <Card title="Error Handling" icon="triangle-exclamation" href="/developers/error-catalog">
     Handle API errors properly
   </Card>
-  <Card title="All Endpoints" icon="book" href="/developers/reference/artists">
-    Browse all artist endpoints
+  <Card title="All Endpoints" icon="book" href="/developers/reference/endpoints">
+    Browse the OpenAPI reference
   </Card>
 </CardGroup>

@@ -1,16 +1,14 @@
 ---
-audience: developer
 title: "Error Catalog"
+sidebarTitle: "Error Catalog"
 description: "Common API error codes, messages, and suggested resolutions across BeatPass features."
 ---
-audience: developer
 
 ## Overview
 
 This catalog documents common errors you may encounter across BeatPass API endpoints, along with their meanings and suggested resolutions.
 
 ---
-audience: developer
 
 ## Error Response Format
 
@@ -26,7 +24,6 @@ All errors follow this structure:
 ```
 
 ---
-audience: developer
 
 ## HTTP Status Codes
 
@@ -42,7 +39,6 @@ audience: developer
 | 500 | Internal Server Error | Server-side error |
 
 ---
-audience: developer
 
 ## Authentication Errors
 
@@ -56,16 +52,15 @@ audience: developer
 | `Session expired` | 401 | Token/session timed out | Re-authenticate |
 | `CSRF token mismatch` | 419 | Missing/invalid CSRF token | Refresh page, get new token |
 
-### Token Errors
+### Session Errors
 
 | Error | Code | Cause | Resolution |
 |-------|------|-------|------------|
-| `Unauthenticated` | 401 | Missing auth token/cookie | Include valid Authorization header |
-| `Token expired` | 401 | Bearer token no longer valid | Obtain new token |
-| `Invalid token` | 401 | Malformed or revoked token | Re-authenticate |
+| `Unauthenticated` | 401 | Missing session cookie | Authenticate via login |
+| `Session expired` | 401 | Session no longer valid | Re-authenticate |
+| `Invalid session` | 401 | Malformed or revoked session | Re-authenticate |
 
 ---
-audience: developer
 
 ## Track & Upload Errors
 
@@ -99,7 +94,6 @@ audience: developer
 | `Private track` | 403 | Track not published | Only owner can access |
 
 ---
-audience: developer
 
 ## Purchase & Licensing Errors
 
@@ -133,7 +127,6 @@ audience: developer
 | `Download expired` | 403 | Download link timed out | Get new download link |
 
 ---
-audience: developer
 
 ## Beat Request Errors
 
@@ -162,7 +155,6 @@ audience: developer
 | `Already fulfilled` | 409 | Request already completed | No action needed |
 
 ---
-audience: developer
 
 ## Messaging Errors
 
@@ -184,7 +176,6 @@ audience: developer
 | `Not a participant` | 403 | User not in conversation | Cannot access |
 
 ---
-audience: developer
 
 ## Collection & Library Errors
 
@@ -208,7 +199,6 @@ audience: developer
 | `Cannot re-invite yet` | 429 | 24-hour cooldown | Wait to re-invite |
 
 ---
-audience: developer
 
 ## Social & Following Errors
 
@@ -230,7 +220,6 @@ audience: developer
 | `Cannot repost own track` | 400 | Self-repost not allowed | N/A |
 
 ---
-audience: developer
 
 ## Radio Errors
 
@@ -241,7 +230,6 @@ audience: developer
 | `Concurrent stream limit` | 429 | Already streaming elsewhere | Stop other stream |
 
 ---
-audience: developer
 
 ## Rate Limiting
 
@@ -273,7 +261,6 @@ Retry-After: 60
 | Cache responses | Reduce redundant calls |
 
 ---
-audience: developer
 
 ## Server Errors (5xx)
 
@@ -288,7 +275,6 @@ audience: developer
 </Note>
 
 ---
-audience: developer
 
 ## Troubleshooting Checklist
 
@@ -302,7 +288,7 @@ audience: developer
   </Step>
   
   <Step title="Verify Authentication">
-    Ensure token is valid and included correctly.
+    Ensure session is valid and cookies are included.
   </Step>
   
   <Step title="Check Rate Limits">
@@ -319,7 +305,6 @@ audience: developer
 </Steps>
 
 ---
-audience: developer
 
 ## Related Resources
 

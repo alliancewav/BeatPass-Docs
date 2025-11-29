@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "Send your bearer token on every request in the Authorization header: `Authorization: Bearer <token>`. Generate a token via the `auth/login` endpoint or from your BeatPass account settings.",
+    "description": "BeatPass uses cookie-based session authentication via Laravel Sanctum. Authenticate by logging in at `/login` after obtaining a CSRF token from `/sanctum/csrf-cookie`. Session cookies are automatically included in subsequent requests by the browser.",
     "version": "1.0.0",
     "title": "BeatPass API"
   },

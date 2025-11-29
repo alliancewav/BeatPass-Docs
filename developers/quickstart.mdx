@@ -1,9 +1,8 @@
 ---
-audience: developer
-title: "Developer Onboarding"
+title: "Quickstart"
+sidebarTitle: "Quickstart"
 description: "Getting started guide for developers working with the BeatPass codebase and API."
 ---
-audience: developer
 
 ## Overview
 
@@ -14,20 +13,19 @@ This guide helps developers understand the BeatPass technical environment, authe
 </Warning>
 
 ---
-audience: developer
 
 ## Authentication Model
 
 ### How Auth Works
 
-BeatPass uses **Laravel Sanctum** for authentication:
+BeatPass uses **Laravel Sanctum** for SPA (single-page application) authentication:
 
-| Component | Technology |
-|-----------|------------|
-| Session auth | Cookie-based (SPA) |
-| API tokens | Not issued (no `/sanctum/token`) |
+| Component | Implementation |
+|-----------|----------------|
+| Session auth | Cookie-based sessions |
+| API tokens | Not issued (no bearer tokens) |
 | Third-party integrations | Not supported |
-| CSRF protection | Required for mutations |
+| CSRF protection | Required for POST/PUT/DELETE |
 
 ### Cookie + CSRF Flow
 
@@ -87,7 +85,6 @@ GET /tracks
 ```
 
 ---
-audience: developer
 
 ## Environment
 
@@ -116,7 +113,6 @@ This means:
 | Never test payments with real cards | Use Stripe test mode when available |
 
 ---
-audience: developer
 
 ## Testing Purchases
 
@@ -146,7 +142,6 @@ If test mode is available:
 </Warning>
 
 ---
-audience: developer
 
 ## Using Placeholder IDs
 
@@ -184,7 +179,6 @@ GET /api/v1/tracks/12345
 ```
 
 ---
-audience: developer
 
 ## Off-Limits Routes
 
@@ -222,7 +216,6 @@ audience: developer
 | Abuse pattern detected | Account flagged for review |
 
 ---
-audience: developer
 
 ## Safe API Usage
 
@@ -243,7 +236,6 @@ audience: developer
 - Share API tokens
 
 ---
-audience: developer
 
 ## Error Handling
 
@@ -272,10 +264,9 @@ audience: developer
 | 429 | Rate Limited | Back off and retry |
 | 500 | Server Error | Report to support |
 
-See [Error Catalog](/api/error-catalog) for feature-specific errors.
+See [Error Catalog](/developers/error-catalog) for feature-specific errors.
 
 ---
-audience: developer
 
 ## Getting Help
 
@@ -292,13 +283,12 @@ audience: developer
 | Topic | Location |
 |-------|----------|
 | API Overview | [/developers/overview](/developers/overview) |
-| Endpoints | [/api/endpoints](/api/endpoints) |
-| Authentication | [/api/auth](/api/auth) |
-| Rate Limits | [/api/rate-limits](/api/rate-limits) |
-| Error Catalog | [/api/error-catalog](/api/error-catalog) |
+| Endpoints | [/developers/reference/endpoints](/developers/reference/endpoints) |
+| Authentication | [/developers/auth](/developers/auth) |
+| Rate Limits | [/developers/rate-limits](/developers/rate-limits) |
+| Error Catalog | [/developers/error-catalog](/developers/error-catalog) |
 
 ---
-audience: developer
 
 ## Checklist for New Developers
 
@@ -306,7 +296,7 @@ audience: developer
   <Step title="Get Access">
     - Obtain development account credentials
     - Set up local environment
-    - Get necessary API tokens
+    - Understand the session-based auth flow
   </Step>
   
   <Step title="Understand the Stack">
@@ -339,7 +329,6 @@ audience: developer
 </Steps>
 
 ---
-audience: developer
 
 ## Related Resources
 

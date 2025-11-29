@@ -1,13 +1,11 @@
 ---
-audience: developer
-title: "API Overview | BeatPass"
+title: "API Overview"
+sidebarTitle: "Overview"
 description: "Introduction to the BeatPass API for first-party application development. Learn about authentication, endpoints, rate limits, and API structure."
 keywords: ["beatpass api", "music api", "beat marketplace api", "producer api", "beat licensing api"]
 "og:title": "API Overview - BeatPass Developer Documentation"
 "og:description": "Introduction to the BeatPass API for first-party application development."
-"twitter:card": "summary_large_image"
 ---
-audience: developer
 
 ## Overview
 
@@ -26,7 +24,6 @@ If you're interested in integrating with BeatPass (partnerships, data licensing,
 </Card>
 
 ---
-audience: developer
 
 ## Base URL
 
@@ -37,7 +34,6 @@ https://open.beatpass.ca/api/v1
 ```
 
 ---
-audience: developer
 
 ## API Surface
 
@@ -83,7 +79,6 @@ The BeatPass API provides comprehensive functionality across the platform:
 | **Reposts** | Content sharing within platform |
 
 ---
-audience: developer
 
 ## Request Format
 
@@ -103,10 +98,9 @@ Accept: application/json
 Content-Type: application/json
 ```
 
-Authenticated requests use Sanctum's stateful session cookies. State-changing requests must include CSRF protection (`XSRF-TOKEN` cookie + `X-XSRF-TOKEN` header). See the [Authentication guide](/api/auth) for the SPA login flow and CSRF requirements.
+Authenticated requests use Sanctum's stateful session cookies. State-changing requests must include CSRF protection (`XSRF-TOKEN` cookie + `X-XSRF-TOKEN` header). See the [Authentication guide](/developers/auth) for the SPA login flow and CSRF requirements.
 
 ---
-audience: developer
 
 ## Response Format
 
@@ -149,20 +143,18 @@ Paginated endpoints use Laravel's standard pagination:
 ```
 
 ---
-audience: developer
 
 ## Authentication Model
 
 BeatPass uses **Laravel Sanctum** for authentication. This is a **stateful SPA session** model with CSRF/XSRF cookies. The API:
 
-- Uses session cookies for authentication
+- Uses session cookies for authentication (not Bearer tokens)
 - Does **not** issue personal access tokens
 - Is only available to the first-party BeatPass web application (no third-party/OAuth)
 
-See [Authentication](/api/auth) for the SPA login flow and CSRF requirements.
+See [Authentication](/developers/auth) for the SPA login flow and CSRF requirements.
 
 ---
-audience: developer
 
 ## Key Endpoint Groups
 
@@ -179,9 +171,9 @@ GET /search              # Search content
 GET /genres              # Available genres
 ```
 
-### Authenticated Endpoints
+### Required Auth Endpoints
 
-These require an authenticated Sanctum session:
+These require an authenticated session:
 
 ```http
 POST /tracks                           # Upload track
@@ -193,7 +185,6 @@ POST /beat-requests                    # Create beat request
 ```
 
 ---
-audience: developer
 
 ## Rate Limiting
 
@@ -206,19 +197,17 @@ The API uses route-specific throttling. Key limits:
 | Social Analytics | 120 requests/minute |
 | Legacy Producer Dashboard | 60 requests/minute |
 
-See [Rate Limits](/api/rate-limits) for complete details.
+See [Rate Limits](/developers/rate-limits) for complete details.
 
 ---
-audience: developer
 
 ## Webhooks
 
 BeatPass receives **inbound webhooks** from Stripe for payment processing. There is no outbound webhook system for external integrations.
 
-See [Webhooks](/api/webhooks) for Stripe webhook details.
+See [Webhooks](/developers/guides/webhooks) for Stripe webhook details.
 
 ---
-audience: developer
 
 ## What's Not Covered
 
@@ -273,7 +262,6 @@ These routes require staff roles and are not available to regular users:
 If you discover an undocumented endpoint that appears to be a security concern, please report it responsibly to security@beatpass.ca.
 
 ---
-audience: developer
 
 ## Next Steps
 
@@ -281,7 +269,7 @@ audience: developer
   <Card title="Authentication" icon="key" href="/developers/auth">
     Learn how Sanctum authentication works.
   </Card>
-  <Card title="Endpoints" icon="code" href="/developers/endpoints">
+  <Card title="Endpoints" icon="code" href="/developers/reference/endpoints">
     Complete endpoint reference.
   </Card>
 </CardGroup>

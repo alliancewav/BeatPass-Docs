@@ -1,59 +1,135 @@
 ---
-audience: developer
-title: "Developer Notes | BeatPass"
-description: "Technical overview of the BeatPass platform architecture, scheduling, and API standards."
+title: "Developer Notes"
+sidebarTitle: "Developer Notes"
+description: "Technical overview of the BeatPass platform architecture, background processing, and API design patterns."
 ---
-audience: developer
 
 ## Overview
 
-This section provides high-level technical details for developers integrating with BeatPass or interested in our platform architecture.
+This section provides high-level technical details for developers integrating with BeatPass or interested in the platform architecture.
 
 ---
-audience: developer
 
-## Job Scheduling & Queues
+## Technology Stack
 
-BeatPass uses a robust, orchestrated background job system to handle resource-intensive tasks without impacting user experience.
+BeatPass is built on a modern PHP/JavaScript stack:
 
-### The Orchestrator
-A single intelligent command (`jobs:orchestrate`) manages all background processes. It dynamically prioritizes tasks based on system load and urgency.
+| Layer | Technology |
+|-------|------------|
+| Backend Framework | Laravel 10 |
+| Frontend Framework | React 18 |
+| Authentication | Laravel Sanctum (cookie-based SPA) |
+| Database | MySQL 8 |
+| Queue System | Laravel Queues (Redis) |
+| Payments | Stripe Connect |
+| Real-time | Pusher / Laravel Echo |
+| Storage | S3-compatible object storage |
 
-### Priority Levels
-1. **Real-time**: Critical user actions (e.g., checkout, immediate notifications).
-2. **High**: Important but async tasks (e.g., emails, transloads).
-3. **Default**: Standard background work (e.g., metadata updates).
-4. **Analytics**: Data aggregation and reporting (lowest priority).
+---
+
+## Background Job System
+
+BeatPass uses Laravel's queue system for resource-intensive tasks that run asynchronously.
+
+### Queue Priority Levels
+
+| Priority | Use Case | Examples |
+|----------|----------|----------|
+| **Real-time** | Critical user actions | Checkout completion, immediate notifications |
+| **High** | Important async tasks | Email delivery, file transcoding |
+| **Default** | Standard background work | Metadata extraction, analytics events |
+| **Analytics** | Low-priority aggregation | Contribution calculations, leaderboard updates |
 
 ### Batched Processing
-To ensure database stability, heavy operations like contribution calculations are processed in optimized batches. This eliminates "N+1" query issues and keeps the database responsive even during peak load.
+
+Heavy operations like contribution calculations and analytics aggregation are processed in optimized batches to prevent database strain:
+
+- Batch sizes are dynamically adjusted based on system load
+- Failed jobs are automatically retried with exponential backoff
+- Critical operations are logged for audit purposes
 
 ---
-audience: developer
 
-## Caching Strategy
+## Caching Architecture
 
-We employ a multi-layer caching strategy to deliver sub-second response times.
+BeatPass employs a multi-layer caching strategy:
 
-- **Edge Cache**: Static assets (images, audio) are cached at the edge for global performance.
-- **Application Cache**: API responses for high-traffic endpoints (like the Producer Dashboard) are cached with smart invalidation.
-- **Query Cache**: Complex database queries are cached for short durations to prevent redundant load.
+| Cache Layer | Purpose | TTL |
+|-------------|---------|-----|
+| **Edge Cache** | Static assets (images, audio files) | Long (days) |
+| **Application Cache** | API responses, computed data | Short-medium (minutes-hours) |
+| **Query Cache** | Complex database query results | Very short (seconds-minutes) |
+
+### Cache Invalidation
+
+Caches are invalidated using event-driven patterns:
+
+- Track/album updates clear related caches immediately
+- User profile changes trigger targeted invalidation
+- Analytics caches use time-based expiration with refresh-ahead
 
 <Note>
-  **Cache Invalidation**: Our system uses event-driven invalidation. When you update a track or profile, relevant caches are cleared instantly to show new data.
+  When you update content via the API, relevant caches are cleared immediately so changes appear without delay.
 </Note>
 
 ---
-audience: developer
 
-## API Rate Limits
+## Rate Limiting
 
-To protect the platform and ensure fair usage, the BeatPass API implements rate limiting.
+The API uses route-specific rate limiting to ensure fair usage:
 
-- **Standard Limit**: 60 requests per minute per user.
-- **Burst Limit**: Short bursts of higher traffic are allowed for navigation.
-- **Graceful Degradation**: If limits are reached, the API returns a `429 Too Many Requests` status with a `Retry-After` header.
+| Endpoint Group | Limit | Notes |
+|----------------|-------|-------|
+| Standard API calls | Global default | Laravel's built-in throttle |
+| Producer Intelligence (public) | 300/min | Leaderboards, growth rates |
+| Producer Intelligence (auth) | 500/min | Dashboard, analytics |
+| Social Analytics | 120/min | Complex queries |
+| Legacy endpoints | 60/min | Deprecated routes |
 
 <Tip>
-  If you encounter rate limits, please implement exponential backoff in your client application.
+  If you encounter rate limits, implement exponential backoff with jitter. Check the `Retry-After` header for guidance on when to retry.
 </Tip>
+
+---
+
+## API Design Patterns
+
+### Authentication
+
+All authenticated endpoints use Laravel Sanctum's cookie-based SPA authentication:
+
+1. Get CSRF cookie: `GET /sanctum/csrf-cookie`
+2. Login: `POST /login` with CSRF token
+3. Make requests with session cookies (automatically handled by browsers)
+
+See the [Authentication guide](/developers/auth) for details.
+
+### Response Formats
+
+API responses follow Laravel conventions:
+
+- **Success**: Direct JSON data or wrapped in `data` key for paginated results
+- **Errors**: `message` field with optional `errors` object for validation failures
+- **Pagination**: Laravel's standard pagination structure with `data`, `current_page`, `total`, etc.
+
+### Middleware Groups
+
+| Middleware | Purpose |
+|------------|--------|
+| `optionalAuth:sanctum` | Works without auth, returns enhanced data when authenticated |
+| `auth:sanctum` | Requires authenticated session |
+| `throttle:X,Y` | Rate limits to X requests per Y minutes |
+| `isAdmin` | Requires admin role |
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="API Overview" icon="book" href="/developers/overview">
+    API fundamentals and structure.
+  </Card>
+  <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
+    Detailed throttling information.
+  </Card>
+</CardGroup>

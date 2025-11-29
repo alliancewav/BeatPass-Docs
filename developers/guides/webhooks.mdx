@@ -1,9 +1,8 @@
 ---
-audience: developer
 title: "Webhooks"
-description: "Understanding BeatPass webhook architecture for payment processing."
+sidebarTitle: "Webhooks"
+description: "Understanding BeatPass webhook architecture for Stripe payment and payout processing."
 ---
-audience: developer
 
 ## Overview
 
@@ -14,7 +13,6 @@ BeatPass uses **inbound webhooks** to receive payment notifications from Stripe.
 </Note>
 
 ---
-audience: developer
 
 ## Inbound Webhooks (Stripe)
 
@@ -31,29 +29,41 @@ This endpoint is registered in Stripe's dashboard (and wired via `mapWebhookRout
 Example `curl` request (replace the payload with an actual Stripe event JSON when testing):
 
 ```bash
-curl -X POST https://beta.beatpass.ca/api/stripe/webhook \
+curl -X POST https://open.beatpass.ca/api/stripe/webhook \
   -H "Content-Type: application/json" \
   -H "Stripe-Signature: <generated-signature>" \
   -d '{"type": "payment_intent.succeeded", "data": {}}'
 ```
 
 ---
-audience: developer
 
 ## Stripe Events Handled
 
-The webhook controller currently processes three purchase-focused Stripe events:
+The webhook controller processes the following Stripe events:
 
-| Event | Purchase impact |
-|-------|-----------------|
-| `payment_intent.succeeded` | Marks a track purchase as succeeded, generates the exclusive license, and marks the track as sold. |
-| `payment_intent.payment_failed` | Marks the related purchase as failed with the payment error message. |
-| `charge.refunded` | Marks the purchase as refunded (partial or full) based on the refunded amount. |
+### Purchase Events
 
-Other Stripe events (e.g., subscription invoices, Connect transfers or payouts) are **not implemented yet**.
+| Event | Action |
+|-------|--------|
+| `payment_intent.succeeded` | Marks purchase as succeeded, generates exclusive license certificate, marks track as sold |
+| `payment_intent.payment_failed` | Marks purchase as failed with error message |
+| `charge.refunded` | Marks purchase as refunded (partial or full) |
+
+### Stripe Connect Payout Events
+
+| Event | Action |
+|-------|--------|
+| `payout.created` | Notifies producer that payout was initiated to their bank |
+| `payout.paid` | Notifies producer that payout was deposited successfully |
+| `payout.failed` | Notifies producer of payout failure with error reason |
+
+### Account Events
+
+| Event | Action |
+|-------|--------|
+| `account.updated` | Syncs Stripe Connect account status; notifies producer if action is required |
 
 ---
-audience: developer
 
 ## How It Works
 
@@ -72,13 +82,14 @@ audience: developer
   
   <Step title="BeatPass Processes">
     BeatPass verifies the signature and processes the event:
-    - Updates purchase records
-    - Triggers license generation
+    - Updates purchase/payout records
+    - Generates license certificates for successful purchases
+    - Marks tracks as sold for exclusive purchases
+    - Sends notifications to producers
   </Step>
 </Steps>
 
 ---
-audience: developer
 
 ## Webhook Security
 
@@ -104,7 +115,6 @@ $event = \Stripe\Webhook::constructEvent(
 </Warning>
 
 ---
-audience: developer
 
 ## For Developers
 
@@ -136,7 +146,6 @@ Monitor webhook delivery in the Stripe Dashboard:
 4. Retry failed webhooks if needed
 
 ---
-audience: developer
 
 ## No Outbound Webhooks
 
@@ -155,15 +164,14 @@ For real-time updates in your application:
 Outbound webhooks for third-party integrations may be considered for future releases. If you have a specific use case, contact support to discuss.
 
 ---
-audience: developer
 
-## Related
+## Related Resources
 
 <CardGroup cols={2}>
-  <Card title="Track Purchases" icon="credit-card" href="/help/licensing-commerce/payments">
-    How purchases work.
+  <Card title="Exclusive Licenses" icon="file-certificate" href="/help/downloads-and-licensing/exclusive-licenses">
+    How exclusive purchases and licensing work.
   </Card>
-  <Card title="Stripe Connect" icon="stripe" href="/developers/endpoints#stripe-connect-artists">
-    Artist payout setup.
+  <Card title="Stripe Connect" icon="link" href="/help/earnings/stripe-connect">
+    Producer payout setup guide.
   </Card>
 </CardGroup>

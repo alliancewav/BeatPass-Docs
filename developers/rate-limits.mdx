@@ -1,16 +1,14 @@
 ---
-audience: developer
 title: "Rate Limits"
-description: "Understanding API rate limits and route-specific throttling."
+sidebarTitle: "Rate Limits"
+description: "Understanding API rate limits and route-specific throttling on the BeatPass API."
 ---
-audience: developer
 
 ## Overview
 
 BeatPass uses route-specific rate limiting via Laravel's throttle middleware. Different endpoint groups have different limits based on their resource intensity and expected usage patterns.
 
 ---
-audience: developer
 
 ## Route-Specific Limits
 
@@ -39,7 +37,6 @@ Authentication attempts are limited to prevent brute force attacks:
 | 2FA verification | 5/min per session |
 
 ---
-audience: developer
 
 ## Throttle Format
 
@@ -51,7 +48,6 @@ Rate limits in BeatPass use Laravel's `throttle:X,Y` format:
 Example: `throttle:60,1` means 60 requests per 1 minute.
 
 ---
-audience: developer
 
 ## Rate Limit Headers
 
@@ -70,7 +66,6 @@ X-RateLimit-Reset: 1700000060
 | `X-RateLimit-Reset` | Unix timestamp when limit resets |
 
 ---
-audience: developer
 
 ## When Limits Are Exceeded
 
@@ -109,7 +104,6 @@ Retry-After: 60
 </Steps>
 
 ---
-audience: developer
 
 ## Best Practices
 
@@ -156,7 +150,6 @@ async function fetchWithBackoff(url, options = {}, attempt = 1) {
 ```
 
 ---
-audience: developer
 
 ## Monitoring Usage
 
@@ -187,7 +180,6 @@ async function apiRequest(url, options) {
 | Search-as-you-type | Request per keystroke | Debounce input (300ms+) |
 
 ---
-audience: developer
 
 ## Rate Limits by Feature
 
@@ -212,7 +204,6 @@ These have explicit rate limits:
 | Real-time Analytics | Database intensive |
 
 ---
-audience: developer
 
 ## Error Recovery
 
@@ -224,15 +215,14 @@ When you hit a rate limit:
 4. **Contact support** - If legitimate usage requires higher limits
 
 ---
-audience: developer
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="API Endpoints" icon="code" href="/developers/endpoints">
+  <Card title="API Endpoints" icon="code" href="/developers/reference/endpoints">
     See all available endpoints.
   </Card>
   <Card title="Authentication" icon="key" href="/developers/auth">
-    Set up API authentication.
+    Understand session authentication.
   </Card>
 </CardGroup>
