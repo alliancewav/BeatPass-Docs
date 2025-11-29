@@ -42,12 +42,24 @@
       "description": "Manage tracks, downloads and track information"
     },
     {
+      "name": "Track Purchases",
+      "description": "Purchase tracks via Stripe Connect (exclusive licenses)"
+    },
+    {
       "name": "License Certificates",
       "description": "Generate, verify and manage track licenses"
     },
     {
       "name": "Audio Fingerprinting",
       "description": "Generate audio fingerprints and detect duplicates"
+    },
+    {
+      "name": "Beat Requests",
+      "description": "Create and manage custom beat requests"
+    },
+    {
+      "name": "Producer Intelligence",
+      "description": "Analytics, XP, achievements and leaderboards for producers"
     },
     {
       "name": "Tags",
@@ -62,6 +74,10 @@
       "description": "User management, search and social features"
     },
     {
+      "name": "User Library",
+      "description": "Manage user's liked tracks, albums and artists"
+    },
+    {
       "name": "Reposts",
       "description": "Repost tracks to share with followers"
     },
@@ -72,6 +88,10 @@
     {
       "name": "Radio",
       "description": "Get personalized music recommendations"
+    },
+    {
+      "name": "Leaderboards",
+      "description": "Platform-wide producer and achievement leaderboards"
     },
     {
       "name": "Cover Art",
@@ -2206,8 +2226,8 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Get access token",
-        "description": "Logs in specified user and returns user object along with access token. <br><br> Access Token is a string that enables SITE_NAME to verify that a request belongs to an authorized session. This token should be sent along with every request to SITE_NAME API in a authorization header: `Authorization: Bearer <Token>`.",
+        "summary": "Login and create session",
+        "description": "Logs in the specified user and creates a session. Returns the user object. For SPA authentication, first call `/sanctum/csrf-cookie` to get a CSRF token, then include it in the `X-XSRF-TOKEN` header. Session cookies are automatically managed by the browser.",
         "operationId": "login",
         "responses": {
           "200": {
@@ -3769,6 +3789,527 @@
           "422": {
             "$ref": "#/components/responses/Response422"
           }
+        }
+      }
+    },
+    "/tracks/{id}/purchase/calculate-price": {
+      "post": {
+        "tags": ["Track Purchases"],
+        "summary": "Calculate track purchase price",
+        "operationId": "calculateTrackPrice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Track ID",
+            "schema": { "type": "integer", "example": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price calculation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "base_price": { "type": "number", "example": 100.00 },
+                    "platform_fee": { "type": "number", "example": 15.00 },
+                    "total_price": { "type": "number", "example": 115.00 },
+                    "currency": { "type": "string", "example": "CAD" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" },
+          "404": { "$ref": "#/components/responses/Response404" }
+        }
+      }
+    },
+    "/tracks/{id}/purchase/initiate": {
+      "post": {
+        "tags": ["Track Purchases"],
+        "summary": "Initiate a track purchase via Stripe",
+        "operationId": "initiateTrackPurchase",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Track ID",
+            "schema": { "type": "integer", "example": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stripe PaymentIntent created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "client_secret": { "type": "string", "description": "Stripe PaymentIntent client secret" },
+                    "purchase_id": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" },
+          "404": { "$ref": "#/components/responses/Response404" },
+          "422": { "$ref": "#/components/responses/Response422" }
+        }
+      }
+    },
+    "/tracks/{id}/purchase/status": {
+      "get": {
+        "tags": ["Track Purchases"],
+        "summary": "Check purchase status for a track",
+        "operationId": "checkTrackPurchaseStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Track ID",
+            "schema": { "type": "integer", "example": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Purchase status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "purchased": { "type": "boolean" },
+                    "purchase": { "type": "object", "nullable": true }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/purchases": {
+      "get": {
+        "tags": ["Track Purchases"],
+        "summary": "Get current user's purchases",
+        "operationId": "getUserPurchases",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "example": 1 }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": { "type": "integer", "example": 25 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User's purchases",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "type": "object" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/beat-requests": {
+      "get": {
+        "tags": ["Beat Requests"],
+        "summary": "List all beat requests",
+        "operationId": "listBeatRequests",
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer" } },
+          { "name": "per_page", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of beat requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      },
+      "post": {
+        "tags": ["Beat Requests"],
+        "summary": "Create a new beat request",
+        "operationId": "createBeatRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string", "example": "Need a trap beat" },
+                  "description": { "type": "string" },
+                  "budget_min": { "type": "number" },
+                  "budget_max": { "type": "number" },
+                  "genres": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Beat request created" },
+          "401": { "$ref": "#/components/responses/Response401" },
+          "422": { "$ref": "#/components/responses/Response422" }
+        }
+      }
+    },
+    "/beat-requests/{id}": {
+      "get": {
+        "tags": ["Beat Requests"],
+        "summary": "Get a specific beat request",
+        "operationId": "getBeatRequest",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Beat request details" },
+          "401": { "$ref": "#/components/responses/Response401" },
+          "404": { "$ref": "#/components/responses/Response404" }
+        }
+      },
+      "delete": {
+        "tags": ["Beat Requests"],
+        "summary": "Delete a beat request",
+        "operationId": "deleteBeatRequest",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Beat request deleted" },
+          "401": { "$ref": "#/components/responses/Response401" },
+          "403": { "$ref": "#/components/responses/Response403" }
+        }
+      }
+    },
+    "/beat-requests/{id}/fulfill": {
+      "post": {
+        "tags": ["Beat Requests"],
+        "summary": "Mark a beat request as fulfilled",
+        "operationId": "fulfillBeatRequest",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Beat request fulfilled" },
+          "401": { "$ref": "#/components/responses/Response401" },
+          "403": { "$ref": "#/components/responses/Response403" }
+        }
+      }
+    },
+    "/beat-requests/user/my-requests": {
+      "get": {
+        "tags": ["Beat Requests"],
+        "summary": "Get current user's beat requests",
+        "operationId": "getMyBeatRequests",
+        "responses": {
+          "200": { "description": "User's beat requests" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/producer-intelligence/leaderboard": {
+      "get": {
+        "tags": ["Producer Intelligence"],
+        "summary": "Get producer leaderboards",
+        "operationId": "getProducerLeaderboards",
+        "responses": {
+          "200": {
+            "description": "Leaderboard data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "weekly": { "type": "array", "items": { "type": "object" } },
+                    "monthly": { "type": "array", "items": { "type": "object" } },
+                    "allTime": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/producer-intelligence/dashboard": {
+      "get": {
+        "tags": ["Producer Intelligence"],
+        "summary": "Get producer dashboard data",
+        "operationId": "getProducerDashboard",
+        "responses": {
+          "200": {
+            "description": "Dashboard data including XP, level, achievements",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "xp": { "type": "integer" },
+                    "level": { "type": "integer" },
+                    "achievements": { "type": "array", "items": { "type": "object" } },
+                    "stats": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/producer-intelligence/achievements": {
+      "get": {
+        "tags": ["Producer Intelligence"],
+        "summary": "Get producer's achievements",
+        "operationId": "getProducerAchievements",
+        "responses": {
+          "200": { "description": "List of achievements" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/producer-intelligence/xp-sources": {
+      "get": {
+        "tags": ["Producer Intelligence"],
+        "summary": "Get XP sources breakdown",
+        "operationId": "getXPSources",
+        "responses": {
+          "200": { "description": "XP sources breakdown" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/artists/{id}/follow": {
+      "post": {
+        "tags": ["Artists"],
+        "summary": "Follow an artist",
+        "operationId": "followArtist",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Artist followed successfully" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/artists/{id}/unfollow": {
+      "post": {
+        "tags": ["Artists"],
+        "summary": "Unfollow an artist",
+        "operationId": "unfollowArtist",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Artist unfollowed successfully" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/artists/{id}/follow-status": {
+      "get": {
+        "tags": ["Artists"],
+        "summary": "Check if current user follows an artist",
+        "operationId": "getArtistFollowStatus",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Follow status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "following": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/users/me/add-to-library": {
+      "post": {
+        "tags": ["User Library"],
+        "summary": "Add a track to user's library",
+        "operationId": "addToLibrary",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "track_id": { "type": "integer", "example": 1 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Track added to library" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/users/me/remove-from-library": {
+      "post": {
+        "tags": ["User Library"],
+        "summary": "Remove a track from user's library",
+        "operationId": "removeFromLibrary",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "track_id": { "type": "integer", "example": 1 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Track removed from library" },
+          "401": { "$ref": "#/components/responses/Response401" }
+        }
+      }
+    },
+    "/leaderboards/global": {
+      "get": {
+        "tags": ["Leaderboards"],
+        "summary": "Get global producer leaderboard",
+        "operationId": "getGlobalLeaderboard",
+        "responses": {
+          "200": {
+            "description": "Global leaderboard data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "producers": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/leaderboards/genre/{genre}": {
+      "get": {
+        "tags": ["Leaderboards"],
+        "summary": "Get genre-specific leaderboard",
+        "operationId": "getGenreLeaderboard",
+        "parameters": [
+          { "name": "genre", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Genre leaderboard data" }
+        }
+      }
+    },
+    "/leaderboards/rising-stars": {
+      "get": {
+        "tags": ["Leaderboards"],
+        "summary": "Get rising stars leaderboard",
+        "operationId": "getRisingStarsLeaderboard",
+        "responses": {
+          "200": { "description": "Rising stars leaderboard data" }
+        }
+      }
+    },
+    "/leaderboards/achievements": {
+      "get": {
+        "tags": ["Leaderboards"],
+        "summary": "Get achievements leaderboard",
+        "operationId": "getAchievementsLeaderboard",
+        "responses": {
+          "200": { "description": "Achievements leaderboard data" }
+        }
+      }
+    },
+    "/tracks/{id}/wave": {
+      "get": {
+        "tags": ["Tracks"],
+        "summary": "Get waveform data for a track",
+        "operationId": "getTrackWaveform",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Waveform data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "peaks": { "type": "array", "items": { "type": "number" } }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/Response404" }
+        }
+      }
+    },
+    "/users/{id}/reposts": {
+      "get": {
+        "tags": ["Reposts"],
+        "summary": "Get user's reposts",
+        "operationId": "getUserReposts",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } },
+          { "name": "page", "in": "query", "schema": { "type": "integer" } },
+          { "name": "per_page", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "User's reposts" },
+          "404": { "$ref": "#/components/responses/Response404" }
         }
       }
     }
