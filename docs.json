@@ -39,12 +39,14 @@
         "groups": [
           {
             "group": "Welcome",
+            "icon": "house",
             "pages": [
               "help/index"
             ]
           },
           {
             "group": "Getting Started",
+            "icon": "rocket",
             "pages": [
               "help/getting-started/index",
               "help/getting-started/creating-account",
@@ -65,6 +67,7 @@
           },
           {
             "group": "Discovering Music",
+            "icon": "music",
             "pages": [
               "help/discovering-music/index",
               "help/discovering-music/homepage",
@@ -87,6 +90,7 @@
           },
           {
             "group": "Playing Music",
+            "icon": "play",
             "pages": [
               "help/playing-music/index",
               "help/playing-music/player-controls",
@@ -97,6 +101,7 @@
           },
           {
             "group": "Your Library",
+            "icon": "folder-music",
             "pages": [
               "help/library/index",
               "help/library/liked-tracks",
@@ -108,6 +113,7 @@
           },
           {
             "group": "Playlists",
+            "icon": "list-music",
             "pages": [
               "help/playlists/index",
               "help/playlists/creating-playlists",
@@ -119,6 +125,7 @@
           },
           {
             "group": "Downloads & Licensing",
+            "icon": "download",
             "pages": [
               "help/downloads-and-licensing/index",
               "help/downloads-and-licensing/how-downloads-work",
@@ -138,6 +145,7 @@
           },
           {
             "group": "Beat Requests",
+            "icon": "waveform",
             "pages": [
               "help/beat-requests/index",
               "help/beat-requests/understanding-tokens",
@@ -150,6 +158,7 @@
           },
           {
             "group": "Messaging",
+            "icon": "messages",
             "pages": [
               "help/messaging/index",
               "help/messaging/direct-messages",
@@ -160,6 +169,7 @@
           },
           {
             "group": "Social Features",
+            "icon": "users",
             "pages": [
               "help/social-features/index",
               "help/social-features/following-system",
@@ -170,6 +180,7 @@
           },
           {
             "group": "Profiles",
+            "icon": "user",
             "pages": [
               "help/profiles/index",
               "help/profiles/user-vs-artist-comparison",
@@ -198,6 +209,7 @@
           },
           {
             "group": "Account Settings",
+            "icon": "gear",
             "pages": [
               "help/account-settings/index",
               "help/account-settings/account-details",
@@ -219,6 +231,7 @@
           },
           {
             "group": "Notifications",
+            "icon": "bell",
             "pages": [
               "help/notifications/index",
               "help/notifications/notification-center",
@@ -246,6 +259,7 @@
           },
           {
             "group": "Billing",
+            "icon": "receipt",
             "pages": [
               "help/billing/index",
               "help/billing/subscription-overview",
@@ -275,6 +289,7 @@
           },
           {
             "group": "Plans & Pricing",
+            "icon": "credit-card",
             "pages": [
               "help/plans-and-pricing/index",
               "help/plans-and-pricing/explorer-free",
@@ -287,6 +302,7 @@
           },
           {
             "group": "Producer Program",
+            "icon": "microphone-stand",
             "pages": [
               "help/producer-program/index",
               "help/producer-program/benefits",
@@ -306,6 +322,7 @@
           },
           {
             "group": "Uploading",
+            "icon": "cloud-arrow-up",
             "pages": [
               "help/uploading/index",
               "help/uploading/upload-page",
@@ -335,6 +352,7 @@
           },
           {
             "group": "Licensing for Producers",
+            "icon": "file-certificate",
             "pages": [
               "help/licensing-for-producers/index",
               "help/licensing-for-producers/non-exclusive-licenses",
@@ -352,6 +370,7 @@
           },
           {
             "group": "Earnings",
+            "icon": "money-bill-wave",
             "pages": [
               "help/earnings/index",
               "help/earnings/payout-schedule",
@@ -377,6 +396,7 @@
           },
           {
             "group": "Producer Dashboard",
+            "icon": "chart-mixed",
             "pages": [
               "help/producer-dashboard/index",
               "help/producer-dashboard/home",
@@ -390,6 +410,7 @@
           },
           {
             "group": "Analytics",
+            "icon": "chart-line",
             "pages": [
               "help/analytics/index",
               "help/analytics/getting-started",
@@ -415,6 +436,7 @@
           },
           {
             "group": "Gamification",
+            "icon": "trophy",
             "pages": [
               "help/gamification/index",
               "help/gamification/progress-page",
@@ -447,6 +469,7 @@
           },
           {
             "group": "Legal",
+            "icon": "scale-balanced",
             "pages": [
               "help/legal/index",
               "help/legal/terms-of-service",
@@ -465,6 +488,7 @@
           },
           {
             "group": "Troubleshooting",
+            "icon": "wrench",
             "pages": [
               "help/troubleshooting/index",
               "help/troubleshooting/playback-issues",
@@ -477,6 +501,7 @@
           },
           {
             "group": "Contact Support",
+            "icon": "headset",
             "pages": [
               "help/contact-support/index",
               "help/contact-support/getting-help",
@@ -486,9 +511,56 @@
           },
           {
             "group": "Release Notes",
+            "icon": "megaphone",
             "pages": [
               "help/release-notes/index",
-              "help/release-notes/template"
+              {
+                "group": "2025",
+                "pages": [
+                  "help/release-notes/2025-11-24-beat-requests",
+                  "help/release-notes/2025-11-21-production-hardening",
+                  "help/release-notes/2025-11-21-producer-experience",
+                  "help/release-notes/2025-11-20-xp-gamification",
+                  "help/release-notes/2025-11-20-scheduler-reliability",
+                  "help/release-notes/2025-11-20-engagement-analytics",
+                  "help/release-notes/2025-11-19-refactors-routing",
+                  "help/release-notes/2025-11-14-seo-modernization",
+                  "help/release-notes/2025-11-11-mobile-ui-fixes",
+                  "help/release-notes/2025-11-04-billing-subscriptions-platform",
+                  "help/release-notes/2025-10-01-version-3-0-8"
+                ]
+              },
+              {
+                "group": "2023",
+                "pages": [
+                  "help/release-notes/2023-11-11-version-3-0-7",
+                  "help/release-notes/2023-05-26-version-3-0-6",
+                  "help/release-notes/2023-04-23-version-3-0-5",
+                  "help/release-notes/2023-04-03-version-3-0-4",
+                  "help/release-notes/2023-03-23-version-3-0-3",
+                  "help/release-notes/2023-03-21-version-3-0-2",
+                  "help/release-notes/2023-03-19-version-3-0-1",
+                  "help/release-notes/2023-03-18-version-3-0-0"
+                ]
+              },
+              {
+                "group": "2021",
+                "pages": [
+                  "help/release-notes/2021-08-16-version-2-5-2",
+                  "help/release-notes/2021-05-25-version-2-5-1",
+                  "help/release-notes/2021-05-22-version-2-5-0",
+                  "help/release-notes/2021-05-21-version-2-4-9"
+                ]
+              },
+              {
+                "group": "2020",
+                "pages": [
+                  "help/release-notes/2020-09-16-version-2-4-8",
+                  "help/release-notes/2020-07-17-version-2-4-7",
+                  "help/release-notes/2020-07-11-version-2-4-6",
+                  "help/release-notes/2020-04-10-version-2-4-5"
+                ]
+              }
             ]
           }
         ]
@@ -500,6 +572,7 @@
         "groups": [
           {
             "group": "Getting Started",
+            "icon": "rocket",
             "pages": [
               "developers/overview",
               "developers/quickstart",
@@ -510,6 +583,7 @@
           },
           {
             "group": "Guides",
+            "icon": "book",
             "pages": [
               "developers/guides/webhooks",
               "developers/guides/dashboard-api",
@@ -518,6 +592,7 @@
           },
           {
             "group": "API Reference",
+            "icon": "square-terminal",
             "pages": [
               "developers/reference/endpoints"
             ]
