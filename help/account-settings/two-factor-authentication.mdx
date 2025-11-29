@@ -1,6 +1,166 @@
 ---
 title: "Two-Factor Authentication"
-description: "Set up 2FA for extra security."
+sidebarTitle: "Two-Factor Authentication"
+description: "Add an extra layer of security to your BeatPass account with two-factor authentication (2FA)."
+keywords: ["two-factor authentication", "2FA", "security", "authenticator app", "recovery codes"]
+"og:title": "Two-Factor Authentication - BeatPass Help"
+"og:description": "Learn how to set up two-factor authentication on BeatPass."
 ---
 
-{/* Content coming soon */}
+Two-factor authentication (2FA) adds an extra layer of security to your account. When enabled, you'll need both your password and a verification code from your phone to log in.
+
+---
+
+## Why Use Two-Factor Authentication?
+
+With 2FA enabled:
+
+- **Extra protection** — Even if someone knows your password, they can't access your account without your phone
+- **Prevent unauthorized access** — Protects against password theft and phishing
+- **Peace of mind** — Know your account is secured with industry-standard protection
+
+<Tip>
+  We strongly recommend enabling 2FA, especially if you're a producer with uploaded content or have an active subscription.
+</Tip>
+
+---
+
+## How It Works
+
+1. You enter your password as usual
+2. BeatPass asks for a verification code
+3. You open your authenticator app to get the code
+4. Enter the code to complete login
+
+The code changes every 30 seconds, so even if someone sees it, they can't use it later.
+
+---
+
+## Setting Up 2FA
+
+### What You Need
+
+- An **authenticator app** on your smartphone:
+  - Google Authenticator (iOS/Android)
+  - Microsoft Authenticator (iOS/Android)
+  - Authy (iOS/Android)
+  - 1Password (iOS/Android/Desktop)
+  - Any TOTP-compatible app
+
+### Step-by-Step Setup
+
+<Steps>
+  <Step title="Go to Security Settings">
+    Navigate to **Settings** → **Account** → **Two-Factor Authentication**.
+  </Step>
+  <Step title="Start Setup">
+    Click **Enable** or **Set Up Two-Factor Authentication**.
+  </Step>
+  <Step title="Scan QR Code">
+    Open your authenticator app and scan the QR code displayed on screen.
+    
+    If you can't scan, you can manually enter the secret key shown below the QR code.
+  </Step>
+  <Step title="Enter Verification Code">
+    Your authenticator app will show a 6-digit code. Enter this code to verify setup.
+  </Step>
+  <Step title="Save Recovery Codes">
+    You'll receive recovery codes. **Save these in a safe place** — they're your backup if you lose your phone.
+  </Step>
+</Steps>
+
+---
+
+## Recovery Codes
+
+Recovery codes are one-time use codes that let you access your account if you lose your phone or authenticator app.
+
+### Saving Recovery Codes
+
+When you enable 2FA, you'll receive recovery codes. Store them safely:
+- Write them down and keep in a secure location
+- Save in a password manager
+- Store in an encrypted file
+
+<Warning>
+  Each recovery code can only be used once. If you use all your codes, generate new ones while you still have access to your account.
+</Warning>
+
+### Using a Recovery Code
+
+If you can't access your authenticator app:
+1. On the 2FA verification screen, look for **"Use recovery code"** option
+2. Enter one of your saved recovery codes
+3. You'll be logged in and the used code will be invalidated
+
+---
+
+## Logging In with 2FA
+
+Once 2FA is enabled, logging in works like this:
+
+1. Enter your email and password
+2. When prompted, open your authenticator app
+3. Enter the 6-digit code shown
+4. Click **Verify** to complete login
+
+<Note>
+  Codes refresh every 30 seconds. If your code doesn't work, wait for a new one and try again. Make sure your phone's time is accurate.
+</Note>
+
+---
+
+## Disabling 2FA
+
+To turn off two-factor authentication:
+
+1. Go to **Settings** → **Account** → **Two-Factor Authentication**
+2. Click **Disable** or **Turn Off**
+3. Confirm with your password or a verification code
+
+<Warning>
+  Disabling 2FA removes the extra security layer from your account. Only disable if necessary.
+</Warning>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My code isn't working">
+    - Make sure your phone's time is set correctly (use automatic time)
+    - Wait for a new code to generate (they change every 30 seconds)
+    - Verify you're entering the code for the correct account (check the label in your app)
+  </Accordion>
+  
+  <Accordion title="I lost my phone">
+    Use one of your recovery codes to log in. Once logged in, disable 2FA, then set it up again with your new device.
+  </Accordion>
+  
+  <Accordion title="I didn't save my recovery codes">
+    If you can still log in:
+    1. Go to 2FA settings
+    2. Disable 2FA
+    3. Re-enable it to get new recovery codes
+    4. Save them this time!
+    
+    If you can't log in, contact support for account recovery.
+  </Accordion>
+  
+  <Accordion title="Can I use 2FA on multiple devices?">
+    Yes. When you scan the QR code during setup, you can scan it with multiple authenticator apps/devices. The same code will work from any of them.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related Topics
+
+<CardGroup cols={2}>
+  <Card title="Password" icon="lock" href="/help/account-settings/password">
+    Manage your account password.
+  </Card>
+  <Card title="Active Sessions" icon="monitor" href="/help/account-settings/active-sessions">
+    See where your account is logged in.
+  </Card>
+</CardGroup>

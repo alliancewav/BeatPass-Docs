@@ -1,6 +1,171 @@
 ---
 title: "Social Login"
-description: "Connect Google, Facebook, Twitter accounts."
+sidebarTitle: "Social Login"
+description: "Connect your Google, Facebook, or Twitter account to BeatPass for easier login and profile linking."
+keywords: ["social login", "Google", "Facebook", "Twitter", "connect accounts", "OAuth"]
+"og:title": "Social Login - BeatPass Help"
+"og:description": "Learn how to connect social accounts to BeatPass."
 ---
 
-{/* Content coming soon */}
+Social login lets you sign in to BeatPass using your existing Google, Facebook, or Twitter account. You can also connect these accounts to your existing BeatPass profile for quick access.
+
+---
+
+## Available Social Accounts
+
+BeatPass supports these social login providers:
+
+| Provider | Features |
+|----------|----------|
+| **Google** | Sign in with your Google/Gmail account |
+| **Facebook** | Sign in with your Facebook account |
+| **Twitter** | Sign in with your Twitter/X account |
+
+<Note>
+  Availability of social login options depends on platform configuration. Some providers may not be enabled.
+</Note>
+
+---
+
+## Creating an Account with Social Login
+
+If you don't have a BeatPass account yet:
+
+1. Go to the **Sign Up** or **Login** page
+2. Click **Continue with Google**, **Continue with Facebook**, or **Continue with Twitter**
+3. Authorize BeatPass to access your social account
+4. Your BeatPass account is created automatically
+
+### What Happens
+
+- BeatPass creates an account using your social profile's email
+- Your name and profile picture may be imported
+- You can log in using that social account going forward
+- You don't need to set a password (but you can add one later)
+
+---
+
+## Connecting Social Accounts
+
+If you already have a BeatPass account, you can connect social accounts for easier login:
+
+### How to Connect
+
+1. Go to **Settings** → **Account** → **Social Login**
+2. Find the social provider you want to connect
+3. Click **Connect** next to Google, Facebook, or Twitter
+4. Authorize BeatPass in the popup window
+5. Your accounts are now linked
+
+### Benefits of Connecting
+
+- **Faster login** — Click one button instead of typing password
+- **Multiple options** — Log in with email/password OR social account
+- **Account recovery** — Alternative way to access your account
+
+<Tip>
+  Connecting multiple social accounts gives you backup login options if you lose access to one.
+</Tip>
+
+---
+
+## Disconnecting Social Accounts
+
+To unlink a social account from your BeatPass profile:
+
+1. Go to **Settings** → **Account** → **Social Login**
+2. Find the connected account
+3. Click **Disconnect**
+4. Confirm the disconnection
+
+### Important Considerations
+
+- **Before disconnecting**, make sure you have another way to log in:
+  - A password set on your account, OR
+  - Another social account connected
+- If you signed up with social login and disconnect without setting a password, you may be locked out
+
+<Warning>
+  Don't disconnect your only login method. Either set a password or connect another social account before disconnecting.
+</Warning>
+
+---
+
+## Account Email Matching
+
+When you use social login:
+
+### New Users
+
+If no BeatPass account exists with your social email:
+- A new account is created automatically
+
+### Existing Email
+
+If a BeatPass account already exists with that email:
+- You'll be asked to verify by entering your BeatPass password
+- Once verified, the social account is linked to your existing account
+
+This prevents someone else from accessing your account by using a social account with your email address.
+
+---
+
+## What BeatPass Accesses
+
+When you connect a social account, BeatPass typically receives:
+
+| Information | Purpose |
+|-------------|---------|
+| **Email address** | Account identification |
+| **Name** | Display name (if you don't have one set) |
+| **Profile picture** | Avatar (optional) |
+
+BeatPass does **not**:
+- Post on your behalf
+- Access your messages
+- Access your contacts
+- Store your social password
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Social login popup was blocked">
+    Check your browser's popup blocker settings. Allow popups from BeatPass or try a different browser.
+  </Accordion>
+  
+  <Accordion title="'Account already exists' error">
+    An account with your social email already exists. Log in with your password first, then connect the social account in settings.
+  </Accordion>
+  
+  <Accordion title="Can't disconnect social account">
+    You can't disconnect if it's your only login method. Set a password or connect another social account first.
+  </Accordion>
+  
+  <Accordion title="Social provider isn't showing">
+    Not all social providers may be enabled. Check if the provider appears on the login page—if not, it may not be available.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Privacy Notes
+
+- Your social account login credentials are never shared with BeatPass
+- Authentication happens directly with the social provider
+- You can revoke BeatPass access from your social account settings at any time
+- Disconnecting from BeatPass doesn't affect your social account
+
+---
+
+## Related Topics
+
+<CardGroup cols={2}>
+  <Card title="Account Details" icon="user" href="/help/account-settings/account-details">
+    Update your profile information.
+  </Card>
+  <Card title="Password" icon="lock" href="/help/account-settings/password">
+    Set or change your password.
+  </Card>
+</CardGroup>

@@ -1,6 +1,158 @@
 ---
 title: "Developer API"
-description: "Manage your API access tokens."
+sidebarTitle: "Developer API"
+description: "Generate and manage API access tokens for third-party integrations and developer tools."
+keywords: ["API", "access token", "developer", "integration", "API key"]
+"og:title": "Developer API - BeatPass Help"
+"og:description": "Learn how to manage API access tokens on BeatPass."
 ---
 
-{/* Content coming soon */}
+API access tokens allow you to connect third-party applications, tools, or scripts to your BeatPass account. This is primarily for developers or users who want to integrate BeatPass with other services.
+
+---
+
+## What Are API Tokens?
+
+API tokens are like passwords for applications:
+
+- They allow external programs to access your BeatPass account
+- Each token has a name so you can identify what it's used for
+- Tokens can be deleted without affecting your main password
+
+<Note>
+  API tokens are intended for developers and advanced integrations. Most users don't need to create API tokens.
+</Note>
+
+---
+
+## Creating an API Token
+
+<Steps>
+  <Step title="Go to API Settings">
+    Navigate to **Settings** → **Account** → **Developer API** or **Access Tokens**.
+  </Step>
+  <Step title="Click Create Token">
+    Click the button to create a new token.
+  </Step>
+  <Step title="Name Your Token">
+    Enter a descriptive name (3-100 characters). Examples:
+    - "My Desktop App"
+    - "Automation Script"
+    - "Personal Project"
+  </Step>
+  <Step title="Save the Token">
+    Click **Create** to generate your token.
+  </Step>
+  <Step title="Copy Your Token">
+    **Important:** Copy the token immediately. For security reasons, the full token is only shown once.
+  </Step>
+</Steps>
+
+<Warning>
+  The complete token is only displayed once when created. Copy and store it securely. If you lose it, you'll need to create a new token.
+</Warning>
+
+---
+
+## Token Security
+
+### Best Practices
+
+- **Keep tokens secret** — Never share tokens publicly or commit them to code repositories
+- **Use descriptive names** — Name tokens by their use so you know what to revoke later
+- **Revoke unused tokens** — Delete tokens you no longer need
+- **Rotate periodically** — Consider creating new tokens and deleting old ones regularly
+
+### What Tokens Can Do
+
+Tokens provide access to your account through the BeatPass API. The specific permissions depend on your account type and the API endpoints used.
+
+---
+
+## Deleting API Tokens
+
+If you no longer need a token or suspect it's compromised:
+
+1. Go to **Settings** → **Account** → **Developer API**
+2. Find the token in your list
+3. Click **Delete** or the trash icon
+4. Confirm deletion
+
+### Effects of Deletion
+
+- The token stops working immediately
+- Any applications using that token will lose access
+- You cannot recover a deleted token (create a new one instead)
+
+<Tip>
+  If you're not sure which token an application is using, create a new one with a clear name and update the application, then delete the old tokens.
+</Tip>
+
+---
+
+## Managing Multiple Tokens
+
+You can create multiple tokens for different purposes:
+
+| Token Name | Use Case |
+|------------|----------|
+| "Mobile App" | Your personal mobile integration |
+| "Analytics Tool" | Third-party analytics service |
+| "Backup Script" | Automated backup program |
+
+This way, if one token is compromised, you can revoke just that one without affecting other integrations.
+
+---
+
+## Token Format
+
+BeatPass API tokens are secure strings. When you create a token, you receive:
+
+- **Token ID** — A public identifier shown in your settings
+- **Plain Text Token** — The full secret token (shown only once)
+
+Use the plain text token when configuring applications.
+
+---
+
+## Common Questions
+
+<AccordionGroup>
+  <Accordion title="I lost my token. Can I see it again?">
+    No. For security, the full token is only shown once when created. You'll need to create a new token.
+  </Accordion>
+  
+  <Accordion title="How many tokens can I create?">
+    You can create multiple tokens. There's no strict limit, but keep only the tokens you need.
+  </Accordion>
+  
+  <Accordion title="Will deleting a token log me out?">
+    No. API tokens are separate from your login session. Deleting a token only affects applications using that specific token.
+  </Accordion>
+  
+  <Accordion title="What if someone gets my token?">
+    Delete the token immediately in your settings. Then create a new one and update any legitimate applications that need access.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## API Documentation
+
+For developers looking to build integrations:
+
+- See the [API Reference](/developers/api-reference) for available endpoints
+- Review authentication requirements in [Getting Started](/developers/guides/getting-started)
+
+---
+
+## Related Topics
+
+<CardGroup cols={2}>
+  <Card title="Account Security" icon="shield-check" href="/help/account-settings/two-factor-authentication">
+    Secure your account with 2FA.
+  </Card>
+  <Card title="Active Sessions" icon="monitor" href="/help/account-settings/active-sessions">
+    Manage where you're logged in.
+  </Card>
+</CardGroup>
