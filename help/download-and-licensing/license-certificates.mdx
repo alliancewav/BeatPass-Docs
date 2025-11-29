@@ -1,0 +1,242 @@
+---
+title: "License Certificates | BeatPass"
+sidebarTitle: "License Certificates"
+description: "Complete guide to BeatPass license certificates. Understand certificate contents, legal terms, and how to use your license documentation."
+keywords: ["license certificate", "license terms", "legal", "usage rights", "certificate PDF"]
+"og:title": "License Certificates - BeatPass"
+"og:description": "Understanding your BeatPass license certificate and what it means for your rights."
+"twitter:card": "summary_large_image"
+---
+
+## What is a License Certificate?
+
+A license certificate is a legal document that proves your right to use a beat from BeatPass. It contains a permanent snapshot of the track details, your user information, and the specific terms under which you can use the beat.
+
+<Info>
+  Your license certificate is generated automatically when you download a beat and is stored permanently in the BeatPass database.
+</Info>
+
+---
+
+## Certificate Contents
+
+### Track Information
+
+| Field | Description |
+|-------|-------------|
+| **Track Name** | The beat's title at time of licensing |
+| **Artists** | Producer(s) credited on the track |
+| **Track ID** | Unique identifier in BeatPass system |
+| **Duration** | Track length |
+| **Genre** | Primary genre classification |
+| **Release Date** | When the track was published |
+
+### Audio Fingerprint
+
+| Field | Description |
+|-------|-------------|
+| **Fingerprint Status** | Should show "COMPLETED & VERIFIED" |
+| **Fingerprinted On** | Date the audio was fingerprinted |
+| **Analyzed Duration** | Seconds of audio analyzed |
+| **Fingerprint Hash** | 64-character SHA-256 hash |
+
+### License Holder
+
+| Field | Description |
+|-------|-------------|
+| **Licensed To** | Your display name |
+| **Account Email** | Masked email (e.g., j****n@email.com) |
+| **User ID** | Your account ID |
+| **License Date** | When the license was issued |
+
+### Certificate Security
+
+| Field | Description |
+|-------|-------------|
+| **Certificate ID** | Unique UUID for this license |
+| **Cryptographic Signature** | HMAC-SHA256 signature |
+| **Certificate Hash** | SHA-256 integrity hash |
+| **Verification Count** | Times this license has been verified |
+
+---
+
+## Non-Exclusive License Terms
+
+When you download with a BeatPass subscription, you receive a **non-exclusive, worldwide, perpetual license**.
+
+### What You CAN Do
+
+| Permission | Details |
+|------------|---------|
+| **Create original songs** | Add vocals/instruments to make new music |
+| **Distribute on platforms** | Spotify, Apple Music, YouTube, Bandcamp, etc. |
+| **Monetize your music** | Ads, digital sales, streaming revenue |
+| **Live performances** | Up to 50 attendees per event |
+| **Promotional use** | Social media, fan engagement, promotion |
+
+### What You CANNOT Do
+
+| Restriction | Details |
+|-------------|---------|
+| **Release beat by itself** | Cannot upload instrumental alone |
+| **Film/TV/commercials** | Requires license upgrade |
+| **Large performances** | Over 50 attendees requires upgrade |
+| **Share or resell** | Cannot transfer license to others |
+| **Claim ownership** | Cannot register beat with PRO or copyright |
+| **Content ID** | Cannot register for Content ID |
+
+### Attribution Requirement
+
+You **must** credit the producer wherever your song is shared:
+
+```
+Produced by [Producer Name]
+```
+
+Optional addition: `(via BeatPass)`
+
+---
+
+## Exclusive License Terms
+
+When you purchase a beat exclusively, you receive **full ownership rights**.
+
+### What You CAN Do
+
+| Permission | Details |
+|------------|---------|
+| **All non-exclusive rights** | Everything above, plus: |
+| **Unlimited distribution** | No copy limits |
+| **Unlimited streaming** | No stream limits |
+| **Broadcasting rights** | Radio, TV, unlimited stations |
+| **Film/TV/commercials** | Full sync licensing rights |
+| **Unlimited performances** | Any venue size |
+| **Content ID registration** | Register for YouTube Content ID |
+| **Receive stems** | Full project files |
+
+### Publishing Rights
+
+Default exclusive license splits:
+
+| Party | Share |
+|-------|-------|
+| **Producer** | 20% |
+| **Licensee (You)** | 80% |
+
+---
+
+## Accessing Your Certificates
+
+### From Track Page
+
+1. Navigate to a track you've licensed
+2. Click **Get License** or **View License**
+3. View the full certificate modal
+4. Click **Download PDF** for printable version
+
+### From Library
+
+1. Go to your **Library**
+2. Select the **Licenses** tab
+3. View all your licensed tracks
+4. Click any license to view/download
+
+### Direct URL
+
+Each license has a printable certificate page:
+
+```
+/track/{track-id}/license-certificate
+```
+
+With specific license:
+```
+/track/{track-id}/license-certificate?license={uuid}
+```
+
+---
+
+## Downloading PDF
+
+To download your license as a PDF:
+
+1. Open the license certificate
+2. Click **Download PDF**
+3. A new tab opens with the certificate
+4. Use your browser's print function to save as PDF
+
+The PDF includes:
+- Full legal terms
+- Track and fingerprint details
+- Your user information
+- Verification URL
+- BeatPass branding
+
+---
+
+## Certificate Validity
+
+### Active Status
+
+Your license is **active** when:
+- Status shows "active"
+- Not revoked by admin
+- Not past expiration (if applicable)
+
+### Revoked Status
+
+A license may be revoked for:
+- Terms violation
+- Fraudulent activity
+- Refund request
+- Admin action
+
+<Warning>
+  If your license is revoked, you must immediately cease using the beat in any new releases. Existing releases may require takedown.
+</Warning>
+
+### Expired Status
+
+Non-exclusive licenses from BeatPass subscriptions are **perpetual** (never expire). However, some legacy licenses may have expiration dates.
+
+---
+
+## License Permanence
+
+Your license certificate contains **permanent snapshots** of:
+
+- Track name and artists (at licensing time)
+- Your user details (at licensing time)
+- Complete license terms
+
+Even if:
+- The track is later removed from BeatPass
+- The producer changes the track name
+- Your account email changes
+
+Your license remains valid with the original information.
+
+---
+
+## Multiple Licenses
+
+You may have multiple licenses for the same track if:
+
+- You previously had non-exclusive, then purchased exclusive
+- License was reissued after an admin action
+- You downloaded under different account tiers
+
+When viewing, **exclusive licenses take priority** in display.
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Verifying Licenses" icon="shield-check" href="/help/downloads-and-licensing/verifying-licenses">
+    How to verify license authenticity.
+  </Card>
+  <Card title="BeatPassID" icon="fingerprint" href="/help/downloads-and-licensing/beatpass-id">
+    Understanding audio fingerprinting.
+  </Card>
+</CardGroup>

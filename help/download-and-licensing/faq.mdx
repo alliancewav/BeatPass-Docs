@@ -1,0 +1,185 @@
+---
+title: "Downloads & Licensing FAQ | BeatPass"
+sidebarTitle: "FAQ"
+description: "Frequently asked questions about downloading beats, license types, and usage rights on BeatPass."
+keywords: ["FAQ", "downloads", "licensing", "questions", "help"]
+"og:title": "Downloads & Licensing FAQ - BeatPass"
+"og:description": "Common questions about BeatPass downloads and licensing."
+"twitter:card": "summary_large_image"
+---
+
+## General Questions
+
+<AccordionGroup>
+  <Accordion title="Do I need a subscription to download beats?">
+    Yes. To download beats with a non-exclusive license, you need an active BeatPass subscription. The only exception is purchasing an exclusive license, which is a one-time payment.
+  </Accordion>
+  
+  <Accordion title="What file formats do I receive?">
+    **Non-exclusive downloads:** WAV and MP3 (320kbps)
+    
+    **Exclusive purchases:** WAV, WAV tagged, MP3 (320kbps), and stems (if available)
+  </Accordion>
+  
+  <Accordion title="Can I download unlimited beats?">
+    Yes, with an active subscription you can download unlimited beats. Each download grants a non-exclusive license for that track.
+  </Accordion>
+  
+  <Accordion title="Are downloads permanent?">
+    Yes. Your license is perpetual, meaning it never expires. Even if you cancel your subscription, you keep all licenses obtained while subscribed.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## License Questions
+
+<AccordionGroup>
+  <Accordion title="What's the difference between exclusive and non-exclusive?">
+    **Non-exclusive:** Multiple artists can license the same beat. You have usage rights but don't own the beat. Attribution required. Limited to 50 attendees for performances.
+    
+    **Exclusive:** Only you own the beat. Full rights including sync licensing, unlimited performances, Content ID registration, and stems.
+  </Accordion>
+  
+  <Accordion title="Do I have to credit the producer?">
+    **Non-exclusive:** Yes. You must credit "Produced by [Producer Name]" wherever your song is shared.
+    
+    **Exclusive:** Attribution requirements depend on the specific license terms set by the producer.
+  </Accordion>
+  
+  <Accordion title="Can I use beats in YouTube videos?">
+    Yes. Both non-exclusive and exclusive licenses allow monetized YouTube videos. However, only exclusive licenses allow Content ID registration.
+  </Accordion>
+  
+  <Accordion title="Can I use beats in movies, TV, or commercials?">
+    **Non-exclusive:** No. Sync licensing for film/TV/commercials requires an exclusive license or license upgrade.
+    
+    **Exclusive:** Yes. Full sync rights are included.
+  </Accordion>
+  
+  <Accordion title="What does 'perpetual' license mean?">
+    A perpetual license never expires. Your right to use the beat remains valid forever, even if the beat is removed from BeatPass or you cancel your subscription.
+  </Accordion>
+  
+  <Accordion title="Can I transfer my license to someone else?">
+    No. Licenses are non-transferable and tied to your specific user account. You cannot sell, share, or give your license to another person.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Exclusive License Questions
+
+<AccordionGroup>
+  <Accordion title="What happens when I buy exclusive rights?">
+    1. You make a one-time payment via Stripe
+    2. An exclusive license certificate is generated
+    3. The track is marked as "SOLD" and removed from non-exclusive downloads
+    4. You receive WAV, MP3, and stems
+    5. No one else can license this beat
+  </Accordion>
+  
+  <Accordion title="Can I buy exclusive if someone already has non-exclusive?">
+    Yes, you can still purchase exclusive rights. Existing non-exclusive licenses remain valid, but no new non-exclusive licenses will be issued.
+  </Accordion>
+  
+  <Accordion title="Do I get publishing rights with exclusive?">
+    The default split is 20% producer / 80% licensee. Specific terms vary by producer and may be customized in the license.
+  </Accordion>
+  
+  <Accordion title="What if a beat I want is already sold exclusively?">
+    If a beat shows "SOLD" status, it's no longer available. The exclusive owner has full rights, and it cannot be licensed by anyone else.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Certificate Questions
+
+<AccordionGroup>
+  <Accordion title="What is a license certificate?">
+    A license certificate is a legal document that proves your right to use a beat. It contains track details, your information, usage terms, and cryptographic verification.
+  </Accordion>
+  
+  <Accordion title="How do I access my license certificate?">
+    1. Go to the track page for any beat you've downloaded
+    2. Click "Get License" or "View License"
+    3. Download as PDF if needed
+    
+    Or visit your Library → Licenses to see all your certificates.
+  </Accordion>
+  
+  <Accordion title="Can I verify if a license is real?">
+    Yes. Every certificate has a verification URL. Visit `/verify-license/{uuid}` to check if a license exists and is valid.
+  </Accordion>
+  
+  <Accordion title="What if my license shows 'revoked'?">
+    A revoked license means your usage rights have been terminated. This may happen due to terms violation, refund, or administrative action. Contact support for details.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Technical Questions
+
+<AccordionGroup>
+  <Accordion title="What is BeatPassID / audio fingerprinting?">
+    BeatPassID is our acoustic fingerprinting technology that creates a unique digital signature for each track. This links your license to the specific audio and enables verification.
+  </Accordion>
+  
+  <Accordion title="Why does my download show 'pending fingerprint'?">
+    New tracks are queued for fingerprinting after upload. This usually completes within minutes. If it stays pending, the download may be temporarily unavailable.
+  </Accordion>
+  
+  <Accordion title="Can the producer see who downloaded their beat?">
+    Yes. Producers receive notifications when their beats are downloaded (based on their notification preferences) and can see download statistics in their analytics.
+  </Accordion>
+  
+  <Accordion title="Is my information private on the license?">
+    Your email is masked on verification pages (e.g., j****n@email.com). Your full information is only visible on your own license certificate.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Download button not working">
+    - Ensure you have an active subscription
+    - Check if the track is sold exclusively
+    - Verify the fingerprint status is complete
+    - Try clearing browser cache
+  </Accordion>
+  
+  <Accordion title="Can't find my license">
+    - Go to Library → Licenses
+    - Search by track name
+    - Check your email for license confirmation
+  </Accordion>
+  
+  <Accordion title="License not generating">
+    - Track may have pending fingerprint
+    - Wait a few minutes and retry
+    - Contact support if issue persists
+  </Accordion>
+  
+  <Accordion title="Wrong file format downloaded">
+    - Check your browser download settings
+    - File may be zipped - look for .zip extension
+    - Try right-click → Save As
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Have Questions?
+
+<CardGroup cols={2}>
+  <Card title="Contact Support" icon="envelope" href="/help/contact-support">
+    Get help from our team.
+  </Card>
+  <Card title="License Certificates" icon="file-certificate" href="/help/downloads-and-licensing/license-certificates">
+    Detailed certificate guide.
+  </Card>
+</CardGroup>

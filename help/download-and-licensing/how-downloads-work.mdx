@@ -1,0 +1,221 @@
+---
+title: "How Downloads Work | BeatPass"
+sidebarTitle: "How Downloads Work"
+description: "Step-by-step guide to downloading beats on BeatPass. Learn about file formats, download requirements, and what happens when you download."
+keywords: ["downloads", "download process", "file formats", "WAV", "MP3", "beat download"]
+"og:title": "How Downloads Work - BeatPass"
+"og:description": "Complete guide to the BeatPass download process and file formats."
+"twitter:card": "summary_large_image"
+---
+
+## Overview
+
+Downloading a beat on BeatPass automatically generates a license certificate that grants you usage rights. The download process is designed to be seamless while ensuring proper licensing.
+
+<Info>
+  **Requirement:** You must have an active BeatPass subscription to download beats with non-exclusive licenses.
+</Info>
+
+---
+
+## Download Process
+
+<Steps>
+  <Step title="Select a Track">
+    Browse the catalog and find a beat you want to download. Click the **Download** button on the track page or player.
+  </Step>
+  
+  <Step title="Fingerprint Verification">
+    The system verifies the track has a completed audio fingerprint. This is required for license generation.
+  </Step>
+  
+  <Step title="License Check">
+    BeatPass checks if you already have a license for this track. If so, it retrieves your existing license.
+  </Step>
+  
+  <Step title="License Generation">
+    If you don't have a license, a new license certificate is automatically generated with:
+    - Your user information
+    - Track details and fingerprint hash
+    - License terms and permissions
+    - Cryptographic signature
+  </Step>
+  
+  <Step title="File Download">
+    The audio file is downloaded to your device in your selected format.
+  </Step>
+  
+  <Step title="Notifications">
+    - You receive a confirmation of your license
+    - The producer is notified of the download (based on their notification preferences)
+  </Step>
+</Steps>
+
+---
+
+## File Formats
+
+### Non-Exclusive Downloads
+
+| Format | Quality | Use Case |
+|--------|---------|----------|
+| **WAV** | Lossless, 16/24-bit | Professional production, studio use |
+| **MP3 320kbps** | High-quality lossy | Streaming, sharing, previews |
+
+### Exclusive Purchases
+
+| Format | Quality | Use Case |
+|--------|---------|----------|
+| **WAV** | Lossless | Master production |
+| **WAV Tagged** | Lossless with producer tag | Attribution version |
+| **MP3 320kbps** | High-quality lossy | Distribution, streaming |
+| **Stems** | Individual tracks | Mixing, remixing |
+
+---
+
+## Download Requirements
+
+### For Non-Exclusive Downloads
+
+| Requirement | Details |
+|-------------|---------|
+| Active subscription | Must have a current BeatPass membership |
+| Track availability | Track must not be sold exclusively |
+| Fingerprint status | Track must have completed fingerprint |
+| Download access | Your subscription plan must include download access |
+
+### For Exclusive Purchases
+
+| Requirement | Details |
+|-------------|---------|
+| Payment completed | Stripe payment must be successful |
+| Track status | Must be `available` (not already sold) |
+| Exclusive pricing | Track must have exclusive price set |
+
+---
+
+## What Happens Behind the Scenes
+
+### License Certificate Generation
+
+When you download, BeatPass automatically creates a license certificate that captures:
+
+**Track Information:**
+- Beat name and producer credits
+- Audio fingerprint (BeatPassID)
+- Duration and genre
+
+**Your Information:**
+- Your name and account details
+- License issue date
+
+**Security Features:**
+- Unique certificate ID
+- Cryptographic signature for authenticity
+- Verification hash for tampering protection
+
+This information is permanently stored so your license remains valid even if the track details change later.
+
+### Download Tracking
+
+BeatPass records each download to:
+- Generate accurate play and download statistics for producers
+- Maintain audit trails for license verification
+- Improve recommendations based on listening habits
+
+---
+
+## Downloading Your Own Tracks
+
+If you're the **producer** downloading your own track:
+
+- No license is generated (you already own it)
+- Download proceeds normally
+- No notifications are sent
+- Download statistics are still recorded
+
+<Note>
+  BeatPass automatically recognizes when you're downloading your own tracks and skips the licensing step.
+</Note>
+
+---
+
+## Accessing Your Downloads
+
+### Finding Your Licenses
+
+1. Navigate to your **Library**
+2. Go to the **Licenses** section
+3. View all tracks you've licensed
+4. Download certificates or re-download files
+
+### License Certificate Access
+
+For each licensed track, you can:
+- View the full license certificate
+- Download as PDF
+- Access the verification URL
+- See license terms
+
+---
+
+## Download Restrictions
+
+### Track Sold Exclusively
+
+If a track has been purchased exclusively by another user:
+
+- Non-exclusive downloads are **blocked**
+- Error message: "This track has been sold exclusively and is no longer available"
+- Track displays **SOLD** badge
+
+### Exclusive-Only Tracks
+
+Some tracks are listed for exclusive purchase only:
+
+- No non-exclusive downloads available
+- Must purchase the exclusive license
+- Producer has marked the track for exclusive sale only
+
+---
+
+## Troubleshooting Downloads
+
+<AccordionGroup>
+  <Accordion title="Download button is disabled">
+    - Check that you have an active subscription
+    - Verify the track isn't sold exclusively
+    - Ensure fingerprinting is complete
+  </Accordion>
+  
+  <Accordion title="License certificate not generating">
+    - Track may have pending fingerprint status
+    - Wait a few minutes and try again
+    - Contact support if issue persists
+  </Accordion>
+  
+  <Accordion title="File won't download">
+    - Check your browser's download settings
+    - Disable pop-up blockers for beatpass.com
+    - Try a different browser
+  </Accordion>
+  
+  <Accordion title="Downloaded file is corrupted">
+    - Try downloading again
+    - Check your internet connection
+    - Clear browser cache and retry
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="License Certificates" icon="file-certificate" href="/help/downloads-and-licensing/license-certificates">
+    Understanding your license document.
+  </Card>
+  <Card title="Exclusive Licenses" icon="crown" href="/help/downloads-and-licensing/exclusive-licenses">
+    Purchase full ownership of a beat.
+  </Card>
+</CardGroup>
