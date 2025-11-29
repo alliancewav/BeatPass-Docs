@@ -1,6 +1,195 @@
 ---
 title: "Audio Fingerprinting"
-description: "Duplicate detection system."
+sidebarTitle: "Audio Fingerprinting"
+description: "Learn how BeatPass protects your music with audio fingerprinting technology. Understand duplicate detection and content protection."
+keywords: ["fingerprint", "audio", "duplicate", "protection", "copyright", "verification"]
+"og:title": "Audio Fingerprinting - BeatPass Help"
+"og:description": "Understand how BeatPass protects your content with audio fingerprinting."
 ---
 
-{/* Content coming soon */}
+BeatPass uses audio fingerprinting to protect your music and ensure the integrity of our catalog. This guide explains how the technology works and what it means for you as a producer.
+
+---
+
+## What is Audio Fingerprinting?
+
+Audio fingerprinting creates a unique digital "fingerprint" of your track based on its audio characteristics. Think of it like a human fingerprint — each track has its own unique signature that can be used to identify it.
+
+This fingerprint is created automatically when you upload a track and is used to:
+
+- **Detect duplicates** — Prevent the same audio from being uploaded twice
+- **Protect your content** — Identify unauthorized copies of your music
+- **Enable licensing** — Verify tracks for license certificate generation
+
+---
+
+## How It Works
+
+When you upload a track to BeatPass:
+
+<Steps>
+  <Step title="Upload begins">
+    Your audio file is uploaded to our servers.
+  </Step>
+  <Step title="Fingerprint analysis">
+    Our system analyzes the audio and creates a unique fingerprint based on the sound waves.
+  </Step>
+  <Step title="Duplicate check">
+    The fingerprint is compared against all existing tracks in the BeatPass catalog.
+  </Step>
+  <Step title="Verification complete">
+    If no match is found, your track is verified as unique and ready to save.
+  </Step>
+</Steps>
+
+---
+
+## Upload Status Indicators
+
+During the fingerprinting process, you'll see these status messages:
+
+| Status | Meaning |
+|--------|---------|
+| **Checking** | Starting the duplicate detection process |
+| **Analyzing** | Creating and comparing the audio fingerprint |
+| **Verified Unique** | No duplicates found — ready to save |
+| **Check Failed** | Fingerprinting couldn't complete (you can still proceed) |
+
+---
+
+## Duplicate Detection
+
+If BeatPass detects that your upload matches an existing track, the upload will be blocked. You'll see a dialog showing:
+
+- **Your upload** — The track name and artist you're trying to upload
+- **Existing track** — The matching track already in the catalog
+- **Similarity score** — How closely the audio matches (shown as a percentage)
+- **Fingerprinted date** — When the original was registered
+
+### Why Duplicates Are Blocked
+
+Duplicate detection protects:
+
+- **Original producers** — Prevents others from uploading your work
+- **Licensing integrity** — Ensures clear ownership for commercial use
+- **Catalog quality** — Avoids redundant copies in the library
+
+---
+
+## What If a Duplicate Is Detected?
+
+If your upload is blocked as a duplicate:
+
+<AccordionGroup>
+  <Accordion title="It's your own track">
+    If you previously uploaded this track, check your existing catalog. You may have already uploaded it.
+    
+    If you need to re-upload (for example, with updated audio), delete the original first, then upload the new version.
+  </Accordion>
+  
+  <Accordion title="You believe it's an error">
+    In rare cases, very similar-sounding tracks might trigger a false positive. If you believe this is an error:
+    
+    1. Click **Appeal / Contact Support** in the duplicate detection dialog
+    2. Or email **contact@beatpass.ca** with:
+       - Your account email
+       - The track name you're trying to upload
+       - The existing track it matched
+       - Explanation of why you have rights to upload this content
+  </Accordion>
+  
+  <Accordion title="Someone uploaded your music">
+    If you find that someone has uploaded your original content without permission:
+    
+    1. Contact support at **contact@beatpass.ca**
+    2. Provide proof of ownership (original project files, dated exports, etc.)
+    3. We'll investigate and take appropriate action
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## After Your Track Is Fingerprinted
+
+Once fingerprinting is complete, you can see the status on your track:
+
+### In the Track Form
+
+The **Audio Fingerprint** section shows:
+- **Fingerprinted** status with verification date
+- **Duration** of the analyzed audio
+- **Hash** — The unique fingerprint identifier (technical reference)
+
+### Benefits of Fingerprinting
+
+<CardGroup cols={2}>
+  <Card title="Content Protection" icon="shield">
+    Your tracks are protected against unauthorized uploads by others.
+  </Card>
+  <Card title="Licensing Support" icon="certificate">
+    Fingerprinting enables verified license certificates for downloads.
+  </Card>
+</CardGroup>
+
+---
+
+## Replacing Audio on Existing Tracks
+
+If you need to update the audio file on an existing track:
+
+1. Go to your track's edit page
+2. In the Audio Fingerprint section, click **Replace Audio File**
+3. Upload your new audio file
+4. The track will be re-fingerprinted with the new audio
+
+<Note>
+  Replacing audio creates a new fingerprint. The old fingerprint is replaced with the new one.
+</Note>
+
+---
+
+## Fingerprinting Failures
+
+In rare cases, fingerprinting may fail due to:
+
+- Very short audio clips
+- Unusual audio formats
+- Server issues during processing
+
+If fingerprinting fails:
+- You'll see a **Check Failed** status
+- You can still proceed with your upload
+- The track may have limited protection features
+
+If you consistently experience fingerprinting failures, contact support at **contact@beatpass.ca**.
+
+---
+
+## Privacy and Security
+
+<AccordionGroup>
+  <Accordion title="What data is stored?">
+    Only the audio fingerprint (a mathematical representation) is stored — not a copy of your audio. The fingerprint cannot be used to recreate your music.
+  </Accordion>
+  
+  <Accordion title="Who can see fingerprint data?">
+    Fingerprint hashes are only visible to you (the track owner) and BeatPass administrators for support purposes.
+  </Accordion>
+  
+  <Accordion title="Can fingerprints be removed?">
+    When you delete a track, its fingerprint is also removed from our system.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Upload Page" icon="upload" href="/help/uploading/upload-page">
+    Learn how to upload your tracks.
+  </Card>
+  <Card title="Sample-Safe Warranty" icon="shield" href="/help/uploading/sample-safe">
+    Certify your tracks for commercial use.
+  </Card>
+</CardGroup>

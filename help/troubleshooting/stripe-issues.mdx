@@ -1,6 +1,248 @@
 ---
-title: "Stripe Issues"
-description: "Payout problems."
+title: "Stripe Connect Issues"
+sidebarTitle: "Stripe Connect"
+description: "Having trouble with Stripe Connect, payouts, or receiving payments as a producer on BeatPass? Find solutions here."
+keywords: ["stripe", "payout", "producer", "earnings", "connect", "bank"]
+"og:title": "Stripe Connect Issues - BeatPass Help"
+"og:description": "Solutions for producer payout and Stripe Connect problems."
 ---
 
-{/* Content coming soon */}
+This guide is for **producers** who are having trouble setting up Stripe Connect or receiving payouts for their music on BeatPass.
+
+<Note>
+  Stripe Connect is only for producers who want to receive earnings. If you're a listener having billing issues, see [Payment Issues](/help/troubleshooting/payment-issues).
+</Note>
+
+---
+
+## I Haven't Connected My Stripe Account
+
+To receive payouts, you need to connect a Stripe account:
+
+<Steps>
+  <Step title="Go to your Producer Dashboard">
+    Navigate to your Producer Dashboard by clicking your profile and selecting **Producer Dashboard**.
+  </Step>
+  <Step title="Go to Finances">
+    Click on **Finances** in your dashboard menu.
+  </Step>
+  <Step title="Click 'Connect Stripe Account'">
+    Click the **Connect Stripe Account** button to start the onboarding process.
+  </Step>
+  <Step title="Complete Stripe onboarding">
+    You'll be redirected to Stripe to set up your account. This takes about 5 minutes and requires:
+    - Basic business/personal information
+    - Bank account details for payouts
+    - Identity verification documents
+  </Step>
+</Steps>
+
+---
+
+## What Payouts Can I Receive?
+
+Once connected, you can receive earnings from:
+
+| Revenue Stream | Description |
+|----------------|-------------|
+| **Monthly Payouts** | Automatic revenue share from the subscription pool based on your contribution value |
+| **Exclusive Sales** | 100% of your set price when someone purchases exclusive rights to your track |
+| **Track Purchases** | 100% of track purchase revenue directly to your account |
+
+<Tip>
+  You keep 100% of your set price on all sales. The platform fee is added on top for buyers, not deducted from your earnings.
+</Tip>
+
+---
+
+## Stripe Onboarding Issues
+
+<AccordionGroup>
+  <Accordion title="Onboarding link isn't working">
+    If clicking the connect button doesn't redirect you to Stripe:
+    1. Check that popups aren't blocked for beatpass.ca
+    2. Try a different browser
+    3. Clear your browser cache and try again
+    4. If the issue persists, contact support at **contact@beatpass.ca**
+  </Accordion>
+  
+  <Accordion title="I'm stuck on Stripe's verification page">
+    Stripe requires identity verification for payouts. Common issues:
+    - **Photo rejected** — Ensure your ID photo is clear, well-lit, and shows all corners
+    - **Address mismatch** — Your address must match your bank account records
+    - **Document type not accepted** — Use a government-issued ID (passport, driver's license)
+    
+    If you're stuck, contact Stripe Support directly from their dashboard.
+  </Accordion>
+  
+  <Accordion title="I'm from a country that isn't supported">
+    Stripe is available in many countries but not all. Check [Stripe's supported countries](https://stripe.com/global) to see if your country is eligible.
+    
+    If your country isn't supported, you may not be able to receive payouts at this time.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## My Account Shows "Pending" or "Verification Required"
+
+If your Stripe account is connected but not fully active:
+
+<AccordionGroup>
+  <Accordion title="Charges not enabled">
+    This means Stripe hasn't fully verified your account yet. 
+    
+    **Solutions:**
+    1. Go to your Producer Dashboard → Finances
+    2. Click **Complete Setup** if shown
+    3. Follow the prompts to provide any missing information
+    4. Wait for Stripe to review (usually 1-2 business days)
+  </Accordion>
+  
+  <Accordion title="Payouts not enabled">
+    Even if charges are enabled, payouts may need additional verification.
+    
+    **Solutions:**
+    1. Log into your Stripe dashboard directly at stripe.com
+    2. Check for any pending requirements
+    3. Provide any requested documents or information
+  </Accordion>
+  
+  <Accordion title="Account restricted">
+    Stripe may restrict accounts that:
+    - Failed identity verification
+    - Have unusual activity patterns
+    - Haven't completed all requirements
+    
+    Contact Stripe Support or email us at **contact@beatpass.ca** for help.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## I'm Not Receiving Payouts
+
+If your Stripe account is connected but you're not receiving money:
+
+<AccordionGroup>
+  <Accordion title="Check your earnings">
+    Go to Producer Dashboard → Finances to see:
+    - Your current contribution value
+    - Estimated monthly earnings
+    - Payout history
+    
+    If your contribution value is low, your earnings may be below the minimum payout threshold.
+  </Accordion>
+  
+  <Accordion title="Payouts are monthly">
+    Subscription revenue payouts are processed monthly, not immediately. Check your payout schedule in the Finances section.
+  </Accordion>
+  
+  <Accordion title="Verify your bank details">
+    Incorrect bank details can prevent payouts:
+    1. Log into your Stripe dashboard at stripe.com
+    2. Check your bank account settings
+    3. Ensure account number and routing number are correct
+  </Accordion>
+  
+  <Accordion title="Payout failed">
+    If a payout failed:
+    - You'll receive an email from Stripe
+    - Check your Stripe dashboard for details
+    - Common causes: incorrect bank info, closed account, bank rejection
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Disconnecting Stripe
+
+If you need to disconnect your Stripe account:
+
+<Warning>
+  Disconnecting will stop all payouts. Any pending earnings will need to be resolved before disconnecting.
+</Warning>
+
+1. Go to Producer Dashboard → Finances
+2. Click **Disconnect** 
+3. Confirm your decision
+
+You can reconnect a different Stripe account later if needed.
+
+---
+
+## Track Purchase Payments
+
+For track purchases (exclusive sales):
+
+<AccordionGroup>
+  <Accordion title="Buyer paid but I haven't received money">
+    Track purchase payments are processed through Stripe and typically arrive within:
+    - **Standard payouts**: 2-7 business days depending on your country
+    - **Instant payouts**: Available in some regions for a small fee
+    
+    Check your Stripe dashboard for the payout schedule.
+  </Accordion>
+  
+  <Accordion title="Refund was issued">
+    If a buyer requests a refund and it's approved:
+    - The amount is deducted from your pending balance
+    - If already paid out, future payouts may be adjusted
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Common Stripe Dashboard Questions
+
+<AccordionGroup>
+  <Accordion title="How do I access my Stripe dashboard?">
+    1. Go to [dashboard.stripe.com](https://dashboard.stripe.com)
+    2. Log in with the same email you used during BeatPass onboarding
+    3. You can view your balance, payouts, and transactions
+  </Accordion>
+  
+  <Accordion title="Can I change my payout bank account?">
+    Yes:
+    1. Log into your Stripe dashboard
+    2. Go to Settings → Bank accounts and scheduling
+    3. Add your new bank account
+    4. Remove the old one if needed
+  </Accordion>
+  
+  <Accordion title="What information does Stripe share with BeatPass?">
+    BeatPass can see:
+    - Whether your account is connected and active
+    - Whether charges and payouts are enabled
+    
+    BeatPass cannot see:
+    - Your bank account details
+    - Your personal ID documents
+    - Your full balance
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Need Help?
+
+If you're still having trouble with Stripe Connect:
+
+1. **Check Stripe's help center** at [support.stripe.com](https://support.stripe.com)
+2. **Contact our support** at **contact@beatpass.ca** with:
+   - Your BeatPass account email
+   - Description of the issue
+   - Any error messages you're seeing
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Payment Issues" icon="credit-card" href="/help/troubleshooting/payment-issues">
+    Subscriber billing problems?
+  </Card>
+  <Card title="Upload Issues" icon="upload" href="/help/troubleshooting/upload-issues">
+    Problems uploading tracks?
+  </Card>
+</CardGroup>
