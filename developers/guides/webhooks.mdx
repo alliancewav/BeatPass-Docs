@@ -24,16 +24,11 @@ BeatPass receives webhooks from Stripe to process purchase-related payment event
 POST /api/stripe/webhook
 ```
 
-This endpoint is registered in Stripe's dashboard (and wired via `mapWebhookRoutes` and `routes/webhooks.php`) to receive all payment-related events.
+This endpoint receives payment-related events from Stripe's webhook system.
 
-Example `curl` request (replace the payload with an actual Stripe event JSON when testing):
-
-```bash
-curl -X POST https://open.beatpass.ca/api/stripe/webhook \
-  -H "Content-Type: application/json" \
-  -H "Stripe-Signature: <generated-signature>" \
-  -d '{"type": "payment_intent.succeeded", "data": {}}'
-```
+<Note>
+  Webhook requests must include a valid `Stripe-Signature` header. Manual requests without proper signatures are rejected.
+</Note>
 
 ---
 
@@ -95,23 +90,14 @@ The webhook controller processes the following Stripe events:
 
 ### Stripe Signature Verification
 
-All incoming Stripe webhooks are verified using the webhook signing secret:
+All incoming Stripe webhooks are verified using Stripe's standard webhook signature verification. This ensures that webhook payloads are authentic and have not been tampered with.
 
-```php
-// BeatPass webhook handler (simplified)
-$payload = $request->getContent();
-$sigHeader = $request->header('Stripe-Signature');
-$webhookSecret = config('services.stripe.webhook_secret');
-
-$event = \Stripe\Webhook::constructEvent(
-    $payload,
-    $sigHeader,
-    $webhookSecret
-);
-```
+- Webhooks are validated against a signing secret configured in Stripe
+- Invalid signatures result in immediate rejection (400 response)
+- All webhook processing is logged for audit purposes
 
 <Warning>
-  Webhooks without valid Stripe signatures are rejected with a 400 response.
+  Webhooks without valid Stripe signatures are rejected. Only Stripe's servers can send valid webhook events.
 </Warning>
 
 ---

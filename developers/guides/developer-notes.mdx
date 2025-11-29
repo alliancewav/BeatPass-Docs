@@ -12,18 +12,16 @@ This section provides high-level technical details for developers integrating wi
 
 ## Technology Stack
 
-BeatPass is built on a modern PHP/JavaScript stack:
+BeatPass is built on a modern web stack:
 
 | Layer | Technology |
 |-------|------------|
-| Backend Framework | Laravel 10 |
-| Frontend Framework | React 18 |
-| Authentication | Laravel Sanctum (cookie-based SPA) |
-| Database | MySQL 8 |
-| Queue System | Laravel Queues (Redis) |
+| Backend | PHP (Laravel) |
+| Frontend | React |
+| Authentication | Cookie-based SPA sessions |
+| Database | MySQL |
 | Payments | Stripe Connect |
-| Real-time | Pusher / Laravel Echo |
-| Storage | S3-compatible object storage |
+| Real-time | WebSocket-based push notifications |
 
 ---
 
@@ -112,14 +110,13 @@ API responses follow Laravel conventions:
 - **Errors**: `message` field with optional `errors` object for validation failures
 - **Pagination**: Laravel's standard pagination structure with `data`, `current_page`, `total`, etc.
 
-### Middleware Groups
+### Authentication Modes
 
-| Middleware | Purpose |
-|------------|--------|
-| `optionalAuth:sanctum` | Works without auth, returns enhanced data when authenticated |
-| `auth:sanctum` | Requires authenticated session |
-| `throttle:X,Y` | Rate limits to X requests per Y minutes |
-| `isAdmin` | Requires admin role |
+| Mode | Behavior |
+|------|----------|
+| Optional authentication | Works without auth, returns enhanced data when authenticated |
+| Required authentication | Requires a valid session |
+| Rate limited | Subject to request throttling |
 
 ---
 

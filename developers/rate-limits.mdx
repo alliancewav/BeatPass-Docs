@@ -38,14 +38,14 @@ Authentication attempts are limited to prevent brute force attacks:
 
 ---
 
-## Throttle Format
+## Rate Limit Format
 
-Rate limits in BeatPass use Laravel's `throttle:X,Y` format:
+Rate limits are expressed as requests per time window:
 
-- `X` = Maximum requests
-- `Y` = Time window in minutes
+- **Requests:** Maximum number of requests allowed
+- **Window:** Time period (typically 1 minute)
 
-Example: `throttle:60,1` means 60 requests per 1 minute.
+Example: "60 requests per minute" means you can make 60 requests within any 60-second window.
 
 ---
 

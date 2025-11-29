@@ -215,43 +215,19 @@ This documentation covers **user-facing endpoints only**. The following are inte
 
 ### Admin & Staff Endpoints
 
-These routes require staff roles and are not available to regular users:
-
-| Route Prefix | Purpose |
-|--------------|---------|
-| `/admin/fingerprints/*` | Audio fingerprinting administration |
-| `/admin/licenses/*` | License management and bulk operations |
-| `/admin/subscription-splits/*` | Stripe Connect split monitoring |
-| `/admin/artist-onboarding/*` | Stripe Connect onboarding management |
-| `/admin/promotional-emails/*` | Marketing email campaigns |
-| `/admin/track-pricing/*` | Bulk track pricing management |
-| `/admin/track-purchases/*` | Purchase analytics and reporting |
-| `/admin/failed-jobs/*` | Queue job management |
+Admin routes require elevated privileges and are protected by role-based access control. These endpoints are not accessible to regular users and are not documented here.
 
 ### Internal Tooling
 
-| Category | Description |
-|----------|-------------|
-| **Video generation** | `/video/mux-audio`, `/video/chunk`, `/video/complete`, `/video/history` |
-| **Audio proxy** | `/audio/proxy` for CORS workarounds |
-| **Import tooling** | `/import-media/*` for content ingestion |
-| **Cover art templates** | `/cover-art/templates/*` (admin creation/scanning) |
-| **Carousel management** | `/carousel/*` for featured content curation |
-| **Track posting status** | `/tracks/posting-status`, `/tracks/{id}/posting-status` |
-| **Analytics exports** | `/producer-intelligence/export/*`, `/producer-intelligence/report/*` |
-| **Advanced charts** | `/producer-intelligence/track/{id}/charts`, `/artist/{id}/charts`, `/album/{id}/charts` |
-| **Live analytics** | `/producer-intelligence/live-analytics`, `/producer-intelligence/track/{id}/real-time` |
-| **V2 Analytics** | `/v2/analytics/report` (internal reporting)
+Internal endpoints used for platform operations, content processing, and infrastructure management are not publicly documented.
 
 ### Not Documented
 
 | Category | Reason |
 |----------|--------|
-| **Internal analytics** | Backend reporting and metrics collection |
-| **Fraud detection** | Security-sensitive rate limits and patterns |
-| **Webhook secrets** | Stripe signing secrets and internal tokens |
-| **Debug endpoints** | Development and testing routes |
-| **Infrastructure** | Queue workers, cache management, health checks |
+| **Admin operations** | Requires staff roles |
+| **Internal processing** | Platform infrastructure |
+| **Security systems** | Protected by design |
 
 ### Security Notice
 
