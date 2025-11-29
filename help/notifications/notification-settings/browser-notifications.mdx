@@ -1,0 +1,156 @@
+---
+title: "Browser Notifications"
+sidebarTitle: "Browser"
+description: "Learn how to set up and manage real-time browser push notifications on BeatPass."
+keywords: ["browser notifications", "push notifications", "real-time alerts", "browser permissions"]
+"og:title": "Browser Notifications - BeatPass Help"
+"og:description": "Set up real-time browser push notifications for BeatPass."
+---
+
+Browser notifications deliver real-time alerts directly to your browser, even when you're not actively looking at BeatPass. They're perfect for instant updates about messages, likes, and other important activity.
+
+---
+
+## How Browser Notifications Work
+
+When you enable browser notifications:
+
+1. An event happens (new message, new follower, etc.)
+2. Your browser displays a pop-up notification
+3. Click the notification to go directly to the relevant content
+
+<Note>
+  Browser notifications only work when you have BeatPass open in a browser tab (it doesn't need to be the active tab).
+</Note>
+
+---
+
+## Enabling Browser Notifications
+
+### First-Time Setup
+
+1. Go to `/notifications/settings`
+2. Toggle on **Browser** for any notification type
+3. Your browser will ask for permission
+4. Click **Allow** in the browser prompt
+
+### Browser Permission Prompt
+
+When asked to allow notifications:
+- **Allow** — Enables real-time notifications
+- **Block** — Prevents notifications (can be changed later in browser settings)
+- **Dismiss/Ignore** — Browser will ask again later
+
+---
+
+## If Notifications Are Blocked
+
+If you previously blocked notifications, you'll see a warning on the settings page:
+
+> "Browser notifications are blocked. Enable them in your browser settings."
+
+### How to Unblock
+
+The process varies by browser:
+
+**Chrome:**
+1. Click the lock icon in the address bar
+2. Find "Notifications" setting
+3. Change from "Block" to "Allow"
+
+**Firefox:**
+1. Click the shield or lock icon in the address bar
+2. Click on the permissions section
+3. Allow notifications
+
+**Safari:**
+1. Go to Safari → Preferences → Websites → Notifications
+2. Find BeatPass and set to "Allow"
+
+**Edge:**
+1. Click the lock icon in the address bar
+2. Find "Notifications" setting
+3. Change to "Allow"
+
+---
+
+## Managing Browser Notifications
+
+### From the Settings Page
+
+1. Go to `/notifications/settings`
+2. For each notification type, toggle **Browser** on or off
+3. Click **Save Preferences**
+
+### Quick Controls
+
+Use the **Browser** toggle in the Quick Controls section to:
+- Enable browser notifications for all types
+- Disable browser notifications for all types
+
+---
+
+## When You'll See Notifications
+
+Browser notifications appear:
+- When a relevant event occurs
+- When BeatPass is open in any browser tab
+- When you have the Browser channel enabled for that notification type
+
+You won't see browser notifications:
+- If you've closed all BeatPass browser tabs
+- If you've blocked browser notifications
+- If the Browser channel is disabled for that type
+
+---
+
+## Notification Appearance
+
+Browser notifications typically show:
+- **Title** — What happened (e.g., "New Message")
+- **Body** — Who did what (e.g., "Alex sent you a message")
+- **Icon** — BeatPass logo or user avatar
+
+Click the notification to open BeatPass and go directly to the relevant content.
+
+---
+
+## Best Practices
+
+- **Enable for high-priority items** — Messages, license grants, payouts
+- **Consider disabling for high-volume notifications** — Track likes (can be overwhelming)
+- **Keep BeatPass open** — Even in a background tab for notifications to work
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I'm not seeing browser notifications">
+    1. Check if browser notifications are allowed in your browser settings
+    2. Make sure Browser is toggled on in `/notifications/settings`
+    3. Verify BeatPass is open in at least one browser tab
+    4. Try refreshing the page
+  </Accordion>
+  
+  <Accordion title="I blocked notifications by accident">
+    You'll need to enable them in your browser settings. Click the lock icon in your browser's address bar and change notifications from "Block" to "Allow".
+  </Accordion>
+  
+  <Accordion title="Notifications stopped working">
+    Try refreshing the BeatPass tab. If the issue persists, check your browser settings to ensure notifications are still allowed.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Email Notifications" icon="envelope" href="/help/notifications/notification-settings/email-notifications">
+    Manage email notification preferences.
+  </Card>
+  <Card title="In-App Notifications" icon="inbox" href="/help/notifications/notification-settings/in-app-notifications">
+    Manage your notification center.
+  </Card>
+</CardGroup>
