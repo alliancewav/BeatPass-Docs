@@ -20,7 +20,7 @@
     "prompt": "Search documentation..."
   },
   "banner": {
-    "content": "🎵 Welcome to BeatPass! Explore our [Help Center](help/index) for users or [Developer Docs](developers/overview) for API integration.",
+    "content": "🎵 Welcome to BeatPass! Explore our [Help Center](/help/index) for users or [Developer Docs](/developers/overview) for API integration.",
     "dismissible": true
   },
   "metadata": {
