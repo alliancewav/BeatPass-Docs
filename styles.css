@@ -1,22 +1,56 @@
-/* BeatPass Docs Custom Theme */
+/* BeatPass Docs Custom Theme - Matching Player App Design Language */
 
-/* Dark Mode Backgrounds */
+/* ============================================
+   CSS Variables - BeatPass Brand Colors
+   ============================================ */
+:root {
+  --bp-primary: #48B0E4;
+  --bp-primary-light: #5BC0F0;
+  --bp-primary-dark: #1F8AC8;
+  --bp-success: #22c55e;
+  --bp-warning: #f59e0b;
+  --bp-danger: #ef4444;
+  --bp-radius: 0.75rem;
+  --bp-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode - Matching Player App */
 :root[data-theme="dark"] {
   --background: #050505;
   --background-alt: #0F0F0F;
-  --accent: #48B0E4;
-  --accent-dark: #1F8AC8;
+  --paper: #0F0F0F;
+  --text-primary: rgba(255, 255, 255, 1);
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --divider: rgba(255, 255, 255, 0.12);
 }
 
-/* Light Mode Backgrounds */
+/* Light Mode */
 :root[data-theme="light"],
 :root:not([data-theme]) {
   --background: #FCFEFF;
   --background-alt: #F2F4F8;
-  --accent: #48B0E4;
+  --paper: #FFFFFF;
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-muted: rgba(0, 0, 0, 0.6);
+  --divider: rgba(0, 0, 0, 0.12);
 }
 
-/* Apply background colors */
+/* ============================================
+   Base Styles
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Background Colors - Player App Match
+   ============================================ */
 [data-theme="dark"] body,
 [data-theme="dark"] .dark {
   background-color: #050505 !important;
@@ -25,16 +59,17 @@
 [data-theme="dark"] .sidebar,
 [data-theme="dark"] aside,
 [data-theme="dark"] nav {
-  background-color: #0F0F0F !important;
+  background-color: #0A0A0A !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 [data-theme="dark"] .card,
 [data-theme="dark"] [class*="card"],
 [data-theme="dark"] .accordion {
   background-color: #0F0F0F !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Light mode backgrounds */
 [data-theme="light"] body,
 body:not([data-theme="dark"]) {
   background-color: #FCFEFF !important;
@@ -43,27 +78,201 @@ body:not([data-theme="dark"]) {
 [data-theme="light"] .sidebar,
 [data-theme="light"] aside,
 [data-theme="light"] nav {
-  background-color: #F2F4F8 !important;
+  background-color: #F8FAFB !important;
 }
 
 [data-theme="light"] .card,
 [data-theme="light"] [class*="card"],
 [data-theme="light"] .accordion {
-  background-color: #F2F4F8 !important;
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Improved link styling */
+/* ============================================
+   Glassmorphism Effects - Like Player App
+   ============================================ */
+[data-theme="dark"] .glass-effect {
+  background: rgba(15, 15, 15, 0.8) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .glass-effect {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   Card Hover Effects - Modern Feel
+   ============================================ */
+.card,
+[class*="card"] {
+  transition: var(--bp-transition);
+  border-radius: var(--bp-radius) !important;
+}
+
+.card:hover,
+[class*="card"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px -12px rgba(72, 176, 228, 0.15);
+}
+
+[data-theme="dark"] .card:hover,
+[data-theme="dark"] [class*="card"]:hover {
+  box-shadow: 0 12px 40px -12px rgba(72, 176, 228, 0.2);
+  border-color: rgba(72, 176, 228, 0.2) !important;
+}
+
+/* ============================================
+   Scrollbar Styling - Thin & Modern
+   ============================================ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(72, 176, 228, 0.3) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(72, 176, 228, 0.3);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(72, 176, 228, 0.5);
+}
+
+/* ============================================
+   Interactive Elements
+   ============================================ */
+a {
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
 a:hover {
-  opacity: 0.85;
-  transition: opacity 0.15s ease;
+  opacity: 0.9;
 }
 
-/* Smooth transitions for theme switching */
+button,
+[role="button"] {
+  transition: var(--bp-transition);
+}
+
+button:hover,
+[role="button"]:hover {
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Code Blocks - Player App Style
+   ============================================ */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background-color: #0A0A0A !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+pre {
+  border-radius: var(--bp-radius) !important;
+}
+
+/* ============================================
+   Badges - BeatPass Brand Colors
+   ============================================ */
+[data-theme="dark"] .badge {
+  backdrop-filter: blur(8px);
+}
+
+/* ============================================
+   Tabs - Modern Styling
+   ============================================ */
+[role="tablist"] {
+  border-radius: var(--bp-radius);
+  overflow: hidden;
+}
+
+[role="tab"] {
+  transition: var(--bp-transition);
+}
+
+[role="tab"][aria-selected="true"] {
+  background: linear-gradient(135deg, var(--bp-primary) 0%, var(--bp-primary-dark) 100%);
+}
+
+/* ============================================
+   Accordion - Smooth Animations
+   ============================================ */
+.accordion,
+[class*="accordion"] {
+  border-radius: var(--bp-radius) !important;
+  overflow: hidden;
+  transition: var(--bp-transition);
+}
+
+/* ============================================
+   Search Input - Player App Style
+   ============================================ */
+[data-theme="dark"] input[type="search"],
+[data-theme="dark"] .search-input {
+  background-color: #0F0F0F !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] input[type="search"]:focus,
+[data-theme="dark"] .search-input:focus {
+  border-color: var(--bp-primary) !important;
+  box-shadow: 0 0 0 3px rgba(72, 176, 228, 0.15) !important;
+}
+
+/* ============================================
+   Smooth Transitions
+   ============================================ */
 body,
 .sidebar,
 aside,
 nav,
 .card,
-.accordion {
-  transition: background-color 0.2s ease;
+.accordion,
+pre,
+code {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ============================================
+   Focus States - Accessibility
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--bp-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Selection - Brand Color
+   ============================================ */
+::selection {
+  background-color: rgba(72, 176, 228, 0.3);
+  color: inherit;
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

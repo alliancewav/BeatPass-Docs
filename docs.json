@@ -9,15 +9,15 @@
     "dark": "#1F8AC8"
   },
   "appearance": {
-    "default": "system"
+    "default": "dark"
   },
   "favicon": "/favicon.svg",
   "styling": {
-    "eyebrows": "breadcrumbs",
+    "eyebrows": "section",
     "codeblocks": {
       "theme": {
         "light": "github-light",
-        "dark": "github-dark"
+        "dark": "one-dark-pro"
       }
     }
   },
@@ -32,7 +32,17 @@
     }
   },
   "background": {
-    "decoration": "gradient"
+    "decoration": "windows",
+    "color": {
+      "light": "#FCFEFF",
+      "dark": "#050505"
+    }
+  },
+  "thumbnails": {
+    "appearance": "dark",
+    "fonts": {
+      "family": "Inter"
+    }
   },
   "search": {
     "prompt": "Search guides, API docs, or ask a question..."
