@@ -1,0 +1,281 @@
+---
+title: "Insights API"
+sidebarTitle: "Insights"
+description: "Analytics and insights endpoints for tracks, albums, and artists"
+---
+
+## Overview
+
+The Insights API provides focused, domain-specific analytics endpoints for content creators. These endpoints offer comprehensive analytics data, charts, and export capabilities.
+
+<Info>
+  **Base URL:** `https://open.beatpass.ca/api/v1/insights`
+</Info>
+
+<Note>
+  All Insights endpoints require authentication. Include session cookies in your requests.
+</Note>
+
+---
+
+## Track Insights
+
+### Get Track Analytics
+
+Retrieve comprehensive analytics for a track including plays, engagement, and performance metrics.
+
+<CodeGroup>
+```bash cURL
+curl "https://open.beatpass.ca/api/v1/insights/tracks/123" \
+  -H "Accept: application/json" \
+  --cookie "session=..."
+```
+
+```javascript JavaScript
+const response = await fetch('/api/v1/insights/tracks/123', {
+  credentials: 'include',
+  headers: { 'Accept': 'application/json' }
+});
+```
+</CodeGroup>
+
+**Parameters:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `trackId` | integer | Yes | Track ID |
+| `period` | string | No | Time period: `7-days`, `30-days`, `90-days`, `1-year`. Default: `30-days` |
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "plays": { "total": 1250, "period": 340 },
+    "listeners": { "total": 890, "unique": 456 },
+    "engagement": { "likes": 78, "reposts": 12 },
+    "growth": { "plays_change": 15.2, "listeners_change": 8.4 }
+  }
+}
+```
+
+### Get Track Charts
+
+Retrieve chart data for visualizing track performance over time.
+
+```bash
+GET /api/v1/insights/tracks/{trackId}/charts?timeframe=30d
+```
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `trackId` | integer | Track ID |
+| `timeframe` | string | Chart timeframe: `7d`, `30d`, `90d`, `1y` |
+
+### Get Real-Time Metrics
+
+Get live metrics for a track (active listeners, recent plays).
+
+```bash
+GET /api/v1/insights/tracks/{trackId}/realtime
+```
+
+---
+
+## Album Insights
+
+### Get Album Analytics
+
+Retrieve analytics for an album including aggregate track performance.
+
+```bash
+GET /api/v1/insights/albums/{albumId}?period=30-days
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `albumId` | integer | Yes | Album ID |
+| `period` | string | No | Time period. Default: `30-days` |
+
+### Get Album Charts
+
+```bash
+GET /api/v1/insights/albums/{albumId}/charts?timeframe=30d
+```
+
+---
+
+## Artist Insights
+
+### Get Artist Analytics
+
+Retrieve comprehensive analytics for an artist's content.
+
+```bash
+GET /api/v1/insights/artists/{artistId}?period=30-days
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `artistId` | integer | Yes | Artist ID |
+| `period` | string | No | Time period. Default: `30-days` |
+
+### Get Artist Charts
+
+```bash
+GET /api/v1/insights/artists/{artistId}/charts?timeframe=30d
+```
+
+### Get Collaboration Stats
+
+Retrieve collaboration statistics and network data.
+
+```bash
+GET /api/v1/insights/artists/{artistId}/collaborations
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "total_collaborations": 15,
+    "top_collaborators": [...],
+    "collaboration_tracks": [...]
+  }
+}
+```
+
+---
+
+## Export
+
+### Get Available Formats
+
+List available export formats.
+
+```bash
+GET /api/v1/insights/export/formats
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "formats": [
+    { "id": "csv", "name": "CSV", "description": "..." },
+    { "id": "json", "name": "JSON", "description": "..." },
+    { "id": "pdf", "name": "PDF Report", "description": "..." }
+  ]
+}
+```
+
+### Export to CSV
+
+Export analytics data as CSV.
+
+```bash
+POST /api/v1/insights/export/csv
+Content-Type: application/json
+
+{
+  "type": "tracks",
+  "period": "30-days"
+}
+```
+
+### Export to JSON
+
+Export analytics data as structured JSON.
+
+```bash
+POST /api/v1/insights/export/json
+Content-Type: application/json
+
+{
+  "type": "tracks",
+  "period": "30-days"
+}
+```
+
+### Generate Report
+
+Generate a comprehensive analytics report.
+
+```bash
+POST /api/v1/insights/export/report
+Content-Type: application/json
+
+{
+  "period": "30-days",
+  "include_charts": true
+}
+```
+
+### Export PDF
+
+Export the report as a PDF document.
+
+```bash
+POST /api/v1/insights/export/pdf
+Content-Type: application/json
+
+{
+  "period": "30-days"
+}
+```
+
+---
+
+## Error Responses
+
+All Insights endpoints use standardized error responses:
+
+| Status | Error | Description |
+|--------|-------|-------------|
+| 401 | `unauthorized` | Authentication required |
+| 403 | `forbidden` | Access denied to this resource |
+| 404 | `not_found` | Resource not found |
+| 422 | `validation_failed` | Invalid parameters |
+| 500 | `server_error` | Internal server error |
+
+**Example Error Response:**
+```json
+{
+  "success": false,
+  "message": "Track not found",
+  "error": "not_found"
+}
+```
+
+---
+
+## Migration from Legacy Endpoints
+
+The Insights API replaces the legacy content analytics endpoints:
+
+| Legacy Endpoint | New Endpoint |
+|-----------------|--------------|
+| `GET /content-analytics/track/{id}` | `GET /insights/tracks/{id}` |
+| `GET /content-analytics/album/{id}` | `GET /insights/albums/{id}` |
+| `GET /content-analytics/artist/{id}` | `GET /insights/artists/{id}` |
+| `POST /content-analytics/export/csv` | `POST /insights/export/csv` |
+
+<Warning>
+  Legacy endpoints are deprecated and will be removed in a future version.
+</Warning>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/developers/auth">
+    Learn about session-based authentication.
+  </Card>
+  <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
+    Understand API rate limits and caching.
+  </Card>
+</CardGroup>

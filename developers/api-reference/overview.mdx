@@ -1,10 +1,21 @@
 ---
 title: "API Reference"
-sidebarTitle: "Endpoints"
+sidebarTitle: "Overview"
 description: "Explore BeatPass API endpoints with the interactive OpenAPI explorer."
 ---
 
-## OpenAPI Explorer
+## API Reference
+
+This section documents all public-facing BeatPass API endpoints. Browse the OpenAPI specification or explore specific API domains:
+
+### API Documentation
+
+| API | Description |
+|-----|-------------|
+| [Dashboard API](/developers/api-reference/dashboard) | Producer dashboard metrics, track performance, and upload insights |
+| [Insights API](/developers/api-reference/insights) | Analytics and insights for tracks, albums, and artists |
+
+### OpenAPI Explorer
 
 The API reference uses the BeatPass OpenAPI specification to provide interactive documentation for all endpoints. Browse by category in the **Endpoint Explorer** section of the navigation.
 
@@ -92,10 +103,15 @@ const response = await fetch('https://open.beatpass.ca/api/v1/messaging/conversa
 | Artists | Artist profiles and follows | Read: Optional, Write: Required |
 | Albums | Album management | Read: Optional, Write: Required |
 | Playlists | Playlist operations | Mixed |
+| **Insights** | Analytics and insights for content | Required |
 | License Certificates | License generation/verification | Required |
 | Users | User profiles and follows | Mixed |
 | Messaging | Direct messages | Required |
 | Beat Requests | Beat request marketplace | Required |
+
+<Tip>
+  The [Insights API](/developers/api-reference/insights) provides focused, domain-specific analytics endpoints with standardized error handling and export capabilities.
+</Tip>
 
 ---
 

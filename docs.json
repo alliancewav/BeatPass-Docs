@@ -20,7 +20,7 @@
     "prompt": "Search documentation..."
   },
   "banner": {
-    "content": "Welcome to BeatPass! Explore our [Help Center](help/index) for users or [Developer Docs](developers/overview) for API integration.",
+    "content": "👋 Welcome! Browse the [Help Center](/help/index) for platform guides or [Developer Docs](/developers/overview) for API integration.",
     "dismissible": true
   },
   "metadata": {
@@ -41,13 +41,7 @@
             "group": "Welcome",
             "icon": "house",
             "pages": [
-              "help/index"
-            ]
-          },
-          {
-            "group": "Getting Started",
-            "icon": "rocket",
-            "pages": [
+              "help/index",
               "help/getting-started/index",
               "help/getting-started/creating-account",
               "help/getting-started/logging-in",
@@ -66,7 +60,7 @@
             ]
           },
           {
-            "group": "Discovering Music",
+            "group": "Discover & Listen",
             "icon": "music",
             "pages": [
               "help/discovering-music/index",
@@ -85,22 +79,21 @@
                   "help/discovering-music/channels/channel-filters",
                   "help/discovering-music/channels/genre-channels"
                 ]
+              },
+              {
+                "group": "Player & Playback",
+                "pages": [
+                  "help/playing-music/index",
+                  "help/playing-music/player-controls",
+                  "help/playing-music/queue-and-playback",
+                  "help/playing-music/lyrics",
+                  "help/playing-music/track-comments"
+                ]
               }
             ]
           },
           {
-            "group": "Playing Music",
-            "icon": "play",
-            "pages": [
-              "help/playing-music/index",
-              "help/playing-music/player-controls",
-              "help/playing-music/queue-and-playback",
-              "help/playing-music/lyrics",
-              "help/playing-music/track-comments"
-            ]
-          },
-          {
-            "group": "Your Library",
+            "group": "Library & Playlists",
             "icon": "folder-music",
             "pages": [
               "help/library/index",
@@ -108,23 +101,55 @@
               "help/library/liked-albums",
               "help/library/followed-artists",
               "help/library/listening-history",
-              "help/library/my-licenses"
+              "help/library/my-licenses",
+              {
+                "group": "Playlists",
+                "pages": [
+                  "help/playlists/index",
+                  "help/playlists/creating-playlists",
+                  "help/playlists/managing-tracks",
+                  "help/playlists/collaborative-playlists",
+                  "help/playlists/playlist-privacy",
+                  "help/playlists/following-playlists"
+                ]
+              }
             ]
           },
           {
-            "group": "Playlists",
-            "icon": "list-music",
+            "group": "Social & Community",
+            "icon": "users",
             "pages": [
-              "help/playlists/index",
-              "help/playlists/creating-playlists",
-              "help/playlists/managing-tracks",
-              "help/playlists/collaborative-playlists",
-              "help/playlists/playlist-privacy",
-              "help/playlists/following-playlists"
+              "help/social-features/index",
+              "help/social-features/following-system",
+              "help/social-features/reposts",
+              "help/social-features/comments",
+              "help/social-features/sharing-and-embeds",
+              {
+                "group": "Messaging",
+                "pages": [
+                  "help/messaging/index",
+                  "help/messaging/direct-messages",
+                  "help/messaging/group-conversations",
+                  "help/messaging/real-time-features",
+                  "help/messaging/managing-conversations"
+                ]
+              },
+              {
+                "group": "Beat Requests",
+                "pages": [
+                  "help/beat-requests/index",
+                  "help/beat-requests/understanding-tokens",
+                  "help/beat-requests/creating-requests",
+                  "help/beat-requests/request-specifications",
+                  "help/beat-requests/managing-requests",
+                  "help/beat-requests/receiving-submissions",
+                  "help/beat-requests/for-producers"
+                ]
+              }
             ]
           },
           {
-            "group": "Downloads & Licensing",
+            "group": "Licensing & Downloads",
             "icon": "download",
             "pages": [
               "help/downloads-and-licensing/index",
@@ -144,151 +169,7 @@
             ]
           },
           {
-            "group": "Beat Requests",
-            "icon": "waveform",
-            "pages": [
-              "help/beat-requests/index",
-              "help/beat-requests/understanding-tokens",
-              "help/beat-requests/creating-requests",
-              "help/beat-requests/request-specifications",
-              "help/beat-requests/managing-requests",
-              "help/beat-requests/receiving-submissions",
-              "help/beat-requests/for-producers"
-            ]
-          },
-          {
-            "group": "Messaging",
-            "icon": "messages",
-            "pages": [
-              "help/messaging/index",
-              "help/messaging/direct-messages",
-              "help/messaging/group-conversations",
-              "help/messaging/real-time-features",
-              "help/messaging/managing-conversations"
-            ]
-          },
-          {
-            "group": "Social Features",
-            "icon": "users",
-            "pages": [
-              "help/social-features/index",
-              "help/social-features/following-system",
-              "help/social-features/reposts",
-              "help/social-features/comments",
-              "help/social-features/sharing-and-embeds"
-            ]
-          },
-          {
-            "group": "Profiles",
-            "icon": "user",
-            "pages": [
-              "help/profiles/index",
-              "help/profiles/user-vs-artist-comparison",
-              {
-                "group": "User Profiles",
-                "pages": [
-                  "help/profiles/user-profiles/index",
-                  "help/profiles/user-profiles/editing-profile",
-                  "help/profiles/user-profiles/profile-tabs",
-                  "help/profiles/user-profiles/privacy-settings"
-                ]
-              },
-              {
-                "group": "Artist Profiles",
-                "pages": [
-                  "help/profiles/artist-profiles/index",
-                  "help/profiles/artist-profiles/profile-elements",
-                  "help/profiles/artist-profiles/photo-gallery",
-                  "help/profiles/artist-profiles/artist-bio",
-                  "help/profiles/artist-profiles/pinned-track",
-                  "help/profiles/artist-profiles/verified-badge",
-                  "help/profiles/artist-profiles/discography-tabs"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Account Settings",
-            "icon": "gear",
-            "pages": [
-              "help/account-settings/index",
-              "help/account-settings/account-details",
-              "help/account-settings/social-login",
-              "help/account-settings/two-factor-authentication",
-              "help/account-settings/active-sessions",
-              "help/account-settings/localization",
-              "help/account-settings/developer-api",
-              "help/account-settings/delete-account",
-              {
-                "group": "Password",
-                "pages": [
-                  "help/account-settings/password/index",
-                  "help/account-settings/password/changing-password",
-                  "help/account-settings/password/forgot-password"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Notifications",
-            "icon": "bell",
-            "pages": [
-              "help/notifications/index",
-              "help/notifications/notification-center",
-              "help/notifications/notification-types",
-              {
-                "group": "Notification Settings",
-                "pages": [
-                  "help/notifications/notification-settings/index",
-                  "help/notifications/notification-settings/email-notifications",
-                  "help/notifications/notification-settings/browser-notifications",
-                  "help/notifications/notification-settings/in-app-notifications"
-                ]
-              },
-              {
-                "group": "Notification Categories",
-                "pages": [
-                  "help/notifications/notification-categories/index",
-                  "help/notifications/notification-categories/following-notifications",
-                  "help/notifications/notification-categories/social-notifications",
-                  "help/notifications/notification-categories/producer-notifications",
-                  "help/notifications/notification-categories/earnings-notifications"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Billing",
-            "icon": "receipt",
-            "pages": [
-              "help/billing/index",
-              "help/billing/subscription-overview",
-              "help/billing/invoices",
-              "help/billing/platform-fee",
-              "help/billing/faq",
-              {
-                "group": "Managing Subscription",
-                "pages": [
-                  "help/billing/managing-subscription/index",
-                  "help/billing/managing-subscription/upgrading-plan",
-                  "help/billing/managing-subscription/downgrading-plan",
-                  "help/billing/managing-subscription/cancelling-subscription",
-                  "help/billing/managing-subscription/resuming-subscription"
-                ]
-              },
-              {
-                "group": "Payment Methods",
-                "pages": [
-                  "help/billing/payment-methods/index",
-                  "help/billing/payment-methods/adding-payment-method",
-                  "help/billing/payment-methods/updating-payment-method",
-                  "help/billing/payment-methods/supported-methods"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Plans & Pricing",
+            "group": "Plans & Billing",
             "icon": "credit-card",
             "pages": [
               "help/plans-and-pricing/index",
@@ -297,7 +178,36 @@
               "help/plans-and-pricing/plus-plan",
               "help/plans-and-pricing/pro-plan",
               "help/plans-and-pricing/plan-comparison",
-              "help/plans-and-pricing/choosing-a-plan"
+              "help/plans-and-pricing/choosing-a-plan",
+              {
+                "group": "Billing & Payments",
+                "pages": [
+                  "help/billing/index",
+                  "help/billing/subscription-overview",
+                  "help/billing/invoices",
+                  "help/billing/platform-fee",
+                  "help/billing/faq",
+                  {
+                    "group": "Managing Subscription",
+                    "pages": [
+                      "help/billing/managing-subscription/index",
+                      "help/billing/managing-subscription/upgrading-plan",
+                      "help/billing/managing-subscription/downgrading-plan",
+                      "help/billing/managing-subscription/cancelling-subscription",
+                      "help/billing/managing-subscription/resuming-subscription"
+                    ]
+                  },
+                  {
+                    "group": "Payment Methods",
+                    "pages": [
+                      "help/billing/payment-methods/index",
+                      "help/billing/payment-methods/adding-payment-method",
+                      "help/billing/payment-methods/updating-payment-method",
+                      "help/billing/payment-methods/supported-methods"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
@@ -321,7 +231,7 @@
             ]
           },
           {
-            "group": "Uploading",
+            "group": "Uploading Content",
             "icon": "cloud-arrow-up",
             "pages": [
               "help/uploading/index",
@@ -347,29 +257,28 @@
                   "help/uploading/cover-art/templates",
                   "help/uploading/cover-art/custom-art"
                 ]
-              }
-            ]
-          },
-          {
-            "group": "Licensing for Producers",
-            "icon": "file-certificate",
-            "pages": [
-              "help/licensing-for-producers/index",
-              "help/licensing-for-producers/non-exclusive-licenses",
-              "help/licensing-for-producers/license-certificates",
+              },
               {
-                "group": "Exclusive Licenses",
+                "group": "Licensing Setup",
                 "pages": [
-                  "help/licensing-for-producers/exclusive-licenses/index",
-                  "help/licensing-for-producers/exclusive-licenses/setting-prices",
-                  "help/licensing-for-producers/exclusive-licenses/license-presets",
-                  "help/licensing-for-producers/exclusive-licenses/license-configuration"
+                  "help/licensing-for-producers/index",
+                  "help/licensing-for-producers/non-exclusive-licenses",
+                  "help/licensing-for-producers/license-certificates",
+                  {
+                    "group": "Exclusive Licenses",
+                    "pages": [
+                      "help/licensing-for-producers/exclusive-licenses/index",
+                      "help/licensing-for-producers/exclusive-licenses/setting-prices",
+                      "help/licensing-for-producers/exclusive-licenses/license-presets",
+                      "help/licensing-for-producers/exclusive-licenses/license-configuration"
+                    ]
+                  }
                 ]
               }
             ]
           },
           {
-            "group": "Earnings",
+            "group": "Earnings & Payouts",
             "icon": "money-bill-wave",
             "pages": [
               "help/earnings/index",
@@ -405,64 +314,140 @@
               "help/producer-dashboard/activity",
               "help/producer-dashboard/finances",
               "help/producer-dashboard/progress",
-              "help/producer-dashboard/leaderboards"
-            ]
-          },
-          {
-            "group": "Analytics",
-            "icon": "chart-line",
-            "pages": [
-              "help/analytics/index",
-              "help/analytics/getting-started",
+              "help/producer-dashboard/leaderboards",
               {
-                "group": "Backstage Insights",
+                "group": "Analytics",
                 "pages": [
-                  "help/analytics/backstage-insights/index",
-                  "help/analytics/backstage-insights/track-insights",
-                  "help/analytics/backstage-insights/album-insights",
-                  "help/analytics/backstage-insights/artist-insights",
-                  "help/analytics/backstage-insights/engagement-metrics"
+                  "help/analytics/index",
+                  "help/analytics/getting-started",
+                  {
+                    "group": "Backstage Insights",
+                    "pages": [
+                      "help/analytics/backstage-insights/index",
+                      "help/analytics/backstage-insights/track-insights",
+                      "help/analytics/backstage-insights/album-insights",
+                      "help/analytics/backstage-insights/artist-insights",
+                      "help/analytics/backstage-insights/engagement-metrics"
+                    ]
+                  },
+                  {
+                    "group": "Reference",
+                    "pages": [
+                      "help/analytics/reference/metrics-glossary",
+                      "help/analytics/reference/chart-types",
+                      "help/analytics/reference/faq"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Reference",
+                "group": "XP & Achievements",
                 "pages": [
-                  "help/analytics/reference/metrics-glossary",
-                  "help/analytics/reference/chart-types",
-                  "help/analytics/reference/faq"
+                  "help/gamification/index",
+                  "help/gamification/progress-page",
+                  {
+                    "group": "XP System",
+                    "pages": [
+                      "help/gamification/xp-system/index",
+                      "help/gamification/xp-system/earning-xp",
+                      "help/gamification/xp-system/producer-levels"
+                    ]
+                  },
+                  {
+                    "group": "Achievements",
+                    "pages": [
+                      "help/gamification/achievements/index",
+                      "help/gamification/achievements/catalog",
+                      "help/gamification/achievements/rarity-tiers"
+                    ]
+                  },
+                  {
+                    "group": "Leaderboards",
+                    "pages": [
+                      "help/gamification/leaderboards/index",
+                      "help/gamification/leaderboards/categories",
+                      "help/gamification/leaderboards/genre-leaderboards",
+                      "help/gamification/leaderboards/timeframes"
+                    ]
+                  }
                 ]
               }
             ]
           },
           {
-            "group": "Gamification",
-            "icon": "trophy",
+            "group": "Profiles",
+            "icon": "user",
             "pages": [
-              "help/gamification/index",
-              "help/gamification/progress-page",
+              "help/profiles/index",
+              "help/profiles/user-vs-artist-comparison",
               {
-                "group": "XP System",
+                "group": "User Profiles",
                 "pages": [
-                  "help/gamification/xp-system/index",
-                  "help/gamification/xp-system/earning-xp",
-                  "help/gamification/xp-system/producer-levels"
+                  "help/profiles/user-profiles/index",
+                  "help/profiles/user-profiles/editing-profile",
+                  "help/profiles/user-profiles/profile-tabs",
+                  "help/profiles/user-profiles/privacy-settings"
                 ]
               },
               {
-                "group": "Achievements",
+                "group": "Artist Profiles",
                 "pages": [
-                  "help/gamification/achievements/index",
-                  "help/gamification/achievements/catalog",
-                  "help/gamification/achievements/rarity-tiers"
+                  "help/profiles/artist-profiles/index",
+                  "help/profiles/artist-profiles/profile-elements",
+                  "help/profiles/artist-profiles/photo-gallery",
+                  "help/profiles/artist-profiles/artist-bio",
+                  "help/profiles/artist-profiles/pinned-track",
+                  "help/profiles/artist-profiles/verified-badge",
+                  "help/profiles/artist-profiles/discography-tabs"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Account & Settings",
+            "icon": "gear",
+            "pages": [
+              "help/account-settings/index",
+              "help/account-settings/account-details",
+              "help/account-settings/social-login",
+              "help/account-settings/two-factor-authentication",
+              "help/account-settings/active-sessions",
+              "help/account-settings/localization",
+              "help/account-settings/developer-api",
+              "help/account-settings/delete-account",
+              {
+                "group": "Password",
+                "pages": [
+                  "help/account-settings/password/index",
+                  "help/account-settings/password/changing-password",
+                  "help/account-settings/password/forgot-password"
                 ]
               },
               {
-                "group": "Leaderboards",
+                "group": "Notifications",
                 "pages": [
-                  "help/gamification/leaderboards/index",
-                  "help/gamification/leaderboards/categories",
-                  "help/gamification/leaderboards/genre-leaderboards",
-                  "help/gamification/leaderboards/timeframes"
+                  "help/notifications/index",
+                  "help/notifications/notification-center",
+                  "help/notifications/notification-types",
+                  {
+                    "group": "Notification Settings",
+                    "pages": [
+                      "help/notifications/notification-settings/index",
+                      "help/notifications/notification-settings/email-notifications",
+                      "help/notifications/notification-settings/browser-notifications",
+                      "help/notifications/notification-settings/in-app-notifications"
+                    ]
+                  },
+                  {
+                    "group": "Notification Categories",
+                    "pages": [
+                      "help/notifications/notification-categories/index",
+                      "help/notifications/notification-categories/following-notifications",
+                      "help/notifications/notification-categories/social-notifications",
+                      "help/notifications/notification-categories/producer-notifications",
+                      "help/notifications/notification-categories/earnings-notifications"
+                    ]
+                  }
                 ]
               }
             ]
@@ -487,26 +472,25 @@
             ]
           },
           {
-            "group": "Troubleshooting",
-            "icon": "wrench",
-            "pages": [
-              "help/troubleshooting/index",
-              "help/troubleshooting/playback-issues",
-              "help/troubleshooting/download-issues",
-              "help/troubleshooting/upload-issues",
-              "help/troubleshooting/payment-issues",
-              "help/troubleshooting/account-access",
-              "help/troubleshooting/stripe-issues"
-            ]
-          },
-          {
-            "group": "Contact Support",
+            "group": "Support",
             "icon": "headset",
             "pages": [
               "help/contact-support/index",
               "help/contact-support/getting-help",
               "help/contact-support/feedback",
-              "help/contact-support/reporting-issues"
+              "help/contact-support/reporting-issues",
+              {
+                "group": "Troubleshooting",
+                "pages": [
+                  "help/troubleshooting/index",
+                  "help/troubleshooting/playback-issues",
+                  "help/troubleshooting/download-issues",
+                  "help/troubleshooting/upload-issues",
+                  "help/troubleshooting/payment-issues",
+                  "help/troubleshooting/account-access",
+                  "help/troubleshooting/stripe-issues"
+                ]
+              }
             ]
           },
           {
@@ -571,30 +555,30 @@
         "openapi": "/developers/api-reference/openapi.json",
         "groups": [
           {
-            "group": "Getting Started",
-            "icon": "rocket",
+            "group": "Introduction",
+            "icon": "book-open",
             "pages": [
               "developers/overview",
-              "developers/quickstart",
-              "developers/auth",
-              "developers/rate-limits",
-              "developers/error-catalog"
+              "developers/quickstart"
             ]
           },
           {
-            "group": "Guides",
-            "icon": "book",
+            "group": "Core Concepts",
+            "icon": "lightbulb",
             "pages": [
-              "developers/guides/webhooks",
-              "developers/guides/dashboard-api",
-              "developers/guides/developer-notes"
+              "developers/auth",
+              "developers/rate-limits",
+              "developers/error-catalog",
+              "developers/webhooks"
             ]
           },
           {
             "group": "API Reference",
             "icon": "square-terminal",
             "pages": [
-              "developers/reference/endpoints"
+              "developers/api-reference/overview",
+              "developers/api-reference/dashboard",
+              "developers/api-reference/insights"
             ]
           }
         ]
