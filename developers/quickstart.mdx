@@ -1,7 +1,10 @@
 ---
 title: "Quickstart"
 sidebarTitle: "Quickstart"
-description: "Getting started guide for developers working with the BeatPass codebase and API."
+description: "Getting started guide for developers working with the BeatPass codebase and API. Learn authentication, testing practices, and API usage."
+keywords: ["beatpass quickstart", "api quickstart", "beatpass authentication", "sanctum auth"]
+"og:title": "Quickstart - BeatPass Developer Docs"
+"og:description": "Get started with the BeatPass API. Learn authentication flow, testing practices, and safe API usage."
 ---
 
 ## Overview
@@ -9,7 +12,7 @@ description: "Getting started guide for developers working with the BeatPass cod
 This guide helps developers understand the BeatPass technical environment, authentication model, and safe testing practices.
 
 <Warning>
-  **First-Party Only** — BeatPass does not offer a public API for third-party applications. This documentation is for internal development and authorized partners only.
+  **First-Party Only** — BeatPass does not offer a public API for third-party applications. This documentation describes the API used by the official BeatPass applications.
 </Warning>
 
 ---
@@ -180,40 +183,13 @@ GET /api/v1/tracks/12345
 
 ---
 
-## Off-Limits Routes
-
-### Admin & Internal Routes
+## Restricted Access
 
 <Warning>
-  **Do Not Call** — The following routes are restricted to staff and internal systems. Unauthorized access attempts are logged and may result in account termination.
+  **Administrative and internal endpoints are not documented here.** These routes require elevated privileges and are protected by role-based access control. Unauthorized access attempts are logged and may result in account termination.
 </Warning>
 
-| Route Prefix | Purpose |
-|--------------|---------|
-| `/admin/*` | Admin panel and operations |
-| `/api/v1/admin/*` | Admin API endpoints |
-| `/import-media/*` | Content ingestion tools |
-| `/video/*` | Video generation (internal) |
-| `/audio/proxy` | CORS proxy (internal) |
-
-### Analytics Export Routes
-
-| Route | Why Off-Limits |
-|-------|----------------|
-| `/producer-intelligence/export/*` | Internal reporting |
-| `/producer-intelligence/report/*` | Staff analytics |
-| `/v2/analytics/*` | Internal v2 system |
-| `*/charts` | Advanced charts (internal) |
-| `*/real-time` | Live analytics (internal) |
-
-### What Happens If You Try
-
-| Attempt | Result |
-|---------|--------|
-| Unauthenticated | 401 Unauthorized |
-| Wrong role | 403 Forbidden |
-| Repeated attempts | Rate limited, logged |
-| Abuse pattern detected | Account flagged for review |
+The API only documents endpoints available to regular authenticated users. If you encounter a 403 Forbidden response, the endpoint requires permissions you don't have.
 
 ---
 
@@ -270,20 +246,18 @@ See [Error Catalog](/developers/error-catalog) for feature-specific errors.
 
 ## Getting Help
 
-### For Developers
-
-| Resource | Contact |
-|----------|---------|
-| Technical questions | Internal Slack / dev team |
-| API issues | File internal ticket |
+| Topic | Contact |
+|-------|---------|
+| API questions | support@beatpass.ca |
 | Security concerns | security@beatpass.ca |
+| Partnership inquiries | support@beatpass.ca |
 
 ### Documentation
 
 | Topic | Location |
 |-------|----------|
 | API Overview | [/developers/overview](/developers/overview) |
-| Endpoints | [/developers/reference/endpoints](/developers/reference/endpoints) |
+| API Reference | [/developers/api-reference/overview](/developers/api-reference/overview) |
 | Authentication | [/developers/auth](/developers/auth) |
 | Rate Limits | [/developers/rate-limits](/developers/rate-limits) |
 | Error Catalog | [/developers/error-catalog](/developers/error-catalog) |

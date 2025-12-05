@@ -7,19 +7,33 @@ keywords: ["beatpass api", "music api", "beat marketplace api", "producer api", 
 "og:description": "Introduction to the BeatPass API for first-party application development."
 ---
 
-## Overview
-
 The BeatPass API powers the platform's frontend. This is a **first-party API** designed exclusively for BeatPass web and mobile applications.
 
 <Warning>
   **First-Party Only** — BeatPass does not offer a public developer API or third-party integrations. All endpoints documented here are for the official BeatPass application.
 </Warning>
 
-### Integration Requests
+## Quick Links
 
-If you're interested in integrating with BeatPass (partnerships, data licensing, embedded players), contact support to discuss options. Do not attempt to use undocumented endpoints or scrape platform data.
+<CardGroup cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/developers/quickstart">
+    Get up and running quickly
+  </Card>
+  <Card title="Authentication" icon="key" href="/developers/auth">
+    Learn the auth flow
+  </Card>
+  <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
+    Explore all endpoints
+  </Card>
+</CardGroup>
 
-<Card title="Partnership Inquiries" icon="handshake" href="/help/support/contact">
+---
+
+## Integration Requests
+
+If you're interested in integrating with BeatPass (partnerships, data licensing, embedded players), contact support to discuss options.
+
+<Card title="Partnership Inquiries" icon="handshake" href="/help/contact-support" horizontal>
   Contact support for integration discussions.
 </Card>
 
@@ -205,7 +219,7 @@ See [Rate Limits](/developers/rate-limits) for complete details.
 
 BeatPass receives **inbound webhooks** from Stripe for payment processing. There is no outbound webhook system for external integrations.
 
-See [Webhooks](/developers/guides/webhooks) for Stripe webhook details.
+See [Webhooks](/developers/webhooks) for Stripe webhook details.
 
 ---
 
@@ -245,7 +259,7 @@ If you discover an undocumented endpoint that appears to be a security concern, 
   <Card title="Authentication" icon="key" href="/developers/auth">
     Learn how Sanctum authentication works.
   </Card>
-  <Card title="Endpoints" icon="code" href="/developers/reference/endpoints">
+  <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     Complete endpoint reference.
   </Card>
 </CardGroup>

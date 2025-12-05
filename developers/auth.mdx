@@ -2,6 +2,9 @@
 title: "Authentication"
 sidebarTitle: "Authentication"
 description: "How authentication works on the BeatPass API using Laravel Sanctum's cookie-based SPA authentication."
+keywords: ["beatpass auth", "sanctum authentication", "spa authentication", "csrf token", "session cookies"]
+"og:title": "Authentication - BeatPass Developer Docs"
+"og:description": "Learn how BeatPass API authentication works using Laravel Sanctum's cookie-based SPA sessions."
 ---
 
 ## Overview
@@ -18,12 +21,20 @@ BeatPass uses **Laravel Sanctum** for SPA (single-page application) authenticati
 
 BeatPass uses **stateful SPA authentication**:
 
-| Aspect | Implementation |
-|--------|----------------|
-| Method | Cookie-based sessions |
-| CSRF | Required for state-changing requests |
-| Tokens | Not issued (no `/sanctum/token` endpoint) |
-| Third-party | Not supported |
+<CardGroup cols={2}>
+  <Card title="Cookie Sessions" icon="cookie" color="#f59e0b">
+    All auth uses secure, HttpOnly session cookies
+  </Card>
+  <Card title="CSRF Required" icon="shield-check" color="#22c55e">
+    State-changing requests require CSRF tokens
+  </Card>
+  <Card title="No API Tokens" icon="key-skeleton" color="#6b7280">
+    Personal access tokens are not issued
+  </Card>
+  <Card title="First-Party Only" icon="lock" color="#ef4444">
+    Third-party integrations not supported
+  </Card>
+</CardGroup>
 
 ---
 
@@ -223,19 +234,29 @@ Users can log out of the current session, or log out all other sessions from the
 
 ## Authentication Errors
 
-| Status | Meaning | Solution |
-|--------|---------|----------|
-| 401 | Unauthenticated | Session missing, invalid, or expired |
-| 403 | Forbidden | User lacks permission for this resource |
-| 419 | Session Expired | CSRF token mismatch (web SPA) |
-
-### Error Response
-
-```json
-{
-  "message": "Unauthenticated."
-}
-```
+<AccordionGroup>
+  <Accordion title="401 Unauthenticated" icon="circle-xmark">
+    <Badge color="red">401</Badge> Session missing, invalid, or expired.
+    
+    **Solution:** Re-authenticate by calling `/sanctum/csrf-cookie` then `/login`.
+    
+    ```json
+    { "message": "Unauthenticated." }
+    ```
+  </Accordion>
+  
+  <Accordion title="403 Forbidden" icon="ban">
+    <Badge color="orange">403</Badge> User lacks permission for this resource.
+    
+    **Solution:** Check that your account has the required role or ownership.
+  </Accordion>
+  
+  <Accordion title="419 Session Expired" icon="clock">
+    <Badge color="gray">419</Badge> CSRF token mismatch or session timeout.
+    
+    **Solution:** Refresh CSRF token by calling `/sanctum/csrf-cookie` again.
+  </Accordion>
+</AccordionGroup>
 
 ---
 
@@ -243,20 +264,28 @@ Users can log out of the current session, or log out all other sessions from the
 
 BeatPass supports social authentication providers:
 
-| Provider | Available |
-|----------|-----------|
-| Google | Yes |
-| Facebook | Yes |
-| Twitter | Yes |
+<CardGroup cols={3}>
+  <Card title="Google" icon="google" color="#4285F4">
+    <Badge color="green" icon="check">Available</Badge>
+  </Card>
+  <Card title="Facebook" icon="facebook" color="#1877F2">
+    <Badge color="green" icon="check">Available</Badge>
+  </Card>
+  <Card title="Twitter" icon="x-twitter" color="#000000">
+    <Badge color="green" icon="check">Available</Badge>
+  </Card>
+</CardGroup>
 
-Social logins create a BeatPass account and session automatically.
+<Note>
+  Social logins create a BeatPass account and session automatically. You can link additional providers in Account Settings.
+</Note>
 
 ---
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="API Endpoints" icon="code" href="/developers/reference/endpoints">
+  <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     See available endpoints.
   </Card>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">

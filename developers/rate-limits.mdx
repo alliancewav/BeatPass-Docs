@@ -2,6 +2,9 @@
 title: "Rate Limits"
 sidebarTitle: "Rate Limits"
 description: "Understanding API rate limits and route-specific throttling on the BeatPass API."
+keywords: ["beatpass rate limits", "api throttling", "request limits", "rate limiting"]
+"og:title": "Rate Limits - BeatPass Developer Docs"
+"og:description": "Understand BeatPass API rate limits, throttling, and best practices for handling 429 errors."
 ---
 
 ## Overview
@@ -222,10 +225,31 @@ When you hit a rate limit:
 
 ---
 
+## Caching Configuration
+
+BeatPass uses centralized cache TTL (Time-To-Live) configuration for consistent caching behavior across the platform. This ensures predictable data freshness while optimizing performance.
+
+### Cache TTL Values
+
+| Category | Endpoint Type | TTL | Notes |
+|----------|--------------|-----|-------|
+| **Analytics** | Dashboard overview | 15 min | Producer dashboard stats |
+| **Analytics** | Real-time metrics | 1 min | Live engagement data |
+| **Leaderboards** | Global rankings | 5 min | All leaderboard types |
+| **Content** | Track/Album details | 30 min | Metadata and images |
+| **User** | Profile data | 1 hour | User settings, preferences |
+| **Contribution** | Track values | 24 hours | Contribution calculations |
+
+### Development Note
+
+When developing integrations, account for these cache windows in your data synchronization logic. Real-time data should not be polled more frequently than the cache TTL.
+
+---
+
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="API Endpoints" icon="code" href="/developers/reference/endpoints">
+  <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     See all available endpoints.
   </Card>
   <Card title="Authentication" icon="key" href="/developers/auth">

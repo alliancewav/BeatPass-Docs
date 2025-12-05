@@ -17,7 +17,7 @@
     "codeblocks": "system"
   },
   "search": {
-    "prompt": "Search documentation..."
+    "prompt": "Search for guides, API docs, or topics..."
   },
   "banner": {
     "content": "👋 Welcome! Browse the [Help Center](/help/index) for platform guides or [Developer Docs](/developers/overview) for API integration.",
@@ -631,9 +631,32 @@
       "copy",
       "view",
       "chatgpt",
-      "claude"
+      "claude",
+      "cursor"
     ]
   },
+  "redirects": [
+    {
+      "source": "/developers/guides/webhooks",
+      "destination": "/developers/webhooks"
+    },
+    {
+      "source": "/developers/guides/dashboard-api",
+      "destination": "/developers/api-reference/dashboard"
+    },
+    {
+      "source": "/developers/guides/developer-notes",
+      "destination": "/developers/overview"
+    },
+    {
+      "source": "/developers/reference/endpoints",
+      "destination": "/developers/api-reference/overview"
+    },
+    {
+      "source": "/developers/api-reference/insights-api",
+      "destination": "/developers/api-reference/insights"
+    }
+  ],
   "seo": {
     "indexing": "all",
     "metatags": {

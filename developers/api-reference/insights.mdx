@@ -1,7 +1,10 @@
 ---
 title: "Insights API"
 sidebarTitle: "Insights"
-description: "Analytics and insights endpoints for tracks, albums, and artists"
+description: "Analytics and insights endpoints for tracks, albums, and artists. Get performance data, charts, and export capabilities."
+keywords: ["beatpass insights api","analytics api","track insights","artist analytics","album analytics"]
+og:title: "Insights API - BeatPass Developer Docs"
+og:description: "Analytics and insights API for tracks, albums, and artists with charts and export capabilities."
 ---
 
 ## Overview
@@ -25,11 +28,13 @@ The Insights API provides focused, domain-specific analytics endpoints for conte
 Retrieve comprehensive analytics for a track including plays, engagement, and performance metrics.
 
 <CodeGroup>
+
 ```bash cURL
 curl "https://open.beatpass.ca/api/v1/insights/tracks/123" \
   -H "Accept: application/json" \
   --cookie "session=..."
 ```
+
 
 ```javascript JavaScript
 const response = await fetch('/api/v1/insights/tracks/123', {
@@ -37,15 +42,18 @@ const response = await fetch('/api/v1/insights/tracks/123', {
   headers: { 'Accept': 'application/json' }
 });
 ```
+
 </CodeGroup>
 
 **Parameters:**
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `trackId` | integer | Yes | Track ID |
-| `period` | string | No | Time period: `7-days`, `30-days`, `90-days`, `1-year`. Default: `30-days` |
+
+| Parameter | Type    | Required | Description                                                               |
+| --------- | ------- | -------- | ------------------------------------------------------------------------- |
+| `trackId` | integer | Yes      | Track ID                                                                  |
+| `period`  | string  | No       | Time period: `7-days`, `30-days`, `90-days`, `1-year`. Default: `30-days` |
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -67,10 +75,11 @@ GET /api/v1/insights/tracks/{trackId}/charts?timeframe=30d
 ```
 
 **Parameters:**
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `trackId` | integer | Track ID |
-| `timeframe` | string | Chart timeframe: `7d`, `30d`, `90d`, `1y` |
+
+| Parameter   | Type    | Description                               |
+| ----------- | ------- | ----------------------------------------- |
+| `trackId`   | integer | Track ID                                  |
+| `timeframe` | string  | Chart timeframe: `7d`, `30d`, `90d`, `1y` |
 
 ### Get Real-Time Metrics
 
@@ -93,10 +102,11 @@ GET /api/v1/insights/albums/{albumId}?period=30-days
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `albumId` | integer | Yes | Album ID |
-| `period` | string | No | Time period. Default: `30-days` |
+
+| Parameter | Type    | Required | Description                     |
+| --------- | ------- | -------- | ------------------------------- |
+| `albumId` | integer | Yes      | Album ID                        |
+| `period`  | string  | No       | Time period. Default: `30-days` |
 
 ### Get Album Charts
 
@@ -117,10 +127,11 @@ GET /api/v1/insights/artists/{artistId}?period=30-days
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `artistId` | integer | Yes | Artist ID |
-| `period` | string | No | Time period. Default: `30-days` |
+
+| Parameter  | Type    | Required | Description                     |
+| ---------- | ------- | -------- | ------------------------------- |
+| `artistId` | integer | Yes      | Artist ID                       |
+| `period`   | string  | No       | Time period. Default: `30-days` |
 
 ### Get Artist Charts
 
@@ -137,6 +148,7 @@ GET /api/v1/insights/artists/{artistId}/collaborations
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -161,6 +173,7 @@ GET /api/v1/insights/export/formats
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -233,15 +246,16 @@ Content-Type: application/json
 
 All Insights endpoints use standardized error responses:
 
-| Status | Error | Description |
-|--------|-------|-------------|
-| 401 | `unauthorized` | Authentication required |
-| 403 | `forbidden` | Access denied to this resource |
-| 404 | `not_found` | Resource not found |
-| 422 | `validation_failed` | Invalid parameters |
-| 500 | `server_error` | Internal server error |
+| Status | Error               | Description                    |
+| ------ | ------------------- | ------------------------------ |
+| 401    | `unauthorized`      | Authentication required        |
+| 403    | `forbidden`         | Access denied to this resource |
+| 404    | `not_found`         | Resource not found             |
+| 422    | `validation_failed` | Invalid parameters             |
+| 500    | `server_error`      | Internal server error          |
 
 **Example Error Response:**
+
 ```json
 {
   "success": false,
@@ -256,12 +270,12 @@ All Insights endpoints use standardized error responses:
 
 The Insights API replaces the legacy content analytics endpoints:
 
-| Legacy Endpoint | New Endpoint |
-|-----------------|--------------|
-| `GET /content-analytics/track/{id}` | `GET /insights/tracks/{id}` |
-| `GET /content-analytics/album/{id}` | `GET /insights/albums/{id}` |
+| Legacy Endpoint                      | New Endpoint                 |
+| ------------------------------------ | ---------------------------- |
+| `GET /content-analytics/track/{id}`  | `GET /insights/tracks/{id}`  |
+| `GET /content-analytics/album/{id}`  | `GET /insights/albums/{id}`  |
 | `GET /content-analytics/artist/{id}` | `GET /insights/artists/{id}` |
-| `POST /content-analytics/export/csv` | `POST /insights/export/csv` |
+| `POST /content-analytics/export/csv` | `POST /insights/export/csv`  |
 
 <Warning>
   Legacy endpoints are deprecated and will be removed in a future version.

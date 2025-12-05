@@ -1,127 +1,322 @@
 ---
-title: "API Reference"
+title: "API Overview"
 sidebarTitle: "Overview"
-description: "Explore BeatPass API endpoints with the interactive OpenAPI explorer."
+description: "Introduction to the BeatPass API for first-party application development. Learn about authentication, endpoints, rate limits, and API structure."
+keywords: ["beatpass api","music api","beat marketplace api","producer api","beat licensing api"]
+og:title: "API Overview - BeatPass Developer Documentation"
+og:description: "Introduction to the BeatPass API for first-party application development."
 ---
 
-## API Reference
+The BeatPass API powers the platform's frontend. This is a **first-party API** designed exclusively for BeatPass web and mobile applications.
 
-This section documents all public-facing BeatPass API endpoints. Browse the OpenAPI specification or explore specific API domains:
+<Warning>
+  **First-Party Only** — BeatPass does not offer a public developer API or third-party integrations. All endpoints documented here are for the official BeatPass application.
+</Warning>
 
-### API Documentation
+## Quick Links
 
-| API | Description |
-|-----|-------------|
-| [Dashboard API](/developers/api-reference/dashboard) | Producer dashboard metrics, track performance, and upload insights |
-| [Insights API](/developers/api-reference/insights) | Analytics and insights for tracks, albums, and artists |
+<CardGroup cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/developers/quickstart">
+    Get up and running quickly
+  </Card>
+  <Card title="Authentication" icon="key" href="/developers/auth">
+    Learn the auth flow
+  </Card>
+  <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
+    Explore all endpoints
+  </Card>
+</CardGroup>
 
-### OpenAPI Explorer
+---
 
-The API reference uses the BeatPass OpenAPI specification to provide interactive documentation for all endpoints. Browse by category in the **Endpoint Explorer** section of the navigation.
+## Integration Requests
+
+If you're interested in integrating with BeatPass (partnerships, data licensing, embedded players), contact support to discuss options.
+
+<Card title="Partnership Inquiries" icon="handshake" horizontal href="/help/contact-support">
+  Contact support for integration discussions.
+</Card>
+
+---
+
+## Base URL
+
+All API requests use the base URL:
+
+```
+https://open.beatpass.ca/api/v1
+```
+
+---
+
+## API Surface
+
+The BeatPass API provides comprehensive functionality across the platform:
+
+<Tabs>
+  <Tab title="Content & Discovery">
+    <CardGroup cols={2}>
+      <Card title="Tracks" icon="record-vinyl">
+        List, view, upload, update, delete tracks
+      </Card>
+      <Card title="Albums" icon="album-collection">
+        Album management and metadata
+      </Card>
+      <Card title="Artists" icon="user-music">
+        Artist profiles, followers, tracks
+      </Card>
+      <Card title="Playlists" icon="list-music">
+        Create, manage, share playlists
+      </Card>
+      <Card title="Search" icon="magnifying-glass">
+        Full-text search across content types
+      </Card>
+      <Card title="Genres" icon="tags">
+        Genre listing and filtering
+      </Card>
+    </CardGroup>
+  </Tab>
+  <Tab title="Commerce & Licensing">
+    <CardGroup cols={2}>
+      <Card title="Track Purchases" icon="cart-shopping">
+        Per-track purchase flow via Stripe Connect
+      </Card>
+      <Card title="License Certificates" icon="file-certificate">
+        Generate, verify, revoke licenses
+      </Card>
+      <Card title="Exclusive Licenses" icon="lock">
+        Preset management for exclusive sales
+      </Card>
+      <Card title="Subscription Payouts" icon="money-bill-transfer">
+        Artist earnings from subscriptions
+      </Card>
+    </CardGroup>
+  </Tab>
+  <Tab title="Producer Tools">
+    <CardGroup cols={2}>
+      <Card title="Producer Intelligence" icon="trophy">
+        XP, achievements, leaderboards
+      </Card>
+      <Card title="Analytics" icon="chart-line">
+        Track performance, engagement metrics
+      </Card>
+      <Card title="Contribution Pool" icon="coins">
+        Earnings estimates, track breakdowns
+      </Card>
+      <Card title="Payout Analytics" icon="money-check-dollar">
+        History, projections, trends
+      </Card>
+      <Card title="Audio Fingerprinting" icon="fingerprint">
+        Duplicate detection, content ID
+      </Card>
+    </CardGroup>
+  </Tab>
+  <Tab title="Social & Collaboration">
+    <CardGroup cols={2}>
+      <Card title="Messaging" icon="messages">
+        Direct messages with typing indicators
+      </Card>
+      <Card title="Beat Requests" icon="waveform">
+        Custom beat request marketplace
+      </Card>
+      <Card title="Following" icon="user-plus">
+        User and artist follow system
+      </Card>
+      <Card title="Reposts" icon="retweet">
+        Content sharing within platform
+      </Card>
+    </CardGroup>
+  </Tab>
+</Tabs>
+
+---
+
+## Request Format
+
+### HTTP Methods
+
+<CardGroup cols={4}>
+  <Card title="GET" icon="arrow-down-to-line" color="#22c55e">
+    Retrieve data
+  </Card>
+  <Card title="POST" icon="plus" color="#3b82f6">
+    Create resources
+  </Card>
+  <Card title="PUT" icon="pen" color="#f59e0b">
+    Update resources
+  </Card>
+  <Card title="DELETE" icon="trash" color="#ef4444">
+    Remove resources
+  </Card>
+</CardGroup>
+
+### Required Headers
+
+```http
+Accept: application/json
+Content-Type: application/json
+```
 
 <Info>
-  **Base URL:** `https://open.beatpass.ca/api/v1`
+  Authenticated requests use Sanctum's stateful session cookies. State-changing requests must include CSRF protection (`XSRF-TOKEN` cookie + `X-XSRF-TOKEN` header). See the [Authentication guide](/developers/auth) for details.
 </Info>
 
 ---
 
-## Using the API Explorer
+## Response Format
 
-<Steps>
-  <Step title="Select an Endpoint">
-    Expand the **Endpoint Explorer** in the sidebar and choose a category:
-    - **Search** — Full-text search across content
-    - **Tracks** — Track listing, details, and management
-    - **Artists** — Artist profiles and followers
-    - **Albums** — Album management
-    - **Playlists** — Playlist CRUD and collaboration
-    - **License Certificates** — License generation and verification
-    - And more...
-  </Step>
-  
-  <Step title="Review Parameters">
-    Each endpoint shows required and optional parameters, request body schemas, and example values.
-  </Step>
-  
-  <Step title="Try It Out">
-    Use the **Try It** feature to make live API calls. Note that authenticated endpoints require a valid session (see Authentication).
-  </Step>
-  
-  <Step title="Check Responses">
-    Response schemas show the expected data structure. Error responses (401, 403, 404, 422) are documented for each endpoint.
-  </Step>
-</Steps>
+### Success Response
+
+Responses vary by endpoint. Most return data directly:
+
+```json
+{
+  "id": 1234,
+  "name": "Track Name",
+  "artist": {...}
+}
+```
+
+### Error Response
+
+```json
+{
+  "message": "Error description",
+  "errors": {
+    "field": ["Validation error"]
+  }
+}
+```
+
+### Pagination
+
+Paginated endpoints use Laravel's standard pagination:
+
+```json
+{
+  "data": [...],
+  "current_page": 1,
+  "per_page": 15,
+  "total": 150,
+  "last_page": 10,
+  "links": {...}
+}
+```
 
 ---
 
-## Authentication Note
+## Authentication Model
 
-BeatPass uses **cookie-based session authentication**, not Bearer tokens. The OpenAPI explorer's "Set authentication" feature is primarily for documentation purposes.
+BeatPass uses **Laravel Sanctum** for authentication. This is a **stateful SPA session** model with CSRF/XSRF cookies. The API:
 
-To make authenticated requests:
+- Uses session cookies for authentication (not Bearer tokens)
+- Does **not** issue personal access tokens
+- Is only available to the first-party BeatPass web application (no third-party/OAuth)
 
-1. Authenticate via the standard login flow (see [Authentication](/developers/auth))
-2. Include `credentials: 'include'` in fetch requests to send session cookies
+See [Authentication](/developers/auth) for the SPA login flow and CSRF requirements.
+
+---
+
+## Key Endpoint Groups
+
+### Public Endpoints (Optional Auth)
+
+These endpoints work without authentication but return enhanced data when authenticated:
+
+```http
+GET /tracks              # List public tracks
+GET /tracks/{id}         # Track details
+GET /artists             # List artists
+GET /artists/{id}        # Artist profile
+GET /search              # Search content
+GET /genres              # Available genres
+```
+
+### Required Auth Endpoints
+
+These require an authenticated session:
+
+```http
+POST /tracks                           # Upload track
+POST /tracks/{track}/purchase/initiate # Start purchase
+GET  /purchases                        # User's purchases
+GET  /messaging/conversations          # User's messages
+GET  /producer-intelligence/dashboard  # Producer analytics
+POST /beat-requests                    # Create beat request
+```
+
+---
+
+## Rate Limiting
+
+The API uses route-specific throttling. Key limits:
+
+<AccordionGroup>
+  <Accordion title="Producer Intelligence (public)" defaultOpen icon="globe">
+    <Badge color="green" icon="bolt">300 requests/minute</Badge>
+    Public analytics endpoints for unauthenticated users.
+  </Accordion>
+  <Accordion title="Producer Intelligence (authenticated)" icon="user-check">
+    <Badge color="blue" icon="bolt">500 requests/minute</Badge>
+    Enhanced limits for authenticated producer sessions.
+  </Accordion>
+  <Accordion title="Social Analytics" icon="chart-simple">
+    <Badge color="orange" icon="bolt">120 requests/minute</Badge>
+    Social engagement and follower analytics.
+  </Accordion>
+  <Accordion title="Legacy Producer Dashboard" icon="clock-rotate-left">
+    <Badge color="gray" icon="bolt">60 requests/minute</Badge>
+    Legacy endpoints (being phased out).
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Rate Limits Reference" icon="gauge-high" horizontal href="/developers/rate-limits">
+  View complete rate limiting documentation and best practices.
+</Card>
+
+---
+
+## Webhooks
+
+BeatPass receives **inbound webhooks** from Stripe for payment processing. There is no outbound webhook system for external integrations.
+
+See [Webhooks](/developers/webhooks) for Stripe webhook details.
+
+---
+
+## What's Not Covered
+
+This documentation covers **user-facing endpoints only**. The following are intentionally excluded:
+
+<CardGroup cols={3}>
+  <Card title="Admin Operations" icon="shield-halved" color="#ef4444">
+    Requires staff roles and elevated privileges
+  </Card>
+  <Card title="Internal Processing" icon="gears" color="#6b7280">
+    Platform infrastructure and content pipelines
+  </Card>
+  <Card title="Security Systems" icon="lock" color="#8b5cf6">
+    Protected by design for platform integrity
+  </Card>
+</CardGroup>
 
 <Warning>
-  The API does not accept Bearer tokens. All authentication is handled via Sanctum session cookies.
+  Attempting to access undocumented admin or internal endpoints without authorization is a violation of terms of service and may result in account termination.
 </Warning>
 
----
-
-## Quick Examples
-
-### Public Endpoint (No Auth)
-
-```bash
-# Search for tracks (works without authentication)
-curl "https://open.beatpass.ca/api/v1/search?query=lofi&types=track&limit=5" \
-  -H "Accept: application/json"
-```
-
-### Authenticated Endpoint
-
-```javascript
-// JavaScript with session cookies
-const response = await fetch('https://open.beatpass.ca/api/v1/messaging/conversations', {
-  method: 'GET',
-  headers: {
-    'Accept': 'application/json'
-  },
-  credentials: 'include' // Required for session cookies
-});
-```
-
----
-
-## Endpoint Categories
-
-| Category | Description | Auth Required |
-|----------|-------------|---------------|
-| Search | Full-text search | Optional |
-| Tracks | Track CRUD operations | Read: Optional, Write: Required |
-| Artists | Artist profiles and follows | Read: Optional, Write: Required |
-| Albums | Album management | Read: Optional, Write: Required |
-| Playlists | Playlist operations | Mixed |
-| **Insights** | Analytics and insights for content | Required |
-| License Certificates | License generation/verification | Required |
-| Users | User profiles and follows | Mixed |
-| Messaging | Direct messages | Required |
-| Beat Requests | Beat request marketplace | Required |
-
 <Tip>
-  The [Insights API](/developers/api-reference/insights) provides focused, domain-specific analytics endpoints with standardized error handling and export capabilities.
+  Found a security issue? Report it responsibly to [**security@beatpass.ca**](mailto:security@beatpass.ca) — we appreciate responsible disclosure.
 </Tip>
 
 ---
 
-## Related Resources
+## Next Steps
 
 <CardGroup cols={2}>
   <Card title="Authentication" icon="key" href="/developers/auth">
-    Understand session-based authentication.
+    Learn how Sanctum authentication works.
   </Card>
-  <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
-    Error codes and resolutions.
+  <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
+    Complete endpoint reference.
   </Card>
 </CardGroup>
