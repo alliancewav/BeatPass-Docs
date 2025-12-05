@@ -14,9 +14,15 @@ BeatPass uses route-specific rate limiting via Laravel's throttle middleware. Di
 
 ### Producer Intelligence
 
-| Route Group | Limit | Notes |
-|-------------|-------|-------|
-| Public leaderboards, growth rates | 300/min | No auth required |
+<Info>
+  **Updated December 2025:** Rate limits increased for cached endpoints.
+</Info>
+
+| Endpoint | Limit | Notes |
+|----------|-------|-------|
+| `/producer-intelligence/leaderboard` | 600/min | Cached responses (~25ms) |
+| `/producer-intelligence/tracks/growth-batch` | 120/min | Batch endpoint for up to 100 tracks |
+| `/producer-intelligence/track/{id}/growth` | 1200/min | Single track (prefer batch endpoint) |
 | Authenticated dashboard, analytics | 500/min | Requires auth |
 | Social analytics | 120/min | Rate-limited for performance |
 

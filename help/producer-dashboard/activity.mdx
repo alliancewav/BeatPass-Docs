@@ -1,12 +1,12 @@
 ---
-audience: help
+audience: "help"
 title: "Activity Page | Producer Dashboard"
 sidebarTitle: "Activity"
 description: "Track your contribution history, upload activity, and download engagement on the BeatPass Activity page with GitHub-style contribution graphs."
-keywords: ["activity page", "contribution graph", "downloads", "upload history", "engagement tracking"]
-"og:title": "Activity Page - Producer Dashboard | BeatPass"
-"og:description": "Track your contribution history and download engagement."
-"twitter:card": "summary_large_image"
+keywords: ["activity page","contribution graph","downloads","upload history","engagement tracking"]
+og:title: "Activity Page - Producer Dashboard | BeatPass"
+og:description: "Track your contribution history and download engagement."
+twitter:card: "summary_large_image"
 ---
 
 ## Overview
@@ -21,12 +21,12 @@ The Activity page (`/producer-dashboard/activity`) provides a comprehensive view
 
 ## Page Layout
 
-| Section | Purpose |
-|---------|---------|
-| **Page Header** | Artist identity and quick navigation |
-| **Performance Overview** | Key career metrics cards |
-| **Activity Overview** | GitHub-style contribution graph |
-| **Downloads & Engagement** | Download tracking and user activity |
+| Section                    | Purpose                              |
+| -------------------------- | ------------------------------------ |
+| **Page Header**            | Artist identity and quick navigation |
+| **Performance Overview**   | Key career metrics cards             |
+| **Activity Overview**      | GitHub-style contribution graph      |
+| **Downloads & Engagement** | Download tracking and user activity  |
 
 ---
 
@@ -34,13 +34,13 @@ The Activity page (`/producer-dashboard/activity`) provides a comprehensive view
 
 The header displays your artist identity and provides quick navigation.
 
-| Element | Description |
-|---------|-------------|
-| **Artist Avatar** | Your circular profile image |
-| **Producer Activity Badge** | Identifies this as your activity analytics page |
-| **Artist Name** | Your artist/producer name |
-| **Description** | "Track your performance, analyze growth, and monitor your contribution" |
-| **Back Link** | Quick navigation back to your public artist profile |
+| Element                     | Description                                                             |
+| --------------------------- | ----------------------------------------------------------------------- |
+| **Artist Avatar**           | Your circular profile image                                             |
+| **Producer Activity Badge** | Identifies this as your activity analytics page                         |
+| **Artist Name**             | Your artist/producer name                                               |
+| **Description**             | "Track your performance, analyze growth, and monitor your contribution" |
+| **Back Link**               | Quick navigation back to your public artist profile                     |
 
 ---
 
@@ -50,16 +50,17 @@ A card grid displaying your key career metrics at a glance.
 
 ### Metrics Displayed
 
-| Metric | Icon Color | Description | Sub-info |
-|--------|------------|-------------|----------|
-| **Total Tracks** | Blue | Number of tracks in your catalog | New tracks this month |
-| **Total Plays** | Green | Lifetime play count across all tracks | Plays gained this period |
-| **Platform Share** | Purple | Your contribution percentage of total platform engagement | Contribution value in points |
-| **Achievements** | Amber | Total achievements unlocked | Recently earned achievements |
+| Metric             | Icon Color | Description                                               | Sub-info                     |
+| ------------------ | ---------- | --------------------------------------------------------- | ---------------------------- |
+| **Total Tracks**   | Blue       | Number of tracks in your catalog                          | New tracks this month        |
+| **Total Plays**    | Green      | Lifetime play count across all tracks                     | Plays gained this period     |
+| **Platform Share** | Purple     | Your contribution percentage of total platform engagement | Contribution value in points |
+| **Achievements**   | Amber      | Total achievements unlocked                               | Recently earned achievements |
 
 ### Card Layout
 
 Each stat card contains:
+
 - **Color-coded icon** — Visual identifier matching the metric type
 - **Metric label** — What the stat measures (e.g., "Total Tracks")
 - **Large value** — The primary number prominently displayed
@@ -75,34 +76,39 @@ Each stat card contains:
 
 A GitHub-style contribution graph visualizing your upload activity over the past 53 weeks (one year).
 
+<Tip>
+  **Fixed December 2025:** The contribution graph now correctly displays your uploads and X-Ray mode properly shows platform-wide activity for comparison.
+</Tip>
+
 ### Graph Basics
 
-| Feature | Description |
-|---------|-------------|
-| **Layout** | 7 rows (Sunday to Saturday) × 53 columns (weeks) |
-| **Each Square** | Represents one day |
-| **Color Intensity** | Indicates upload count for that day |
+| Feature             | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| **Layout**          | 7 rows (Sunday to Saturday) × 53 columns (weeks) |
+| **Each Square**     | Represents one day                               |
+| **Color Intensity** | Indicates upload count for that day              |
 
 ### Color Scale (Your Uploads)
 
-| Color | Meaning |
-|-------|---------|
-| Empty/transparent | No uploads |
-| Light purple | 1-2 uploads |
-| Medium purple | 3-4 uploads |
-| Dark purple | 5-6 uploads |
-| Bright purple | 7+ uploads |
+| Color             | Meaning     |
+| ----------------- | ----------- |
+| Empty/transparent | No uploads  |
+| Light purple      | 1-2 uploads |
+| Medium purple     | 3-4 uploads |
+| Dark purple       | 5-6 uploads |
+| Bright purple     | 7+ uploads  |
 
 ### X-Ray Mode
 
 Toggle **X-Ray Mode** to compare your activity with platform-wide uploads:
 
-| Color | Meaning |
-|-------|---------|
-| **Purple squares** | Your uploads (takes priority) |
-| **Teal squares** | Platform uploads where you have none |
+| Color              | Meaning                              |
+| ------------------ | ------------------------------------ |
+| **Purple squares** | Your uploads (takes priority)        |
+| **Teal squares**   | Platform uploads where you have none |
 
 This helps identify:
+
 - Days when the platform is most active
 - Opportunities to upload during high-activity periods
 - Your contribution relative to overall platform activity
@@ -114,19 +120,19 @@ Toggle X-Ray on/off using the switch in the header.
 <Tabs>
   <Tab title="Hover">
     Shows a tooltip with:
+
     - Your upload count for that day
     - Platform upload count (in X-Ray mode)
     - Formatted date
   </Tab>
-  
   <Tab title="Click">
     Opens a detail panel showing:
+
     - Number of tracks uploaded that day
     - List of tracks with cover art, name, and artist
     - Links to view each track
     - Time of upload for each track
   </Tab>
-  
   <Tab title="Mobile">
     - The graph is horizontally scrollable
     - A fade effect on the right indicates more content
@@ -137,16 +143,17 @@ Toggle X-Ray on/off using the switch in the header.
 
 ### Legend
 
-| Element | Description |
-|---------|-------------|
-| **Platform pill** | Shows teal sample (X-Ray mode only) |
-| **You pill** | Shows purple sample |
-| **Intensity scale** | Less → More gradient showing color progression |
-| **Info link** | "Learn how we count uploads" opens explanatory modal |
+| Element             | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| **Platform pill**   | Shows teal sample (X-Ray mode only)                  |
+| **You pill**        | Shows purple sample                                  |
+| **Intensity scale** | Less → More gradient showing color progression       |
+| **Info link**       | "Learn how we count uploads" opens explanatory modal |
 
 ### About Upload Tracking Modal
 
 Click "Learn how we count uploads" to view:
+
 - **How Activity is Measured** — Explanation of what counts as activity
 - **X-Ray Mode** — Detailed explanation of platform comparison feature
 - **Why This Matters** — Benefits of tracking consistency
@@ -160,24 +167,26 @@ Track download activity and user engagement with your music.
 ### Header & Stats
 
 **Header displays:**
+
 - Total downloads count (large number)
 - "Track engagement and licensing activity" description
 - Period filter pills (7D, 30D, 90D, All)
 
 **Stats grid (4 cards):**
 
-| Stat | Icon | Color | Description |
-|------|------|-------|-------------|
-| **Downloads** | Download icon | Blue | Total downloads in selected period |
-| **Unique Users** | Users icon | Green | Distinct users who downloaded |
-| **This Week** | Clock icon | Orange | Recent download activity |
-| **Top Track** | Music icon | Primary | Most downloaded track name + count |
+| Stat             | Icon          | Color   | Description                        |
+| ---------------- | ------------- | ------- | ---------------------------------- |
+| **Downloads**    | Download icon | Blue    | Total downloads in selected period |
+| **Unique Users** | Users icon    | Green   | Distinct users who downloaded      |
+| **This Week**    | Clock icon    | Orange  | Recent download activity           |
+| **Top Track**    | Music icon    | Primary | Most downloaded track name + count |
 
 ### Recent Activity List
 
 A scrollable list of individual download events showing:
 
 **For each download:**
+
 - **User avatar** — Circular profile image (click to visit user profile)
 - **User name** — Display name of downloader (links to their profile)
 - **Track info** — Cover art, track name, and artist
@@ -189,18 +198,19 @@ The list shows up to 5 items initially with a **Load More** button if there are 
 
 ### Period Filters
 
-| Filter | Data Shown |
-|--------|------------|
-| **7D** | Last 7 days |
+| Filter  | Data Shown             |
+| ------- | ---------------------- |
+| **7D**  | Last 7 days            |
 | **30D** | Last 30 days (default) |
-| **90D** | Last 90 days |
-| **All** | All-time data |
+| **90D** | Last 90 days           |
+| **All** | All-time data          |
 
 Clicking a filter pill immediately refreshes the data for that period.
 
 ### License Certificates
 
 Click the green badge icon on any download to view the license certificate. This shows:
+
 - License type and terms
 - Track information
 - User who purchased/downloaded
@@ -213,6 +223,7 @@ Click the green badge icon on any download to view the license certificate. This
 ### Empty State
 
 If you have no downloads for the selected period:
+
 - A download icon in a muted circle
 - "No downloads yet" message
 - Explanation that downloads will appear once users start downloading your tracks
@@ -221,15 +232,15 @@ If you have no downloads for the selected period:
 
 ## Data Meanings
 
-| Metric | What It Measures | Why It Matters |
-|--------|------------------|----------------|
-| **Total Tracks** | Tracks you've uploaded | Shows catalog size |
-| **Total Plays** | Cumulative plays across all tracks | Measures overall reach |
-| **Platform Share** | Your % of platform's total engagement | Benchmarks against community |
-| **Achievements** | Gamification milestones unlocked | Tracks producer progression |
-| **Upload Activity** | Daily track upload frequency | Shows contribution consistency |
-| **Downloads** | How often tracks are downloaded | Indicates commercial interest |
-| **Unique Users** | Distinct downloaders | Shows audience breadth |
+| Metric              | What It Measures                      | Why It Matters                 |
+| ------------------- | ------------------------------------- | ------------------------------ |
+| **Total Tracks**    | Tracks you've uploaded                | Shows catalog size             |
+| **Total Plays**     | Cumulative plays across all tracks    | Measures overall reach         |
+| **Platform Share**  | Your % of platform's total engagement | Benchmarks against community   |
+| **Achievements**    | Gamification milestones unlocked      | Tracks producer progression    |
+| **Upload Activity** | Daily track upload frequency          | Shows contribution consistency |
+| **Downloads**       | How often tracks are downloaded       | Indicates commercial interest  |
+| **Unique Users**    | Distinct downloaders                  | Shows audience breadth         |
 
 ---
 
