@@ -52,11 +52,20 @@ When adding an entire album, you can customize your role for each individual tra
 
 Credits appear as beautiful, immersive cards on your profile with:
 
-- **Cover art backgrounds** from Spotify
+- **Full cover art backgrounds** with gradient overlay
 - **Type indicators** — Songs (green) or Albums (purple)
-- **Role badges** showing your contributions
-- **Play buttons** linking directly to Spotify
+- **Popularity indicator** — 3-dot display showing Spotify popularity
+- **Track count** — Shows total tracks for albums
+- **Role badges** — Up to 2 visible with "+N more" for additional roles
 - **Stacked card effect** for albums with multiple tracks
+
+### Mobile-Optimized Design
+
+Cards are responsive and optimized for all devices:
+
+- **Mobile**: Rectangular cards (16:9) in single column layout
+- **Desktop**: Square cards in 2-4 column grid
+- **Performance**: GPU-accelerated rendering, lazy-loaded images
 
 ### Role Filter Pills
 
@@ -79,8 +88,34 @@ Visitors can filter your credits by role type to quickly see all your work in a 
 
 - **PHPStan Level 7 compliance** for all backend credit code
 - **Automatic availability checks** — Credits are verified weekly against Spotify
-- **Mobile-optimized grid layout** — 2 columns on mobile, 4 on desktop
+- **Spotify data sync** — Popularity and track counts fetched from Spotify API
 - **Smart grouping** — Multiple roles on the same song are grouped together
+- **Performance optimizations**:
+  - Memoized React components to prevent unnecessary re-renders
+  - Lazy-loaded images with `loading="lazy"` and `decoding="async"`
+  - GPU-accelerated transforms for smooth scrolling
+  - Simplified backdrop effects on mobile for better performance
+  - `content-visibility: auto` for off-screen rendering optimization
+
+## Database Updates
+
+- Added `popularity` field — Stores Spotify's 0-100 popularity score
+- Added `total_tracks` field — Stores album track count for direct album credits
+
+## Admin Tools
+
+A new artisan command is available for syncing credits with Spotify:
+
+```bash
+# Sync all credits
+php artisan credits:sync-spotify
+
+# Sync specific artist
+php artisan credits:sync-spotify --artist=123
+
+# Preview changes without applying
+php artisan credits:sync-spotify --dry-run
+```
 
 ## What's Next
 
