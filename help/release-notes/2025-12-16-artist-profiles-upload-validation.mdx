@@ -1,124 +1,62 @@
 ---
-title: "December 2025 Artist Profile & Upload Validation Fixes"
-description: "Critical fixes for artist profile status handling, unclaimed badge logic, and improved file upload validation with user-friendly modals"
+title: "Artist Profile & Upload Improvements"
+description: "Fixes for verified badge preservation, unclaimed profile detection, and a new helpful modal for file format requirements"
 date: "2025-12-16"
 image: ""
 ---
 
-This release addresses critical bugs in artist profile management and introduces improved user experience for file upload validation.
+We've fixed several issues affecting artist profiles and improved the experience when uploading tracks.
 
-## Artist Profile Status Fixes
+## Artist Profile Fixes
 
-### Verified Status Preservation
+### Verified Badge Now Stays Put
 
-**Issue:** Artist profiles were incorrectly losing their verified status when updating profile content (such as uploading gallery images).
+**Issue:** Some verified artists were losing their verified checkmark after updating their profile (like adding gallery images).
 
-**Root Cause:** The `CrupdateArtist` service was defaulting the `verified` field to `false` when not explicitly provided in update requests, overwriting the existing status.
+**Now:** Your verified status is preserved no matter what changes you make to your profile. Update your bio, upload gallery images, or edit any other details—your verification stays intact.
 
-**Fix:** The service now preserves existing field values when not explicitly provided:
+### Unclaimed Profile Badge Fixed
 
-```php
-// Before (bug)
-'verified' => $data['verified'] ?? false,
+**Issue:** The "Unclaimed" badge wasn't appearing correctly on some artist profiles, making it confusing to know which profiles could be claimed.
 
-// After (fix)
-'verified' => array_key_exists('verified', $data) ? $data['verified'] : $artist->verified,
-```
+**Now:** The unclaimed badge correctly appears on any artist profile that hasn't been linked to a user account yet. If you see an unclaimed profile that belongs to you, you can claim it to take ownership.
 
-This ensures that partial updates (like gallery uploads) don't accidentally reset the verified status.
+### Profile Ownership Detection
 
-### Unclaimed Badge Logic Correction
+**Issue:** Some artist profiles weren't correctly recognizing their owner, which affected features like the claim banner and profile management.
 
-**Issue:** The "Unclaimed" badge on artist profiles was incorrectly tied to both `owner` AND `verified` status, causing verified artists without owners to not show the unclaimed badge, and vice versa.
+**Now:** Artist ownership is properly detected, so you'll see the right options when viewing your own profile versus someone else's.
 
-**Correct Logic:**
-- **Claimed/Unclaimed** is determined solely by whether an artist has an **owner** (linked user account)
-- **Verified** is an independent status that can apply to both claimed and unclaimed artists
+## Upload Improvements
 
-**Files Updated:**
-- `artist-page-header.tsx` — Unclaimed badge now shows based only on `!artist.owner`
-- `claim-artist-banner.tsx` — Claim banner now shows for any unclaimed artist, regardless of verification status
+### WAV Format Requirement
 
-### Artist Owner Detection Fix
+Track uploads now require WAV format. Here's why this matters:
 
-**Issue:** The `ArtistLoader` was checking `profile.user_id` for ownership, but the actual ownership is tracked in the `user_artist` pivot table via the `users()` relationship.
+- **Best sound quality** — Your beats sound exactly as you intended
+- **Industry standard** — The format professionals use for licensing
+- **No compression artifacts** — What you upload is what listeners hear
 
-**Fix:** Updated `ArtistLoader.php` to use the correct relationship:
+### Helpful Format Modal
 
-```php
-// Before (checking wrong source)
-if ($response['artist']->profile && $response['artist']->profile->user_id) {
-    $owner = User::query()->find($response['artist']->profile->user_id);
-}
+When you try to upload a file in an unsupported format, you'll now see a clear, helpful message instead of a confusing error:
 
-// After (correct source of truth)
-$owner = $response['artist']->users()->first();
-```
+- Shows exactly which file was blocked and why
+- Explains the benefits of WAV format
+- Makes it easy to upload a different file with one click
 
-## Upload Validation Improvements
+This gives you clear guidance instead of leaving you wondering what went wrong.
 
-### WAV-Only Audio Format Enforcement
+## What This Means for You
 
-Track uploads now strictly enforce WAV format for audio files. This ensures:
+- **Verified artists** — Your status is safe when editing your profile
+- **Profile claimers** — Unclaimed profiles are now clearly marked
+- **Uploaders** — Clear guidance when file formats need adjustment
 
-- **Maximum audio quality** — No compression artifacts
-- **Professional standards** — Industry-standard format for licensing
-- **Best listener experience** — Beats sound exactly as intended
+## Timeline
 
-### Blocked Extension Modal
+**December 16, 2025** — All fixes deployed and live
 
-A new user-friendly modal appears when attempting to upload unsupported file formats:
+---
 
-**Features:**
-- Clear explanation of why the file was blocked
-- Shows the file name and detected extension
-- Lists accepted formats (WAV)
-- Explains the quality benefits of WAV format
-- One-click button to upload a different file
-
-This replaces the previous toast notification with a more informative and actionable experience, matching the design pattern used for duplicate detection.
-
-### Blocked Extensions Cleanup
-
-Cleaned up the blocked extensions list in admin settings:
-
-- Removed single-letter extensions (`c`, `h`, `z`) that were incorrectly appearing as separate pills
-- These were valid programming file extensions but not relevant for a music platform
-
-## Technical Details
-
-### Files Modified
-
-**Backend:**
-- `app/Services/Artists/CrupdateArtist.php` — Preserve existing field values on partial updates
-- `app/Services/Artists/ArtistLoader.php` — Use correct ownership relationship
-
-**Frontend:**
-- `resources/client/web-player/artists/artist-page/artist-page-header.tsx` — Fix unclaimed badge logic
-- `resources/client/web-player/artists/artist-page/claim-artist-banner.tsx` — Fix claim banner visibility
-- `resources/client/web-player/backstage/upload-page/blocked-extension-modal.tsx` — New component
-- `resources/client/web-player/backstage/upload-page/tracks-uploader.tsx` — Integrate blocked extension modal
-- `resources/client/web-player/backstage/upload-page/use-track-uploader.ts` — Add extension validation
-
-**Documentation:**
-- `Documentation/help/uploading/upload-page.mdx` — Updated for WAV-only requirement
-
-### Database Changes
-
-Cleaned up `uploads.blocked_extensions` setting to remove invalid single-character entries.
-
-## Summary
-
-| Issue | Status |
-|-------|--------|
-| Artist verified status resetting on gallery upload | ✅ Fixed |
-| Unclaimed badge incorrectly tied to verification | ✅ Fixed |
-| Artist owner not detected from user_artist pivot | ✅ Fixed |
-| No modal for blocked file extensions | ✅ Added |
-| Single-letter extensions in blocked list | ✅ Cleaned |
-
-## Related Documentation
-
-- [Upload Page Guide](/help/uploading/upload-page) — Updated with WAV format requirements
-- [Verified Badge](/help/profiles/artist-profiles/verified-badge) — Verification vs. claimed status
-- [Audio Fingerprinting](/help/uploading/audio-fingerprinting) — Duplicate detection process
+Questions about profile verification or uploading? Check out our [Upload Guide](/help/uploading/upload-page) or [contact support](/contact).

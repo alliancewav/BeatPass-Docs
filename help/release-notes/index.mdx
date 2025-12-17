@@ -19,9 +19,9 @@ Stay up to date with the latest platform changes. We ship updates regularly to i
     December 2025 Production Release
   </Card>
   <Card title="Latest Update" icon="calendar" color="#3b82f6">
-    <Badge color="blue" size="lg">Dec 16, 2025</Badge>
+    <Badge color="blue" size="lg">Dec 17, 2025</Badge>
     
-    Artist Profile & Upload Validation Fixes
+    Track Upload & Instant Publishing Fixes
   </Card>
   <Card title="Total Releases" icon="layer-group" color="#8b5cf6">
     <Badge color="purple" size="lg">25+</Badge>
@@ -53,14 +53,24 @@ Stay up to date with the latest platform changes. We ship updates regularly to i
 Browse all platform updates from newest to oldest. Click any update to read the full details.
 
 <Update
+  label="December 17, 2025"
+  description="Track Upload & Instant Publishing Fixes"
+  tags={["bugfix", "upload", "cache", "ux"]}
+>
+- Fixed errors preventing some track uploads from completing successfully.
+- New tracks now appear on the discover page immediately after publishing.
+- Follower notifications work correctly when you upload new beats.
+- [Read full update →](/help/release-notes/2025-12-17-track-upload-cache-fixes)
+</Update>
+
+<Update
   label="December 16, 2025"
-  description="Artist Profile & Upload Validation Fixes"
+  description="Artist Profile & Upload Improvements"
   tags={["bugfix", "artist-profiles", "upload", "ux"]}
 >
-- Fixed artist verified status being reset when updating profile content like gallery images.
-- Corrected unclaimed badge logic to be independent of verification status.
-- New user-friendly modal for blocked file extensions during track upload.
-- WAV-only audio format enforcement with clear explanation of quality benefits.
+- Verified badge now stays intact when updating your profile.
+- Unclaimed profile badges appear correctly on all unclaimed artists.
+- New helpful modal explains WAV format requirements clearly.
 - [Read full update →](/help/release-notes/2025-12-16-artist-profiles-upload-validation)
 </Update>
 
