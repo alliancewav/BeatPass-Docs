@@ -1,0 +1,208 @@
+---
+title: "Email & Notification Improvements, Payment Recovery, and Social Engagement"
+description: "Better emails with working unsubscribe links, encouraging performance reports, improved promotional notifications with countdown timers, payment recovery flow for overdue subscriptions, and automatic artist following on track downloads"
+date: "2026-02-02"
+---
+
+A comprehensive update improving email reliability, notification experience, payment recovery workflows, and social engagement across the platform.
+
+---
+
+## Email Improvements
+
+### Fixed Unsubscribe Links
+
+All notification emails now have proper unsubscribe options:
+
+- **New User Registered** emails — Added unsubscribe support so recipients can opt out
+- **Backstage Request Handled** emails — Added unsubscribe support
+- **Weekly/Monthly Performance Reports** — Unsubscribe options now fully functional
+
+### More Encouraging Performance Reports
+
+Producers receiving weekly or monthly performance reports will now see friendlier messaging, especially when starting out:
+
+- **Personalized greeting** — Reports now address you by name ("Hey [Your Name],")
+- **Encouraging tone for low activity** — Instead of showing "0 downloads, \$0 earned" with negative growth percentages, reports now display em dashes (—) for zero stats and include encouraging messages like "Your journey is just beginning!"
+- **Growth tips section** — When engagement is low, reports include actionable tips to help grow your audience
+- **Fixed growth calculations** — No more confusing negative percentages like "-83.3%" — growth comparisons are now accurate and only shown when meaningful
+
+### Fixed Duplicate Site Names
+
+Resolved an issue where email footers showed duplicate text like "BeatPass™ | The producer hub.™ | The producer hub." — emails now display the site name cleanly without repetition.
+
+---
+
+## Promotional Notifications Overhaul
+
+### Seasonal Themes Now Match Emails
+
+Promotional in-app notifications now match the themed colors of promotional emails:
+
+| Season       | Color     |
+| ------------ | --------- |
+| Valentine    | Pink      |
+| Halloween    | Orange    |
+| Christmas    | Red/Green |
+| Summer       | Yellow    |
+| Winter       | Blue      |
+| Spring       | Green     |
+| Black Friday | Gold      |
+| New Year     | Purple    |
+| Cyber Monday | Cyan      |
+| Easter       | Lavender  |
+
+Plus 10+ additional seasonal themes — all 20+ themes from email templates are now supported in-app.
+
+### Cleaner Notification Design
+
+Promotional notifications have been redesigned with a simpler, cleaner look:
+
+- **Removed** — Heavy gradients, pulsing animations, and scale transforms that clashed with the notification panel
+- **Added** — Subtle background tint with a colored left border matching the seasonal theme
+- **Result** — Notifications now integrate smoothly with the rest of your notification feed
+
+### Countdown Timers for Coupon Offers
+
+Time-limited coupon offers now display dynamic countdown timers:
+
+- **Automatic countdown** — Shows time remaining until coupon expires
+- **Smart formatting** — Displays "3 days, 4 hours" or "2 hours, 15 minutes" depending on urgency
+- **Color-coded urgency** — Changes from muted → amber → red → bright red as expiration approaches
+- **Expires in 7 days** — Countdown appears when coupon is about to expire
+
+### Auto-Destruct for Expired Offers
+
+Promotional notifications now disappear automatically when the associated coupon expires — no manual cleanup needed. The notification system filters out expired offers from:
+
+- Your notification list
+- Unread notification badge count
+
+---
+
+## Payment Recovery & Overdue Subscriptions
+
+### New Payment Recovery Flow
+
+If your subscription payment fails, you'll now see a helpful recovery popup instead of losing access without explanation:
+
+- **Automatic detection** — The platform checks your subscription status in real-time
+- **Blocking popup** — Appears when payment is overdue to prompt immediate action
+- **Two clear options**:
+  1. **Retry Payment** — Instantly retry the failed charge with your existing card
+  2. **Switch to Free** — Cancel the subscription and downgrade to the free plan
+
+### Payment Retry Features
+
+- **Idempotent retries** — Clicking "Retry" multiple times won't create duplicate charges
+- **Clear error messages** — If the card is declined, you'll see exactly why (expired card, insufficient funds, etc.)
+- **Success confirmation** — See the amount paid and confirmation that your subscription is reactivated
+- **Rate limiting protection** — Prevents accidental spam-clicking
+
+### Download Blocking for Overdue Accounts
+
+To protect producer revenue, users with overdue subscriptions cannot download tracks until payment is resolved:
+
+- **Download button** — Clicking download triggers the payment recovery popup
+- **Context menus** — Download options in track menus also trigger recovery flow
+- **Pre-download check** — The modal checks subscription status before starting downloads
+- **Graceful handling** — Users can browse and stream music; only downloads are blocked
+
+### Invoice Page Fixes
+
+- Fixed 500 error when viewing invoice details
+- Currency symbols now display correctly on all invoices
+
+---
+
+## Social Engagement: Auto-Follow on Download
+
+### Automatic Artist Following
+
+When you download a track, you now automatically follow all artists associated with that track:
+
+- **Instant follow** — Happens automatically with every download
+- **Collaborative tracks** — If a track has multiple artists (collaborations), you follow all of them
+- **Smart exclusions** — You won't follow artists you already follow, or your own artist profiles
+- **Notifications** — Artists receive follow notifications when someone downloads their track (except during the backfill process)
+
+### Backfilled Historical Downloads
+
+Existing downloads have been processed to create artist follows:
+
+- **52 download pairs processed**
+- **16 new artist follows created**
+- **33 already following (skipped)**
+- **7 self-owned artists (skipped)**
+
+This helps connect users with artists they've already shown interest in by downloading their beats.
+
+### Backfill Command
+
+Admins can run the backfill command to process specific users or all historical downloads:
+
+```bash
+# Preview what would happen (no changes)
+php artisan follows:backfill-downloads --dry-run
+
+# Process all historical downloads
+php artisan follows:backfill-downloads
+
+# Process specific user only
+php artisan follows:backfill-downloads --user=123
+```
+
+---
+
+## Technical Details
+
+<Accordion title="For Developers & Technical Users" icon="code">
+  ### Email Notification Updates
+
+  | Notification                  | Change                                                             |                                 |
+  | ----------------------------- | ------------------------------------------------------------------ | ------------------------------- |
+  | `NewUserRegistered`           | Added `GetsUserPreferredChannels` and `HasEmailUnsubscribe` traits |                                 |
+  | `BackstageRequestWasHandled`  | Added unsubscribe support                                          |                                 |
+  | `AnalyticsReportNotification` | Added encouraging messaging logic, fixed growth calculation        |                                 |
+  | Email templates               | Removed hardcoded "                                                | The producer hub." duplications |
+
+  ### Promotional Notification System
+
+  - **20+ seasonal themes** added to `promotional-notification-item.tsx`
+  - **Countdown component** uses `coupon_starts_at` and `coupon_expires_at` from notification data
+  - **Auto-destruct** filters expired promotional notifications from API responses and unread counts
+  - **Color coding**: muted → amber-500 → red-500 → red-600 (bold) based on urgency
+
+  ### Payment Recovery Implementation
+
+  - **Real-time Stripe checks** via `/api/billing/subscription-status` endpoint
+  - **Polling strategy**: 60 seconds normal, 10 seconds when overdue
+  - **Three new API endpoints**:
+    - `GET /api/billing/subscription-status` — Real-time Stripe status
+    - `POST /api/billing/retry-payment` — Idempotent payment retry
+    - `POST /api/billing/switch-to-free` — Cancel and downgrade
+  - **Error handling**: Specific handling for 401 (session expired), 402 (payment declined), 429 (rate limited)
+
+  ### Auto-Follow Service
+
+  - **`AutoFollowService`** handles following logic with transactional safety
+  - **`DownloadLocalTrackController`** calls `autoFollowArtistsOnDownload()` after successful download
+  - **`BackfillDownloadFollows`** command processes historical analytics events
+  - **Non-blocking** — Follow failures are logged but don't prevent downloads
+
+  ### Admin Impersonation Fix
+
+  - **`ActiveSession model`** now has `impersonator_id` column
+  - **`LogActiveSessionJob`** tracks impersonator from session data
+  - **`UserSessionsController`** filters out sessions where `impersonator_id IS NOT NULL`
+</Accordion>
+
+---
+
+## What's Next
+
+These updates improve the overall user experience across email communications, notifications, billing recovery, and social features. Upcoming improvements include:
+
+- Enhanced notification preferences
+- More analytics insights for producers
+- Additional mobile UX refinements

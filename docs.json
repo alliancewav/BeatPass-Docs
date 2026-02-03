@@ -792,5 +792,13 @@
         ]
       }
     ]
+  },
+  "integrations": {
+    "telemetry": {
+      "enabled": true
+    }
+  },
+  "interaction": {
+    "drilldown": true
   }
 }
