@@ -23,11 +23,11 @@
   },
   "fonts": {
     "heading": {
-      "family": "Inter",
+      "family": "Roboto",
       "weight": 600
     },
     "body": {
-      "family": "Inter",
+      "family": "Roboto",
       "weight": 400
     }
   },
