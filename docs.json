@@ -19,7 +19,8 @@
         "light": "github-light",
         "dark": "one-dark-pro"
       }
-    }
+    },
+    "latex": true
   },
   "fonts": {
     "heading": {
@@ -32,7 +33,7 @@
     }
   },
   "background": {
-    "decoration": "gradient",
+    "decoration": "windows",
     "color": {
       "light": "#FCFEFF",
       "dark": "#050505"
@@ -42,8 +43,7 @@
     "appearance": "dark",
     "fonts": {
       "family": "Inter"
-    },
-    "background": "/assets/images/hero-banner.jpg"
+    }
   },
   "search": {
     "prompt": "Search guides, API docs, or ask a question..."
@@ -70,7 +70,7 @@
         },
         {
           "anchor": "Community",
-          "icon": "message-circle",
+          "icon": "message-square",
           "href": "https://discord.com/invite/N257QBkSeg"
         }
       ]
@@ -255,7 +255,7 @@
           },
           {
             "group": "Producer Program",
-            "icon": "mic",
+            "icon": "mic-2",
             "pages": [
               "help/producer-program/index",
               "help/producer-program/benefits",
@@ -498,7 +498,7 @@
           },
           {
             "group": "Legal",
-            "icon": "balance",
+            "icon": "scale",
             "pages": [
               "help/legal/index",
               "help/legal/terms-of-service",
