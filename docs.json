@@ -19,7 +19,8 @@
         "light": "github-light",
         "dark": "one-dark-pro"
       }
-    }
+    },
+    "latex": true
   },
   "fonts": {
     "heading": {
@@ -838,5 +839,8 @@
   },
   "interaction": {
     "drilldown": true
+  },
+  "icons": {
+    "library": "lucide"
   }
 }
