@@ -19,8 +19,7 @@
         "light": "github-light",
         "dark": "one-dark-pro"
       }
-    },
-    "latex": true
+    }
   },
   "fonts": {
     "heading": {
@@ -33,7 +32,7 @@
     }
   },
   "background": {
-    "decoration": "grid",
+    "decoration": "windows",
     "color": {
       "light": "#FCFEFF",
       "dark": "#050505"
@@ -70,7 +69,7 @@
         },
         {
           "anchor": "Community",
-          "icon": "comments",
+          "icon": "message-circle",
           "href": "https://discord.com/invite/N257QBkSeg"
         }
       ]
@@ -137,7 +136,7 @@
           },
           {
             "group": "Library & Playlists",
-            "icon": "folder-music",
+            "icon": "music",
             "pages": [
               "help/library/index",
               "help/library/liked-tracks",
@@ -255,7 +254,7 @@
           },
           {
             "group": "Producer Program",
-            "icon": "microphone-stand",
+            "icon": "mic",
             "pages": [
               "help/producer-program/index",
               "help/producer-program/benefits",
@@ -275,7 +274,7 @@
           },
           {
             "group": "Uploading Content",
-            "icon": "cloud-arrow-up",
+            "icon": "cloud-upload",
             "pages": [
               "help/uploading/index",
               "help/uploading/upload-page",
@@ -322,7 +321,7 @@
           },
           {
             "group": "Earnings & Payouts",
-            "icon": "money-bill-wave",
+            "icon": "dollar-sign",
             "pages": [
               "help/earnings/index",
               "help/earnings/payout-schedule",
@@ -348,7 +347,7 @@
           },
           {
             "group": "Producer Dashboard",
-            "icon": "chart-mixed",
+            "icon": "bar-chart",
             "pages": [
               "help/producer-dashboard/index",
               "help/producer-dashboard/home",
@@ -498,7 +497,7 @@
           },
           {
             "group": "Legal",
-            "icon": "scale-balanced",
+            "icon": "balance",
             "pages": [
               "help/legal/index",
               "help/legal/terms-of-service",
@@ -517,7 +516,7 @@
           },
           {
             "group": "Support",
-            "icon": "headset",
+            "icon": "headphones",
             "pages": [
               "help/contact-support/index",
               "help/contact-support/getting-help",
@@ -667,7 +666,7 @@
           },
           {
             "group": "API Reference",
-            "icon": "square-terminal",
+            "icon": "terminal",
             "pages": [
               "developers/api-reference/overview",
               "developers/api-reference/dashboard",
@@ -839,8 +838,5 @@
   },
   "interaction": {
     "drilldown": true
-  },
-  "icons": {
-    "library": "lucide"
   }
 }
