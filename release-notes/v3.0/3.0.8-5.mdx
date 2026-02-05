@@ -1,0 +1,32 @@
+---
+title: "Engagement Analytics & Partial Listen Tracking"
+date: "2025-11-20"
+audience: "Developers"
+tags: ["analytics", "fix", "data-integrity"]
+---
+## Summary
+
+A critical fix for engagement metrics ensuring that partial listens, skips, and background plays are accurately recorded. This update increases data capture from ~10% to over 90% of all playback activity.
+
+## What's New
+
+- **Partial Listen Tracking**: The system now captures duration data for all listens over 10 seconds, even if the track isn't finished.
+- **Reliable Data Delivery**: Implemented `navigator.sendBeacon` to guarantee data is sent even when a user closes the tab or navigates away.
+- **Guest Tracking**: Anonymous plays are now properly recorded and visible in "Top Listeners" as aggregated guest traffic.
+- **Entity Scoping**: Fixed a bug where track and album analytics were showing global artist data. Now, insights are strictly scoped to the specific entity.
+
+## Why It Matters
+
+- **Accurate Reporting**: Producers now see the true engagement on their tracks, not just full completions.
+- **Better Insights**: Understanding drop-off points (via completion rate) helps artists improve their content.
+- **Data Integrity**: Eliminates the "Not Available" state for engagement metrics on most tracks.
+
+## Technical Details
+
+- **Event Triggers**: Duration is now sent on `pause`, `seek`, `track_change`, and `page_unload`.
+- **Threshold**: A 10-second minimum threshold filters out accidental clicks.
+- **Backend**: `TrackPlaysController` now accepts and aggregates partial duration updates.
+
+## Related
+
+- [Analytics Overview](/help/analytics/dashboards)

@@ -1,0 +1,130 @@
+---
+title: "December 2025 UX Enhancements"
+description: "Track upload form redesign, messaging improvements, and push notification support"
+date: "2025-12-10"
+severity: "patch"
+image: ""
+tags: ["improvement", "ui", "upload", "messaging"]
+components: ["track-upload", "messaging", "notifications"]
+---
+
+This release brings significant user experience improvements across the platform, including a redesigned track upload form, enhanced messaging system, and support for web push notifications.
+
+## Track Upload Form Redesign
+
+The track upload experience has been completely redesigned for clarity and efficiency:
+
+### Visual Hierarchy
+- **New section-based layout** with Cover Art & Style, Track Details, Credits, and Licensing sections
+- **FormSectionWrapper** component provides consistent styling across all form sections
+- **Compact, mobile-responsive design** that adapts to all screen sizes
+
+### Cover Art & AI Presets
+- **Large CD-style cover art preview** with spinning animation during playback
+- **AI Cover Art presets** that match selected genres
+- **Horizontal scrollable carousel** with smooth fade effects on edges
+- **One-click preset application** for quick cover art selection
+
+### Improved Validation
+- **Real-time field validation** with instant feedback
+- **Dynamic missing fields display** showing exactly what's needed before saving
+- **Visual status indicators** (warning for incomplete, success for ready-to-save)
+- **Required fields:** Genres, Cover Art, Key, Scale, BPM, Sample-Safe warranty
+
+### Sample-Safe & Fingerprinting
+- **Compact Sample-Safe™ section** with editable badge
+- **Fingerprinting status display** with real-time duplicate checking progress
+- **Clearer status messaging** for verified unique tracks
+
+## Messaging System Improvements
+
+The direct messaging experience has been enhanced with better error handling and accessibility:
+
+### Reliability
+- **Retry mechanism** for failed messages with one-click retry button
+- **Message status tracking** (sending, sent, delivered, read, failed)
+- **Failed message indicators** with visual ring and shake animation
+
+### Empty States
+- **Illustrated empty states** for new conversations and empty inbox
+- **Helpful prompts** with keyboard shortcuts (Cmd/Ctrl+N for new message)
+
+### Accessibility (A11y)
+- **ARIA live regions** for real-time message updates
+- **Screen reader support** for typing indicators
+- **Proper labels** on all interactive elements
+- **Accessible confirmation dialogs** replacing browser alerts
+
+### Visual Polish
+- **Message slide-in animations** for new messages
+- **Scroll-to-bottom button** with bounce hint animation
+- **Conversation hover effects** for better interaction feedback
+- **Mobile-optimized touch interactions**
+
+## Web Push Notifications
+
+Full support for browser push notifications has been implemented:
+
+### Backend Infrastructure
+- **WebPushService** for sending push notifications via VAPID protocol
+- **PushSubscriptionController** for managing user subscriptions
+- **Database migration** for storing push subscription endpoints
+
+### Frontend Integration
+- **Service worker** (`sw.js`) for receiving push notifications
+- **Push subscription management** in notification settings
+- **Automatic permission prompts** when enabling push notifications
+
+### Notification Types Supported
+- New direct messages
+- Beat request updates
+- License purchases
+- Achievement unlocks
+- Custom promotional notifications
+
+## Technical Improvements
+
+### TypeScript Fixes
+- Fixed `exclusive_license_config` type compatibility with react-hook-form
+- Improved type safety across track upload components
+
+### CSS Animations
+- New messaging animations (`messageSlideIn`, `messageSend`, `messageShake`)
+- Empty state fade-in animation
+- Copy success checkmark animation
+- Scroll button bounce hint
+
+### Performance
+- Batch track growth rate fetching to avoid N+1 API calls
+- Optimized message polling intervals
+- Service worker caching for push notification assets
+
+## For Developers
+
+### New Files
+- `resources/client/common/notifications/push/web-push-service.ts` - Push notification client
+- `app/Services/WebPushService.php` - Push notification backend service
+- `app/Http/Controllers/PushSubscriptionController.php` - Subscription management
+- `public/sw.js` - Service worker for push notifications
+
+### New API Endpoints
+- `GET /api/push/public-key` - Get VAPID public key
+- `POST /api/push/subscribe` - Subscribe to push notifications
+- `POST /api/push/unsubscribe` - Unsubscribe from push notifications
+- `POST /api/push/test` - Send test notification
+
+### Environment Variables
+- `VAPID_PUBLIC_KEY` - VAPID public key for web push
+- `VAPID_PRIVATE_KEY` - VAPID private key for web push
+- `VAPID_SUBJECT` - VAPID subject (usually mailto: URL)
+
+### Database Migration
+```bash
+php artisan migrate --path=database/migrations/2024_12_10_170000_create_push_subscriptions_table.php
+```
+
+## Bug Fixes
+- Fixed TypeScript error in track upload form related to `exclusive_license_config` type
+- Fixed carousel fade effects not appearing when content doesn't overflow
+- Fixed message retry button not appearing for failed messages
+- Fixed typing indicator missing screen reader announcements

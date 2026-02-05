@@ -1,0 +1,326 @@
+---
+title: "Major Performance & Code Quality Update"
+description: "Comprehensive platform improvements: 95% faster leaderboards, optimized dashboards, TypeScript migration, and architecture refactoring"
+date: "2025-12-05"
+severity: "patch"
+type: "improvement"
+audience: "All"
+tags: ["performance", "reliability", "optimization"]
+components: ["producer-dashboard", "analytics-backend", "api"]
+---
+
+# Major Performance & Code Quality Update
+
+<Info>
+  **December 5-8, 2025** — This release delivers comprehensive improvements to platform performance and code quality, resulting in dramatically faster page loads, improved reliability, and smoother interactions across all features.
+</Info>
+
+---
+
+## Highlights
+
+This update focuses on backend performance, code quality, and developer experience:
+
+- **95% faster leaderboards** — Response time reduced from 800ms to 50ms
+- **93% faster dashboards** — Sales and admin panels load significantly quicker
+- **100+ query reduction** — Genre pages now use single optimized queries
+- **100% type coverage** — All 455 PHP files now have strict type declarations
+- **2,884 errors fixed** — PHPStan Level 7 static analysis upgrade
+- **13,700+ lines cleaned** — Dead code removed, services refactored
+
+---
+
+## Performance Improvements
+
+### Leaderboard Caching System
+
+<Tip>
+  Response time reduced from **800-1200ms** to **10-50ms** — a 95%+ improvement.
+</Tip>
+
+The leaderboard system has been completely rebuilt with intelligent caching:
+
+- **Pre-calculated rankings** — Leaderboards refresh automatically every 5 minutes
+- **Stale-while-revalidate** — Instant responses even during cache refresh
+- **Higher rate limits** — 600 requests/minute for cached endpoints
+
+### Dashboard Performance
+
+<AccordionGroup>
+  <Accordion title="Sales Dashboard" icon="chart-line">
+    Up to **93% faster** data loading with optimized queries and smarter caching.
+  </Accordion>
+  
+  <Accordion title="Admin Statistics" icon="gauge-high">
+    **~85% faster** response times through query consolidation and index optimization.
+  </Accordion>
+  
+  <Accordion title="Artist Dashboard" icon="music">
+    **50% fewer queries** by eliminating N+1 patterns and batching related data.
+  </Accordion>
+</AccordionGroup>
+
+### Database Optimizations
+
+Key database improvements for faster queries:
+
+- **New indexes** — Analytics queries for tracks, albums, and users
+- **N+1 elimination** — Contribution calculations now use batch loading
+- **Cached schema checks** — User search avoids redundant database calls
+- **Query consolidation** — Genre leaderboard reduced from 100+ queries to 1
+
+### Smarter Caching Strategy
+
+| Data Type | Cache Duration | Use Case |
+|-----------|----------------|----------|
+| Real-time data | 1 minute | Live play counts, active users |
+| Leaderboards | 5 minutes | Rankings, top producers |
+| Analytics dashboards | 15 minutes | Charts, statistics |
+| Profile data | Up to 1 hour | User profiles, artist pages |
+
+### API Call Optimization
+
+<Card title="N+1 API Fixes" icon="bolt">
+  Fixed critical performance issues on `/genres`, `/beatpacks`, and channel pages by batching API calls.
+</Card>
+
+- **Batch Track Growth** — Single API call for all visible tracks instead of one per track
+- **Batch License Status** — New context provider batches license checks
+- **Result** — Reduced from N+1 calls to just 2 batch requests per page load
+
+### Real-Time Notifications
+
+- **~90% reduction** in server load for live notifications
+- **Adaptive polling** — Frequency adjusts based on your activity level
+- **Faster delivery** — Messages arrive quicker when actively using the platform
+
+---
+
+## Bug Fixes
+
+### Critical Fixes
+
+<AccordionGroup>
+  <Accordion title="Track ID Bug in Genre Sliders" icon="bug">
+    Fixed incorrect track IDs showing pivot table IDs instead of actual track IDs, which caused broken waveforms and incorrect URLs on genre pages like `/channel/genre/hip-hop-rap`.
+  </Accordion>
+  
+  <Accordion title="Analytics Controller Errors" icon="bug">
+    Removed references to undefined properties that were causing 500 errors in admin analytics.
+  </Accordion>
+  
+  <Accordion title="SQL Injection Vulnerability" icon="shield">
+    Fixed potential SQL injection in LeaderboardService with proper parameter binding.
+  </Accordion>
+  
+  <Accordion title="Spotify Authentication" icon="spotify">
+    Fixed authentication failures in cached environments by moving credentials to config.
+  </Accordion>
+  
+  <Accordion title="Playlist Deletion 404" icon="list">
+    Fixed stale cache causing 404 errors after playlist deletion.
+  </Accordion>
+  
+  <Accordion title="Social Login Console Errors" icon="user">
+    Fixed Cross-Origin-Opener-Policy blocking that caused console errors.
+  </Accordion>
+</AccordionGroup>
+
+### General Fixes
+
+- Activity Overview graph empty data and X-Ray mode
+- Recent sales history performance issues
+- Caching inconsistencies in analytics displays
+- Edge cases in statistics queries
+- Division by zero in level progress calculation
+- Type errors on artist profile updates
+
+---
+
+## Architecture Improvements
+
+### Controller Refactoring
+
+<Tip>
+  Large controllers have been split into focused, single-responsibility modules following SOLID principles.
+</Tip>
+
+| Improvement Area | User Benefit | Lines Reduced |
+|---------------------|---------------|---------------|
+| Analytics & Growth Tracking | Improved track growth analysis and support tools | 1,484 lines |
+| Payment Reporting | Streamlined financial reporting and Stripe integration | 417 lines |
+| Achievement System | More efficient achievement evaluation and tracking | 857 lines |
+
+### New Service Layer
+
+<CardGroup cols={2}>
+  <Card title="TrackContributionService" icon="calculator">
+    Handles contribution calculations and batch processing for accurate revenue distribution.
+  </Card>
+  
+  <Card title="TrackLicensingService" icon="certificate">
+    Manages purchase validation, license generation, and rights verification.
+  </Card>
+  
+  <Card title="StripeFinancesService" icon="stripe">
+    Encapsulates Stripe financial operations, payouts, and transaction management.
+  </Card>
+  
+  <Card title="LeaderboardCacheService" icon="ranking-star">
+    Provides cached leaderboard data with automatic background refresh.
+  </Card>
+</CardGroup>
+
+### New Data Transfer Objects (DTOs)
+
+Type-safe structures added for API responses:
+
+- **Analytics DTOs** — Chart data, geographic breakdown, device statistics
+- **Contribution DTOs** — Calculation results, factors, batch processing
+- **Timeframe DTOs** — Request parameter validation and normalization
+
+---
+
+## Code Quality
+
+### Type Safety Improvements
+
+<Info>
+  All **455 PHP files** (100%) now use `declare(strict_types=1)` for improved type safety and IDE support.
+</Info>
+
+<AccordionGroup>
+  <Accordion title="PHP Strict Types Coverage" icon="php">
+    | Category | Files |
+    |----------|-------|
+    | Controllers | 92 |
+    | Services | 45+ |
+    | Console Commands | 28 |
+    | Queue Jobs | 11 |
+    | Models, Observers, Providers | Full coverage |
+  </Accordion>
+  
+  <Accordion title="TypeScript Improvements" icon="js">
+    - **194+ `any` types replaced** with proper interfaces
+    - **50+ files updated** across admin, producer dashboard, and web player
+    - **Zero runtime changes** — All fixes are compile-time only
+    - **Build validation** — `npm run build` passes with zero TypeScript errors
+  </Accordion>
+  
+  <Accordion title="PHPStan Level 7" icon="magnifying-glass">
+    Upgraded static analysis from Level 6 to Level 7:
+    
+    - Stricter parameter and return type checking
+    - **2,884 errors fixed** (from 3,538 to 654)
+    - 200+ methods with full type annotations
+    - All new code must pass Level 7 analysis
+  </Accordion>
+</AccordionGroup>
+
+### Code Cleanup
+
+| Category | Lines Removed |
+|----------|---------------|
+| Unused code | ~8,400 lines |
+| Legacy components | ~2,500 lines |
+| Debug logging | 99% reduction |
+| Deprecated backups | ~2,200 lines |
+
+Specific removals include:
+- Legacy carousel components and unused styling
+- Old messaging dropdown backup files
+- Broken analytics stubs and placeholder components
+- Deprecated analytics controller backups
+
+---
+
+## Revenue & Analytics
+
+<Card title="Producer Revenue Tracking" icon="dollar-sign">
+  The Producer Dashboard now displays real revenue data from track purchases.
+</Card>
+
+- **Total Revenue** — Aggregated from track purchases across all your artist profiles
+- **Per-Track Revenue** — Individual track revenue visible in top tracks list
+- **Collaboration Achievements** — Team Player achievement now properly tracks collaborative tracks
+
+---
+
+## For Developers
+
+### New Commands
+
+```bash
+# Check leaderboard cache health
+php artisan leaderboard:precalculate --check
+
+# Force recalculate all periods
+php artisan leaderboard:precalculate --period=all
+```
+
+### Scheduler Addition
+
+The leaderboard precalculation runs automatically:
+
+```php
+$schedule->command('leaderboard:precalculate --period=all')
+         ->everyFiveMinutes()
+         ->withoutOverlapping(3);
+```
+
+### Deployment
+
+<Warning>
+  Run these commands after pulling this release to ensure proper cache invalidation.
+</Warning>
+
+```bash
+php artisan optimize:clear
+php artisan config:cache
+php artisan route:cache
+php artisan leaderboard:precalculate --period=all
+npm run build
+php artisan horizon:terminate
+```
+
+### Environment Variables
+
+```bash
+# Optional: Customize admin users excluded from XP (default: 1,76)
+BEATPASS_EXCLUDED_XP_USERS=1,76
+```
+
+### Deprecated Commands
+
+| Deprecated | Use Instead | Notes |
+|------------|-------------|-------|
+| `contribution:update` | `contribution:update-optimized` | Manual debugging only |
+| `maintenance:unified` | `maintenance:unified-optimized` | Manual debugging only |
+
+The optimized versions are automatically used by the scheduler.
+
+### PHPStan Baseline
+
+<Accordion title="Remaining Baselined Errors (654)" icon="circle-info">
+  The remaining errors are PHPStan/Laravel limitations that cannot be fixed without framework changes:
+  
+  | Error Type | Count | Reason |
+  |------------|-------|--------|
+  | `collect()` template types | 45 | PHPStan can't resolve Laravel collection templates |
+  | Faker Generator | 26 | Test factories only, Faker class not typed |
+  | Eloquent magic methods | 16+ | Laravel magic (`permissions()`, `search()`) |
+  | Always-true conditions | 15 | PHPStan false positives |
+  | Other edge cases | ~20 | S3 drivers, Authenticatable types |
+  
+  All actionable errors have been fixed.
+</Accordion>
+
+---
+
+## Feedback
+
+<Card title="Contact Support" icon="envelope" href="/help/contact-support">
+  Share feedback on this release or report issues.
+</Card>
+
+Email us at **contact@beatpass.ca** with questions, suggestions, or bug reports.

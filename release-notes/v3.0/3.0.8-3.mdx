@@ -1,0 +1,33 @@
+---
+title: "SEO Modernization & Schema Upgrades"
+date: "2025-11-14"
+severity: "patch"
+audience: "Developers"
+tags: ["seo", "schema", "optimization"]
+components: ["admin", "analytics-backend"]
+---
+## Summary
+
+A comprehensive modernization of the platform's SEO strategy, implementing rich schemas, voice search optimization, and authentic metadata to improve search visibility and click-through rates.
+
+## What's New
+
+- **Rich Schemas**: Added `FAQ`, `MusicGroup`, `MusicAlbum`, and `InteractionCounter` schemas to eligible pages.
+- **Voice Search**: Implemented `speakable` schema to optimize content for voice assistants like Google Assistant and Siri.
+- **Authentic Ratings**: Removed all fake `aggregateRating` schemas to comply with Google's strict authenticity guidelines.
+- **Knowledge Graph**: Enhanced organization metadata with `knowsAbout`, `slogan`, and social profiles to trigger Knowledge Panels.
+
+## Why It Matters
+
+- **Visibility**: Rich snippets (FAQs, events) take up more screen real estate in search results.
+- **Compliance**: Adhering to Google's guidelines prevents manual penalties and ensures long-term ranking stability.
+- **Future-Proofing**: Voice search optimization prepares the platform for the growing number of voice queries.
+
+## Technical Details
+
+- **New Views**: Created `resources/views/seo/faq-schema.blade.php` and `speakable.blade.php`.
+- **Meta Tags**: Optimized titles and descriptions for better CTR.
+
+## Related
+
+- [SEO Settings](/help/product/seo)

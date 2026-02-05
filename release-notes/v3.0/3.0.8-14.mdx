@@ -1,0 +1,134 @@
+---
+title: "Professional Credits Feature"
+sidebarTitle: "Dec 8 - Professional Credits"
+description: "Showcase your production work on other artists' projects with Spotify-linked credits on your producer profile."
+date: "2025-12-08"
+severity: "minor"
+audience: "Producers"
+tags: ["feature", "social"]
+components: ["artist-profile", "social"]
+---
+
+# Professional Credits Feature
+
+<Info>
+  **Release Date:** December 8, 2025
+</Info>
+
+We're excited to introduce **Professional Credits** — a new way for producers to showcase their work on other artists' projects directly on their BeatPass profile.
+
+## What's New
+
+### Spotify-Linked Credits
+
+You can now add songs and albums you've worked on from Spotify to your producer profile. Credits appear in a dedicated **Credits** tab on your profile, giving visitors proof of your professional experience.
+
+### Multi-Role Support
+
+Select **multiple roles** for each credit. If you both produced and mixed a track, you can showcase both contributions:
+
+- Producer, Co-Producer, Beat Maker
+- Mixing Engineer, Mastering Engineer, Recording Engineer
+- Songwriter, Composer, Arranger
+- Featured Artist, Vocalist
+- Executive Producer, A&R, Creative Director
+
+### Album Import with Per-Track Editing
+
+When adding an entire album, you can customize your role for each individual track. Perfect for projects where your contributions varied across songs.
+
+<Steps>
+  <Step title="Search for the album on Spotify">
+    Use the Spotify search to find the album you worked on.
+  </Step>
+  <Step title="Apply default roles to all tracks">
+    Set your default roles (e.g., Producer, Mixing Engineer) for all tracks at once.
+  </Step>
+  <Step title="Customize individual tracks as needed">
+    Adjust roles per track if your contribution varied across the album.
+  </Step>
+  <Step title="Add all credits at once">
+    Save time by importing the entire album to your profile in one action.
+  </Step>
+</Steps>
+
+### Immersive Profile Display
+
+Credits appear as beautiful, immersive cards on your profile with:
+
+- **Full cover art backgrounds** with gradient overlay
+- **Type indicators** — Songs (green) or Albums (purple)
+- **Popularity indicator** — 3-dot display showing Spotify popularity
+- **Track count** — Shows total tracks for albums
+- **Role badges** — Up to 2 visible with "+N more" for additional roles
+- **Stacked card effect** for albums with multiple tracks
+
+### Mobile-Optimized Design
+
+Cards are responsive and optimized for all devices:
+
+- **Mobile**: Rectangular cards (16:9) in single-column layout
+- **Desktop**: Square cards in 2-4 column grid
+- **Performance**: GPU-accelerated rendering, lazy-loaded images
+
+### Role Filter Pills
+
+Visitors can filter your credits by role type to quickly see all your work in a specific category — great for showcasing your mixing portfolio or production credits separately.
+
+## How to Add Credits
+
+1. Go to your artist profile edit page
+2. Click the **Credits** tab
+3. Click **Add Credit**
+4. Search for songs or albums on Spotify
+5. Select your role(s) for each credit
+6. Save and your credits appear on your profile
+
+<Tip>
+  For detailed instructions, see our [Professional Credits Guide](/help/profiles/artist-profiles/professional-credits).
+</Tip>
+
+## Technical Improvements
+
+- **PHPStan Level 7 compliance** for all backend credit code
+- **Automatic availability checks** — Credits are verified weekly against Spotify
+- **Spotify data sync** — Popularity and track counts fetched from Spotify API
+- **Smart grouping** — Multiple roles on the same song are grouped together
+- **Performance optimizations**:
+  - Memoized React components to prevent unnecessary re-renders
+  - Lazy-loaded images with `loading="lazy"` and `decoding="async"`
+  - GPU-accelerated transforms for smooth scrolling
+  - Simplified backdrop effects on mobile for better performance
+  - `content-visibility: auto` for off-screen rendering optimization
+
+## Database Updates
+
+- Added `popularity` field — Stores Spotify's 0-100 popularity score
+- Added `total_tracks` field — Stores album track count for direct album credits
+
+## Admin Tools
+
+A new artisan command is available for syncing credits with Spotify:
+
+```bash
+# Sync all credits
+php artisan credits:sync-spotify
+
+# Sync specific artist
+php artisan credits:sync-spotify --artist=123
+
+# Preview changes without applying
+php artisan credits:sync-spotify --dry-run
+```
+
+## What's Next
+
+- Drag-and-drop reordering for credits
+- Additional music platforms beyond Spotify
+- Credit verification badges
+
+---
+
+<Card title="Get Started" icon="compact-disc" href="/help/profiles/artist-profiles/professional-credits">
+  Learn how to add professional credits to your profile
+</Card>

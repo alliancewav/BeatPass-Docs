@@ -1,0 +1,255 @@
+---
+title: "Mobile Player & Producer Payouts"
+description: "iOS-inspired player bar, smooth lyric transitions, and detailed payout notifications with Stripe Connect reminders"
+date: "2026-01-14"
+severity: "patch"
+image: ""
+audience: "All"
+tags: ["improvement", "ui", "mobile"]
+components: ["player", "stripe-connect", "notifications"]
+---
+
+We've made significant improvements to the mobile player experience, producer payout system, email templates, and UI consistency across the platform.
+
+## Mobile Player Bar Redesign
+
+The mobile mini player has been completely redesigned with a modern, iOS-inspired aesthetic that integrates seamlessly with mobile browsers.
+
+### Glass Morphism Design
+
+- **Backdrop blur effect** — The mini player now features a frosted glass appearance with `backdrop-blur-2xl` for a premium feel
+- **Rounded corners** — Modern `rounded-2xl` design language matching iOS system UI
+- **Subtle borders** — Light/dark mode adaptive borders that blend with the system theme
+- **Touch feedback** — Smooth scale animations on tap for tactile response
+
+### Smooth Animations
+
+- **Slide-up overlay** — Tap the mini player to expand into a fullscreen view with fluid spring animations
+- **Framer Motion transitions** — Professional-grade animations using custom easing curves `[0.32, 0.72, 0, 1]`
+- **Animated navbar** — Bottom navigation smoothly hides when lyrics are displayed
+- **Queue panel** — Slides in from the right with smooth transitions
+
+### Enhanced Playback Experience
+
+- **Circular album art** — Large, centered cover art with ring accent in fullscreen mode
+- **BPM/Key pills** — Track metadata displayed as subtle pills below the track info
+- **Lyrics integration** — Toggle between cover art and synced lyrics with smooth crossfade
+- **Compact lyrics mode** — When viewing lyrics, playback controls collapse to a minimal bar
+
+### Safe Area Support
+
+- **Notch compatibility** — Proper padding for devices with notches and home indicators
+- **Safe area insets** — Content respects `safe-area-top` and `safe-area-bottom` for edge-to-edge displays
+
+## Producer Payout Notifications
+
+Producers now receive detailed notifications about their subscription revenue earnings.
+
+### Payout Notification Types
+
+| Type | When Sent | Purpose |
+|------|-----------|---------|
+| **Pending** | When splits are calculated | Notify about upcoming payout |
+| **Initiated** | When transfer is sent | Confirm transfer to bank |
+| **Completed** | When funds arrive | Confirm successful deposit |
+| **Failed** | If transfer fails | Alert with next steps |
+
+### Detailed Earnings Breakdown
+
+Payout emails now include a complete breakdown:
+
+- **Your platform share** — Your percentage of the subscriber pool
+- **Redistribution bonus** — Extra earnings when other producers haven't connected Stripe
+- **Total payout amount** — Final amount deposited to your account
+- **Billing period** — Which month the earnings are from
+
+### Stripe Connect Reminders
+
+Producers without connected Stripe accounts receive reminder notifications when revenue is distributed:
+
+- **Missed amount displayed** — Shows what they would have earned
+- **Setup guidance** — Clear steps to connect Stripe (< 5 minutes)
+- **Urgency messaging** — Explains that unclaimed funds are redistributed
+
+### Platform Balance Protection
+
+The payout system now includes safeguards to prevent transfer failures:
+
+- **Pre-transfer balance check** — Verifies sufficient funds before attempting transfers
+- **Safety buffer** — Maintains 5% buffer to prevent negative balance issues
+- **Automatic retry** — Failed transfers are queued for retry when balance allows
+- **Deferred processing** — Splits marked as `pending_balance` process automatically when funds are available
+
+## Collection Showcase Improvements
+
+The collection showcase sections (featured albums, playlists, and artist highlights) have been refined for a smoother, more consistent experience.
+
+### What's Changed
+
+- **Consistent play buttons** — Play buttons now match the design used throughout the platform, with proper hover states and accessibility
+- **Smoother hover interactions** — Removed the card lift animation on hover for a cleaner feel
+- **Fixed navigation links** — Album, playlist, and artist cards now link to the correct URLs with proper slugs (e.g., `/album/1397/beatpasstm/808-inc` instead of just `/album/1397`)
+- **Consistent backgrounds** — Collection showcases now use the same background styling as other content sections
+
+## Artist Page Enhancements
+
+Several improvements to artist profile pages make browsing more intuitive.
+
+### Carousels
+
+- **Fade effect on edges** — The "Discover more beats" and "More Albums You Might Like" carousels now have a subtle fade mask at the edges, matching other carousels on the platform
+- **Verified badges** — Verified producer badges now display correctly in the Followers tab
+
+### Discography
+
+- **Album cover aspect ratio** — Album artwork in the discography list view now maintains a perfect 1:1 square ratio regardless of the original image dimensions
+
+## User Profile Updates
+
+User profile pages now have a more polished, consistent appearance.
+
+### Followers & Following Tabs
+
+- **Grid layout** — Followers and following lists now display in a responsive grid (2-6 columns depending on screen size) matching the artist profile layout
+- **Updated empty states** — Empty state messages now use the same design as artist pages with centered icons and clear messaging
+
+### All Profile Tabs
+
+Empty states across all profile tabs have been updated for consistency:
+
+| Tab | What's Shown |
+|-----|--------------|
+| **Tracks** | "No liked beats yet" with music note icon |
+| **Albums** | "No liked collections yet" with album icon |
+| **Artists** | "No liked producers yet" with microphone icon |
+| **Playlists** | "No playlists yet" with playlist icon |
+| **Reposts** | "No reposts yet" with repost icon |
+| **Following** | "Not following anyone yet" with people icon |
+| **Followers** | "No followers yet" with people icon |
+
+## What This Means for You
+
+- **Cleaner browsing** — Smoother animations and consistent styling across the platform
+- **Better navigation** — Links always take you to the right place with readable URLs
+- **Improved discovery** — Carousel fade effects make it clearer when more content is available
+- **Polished profiles** — Both artist and user profiles now have a cohesive, modern look
+
+## Email Template Redesign
+
+All 35+ email templates have been completely redesigned with a modern, Stripe-inspired layout for better readability and professionalism.
+
+### New Design System
+
+- **Separated card layout** — Each email section is now its own distinct card with rounded corners and subtle shadows
+- **Dark header with logo** — Consistent branding with centered logo and title
+- **Inline CSS styling** — Maximum compatibility across all email clients (Gmail, Outlook, Apple Mail, etc.)
+- **Mobile responsive** — Emails render correctly on all device sizes
+
+### Layout Structure
+
+Every email now follows this consistent structure:
+
+1. **Dark header** — Logo + email title with rounded top corners
+2. **Main content card** — Greeting, message, and key information
+3. **Additional section cards** — Details, breakdowns, or guidance (separated cards)
+4. **Contact card** — Support email and social links
+5. **Unsubscribe card** — Email preference management
+6. **Footer** — Company info and copyright
+
+### Unsubscribe Links
+
+All user-configurable notification emails now include proper unsubscribe options:
+
+- **Unsubscribe from this type** — Stop receiving this specific notification
+- **Unsubscribe from all** — Opt out of all marketing emails
+- **Manage preferences** — Link to notification settings page
+
+### Templates Updated
+
+| Category | Templates |
+|----------|-----------|
+| **Social** | New Follower, Content Liked, Content Commented, Content Reposted |
+| **Messaging** | New Message, Playlist Invite |
+| **Producer** | Achievement Unlocked, Play Milestone, Analytics Report, New Upload |
+| **Commerce** | Track Sale, Track Licensed, Track Downloaded, License Granted |
+| **Billing** | New Subscription, Payment Failed, Payout Completed/Failed, Invoice |
+| **Beat Requests** | Request Submitted, Beat Submitted, Ending Soon, No Submissions |
+| **Marketing** | Promotional emails with seasonal themes |
+| **Account** | Verify Email, Reset Password, Request Approved/Denied |
+
+### Key Template Improvements
+
+- **Achievement Unlocked** — Dark achievement card with XP display + "Keep the Momentum Going" guidance
+- **Track Sale** — Earnings summary with dark footer + license details + revenue breakdown cards
+- **Payout Notification** — Dark payout amount display + breakdown table + redistribution bonus info
+- **New Follower** — Follower info card with encouragement message
+- **Analytics Report** — Metrics cards with top track and growth indicators
+
+### Logo Assets
+
+New email-optimized logo files in `/public/assets/images/email/`:
+
+- `beatpass-logo-white-wide.png` — Header logo (white on dark)
+- `beatpass-logo-black-wide.png` — Footer logo (black on light)
+- `beatpass-logo-circular-abstract.png` — Icon version
+
+### Social Links
+
+All emails now include links to official social channels:
+
+- Instagram (@beatpass.wav)
+- TikTok (@beatpass.wav)
+- X (@beatpasswav)
+- YouTube (@beatpasswav)
+- Discord (invite link)
+
+## Developer Tools
+
+### Email Testing Command
+
+New `email:send-test` Artisan command for testing all email templates:
+
+```bash
+# Send all test emails
+php artisan email:send-test your@email.com
+
+# Skip promotional/marketing emails
+php artisan email:send-test your@email.com --skip-marketing
+
+# Only send emails with unsubscribe options
+php artisan email:send-test your@email.com --only-unsubscribable --user-id=1
+
+# Adjust delay between emails
+php artisan email:send-test your@email.com --delay=5
+```
+
+### Files Modified
+
+**Email Templates:**
+- `resources/views/emails/modern-base.blade.php` — Complete layout redesign
+- `resources/views/emails/*.blade.php` — All 35 individual templates
+- `resources/views/emails/payout-notification.blade.php` — New payout email with breakdown
+- `resources/views/emails/stripe-connect-reminder.blade.php` — New Stripe Connect reminder email
+
+**Notifications:**
+- `app/Notifications/PayoutNotification.php` — New payout notification class
+- `app/Notifications/StripeConnectReminder.php` — New Stripe Connect reminder notification
+
+**Services:**
+- `app/Services/SubscriptionSplitsService.php` — Enhanced with balance protection and notifications
+
+**Mobile Player:**
+- `resources/client/web-player/player-controls/mobile-player-controls.tsx` — Complete redesign
+- `resources/client/web-player/overlay/player-overlay.tsx` — Updated for mobile handling
+
+**Commands:**
+- `app/Console/Commands/SendTestEmails.php` — New testing command
+- `resources/defaults/notification-settings.php` — Added missing notification types
+
+## Timeline
+
+**January 14, 2026** — All improvements deployed and live
+
+---
+
+If you notice any UI inconsistencies or email rendering issues, please [contact support](/contact).

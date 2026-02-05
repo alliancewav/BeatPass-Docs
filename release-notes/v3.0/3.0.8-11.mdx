@@ -1,0 +1,146 @@
+---
+title: "Album & Track Management Fixes"
+date: "2025-12-01"
+severity: "hotfix"
+audience: "All"
+tags: ["bugfix", "reliability", "albums", "tracks"]
+components: ["producer-dashboard", "upload", "channels", "admin"]
+---
+
+# Album & Track Management Fixes
+
+<Info>
+  **Hotfix Release** — Critical bug fixes for album and track management released immediately following the December 2025 Production Launch.
+</Info>
+
+---
+
+## Summary
+
+This hotfix addresses several issues discovered during the production launch, primarily affecting album creation and track management workflows.
+
+---
+
+## Bug Fixes
+
+### Channel Cache Invalidation
+
+**Issue:** Newly uploaded tracks were not appearing on certain channel pages (like `/discover`) despite being visible on others (`/channel/new-beats`).
+
+**Cause:** The Redis cache invalidation was using incorrect key patterns. Channel content caches use the format `channels.<id>.<updated_at>.<params>`, but the invalidation code was searching for patterns like `tracks:*` and `homepage:*`.
+
+**Fix:** 
+- Updated cache invalidation to use the correct `*channels.*` pattern
+- Added `touchTrackChannels()` to update channel timestamps when tracks are created/updated
+- Uses proper Redis connection (`cache` database) with correct prefix handling
+
+---
+
+### Album Creation 500 Error
+
+**Issue:** Creating an album with existing tracks caused a 500 Internal Server Error with message: `Method Illuminate\Database\Eloquent\Collection::users does not exist`.
+
+**Cause:** The `determineOwnerId()` method expected artist IDs as integers but received artist objects in array format (e.g., `{id: 123, name: 'Artist'}`). When passed to `Artist::find()`, this returned a Collection instead of a single model.
+
+**Fix:** Updated both `CrupdateAlbum.php` and `CrupdateTrack.php` to properly extract artist IDs from array format using `Arr::get($artist, 'id')`.
+
+---
+
+### Duplicate Track Creation
+
+**Issue:** Adding existing tracks to an album created duplicates of those tracks instead of associating the existing tracks.
+
+**Cause:** The `saveTracks()` method only searched for tracks within the album's current tracks (`$savedTracks`). Tracks not already in the album weren't found, causing the system to create new tracks.
+
+**Fix:** Updated lookup logic to first check album tracks, then fall back to database lookup for existing tracks being added:
+
+```php
+if ($trackId) {
+    // First check if track is already in this album
+    $trackModel = $savedTracks->find($trackId);
+    
+    // If not found in album, look up from database
+    if (!$trackModel) {
+        $trackModel = Track::with('artists')->find($trackId);
+    }
+}
+```
+
+---
+
+### Track Metadata Loss
+
+**Issue:** Adding existing tracks to an album removed their associated artists, tags, and genres.
+
+**Cause:** The `CrupdateTrack::execute()` method was falling back to the album's artists when track data didn't include artists, then replacing all track artists with album artists. Similar behavior affected tags and genres.
+
+**Fix:** Added explicit checks to only update relationships when they're explicitly provided in the request data:
+
+```php
+// Only update artists if explicitly provided in the data
+$artistsExplicitlyProvided = Arr::has($data, 'artists');
+
+if ($artistsExplicitlyProvided || !$initialTrack) {
+    // Process artists...
+}
+```
+
+The same pattern was applied to tags and genres.
+
+---
+
+### Album Metadata Preservation
+
+**Issue:** Similar to tracks, updating albums could inadvertently clear artists, tags, or genres if not explicitly provided in the update request.
+
+**Fix:** Applied the same explicit-check pattern to `CrupdateAlbum.php`:
+
+- Artists only updated when `artists` key is present
+- Tags only synced when `tags` key is present
+- Genres only synced when `genres` key is present
+
+---
+
+### Notification Crash Prevention
+
+**Issue:** Creating an album without artists would cause a null pointer exception when attempting to notify followers.
+
+**Cause:** The code called `$album->artists->first()->followers()` without checking if artists existed.
+
+**Fix:** Added null checks before sending notifications:
+
+```php
+if (!$initialAlbum && $album->artists->isNotEmpty()) {
+    $primaryArtist = $album->artists->first();
+    if ($primaryArtist) {
+        // Send notifications...
+    }
+}
+```
+
+---
+
+## Files Changed
+
+| File | Changes |
+|------|---------|
+| `app/Services/Tracks/CrupdateTrack.php` | Cache invalidation, artist ID extraction, metadata preservation |
+| `app/Services/Albums/CrupdateAlbum.php` | Track lookup fix, metadata preservation, null checks |
+
+---
+
+## Verification
+
+After applying these fixes:
+
+- New tracks appear immediately on all channel pages including `/discover`
+- Albums can be created with existing tracks without errors
+- Existing tracks maintain their artists, tags, and genres when added to albums
+- Albums maintain their metadata during updates
+- Album creation works correctly even with edge cases
+
+---
+
+## Related
+
+- [December 2025 Production Launch →](/release-notes/v3.0/3.0.8-12)

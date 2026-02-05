@@ -1,0 +1,38 @@
+---
+title: "Beat Request System - Production Ready"
+date: "2025-11-24"
+severity: "minor"
+audience: "Producers"
+tags: ["feature", "security", "improvement"]
+components: ["beat-requests"]
+---
+## Summary
+
+The Beat Request system has been upgraded to a production-ready state with a new database-backed architecture, resolving critical security issues and ensuring data integrity.
+
+## What's New
+
+- **Database Persistence**: Moved from unreliable file storage to a robust database schema with transaction support.
+- **Security Fixes**: Resolved a critical issue where deleting a request could refund tokens to the wrong user.
+- **Duplicate Prevention**: Added strict checks to prevent accidental duplicate submissions of the same track.
+- **Existing Track Selection**: Producers can now select from their existing catalog when fulfilling requests, instead of re-uploading.
+- **Improved Feedback**: Clearer error messages (e.g., "Already submitted") instead of generic server errors.
+
+## Why It Matters
+
+These changes ensure that your tokens are safe, your requests are reliable, and the fulfillment process is smoother. The move to a database architecture prevents data loss and race conditions, especially during high traffic.
+
+## How to Use
+
+No action is required from users. The system works seamlessly with the existing interface.
+- **Producers**: When fulfilling a request, look for the new "Select Existing Track" option.
+- **Request Owners**: You can now delete requests with confidence that your token will be correctly refunded to your balance.
+
+## Known Issues
+
+- None. All identified critical issues from the audit have been resolved.
+
+## Related
+
+- [Beat Requests Guide](/help/product/beat-requests)
+- [Producer Dashboard](/help/product/producer-dashboard)

@@ -1,0 +1,429 @@
+---
+title: "December 2025 Production Launch"
+date: "2025-12-01"
+audience: "All"
+tags: ["major-release", "feature", "producer", "platform"]
+---
+
+# December 2025 Production Launch
+
+<Info>
+  **Version 3.0.8** is now live in production! This release brings comprehensive platform upgrades including Stripe Connect payments, a redesigned Producer Dashboard, lyrics management, mobile improvements, and much more.
+</Info>
+
+---
+
+## Highlights
+
+This production release combines months of development work from our beta phase into a polished, production-ready platform. Key highlights include:
+
+- **Stripe Connect** — Producers receive direct payouts to their bank accounts
+- **100% Revenue Share** — Producers keep 100% of their price; platform fee added on top
+- **Lyrics Notepad** — Write, sync, and manage lyrics for any beat
+- **Producer Dashboard Overhaul** — New finances, activity, progress, and album management
+- **Engagement Metrics** — Track listen duration, completion rates, and quality scores
+- **Mobile Player Refresh** — Redesigned mini player and overlay experience
+- **Radio & Recommendations** — Personalized discovery based on listening history
+- **Exclusive Licensing** — Sell and configure custom exclusive licenses
+- **Messaging Improvements** — Bug fixes and performance enhancements
+- **Notification Management** — Full control over email, browser, and in-app notifications
+- **New Help Center** — Comprehensive documentation at [docs.beatpass.ca](https://docs.beatpass.ca)
+
+---
+
+## Producer Tools
+
+### Stripe Connect Payments
+
+<Card title="Stripe Connect Setup" href="/help/earnings/stripe-connect" icon="wallet">
+  Connect your bank account to receive direct payouts from beat sales and subscription revenue.
+</Card>
+
+Producers can now receive payments directly to their bank accounts via Stripe Connect:
+
+- **Direct bank transfers** — No manual withdrawal required
+- **Real-time payout tracking** — Monitor pending and completed transfers
+- **Multi-currency support** — Accept USD, EUR, GBP, and CAD
+- **Transparent reporting** — Detailed breakdown of all transactions
+
+[Learn more about Stripe Connect →](/help/earnings/stripe-connect/setup-guide)
+
+### 100% Revenue Share
+
+<Tip>
+  **You keep 100% of your price.** The 12% + $3 platform fee is added on top for buyers, not deducted from your earnings. Set a 100 dollar beat price? You receive 100 dollars.
+</Tip>
+
+This applies to both membership subscriptions and beat sales:
+
+| Revenue Type | Producer Gets | Platform Fee |
+|--------------|---------------|--------------|
+| Subscription revenue | 100% of contribution | Paid by subscriber |
+| Exclusive beat sales | 100% of sale price | Added on top for buyer |
+| Non-exclusive downloads | Part of subscription pool | Included in subscription |
+
+[Learn more about earnings →](/help/earnings)
+
+### Exclusive License Sales
+
+<Card title="Exclusive Licenses" href="/help/licensing-for-producers/exclusive-licenses" icon="certificate">
+  Configure and sell custom exclusive licenses with full rights transfer.
+</Card>
+
+Producers can now:
+
+- **Set custom exclusive prices** — Price your beats for exclusive sale
+- **Configure license terms** — Customize distribution rights, performance limits, and publishing splits
+- **Use license presets** — Save and reuse common configurations
+- **Track sold exclusives** — Monitor which beats have been sold exclusively
+
+[Configure exclusive licenses →](/help/licensing-for-producers/exclusive-licenses/license-configuration)
+
+### Producer Dashboard Overhaul
+
+The Producer Dashboard has been completely redesigned with new sections:
+
+<AccordionGroup>
+  <Accordion title="Finances Dashboard" icon="wallet">
+    Track earnings, view transaction history, and monitor Stripe Connect payouts in real-time.
+    
+    [View Finances guide →](/help/producer-dashboard/finances)
+  </Accordion>
+  
+  <Accordion title="Tracks Management" icon="music">
+    Manage all your tracks from a single page at `/producer-dashboard/tracks`.
+    
+    - View, edit, and delete tracks
+    - Monitor individual track analytics
+    - Bulk actions for catalog management
+    
+    [View Tracks guide →](/help/producer-dashboard/tracks)
+  </Accordion>
+  
+  <Accordion title="Albums Management" icon="album-collection">
+    Create and manage albums at `/producer-dashboard/albums`.
+    
+    - Create new collections
+    - Organize tracks into albums
+    - Set album artwork and metadata
+    
+    [View Albums guide →](/help/producer-dashboard/albums)
+  </Accordion>
+  
+  <Accordion title="Activity Dashboard" icon="chart-line">
+    Track catalog activity and platform share at `/producer-dashboard/activity`.
+    
+    - View plays, downloads, and engagement
+    - Monitor your share of platform activity
+    - Identify top-performing content
+    
+    [View Activity guide →](/help/producer-dashboard/activity)
+  </Accordion>
+  
+  <Accordion title="Progress Dashboard" icon="trophy">
+    Track your platform progress at `/producer-dashboard/progress`.
+    
+    - XP levels and tier progression
+    - Achievement tracking
+    - Milestone celebrations
+    
+    [View Progress guide →](/help/producer-dashboard/progress)
+  </Accordion>
+  
+  <Accordion title="Leaderboards" icon="ranking-star">
+    Updated leaderboard UI/UX at `/producer-dashboard/leaderboards`.
+    
+    - Global and genre-specific rankings
+    - Period filtering (daily, weekly, monthly, all-time)
+    - Visual refresh with improved readability
+    
+    [View Leaderboards guide →](/help/producer-dashboard/leaderboards)
+  </Accordion>
+</AccordionGroup>
+
+### Backstage Insights Overhaul
+
+Entity-specific analytics have been refreshed with clearer visualizations and more actionable data:
+
+- **Track Insights** — Deep dive into individual track performance
+- **Album Insights** — Collection-level analytics and engagement
+- **Artist Insights** — Overall profile performance metrics
+
+#### New Engagement Metrics (Track Insights)
+
+Track insights now include powerful engagement tracking:
+
+<AccordionGroup>
+  <Accordion title="Engagement Overview" icon="chart-line">
+    Four key metrics summarizing listener interaction:
+    
+    - **Avg Listen Duration** — How long listeners engage with your track
+    - **Avg Completion Rate** — Percentage of track completed on average
+    - **Total Listen Time** — Cumulative listening time across all plays
+    - **Completed Listens** — Plays reaching 80%+ completion
+    
+    Includes a quality badge (High/Good/Moderate/Low Engagement) based on completion and listen duration.
+  </Accordion>
+  
+  <Accordion title="Listen Duration Chart" icon="clock">
+    Interactive bar chart showing how long listeners engage over time:
+    
+    - **Color-coded bars** — Green (70%+ completion), Amber (40-70%), Red (under 40%)
+    - **Trend indicator** — Shows if engagement is improving or declining
+    - **Tooltips** — Duration, completion rate, and play count per day
+    
+    Helps identify patterns and optimize your track's structure.
+  </Accordion>
+  
+  <Accordion title="Completion Breakdown" icon="chart-pie">
+    Distribution of how much listeners complete your track:
+    
+    | Category | Range | Meaning |
+    |----------|-------|---------|
+    | **Completed** | 80%+ | Heard almost all |
+    | **Mostly** | 60-80% | Strong engagement |
+    | **Half** | 40-60% | About half |
+    | **Partial** | 20-40% | Lost interest |
+    | **Skipped** | Under 20% | Skipped early |
+    
+    Includes a **Quality Score** (0-100) summarizing overall retention.
+  </Accordion>
+</AccordionGroup>
+
+[Learn about engagement metrics →](/help/analytics/backstage-insights/engagement-metrics)
+
+[Learn about Backstage Insights →](/help/analytics/backstage-insights)
+
+---
+
+## Platform Features
+
+### Lyrics Notepad
+
+<Card title="Lyrics Feature" href="/help/playing-music/lyrics" icon="microphone-lines">
+  Write, sync, and manage your lyrics while listening to any beat.
+</Card>
+
+A powerful songwriting tool built into the player:
+
+- **Line-by-line editor** with section markers (Verse, Chorus, Hook, etc.)
+- **Synced lyrics** with karaoke-style playback
+- **Rhyme highlighting** and syllable counting
+- **Personal lyrics library** at `/library/lyrics`
+
+[Learn about the lyrics feature →](/help/playing-music/lyrics)
+
+### License Management
+
+Your licenses are now centralized at `/library/licenses`:
+
+- View all your license certificates
+- Download license PDFs for distribution
+- Verify license authenticity
+- Track both acquired and granted licenses
+
+[Learn about license management →](/help/library/my-licenses)
+
+### Radio Feature
+
+<Card title="Radio" href="/help/discovering-music/radio" icon="radio">
+  Discover new beats with seed-based radio stations.
+</Card>
+
+Start a radio station from any track, artist, or genre:
+
+- **Track-seeded radio** — Find similar beats based on a specific track
+- **Artist-seeded radio** — Discover producers with similar styles
+- **Genre-seeded radio** — Explore entire genres
+
+[Learn about Radio →](/help/discovering-music/radio)
+
+### Recommendations
+
+Personalized recommendations based on your listening history:
+
+- **For You** — Beats tailored to your taste
+- **Similar tracks** — Recommendations on track pages
+- **Discovery channels** — Curated based on your activity
+
+### New Landing Page
+
+When you're not logged in, the homepage now features:
+
+- **Platform overview** — Learn what BeatPass offers
+- **Featured producers** — Discover top artists
+- **Pricing information** — Compare subscription plans
+- **Sign-up call-to-action** — Easy path to get started
+
+[Learn about the landing page →](/help/getting-started/landing-page)
+
+---
+
+## Mobile Experience
+
+### Mobile Player Refresh
+
+The mobile experience has been significantly improved:
+
+<AccordionGroup>
+  <Accordion title="Mini Player" icon="mobile">
+    The mini player at the bottom of the screen now features:
+    
+    - Cleaner, more compact design
+    - Smoother animations
+    - Better touch targets
+  </Accordion>
+  
+  <Accordion title="Overlay Player" icon="expand">
+    The full-screen player overlay has been redesigned:
+    
+    - **Glassmorphism design** — Modern translucent backgrounds
+    - **Improved queue view** — Clear "Now Playing" and "Up Next" sections
+    - **Better performance** — Reduced battery usage
+    - **Smoother transitions** — No lag when opening/closing
+  </Accordion>
+</AccordionGroup>
+
+[Read the mobile update →](/release-notes/v3.0/3.0.8-2)
+
+---
+
+## User Experience
+
+### Upload Process Refresh
+
+The upload page has been refreshed with improved UI/UX:
+
+- **Clearer progress indicators** — Real-time feedback during upload
+- **Audio fingerprinting** — Automatic BeatPassID generation
+- **Streamlined metadata entry** — Faster track setup
+- **Improved error handling** — Clearer messages when issues occur
+
+[Learn about uploading →](/help/uploading/upload-page)
+
+### Messaging Improvements
+
+The messaging system has received significant improvements:
+
+- **Performance optimizations** — Faster message loading
+- **Bug fixes** — Resolved various edge cases
+- **Reliability improvements** — More consistent delivery
+
+[Learn about messaging →](/help/messaging)
+
+### Notification Management
+
+Full control over your notifications at `/notifications/settings`:
+
+- **Email notifications** — Choose which events trigger emails
+- **Browser notifications** — Real-time push alerts
+- **In-app notifications** — Notification center preferences
+- **Email unsubscribe** — Easily opt out of email communications
+
+[Manage notification settings →](/help/notifications/notification-settings)
+
+### Producer Profile Button
+
+User profiles now display a **View Producer Profile** button when the user owns a producer profile:
+
+- Reduces confusion between user and producer profiles
+- One-click navigation to the producer page
+- Clearer separation of personal and professional presence
+
+### Verification Badge Logic
+
+User profiles now automatically display a verification badge when their linked producer profile is verified:
+
+- **Verified producer → Verified user** — Badge appears on both profiles
+- **Consistent trust signals** — Users see verification across the platform
+- **No manual action required** — Automatic sync when producer gets verified
+
+[Learn about profiles →](/help/profiles)
+
+---
+
+## Unclaimed Producer Profiles
+
+### Onboarding for Existing Artists
+
+If your music is already on BeatPass but you don't control the profile, you can now claim it:
+
+1. Go to the producer application flow
+2. Select **Claim Existing Artist**
+3. Search for your profile
+4. Submit verification documents
+5. Once approved, gain full control
+
+[Learn about claiming a profile →](/help/producer-program/application-types/claim-artist)
+
+---
+
+## Documentation
+
+### New Help Center
+
+We've launched a comprehensive help center at **[docs.beatpass.ca](https://docs.beatpass.ca)**:
+
+- **Getting Started guides** — For new users and producers
+- **Feature documentation** — Detailed guides for every feature
+- **Producer resources** — Earnings, licensing, and dashboard guides
+- **Troubleshooting** — Common issues and solutions
+
+---
+
+## Technical Improvements
+
+This release includes numerous under-the-hood improvements:
+
+- **XP & Gamification fixes** — Accurate level tracking and collaborative XP
+- **Scheduler reliability** — Optimized background job processing
+- **Engagement analytics** — Better partial listen tracking
+- **Production hardening** — Data integrity and reliability improvements
+
+See the full technical changelog:
+
+- [XP & Gamification Overhaul →](/release-notes/v3.0/3.0.8-7)
+- [Scheduler Reliability →](/release-notes/v3.0/3.0.8-6)
+- [Engagement Analytics →](/release-notes/v3.0/3.0.8-5)
+- [Production Hardening →](/release-notes/v3.0/3.0.8-9)
+
+---
+
+## Version 3.0.8 Iterations
+
+This production release includes all updates from the beta phase:
+
+| Date | Update | Focus |
+|------|--------|-------|
+| Nov 24 | [Beat Requests](/release-notes/v3.0/3.0.8-10) | Production-ready beat request system |
+| Nov 21 | [Producer Experience](/release-notes/v3.0/3.0.8-8) | Dashboard overhaul |
+| Nov 21 | [Production Hardening](/release-notes/v3.0/3.0.8-9) | Reliability updates |
+| Nov 20 | [XP Gamification](/release-notes/v3.0/3.0.8-7) | Fairer XP system |
+| Nov 20 | [Scheduler Reliability](/release-notes/v3.0/3.0.8-6) | Background jobs |
+| Nov 20 | [Engagement Analytics](/release-notes/v3.0/3.0.8-5) | Partial listen tracking |
+| Nov 19 | [Refactors & Routing](/release-notes/v3.0/3.0.8-4) | Code cleanup |
+| Nov 14 | [SEO Modernization](/release-notes/v3.0/3.0.8-3) | Search optimization |
+| Nov 11 | [Mobile UI Fixes](/release-notes/v3.0/3.0.8-2) | Player overlay |
+| Nov 4 | [Billing Security](/release-notes/v3.0/3.0.8-1) | Payment validation |
+| Oct 1 | [Version 3.0.8 Base](/release-notes/v3.0/3.0.8) | Initial release |
+
+---
+
+## What's Next
+
+We're continuing to improve BeatPass with upcoming features:
+
+- Enhanced collaboration tools
+- Advanced analytics dashboards
+- Mobile app improvements
+- API enhancements
+
+---
+
+## Feedback
+
+<Card title="Contact Support" icon="envelope" href="/help/contact-support">
+  Share feedback on this release or report issues.
+</Card>
+
+Email us at **contact@beatpass.ca** with questions, suggestions, or bug reports.

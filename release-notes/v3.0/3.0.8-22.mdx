@@ -1,0 +1,186 @@
+---
+title: "Platform Stability & Performance Improvements"
+description: "Major reliability update with mobile chat fixes, accurate leaderboard data, faster loading times, improved admin tools, and a more stable platform experience"
+date: "2026-01-22"
+severity: "patch"
+image: ""
+audience: "All"
+tags: ["improvement", "performance", "reliability"]
+components: ["messaging", "producer-dashboard", "admin"]
+---
+
+A comprehensive update focused on making BeatPass more reliable, accurate, and faster. This release includes significant improvements to the mobile messaging experience, TypeScript code quality enhancements, and ensures that your data displays correctly, pages load faster, and the platform runs smoothly.
+
+## Mobile Chat Experience Improvements
+
+### iOS Safari Keyboard Fixes
+
+Fixed issues where the keyboard on iOS Safari would push chat content out of view:
+
+- **Keyboard no longer hides messages** — Chat messages stay visible when the keyboard opens on iPhone and iPad
+- **Input stays above keyboard** — The message input field now properly positions itself above the on-screen keyboard
+- **No more janky scrolling** — Smooth transitions when the keyboard appears and disappears
+
+### Scroll Containment
+
+Fixed issues where scrolling in the chat window would accidentally scroll the entire page:
+
+- **Isolated chat scrolling** — Scrolling through messages no longer moves the page behind the chat
+- **Better touch handling** — Improved responsiveness on mobile devices
+- **Proper scroll boundaries** — Chat scroll now stops at the top and bottom without "bouncing" to the page
+
+### What This Means For You
+
+If you've experienced frustration typing messages on your phone where the conversation would jump around or disappear when the keyboard opened, these issues are now fixed. The mobile chat experience should feel much more natural and responsive.
+
+---
+
+## Leaderboard Accuracy Fixes
+
+### Metadata Quality Leaderboard
+
+Fixed issues where the Quality Leaderboard wasn't showing accurate information about your tracks:
+
+- **Tagged tracks count now accurate** — The leaderboard now correctly shows how many of your tracks have tags (e.g., "25/50 tagged" instead of showing 0)
+- **Descriptions properly counted** — Track descriptions are now counted correctly in your quality score
+- **Consistent quality scores** — Your metadata completion percentage is now calculated the same way across the entire platform
+
+### What This Means For You
+
+If you previously saw "0/142 tagged" or "0/142 described" on the Quality Leaderboard despite having filled in this information, you'll now see the correct numbers reflecting your actual work.
+
+---
+
+## Faster Loading & Better Performance
+
+### Speed Improvements
+
+- **Faster dashboard loading** — Analytics and leaderboard pages now load significantly faster
+- **Smarter data caching** — The platform remembers recent data intelligently, reducing wait times when you navigate between pages
+- **Smoother filter switching** — Changing filters on analytics pages no longer causes the screen to flash or reset
+
+### Database Optimizations
+
+Behind the scenes, we've added optimizations that make searching and filtering your track data much faster, especially for producers with large catalogs.
+
+---
+
+## Admin Tools Reliability
+
+### Fixed Admin Logs
+
+The admin logs section now works reliably:
+
+- **Schedule logs load properly** — No more error screens when viewing scheduled job history
+- **Cleaner interface** — Removed debug information that was cluttering the admin logs
+
+### Background Job Reliability
+
+- **Improved job execution** — Background tasks like notifications and subscription payouts now run more reliably
+- **Better error recovery** — Jobs that fail due to temporary issues will automatically retry
+
+---
+
+## Platform Stability
+
+### Code Quality Improvements
+
+We've made numerous improvements to the platform's underlying code:
+
+- **Removed duplicate components** — Cleaned up redundant code to reduce bugs and inconsistencies
+- **Better error handling** — The platform now handles edge cases more gracefully instead of showing error screens
+- **Type safety improvements** — Reduced potential for bugs through stricter code validation
+
+### Track Upload & Edit Type Safety (Phase 4)
+
+Improved code quality in business-critical track management flows:
+
+- **Safer track uploads** — Eliminated unsafe type casts in the upload process
+- **Better metadata handling** — Genre, tag, and artist data now properly typed throughout the edit flow
+- **Duplicate detection improvements** — More reliable duplicate track checking with proper error handling
+
+### Documentation
+
+- **New architecture documentation** — Internal documentation helps us maintain and improve the platform faster
+- **Clearer component guidelines** — Development standards ensure consistent behavior across features
+
+---
+
+## Technical Details
+
+<Accordion title="For Developers & Technical Users" icon="code">
+
+### Leaderboard Data Fixes
+
+| Issue | Resolution |
+|-------|------------|
+| `tracks_with_tags` returning 0 | Added field to `ProducerProfileService.batchCalculateMetadataCompletion()` |
+| `tracks_with_descriptions` returning 0 | Added field calculation and propagation to stats return |
+| Inconsistent metadata formula | Standardized to 5-field formula (BPM, Key, Scale, Description, Tags) at 20% each |
+
+### Cache Standardization
+
+Created centralized cache configuration in `config/analytics.php`:
+- Realtime: 60s (live dashboards)
+- Short: 300s (frequently updated)
+- Medium: 900s (analytics summaries)
+- Long: 1800s (leaderboards)
+- Daily: 86400s (historical data)
+
+### Database Indexes Added
+
+- `analytics_track_event_date_idx` — Composite index on `(track_id, event_type, created_at)`
+- `analytics_user_event_date_idx` — Composite index on `(user_id, event_type, created_at)`
+
+### Frontend Optimizations
+
+- Centralized format utilities in `resources/client/common/utils/format.ts`
+- React Query defaults set to `staleTime: 5min`, `refetchOnWindowFocus: false`
+- Removed 6 duplicate UI component files
+
+### TypeScript Type Safety
+
+| Category | Before | After |
+|----------|--------|-------|
+| `useState<any>` | 4 instances | 0 instances |
+| `useRef<any>` | 1 instance | 0 instances |
+| `forwardRef<any>` | 1 instance | 0 instances |
+
+### Phase 4: Business-Critical Type Safety
+
+| File | Issue | Fix |
+|------|-------|-----|
+| `use-track-uploader.ts` | `@ts-ignore` on meta | Proper `TrackUploadMeta` type assertion |
+| `enhanced-track-form-upload-button.tsx` | `as any` on form fields | Removed unnecessary casts |
+| `tracks-uploader.tsx` | `as any` on dynamic keys | `Record<string, unknown>` + proper key types |
+| `use-extract-track-file-metadata.ts` | `@ts-ignore` on genres | `NormalizedModel[]` type assertion |
+| `use-update-track-form.ts` | `as any` on display_name | Typed object assertion |
+| `duplicate-detection-warning.tsx` | `as any` on form access | Removed unnecessary casts |
+
+### Mobile Chat Fixes
+
+| Component | Fix |
+|-----------|-----|
+| `messaging-dropdown.tsx` | Visual viewport API for keyboard height, body scroll lock |
+| `chat-view.tsx` | Relative input positioning on mobile, scroll containment classes |
+| `message-input.tsx` | Focus/blur handlers, `scrollIntoView`, 16px font to prevent iOS zoom |
+| `messaging.css` | New utility classes for iOS Safari keyboard and scroll handling |
+
+### Admin Logs Fixes
+
+- Added try-catch wrapper to `ScheduleLogController::index()` with graceful empty state fallback
+- Removed console.log statements from `configured-jobs-section.tsx`
+- Added defensive logging to background jobs to prevent cascade failures
+
+</Accordion>
+
+---
+
+## What's Next
+
+These foundational improvements set the stage for upcoming features and ensure the platform remains fast and reliable as we continue to add new capabilities for producers.
+
+**Coming Soon:**
+- Additional mobile UX improvements
+- Enhanced notification preferences
+- More analytics insights

@@ -1,0 +1,106 @@
+---
+title: "Beat Requests & Payout Notifications"
+description: "A redesigned beat request experience with flexible durations, improved cards, and detailed payout emails"
+date: "2026-01-06"
+severity: "patch"
+image: ""
+audience: "All"
+tags: ["improvement", "ui", "mobile"]
+components: ["player", "stripe-connect", "notifications", "beat-requests"]
+---
+
+We've made significant improvements to the beat request system and added detailed payout notifications for producers. Finding custom beats is now easier than ever, and you'll always know exactly what you're earning.
+
+## Beat Request Improvements
+
+### Flexible Request Durations
+
+You can now choose how long your beat request stays active. Longer durations give producers more time to create and submit beats tailored to your needs.
+
+- **24 hours** — Standard duration (1 token)
+- **48 hours** — Extended time for more responses (2 tokens)
+- **72 hours** — Maximum exposure for complex requests (3 tokens)
+
+### Reference Track Requirement
+
+To help producers understand exactly what you're looking for, reference tracks are now required when submitting a request. Share a YouTube, Spotify, or SoundCloud link to a track that captures the vibe you want.
+
+### Redesigned Request Cards
+
+Beat request cards have been completely redesigned for better readability:
+
+- **Larger user avatars** — See who's looking for beats at a glance
+- **Clear genre and mood tags** — Color-coded chips make specifications easy to scan
+- **Live countdown timer** — Know exactly how much time is left to respond
+- **Submission count** — See how many producers have already responded
+- **Quick reference access** — One-click button to hear the reference track
+
+### Token Status Display
+
+A new token status bar shows your available tokens at a glance:
+
+- **Current token count** — See how many tokens you have remaining
+- **Monthly limit** — Know your plan's monthly allowance
+- **Reset countdown** — See when your tokens refresh
+- **Upgrade prompts** — Easy access to upgrade when you need more tokens
+
+### Better Error Handling
+
+- **Clear validation messages** — Know exactly what's missing before submitting
+- **Token check before submission** — Prevents wasted attempts when out of tokens
+- **Graceful error recovery** — Helpful messages when something goes wrong
+
+### Delete Confirmation
+
+Deleting a beat request now shows a confirmation dialog to prevent accidental deletions. Your token is automatically refunded when you delete an active request.
+
+## Payout Notification Emails
+
+Producers with connected Stripe accounts now receive detailed email notifications about their earnings.
+
+### What You'll Receive
+
+- **Payout initiated** — When a payout is sent to your bank
+- **Payout completed** — Confirmation when funds arrive
+- **Payout failed** — Alert if there's an issue (with next steps)
+- **Account updates** — Important changes to your Stripe account
+
+### Detailed Earnings Breakdown
+
+For subscription revenue payouts, emails now include a complete breakdown:
+
+- **Your platform share** — Your percentage of the subscriber pool
+- **Redistribution bonus** — Extra earnings when other producers haven't connected Stripe
+- **Total payout amount** — The final amount deposited to your account
+- **Billing period** — Which month the earnings are from
+
+### Visual Design
+
+Each email type has its own color theme:
+
+- **Blue** for initiated payouts
+- **Green** for completed payouts
+- **Red** for failed payouts (needs attention)
+- **Orange** for account updates
+
+## What This Means for You
+
+### For Beat Seekers
+
+- **More control** — Choose how long your request stays active
+- **Better matches** — Reference tracks help producers nail your vision
+- **Clearer status** — Always know your token balance and request status
+
+### For Producers
+
+- **Full transparency** — Know exactly what you're earning and why
+- **Redistribution bonuses** — Earn extra when you have Stripe connected
+- **Instant notifications** — Stay informed about every payout
+
+## Timeline
+
+**January 6, 2026** — All improvements deployed and live
+
+---
+
+If you have questions about beat requests or payouts, please [contact support](/contact).

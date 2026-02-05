@@ -1,0 +1,110 @@
+---
+title: "Finances Dashboard Overhaul"
+description: "Complete redesign of the producer finances page with fixed payout logic, accurate transaction display, and premium UI matching the platform design system"
+date: "2026-01-19"
+severity: "patch"
+image: ""
+audience: "Producers"
+tags: ["improvement", "ui", "billing"]
+components: ["producer-dashboard", "stripe-connect"]
+---
+
+Major improvements to the producer finances dashboard at `/producer-dashboard/finances`, including backend payout fixes, accurate transaction display, and a complete UI redesign to match the platform's modern design language.
+
+## Payout System Fixes
+
+### Automatic Transfer Execution
+
+Fixed issues where subscription payout transfers were not executing automatically:
+
+- **Log permission resilience** — Jobs now continue execution even if logging fails, preventing silent transfer failures
+- **Enhanced retry mechanism** — Hourly retry job now catches revenue splits that were never executed (empty/null/pending status)
+- **Platform balance protection** — Pre-transfer balance checks prevent negative balance issues that could freeze payouts
+
+### Track Sales Data Accuracy
+
+Fixed duplicate and missing transaction issues:
+
+- **Eliminated subscription duplicates** — Subscription transfer balance entries no longer appear as fake "Track Sale" items
+- **Strict TrackPurchase matching** — Transaction list now only shows actual track purchases from the database, not random Stripe charges
+- **Track names displayed** — Track sales now show the actual track name instead of "Unknown"
+
+### Finance Dashboard Calculations
+
+Fixed discrepancies between BeatPass and Stripe dashboards:
+
+| Metric | Previous Issue | Fix Applied |
+|--------|----------------|-------------|
+| **Lifetime Volume** | Showed $0 | Now calculated from balance transactions |
+| **Future Payouts** | Showed $0 | Now shows available balance + pending subscription splits |
+| **Track Sales Count** | Included duplicates | Only counts actual TrackPurchase records |
+
+## UI Redesign
+
+### Account Overview Cards
+
+The balance overview section now matches the Performance Overview cards pattern:
+
+- **Header section** — Icon, "Account Overview" title, and "Updated [timestamp]" badge
+- **Grid layout** — 2x2 on mobile, 4-column on desktop
+- **Colored stat cards** — Each metric has a unique color:
+  - Balance (blue)
+  - Upcoming (purple)
+  - In Transit (green)
+  - Lifetime (amber)
+- **Sublabel pills** — Contextual information in matching light colors
+
+### Transactions List
+
+Complete redesign of the transaction list component:
+
+- **Filter tabs** — Styled to match artist profile page tabs with rounded pill design
+- **No UI flashing** — Uses `placeholderData` to maintain previous data during filter changes
+- **Consistent empty state** — Matches artist profile page pattern with nested rounded containers
+- **Clean amount pills** — Removed unnecessary play icon from transaction amounts
+- **Removed divider lines** — Cleaner visual appearance without white separator lines
+
+### How Earnings Work Section
+
+New educational section added below the transactions list explaining payout sources:
+
+| Card | Description | Key Points |
+|------|-------------|------------|
+| **Track Sales** | Direct beat purchases | You set your price and keep 100%, platform fee added on top for buyers |
+| **Subscription Payouts** | Monthly subscriber pool share | Based on your plays vs. total plays, auto-transferred each billing cycle |
+| **Bonus Payouts** | Redistribution earnings | Unclaimed shares from artists without Stripe, shows as +BONUS tag |
+
+### Header Simplification
+
+The finances page header has been streamlined:
+
+- **Subtle design** — Removed heavy gradients, uses clean border styling
+- **Muted colors** — Less prominent green, more neutral tones
+- **Badge redesign** — Compact "FINANCES" and "Active" status badges
+- **Consistent spacing** — Matches Connect Payment Account design language
+
+## Technical Improvements
+
+### Caching & Performance
+
+- **30-second stale time** — Reduces unnecessary API calls when switching between filters
+- **Placeholder data** — Maintains previous results during loading for seamless UX
+- **Efficient track name lookup** — Pre-fetches TrackPurchase records before Stripe charge processing
+
+### Code Quality
+
+- **Centralized charge filtering** — `isTrackPurchaseCharge()` method in StripeFinancesService for consistent logic
+- **Database-first approach** — Transaction list uses TrackPurchase records instead of raw Stripe charges
+- **Removed unused imports** — Cleaned up icon and component imports
+
+## Files Modified
+
+### Backend
+- `app/Http/Controllers/Artist/UnifiedTransactionsController.php` — Fixed track purchase fetching logic
+- `app/Services/Artist/StripeFinancesService.php` — Added centralized charge filtering
+- `app/Services/SubscriptionSplitsService.php` — Enhanced retry mechanism for failed transfers
+
+### Frontend
+- `resources/client/producer-dashboard/components/finances-balance-overview.tsx` — Complete redesign
+- `resources/client/producer-dashboard/components/finances-transaction-list.tsx` — UI overhaul with earnings explanation
+- `resources/client/producer-dashboard/components/finances-header.tsx` — Simplified design
