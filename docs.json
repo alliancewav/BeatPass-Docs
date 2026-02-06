@@ -19,9 +19,11 @@
         "light": "github-light",
         "dark": "one-dark-pro"
       }
-    }
+    },
+    "latex": true
   },
   "fonts": {
+    "family": "Roboto",
     "heading": {
       "family": "Roboto",
       "weight": 600
@@ -32,7 +34,7 @@
     }
   },
   "background": {
-    "decoration": "windows",
+    "decoration": "grid",
     "color": {
       "light": "#FCFEFF",
       "dark": "#050505"
@@ -867,6 +869,11 @@
     }
   },
   "interaction": {
-    "drilldown": true
+    "drilldown": false
+  },
+  "api": {
+    "playground": {
+      "display": "interactive"
+    }
   }
 }
