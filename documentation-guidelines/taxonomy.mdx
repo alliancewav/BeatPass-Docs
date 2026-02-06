@@ -1,0 +1,165 @@
+---
+audience: help
+title: "Release Notes Taxonomy"
+sidebarTitle: "Taxonomy"
+description: "Standardized vocabulary for tagging and categorizing release notes."
+---
+
+# Release Notes Taxonomy
+
+Standardized tags, components, and classifications for consistent release note organization.
+
+---
+
+## Tags (Required)
+
+Choose 1-3 tags per release. First tag should be primary category.
+
+### Primary Categories
+
+| Tag | Use When | Example |
+|-----|----------|---------|
+| `feature` | Brand new functionality | "Added beat request system" |
+| `improvement` | Enhancement to existing feature | "Faster dashboard loading" |
+| `bugfix` | Resolved issue or bug | "Fixed login error" |
+| `security` | Security-related change | "Fixed XSS vulnerability" |
+| `performance` | Speed/efficiency optimization | "Reduced API response time" |
+| `deprecation` | Feature being removed | "Deprecated old API endpoint" |
+| `infrastructure` | Backend/ops changes | "Database migration" |
+| `design` | UI/UX changes | "Redesigned player" |
+
+### Secondary Tags
+
+| Tag | Use When |
+|-----|----------|
+| `breaking` | Changes break existing behavior |
+| `mobile` | Mobile-specific changes |
+| `api` | API-related changes |
+| `analytics` | Analytics/tracking changes |
+
+---
+
+## Components (Optional)
+
+Specify which platform areas are affected.
+
+### User-Facing Components
+
+- `billing` — Payments, subscriptions, invoices
+- `producer-dashboard` — Producer analytics and management
+- `track-upload` — Upload flow and processing
+- `player` — Audio/video player
+- `messaging` — Chat and notifications
+- `artist-profile` — Artist/producer profiles
+- `beat-requests` — Request system
+- `licensing` — License management
+- `search` — Search functionality
+- `playlists` — Playlist features
+- `social` — Following, sharing, engagement
+
+### System Components
+
+- `authentication` — Login, signup, auth flows
+- `api` — Backend APIs
+- `database` — Data storage changes
+- `cache` — Caching layer
+- `notifications` — Email, push, in-app
+- `analytics-backend` — Internal analytics
+- `admin` — Admin panel
+- `stripe-connect` — Producer payouts
+
+---
+
+## Audience
+
+Who needs to know about this release?
+
+| Audience | When to Use |
+|----------|-------------|
+| `All` | Affects everyone (default for most releases) |
+| `Producers` | Only affects beat producers |
+| `Artists` | Only affects artists/listeners |
+| `Admins` | Only internal admin tools |
+| `Developers` | API changes, technical updates |
+
+### Decision Guide
+
+```
+Does it affect the public website/app?
+├── Yes → Does it affect producers?
+│   ├── Yes → "All" or "Producers"
+│   └── No → "Artists"
+└── No → Is it admin-only?
+    ├── Yes → "Admins"
+    └── No → "Developers"
+```
+
+---
+
+## Severity
+
+Impact level of the release.
+
+| Severity | Description | Example |
+|----------|-------------|---------|
+| `major` | Significant new features, breaking changes | New producer dashboard |
+| `minor` | New features, no breaking changes | Added beat requests |
+| `patch` | Bug fixes, small improvements | Fixed mobile player |
+| `hotfix` | Critical fix requiring immediate deployment | Security patch |
+
+---
+
+## Status
+
+Publication workflow state.
+
+| Status | Meaning |
+|--------|---------|
+| `draft` | Work in progress, not ready |
+| `review` | Pending review |
+| `published` | Live and public |
+| `archived` | Old release, superseded |
+
+---
+
+## Examples
+
+### Feature Release
+```yaml
+tags: ["feature", "producers"]
+components: ["beat-requests", "producer-dashboard"]
+audience: "Producers"
+severity: "minor"
+```
+
+### Bug Fix
+```yaml
+tags: ["bugfix", "mobile"]
+components: ["player", "messaging"]
+audience: "All"
+severity: "patch"
+```
+
+### Security Update
+```yaml
+tags: ["security"]
+components: ["authentication", "api"]
+audience: "All"
+severity: "hotfix"
+```
+
+---
+
+## Validation Rules
+
+- Must have at least 1 tag
+- Must have exactly 1 audience
+- Must have exactly 1 severity
+- Tags must be from approved list
+- Components must be from approved list
+
+---
+
+<Info>
+  This taxonomy is versioned. Updates require approval and documentation of changes.
+</Info>

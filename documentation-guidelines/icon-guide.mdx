@@ -1,0 +1,169 @@
+---
+audience: help
+title: "Icon & Visual Standards"
+sidebarTitle: "Icon Guide"
+description: "Consistent icon usage for release notes visual hierarchy."
+---
+
+# Icon & Visual Standards
+
+Consistent visual language for release notes to improve scannability and recognition.
+
+<Warning>
+  **Icon Library: Font Awesome 6 ONLY.** The BeatPass docs are configured with `"icons": { "library": "fontawesome" }` in `docs.json`. Never use Lucide, Heroicons, or any other library's icon names. Verify every icon at [fontawesome.com/icons](https://fontawesome.com/icons) before use.
+</Warning>
+
+---
+
+## By Tag (Primary Icons)
+
+| Tag | Icon | Color | Usage |
+|-----|------|-------|-------|
+| feature | star | #f59e0b (amber) | New functionality |
+| improvement | bolt | #3b82f6 (blue) | Enhancements |
+| bugfix | wrench | #6b7280 (gray) | Fixes |
+| security | shield | #dc2626 (red) | Security items |
+| performance | gauge | #22c55e (green) | Speed improvements |
+| deprecation | triangle-exclamation | #f97316 (orange) | Removals |
+| infrastructure | server | #8b5cf6 (purple) | Backend changes |
+| design | palette | #ec4899 (pink) | UI/UX changes |
+
+---
+
+## By Component
+
+| Component | Icon | Notes |
+|-----------|------|-------|
+| billing | credit-card | Payments, subscriptions |
+| producer-dashboard | chart-bar | Analytics, dashboard |
+| track-upload | cloud-arrow-up | Upload flow |
+| player | circle-play | Audio/video player |
+| messaging | comment | Chat, comments |
+| artist-profile | user | Profiles, bios |
+| beat-requests | music | Request system |
+| licensing | file-lines | Licenses, contracts |
+| search | search | Search features |
+| playlists | list | Playlist management |
+| social | users | Following, sharing |
+| authentication | lock | Login, security |
+| api | code | Technical/API |
+| notifications | bell | Alerts, emails |
+| admin | gear | Admin tools |
+| stripe-connect | wallet | Payouts, banking |
+
+---
+
+## Severity Indicators
+
+| Severity | Badge Color | Icon |
+|----------|-------------|------|
+| major | green | rocket |
+| minor | blue | star |
+| patch | gray | wrench |
+| hotfix | red | circle-exclamation |
+
+---
+
+## Usage Patterns
+
+### In Cards
+
+```mdx
+<Card title="Feature Name" icon="star" color="#f59e0b">
+  Description of the feature
+</Card>
+```
+
+### In Accordions
+
+```mdx
+<Accordion title="Feature Category" icon="bolt">
+  Content here
+</Accordion>
+```
+
+### In Updates
+
+```mdx
+<Update label="Date" tags={["feature"]} icon="star">
+  Update content
+</Update>
+```
+
+---
+
+## Color Accessibility
+
+All color combinations meet WCAG AA standards:
+- Dark text on light backgrounds
+- Icons use high-contrast colors
+- Avoid color-only indicators (always pair with icon or text)
+
+---
+
+## Examples
+
+### Major Release Card
+```mdx
+<Card title="Production Launch" icon="rocket" color="#22c55e">
+  <Badge color="green">v3.0.0</Badge>
+  Major platform release
+</Card>
+```
+
+### Security Update
+```mdx
+<Card title="Security Patch" icon="shield" color="#dc2626">
+  <Badge color="red">HOTFIX</Badge>
+  Critical vulnerability fixed
+</Card>
+```
+
+### Feature List
+```mdx
+<AccordionGroup>
+  <Accordion title="Beat Requests" icon="music">
+    New request system for producers
+  </Accordion>
+  <Accordion title="Dashboard" icon="chart-bar">
+    Producer analytics overhaul
+  </Accordion>
+</AccordionGroup>
+```
+
+---
+
+## Prohibited Icons
+
+Don't use:
+- Emoji (🎉, 🔥, etc.) — inconsistent rendering
+- Custom SVGs — maintenance burden
+- Text-only indicators — accessibility issues
+- Animated icons — distracting
+- **Lucide icon names** — wrong library, will silently fail to render
+- **Deprecated Font Awesome 4/5 names** — may not exist in FA6
+
+Stick to **Font Awesome 6** icon names only. Verify at [fontawesome.com/icons](https://fontawesome.com/icons).
+
+---
+
+## Common Lucide → FA6 Mistakes
+
+These Lucide names are frequently used by mistake. Always use the FA6 equivalent:
+
+| ❌ Wrong (Lucide) | ✅ Correct (FA6) | Context |
+|---|---|---|
+| `zap` | `bolt` | Improvements |
+| `alert-triangle` | `triangle-exclamation` | Deprecations |
+| `alert-circle` | `circle-exclamation` | Hotfixes |
+| `cloud-upload` | `cloud-arrow-up` | Upload flow |
+| `message-square` | `comment` | Messaging |
+| `file-text` | `file-lines` | Licensing |
+| `play-circle` | `circle-play` | Player |
+| `settings` | `gear` | Admin |
+| `bar-chart` | `chart-bar` | Analytics |
+| `scale` | `scale-balanced` | Legal |
+| `edit` | `pen-to-square` | Editing |
+| `trash-2` | `trash-can` | Deletion |
+| `monitor` | `desktop` | Sessions |
+| `disc` | `compact-disc` | Tracks/albums |

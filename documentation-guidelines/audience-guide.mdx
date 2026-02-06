@@ -1,0 +1,195 @@
+---
+audience: help
+title: "Audience Selection Guide"
+sidebarTitle: "Audience Guide"
+description: "How to choose the right audience for your release note."
+---
+
+# Audience Selection Guide
+
+Clear decision framework for targeting release notes to the right users.
+
+---
+
+## Quick Decision Tree
+
+```
+Does this change affect the public platform?
+│
+├── YES → Does it require a paid subscription?
+│   │
+│   ├── YES → Does it specifically affect producers?
+│   │   │
+│   │   ├── YES → "Producers"
+│   │   │   (Examples: dashboard, uploads, payouts, analytics)
+│   │   │
+│   │   └── NO → "All"
+│   │       (Examples: billing, subscriptions, general features)
+│   │
+│   └── NO → "Artists"
+│       (Examples: player improvements, free tier features)
+│
+└── NO → Is this an admin/internal tool?
+    │
+    ├── YES → "Admins"
+    │   (Examples: moderation tools, admin dashboard, reports)
+    │
+    └── NO → "Developers"
+        (Examples: API changes, webhooks, technical updates)
+```
+
+---
+
+## Detailed Breakdown
+
+### "All" — Default Choice
+
+**Use when:**
+- Feature is visible to all users
+- Change affects both producers and artists
+- General platform improvements
+- Billing/subscription changes
+
+**Examples:**
+- Login system updates
+- Homepage redesign
+- Search improvements
+- Payment processor changes
+- New genres/categories
+
+### "Producers" — Creator-Focused
+
+**Use when:**
+- Only producers can access the feature
+- Upload-related changes
+- Analytics/dashboard updates
+- Payout/stripe changes
+- Beat request system
+
+**Examples:**
+- New upload validation
+- Dashboard analytics
+- Producer profile features
+- Stripe Connect updates
+- Exclusive licensing tools
+
+### "Artists" — Listener-Focused
+
+**Use when:**
+- Free tier features
+- Player improvements
+- Discovery features
+- Playlist functionality
+- Mobile app (listening side)
+
+**Examples:**
+- New player design
+- Playlist improvements
+- Recommendation engine
+- Download features (for listeners)
+- Social features (following, likes)
+
+### "Admins" — Internal Tools
+
+**Use when:**
+- Backend admin panel changes
+- Moderation tools
+- Internal reports
+- User management
+- Content moderation
+
+**Examples:**
+- New admin reports
+- Moderation dashboard
+- User suspension tools
+- Bulk operations
+- Analytics exports
+
+### "Developers" — Technical/API
+
+**Use when:**
+- API changes
+- Webhook updates
+- Technical documentation
+- Integration changes
+- SDK updates
+
+**Examples:**
+- API version changes
+- New endpoints
+- Deprecation notices
+- Webhook format changes
+- Authentication updates
+
+---
+
+## Common Mistakes
+
+### ❌ Wrong: Too Broad
+```yaml
+audience: "All"  # When it's really just for producers
+```
+
+### ❌ Wrong: Too Narrow
+```yaml
+audience: "Producers"  # When billing changes affect all paying users
+```
+
+### ✅ Right: Precise Targeting
+```yaml
+# New dashboard feature only producers see
+audience: "Producers"
+
+# Billing changes affect all subscribers
+audience: "All"
+
+# Admin-only moderation tool
+audience: "Admins"
+```
+
+---
+
+## Edge Cases
+
+### Producer + Artist Features
+Choose "All" if both groups actively use the feature.
+
+Example: New profile customization that both producers and artists have.
+
+### Free vs Paid Features
+- Free features → "Artists" or "All"
+- Paid features → "All" (since free users might upgrade)
+
+### Behind-the-Scenes Changes
+- Infrastructure → "All" (if affects performance)
+- Pure backend → Don't write a release note
+
+---
+
+## Examples from Production
+
+| Release | Correct Audience | Why |
+|---------|-----------------|-----|
+| Producer Dashboard overhaul | Producers | Producer-only tool |
+| Beat Request system | Producers | Producer-only feature |
+| Mobile player improvements | Artists | Listening experience |
+| Stripe Connect integration | Producers | Payouts for producers |
+| Billing security update | All | Affects all subscribers |
+| Admin moderation tools | Admins | Internal-only |
+| API deprecation | Developers | Technical/API change |
+| New genre categories | All | Affects discovery for everyone |
+
+---
+
+## Testing Your Choice
+
+Ask yourself:
+1. "Would a free-tier artist care about this?"
+2. "Would a producer be confused if they didn't see this?"
+3. "Is this just for our internal team?"
+4. "Would a developer need to know this to maintain an integration?"
+
+If yes to #1 → "All" or "Artists"
+If yes to #2 → "Producers"
+If yes to #3 → "Admins"
+If yes to #4 → "Developers"

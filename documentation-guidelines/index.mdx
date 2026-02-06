@@ -1,0 +1,208 @@
+---
+audience: help
+title: "Release Notes System"
+sidebarTitle: "System Overview"
+description: "Complete guide to the BeatPass release notes system."
+---
+
+# Release Notes System
+
+Everything you need to create consistent, high-quality release notes.
+
+<Note>
+  This section is for documentation maintainers and AI agents creating release notes.
+</Note>
+
+---
+
+## Quick Start
+
+**For AI Agents:**
+1. Read [AI Agent Guide](/help/release-notes/_meta/AI-AGENT-GUIDE)
+2. Select appropriate template from below
+3. Follow the 6-step process
+4. Validate against checklists
+
+**For Humans:**
+1. Read [Playbook](/help/release-notes/_meta/PLAYBOOK) for workflow
+2. Keep [Quick Reference](/help/release-notes/_meta/QUICKREF) open while writing
+3. Follow [Style Guide](/help/release-notes/_meta/STYLE) for writing standards
+
+---
+
+## Templates
+
+Choose based on release type:
+
+<CardGroup cols={2}>
+  <Card title="General Template" icon="file" href="/help/release-notes/_meta/template">
+    Standard improvements and bug fixes
+  </Card>
+  <Card title="Feature Template" icon="star" href="/help/release-notes/_meta/template-feature">
+    New features and capabilities
+  </Card>
+  <Card title="Major Release" icon="rocket" href="/help/release-notes/_meta/template-major-release">
+    Version launches and major updates
+  </Card>
+  <Card title="Hotfix" icon="circle-exclamation" href="/help/release-notes/_meta/template-hotfix">
+    Critical urgent fixes
+  </Card>
+  <Card title="Security" icon="shield" href="/help/release-notes/_meta/template-security">
+    Security updates and patches
+  </Card>
+</CardGroup>
+
+---
+
+## Reference Guides
+
+<CardGroup cols={2}>
+  <Card title="Taxonomy" icon="tag" href="/help/release-notes/_meta/taxonomy">
+    Tags, components, and classifications
+  </Card>
+  <Card title="Style Guide" icon="pen" href="/help/release-notes/_meta/style">
+    Writing standards and rules
+  </Card>
+  <Card title="Quick Reference" icon="bolt" href="/help/release-notes/_meta/quickref">
+    One-page cheat sheet
+  </Card>
+  <Card title="Audience Guide" icon="users" href="/help/release-notes/_meta/audience-guide">
+    How to choose the right audience
+  </Card>
+  <Card title="Icon Guide" icon="image" href="/help/release-notes/_meta/icon-guide">
+    Visual standards and color codes
+  </Card>
+  <Card title="Playbook" icon="book" href="/help/release-notes/_meta/playbook">
+    Complete workflow from start to finish
+  </Card>
+  <Card title="Verification Standards" icon="shield-check" href="/help/release-notes/_meta/verification">
+    Mandatory verification for accuracy
+  </Card>
+  <Card title="Mintlify Components" icon="code" href="/help/release-notes/_meta/mintlify-reference">
+    Approved components for release notes
+  </Card>
+</CardGroup>
+
+---
+
+## AI Agent Resources
+
+<Card title="AI Agent Guide" icon="bot" href="/help/release-notes/_meta/AI-AGENT-GUIDE">
+  Complete prompt and process for AI-generated release notes
+</Card>
+
+---
+
+## File Organization
+
+```
+release-notes/
+├── _meta/                     # This documentation
+│   ├── index.mdx              # This file
+│   ├── AI-AGENT-GUIDE.md      # AI agent instructions (all doc types)
+│   ├── DOCUMENTATION-STANDARDS.md  # Universal standards
+│   ├── NEW-DOC-GUIDE.md       # Creating new docs
+│   ├── UPDATE-GUIDE.md        # Updating existing docs
+│   ├── PLAYBOOK.md            # Human workflow
+│   ├── STYLE.md               # Writing standards
+│   ├── QUICKREF.md            # One-page reference
+│   ├── VERIFICATION.md        # Mandatory verification steps
+│   ├── MINTLIFY-REFERENCE.md  # Component reference
+│   ├── taxonomy.mdx           # Tags & components
+│   ├── audience-guide.mdx     # Audience selection
+│   ├── icon-guide.mdx         # Visual standards
+│   ├── template.mdx           # Base template
+│   ├── template-feature.mdx   # Feature template
+│   ├── template-major-release.mdx  # Major release template
+│   ├── template-hotfix.mdx    # Hotfix template
+│   └── template-security.mdx  # Security template
+├── _archive/                  # Pre-2024 releases
+├── 2025/                      # 2025 releases
+├── 2026/                      # 2026 releases
+├── index.mdx                  # Main release notes landing
+└── template.mdx               # Legacy template (for reference)
+```
+
+---
+
+## Standards at a Glance
+
+| Aspect | Standard |
+|--------|----------|
+| **File naming** | `YYYY-MM-DD-short-title.mdx` |
+| **Length** | 200-400 words |
+| **Voice** | Active, user-focused |
+| **Tense** | Present for features, past for fixes |
+| **Audience** | You, not we |
+| **UI refs** | Bold exact labels |
+| **Icons** | Mintlify built-in only |
+| **Tags** | From taxonomy only |
+
+---
+
+## Common Workflows
+
+### Creating a New Feature Release
+
+1. Open `template-feature.mdx`
+2. Fill in frontmatter using `taxonomy.mdx`
+3. Write sections following `STYLE.md`
+4. Validate with `QUICKREF.md` checklist
+5. Place in correct folder
+
+### Writing a Security Update
+
+1. Open `template-security.mdx`
+2. Fill vulnerability details
+3. Include impact assessment table
+4. Add timeline
+5. Mark as `hotfix` severity
+6. Publish immediately
+
+### Batch Writing Multiple Releases
+
+1. Keep `QUICKREF.md` open
+2. Use consistent tags from taxonomy
+3. Follow same structure for each
+4. Validate each against checklist
+5. Update indices when done
+
+---
+
+## Validation Checklist
+
+Before any release note is complete:
+
+- [ ] Follows selected template
+- [ ] All frontmatter fields valid
+- [ ] Tags from approved taxonomy
+- [ ] Audience appropriate
+- [ ] No internal jargon
+- [ ] UI references exact and bold
+- [ ] Length 200-400 words
+- [ ] Benefits clear in first sentences
+- [ ] Instructions actionable
+- [ ] Breaking changes documented (if any)
+- [ ] File named correctly
+- [ ] In correct folder location
+
+---
+
+## Need Help?
+
+- **Questions about taxonomy?** → [Taxonomy guide](/help/release-notes/_meta/taxonomy)
+- **Unsure about style?** → [Style guide](/help/release-notes/_meta/style)
+- **Don't know workflow?** → [Playbook](/help/release-notes/_meta/playbook)
+- **Quick lookup needed?** → [Quick reference](/help/release-notes/_meta/quickref)
+- **Creating NEW documentation?** → [New Doc Guide](/help/release-notes/_meta/NEW-DOC-GUIDE)
+- **UPDATING existing docs?** → [Update Guide](/help/release-notes/_meta/UPDATE-GUIDE)
+- **AI generation issues?** → [AI Agent Guide](/help/release-notes/_meta/AI-AGENT-GUIDE)
+- **Need universal standards?** → [Documentation Standards](/help/release-notes/_meta/DOCUMENTATION-STANDARDS)
+- **Need to verify features?** → [Verification Standards](/help/release-notes/_meta/verification)
+- **Component questions?** → [Mintlify Reference](/help/release-notes/_meta/mintlify-reference)
+
+---
+
+<Info>
+  This system ensures every release note is consistent, clear, and user-focused. Follow the guides and your release notes will meet BeatPass quality standards.
+</Info>
