@@ -4,9 +4,9 @@
   "name": "BeatPass",
   "description": "Help Center and Developer Docs for BeatPass - the beat licensing and music collaboration platform for producers, artists, and curators.",
   "colors": {
-    "primary": "#034D75",
+    "primary": "#69A5C8",
     "light": "#034D75",
-    "dark": "#56A8D4"
+    "dark": "#69A5C8"
   },
   "appearance": {
     "default": "dark"

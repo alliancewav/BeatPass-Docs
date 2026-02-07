@@ -1,0 +1,30 @@
+/* ==========================================================================
+   BeatPass Documentation — Dark & Light Mode Overrides
+   WCAG AAA Compliant | All text contrasts ≥ 7:1
+   ========================================================================== */
+
+/* --- Dark Mode --- */
+
+/* Banner: use a deep muted blue instead of the flashy accent color.
+   White text on #1A3A50 → contrast 12.1:1 (AAA) */
+.dark #banner {
+  background-color: #1A3A50 !important;
+}
+
+/* CTA button: harmonize with the softer accent palette */
+.dark #topbar-cta-button {
+  border-color: #69A5C8 !important;
+  color: #69A5C8 !important;
+}
+.dark #topbar-cta-button:hover {
+  background-color: rgba(105, 165, 200, 0.12) !important;
+}
+
+/* --- Light Mode --- */
+
+/* Banner: deep teal background matching the light-mode accent.
+   White text on #034D75 → contrast 9.0:1 (AAA) */
+.light #banner,
+:not(.dark) #banner {
+  background-color: #034D75 !important;
+}
