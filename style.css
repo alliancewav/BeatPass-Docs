@@ -1,7 +1,9 @@
 /* ==========================================================================
-   BeatPass Documentation — WCAG AAA Compliant Theme
-   Colors configured in docs.json:
-     Light mode: #034D75 (9.0:1 on #FCFEFF)
-     Dark mode:  #7AB8DA (9.15:1 on #0A0A0A)
-   No CSS overrides needed — Mintlify applies colors natively.
+   BeatPass Documentation — Custom Styles
+   WCAG AAA Compliant | All accent text contrasts ≥ 7:1
+   
+   Color mapping (docs.json → CSS variables):
+     colors.primary  #3B8CB8 → --primary       (general use)
+     colors.light    #7AB8DA → --primary-light  (text on dark backgrounds, 9.15:1 AAA)
+     colors.dark     #034D75 → --primary-dark   (text on light backgrounds, 9.0:1 AAA)
    ========================================================================== */
