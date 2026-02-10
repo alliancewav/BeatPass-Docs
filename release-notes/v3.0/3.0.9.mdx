@@ -1,22 +1,22 @@
 ---
-title: "Beat Request Overhaul"
+title: "Beat Request Overhaul & Platform Polish"
 date: "2026-02-09"
 severity: "minor"
 version: "3.0.9"
 audience: "All"
 tags: ["feature", "improvement", "bugfix"]
-components: ["beat-requests", "token-system", "submissions"]
+components: ["beat-requests", "token-system", "submissions", "producer-dashboard", "pricing", "library", "player"]
 status: "published"
 related: []
 ---
 
 import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
 
-# Beat Request Overhaul
+# Beat Request Overhaul & Platform Polish
 
 ## Summary
 
-A comprehensive audit and upgrade of the Beat Request system — fixing critical token accounting bugs, adding new producer submission safeguards, and redesigning the feed and submission experience for both requesters and producers.
+A comprehensive audit and upgrade of the Beat Request system alongside platform-wide visual consistency improvements, a critical pricing page fix, and dozens of code quality enhancements across the Producer Dashboard, library, player, and analytics.
 
 ---
 
@@ -62,6 +62,35 @@ A comprehensive audit and upgrade of the Beat Request system — fixing critical
 - **New submissions endpoint** — Request owners can now view submitted tracks directly (track name, producer name, timestamp)
 - **Duration-aware copy** — All UI text now reflects the correct duration tier instead of hardcoded "24 hours"
 
+### Producer Dashboard — Visual Consistency
+
+A platform-wide harmonization pass across 50+ components in the Producer Dashboard and Beat Requests interface:
+
+- **Unified icon library** — All dashboard icons now use a single consistent icon set with standardized sizing across every section
+- **Semantic color tokens** — Replaced hardcoded color values with theme-aware tokens that adapt correctly to both light and dark mode
+- **Dark mode fixes** — Fixed elements in the Beat Requests interface that only rendered correctly in dark mode (backgrounds, borders, dividers)
+- **Consistent card styling** — Dashboard sections now share a unified card wrapper with consistent padding, borders, and header layouts
+- **Header gradient overlays** — Page headers use theme-aware gradient overlays instead of hardcoded black/white values
+- **Shared utility components** — New reusable components for page headers, section cards, stat grids, and number formatting reduce visual drift between pages
+
+### Pricing Page Fix
+
+- **Page loading restored** — Fixed a critical issue that could prevent the **Pricing** page from rendering correctly, showing an error instead of the plan comparison grid
+
+### Code Quality & Accessibility
+
+- **Locale-aware formatting** — Percentages and numbers in analytics charts now display correctly for all regions and languages
+- **Internationalization** — Transaction history labels and filter buttons in **Finances** are now fully translatable
+- **Accessibility** — Interactive filter buttons in the finances section now include proper state indicators for screen readers
+- **Duplicate CSS cleanup** — Removed redundant border, ring, and spacing classes across dashboard components for cleaner rendering
+- **Error monitoring** — Improved error capture in the audio player and post-purchase flows so issues surface faster
+
+### Playback & Library
+
+- **Play count display** — Fixed play count formatting in the hero carousel to show accurate, readable numbers
+- **Library lyrics count** — The lyrics page header now shows the correct count when filtering or searching your saved lyrics
+- **Dead code removed** — Cleaned up unused legacy files and redundant component props across the player and library
+
 ---
 
 ## Why It Matters
@@ -69,6 +98,8 @@ A comprehensive audit and upgrade of the Beat Request system — fixing critical
 - **Producers** get a faster, smarter submission flow with safeguards against duplicates and clearer feedback
 - **Requesters** can browse and manage requests more efficiently with filters, tabs, and accurate token tracking
 - **Everyone** benefits from correct multi-token accounting — no more lost tokens when deleting or failing to create higher-tier requests
+- **Visual consistency** — The Producer Dashboard and Beat Requests interface look polished in both light and dark mode
+- **Reliability** — The pricing page, analytics charts, and audio player are more stable with improved error handling
 
 ---
 
@@ -105,6 +136,12 @@ A comprehensive audit and upgrade of the Beat Request system — fixing critical
   </Card>
   <Card title="Understanding Tokens" icon="coins" href="/help/beat-requests/understanding-tokens">
     How the token system works
+  </Card>
+  <Card title="Producer Dashboard" icon="chart-bar" href="/help/producer-dashboard">
+    Overview of the Producer Dashboard and its sections
+  </Card>
+  <Card title="Plans & Pricing" icon="credit-card" href="/help/plans-and-pricing">
+    Compare plans and see token allowances
   </Card>
   <Card title="Managing Requests" icon="list-check" href="/help/beat-requests/managing-requests">
     View, track, and delete your requests
