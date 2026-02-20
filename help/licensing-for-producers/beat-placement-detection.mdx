@@ -1,0 +1,176 @@
+---
+audience: help
+title: "Beat Placement Detection"
+description: "How BeatPass automatically detects when your beats are used in songs on Spotify, YouTube, and Deezer."
+keywords: ["beat placement", "BeatPassID", "placement detection", "streaming", "license verification", "sample-safe"]
+"og:title": "Beat Placement Detection - BeatPass Help"
+"og:description": "Learn how BeatPass scans streaming platforms to find songs that use your beats."
+---
+
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
+BeatPass automatically scans global music databases to detect when your beats appear in songs released on Spotify, YouTube, and Deezer. This feature is available exclusively for verified producer profiles.
+
+## How It Works
+
+BeatPass uses <Tooltip tip="BeatPass's audio fingerprinting technology that creates a unique digital signature of your beat's audio waveform.">BeatPassID</Tooltip> fingerprinting technology to compare your uploaded beats against millions of songs across major streaming platforms. When a match is found, you're notified with full details about the song, the releasing artist, and where to listen.
+
+<Steps>
+  <Step title="Your beat is fingerprinted">
+    When you upload a beat, BeatPassID creates a unique audio fingerprint — a digital signature of your beat's sound.
+  </Step>
+
+  <Step title="Monthly scanning">
+    BeatPass automatically scans your beats against global music databases each month. No action is required from you.
+  </Step>
+
+  <Step title="Match detected">
+    When a song on Spotify, YouTube, or Deezer matches your beat's audio fingerprint, a placement is recorded.
+  </Step>
+
+  <Step title="You're notified">
+    You receive an in-app notification and an email with the song details, streaming links, and match confidence score.
+  </Step>
+</Steps>
+
+## Requirements
+
+To use beat placement detection, you need:
+
+- A **verified producer profile** — [Request verification](https://open.beatpass.ca/backstage/requests/verify-artist) if you haven't already
+- At least one **uploaded beat** hosted on BeatPass (not external links)
+- A completed **audio fingerprint** for your beat (generated automatically on upload)
+
+<Info>
+  For collaborative beats, only one producer on the track needs to be verified for the scan to run. All producers linked to the beat are notified when a placement is found — even if they aren't individually verified.
+</Info>
+
+## Viewing Your Placements
+
+When placements are detected, they appear in the **Heard In** section on your track page.
+
+Each placement shows:
+
+- **Song title and artist** — The name of the song and who released it
+- **Confidence score** — How closely the song matches your beat (80% minimum to display)
+- **Streaming links** — Direct links to listen on Spotify, YouTube, and Deezer
+- **Release date** — When the song was published
+- **Album and label** — Additional release information when available
+
+<Note>
+  Only you and other producers credited on the beat can see the **Heard In** section. It's not visible to listeners or other users.
+</Note>
+
+## Understanding Confidence Scores
+
+The confidence score indicates how closely a detected song matches your beat's audio fingerprint:
+
+| Score | Meaning |
+|-------|---------|
+| **90–100%** | Very high match — the song almost certainly uses your beat |
+| **80–89%** | High match — the song likely uses your beat, worth verifying |
+
+Only matches with 80% or higher confidence are shown. Lower-confidence matches are filtered out to reduce false positives.
+
+## Notifications
+
+When a new placement is detected, you receive:
+
+- **In-app notification** — Visible in your notification center (bell icon)
+- **Email notification** — Detailed email with streaming links, placement information, and verification guidance
+
+You can manage these notifications from your [notification preferences](https://open.beatpass.ca/notifications/settings). Beat Placement Detection notifications appear under the **Beat Placement Detection** group, which is available for verified producers.
+
+## Verifying a Placement
+
+When you receive a placement notification, take these steps to verify it:
+
+<Steps>
+  <Step title="Listen to the song">
+    Use the streaming links in your notification or on the track page to listen and confirm the song uses your beat.
+  </Step>
+
+  <Step title="Check your download history">
+    If the user obtained your beat through BeatPass, a <Tooltip tip="An automatically generated legal document proving the user has the right to use your beat, including audio fingerprint verification.">license certificate</Tooltip> was created at the time of download and you would have received a download notification email.
+  </Step>
+
+  <Step title="Contact the user if needed">
+    If you don't recognize the placement or didn't receive a download notification, reach out to the releasing artist directly to request proof of a valid BeatPass license.
+  </Step>
+
+  <Step title="Contact support for unauthorized use">
+    If you believe your beat was used without a valid license, contact BeatPass support. We can verify licensing records and help you with next steps.
+  </Step>
+</Steps>
+
+## How This Connects to BeatPass Licensing
+
+Beat placement detection works alongside BeatPass's existing licensing infrastructure:
+
+### License Certificates
+
+Every beat downloaded through BeatPass generates an automatic <Tooltip tip="An official document proving someone has the right to use your beat, including a unique License ID, terms, and BeatPassID audio fingerprint.">license certificate</Tooltip>. When you see a placement, you can cross-reference it with your download notifications and license records to confirm whether the user obtained your beat legitimately.
+
+Learn more: [License Certificates](/help/licensing-for-producers/license-certificates)
+
+### BeatPassID Fingerprinting
+
+The same <Tooltip tip="BeatPass's audio fingerprinting technology that creates a unique digital signature of your beat's audio waveform.">BeatPassID</Tooltip> technology that powers license certificate verification also powers placement detection. Your beat's audio fingerprint is compared against streaming catalogs to identify matches.
+
+### Sample-Safe Warranty
+
+BeatPass beats come with a <Tooltip tip="A guarantee that the beat was originally produced and uploaded by the credited producer, backed by BeatPassID audio fingerprint verification.">sample-safe warranty</Tooltip> — meaning the beat was originally produced and uploaded by the credited producer, backed by BeatPassID verification. If a placement is found and the user has a valid BeatPass license, both parties are protected by the platform's licensing terms.
+
+## Scanning Schedule
+
+- Scans run **automatically each month** — no manual action required
+- Each scan compares your beats against the latest streaming catalog data
+- New placements are detected as songs are added to Spotify, YouTube, and Deezer
+- You're only notified once per new placement (rescans don't trigger duplicate notifications)
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="Why don't I see the Heard In section on my track?">
+    The **Heard In** section only appears for producers who uploaded the beat. If you're a verified producer and don't see it, your beat may not have been scanned yet (scans run monthly) or no placements have been detected.
+  </Accordion>
+
+  <Accordion title="Can I trigger a scan manually?">
+    Scans are automated and run monthly. You cannot trigger a manual scan at this time.
+  </Accordion>
+
+  <Accordion title="What if I'm not verified?">
+    Beat placement detection requires a verified producer profile. You can [request verification](https://open.beatpass.ca/backstage/requests/verify-artist) from your Backstage area. Once verified, your beats will be included in the next monthly scan.
+  </Accordion>
+
+  <Accordion title="What if someone used my beat without a license?">
+    Contact BeatPass support with the placement details. We can check our licensing records to verify whether a valid license exists. If the use is unauthorized, we can advise you on next steps.
+  </Accordion>
+
+  <Accordion title="Does this work for collaborative beats?">
+    Yes. For collaborative beats, only one credited producer needs to be verified for the beat to be scanned. All credited producers with BeatPass accounts are notified when a placement is found, regardless of their individual verification status.
+  </Accordion>
+
+  <Accordion title="What streaming platforms are covered?">
+    BeatPass currently scans against Spotify, YouTube, and Deezer catalogs. Additional platforms may be added in the future.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="License Certificates" icon="file-certificate" href="/help/licensing-for-producers/license-certificates">
+    Learn about the certificates issued when your beats are licensed
+  </Card>
+  <Card title="Licensing for Producers" icon="scale-balanced" href="/help/licensing-for-producers">
+    Overview of how licensing works on BeatPass
+  </Card>
+  <Card title="Notification Preferences" icon="bell" href="/help/notifications">
+    Manage which notifications you receive
+  </Card>
+  <Card title="Request Verification" icon="circle-check" href="https://open.beatpass.ca/backstage/requests/verify-artist">
+    Apply for a verified producer profile
+  </Card>
+</CardGroup>
+
+<NeedHelp />

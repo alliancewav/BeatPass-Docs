@@ -1,0 +1,109 @@
+---
+title: "Beat Placement Detection"
+date: "2026-02-20"
+severity: "minor"
+version: "3.1.0"
+audience: "Producers"
+tags: ["feature", "notifications", "bugfix"]
+components: ["track-page", "notifications", "email", "scanner", "stripe-connect"]
+status: "published"
+related: []
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# Beat Placement Detection
+
+## Summary
+
+BeatPass now automatically detects when your beats are used in songs released on Spotify, YouTube, and Deezer. Powered by <Tooltip tip="BeatPass's audio fingerprinting technology that creates a unique digital signature of your beat's audio waveform.">BeatPassID</Tooltip> fingerprinting, this feature scans streaming catalogs monthly and notifies you with full song details, streaming links, and a confidence score — so you always know where your beats end up.
+
+---
+
+## What's New
+
+- **Automatic beat scanning** — Your uploaded beats are compared against millions of songs on Spotify, YouTube, and Deezer each month
+- **Heard In section** — A new producer-only section on your track page shows all detected placements with song title, artist, confidence score, and streaming links
+- **Placement notifications** — Receive in-app and email notifications when a new placement is detected, with direct links to listen and verify
+- **Verification guidance** — Each notification includes instructions to confirm whether the placement is a licensed use, and how to contact support if it isn't
+- **Collaborative beat support** — For beats with multiple credited producers, only one needs a verified profile for the beat to be scanned. All credited producers with accounts are notified
+- **Notification preferences** — Control placement notifications from your [notification preferences](https://open.beatpass.ca/notifications/settings) under the **Beat Placement Detection** group
+
+---
+
+## Why It Matters
+
+- **Protect your work** — Know when your beats appear in released music, whether or not it was licensed through BeatPass
+- **Verify licensing** — Cross-reference placements with your download notifications and license certificates to confirm authorized use
+- **Take action on unauthorized use** — If a placement doesn't have a valid license, BeatPass support can help you with next steps
+- **Zero effort** — Scans run automatically each month. No setup, no manual checking
+
+---
+
+## How to Use
+
+<Steps>
+  <Step title="Get verified">
+    If you don't have a verified producer profile yet, [request verification](https://open.beatpass.ca/backstage/requests/verify-artist) from your Backstage area.
+  </Step>
+
+  <Step title="Upload beats">
+    Upload your beats through Backstage. BeatPassID automatically fingerprints each track on upload.
+  </Step>
+
+  <Step title="Wait for the next scan">
+    Scans run monthly. When a match is found, you'll see it in the **Heard In** section on your track page and receive a notification.
+  </Step>
+
+  <Step title="Verify the placement">
+    Listen to the matched song using the streaming links. Check your download notifications to confirm the user has a valid BeatPass license. Contact support if the use appears unauthorized.
+  </Step>
+</Steps>
+
+---
+
+## Who Can Use This
+
+| Requirement | Details |
+|-------------|---------|
+| **Profile type** | Verified producer profile required |
+| **Beat hosting** | Beats must be uploaded to BeatPass (not external links) |
+| **Platforms scanned** | Spotify, YouTube, Deezer |
+| **Scan frequency** | Monthly, automatic |
+| **Minimum confidence** | 80% match required to display |
+
+---
+
+## Bug Fixes
+
+### Stripe Connect Onboarding Popup
+
+Fixed a bug where the **Connect Your Payment Account** popup was appearing for regular users who do not have a producer (artist) profile. The popup — and the underlying API call to check Stripe Connect status — now only triggers for users who:
+
+1. **Have a linked artist profile** on BeatPass
+2. **Have not yet completed** Stripe Connect onboarding (account not connected, or charges/payouts not enabled)
+
+Previously, the popup would fire for every logged-in user, causing repeated `404` errors on the `/artist/stripe-connect/status` endpoint for non-producer accounts. This is now fully gated behind an artist profile check at three independent layers: the API query, the modal timer, and the render guard.
+
+<Info>If you are a regular listener or subscriber without a producer profile, you will never see this popup. Producers who have already connected their Stripe account will also not see it.</Info>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Beat Placement Detection" icon="radar" href="/help/licensing-for-producers/beat-placement-detection">
+    Full documentation for the beat placement detection feature
+  </Card>
+  <Card title="License Certificates" icon="file-certificate" href="/help/licensing-for-producers/license-certificates">
+    How license certificates work and how to verify them
+  </Card>
+  <Card title="Licensing for Producers" icon="scale-balanced" href="/help/licensing-for-producers">
+    Overview of licensing on BeatPass
+  </Card>
+  <Card title="Notification Preferences" icon="bell" href="/help/notifications">
+    Manage your notification settings
+  </Card>
+</CardGroup>
+
+<ReleaseFeedback />

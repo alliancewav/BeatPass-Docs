@@ -23,7 +23,6 @@
     "latex": true
   },
   "fonts": {
-    "family": "Roboto",
     "heading": {
       "family": "Roboto",
       "weight": 600
@@ -323,6 +322,7 @@
                   "help/licensing-for-producers/non-exclusive-licenses",
                   "help/licensing-for-producers/when-beat-sells",
                   "help/licensing-for-producers/license-certificates",
+                  "help/licensing-for-producers/beat-placement-detection",
                   {
                     "group": "Exclusive Licenses",
                     "pages": [
@@ -582,6 +582,7 @@
               {
                 "group": "February 2026",
                 "pages": [
+                  "release-notes/v3.0/3.1.0",
                   "release-notes/v3.0/3.0.9",
                   "release-notes/v3.0/3.0.8-25",
                   "release-notes/v3.0/3.0.8-24",
@@ -879,10 +880,12 @@
     "drilldown": false
   },
   "api": {
-    "baseUrl": "https://open.beatpass.ca/api/v1",
-    "auth": {
-      "method": "bearer",
-      "name": "Authorization"
+    "mdx": {
+      "server": "https://open.beatpass.ca/api/v1",
+      "auth": {
+        "method": "bearer",
+        "name": "Authorization"
+      }
     },
     "playground": {
       "display": "interactive",
