@@ -1,0 +1,96 @@
+---
+title: "Collection Track Picker Improvements"
+date: "2026-05-27"
+severity: "patch"
+version: "3.1.9"
+audience: "Producers"
+tags: ["feature", "bugfix", "improvement", "producer"]
+components: ["backstage", "collections", "tracks"]
+status: "published"
+related: ["3.1.8"]
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# Collection Track Picker Improvements
+
+## Summary
+
+BeatPass now gives producers a more reliable way to add existing tracks to collections from **Backstage** and from track menus. You can find tracks even when they already belong to another collection, include collaborative tracks credited to your producer profile, and confirm any move before it happens.
+
+---
+
+## What's New
+
+- **Add existing tracks finds more of your catalog** - Tracks already assigned to another collection can now appear in search instead of being hidden
+- **Large catalogs load more smoothly** - The picker loads results progressively, so producers with hundreds or thousands of tracks are not limited to the first page of results
+- **Collaborative tracks are easier to add** - Tracks credited to your producer profile can appear even when another account uploaded them
+- **Collection status is clearer** - Tracks show whether they are available, already in the current collection, or assigned to another collection
+- **Add to collection is available from track menus** - Use **Add to collection** while browsing tracks, choose an existing collection, or select **New collection** when you need a new one
+- **Shared collection access is safer** - Contributors can manage their own tracks in a shared collection without gaining control over another producer's tracks or primary collection details
+
+---
+
+## Why It Matters
+
+This fixes cases where a producer could search for the exact track name and still see no results. For example, a track already attached to another collection can now be found and reviewed before it is moved.
+
+The new context-menu flow also makes collection management faster when you are already browsing or reviewing tracks. Producers with large catalogs should now have a more predictable way to find, move, and organize owned and collaborative beats.
+
+Shared collections now keep contributor access focused on track curation. A contributor can edit, remove, and reorder tracks they uploaded or tracks credited to their managed producer profile, while another producer's tracks and primary collection settings stay protected.
+
+---
+
+## How to Use
+
+<Steps>
+  <Step title="Open a collection">
+    Go to **Backstage** and open the collection you want to edit, then select **Add existing tracks**.
+  </Step>
+
+  <Step title="Search or filter">
+    Search by title or artist, then use collection status, ownership, and sort controls to narrow the list.
+  </Step>
+
+  <Step title="Review collection warnings">
+    If a selected track is already in another collection, review the warning before confirming the move.
+  </Step>
+
+  <Step title="Use track menus">
+    From a track menu, choose **Add to collection**, select a collection, and confirm any moves when BeatPass asks.
+  </Step>
+</Steps>
+
+---
+
+## Permission Improvements
+
+- **Already added tracks are handled clearly** - Collections that already contain every selected track are disabled and marked **Already added**, while partial matches are marked **Some added**
+- **Your own tracks stay editable** - When you contribute to a shared collection, you can still edit, remove, and reorder tracks you uploaded or tracks credited to your producer profile
+- **Other producers' tracks stay protected** - Tracks owned by another producer remain visible in the collection, but contributors cannot edit or remove them
+- **Primary collection details stay locked** - Non-primary contributors can update tracks, genres, tags, and ordering, while the collection name, description, release date, producer list, cover art, and Spotify ID stay reserved for the collection owner
+- **Collection deletion is restricted** - Contributors can no longer delete a collection unless they own it, manage the main producer profile, or have full collection management access
+
+---
+
+## Quality Checks
+
+- Existing-track search, filtering, sorting, and progressive loading were checked across owned, unassigned, assigned, and collaborative tracks
+- The **Add to collection** menu was checked for already-added tracks, partial matches, new collection routing, and move confirmation
+- Shared collection editing was checked so contributors can manage their own tracks while protected tracks and primary collection details stay locked
+- Track moves, collaborator visibility, and shared collection permissions were included in the release checks
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Previous Release" icon="arrow-left" href="/release-notes/v3.0/3.1.8">
+    AI Audio Policy & Legal Terms Update
+  </Card>
+  <Card title="Version 3.0 Release Index" icon="rocket" href="/release-notes/v3.0">
+    Browse all v3.0.x release notes
+  </Card>
+</CardGroup>
+
+<ReleaseFeedback />
