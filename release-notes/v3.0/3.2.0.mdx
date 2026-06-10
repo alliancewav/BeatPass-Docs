@@ -1,0 +1,83 @@
+---
+title: "Editorial Collections & Localized Communications"
+date: "2026-06-10"
+severity: "minor"
+version: "3.2.0"
+audience: "All"
+tags: ["feature", "improvement", "bugfix"]
+components: ["producer-dashboard", "licensing", "notifications", "billing"]
+status: "published"
+related: ["3.1.9"]
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# Editorial Collections & Localized Communications
+
+## Summary
+
+BeatPass now supports editorial collections for full-catalog curation and improves how important communications appear across languages. This release also cleans up license certificates, pricing copy, and collection handling so the experience feels more consistent across **Backstage**, billing, notifications, and licensing flows.
+
+---
+
+## What's New
+
+- **Editorial collections** — Admins can curate tracks from across the full catalog without moving those beats out of their original collections
+- **Safer collection handling** — Editorial collections can be removed without deleting the curated tracks, and added tracks keep a predictable order
+- **Localized communications** — Emails, license certificates, push alerts, and notification-bell messages now follow the recipient's selected language more consistently
+- **Language preference carry-over** — A guest's selected language is preserved after login when the account does not already have a saved language
+- **Improved license certificates** — Certificate dates, labels, legal sections, and exclusive-license previews now render through the active locale
+- **Pricing and licensing copy cleanup** — Pricing FAQs, calculator text, plan summaries, checkout summaries, and track licensing forms are ready for translated experiences
+- **More reliable collection actions** — **Add to collection** now stops cleanly when an add action fails, without continuing into a confirmation flow
+
+---
+
+## Why It Matters
+
+Editorial collections give BeatPass a better way to highlight themed selections, staff picks, and curated catalog moments without disrupting a producer's normal collection structure. A track can appear in an editorial collection while still staying attached to its regular collection.
+
+Communication updates make account, billing, licensing, and notification messages clearer for users who browse BeatPass in French, Spanish, or another supported language. That means receipts, license details, password resets, payouts, and key alerts are less likely to fall back to English-only copy.
+
+Pricing and licensing copy now uses the same translation system as the rest of the app. This keeps plan comparisons, exclusive-license settings, and certificate previews aligned with the language selected in **Location and language**.
+
+---
+
+## How to Use
+
+<Steps>
+  <Step title="Curate an editorial collection">
+    Admins can open **Backstage**, create or edit a collection, enable **Editorial collection**, and use **Add existing tracks** to search across the catalog.
+  </Step>
+
+  <Step title="Review localized messages">
+    Open **Location and language** in account settings, choose your preferred language, then check emails, notifications, and license certificates in that language.
+  </Step>
+
+  <Step title="Check pricing and licensing copy">
+    Visit pricing, checkout, or track licensing settings to see translated plan descriptions, FAQs, and license wording where translations are available.
+  </Step>
+</Steps>
+
+---
+
+## Quality Checks
+
+- Editorial collection creation, full-catalog track search, ordering, deletion, and track-page display were covered by release tests
+- Communications now have audit coverage for automated emails, certificates, notifications, and key pricing/licensing surfaces
+- Translation integrity checks now cover representative communications strings in English, French, and Spanish
+- Notification-bell rendering now has tests for stored messages, structured translation data, and older notification formats
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Previous Release" icon="arrow-left" href="/release-notes/v3.0/3.1.9">
+    Collection Track Picker Improvements
+  </Card>
+  <Card title="Version 3.0 Release Index" icon="rocket" href="/release-notes/v3.0">
+    Browse all v3.0.x release notes
+  </Card>
+</CardGroup>
+
+<ReleaseFeedback />
