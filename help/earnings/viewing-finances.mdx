@@ -1,12 +1,12 @@
 ---
 audience: help
 title: "Viewing Finances"
-description: "Use Producer Finances to review payout readiness, balance summaries, transaction statuses, and the current earnings explanation panels."
+description: "Use Producer Finances to review payout readiness, BEATPAY or Stripe setup, balance summaries, transaction statuses, and earnings panels."
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Producer Finances** page is BeatPass's current payout hub for producers. It shows your Stripe readiness, payout summary, and earnings history without requiring you to leave the product.
+The **Producer Finances** page is the current payout hub for producers. It shows the payout setup available to your account, balance summaries, and earnings history without requiring you to leave BeatPass.
 
 ## Opening Producer Finances
 
@@ -27,7 +27,8 @@ BeatPass shows an onboarding panel with:
 
 - The page title **Producer Finances**
 - A setup overview for payout-enabled revenue streams
-- The main call-to-action button **Connect Stripe Account Now**
+- **Set up BEATPAY** when Wise-powered bank payouts are available to your account
+- **Connect Stripe Account Now** when Stripe Connect is the available route
 
 ### If Payout Setup Is Ready
 
@@ -51,9 +52,10 @@ The top summary card is called **Account Overview** and uses four stat cards:
 - BeatPass shows an **Updated** timestamp when cached finance data was last refreshed
 - If the account has more than one balance currency, the page can show a **Multi-currency account** warning
 - If the history is truncated for performance, the page can show **Showing last 1,000 transactions**
+- If BEATPAY is available, the page can show **Live Exchange Rate** details for the selected currencies
 
 <Note>
-  The page focuses on summary information. It does not currently expose every raw Stripe field or every internal payout-calculation field inside the UI.
+  The page focuses on summary information. It does not expose every raw payout-provider field or every internal payout-calculation field inside the UI.
 </Note>
 
 ---
@@ -76,8 +78,8 @@ Rows in the transaction list can show these user-facing statuses:
 | Status | Meaning |
 |--------|---------|
 | **Queued** | A subscription split exists but is still waiting to move |
-| **Sending** | BeatPass is actively sending the split toward Stripe |
-| **Paid** | The money has reached the Stripe side of the flow |
+| **Sending** | BeatPass is actively sending the split through the active payout route |
+| **Paid** | The BeatPass-side payout step completed |
 | **Failed** | The transfer hit an error |
 | **Excluded** | You were not eligible for that subscription split when it ran |
 
@@ -114,18 +116,32 @@ This section is explanatory. It is meant to help you understand why money appear
 - Use the **Subscriptions** filter when reviewing subscription-based earnings only
 - Use the **Sales** filter when checking direct track purchases only
 - Keep an eye on **Setup required**, **Failed**, or **Excluded** signals because those are the clearest warnings that something needs attention
+- Follow **Set up BEATPAY** or **Connect Stripe Account Now** based on the setup shown in your account
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="BEATPAY Bank Payouts" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Learn how BEATPAY appears in **Finances** and what each bank payout status means.
+  </Card>
+  <Card title="Payout Schedule" icon="calendar" href="/help/earnings/payout-schedule">
+    Understand **Queued**, **Sending**, **Paid**, **Failed**, and **Excluded** statuses.
+  </Card>
+</CardGroup>
 
 ---
 
 ## Common Questions
 
 <AccordionGroup>
-  <Accordion title="Why do I still see setup messaging after connecting Stripe?">
-    BeatPass can stay in setup mode until Stripe fully enables your account for payouts. If Stripe still needs more information, return to **Finances** and complete the remaining prompts.
+  <Accordion title="Why do I still see setup messaging after connecting a payout account?">
+    BeatPass can stay in setup mode until the active payout provider fully enables your account. Return to **Finances** and complete any remaining prompts.
   </Accordion>
 
   <Accordion title="Why does Paid not always mean the money is already in my bank?">
-    On subscription payouts, **Paid** means the money has reached your Stripe-side balance flow. Bank arrival still follows Stripe's payout timing.
+    On subscription payouts, **Paid** means the BeatPass-side payout step completed. Bank arrival still follows the timing of the active payout route and your bank.
   </Accordion>
 
   <Accordion title="Can I filter only excluded payouts?">

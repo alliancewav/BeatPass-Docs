@@ -161,7 +161,9 @@ GET /api/v1/producer-intelligence/collaboration-opportunities
 
 ### Batch Growth Rates (Recommended)
 
-Get growth rates for up to 100 tracks in a single request. **Always prefer this over individual calls.**
+Get local track trend rates for up to 100 tracks in a single request. **Always prefer this over individual calls.**
+
+The response includes only tracks that are currently trending. A track must have recent BeatPass play momentum, meet minimum recent-play and distinct-listener thresholds, and outperform the previous comparison window. Tracks that are not trending are omitted from `growth_rates`.
 
 ```http
 POST /api/v1/producer-intelligence/tracks/growth-batch
@@ -173,14 +175,14 @@ POST /api/v1/producer-intelligence/tracks/growth-batch
 
 ### Single Track Growth (Legacy)
 
-Get growth rate for an individual track.
+Get the local trend rate for an individual track.
 
 ```http
 GET /api/v1/producer-intelligence/track/{trackId}/growth
 ```
 
 <Note>
-  This endpoint has a 1200/min rate limit but the batch endpoint is strongly recommended for efficiency.
+  This endpoint has a 1200/min rate limit, but the batch endpoint is strongly recommended for efficiency. Track trend rates are based on local BeatPass play activity, not Spotify popularity or payout contribution values.
 </Note>
 
 ---
@@ -375,6 +377,10 @@ GET /api/v1/platform/top-tracks
 
 ## Subscription Payouts
 
+<Info>
+  These endpoints are for payout history and summary reporting. They do not set up BEATPAY, change bank details, switch payout providers, or release payouts. Producers manage payout setup in **Finances**.
+</Info>
+
 ### List Payouts
 
 Get the authenticated artist's subscription payout history.
@@ -397,14 +403,6 @@ GET /api/v1/artist/subscription-payouts/summary
 GET /api/v1/artist/subscription-payouts/{splitId}
 ```
 
-### Unified Transactions
-
-Combined view of track purchases and subscription payouts.
-
-```http
-GET /api/v1/artist/unified-transactions
-```
-
 ---
 
 ## Best Practices
@@ -413,8 +411,8 @@ GET /api/v1/artist/unified-transactions
   <Accordion title="Use combined endpoints" icon="layer-group">
     Use `progress-data` instead of calling `dashboard`, `xp-sources`, and `achievements` separately.
   </Accordion>
-  <Accordion title="Use batch growth endpoint" icon="bolt">
-    Use `tracks/growth-batch` for up to 100 tracks per request instead of individual `track/{id}/growth` calls.
+  <Accordion title="Use batch track trend endpoint" icon="bolt">
+    Use `tracks/growth-batch` for up to 100 tracks per request instead of individual `track/{id}/growth` calls. Non-trending tracks are omitted from the response.
   </Accordion>
   <Accordion title="Respect cache TTLs" icon="clock">
     Leaderboard data is cached for 5 minutes. Dashboard data is cached for 15 minutes. Don't poll faster than these intervals.

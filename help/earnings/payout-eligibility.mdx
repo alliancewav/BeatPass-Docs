@@ -1,10 +1,10 @@
 ---
 audience: help
 title: "Payout Eligibility"
-description: "Learn what must be true before BeatPass can send producer earnings through Stripe Connect and what happens when a payout is excluded."
+description: "Learn what must be true before BeatPass can send producer earnings and what happens when a payout is excluded."
 ---
 
-To receive money from BeatPass, you need more than just earnings. Your producer profile and Stripe Connect setup both need to be in a payout-ready state.
+To receive money from BeatPass, you need more than just earnings. Your producer profile and the payout setup available to your account need to be ready.
 
 ## What You Need
 
@@ -12,17 +12,28 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
   <Card title="Producer Profile" icon="user">
     You must have a producer profile that can use producer-facing features like **Finances**.
   </Card>
-  <Card title="Stripe Connect Setup" icon="chart-line">
-    Your payout account must be connected through BeatPass.
+  <Card title="Available Payout Setup" icon="chart-line">
+    Complete the payout setup shown in **Finances**, either BEATPAY or Stripe Connect.
   </Card>
-  <Card title="Confirmed Country" icon="globe">
-    During setup, you must confirm the country where you reside and have a bank account.
+  <Card title="Verified Details" icon="globe">
+    Provide the country, identity, tax, and bank details requested by the active payout setup.
   </Card>
 </CardGroup>
 
-## Stripe Readiness Signals
+## Current Payout Routes
 
-BeatPass checks Stripe readiness behind the scenes to determine whether payouts can proceed:
+<CardGroup cols={2}>
+  <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Eligible producers can set up Wise-powered bank payouts from **Finances** when **Set up BEATPAY** appears.
+  </Card>
+  <Card title="Stripe Connect" icon="credit-card">
+    Stripe Connect remains active for producers already using Stripe and for producers not yet included in the BEATPAY rollout.
+  </Card>
+</CardGroup>
+
+## Readiness Signals
+
+If your active route is Stripe Connect, BeatPass checks these signals behind the scenes:
 
 | Signal | What It Means |
 |--------|----------------|
@@ -30,8 +41,10 @@ BeatPass checks Stripe readiness behind the scenes to determine whether payouts 
 | **Charges Enabled** | Stripe has enabled incoming payment capability for the account |
 | **Payouts Enabled** | Stripe has enabled payouts from the account |
 
+If [BEATPAY](/help/earnings/beatpay) is available, **Finances** shows the bank payout setup state instead. A ready BEATPAY setup can show **Bank payouts active** or **Bank account ready**. A setup that needs review can show **Bank setup needs a quick review**.
+
 <Info>
-  The main BeatPass Finances page focuses on connection and payout readiness at a high level. Stripe may still ask for more details later if regulations or account reviews require it.
+  The main BeatPass Finances page focuses on connection and payout readiness at a high level. A payout provider may still ask for more details later if regulations or account reviews require it.
 </Info>
 
 ## What Happens If You Are Not Eligible
@@ -50,33 +63,33 @@ If a subscription payout runs while your account is not ready:
 
 <Steps>
   <Step title="Open Producer Finances">
-    Go to **Backstage** → **Finances**.
+    Go to **Backstage** -> **Finances**.
   </Step>
   <Step title="Check the dashboard state">
-    If BeatPass still shows the onboarding panel, your setup is not complete yet.
+    If BeatPass still shows an onboarding panel, your setup is not complete yet.
   </Step>
   <Step title="Review warnings and statuses">
-    Look for signals such as **Setup required**, **Excluded**, or any prompt asking for more information.
+    Look for signals such as **Setup required**, **Excluded**, **Bank setup needs a quick review**, or any prompt asking for more information.
   </Step>
 </Steps>
 
 ## How to Become Eligible
 
-1. Click **Connect Stripe Account Now** in **Finances**
-2. Confirm your country carefully
-3. Complete the Stripe-hosted onboarding flow
-4. Add the payout and identity information Stripe requests
-5. Return to BeatPass and finish any remaining prompts if Stripe still needs more information
+1. Open **Finances**
+2. Click **Set up BEATPAY** if it appears, or click **Connect Stripe Account Now** when Stripe Connect is shown
+3. Provide the bank, identity, country, and tax information requested by the active setup
+4. Return to BeatPass and finish any remaining prompts if the payout provider still needs more information
+5. Keep payout setup active so future splits can process normally
 
 ## Common Questions
 
 <AccordionGroup>
   <Accordion title="Do I need Stripe Connect for both track sales and subscription payouts?">
-    Yes. Stripe Connect is the payout path BeatPass uses for producer earnings.
+    Not always. Stripe Connect remains active, but eligible producers may be guided to BEATPAY bank payouts instead. Follow the setup shown in **Finances**.
   </Accordion>
 
   <Accordion title="Can I still earn before setup is finished?">
-    Activity can still happen, but you are not safely payout-ready until your Stripe Connect setup is complete.
+    Activity can still happen, but you are not safely payout-ready until your payout setup is complete.
   </Accordion>
 
   <Accordion title="Why do I see Excluded in Transactions?">
@@ -84,7 +97,7 @@ If a subscription payout runs while your account is not ready:
   </Accordion>
 
   <Accordion title="Can I fix eligibility later?">
-    Yes for future payouts. Complete your Stripe setup and keep it active so later splits can process normally.
+    Yes for future payouts. Complete your payout setup and keep it active so later splits can process normally.
   </Accordion>
 </AccordionGroup>
 

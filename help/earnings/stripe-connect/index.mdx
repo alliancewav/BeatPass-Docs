@@ -1,22 +1,22 @@
 ---
 audience: help
 title: "Stripe Connect"
-description: "Overview of the BeatPass payout setup powered by Stripe Connect, including what it enables and the most important rules before you start."
+description: "Overview of the BeatPass Stripe Connect payout route, including what it enables and when to use the setup guide."
 ---
 
-BeatPass uses Stripe Connect for producer payouts. It is the payout layer behind **Producer Finances**, subscription splits, and direct producer sales.
+Stripe Connect remains the legacy payout route for producers who already use Stripe and for producers not yet included in the BEATPAY rollout. If **Finances** shows **Set up BEATPAY**, follow that bank payout setup instead. If **Finances** shows **Connect Stripe Account Now**, use the Stripe Connect guidance on this page.
 
 ## What Stripe Connect Enables
 
 <CardGroup cols={2}>
   <Card title="Track Sales" icon="shopping-bag">
-    Producer sales move through Stripe once the buyer completes checkout.
+    Producer sales can move through Stripe once the buyer completes checkout.
   </Card>
   <Card title="Subscription Payouts" icon="repeat">
-    Subscription revenue can only move to eligible producers with a working payout setup.
+    Subscription revenue can move to eligible producers with a working Stripe Connect setup.
   </Card>
   <Card title="Producer Finances" icon="chart-bar">
-    BeatPass uses Stripe-backed data to show balances, statuses, and payout history.
+    BeatPass uses Stripe-backed data to show balances, statuses, and payout history when Stripe is the active route.
   </Card>
   <Card title="Automatic Payout Flow" icon="chart-line">
     Once money reaches Stripe and your account is ready, Stripe handles the transfer to your payout destination.
@@ -29,6 +29,7 @@ BeatPass uses Stripe Connect for producer payouts. It is the payout layer behind
 - You must choose a supported country during setup
 - BeatPass asks you to confirm the country where you reside and have a bank account
 - Incomplete setup can prevent payouts and can cause subscription splits to appear as **Excluded**
+- BEATPAY availability is controlled separately and appears directly in **Finances** when your account is eligible
 
 <Warning>
   If your payout setup is incomplete, BeatPass can still calculate activity, but it cannot safely treat you as payout-ready.
@@ -41,7 +42,7 @@ BeatPass uses Stripe Connect for producer payouts. It is the payout layer behind
     Click your **profile avatar** and open **Backstage**.
   </Step>
   <Step title="Go to Finances">
-    Open **Finances** and click **Connect Stripe Account Now**.
+    Open **Finances** and click **Connect Stripe Account Now** if that is the setup shown for your account.
   </Step>
   <Step title="Finish the Stripe flow">
     Confirm your country and complete the Stripe-hosted onboarding process.
@@ -51,8 +52,11 @@ BeatPass uses Stripe Connect for producer payouts. It is the payout layer behind
 ## Learn More
 
 <CardGroup cols={2}>
+  <Card title="BEATPAY" href="/help/earnings/beatpay" icon="money-bill-transfer">
+    Review the bank payout setup shown to eligible producers.
+  </Card>
   <Card title="Setup Guide" href="/help/earnings/stripe-connect/setup-guide" icon="book-open">
-    Follow the current BeatPass onboarding flow.
+    Follow the current Stripe Connect onboarding flow.
   </Card>
   <Card title="Requirements" href="/help/earnings/stripe-connect/requirements" icon="list-checks">
     Review the information Stripe commonly asks for.

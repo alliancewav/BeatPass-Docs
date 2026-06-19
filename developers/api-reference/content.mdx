@@ -330,22 +330,6 @@ If both `pending` and `revoked` exist, `pending` takes precedence for messaging 
 }
 ```
 
-### Revoke Approved Request (Admin)
-
-Revoke producer access for an approved request.
-
-```http
-POST /api/v1/backstage-request/{backstageRequest}/revoke
-```
-
-<ParamField body="notes" type="string">
-  Optional admin notes included in the user notification.
-</ParamField>
-
-<Note>
-  This endpoint requires authentication plus request-handling permissions (`backstageRequests.handle`). Revoked requests can later be approved again through the existing approve endpoint.
-</Note>
-
 ---
 
 ## Artist Credits

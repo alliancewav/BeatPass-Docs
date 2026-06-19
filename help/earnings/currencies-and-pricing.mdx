@@ -38,7 +38,7 @@ BeatPass currently supports these currencies for track purchase pricing:
 
 - A primary balance currency
 - Multi-currency warnings when your account has balances in more than one currency
-- Mixed-currency transaction history depending on what you sold and how Stripe recorded it
+- Mixed-currency transaction history depending on what you sold and how the active payment or payout provider recorded it
 
 ## For Buyers
 
@@ -46,18 +46,18 @@ If the purchase currency does not match the card or bank's currency, conversion 
 
 ## Payout Currency Expectations
 
-Your payout flow depends on your Stripe Connect account and the balances Stripe is managing for you.
+Your payout flow depends on the active payout route for your producer account. BEATPAY can show exchange-rate context when Wise-powered bank payouts are available, while Stripe Connect continues to use Stripe-managed balances.
 
 <Info>
-  BeatPass does not publish a fixed currency-conversion fee in help docs because conversion behavior can vary by Stripe, currency pair, and payout destination.
+  BeatPass does not publish a fixed currency-conversion fee in help docs because conversion behavior can vary by payout provider, currency pair, and payout destination.
 </Info>
 
 ## Practical Tips
 
 - Use a pricing currency your buyers already understand
 - Check **Producer Finances** for mixed-currency warnings
-- Expect Stripe and your bank to control most conversion details after checkout
-- Review your supported-country and Stripe setup if you need a different payout arrangement
+- Expect the active payment or payout provider and your bank to control most conversion details after checkout
+- Review the payout setup shown in **Finances** if you need a different payout arrangement
 
 ## Common Questions
 
@@ -71,7 +71,7 @@ Your payout flow depends on your Stripe Connect account and the balances Stripe 
   </Accordion>
 
   <Accordion title="Who controls currency conversion after checkout?">
-    Stripe and the payout destination handle most of that behavior, not the BeatPass help system.
+    The active payment or payout provider and the payout destination handle most of that behavior, not the BeatPass help system.
   </Accordion>
 
   <Accordion title="Are subscriptions shown in the same currency as track pricing?">
@@ -79,4 +79,4 @@ Your payout flow depends on your Stripe Connect account and the balances Stripe 
   </Accordion>
 </AccordionGroup>
 
-<Snippet file="sections/need-help.mdx" />
+

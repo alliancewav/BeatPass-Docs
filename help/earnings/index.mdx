@@ -12,7 +12,7 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
 
 <CardGroup cols={2}>
   <Card title="Track Sales" icon="shopping-bag">
-    When someone buys a priced track or exclusive offer, the transaction appears in your earnings history and moves through Stripe.
+    When someone buys a priced track or exclusive offer, the transaction appears in your earnings history and moves through the current payout flow.
   </Card>
   <Card title="Subscription Payouts" icon="repeat">
     Subscription revenue is shared based on your <Tooltip tip="A score BeatPass calculates from recency, play activity, and collaborator count to determine subscription payout share." cta="See the formula" href="/help/earnings/contribution-system/formula">contribution value</Tooltip>.
@@ -28,8 +28,8 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
 ## How It Works
 
 <Steps>
-  <Step title="Connect Stripe Connect">
-    Open **Backstage** and go to **Finances**. If your payout setup is incomplete, BeatPass shows **Connect Stripe Account Now**.
+  <Step title="Set up payouts">
+    Open **Backstage** and go to **Finances**. Eligible producers may see **Set up BEATPAY** for Wise-powered bank payouts; other producers can continue with **Connect Stripe Account Now**.
   </Step>
   <Step title="Upload and price your music">
     Add tracks to your catalog and configure sales or exclusivity where appropriate.
@@ -40,8 +40,8 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
   <Step title="Track payout status">
     BeatPass records statuses like **Queued**, **Sending**, **Paid**, **Failed**, and **Excluded** so you can see where money is in the process.
   </Step>
-  <Step title="Receive automatic payouts through Stripe">
-    Once funds reach your Stripe balance and your account is eligible, Stripe handles the transfer to your payout destination.
+  <Step title="Receive payouts through the active route">
+    Once funds are eligible to move, BeatPass sends them through the active payout route for your producer account.
   </Step>
 </Steps>
 
@@ -65,6 +65,9 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
 ## Learn More
 
 <CardGroup cols={2}>
+  <Card title="BEATPAY Bank Payouts" href="/help/earnings/beatpay" icon="money-bill-transfer">
+    Set up BEATPAY, review bank payout statuses, and understand rollout behavior.
+  </Card>
   <Card title="Viewing Finances" href="/help/earnings/viewing-finances" icon="chart-bar">
     See exactly what the Finances page shows today.
   </Card>
@@ -72,10 +75,10 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
     Understand what must be complete before money can move.
   </Card>
   <Card title="Payout Schedule" href="/help/earnings/payout-schedule" icon="calendar">
-    Learn how earnings move from BeatPass to Stripe and then to your payout destination.
+    Learn how earnings move from BeatPass to your payout destination.
   </Card>
   <Card title="Stripe Connect Setup" href="/help/earnings/stripe-connect/setup-guide" icon="chart-line">
-    Follow the current onboarding flow in BeatPass.
+    Follow Stripe Connect onboarding when **Finances** asks you to use Stripe.
   </Card>
   <Card title="Contribution System" href="/help/earnings/contribution-system" icon="chart-line">
     Learn how BeatPass calculates subscription payout share.

@@ -1,15 +1,15 @@
 ---
 title: "Commerce & Licensing API"
 sidebarTitle: "Commerce & Licensing"
-description: "Track purchases, license certificates, exclusive license presets, and Stripe Connect integration endpoints."
+description: "Track purchases, license certificates, exclusive license presets, and safe producer finance references."
 keywords: ["beatpass commerce api","track purchases","license certificates","stripe connect","exclusive licenses"]
 "og:title": "Commerce & Licensing API - BeatPass Developer Docs"
-"og:description": "Purchase tracks, manage license certificates, configure exclusive presets, and integrate with Stripe Connect."
+"og:description": "Purchase tracks, manage license certificates, configure exclusive presets, and understand safe producer finance boundaries."
 ---
 
 ## Overview
 
-The Commerce & Licensing API handles the complete purchase lifecycle — from pricing calculation through Stripe payment to license certificate generation. It also covers exclusive license preset management and Stripe Connect onboarding for producers.
+The Commerce & Licensing API handles the complete purchase lifecycle - from pricing calculation through card payment to license certificate generation. It also covers exclusive license preset management and safe producer finance references for approved integrations.
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
@@ -91,7 +91,7 @@ POST /api/v1/tracks/{track}/purchase/initiate
 | Track purchases not enabled | 403 | Feature disabled in config |
 | Cannot purchase own track | 422 | Buyer is the track artist |
 | Already purchased | 422 | User already owns license |
-| Artist not set up for payments | 422 | Artist lacks active Stripe Connect |
+| Artist not set up for payments | 422 | Artist is not payout-ready |
 
 ---
 
@@ -134,7 +134,7 @@ GET /api/v1/purchases
 
 ### Artist Sales
 
-Get sales data for the authenticated artist, including Stripe Connect balance.
+Get sales data for the authenticated artist, including payout and balance summary fields when available.
 
 ```http
 GET /api/v1/artist/sales
@@ -411,27 +411,31 @@ POST /api/v1/coupons/validate
 
 ---
 
-## Stripe Connect
+## Producer Payout Setup
 
-### Check Onboarding Status
+<Info>
+  BEATPAY bank payout setup is an in-product Producer Finances workflow, not a public developer integration surface. Do not build integrations against undocumented payout setup routes.
+</Info>
 
-Check whether the authenticated artist has completed Stripe Connect onboarding.
+### Stripe Connect Status
+
+Check whether the authenticated artist has completed Stripe Connect onboarding when Stripe is the payout setup shown to that artist.
 
 ```http
 GET /api/v1/artist/stripe-connect/status
 ```
 
-### Create Onboarding Link
+### Stripe Connect Onboarding Link
 
-Generate a Stripe Connect onboarding link for the authenticated artist.
+Generate a Stripe Connect onboarding link for the authenticated artist when Stripe Connect onboarding is available.
 
 ```http
 POST /api/v1/artist/stripe-connect/onboard
 ```
 
-### View Finances
+### View Legacy Stripe Finances
 
-Get the artist's Stripe Connect financial overview.
+Get the artist's legacy Stripe Connect financial overview where available.
 
 ```http
 GET /api/v1/artist/stripe-connect/finances
@@ -443,7 +447,7 @@ GET /api/v1/artist/stripe-connect/finances
 
 <CardGroup cols={2}>
   <Card title="Webhooks" icon="webhook" href="/developers/webhooks">
-    Stripe webhook events for purchase confirmation.
+    Payment event processing overview for purchase confirmation.
   </Card>
   <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
     Purchase and licensing error codes.

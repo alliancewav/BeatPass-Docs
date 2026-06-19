@@ -2,67 +2,68 @@
 audience: help
 title: "Finances"
 sidebarTitle: "Finances"
-description: "Complete Stripe setup, review balances, switch between artist profiles, and filter payment activity."
+description: "Review payout setup, balances, BEATPAY and Stripe readiness, and payment activity inside the Producer Dashboard."
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import StripeConnectRequired from "/snippets/callouts/stripe-connect-required.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Finances** page is the earnings view inside the Producer Dashboard. Depending on your Stripe status, it either shows onboarding or a reporting dashboard for the current artist.
+The **Finances** page is the earnings view inside the Producer Dashboard. Depending on your payout setup, it shows either BEATPAY or Stripe Connect onboarding, or the reporting dashboard for the current artist.
 
 <ProducerOnly />
 
 ## How to Get Here
 
-Click your **profile avatar** → **Backstage**, then select **Finances** in the sidebar.
+Click your **profile avatar** -> **Backstage**, then select **Finances** in the sidebar.
 
 ## Two Page States
 
 <CardGroup cols={2}>
   <Card title="Setup Required" icon="triangle-exclamation">
-    Onboarding when Stripe is not fully connected or the artist account is not yet ready to charge and pay out.
+    Onboarding when BEATPAY or Stripe Connect setup is not ready for the selected artist.
   </Card>
   <Card title="Active" icon="circle-check">
-    Balances, artist switching, cache timestamps, and transaction history after Stripe setup is complete.
+    Payout status, balances, artist switching, cache timestamps, and transaction history after setup is complete.
   </Card>
 </CardGroup>
 
 ## Setup Required
 
-When setup is incomplete, BeatPass shows onboarding instead of incomplete finance data.
+When setup is incomplete, BeatPass shows onboarding instead of incomplete finance data. Eligible producers may see **Set up BEATPAY** for bank payouts powered by Wise. Producers not yet in the BEATPAY rollout may continue to see **Connect Stripe Account Now** for Stripe Connect.
 
 <StripeConnectRequired />
 
 ### What Onboarding Covers
 
 <Steps>
-  <Step title="Connect to Stripe">
-    Select **Connect Stripe Account** and confirm your country in the dialog.
+  <Step title="Choose the available payout setup">
+    Select **Set up BEATPAY** if it appears, or select **Connect Stripe Account Now** when Stripe Connect is the available route.
   </Step>
-  <Step title="Complete Stripe hosted onboarding">
-    Stripe walks you through identity, banking, and account verification.
+  <Step title="Complete the requested details">
+    BEATPAY asks for payout currency and bank details. Stripe Connect opens the Stripe-hosted identity, banking, and account verification flow.
   </Step>
   <Step title="Return to BeatPass">
-    Once **Connected**, **Charges Enabled**, and **Payouts Enabled** are all green, the page switches to the active dashboard.
+    Once the selected payout setup is ready, the page switches to the active dashboard.
   </Step>
 </Steps>
 
 ### Revenue Streams Highlighted During Setup
 
-- **Monthly Payouts** — subscription revenue distribution
-- **Exclusive Sales** — exclusive beat licensing
-- **Track Purchases** — individual beat purchases
+- **Monthly Payouts** - subscription revenue distribution
+- **Exclusive Sales** - exclusive beat licensing
+- **Track Purchases** - individual beat purchases
 
 ## Active Dashboard
 
-Once Stripe is ready, the page becomes a reporting dashboard for the selected artist.
+Once payout setup is ready, the page becomes a reporting dashboard for the selected artist.
 
 ### Header and Artist Switcher
 
 The top of the page can show:
 
 - The selected artist with an **Active** or **Setup Required** badge
+- The current subscription payout share when available
 - An artist selector when your account manages multiple artists
 - Cache timing information when the finance response includes it
 
@@ -81,6 +82,7 @@ The top of the page can show:
 - A stale-cache warning when data may be outdated
 - A multi-currency warning
 - A transaction-truncation warning when only recent activity is shown
+- A **Live Exchange Rate** section when BEATPAY rates are available
 
 ## Transactions
 
@@ -118,8 +120,8 @@ The lower section combines finance events into one list.
   <Accordion title="Exact payout timing" icon="clock" defaultOpen>
     The page shows status and balance data but does not promise a fixed arrival time for payouts.
   </Accordion>
-  <Accordion title="Every Stripe control" icon="credit-card">
-    This dashboard is not a full replacement for the Stripe dashboard or payout-management settings.
+  <Accordion title="Every payout provider control" icon="credit-card">
+    This dashboard is not a full replacement for Stripe Express, Wise, or other payout-provider account tools.
   </Accordion>
   <Accordion title="Perfectly fresh data on every load" icon="arrows-rotate">
     BeatPass can reuse cached finance responses and explicitly labels them when it does.
@@ -132,8 +134,11 @@ The lower section combines finance events into one list.
   <Card title="Earnings Overview" icon="dollar-sign" href="/help/earnings">
     Full documentation for producer payouts and reporting.
   </Card>
+  <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Set up Wise-powered bank payouts when BEATPAY is available to you.
+  </Card>
   <Card title="Stripe Connect" icon="credit-card" href="/help/earnings/stripe-connect">
-    Setup and troubleshooting guidance for onboarding.
+    Setup and troubleshooting guidance for the legacy Stripe route.
   </Card>
   <Card title="Contribution System" icon="chart-line" href="/help/earnings/contribution-system">
     How subscription revenue is allocated.

@@ -2,12 +2,12 @@
 audience: help
 title: "Stripe Connect Issues"
 sidebarTitle: "Stripe Connect"
-description: "Having trouble with Stripe Connect, payouts, or receiving payments as a producer on BeatPass? Find solutions here."
+description: "Troubleshoot Stripe Connect payout setup, and learn when to use the BEATPAY guide instead."
 ---
 
 import StillNeedHelp from "/snippets/sections/still-need-help.mdx";
 
-This guide is for producers using Stripe Connect through BeatPass.
+This guide is for producers using Stripe Connect through BeatPass. If **Finances** shows **Set up BEATPAY**, use [BEATPAY Bank Payouts](/help/earnings/beatpay) instead.
 
 <Note>
   Stripe Connect issues are separate from subscriber billing issues. If you are trying to pay for a subscription, use [Payment Issues](/help/troubleshooting/payment-issues).
@@ -15,18 +15,18 @@ This guide is for producers using Stripe Connect through BeatPass.
 
 ## Start in the Right Place
 
-Producer payout setup and status live in **Producer Dashboard** → **Finances**.
+Producer payout setup and status live in **Producer Dashboard** → **Finances**. Follow the setup shown for the selected artist.
 
 If you manage more than one producer profile, make sure you are looking at the correct selected artist before troubleshooting balances or onboarding state.
 
-## I Haven't Connected Stripe Yet
+## Finances Shows Stripe Connect Setup
 
 <Steps>
   <Step title="Open Finances">
     Go to **Producer Dashboard** → **Finances**.
   </Step>
   <Step title="Confirm your country">
-    BeatPass currently starts onboarding with a country-confirmation step.
+    If **Connect Stripe Account Now** appears, BeatPass starts onboarding with a country-confirmation step.
   </Step>
   <Step title="Continue to Stripe">
     Finish the Stripe Connect onboarding flow hosted by Stripe.
@@ -86,9 +86,9 @@ Finances can show a connected account that still lacks full payout readiness.
   </Accordion>
 </AccordionGroup>
 
-## What Can Flow Through Stripe Connect?
+## When Stripe Connect Is The Active Route
 
-BeatPass currently uses Stripe Connect for:
+When Stripe Connect is the active route, BeatPass can use it for:
 
 - Monthly payout activity
 - Exclusive sales
@@ -119,6 +119,9 @@ For exclusive sales and track purchases, BeatPass is designed so the producer ke
 <CardGroup cols={2}>
   <Card title="Stripe Connect Guide" icon="credit-card" href="/help/earnings/stripe-connect">
     Full setup and onboarding guide.
+  </Card>
+  <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Use this if **Finances** shows **Set up BEATPAY**.
   </Card>
   <Card title="Producer Finances" icon="chart-line" href="/help/earnings/viewing-finances">
     Understand the finances page and transaction states.

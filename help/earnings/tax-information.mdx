@@ -2,15 +2,15 @@
 audience: help
 title: "Tax Information"
 sidebarTitle: "Tax Information"
-description: "General tax guidance for BeatPass producers and buyers, including where to find records and how Stripe Express fits into tax documentation."
-keywords: ["taxes", "tax documents", "producer taxes", "stripe express", "tax records"]
+description: "General tax guidance for BeatPass producers and buyers, including where to find records and how payout providers can fit into tax documentation."
+keywords: ["taxes", "tax documents", "producer taxes", "stripe express", "wise payouts", "tax records"]
 "og:title": "Tax Information - BeatPass Help"
 "og:description": "General tax guidance for BeatPass earnings and purchases."
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass does not provide tax advice. This page is general guidance to help you understand where records live and what parts of the payout flow are usually handled through Stripe Express.
+BeatPass does not provide tax advice. This page is general guidance to help you understand where records live and how payout providers can fit into the payout flow.
 
 <Warning>
   Tax rules vary by country, business structure, and payout setup. Use a qualified tax professional for advice specific to your situation.
@@ -26,16 +26,16 @@ If you earn through BeatPass, you are generally responsible for reporting that i
 
 | Place | What You May Find |
 |-------|-------------------|
-| **Producer Finances** | Earnings summary and transaction history |
-| **Stripe Express** | Payout records and any Stripe-generated tax documents, if available for your account |
+| **Producer Finances** | Earnings summary, [BEATPAY](/help/earnings/beatpay) or Stripe payout status, transfer history, and transaction records |
+| **Stripe Express** | Stripe payout records and any Stripe-generated tax documents, if Stripe is active for your account |
 | Your own records | Expenses, accounting notes, and supporting documentation |
 
-### During Stripe Setup
+### During Payout Setup
 
-Stripe can ask for tax, identity, or business information during onboarding or later account review. What Stripe asks for depends on your country and account setup.
+Stripe or another payout provider can ask for tax, identity, business, or bank information during onboarding or later account review. What they ask for depends on your country and account setup.
 
 <Note>
-  BeatPass does not guarantee a specific tax form or threshold in help docs because those rules can change and are often administered through Stripe.
+  BeatPass does not guarantee a specific tax form or threshold in help docs because those rules can change and may be administered by a payout provider or tax authority.
 </Note>
 
 ## For Buyers
@@ -56,11 +56,11 @@ Taxes, if required, are shown during checkout and on your payment records. Your 
     No. BeatPass can show your earnings and billing records, but it does not replace professional tax advice.
   </Accordion>
 
-  <Accordion title="Where would I find tax documents if Stripe issues them for my account?">
-    Stripe-generated tax documents are typically managed on the Stripe Express side of the payout flow.
+  <Accordion title="Where would I find provider tax documents if they are issued for my account?">
+    Stripe-generated tax documents are typically managed in Stripe Express when Stripe is your active payout route. Other payout records should be saved from **Producer Finances** and any provider account you use.
   </Accordion>
 
-  <Accordion title="Do I need to keep my own records even if BeatPass and Stripe show history?">
+  <Accordion title="Do I need to keep my own records even if BeatPass and a provider show history?">
     Yes. Product history is useful, but your own organized records are still important.
   </Accordion>
 

@@ -1,0 +1,138 @@
+---
+audience: help
+title: "BEATPAY Bank Payouts"
+sidebarTitle: "BEATPAY"
+description: "Set up BEATPAY bank payouts, understand rollout eligibility, review payout statuses, and learn what changes from Stripe Connect."
+keywords: ["beatpay", "wise payouts", "bank payouts", "producer payouts", "producer finances"]
+---
+
+import ProducerOnly from "/snippets/warnings/producer-only.mdx";
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
+**BEATPAY** is BeatPass's bank payout setup for eligible producers. It is powered by Wise and appears inside **Producer Finances** when your account is included in the rollout.
+
+<ProducerOnly />
+
+<Info>
+  BEATPAY is rolling out gradually. If you do not see **Set up BEATPAY** in **Finances**, keep using your current payout setup.
+</Info>
+
+## What BEATPAY Does
+
+<CardGroup cols={2}>
+  <Card title="Bank payouts" icon="money-bill-transfer">
+    Set up a bank account so future eligible earnings can be paid through BEATPAY.
+  </Card>
+  <Card title="Current payouts continue" icon="circle-check">
+    Existing Stripe Connect payouts keep working while BeatPass expands BEATPAY access.
+  </Card>
+  <Card title="Currency context" icon="chart-line">
+    Review source currency, payout currency, exchange-rate movement, and estimated arrival timing when rates are available.
+  </Card>
+  <Card title="Masked account display" icon="shield-halved">
+    BeatPass shows only enough masked account detail to help you recognize the saved bank account.
+  </Card>
+</CardGroup>
+
+## Where You See It
+
+Open **Backstage** and go to **Finances**. Eligible producers can see one or more of these BEATPAY areas:
+
+- **Set up BEATPAY** on the finance setup card
+- **BEATPAY bank payouts** with **Powered by Wise**
+- **Live Exchange Rate** for bank payout currency context
+- **Bank account ready**, **Bank payouts active**, or **Bank setup needs a quick review** after setup starts
+
+You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your account. Choose **Set up bank payouts** to start, or **Maybe later** if you are not ready.
+
+## Set Up BEATPAY
+
+<Steps>
+  <Step title="Open Producer Finances">
+    Click your **profile avatar**, open **Backstage**, then select **Finances**.
+  </Step>
+  <Step title="Start bank payout setup">
+    Click **Set up BEATPAY** in **Finances**. If the upgrade prompt appears first, click **Set up bank payouts**.
+  </Step>
+  <Step title="Choose payout currency">
+    Select **Payout currency**. This is the currency of the bank account you want to be paid in.
+  </Step>
+  <Step title="Continue to bank details">
+    Click **Continue to bank details**, then enter the requested bank account information. Depending on the account type, you may also see **Legal name on the bank account** and **Bank account type**.
+  </Step>
+  <Step title="Save and finish">
+    Click **Save bank details**. When the success screen appears, click **Done**.
+  </Step>
+</Steps>
+
+<Note>
+  Setting up BEATPAY does not change your current payouts immediately. Your current payout setup keeps working until BeatPass completes the switch for your account.
+</Note>
+
+## BEATPAY Statuses
+
+| Status or label | What it means |
+| --- | --- |
+| **Not started** | No BEATPAY bank account has been saved for the selected artist yet |
+| **Bank account ready** | Your bank account is saved, but current payouts may still use the existing route during rollout |
+| **Bank payouts active** | BEATPAY is the active payout route for eligible earnings |
+| **Bank setup needs a quick review** | BeatPass or the payout provider needs more time or updated details before the bank account is ready |
+| **Use a different bank account** | Replace the saved active bank account with another one |
+| **Start over with a different bank account** | Remove a pending setup and begin again with new bank details |
+
+## Currency and Arrival Details
+
+When exchange-rate details are available, **Finances** can show:
+
+- **Source currency** - the currency BeatPass currently uses for the payout source
+- **Payout currency** - the bank account currency you choose during setup
+- **Live Exchange Rate** - recent exchange-rate movement for the selected currency pair
+- **Estimated payout arrival** - an estimate such as **Usually 1-2 business days**, **Arrives within the hour**, or **Arrives in about 1 day**
+- **Good to know** - BeatPass covers the transfer fee, so you receive your full payout
+
+<Warning>
+  Exchange rates and arrival estimates can change. Use **Finances** for the latest available status before relying on a payout timeline.
+</Warning>
+
+## What Does Not Change
+
+- Your existing Stripe Connect setup keeps working unless **Finances** tells you otherwise
+- Your contribution share and payout formulas do not change because you set up BEATPAY
+- Your transaction history remains in **Finances**
+- **Excluded**, **Queued**, **Sending**, **Paid**, and **Failed** statuses still describe where a payout is in the process
+
+## Common Questions
+
+<AccordionGroup>
+  <Accordion title="Why do I not see BEATPAY yet?">
+    BEATPAY is available only to eligible producers during the rollout. Keep your current payout setup active and check **Finances** for the setup shown to your account.
+  </Accordion>
+  <Accordion title="Do I need to remove Stripe Connect first?">
+    No. If you already use Stripe Connect, keep it active. BEATPAY setup prepares your account for bank payouts while current payouts keep working.
+  </Accordion>
+  <Accordion title="Does BEATPAY change my earnings share?">
+    No. BEATPAY changes the payout route, not the way BeatPass calculates contribution share or track-sale earnings.
+  </Accordion>
+  <Accordion title="Where do I check payout problems?">
+    Open **Backstage** -> **Finances** and review the current setup state, transaction statuses, and any prompt asking for more information.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Producer Finances" icon="chart-line" href="/help/producer-dashboard/finances">
+    Review finance status, balances, and transaction history.
+  </Card>
+  <Card title="Payout Eligibility" icon="circle-check" href="/help/earnings/payout-eligibility">
+    Understand what must be ready before payouts can move.
+  </Card>
+  <Card title="Payout Schedule" icon="calendar" href="/help/earnings/payout-schedule">
+    Learn how payout statuses move from queued to paid or failed.
+  </Card>
+  <Card title="Currencies & Pricing" icon="money-bill-transfer" href="/help/earnings/currencies-and-pricing">
+    Understand pricing currencies, payout currencies, and conversion expectations.
+  </Card>
+</CardGroup>
+
+<NeedHelp />

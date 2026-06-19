@@ -1,19 +1,19 @@
 ---
 audience: help
 title: "Payout Schedule"
-description: "Understand how BeatPass earnings move through statuses like Queued, Sending, and Paid before Stripe handles the final payout step."
+description: "Understand how BeatPass earnings move through statuses like Queued, Sending, and Paid before the final payout destination receives funds."
 ---
 
-BeatPass and Stripe handle different parts of the payout timeline. BeatPass calculates or records the earnings event, then Stripe handles the balance and final transfer to your payout destination.
+BeatPass handles the earning record first, then sends eligible money through the active payout route for your producer account. During the BEATPAY rollout, that route can be BEATPAY bank payouts for eligible producers or Stripe Connect for producers still on the legacy route.
 
 ## The Two Main Earning Paths
 
 <CardGroup cols={2}>
   <Card title="Track Sales" icon="shopping-bag">
-    Direct purchases appear in your earnings history and then move through Stripe's payment and payout flow.
+    Direct purchases appear in your earnings history and then move through the current payment and payout flow.
   </Card>
   <Card title="Subscription Payouts" icon="repeat">
-    Subscription revenue moves through BeatPass split statuses before reaching Stripe.
+    Subscription revenue moves through BeatPass split statuses before it is sent through the active payout route.
   </Card>
 </CardGroup>
 
@@ -24,13 +24,13 @@ BeatPass can show these statuses in **Transactions**:
 | Status | What It Means |
 |--------|----------------|
 | **Queued** | The split exists, but it is still waiting to move |
-| **Sending** | BeatPass is actively pushing the split toward Stripe |
-| **Paid** | The split has reached the Stripe side of the flow |
+| **Sending** | BeatPass is actively sending the split through the active payout route |
+| **Paid** | The split has completed its BeatPass-side payout step |
 | **Failed** | The transfer encountered an error |
 | **Excluded** | Your payout setup was not eligible when the split ran |
 
 <Info>
-  On subscription payouts, **Paid** means the split made it to Stripe. It does not guarantee the bank transfer has already finished.
+  On subscription payouts, **Paid** means the BeatPass-side payout step completed. Final bank arrival can still depend on Stripe, Wise, the payout destination, and bank processing times.
 </Info>
 
 ## What Account Overview Means
@@ -48,23 +48,23 @@ Your **Account Overview** cards help you understand where money is:
 
 The exact arrival time is not fixed by BeatPass alone. Delays or differences can come from:
 
-- Incomplete Stripe Connect setup
+- Incomplete BEATPAY or Stripe Connect setup
 - Subscription splits that remain **Queued** until they can move
-- Stripe verification or review requirements
+- Provider verification or account review requirements
 - Bank processing times
 - Currency handling on multi-currency accounts
 
 <Warning>
-  BeatPass does not publish a guaranteed per-country payout speed in help docs because the final timing depends on Stripe and the payout destination you use.
+  BeatPass does not publish a guaranteed per-country payout speed in help docs because the final timing depends on the active payout route and payout destination you use.
 </Warning>
 
 ## What to Do If Something Looks Stuck
 
-1. Open **Backstage** → **Finances**
+1. Open **Backstage** -> **Finances**
 2. Check whether the issue is **Queued**, **Failed**, or **Excluded**
-3. Make sure Stripe Connect is fully active
-4. Give Stripe or your bank time to finish the transfer if the money is already **In Transit**
+3. Make sure the payout setup shown in **Finances** is active
+4. Give the provider or your bank time to finish the transfer if the money is already **In Transit**
 
 If the status stays wrong for too long, contact us at **contact@beatpass.ca**.
 
-<Snippet file="sections/need-help.mdx" />
+

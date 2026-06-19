@@ -1,0 +1,90 @@
+---
+title: "BEATPAY Rollout & Producer Dashboard Refresh"
+date: "2026-06-19"
+severity: "patch"
+version: "3.2.1"
+audience: "All"
+tags: ["feature", "improvement", "security"]
+components: ["producer-dashboard", "billing", "stripe-connect", "notifications", "track-upload", "player"]
+status: "published"
+related: ["3.2.0"]
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# BEATPAY Rollout & Producer Dashboard Refresh
+
+## Summary
+
+BeatPass 3.2.1 starts the gradual **BEATPAY** bank payout rollout, powered by Wise, for eligible producers. If BEATPAY is available to you, **Finances** shows a new **Set up BEATPAY** option. If you do not see that option yet, nothing changes: keep using your current payout setup.
+
+The Producer Dashboard also feels cleaner across desktop and mobile. Navigation is easier to scan, **Finances** explains payout readiness more clearly, and progress, activity, catalog, and leaderboard views are easier to use.
+
+<Note>
+  BEATPAY is rolling out slowly. Existing Stripe Connect payouts continue to work while BeatPass expands access.
+</Note>
+
+---
+
+## BEATPAY Bank Payouts
+
+- **Guided bank payout setup** - Eligible producers can start **Set up BEATPAY** from **Finances** and complete bank payout setup from the Producer Dashboard
+- **Powered by Wise** - BEATPAY uses Wise for bank payouts while BeatPass shows only the payout status and masked account details you need to recognize the setup
+- **Current payouts continue** - Existing Stripe Connect payout setups keep working during the rollout
+- **Clear setup steps** - The BEATPAY flow walks through **Payout currency**, **Continue to bank details**, **Save bank details**, and **Done**
+- **Currency context** - Eligible producers can review exchange-rate movement and estimated arrival timing before payout money moves
+- **Payout updates** - Producers can receive **Payout Updates** when a BEATPAY payout is sent or needs attention
+
+---
+
+## Producer Dashboard Refresh
+
+- **Easier dashboard navigation** - Producer pages now use a cleaner desktop sidebar and mobile navigation chips for **Dashboard**, **Finances**, **Activity**, **Progress**, **Leaderboards**, **My Beats**, and **My Collections**
+- **Helpful section shortcuts** - Pages can show quick section chips such as **Status**, **Overview**, **Transactions**, **Rates**, **Earnings**, **Level**, **Actions**, **Achievements**, and **Leaderboard**
+- **Clearer Finances status** - **Finances** now separates **Active** and **Setup Required** states, shows current subscription share when available, and highlights BEATPAY setup for eligible producers
+- **Smoother progress and rankings** - **Progress** has fresher sync details and a manual **Refresh** action, while **Leaderboards** switch categories with less loading flash
+- **Better activity and catalog summaries** - Downloads, tracks, albums, and dashboard stats now use more consistent cards and recent activity views
+- **Player no longer covers dashboard pages** - Account settings and Producer Dashboard pages have more breathing room when the web player is active
+
+---
+
+## Other Improvements
+
+- **More accurate trend signals** - Track trend badges, trending producer ranking, and album popularity bars now better separate recent BeatPass momentum from lifetime plays
+- **More reliable billing totals** - Subscription renewals, coupon checkout totals, and <Tooltip tip="A fee added on top of eligible paid checkouts to support secure billing and platform operations. It is shown before you confirm payment.">platform fee</Tooltip> records stay aligned with the amount charged
+- **Stronger account and checkout protections** - Sign-in, payment confirmations, comments, recovery-code visibility, trusted links, and uploads received behind-the-scenes safety improvements
+- **More predictable uploads and browsing** - Upload duplicate checks are clearer, collection browsing is more stable, and empty albums or playlists no longer look playable
+- **Contribution payouts stay familiar** - Contribution and payout formulas are unchanged in this release
+
+---
+
+## What This Means For You
+
+- **If you see Set up BEATPAY** - Follow the setup shown in **Finances** to prepare bank payouts
+- **If you do not see BEATPAY yet** - Keep using your current payout setup; no action is needed
+- **If you already use Stripe Connect** - Existing Stripe Connect payouts continue during the rollout
+- **If you manage your catalog daily** - The Producer Dashboard should feel easier to move through, especially on mobile
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Previous Release" icon="arrow-left" href="/release-notes/v3.0/3.2.0">
+    Editorial Collections & Localized Communications
+  </Card>
+  <Card title="BEATPAY Bank Payouts" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Set up BEATPAY and understand bank payout rollout behavior
+  </Card>
+  <Card title="Producer Finances" icon="chart-line" href="/help/producer-dashboard/finances">
+    Review payout setup, finance status, and transaction history
+  </Card>
+  <Card title="Earnings" icon="dollar-sign" href="/help/earnings">
+    Understand producer earnings and payout readiness
+  </Card>
+  <Card title="Stripe Connect" icon="credit-card" href="/help/earnings/stripe-connect">
+    Review the current Stripe Connect payout path
+  </Card>
+</CardGroup>
+
+<ReleaseFeedback />

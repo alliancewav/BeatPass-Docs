@@ -1,121 +1,86 @@
 ---
 title: "Webhooks"
 sidebarTitle: "Webhooks"
-description: "Understanding BeatPass webhook architecture for Stripe payment and payout processing."
-keywords: ["beatpass webhooks","stripe webhooks","payment webhooks","payout notifications"]
+description: "Understand BeatPass payment event processing and the current outbound webhook availability for external integrations."
+keywords: ["beatpass webhooks", "payment events", "purchase notifications", "developer integrations"]
 "og:title": "Webhooks - BeatPass Developer Docs"
-"og:description": "Learn how BeatPass processes Stripe webhooks for payments and payouts."
+"og:description": "Learn what webhook capabilities are and are not available for BeatPass developer integrations."
 ---
 
 ## Overview
 
-BeatPass processes payment events from Stripe via <Tooltip tip="An automated HTTP callback that Stripe sends to BeatPass when a payment event occurs (e.g. payment succeeded, payout deposited).">webhooks</Tooltip>. There is currently no outbound webhook system for external developer integrations.
+BeatPass processes payment and payout events internally to keep purchases, licenses, and producer finance records up to date. There is currently no outbound webhook system for external developer integrations.
 
 <Note>
-  BeatPass does not send webhooks to external applications. This page provides an overview of how payment processing works on the platform.
+  External apps should use the documented API to read purchase, license, and payout-history data. Do not send payment-provider webhook traffic to BeatPass or build against undocumented internal routes.
 </Note>
 
 ---
 
-## Stripe Events Handled
+## What Developers Can Rely On
 
-The webhook controller processes the following Stripe events:
-
-<Tabs>
-  <Tab title="Purchase Events">
-    <AccordionGroup>
-      <Accordion title="payment_intent.succeeded" defaultOpen icon="circle-check">
-        A <Tooltip tip="A Stripe object representing a customer's payment lifecycle — from creation through confirmation to completion.">PaymentIntent</Tooltip> succeeded.
-        <Badge color="green">Success</Badge>
-        Completes the purchase and activates the license.
-      </Accordion>
-      <Accordion title="payment_intent.payment_failed" icon="circle-xmark">
-        <Badge color="red">Failed</Badge>
-        Records the payment failure. The buyer sees an error on their next visit.
-      </Accordion>
-      <Accordion title="charge.refunded" icon="rotate-left">
-        <Badge color="orange">Refund</Badge>
-        Processes the refund (supports both partial and full refunds).
-      </Accordion>
-    </AccordionGroup>
-  </Tab>
-  <Tab title="Payout Events">
-    <AccordionGroup>
-      <Accordion title="payout.created" defaultOpen icon="clock">
-        <Badge color="blue">Initiated</Badge>
-        Payout initiated to producer's bank account.
-      </Accordion>
-      <Accordion title="payout.paid" icon="circle-check">
-        <Badge color="green">Deposited</Badge>
-        Payout deposited successfully.
-      </Accordion>
-      <Accordion title="payout.failed" icon="circle-xmark">
-        <Badge color="red">Failed</Badge>
-        Payout failed. Producer is informed of the reason.
-      </Accordion>
-    </AccordionGroup>
-  </Tab>
-  <Tab title="Account Events">
-    <Accordion title="account.updated" defaultOpen icon="rotate">
-      <Badge color="purple">Sync</Badge>
-      Updates <Tooltip tip="Stripe's platform for marketplace payouts, used by BeatPass to route earnings to producers' bank accounts.">Stripe Connect</Tooltip> account status. Producer is informed if action is required (verification, document upload, etc.).
-    </Accordion>
-  </Tab>
-</Tabs>
+<CardGroup cols={2}>
+  <Card title="No outbound webhooks" icon="ban">
+    BeatPass does not currently send webhook callbacks to partner or developer applications.
+  </Card>
+  <Card title="Documented APIs only" icon="book">
+    Use the public developer docs for supported purchase, license, analytics, and payout-history reads.
+  </Card>
+  <Card title="Provider events stay internal" icon="shield-halved">
+    Card payment, Stripe Connect, and BEATPAY provider events are handled by BeatPass, not external integrations.
+  </Card>
+  <Card title="Use polling carefully" icon="arrows-rotate">
+    If your integration needs status updates, poll documented read endpoints conservatively and respect rate limits.
+  </Card>
+</CardGroup>
 
 ---
 
-## How It Works
+## Purchase Confirmation Flow
 
 <Steps>
-  <Step title="Payment Initiated">
-    User initiates a track purchase through the BeatPass checkout flow.
+  <Step title="Buyer starts checkout">
+    A buyer starts a track purchase through the documented commerce flow.
   </Step>
-  <Step title="Payment Processed">
-    Stripe processes the payment securely.
+  <Step title="Payment is confirmed">
+    BeatPass receives the provider confirmation internally and updates the purchase record.
   </Step>
-  <Step title="BeatPass Updated">
-    BeatPass automatically:
-
-    - Updates purchase records
-    - Generates license certificates for successful purchases
-    - Marks tracks as sold for exclusive purchases
-    - Sends notifications to producers
+  <Step title="License becomes available">
+    BeatPass activates the license, generates the certificate when applicable, and updates the buyer and producer views.
+  </Step>
+  <Step title="Integration reads status">
+    Your integration reads purchase or license state through the documented API instead of waiting for an outbound webhook.
   </Step>
 </Steps>
 
-```mermaid
-sequenceDiagram
-    participant Buyer
-    participant BeatPass
-    participant Stripe
-    participant Producer
+---
 
-    Buyer->>BeatPass: Initiate purchase
-    BeatPass->>Stripe: Create PaymentIntent
-    Stripe-->>Buyer: Confirm card payment
-    Buyer->>Stripe: Authorize payment
-    Stripe->>BeatPass: Webhook (payment_intent.succeeded)
-    BeatPass->>BeatPass: Generate license & mark track SOLD
-    BeatPass-->>Producer: Sale notification
-    Stripe->>Producer: Payout via Connect
-```
+## Payout and BEATPAY Events
+
+Producer payout setup and payout-provider events are not public integration hooks. Producers manage payout setup in **Finances**, including BEATPAY bank payout setup when it is available to them.
+
+For external integrations:
+
+- Do not document, call, or probe BEATPAY setup routes
+- Do not attempt to create or manage producer bank details through the public API
+- Use documented read-only payout history or transaction endpoints only when your account is approved for them
+- Send producers to [BEATPAY Bank Payouts](/help/earnings/beatpay) or [Producer Finances](/help/producer-dashboard/finances) for setup guidance
+
+<Warning>
+  Undocumented payout setup, provider, and administrative routes are off-limits. Unauthorized access attempts can result in token revocation and account action.
+</Warning>
 
 ---
 
-## Webhook Security
+## Security Expectations
 
-All payment webhooks are cryptographically verified to ensure authenticity. Invalid or tampered requests are rejected automatically. All webhook processing is logged for audit purposes.
+BeatPass verifies provider-originated payment events internally before updating purchases, licenses, or payout records. External developers should focus on protecting their own integration:
 
----
-
-## No Outbound Webhooks
-
-<Info>
-  BeatPass does not currently offer outbound webhooks for external integrations.
-</Info>
-
-If you need real-time updates for your integration, contact [**contact@beatpass.ca**](mailto:contact@beatpass.ca) to discuss your use case.
+- Store Bearer tokens securely
+- Use HTTPS for all requests
+- Do not log payment secrets or user banking details
+- Respect API rate limits and retry guidance
+- Contact BeatPass before building any workflow that depends on near-real-time payment or payout state
 
 ---
 
@@ -123,12 +88,12 @@ If you need real-time updates for your integration, contact [**contact@beatpass.
 
 <CardGroup cols={3}>
   <Card title="Commerce & Licensing API" icon="cart-shopping" href="/developers/api-reference/commerce">
-    Purchase flow, license certificates, and Stripe Connect endpoints.
+    Purchase flow, license certificates, and safe finance references.
   </Card>
-  <Card title="Exclusive Licenses" icon="file-certificate" href="/help/downloads-and-licensing/exclusive-licenses">
-    How exclusive purchases and licensing work.
+  <Card title="Rate Limits" icon="gauge-high" href="/developers/rate-limits">
+    Poll documented endpoints responsibly.
   </Card>
-  <Card title="Stripe Connect" icon="link" href="/help/earnings/stripe-connect">
-    Producer payout setup guide.
+  <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Producer-facing bank payout setup guidance.
   </Card>
 </CardGroup>

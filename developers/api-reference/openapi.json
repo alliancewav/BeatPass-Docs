@@ -43,7 +43,7 @@
     },
     {
       "name": "Track Purchases",
-      "description": "Purchase tracks via Stripe Connect (exclusive licenses)"
+      "description": "Purchase tracks and generate exclusive licenses"
     },
     {
       "name": "License Certificates",
@@ -111,7 +111,7 @@
     },
     {
       "name": "Stripe Connect",
-      "description": "Producer payout onboarding and financial overview"
+      "description": "Legacy Stripe Connect onboarding and financial overview where available"
     },
     {
       "name": "Exclusive Licenses",
@@ -4605,10 +4605,10 @@
     "/artist/stripe-connect/status": {
       "get": {
         "tags": ["Stripe Connect"],
-        "summary": "Check Stripe Connect onboarding status",
+        "summary": "Check legacy Stripe Connect onboarding status",
         "operationId": "stripeConnectStatus",
         "responses": {
-          "200": { "description": "Stripe Connect account status" },
+          "200": { "description": "Legacy Stripe Connect account status" },
           "401": { "$ref": "#/components/responses/Response401" }
         }
       }
@@ -4616,7 +4616,7 @@
     "/artist/stripe-connect/onboard": {
       "post": {
         "tags": ["Stripe Connect"],
-        "summary": "Create Stripe Connect onboarding link",
+        "summary": "Create legacy Stripe Connect onboarding link",
         "operationId": "stripeConnectOnboard",
         "responses": {
           "200": { "description": "Onboarding link generated" },
@@ -4627,7 +4627,7 @@
     "/artist/stripe-connect/finances": {
       "get": {
         "tags": ["Stripe Connect"],
-        "summary": "Get artist Stripe Connect financial overview",
+        "summary": "Get artist legacy Stripe Connect financial overview",
         "operationId": "stripeConnectFinances",
         "responses": {
           "200": { "description": "Financial overview with balance and transactions" },
