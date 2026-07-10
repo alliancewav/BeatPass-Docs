@@ -4,6 +4,8 @@ title: "Earnings Formula"
 description: "The exact BeatPass contribution formula used to calculate subscription payout share from recency, plays, and collaborator count."
 ---
 
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
 BeatPass calculates contribution value with a three-part formula:
 
 $$
@@ -43,6 +45,19 @@ The popularity term uses a logarithmic play curve:
 
 If more than one producer is credited on the same track, BeatPass divides that track's contribution equally across those credited producers.
 
+## Is this the same as "paid per play"?
+
+Not exactly.
+
+BeatPass does not pay a fixed amount for each individual play. It calculates contribution value using recency, play activity, and collaborator count. That value determines each eligible producer's share of subscription payout allocation.
+
+This distinction matters because your share can change when:
+
+- Your own track activity changes
+- Other catalog activity changes
+- Time decay changes the relative value of uploads
+- Collaborators are credited on a track
+
 ## Important Notes
 
 - Tracks marked **exclusive-only** get a contribution value of **0** for subscription sharing
@@ -74,6 +89,9 @@ That final value is then combined with the rest of your eligible catalog to dete
   <Card title="Maximizing Earnings" href="/help/earnings/contribution-system/maximizing-earnings" icon="arrow-trend-up">
     Learn practical ways to improve your results.
   </Card>
+  <Card title="Trust Stack" href="/help/getting-started/beatpass-trust-stack" icon="layer-group">
+    See how the published formula fits into BeatPass's wider trust system.
+  </Card>
 </CardGroup>
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

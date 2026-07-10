@@ -4,7 +4,16 @@ title: "Contribution System"
 description: "Understand how BeatPass uses contribution value to determine each producer's share of subscription revenue."
 ---
 
+import PlatformFee from "/snippets/callouts/platform-fee.mdx";
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
 BeatPass uses a <Tooltip tip="A score calculated from track age, plays, and credited producers. It determines how much subscription revenue a track contributes." cta="See the formula" href="/help/earnings/contribution-system/formula">contribution value</Tooltip> system to share subscription revenue among producers.
+
+## Why BeatPass publishes the formula
+
+Subscription payout systems can be confusing if a platform only says "fair revenue share." BeatPass publishes the contribution logic so producers can understand what affects their share: recency, plays, and collaborator count.
+
+The formula does not guarantee a fixed payout. It explains how contribution value is calculated.
 
 ## What Builds Contribution Value
 
@@ -27,7 +36,7 @@ BeatPass uses a <Tooltip tip="A score calculated from track age, plays, and cred
 3. Your producer share is calculated from your contribution divided by the platform total.
 4. Eligible producers receive their share through the payout flow.
 
-<Snippet file="callouts/platform-fee.mdx" />
+<PlatformFee />
 
 ## Important Rules
 
@@ -52,6 +61,9 @@ BeatPass recalculates contribution values periodically (roughly every few hours)
   <Card title="Maximizing Earnings" href="/help/earnings/contribution-system/maximizing-earnings" icon="arrow-trend-up">
     Learn practical ways to improve contribution and earnings.
   </Card>
+  <Card title="Trust Stack" href="/help/getting-started/beatpass-trust-stack" icon="layer-group">
+    See how payout transparency fits into BeatPass's wider trust system.
+  </Card>
 </CardGroup>
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

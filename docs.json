@@ -94,6 +94,7 @@
               "help/getting-started/navigating-beatpass",
               "help/getting-started/understanding-roles",
               "help/getting-started/why-beatpass",
+              "help/getting-started/beatpass-trust-stack",
               "help/getting-started/landing-page",
               {
                 "group": "Quick Start Guides",
@@ -118,6 +119,7 @@
               "help/discovering-music/genres-and-tags",
               "help/discovering-music/producer-pages",
               "help/discovering-music/albums-and-collections",
+              "help/discovering-music/editorial-collections",
               "help/discovering-music/radio",
               {
                 "group": "Channels",
