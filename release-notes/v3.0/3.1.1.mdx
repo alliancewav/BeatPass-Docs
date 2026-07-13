@@ -5,7 +5,7 @@ severity: "minor"
 version: "3.1.1"
 audience: "Producers"
 tags: ["feature", "improvement", "api", "bugfix"]
-components: ["producer-program", "backstage-requests", "admin-tools", "notifications", "audio-recon", "developer-docs"]
+components: ["producer-program", "backstage-requests", "notifications", "audio-recon", "developer-docs"]
 status: "published"
 related: []
 ---
@@ -24,35 +24,20 @@ This release closes a critical producer onboarding gap by preventing duplicate B
 
 ### Backstage Submission Guard
 
-- **Duplicate pending requests blocked** — Users can no longer create a second request while one is already under review
-- **Revoked re-submission blocked** — Users with revoked producer access cannot open a new request flow
-- **Global policy across request types** — The guard applies across `become-artist`, `verify-artist`, and `claim-artist`
-- **Conflict error codes** — Create attempts now return clear machine-readable conflict codes:
-  - `backstage_request_pending`
-  - `backstage_request_revoked`
+- **Duplicate pending requests blocked** — You can no longer create a second request while one is already under review
+- **Revoked re-submission blocked** — If your producer access was revoked, you can't open a new request flow
+- **Consistent across request types** — The guard applies to becoming an artist, verifying an artist, and claiming an artist
 
-### New Submission Status Endpoint
+### Revoked Appeal Experience
 
-- **New endpoint:** `GET /api/v1/backstage-request/submission-status`
-- Returns a normalized eligibility payload:
-  - `can_submit`
-  - `block_reason`
-  - `message`
-  - `contact_url`
-  - `blocking_request_id`
-- Enables frontend pre-checks before a user starts a request
+- **Clear guidance when access is paused** — The request screen now shows an explicit appeal message and a clear **Contact Support** action
+- **Standard appeal path** — You're directed to the contact page for review and possible reinstatement
+- **Deep-link protection** — Direct navigation to request forms is blocked when you're not currently eligible
 
-### Revoked Appeal UX
+### Producer Access Reviews
 
-- **Revoked users get direct guidance** — The request screen now shows an explicit appeal message and a clear **Contact Support** action
-- **Appeal path standardized** — Users are directed to `/contact` for admin review and possible reinstatement
-- **Deep-link protection** — Direct navigation to request forms is blocked when submission status is not eligible
-
-### Admin Revoke/Re-Approve Workflow
-
-- **Revoke action for approved requests** — Admins can revoke producer access with notes
-- **User notification flow** — Revocation sends the dedicated handled notification/email
-- **Re-approval support** — Revoked requests can be approved again from admin tools when appropriate
+- **You're always notified** — If your producer access is paused, you receive a dedicated email and in-app notification explaining what changed
+- **A path back** — Paused access can be reinstated when appropriate after a review
 
 ### Documentation & Developer Coverage
 
@@ -66,7 +51,7 @@ This release closes a critical producer onboarding gap by preventing duplicate B
 
 - **Prevents request spam and duplicate records** in producer onboarding workflows
 - **Gives revoked users a clear, controlled appeal channel** instead of opening new requests
-- **Improves integration reliability** with explicit conflict error codes and submission eligibility checks
+- **Makes the request flow more predictable** with clear eligibility checks
 - **Keeps docs accurate** for both end users and API consumers
 
 ---

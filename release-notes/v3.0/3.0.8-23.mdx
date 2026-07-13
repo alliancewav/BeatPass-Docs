@@ -98,10 +98,10 @@ If your subscription payment fails, you'll now see a helpful recovery popup inst
 
 ### Payment Retry Features
 
-- **Idempotent retries** — Clicking "Retry" multiple times won't create duplicate charges
+- **Safe retries** — Clicking "Retry" multiple times won't create duplicate charges
 - **Clear error messages** — If the card is declined, you'll see exactly why (expired card, insufficient funds, etc.)
 - **Success confirmation** — See the amount paid and confirmation that your subscription is reactivated
-- **Rate limiting protection** — Prevents accidental spam-clicking
+- **Overload protection** — Prevents accidental spam-clicking
 
 ### Download Blocking for Overdue Accounts
 
@@ -114,7 +114,7 @@ To protect producer revenue, users with overdue subscriptions cannot download tr
 
 ### Invoice Page Fixes
 
-- Fixed 500 error when viewing invoice details
+- Fixed an error when viewing invoice details
 - Currency symbols now display correctly on all invoices
 
 ---
@@ -140,21 +140,6 @@ Existing downloads have been processed to create artist follows:
 - **7 self-owned artists (skipped)**
 
 This helps connect users with artists they've already shown interest in by downloading their beats.
-
-### Backfill Command
-
-Admins can run the backfill command to process specific users or all historical downloads:
-
-```bash
-# Preview what would happen (no changes)
-php artisan follows:backfill-downloads --dry-run
-
-# Process all historical downloads
-php artisan follows:backfill-downloads
-
-# Process specific user only
-php artisan follows:backfill-downloads --user=123
-```
 
 ---
 
@@ -193,12 +178,6 @@ php artisan follows:backfill-downloads --user=123
   - **`DownloadLocalTrackController`** calls `autoFollowArtistsOnDownload()` after successful download
   - **`BackfillDownloadFollows`** command processes historical analytics events
   - **Non-blocking** — Follow failures are logged but don't prevent downloads
-
-  ### Admin Impersonation Fix
-
-  - **`ActiveSession model`** now has `impersonator_id` column
-  - **`LogActiveSessionJob`** tracks impersonator from session data
-  - **`UserSessionsController`** filters out sessions where `impersonator_id IS NOT NULL`
 </Accordion>
 
 ---

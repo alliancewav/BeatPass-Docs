@@ -69,7 +69,7 @@ Cards are responsive and optimized for all devices:
 
 - **Mobile**: Rectangular cards (16:9) in single-column layout
 - **Desktop**: Square cards in 2-4 column grid
-- **Performance**: GPU-accelerated rendering, lazy-loaded images
+- **Performance**: Fast, smooth rendering with images that load as you scroll
 
 ### Role Filter Pills
 
@@ -90,36 +90,10 @@ Visitors can filter your credits by role type to quickly see all your work in a 
 
 ## Technical Improvements
 
-- **PHPStan Level 7 compliance** for all backend credit code
 - **Automatic availability checks** — Credits are verified weekly against Spotify
-- **Spotify data sync** — Popularity and track counts fetched from Spotify API
+- **Spotify data sync** — Popularity and track counts stay up to date with Spotify
 - **Smart grouping** — Multiple roles on the same song are grouped together
-- **Performance optimizations**:
-  - Memoized React components to prevent unnecessary re-renders
-  - Lazy-loaded images with `loading="lazy"` and `decoding="async"`
-  - GPU-accelerated transforms for smooth scrolling
-  - Simplified backdrop effects on mobile for better performance
-  - `content-visibility: auto` for off-screen rendering optimization
-
-## Database Updates
-
-- Added `popularity` field — Stores Spotify's 0-100 popularity score
-- Added `total_tracks` field — Stores album track count for direct album credits
-
-## Admin Tools
-
-A new artisan command is available for syncing credits with Spotify:
-
-```bash
-# Sync all credits
-php artisan credits:sync-spotify
-
-# Sync specific artist
-php artisan credits:sync-spotify --artist=123
-
-# Preview changes without applying
-php artisan credits:sync-spotify --dry-run
-```
+- **Performance optimizations** — Cards load quickly and scroll smoothly, even on mobile
 
 ## What's Next
 

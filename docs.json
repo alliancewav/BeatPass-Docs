@@ -607,6 +607,12 @@
             "pages": [
               "release-notes/v3.0/index",
               {
+                "group": "July 2026",
+                "pages": [
+                  "release-notes/v3.0/3.3.0"
+                ]
+              },
+              {
                 "group": "June 2026",
                 "pages": [
                   "release-notes/v3.0/3.2.1",

@@ -1,0 +1,120 @@
+---
+title: "BEATPAY for Everyone & Verified Licenses"
+date: "2026-07-13"
+severity: "minor"
+version: "3.3.0"
+audience: "All"
+tags: ["feature", "improvement", "bugfix"]
+components: ["producer-dashboard", "billing", "licensing", "stripe-connect", "player"]
+status: "published"
+related: ["3.2.1"]
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# BEATPAY for Everyone & Verified Licenses
+
+## Summary
+
+BeatPass 3.3.0 opens **BEATPAY** bank payouts to more producers — including newcomers who have never set up payments — and introduces polished, verifiable license certificates for every eligible download. Checkout, billing, pricing, and the producer pages are cleaner and clearer, and the whole app is now available in Spanish and French.
+
+<Note>
+  BEATPAY is still expanding gradually. If you already use a payout method, it keeps working. If BEATPAY is available to you, you will see it in **Finances**.
+</Note>
+
+---
+
+## BEATPAY Bank Payouts, for More Producers
+
+- **Open to newcomers** — You can now set up **BEATPAY** and save your bank details even if you have never set up payments before
+- **Guided two-step setup** — Choose your **Payout currency**, add your bank details, and finish; BeatPass stores only a masked summary of your account
+- **Know before money moves** — Review the current exchange rate, an estimated arrival time, and confirmation that BeatPass covers the transfer fee so you receive your full payout
+- **Payout updates** — Get an email and an in-app notice the moment BEATPAY goes live for you, plus clear updates when a payout is sent or needs attention
+- **Your current payouts keep working** — Existing payout setups continue unchanged while BEATPAY expands
+
+---
+
+## Verified License Certificates
+
+- **A certificate for every eligible download** — Each qualifying paid download now creates a license certificate that records the beat, the license type, the files included, and who it was issued to
+- **A polished, print-ready document** — Certificates use a clean two-page layout with a certificate ID, status, audio-fingerprint evidence, and a rights-and-limits summary you can keep with your release
+- **Public verification** — Anyone can confirm a certificate at its verification link, which clearly shows whether a license is currently valid
+- **Clearer license terms** — Standard non-exclusive terms now spell out real limits, note when producer credit is required, and show how commercial distribution rights are recorded on your certificate
+
+---
+
+## Safer, Clearer Beat Purchases
+
+- **Locked-in terms** — The exclusive terms shown when you start payment are the exact terms recorded on your certificate, even if the beat is edited while you pay
+- **No double sales** — If two buyers reach for the same exclusive beat, only the first completes; the second is automatically refunded in full and told clearly that no license was issued
+- **Honest confirmation** — Checkout now waits until your certificate and files are ready before confirming, instead of celebrating too early
+- **A trustworthy preview** — The pre-purchase license preview is clearly marked as a preview, without a fake certificate ID or badge
+
+---
+
+## A Cleaner Checkout, Billing, and Pricing
+
+- **Redesigned checkout** — A simple **Plan → Payment → Access** flow with a clear order summary
+- **Promo codes with card payments** — Promo codes now work smoothly at card checkout, with the updated total shown before you pay
+- **Better payment history** — Load your history a page at a time, with refunds and partial refunds shown correctly
+- **Accurate invoices** — Invoice documents show the right status and amounts, including a discount line when a promo code was used
+- **Rewritten pricing pages** — The pricing and producer pages are clearer and more accurate, with licensing terms shown side by side and honest wording for the <Tooltip tip="A fee added on top of eligible paid checkouts to support secure billing and platform operations. The full total is shown before you confirm.">platform fee</Tooltip>
+
+---
+
+## Now in Spanish and French
+
+- **Full translations** — Screens, buttons, emails, and notifications are now available in Spanish and French
+- **Follows your language** — Set your language in **Location and language**, and the app, receipts, and alerts follow it
+
+---
+
+## A More Polished App
+
+- **Smoother browsing** — Pages fade in gently as you move around, with a slim progress bar and loading spinners that no longer flash on fast pages, all respecting a reduced-motion setting
+- **Cleaner producer profiles** — Similar-producer cards show follower counts, and the credits and followers sections use consistent, tidy styling
+- **Behind-the-scenes safety** — This release adds security and privacy improvements, including tighter access to your billing records, stronger protection for the public license-verification tool against automated abuse, and safeguards that keep an exclusive beat from ever being sold twice
+
+---
+
+## Bug Fixes
+
+- Checkout no longer says a purchase succeeded, or starts a download, before your license and files are actually ready
+- Prices now show the correct currency and billing period, including currencies that do not use cents
+- Applying or changing a promo code now reliably updates the payment form
+- Returning to a half-finished checkout no longer risks charging an outdated price
+- PayPal subscriptions now include the platform fee, matching card subscribers
+- The billing screen always shows your active plan, and pricing cards correctly mark your current plan
+- Following a suggested producer while signed out now prompts you to log in
+- Genre and channel artwork loads more reliably
+- Switching the app's language no longer causes a burst of reloads
+
+---
+
+## What This Means For You
+
+- **If BEATPAY is available to you** — Open **Finances** and follow **Set up BEATPAY** to prepare bank payouts
+- **If you sell or license beats** — Your buyers receive verifiable certificates, and exclusive sales are safer and clearer
+- **If you release music** — Keep the certificate for each download as proof of your license
+- **If you browse in Spanish or French** — The app now follows your language across screens, emails, and alerts
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Previous Release" icon="arrow-left" href="/release-notes/v3.0/3.2.1">
+    BEATPAY Rollout & Producer Dashboard Refresh
+  </Card>
+  <Card title="BEATPAY Bank Payouts" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Set up BEATPAY and understand payout timing
+  </Card>
+  <Card title="Downloads & Licensing" icon="file-lines" href="/help/downloads-and-licensing">
+    How licenses and certificates work
+  </Card>
+  <Card title="Plans & Pricing" icon="credit-card" href="/help/plans-and-pricing">
+    Compare plans and understand the platform fee
+  </Card>
+</CardGroup>
+
+<ReleaseFeedback />

@@ -5,6 +5,20 @@ description: "All BeatPass platform updates, new features, and improvements in o
 rss: true
 ---
 
+<Update label="July 13, 2026" description="v3.3.0" tags={["Feature", "Producer", "Billing"]}>
+  ## BEATPAY for Everyone & Verified Licenses
+
+  BEATPAY bank payouts open to more producers, verified license certificates arrive for every eligible download, exclusive purchases get safer, checkout and billing are cleaner, and the app is now available in Spanish and French.
+
+  - **BEATPAY for more producers** - Bank payouts, powered by Wise, are opening to more producers, including newcomers who have never set up payments
+  - **Verified license certificates** - Every eligible download now creates a polished certificate that anyone can confirm at its public verification link
+  - **Safer exclusive purchases** - Locked-in terms, honest confirmation, and an automatic full refund if a beat is bought twice
+  - **Cleaner checkout and billing** - Redesigned checkout, accurate invoices, promo codes with card payments, and clearer pricing pages
+  - **Spanish and French** - Screens, buttons, emails, and notifications now follow your selected language
+
+  [Read full release notes →](/release-notes/v3.0/3.3.0)
+</Update>
+
 <Update label="June 19, 2026" description="v3.2.1" tags={["Feature", "Producer", "Billing"]}>
   ## BEATPAY Rollout & Producer Dashboard Refresh
 
@@ -133,10 +147,10 @@ rss: true
 
   Unified all Stripe payment processing into a single, reliable system for improved reliability and easier maintenance.
 
-  - **Single webhook endpoint** — All Stripe events now flow through one consolidated handler
-  - **Improved reliability** — Eliminated duplicate event processing and configuration conflicts
-  - **Enhanced event coverage** — Subscriptions, beat purchases, and producer payouts handled consistently
-  - **Configuration simplification** — Single source of truth for all Stripe settings
+  - **Unified payment processing** — All Stripe payment events now flow through one consolidated, reliable path
+  - **Improved reliability** — Removed duplicate charge processing and setup conflicts
+  - **Consistent coverage** — Subscriptions, beat purchases, and producer payouts are handled consistently
+  - **Simpler, steadier billing** — More consistent handling of all Stripe payment settings
 
   [Read full release notes →](/release-notes/v3.0/3.1.2)
 </Update>
@@ -144,14 +158,12 @@ rss: true
 <Update label="February 26, 2026" description="v3.1.1" tags={["Feature", "Producer", "API", "UI/UX", "Documentation"]}>
   ## Producer Access Request Guard & Appeal Flow
 
-  Duplicate Backstage submissions are now blocked at both API and UI levels, with clear user guidance for pending and revoked states.
+  Duplicate Backstage submissions are now blocked, with clear guidance for pending and declined states.
 
-  - **Pending duplicate protection** — Users cannot submit a second producer request while one is already under review
-  - **Revoked appeal flow** — Revoked users are directed to **/contact** instead of creating new requests
-  - **New submission eligibility endpoint** — `GET /api/v1/backstage-request/submission-status`
-  - **Conflict error codes** — Create now returns `backstage_request_pending` or `backstage_request_revoked` on blocked submissions
-  - **Admin revoke/re-approve lifecycle** — Approved requests can be revoked with notes and later approved again when appropriate
-  - **Documentation refresh** — Help and developer docs updated for producer request policy and current Audio Recon behavior
+  - **Pending duplicate protection** — You can't submit a second producer request while one is already under review
+  - **Clear appeal path** — If a request was declined, you're guided to the contact page instead of creating a new one
+  - **Access reviews** — If your producer access is paused, you're notified and can request a review
+  - **Documentation refresh** — Help docs updated for the producer request policy and current Audio Recon behavior
 
   [Read full release notes →](/release-notes/v3.0/3.1.1)
 </Update>
@@ -199,11 +211,11 @@ rss: true
 
   Comprehensive API security audit and hardening across the platform.
 
-  - **Authentication enforced** on sensitive endpoints including downloads, fingerprinting, and earnings
-  - **Developer token support** with Bearer auth and 90-day expiration
-  - **New rate limits** — 300/min global, 30/min audio proxy, 60/min image proxy
-  - **Data protection** — Fingerprint data, internal fields, and sensitive user data restricted from API responses
-  - **CORS hardening** — Explicit domain whitelisting replaces wildcard access
+  - **Stronger access controls** on sensitive areas including downloads, license verification, and earnings
+  - **Developer API tokens** with secure authentication and 90-day expiration
+  - **New rate limits** to keep the platform fast and guard against abuse
+  - **Data protection** — Sensitive account and catalog data is kept out of public API responses
+  - **Tighter cross-site protections** for how other sites can access the API
 
   No action required from users — all improvements applied automatically.
 
@@ -540,7 +552,7 @@ rss: true
   Security enhancements with two-factor authentication support.
 
   - **Two-factor authentication** for account security
-  - **Admin improvements** and player fixes
+  - **Player fixes** and interface improvements
   - **Upload and billing** reliability updates
 
   [Read full release notes →](/release-notes/v3.0/3.0.6)
@@ -552,7 +564,7 @@ rss: true
   Modern audio streaming with adaptive bitrate support.
 
   - **HLS/DASH streaming** — Adaptive bitrate audio playback
-  - **Upload improvements** and admin enhancements
+  - **Upload improvements** for a smoother publishing flow
   - **Billing system** updates
 
   [Read full release notes →](/release-notes/v3.0/3.0.5)
@@ -588,7 +600,7 @@ rss: true
   Visual refinements and player reliability improvements.
 
   - **Player stability** fixes for consistent playback
-  - **UI polish** across search and admin interfaces
+  - **UI polish** across search and browsing
   - **Visual consistency** improvements
 
   [Read full release notes →](/release-notes/v3.0/3.0.2)
@@ -606,7 +618,7 @@ rss: true
   [Read full release notes →](/release-notes/v3.0/3.0.1)
 </Update>
 
-<Update label="March 18, 2023" description="v3.0.0" tags={["Platform", "Feature"]} rss={{title: "Version 3.0.0 — React Platform Launch", description: "Complete platform rewrite with React frontend, modern player, channels system, and new admin interface."}}>
+<Update label="March 18, 2023" description="v3.0.0" tags={["Platform", "Feature"]} rss={{title: "Version 3.0.0 — React Platform Launch", description: "Complete platform rewrite with React frontend, modern player, channels system, and a modern billing experience."}}>
   ## Version 3.0.0 — React Platform Launch
 
   **Complete platform rewrite** introducing the modern BeatPass experience.
@@ -614,16 +626,15 @@ rss: true
   - **React frontend** replacing the legacy server-rendered UI
   - **Modern audio player** with queue management
   - **Channels system** for content discovery
-  - **New admin interface** with improved management tools
   - **Billing system** overhaul
 
   [Read full release notes →](/release-notes/v3.0/3.0.0)
 </Update>
 
 <Update label="August 16, 2021" description="v2.5.2" tags={["Bug Fix", "Platform"]}>
-  ## Version 2.5.2 — Admin & Comments Improvements
+  ## Version 2.5.2 — Comments & Reliability Improvements
 
-  - Admin panel refinements and comment system fixes
+  - Comment system fixes and reliability improvements
   - Channel and playlist display improvements
   - Player stability updates
 
@@ -645,7 +656,6 @@ rss: true
 
   - **Enhanced Spotify import** for artists, albums, and tracks
   - Channel management improvements
-  - Admin tool updates
 
   [Read full release notes →](/release-notes/v2.x/2.5.0)
 </Update>
@@ -653,8 +663,8 @@ rss: true
 <Update label="May 21, 2021" description="v2.4.9" tags={["Feature"]}>
   ## Version 2.4.9 — Collaborative Playlists & API
 
-  - **Collaborative playlists** with moderation controls
-  - **Full REST API** with token management
+  - **Collaborative playlists** with contributor controls
+  - **Full API** for third-party integrations
   - **Spotify integration** for content import
 
   [Read full release notes →](/release-notes/v2.x/2.4.9)
@@ -665,7 +675,7 @@ rss: true
 
   - **Lyrics support** for tracks
   - **Granular permissions** system
-  - Admin and player improvements
+  - Player improvements and reliability fixes
 
   [Read full release notes →](/release-notes/v2.x/2.4.8)
 </Update>
@@ -695,7 +705,7 @@ rss: true
 
   - **GDPR compliance** — Cookie notices, consent flows, and data handling
   - **Cloud storage** — Direct browser uploads to cloud providers
-  - Upload and admin improvements
+  - Upload flow improvements
 
   [Read full release notes →](/release-notes/v2.x/2.4.5)
 </Update>

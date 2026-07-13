@@ -65,13 +65,8 @@ The direct messaging experience has been enhanced with better error handling and
 
 Full support for browser push notifications has been implemented:
 
-### Backend Infrastructure
-- **WebPushService** for sending push notifications via VAPID protocol
-- **PushSubscriptionController** for managing user subscriptions
-- **Database migration** for storing push subscription endpoints
-
-### Frontend Integration
-- **Service worker** (`sw.js`) for receiving push notifications
+### Notification Settings
+- **Background support** for receiving push notifications
 - **Push subscription management** in notification settings
 - **Automatic permission prompts** when enabling push notifications
 
@@ -84,47 +79,19 @@ Full support for browser push notifications has been implemented:
 
 ## Technical Improvements
 
-### TypeScript Fixes
-- Fixed `exclusive_license_config` type compatibility with react-hook-form
-- Improved type safety across track upload components
-
-### CSS Animations
-- New messaging animations (`messageSlideIn`, `messageSend`, `messageShake`)
+### Animations
+- New messaging animations
 - Empty state fade-in animation
 - Copy success checkmark animation
 - Scroll button bounce hint
 
 ### Performance
-- Batch track growth rate fetching to avoid N+1 API calls
-- Optimized message polling intervals
-- Service worker caching for push notification assets
-
-## For Developers
-
-### New Files
-- `resources/client/common/notifications/push/web-push-service.ts` - Push notification client
-- `app/Services/WebPushService.php` - Push notification backend service
-- `app/Http/Controllers/PushSubscriptionController.php` - Subscription management
-- `public/sw.js` - Service worker for push notifications
-
-### New API Endpoints
-- `GET /api/push/public-key` - Get VAPID public key
-- `POST /api/push/subscribe` - Subscribe to push notifications
-- `POST /api/push/unsubscribe` - Unsubscribe from push notifications
-- `POST /api/push/test` - Send test notification
-
-### Environment Variables
-- `VAPID_PUBLIC_KEY` - VAPID public key for web push
-- `VAPID_PRIVATE_KEY` - VAPID private key for web push
-- `VAPID_SUBJECT` - VAPID subject (usually mailto: URL)
-
-### Database Migration
-```bash
-php artisan migrate --path=database/migrations/2024_12_10_170000_create_push_subscriptions_table.php
-```
+- Faster loading of track growth statistics
+- More efficient message updates
+- Faster push notification delivery
 
 ## Bug Fixes
-- Fixed TypeScript error in track upload form related to `exclusive_license_config` type
+- Fixed an error in the track upload form
 - Fixed carousel fade effects not appearing when content doesn't overflow
 - Fixed message retry button not appearing for failed messages
 - Fixed typing indicator missing screen reader announcements

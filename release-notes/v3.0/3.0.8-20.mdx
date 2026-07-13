@@ -19,15 +19,15 @@ The mobile mini player has been completely redesigned with a modern, iOS-inspire
 
 ### Glass Morphism Design
 
-- **Backdrop blur effect** — The mini player now features a frosted glass appearance with `backdrop-blur-2xl` for a premium feel
-- **Rounded corners** — Modern `rounded-2xl` design language matching iOS system UI
+- **Backdrop blur effect** — The mini player now features a frosted glass appearance for a premium feel
+- **Rounded corners** — Modern rounded design language matching iOS system UI
 - **Subtle borders** — Light/dark mode adaptive borders that blend with the system theme
 - **Touch feedback** — Smooth scale animations on tap for tactile response
 
 ### Smooth Animations
 
 - **Slide-up overlay** — Tap the mini player to expand into a fullscreen view with fluid spring animations
-- **Framer Motion transitions** — Professional-grade animations using custom easing curves `[0.32, 0.72, 0, 1]`
+- **Fluid transitions** — Professional-grade animations using smooth, custom easing curves
 - **Animated navbar** — Bottom navigation smoothly hides when lyrics are displayed
 - **Queue panel** — Slides in from the right with smooth transitions
 
@@ -41,7 +41,7 @@ The mobile mini player has been completely redesigned with a modern, iOS-inspire
 ### Safe Area Support
 
 - **Notch compatibility** — Proper padding for devices with notches and home indicators
-- **Safe area insets** — Content respects `safe-area-top` and `safe-area-bottom` for edge-to-edge displays
+- **Safe area insets** — Content respects the top and bottom safe areas for edge-to-edge displays
 
 ## Producer Payout Notifications
 
@@ -80,7 +80,7 @@ The payout system now includes safeguards to prevent transfer failures:
 - **Pre-transfer balance check** — Verifies sufficient funds before attempting transfers
 - **Safety buffer** — Maintains 5% buffer to prevent negative balance issues
 - **Automatic retry** — Failed transfers are queued for retry when balance allows
-- **Deferred processing** — Splits marked as `pending_balance` process automatically when funds are available
+- **Deferred processing** — Pending splits process automatically when funds are available
 
 ## Collection Showcase Improvements
 
@@ -90,7 +90,7 @@ The collection showcase sections (featured albums, playlists, and artist highlig
 
 - **Consistent play buttons** — Play buttons now match the design used throughout the platform, with proper hover states and accessibility
 - **Smoother hover interactions** — Removed the card lift animation on hover for a cleaner feel
-- **Fixed navigation links** — Album, playlist, and artist cards now link to the correct URLs with proper slugs (e.g., `/album/1397/beatpasstm/808-inc` instead of just `/album/1397`)
+- **Fixed navigation links** — Album, playlist, and artist cards now link to the correct pages with readable, descriptive URLs
 - **Consistent backgrounds** — Collection showcases now use the same background styling as other content sections
 
 ## Artist Page Enhancements
@@ -144,7 +144,7 @@ All 35+ email templates have been completely redesigned with a modern, Stripe-in
 
 - **Separated card layout** — Each email section is now its own distinct card with rounded corners and subtle shadows
 - **Dark header with logo** — Consistent branding with centered logo and title
-- **Inline CSS styling** — Maximum compatibility across all email clients (Gmail, Outlook, Apple Mail, etc.)
+- **Maximum compatibility** — Emails render correctly across all email clients (Gmail, Outlook, Apple Mail, etc.)
 - **Mobile responsive** — Emails render correctly on all device sizes
 
 ### Layout Structure
@@ -187,14 +187,6 @@ All user-configurable notification emails now include proper unsubscribe options
 - **New Follower** — Follower info card with encouragement message
 - **Analytics Report** — Metrics cards with top track and growth indicators
 
-### Logo Assets
-
-New email-optimized logo files in `/public/assets/images/email/`:
-
-- `beatpass-logo-white-wide.png` — Header logo (white on dark)
-- `beatpass-logo-black-wide.png` — Footer logo (black on light)
-- `beatpass-logo-circular-abstract.png` — Icon version
-
 ### Social Links
 
 All emails now include links to official social channels:
@@ -204,49 +196,6 @@ All emails now include links to official social channels:
 - X (@beatpasswav)
 - YouTube (@beatpasswav)
 - Discord (invite link)
-
-## Developer Tools
-
-### Email Testing Command
-
-New `email:send-test` Artisan command for testing all email templates:
-
-```bash
-# Send all test emails
-php artisan email:send-test your@email.com
-
-# Skip promotional/marketing emails
-php artisan email:send-test your@email.com --skip-marketing
-
-# Only send emails with unsubscribe options
-php artisan email:send-test your@email.com --only-unsubscribable --user-id=1
-
-# Adjust delay between emails
-php artisan email:send-test your@email.com --delay=5
-```
-
-### Files Modified
-
-**Email Templates:**
-- `resources/views/emails/modern-base.blade.php` — Complete layout redesign
-- `resources/views/emails/*.blade.php` — All 35 individual templates
-- `resources/views/emails/payout-notification.blade.php` — New payout email with breakdown
-- `resources/views/emails/stripe-connect-reminder.blade.php` — New Stripe Connect reminder email
-
-**Notifications:**
-- `app/Notifications/PayoutNotification.php` — New payout notification class
-- `app/Notifications/StripeConnectReminder.php` — New Stripe Connect reminder notification
-
-**Services:**
-- `app/Services/SubscriptionSplitsService.php` — Enhanced with balance protection and notifications
-
-**Mobile Player:**
-- `resources/client/web-player/player-controls/mobile-player-controls.tsx` — Complete redesign
-- `resources/client/web-player/overlay/player-overlay.tsx` — Updated for mobile handling
-
-**Commands:**
-- `app/Console/Commands/SendTestEmails.php` — New testing command
-- `resources/defaults/notification-settings.php` — Added missing notification types
 
 ## Timeline
 

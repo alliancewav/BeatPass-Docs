@@ -5,7 +5,7 @@ version: "3.0.8"
 severity: "major"
 audience: "All"
 tags: ["feature", "analytics", "documentation", "commerce"]
-components: ["player", "admin", "billing", "upload", "search", "social", "messaging", "producer-dashboard"]
+components: ["player", "billing", "upload", "search", "social", "messaging", "producer-dashboard"]
 ---
 
 import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
@@ -23,23 +23,23 @@ import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
     - Exclusive license implementation with preset configurations
     - License certificate redesign with color-coded tiers
     - License certificate redesign with public verification links
-    - Public verification page at `/verify-license/{uuid}`
+    - Public license verification page
     - License deletion behavior improvements
     - Email notifications for license purchases
     - Artist notifications for track licenses sold
   </Accordion>
-  
+
   <Accordion title="Track Purchases (Stripe Connect)" icon="credit-card">
     - Per-track purchase flow via Stripe Connect
-    - Stripe webhook improvements and reliability fixes
+    - Payment processing reliability improvements
     - Track sold status tracking
     - Purchase flow optimization
   </Accordion>
-  
+
   <Accordion title="Coupons & Discounts" icon="tag">
     - Coupon system for purchases and subscriptions
     - First-payment-only coupon logic
-    - Coupon validation endpoint
+    - Coupon code validation
     - Plan-specific coupon support
     - Product-specific coupon availability
   </Accordion>
@@ -57,7 +57,7 @@ import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
     - Performance metrics and quality scores
     - Global and genre-specific leaderboards
   </Accordion>
-  
+
   <Accordion title="Audio Fingerprinting" icon="fingerprint">
     - Centralized audio fingerprinting system
     - Upload page fingerprinting integration
@@ -75,51 +75,47 @@ import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
     - Conversation management
     - User search for messaging
   </Accordion>
-  
+
   <Accordion title="Beat Requests" icon="bell">
     - Custom beat request marketplace
     - Request fulfillment workflow
     - Rate limiting and statistics
-    - Rate limit status endpoint
   </Accordion>
-  
+
   <Accordion title="Collections" icon="layer-group">
     - User-created track collections
     - Featured collections (platform-curated)
     - Collection recommendations
     - Public/private visibility settings
   </Accordion>
-  
+
   <Accordion title="Radio & Recommendations" icon="radio">
     - Seed-based track recommendations
     - Support for track, artist, and genre seeds
     - Personalized discovery
   </Accordion>
-  
+
   <Accordion title="Lyrics Management" icon="microphone-lines">
     - Add and edit track lyrics
     - Lyrics display on track pages
     - Owner-only editing
   </Accordion>
-  
+
   <Accordion title="Reposts" icon="retweet">
     - Repost tracks to your profile
     - Repost feed visibility
     - Toggle repost on/off
   </Accordion>
-  
+
   <Accordion title="Real-Time Notifications" icon="bell">
-    - Server-Sent Events (SSE) stream
+    - Real-time notification stream
     - Instant notification delivery
-    - First-party application support
   </Accordion>
-  
-  <Accordion title="Code Quality & Security" icon="shield">
-    - Comprehensive codebase cleanup (5,600% ROI)
+
+  <Accordion title="Performance & Security" icon="shield">
+    - Platform-wide performance and stability improvements
     - All security vulnerabilities resolved
-    - API routes audit (341 routes, optimized)
-    - Test endpoints removed from production
-    - Documentation suite created (10 guides)
+    - Expanded documentation and guides
   </Accordion>
 </AccordionGroup>
 
@@ -127,17 +123,16 @@ import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
 
 This release includes a complete rewrite of public documentation:
 
-- **API docs** now reflect the actual Sanctum-based authentication
+- **API docs** now reflect the current authentication method
 - **Payments guide** updated to per-track purchase flow (no cart)
-- **Licensing docs** now include verification URL and API endpoints
-- **Embedding docs** corrected to `track/{id}/{slug}/embed` format
-- **Security docs** updated to TOTP-only 2FA (no SMS)
+- **Licensing docs** now include the public verification link
+- **Embedding docs** corrected with the proper embed format
+- **Security docs** updated for authenticator-app two-factor authentication (no SMS)
 - **Messaging docs** now include read receipts and typing indicators
-- **Collections guide** added with full API reference
-- **Notifications docs** now reference SSE stream
+- **Collections guide** added
+- **Notifications docs** now cover real-time notifications
 - **Beat requests** now include rate limit documentation
-- **API endpoints** expanded with: collections, radio, lyrics, coupons, reposts, player, streaming quota
-- **Admin exclusions** explicitly documented in API overview
+- **Documentation** expanded to cover: collections, radio, lyrics, coupons, reposts, player, and streaming quota
 
 ## Version History
 
@@ -159,31 +154,6 @@ This release includes a complete rewrite of public documentation:
 ### Version 3.0.8
 
 No breaking changes. All optimization work was backward compatible.
-
-### Documentation Updates (November 2025)
-
-The API documentation was rewritten to match actual platform behavior:
-
-| Area | Old Docs | New Docs |
-|------|----------|----------|
-| Authentication | OAuth + API keys | Sanctum session/cookie auth |
-| Purchases | Cart/checkout flow | Per-track purchase |
-| Embeds | `/embed/track/{id}` | `track/{id}/{slug}/embed` |
-| Webhooks | Outbound events | Inbound Stripe only |
-| 2FA | SMS + TOTP | TOTP only |
-
-## Deprecations
-
-### Removed in 3.0.8
-
-- Old fingerprint dashboard implementations (archived)
-- Legacy test/debug commands (archived)
-- Duplicate API routes (4 removed)
-
-### Future Deprecations
-
-- Legacy producer dashboard endpoint (`/users/{user}/producer-dashboard`)
-  - Use `/producer-intelligence/dashboard` instead
 
 ## Staying Informed
 
