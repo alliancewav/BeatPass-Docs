@@ -343,6 +343,7 @@
             "icon": "dollar-sign",
             "pages": [
               "help/earnings/index",
+              "help/earnings/beatpay/index",
               "help/earnings/payout-schedule",
               "help/earnings/payout-eligibility",
               "help/earnings/viewing-finances",

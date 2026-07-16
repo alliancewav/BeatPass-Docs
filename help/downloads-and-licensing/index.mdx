@@ -10,7 +10,7 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 BeatPass lets you use tracks in two main ways:
 
 - Download a track under a standard non-exclusive license when your account has download access
-- Buy an exclusive license for eligible tracks with one-time Stripe checkout
+- Buy an exclusive license for eligible tracks through one-time secure card checkout
 
 This section explains what happens in the current product, including when licenses appear, where to find them, and what the platform verifies publicly.
 
@@ -33,7 +33,7 @@ This section explains what happens in the current product, including when licens
 
 | Topic | Non-exclusive | Exclusive |
 | --- | --- | --- |
-| How you get it | Download an eligible track | Buy **Buy Exclusive** on an eligible track |
+| How you get it | Download an eligible track | Select **Buy Exclusive** on an eligible track |
 | Other artists can still use the beat | Yes | No new licenses after purchase |
 | Attribution required | Yes | Check the certificate terms |
 | Content ID registration | No | Allowed under current default terms |
@@ -49,13 +49,13 @@ This section explains what happens in the current product, including when licens
 
 <Steps>
   <Step title="Choose a track">
-    On the track page, use **Download** for standard access or **Buy Exclusive** when the track is sold that way.
+    On the track page, use **Download** for standard access or **Buy Exclusive** when an instant exclusive offer is available.
   </Step>
   <Step title="BeatPass checks access">
     Downloads require login, valid download access, and a current subscription state. Sold-exclusive tracks are blocked for everyone except the exclusive buyer and the track owner.
   </Step>
   <Step title="Your audio or purchase completes">
-    Standard downloads deliver the track file and generate a license certificate automatically. Exclusive purchases go through Stripe card checkout and generate an exclusive license on success.
+    Standard downloads deliver the track file and generate a license certificate automatically. Exclusive purchases use secure card checkout and generate an exclusive license on success.
   </Step>
   <Step title="Find your license">
     Open your certificate from the post-download flow, the track page, or **Your library** → **Licenses**.
@@ -72,10 +72,10 @@ This section explains what happens in the current product, including when licens
     The current standard download flow downloads the track file and generates your license certificate automatically. You can access it from the track page or **Your library** → **Licenses**.
   </Accordion>
   <Accordion title="Exclusive purchases" icon="crown">
-    On successful purchase, BeatPass generates the exclusive license, marks the beat as sold, attempts an immediate track download, and stores the license in **Your library** → **Licenses**. The final deliverables are defined by the license preview and certificate for that track.
+    On successful purchase, BeatPass generates the exclusive license, marks the beat as sold, prepares the original uploaded WAV for download, and stores the license in **Your library** → **Licenses**. The final deliverables are defined by the license preview and certificate for that track.
   </Accordion>
   <Accordion title="Audio fingerprinting" icon="fingerprint">
-    BeatPassID is a background process that enriches certificates with audio fingerprint data. It does not affect your ability to download tracks or access license certificates.
+    The collapsible **BeatPass ID** section brings together licensing, Sample-Safe status, AI disclosure when available, promised deliverables, and the verified fingerprint. Existing certificate access remains available even if an older track has incomplete fingerprint information.
   </Accordion>
 </AccordionGroup>
 

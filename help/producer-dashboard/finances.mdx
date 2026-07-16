@@ -15,22 +15,22 @@ The **Finances** page is the earnings view inside the Producer Dashboard. Depend
 
 ## How to Get Here
 
-Click your **profile avatar** -> **Backstage**, then select **Finances** in the sidebar.
+Click your **profile avatar** → **Backstage**, then select **Finances** in the sidebar.
 
 ## Two Page States
 
 <CardGroup cols={2}>
   <Card title="Setup Required" icon="triangle-exclamation">
-    Onboarding when BEATPAY or Stripe Connect setup is not ready for the selected artist.
+    Onboarding when no payout route is ready for the selected producer profile.
   </Card>
   <Card title="Active" icon="circle-check">
-    Payout status, balances, artist switching, cache timestamps, and transaction history after setup is complete.
+    Payout status, balances, artist switching, cache timestamps, and transaction history after at least one earnings stream is ready.
   </Card>
 </CardGroup>
 
 ## Setup Required
 
-When setup is incomplete, BeatPass shows onboarding instead of incomplete finance data. Eligible producers may see **Set up BEATPAY** for bank payouts powered by Wise. Producers not yet in the BEATPAY rollout may continue to see **Connect Stripe Account Now** for Stripe Connect.
+When setup is incomplete, BeatPass shows the action needed for that producer profile. You may see **Set up BEATPAY** for bank payouts powered by Wise or **Connect Stripe Account Now** when Stripe is the route available to your account.
 
 <StripeConnectRequired />
 
@@ -56,7 +56,7 @@ When setup is incomplete, BeatPass shows onboarding instead of incomplete financ
 
 ## Active Dashboard
 
-Once payout setup is ready, the page becomes a reporting dashboard for the selected artist.
+Once at least one payout stream is ready, the page shows the reporting dashboard for the selected artist. The dashboard can show exclusive-sale readiness separately from subscription licensing readiness.
 
 ### Header and Artist Switcher
 
@@ -103,11 +103,15 @@ The lower section combines finance events into one list.
 
 | Status | Meaning |
 | --- | --- |
+| **Sale completed** | A direct sale completed through its established payout route |
+| **Payout queued** | A BEATPAY sale is waiting for its producer payout |
 | **Paid** | Completed successfully |
 | **Queued** | Waiting in the payout pipeline |
 | **Sending** | Transfer is being sent |
 | **Pending** | Still processing |
+| **Held** | Waiting for review before the payout can move |
 | **Failed** | Did not complete |
+| **Refunded** | The sale was refunded |
 | **Excluded** | Not included in the payout distribution |
 
 <Tip>
@@ -138,7 +142,7 @@ The lower section combines finance events into one list.
     Set up Wise-powered bank payouts when BEATPAY is available to you.
   </Card>
   <Card title="Stripe Connect" icon="credit-card" href="/help/earnings/stripe-connect">
-    Setup and troubleshooting guidance for the legacy Stripe route.
+    Setup and troubleshooting guidance when Stripe Connect is shown as your current route.
   </Card>
   <Card title="Contribution System" icon="chart-line" href="/help/earnings/contribution-system">
     How subscription revenue is allocated.

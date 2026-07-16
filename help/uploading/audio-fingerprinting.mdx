@@ -32,7 +32,7 @@ During upload, BeatPass currently moves through these states:
 | **Checking** | BeatPass is starting duplicate detection |
 | **Analyzing** | BeatPass is analyzing the audio fingerprint |
 | **Verified Unique** | No duplicate was found |
-| **Check Failed** | The duplicate check failed, but the upload can still continue |
+| **Check Failed** | Verification did not finish; upload the audio file again before publishing |
 
 ## If BeatPass Finds a Duplicate
 
@@ -47,11 +47,11 @@ In that situation, the duplicate must be resolved before you treat the upload as
 
 ## If the Check Fails
 
-BeatPass currently allows the upload to continue when the duplicate-check process fails unexpectedly.
+BeatPass keeps the form available when the fingerprint check fails, but it does not allow the beat to be published. Upload the audio file again to restart verification.
 
-<Note>
-  This is different from a confirmed duplicate. **Check Failed** means the check itself failed, not that BeatPass confirmed your beat was unique.
-</Note>
+<Warning>
+  **Check Failed** is different from a confirmed duplicate. It means BeatPass could not confirm that the beat is unique. Contact support if verification repeatedly fails on a valid WAV file.
+</Warning>
 
 ---
 
@@ -79,6 +79,8 @@ If you replace the audio file on an existing beat:
 3. The fingerprint state updates to reflect the new audio
 
 This is useful when you need to fix or improve the master, but it also means the new file must pass BeatPass duplicate rules again.
+
+Use **Replace audio** in the floating action bar on the track edit page. This action is unavailable after an exclusive certificate has been issued.
 
 ---
 

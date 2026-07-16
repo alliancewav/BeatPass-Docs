@@ -36,48 +36,27 @@ A BeatPass exclusive preset stores the license configuration itself, including:
   </Card>
 </CardGroup>
 
-## How Presets Work in the Producer UI
+## How Saved Terms Work in the Producer UI
 
-The current producer UI exposes preset **selection** on the exclusive configuration form:
+The exclusive configuration form includes **Start from saved terms**:
 
-- Choose a saved preset from the preset selector to load its terms.
-- Use the **Use Default** action to load the platform's default exclusive configuration instead.
-- One preset can be marked as the **default** — making it the easiest starting point for new exclusive-capable tracks.
+- Choose an existing item under **Saved terms** to load it into the current beat.
+- Choose **Custom configuration** when you want to work directly from the current fields.
+- Click **Reset** to return to the BeatPass starting configuration.
+- Click **Use as my default** to save the current terms as your personal starting point for future exclusive-capable beats.
 
 <Note>
-  Full preset creation and management (creating, editing, deleting presets) may be handled through a separate workflow or admin surface. The track form itself focuses on applying an existing preset to the current beat.
+  **Use as my default** saves the license configuration, not the track's price or availability. Delivery guarantees are confirmed separately for each beat.
 </Note>
 
-## Preset Data Model
-
-Each preset tracks:
-
-- **Name** — a descriptive label you give the preset.
-- **Description** — optional notes about when to use it.
-- **Default flag** — whether this preset auto-loads for new tracks.
-- **Usage count** — how many tracks currently reference this preset.
-- **In-use protection** — BeatPass blocks deletion when tracks still use the preset.
-
-## Editing and Updating
-
-<Warning>
-  Editing a preset does **not** retroactively change tracks that already used it. Existing sold or published beats keep the terms that were saved with them.
-</Warning>
-
-## Deleting a Preset
-
-BeatPass blocks preset deletion when tracks still reference it. To delete one:
-
-1. Update the affected tracks to use a different preset or configuration.
-2. Return to the preset manager.
-3. Delete the now-unused preset.
+Applying saved terms does not change another beat. The selected values are copied into the current form, where you can review them before saving. Sold beats keep the terms already recorded in the buyer's certificate.
 
 ## Best Practices
 
-- Use clear preset names like `Standard Exclusive` or `Premium Exclusive`.
-- Keep one default preset for your most common deal structure.
-- Create separate presets only when the terms genuinely differ.
-- Review older presets occasionally to ensure they match your current approach.
+- Use **Use as my default** only after you have reviewed every term.
+- Keep your personal default aligned with the deal structure you use most often.
+- Recheck governing law, optional permissions, and promised files on every beat.
+- Use **Customize percentages** only when a financial preset does not fit the deal.
 
 ## Related
 

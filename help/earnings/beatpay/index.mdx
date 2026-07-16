@@ -2,19 +2,19 @@
 audience: help
 title: "BEATPAY Bank Payouts"
 sidebarTitle: "BEATPAY"
-description: "Set up BEATPAY bank payouts, understand rollout eligibility, review payout statuses, and learn what changes from Stripe Connect."
+description: "Set up BEATPAY bank payouts and understand how exclusive-sale and subscription earnings reach you."
 keywords: ["beatpay", "wise payouts", "bank payouts", "producer payouts", "producer finances"]
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-**BEATPAY** is BeatPass's bank payout setup for eligible producers. It is powered by Wise and appears inside **Producer Finances** when your account is included in the rollout.
+**BEATPAY** is BeatPass's bank payout setup for eligible producers. It is powered by Wise and appears inside **Producer Finances** when it is available for your account.
 
 <ProducerOnly />
 
 <Info>
-  BEATPAY is rolling out gradually. If you do not see **Set up BEATPAY** in **Finances**, keep using your current payout setup.
+  If you see **Set up BEATPAY** in **Finances**, complete it to prepare eligible exclusive-sale bank payouts. If it is not shown, follow the payout setup currently presented to your account.
 </Info>
 
 ## What BEATPAY Does
@@ -24,7 +24,7 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
     Set up a bank account so future eligible earnings can be paid through BEATPAY.
   </Card>
   <Card title="Current payouts continue" icon="circle-check">
-    Existing Stripe Connect payouts keep working while BeatPass expands BEATPAY access.
+    If you already use Stripe Connect, subscription payouts can continue there while eligible exclusive sales use BEATPAY.
   </Card>
   <Card title="Currency context" icon="chart-line">
     Review source currency, payout currency, exchange-rate movement, and estimated arrival timing when rates are available.
@@ -66,7 +66,7 @@ You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your
 </Steps>
 
 <Note>
-  Setting up BEATPAY does not change your current payouts immediately. Your current payout setup keeps working until BeatPass completes the switch for your account.
+  After your bank account is ready, eligible exclusive sales can use BEATPAY. If Stripe Connect is also active, subscription payouts can continue there. **Finances** shows the status of each earnings stream.
 </Note>
 
 ## BEATPAY Statuses
@@ -74,7 +74,7 @@ You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your
 | Status or label | What it means |
 | --- | --- |
 | **Not started** | No BEATPAY bank account has been saved for the selected artist yet |
-| **Bank account ready** | Your bank account is saved, but current payouts may still use the existing route during rollout |
+| **Bank account ready** | Your bank account is saved; **Finances** shows which earnings are ready to use it |
 | **Bank payouts active** | BEATPAY is the active payout route for eligible earnings |
 | **Bank setup needs a quick review** | BeatPass or the payout provider needs more time or updated details before the bank account is ready |
 | **Use a different bank account** | Replace the saved active bank account with another one |
@@ -96,25 +96,25 @@ When exchange-rate details are available, **Finances** can show:
 
 ## What Does Not Change
 
-- Your existing Stripe Connect setup keeps working unless **Finances** tells you otherwise
+- Your existing Stripe Connect subscription payout setup keeps working unless **Finances** tells you otherwise
 - Your contribution share and payout formulas do not change because you set up BEATPAY
 - Your transaction history remains in **Finances**
-- **Excluded**, **Queued**, **Sending**, **Paid**, and **Failed** statuses still describe where a payout is in the process
+- **Sale completed**, **Payout queued**, **Queued**, **Sending**, **Paid**, **Held**, **Failed**, **Refunded**, and **Excluded** describe the relevant sale or subscription state
 
 ## Common Questions
 
 <AccordionGroup>
   <Accordion title="Why do I not see BEATPAY yet?">
-    BEATPAY is available only to eligible producers during the rollout. Keep your current payout setup active and check **Finances** for the setup shown to your account.
+    BEATPAY appears when it is available for your producer account. Keep the payout setup shown in **Finances** active and check there for new setup options.
   </Accordion>
   <Accordion title="Do I need to remove Stripe Connect first?">
-    No. If you already use Stripe Connect, keep it active. BEATPAY setup prepares your account for bank payouts while current payouts keep working.
+    No. If you already use Stripe Connect, keep it active. BEATPAY can receive eligible exclusive-sale payouts while your existing subscription payout route remains active.
   </Accordion>
   <Accordion title="Does BEATPAY change my earnings share?">
-    No. BEATPAY changes the payout route, not the way BeatPass calculates contribution share or track-sale earnings.
+    No. BEATPAY changes how eligible money reaches you, not how BeatPass calculates the underlying earning.
   </Accordion>
   <Accordion title="Where do I check payout problems?">
-    Open **Backstage** -> **Finances** and review the current setup state, transaction statuses, and any prompt asking for more information.
+    Open **Backstage** → **Finances** and review the current setup state, transaction statuses, and any prompt asking for more information.
   </Accordion>
 </AccordionGroup>
 

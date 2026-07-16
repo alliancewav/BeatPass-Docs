@@ -28,6 +28,8 @@ To edit a beat:
   </Step>
 </Steps>
 
+All five track sections open by default on the edit page so you can scan the saved setup without repeatedly expanding panels. Collapse any section you do not need.
+
 ## Track Fields You Can Usually Edit
 
 | Area | Current Examples |
@@ -35,10 +37,10 @@ To edit a beat:
 | **Basic details** | Track name, description, credited artists, collection |
 | **Discovery metadata** | Tags, genres |
 | **Music properties** | Key, scale, BPM |
-| **Protection** | Sample-safe status and notes |
+| **Protection** | Sample-safe status, AI use declaration, and audio fingerprint status |
 | **Artwork** | Custom cover art or AI preset choice |
 | **Licensing** | Model, exclusive price, exclusive config, subject to sale locks |
-| **Audio** | Replace the uploaded audio file |
+| **Audio** | Replace the uploaded audio file before an exclusive sale |
 
 ---
 
@@ -47,11 +49,19 @@ To edit a beat:
 If you need to update the audio file:
 
 1. Open the track's edit form
-2. Use the **Audio Fingerprint** area to replace the file
+2. Click **Replace audio** in the floating action bar
 3. Wait for BeatPass to process the new upload
 4. Save once the track is ready
 
 Replacing audio triggers a new fingerprint workflow for the updated file.
+
+<Warning>
+  **Replace audio** is unavailable after an exclusive certificate is issued. Only cover art can be changed on a sold beat.
+</Warning>
+
+## Declaring AI Use on Older Tracks
+
+If a beat was uploaded before AI declarations were added, choose **Human-made** or **AI-assisted** in **Protection & Verification** before saving the producer edit. An AI-assisted declaration also requires the tool name, usage details, and commercial-rights confirmation.
 
 ---
 
@@ -96,7 +106,7 @@ Some edits become limited after an exclusive sale.
 
 <AccordionGroup>
   <Accordion title="Sold beats">
-    Once a beat is sold exclusively, BeatPass locks the sold state and the sold exclusive terms. That protects the buyer's certificate.
+    Once a beat is sold exclusively, BeatPass locks the audio, metadata, licensing model, status, price, and sold terms. Only cover art remains editable. This protects the buyer's certificate.
   </Accordion>
 
   <Accordion title="Standard licensing after a sale">

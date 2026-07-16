@@ -46,19 +46,21 @@ You have two options:
 
 After a file is accepted, BeatPass opens the track form and begins audio fingerprinting in the background.
 
+The form follows a guided sequence. **Cover Art & Style** opens first, and each next section becomes available after the sections before it are complete. When a new section opens, the previous section stays open so you can review both. Up to two sections remain open at a time.
+
 ## Track Form Sections
 
 The form is organized into five sections:
 
 ### Cover Art & Style
 
-Upload cover art for your beat. You can use a custom image or select from **AI Cover Presets** matched to your genres. See [Cover Art](/help/uploading/cover-art) for full artwork guidelines.
+Upload cover art for your beat. You can use a custom image or select from **AI Cover Presets** matched to your genres. The form links directly to the [AI Cover Art Presets guide](/help/uploading/cover-art/templates) for more detail.
 
 ### Track Details
 
 | Field | Required | Notes |
 |-------|----------|-------|
-| **Track Name** | Yes | Your beat's title |
+| **Track Name** | Yes | Enter the final catalog title; file names and embedded audio titles are not copied into this field |
 | **Producers** | Auto-filled | Automatically set to your producer profile |
 | **Description** | No | Describe the beat's style, mood, or intended use |
 | **Collection/Album** | No | Assign the beat to an existing or new collection |
@@ -89,17 +91,18 @@ If you choose **Needs Clearance**, an additional notes field appears and buyers 
 
 This section also shows the audio fingerprinting status as the duplicate check runs.
 
-### AI Use & Rights Verification
+### AI Use Declaration
 
 BeatPass policy requires every beat to be human-made and not fully AI-generated. AI can assist production, but it cannot replace the producer's role in making the beat.
 
-Dedicated AI self-evaluation and attestation fields are planned as a separate product update. Until those fields are available in the upload form, producers should:
+Choose one declaration before publishing:
 
-- avoid uploading fully AI-generated beats
-- keep records for any AI tool, model, service, plug-in, or generated element used
-- verify that the tool and account plan allow commercial use, sale, distribution, licensing, and BeatPass consumer use
-- keep source notes, receipts, screenshots, tool terms, plan records, generation records, project files, stems, and written permissions when relevant
-- be ready to provide Proof of Rights if BeatPass requests it
+| Choice | Use it when |
+|--------|-------------|
+| **Human-made** | The beat contains no AI-generated audio or material AI-generated source element |
+| **AI-assisted** | AI supported a primarily human-made production and you remain the primary creator |
+
+**AI-assisted** also requires the tool or service name, a brief explanation of how it affected the final audio, and confirmation that you can commercially use and license all AI-related material. Keep records that support your declaration in case BeatPass requests Proof of Rights.
 
 <Warning>
   Sample-Safe status does not replace AI disclosure or AI rights verification. A beat marked **Needs Clearance** can still violate the AI policy if the AI source or commercial-use rights cannot be verified.
@@ -107,21 +110,32 @@ Dedicated AI self-evaluation and attestation fields are planned as a separate pr
 
 ### Licensing Options
 
-This section is **collapsed by default** and automatically set to **Standard Licensing** (non-exclusive). You don't need to open it to save your beat.
+This is the final step in the guided form. BeatPass only presents licensing models that are available for every credited producer. Depending on payout readiness, a new producer may see **Exclusive Only** as the available model.
 
 If you want to offer exclusive licensing, expand the section and choose a model:
 
 | Option | Description |
 |--------|------------|
-| **Standard Licensing** | Available to all BeatPass users (default) |
+| **Standard Licensing** | Subscription licensing when every credited producer is eligible |
 | **Standard + Exclusive** | Offer both standard licensing and exclusive purchase |
 | **Exclusive Only** | Offer the beat only as an exclusive opportunity |
 
+If a licensing model is not available for your producer account yet, the option stays visible with an explanation. BeatPass will notify you when it becomes available.
+
+<Note>
+  **Exclusive Only** tracks earn from direct sales and do not contribute to subscription revenue sharing. See the [Contribution System](/help/earnings/contribution-system) before choosing this model.
+</Note>
+
 When exclusive licensing is enabled, additional fields appear:
 
-- **Exclusive price** and **currency** (USD, EUR, GBP, or CAD)
-- **Exclusive status** — Available, Sold, or Private
+- **Exclusive price** and **currency** (USD, EUR, GBP, or CAD) for an **Available** offer
+- **Price & availability** — **Available** enables checkout, while **Private** removes the price and directs buyers to chat
 - **Exclusive contact email** (auto-filled with your email)
+- **Files delivered to the buyer** — the original WAV plus stems and any other files you guarantee
+
+**Sold** is not a publishing choice. BeatPass applies it automatically when an exclusive certificate is issued. After that, the audio and licensing settings are locked and only the cover art can be changed.
+
+The form includes links to the licensing, exclusive terms, contribution, cover art, Sample-Safe, and AI policy guides. A compact **Publish with confidence** panel below the form keeps the main guides together without adding more fields.
 
 ## Audio Fingerprint Status
 
@@ -133,20 +147,22 @@ During upload, BeatPass shows these fingerprint states:
 | **Checking** | Duplicate detection is starting |
 | **Analyzing** | Audio fingerprint is being analyzed |
 | **Verified Unique** | No duplicate found |
-| **Check Failed** | Duplicate check failed, but you can still continue |
+| **Check Failed** | Verification did not finish; upload the audio file again before publishing |
 
-<Note>
-  A failed duplicate check does not block your upload. BeatPass fails open in this situation — you can still save the track.
-</Note>
+<Warning>
+  A beat cannot be published unless the fingerprint check reaches **Verified Unique**. If the check fails, upload the audio file again. Contact support if verification repeatedly fails on a valid WAV file.
+</Warning>
 
 If a matching beat is detected, a modal shows the original track details and similarity score.
 
 ## Saving Your Upload
 
-When the required fields are complete, click to save your beat. For collection uploads:
+When the required fields are complete, click **Save Track**. The form is locked while BeatPass publishes the beat, so wait for the confirmation before leaving the page. For collection uploads:
 
 - The collection itself needs its own cover art
 - Each track still needs its own audio file
+
+If the beat includes an exclusive offer, BeatPass asks you to confirm that the license terms and promised deliverables are accurate before publishing. **WAV (Uncompressed)** is always included. You must also select **Stems (Separated Tracks)** and guarantee that you can provide them if the beat sells.
 
 ## Upload Minutes
 

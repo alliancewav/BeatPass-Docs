@@ -4,18 +4,30 @@ title: "Payout Schedule"
 description: "Understand how BeatPass earnings move through statuses like Queued, Sending, and Paid before the final payout destination receives funds."
 ---
 
-BeatPass handles the earning record first, then sends eligible money through the active payout route for your producer account. During the BEATPAY rollout, that route can be BEATPAY bank payouts for eligible producers or Stripe Connect for producers still on the legacy route.
+BeatPass records each earning first, then sends eligible money through the route shown in **Finances**. Exclusive sales and subscription payouts can use different routes on the same producer account.
 
 ## The Two Main Earning Paths
 
 <CardGroup cols={2}>
   <Card title="Track Sales" icon="shopping-bag">
-    Direct purchases appear in your earnings history and then move through the current payment and payout flow.
+    Direct purchases appear in your earnings history as **Sale completed**, **Payout queued**, **Sending**, **Paid**, **Held**, **Failed**, or **Refunded**, depending on the active route and payout state.
   </Card>
   <Card title="Subscription Payouts" icon="repeat">
     Subscription revenue moves through BeatPass split statuses before it is sent through the active payout route.
   </Card>
 </CardGroup>
+
+## Track-Sale Payout Statuses
+
+| Status | What It Means |
+|--------|----------------|
+| **Sale completed** | A direct sale completed through its established payout route |
+| **Payout queued** | The sale completed and its producer payout is waiting to move |
+| **Sending** | BeatPass is sending the producer payout |
+| **Paid** | The producer payout completed |
+| **Held** | The payout needs review before it can move |
+| **Failed** | The payout did not complete |
+| **Refunded** | The sale was refunded |
 
 ## Subscription Payout Statuses
 
@@ -60,8 +72,8 @@ The exact arrival time is not fixed by BeatPass alone. Delays or differences can
 
 ## What to Do If Something Looks Stuck
 
-1. Open **Backstage** -> **Finances**
-2. Check whether the issue is **Queued**, **Failed**, or **Excluded**
+1. Open **Backstage** → **Finances**
+2. Check whether the issue is **Payout queued**, **Queued**, **Held**, **Failed**, or **Excluded**
 3. Make sure the payout setup shown in **Finances** is active
 4. Give the provider or your bank time to finish the transfer if the money is already **In Transit**
 

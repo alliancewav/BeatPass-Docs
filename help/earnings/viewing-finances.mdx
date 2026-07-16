@@ -77,10 +77,14 @@ Rows in the transaction list can show these user-facing statuses:
 
 | Status | Meaning |
 |--------|---------|
+| **Sale completed** | A direct sale completed through its established payout route |
+| **Payout queued** | A BEATPAY sale completed and its producer payout is waiting to move |
 | **Queued** | A subscription split exists but is still waiting to move |
 | **Sending** | BeatPass is actively sending the split through the active payout route |
 | **Paid** | The BeatPass-side payout step completed |
+| **Held** | A sale payout needs review before it can move |
 | **Failed** | The transfer hit an error |
+| **Refunded** | The sale was refunded |
 | **Excluded** | You were not eligible for that subscription split when it ran |
 
 <Warning>
@@ -115,7 +119,7 @@ This section is explanatory. It is meant to help you understand why money appear
 - Use **Upcoming** when you want to know what is still moving
 - Use the **Subscriptions** filter when reviewing subscription-based earnings only
 - Use the **Sales** filter when checking direct track purchases only
-- Keep an eye on **Setup required**, **Failed**, or **Excluded** signals because those are the clearest warnings that something needs attention
+- Keep an eye on **Setup required**, **Held**, **Failed**, or **Excluded** signals because those are the clearest warnings that something needs attention
 - Follow **Set up BEATPAY** or **Connect Stripe Account Now** based on the setup shown in your account
 
 ---
@@ -137,7 +141,7 @@ This section is explanatory. It is meant to help you understand why money appear
 
 <AccordionGroup>
   <Accordion title="Why do I still see setup messaging after connecting a payout account?">
-    BeatPass can stay in setup mode until the active payout provider fully enables your account. Return to **Finances** and complete any remaining prompts.
+    BeatPass can show separate readiness for exclusive sales and subscription earnings. Return to **Finances** and complete any remaining prompt for the earnings stream you want to activate.
   </Accordion>
 
   <Accordion title="Why does Paid not always mean the money is already in my bank?">

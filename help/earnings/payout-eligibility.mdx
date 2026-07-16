@@ -20,6 +20,12 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
   </Card>
 </CardGroup>
 
+## Earnings Streams and Payout Routes
+
+Exclusive-sale payouts and subscription contribution payouts are separate earnings streams. They can use different payout routes on the same producer account. For example, **Finances** may show BEATPAY ready for exclusive sales while subscription payouts continue through an active Stripe Connect account.
+
+A producer with BEATPAY but without an active subscription payout route can publish eligible **Exclusive Only** offers. **Standard Licensing** stays unavailable until the subscription payout stream is active.
+
 ## Current Payout Routes
 
 <CardGroup cols={2}>
@@ -27,7 +33,7 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
     Eligible producers can set up Wise-powered bank payouts from **Finances** when **Set up BEATPAY** appears.
   </Card>
   <Card title="Stripe Connect" icon="credit-card">
-    Stripe Connect remains active for producers already using Stripe and for producers not yet included in the BEATPAY rollout.
+    Stripe Connect remains active for producers whose **Finances** page shows it as their current payout route.
   </Card>
 </CardGroup>
 
@@ -63,7 +69,7 @@ If a subscription payout runs while your account is not ready:
 
 <Steps>
   <Step title="Open Producer Finances">
-    Go to **Backstage** -> **Finances**.
+    Go to **Backstage** → **Finances**.
   </Step>
   <Step title="Check the dashboard state">
     If BeatPass still shows an onboarding panel, your setup is not complete yet.
@@ -89,7 +95,7 @@ If a subscription payout runs while your account is not ready:
   </Accordion>
 
   <Accordion title="Can I still earn before setup is finished?">
-    Activity can still happen, but you are not safely payout-ready until your payout setup is complete.
+    Exclusive sales require an active exclusive-sale payout route. Standard subscription licensing requires an active subscription payout route for every credited producer.
   </Accordion>
 
   <Accordion title="Why do I see Excluded in Transactions?">

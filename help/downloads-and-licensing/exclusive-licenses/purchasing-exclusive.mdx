@@ -2,7 +2,7 @@
 audience: help
 title: "Purchasing Exclusive Licenses"
 sidebarTitle: "Purchasing Exclusive"
-description: "Step-by-step guide to buying an exclusive beat license on BeatPass using the current Stripe purchase flow."
+description: "Step-by-step guide to buying an exclusive beat license on BeatPass using the current secure card checkout flow."
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
@@ -10,7 +10,7 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 This page explains the current exclusive checkout flow in BeatPass. It covers requirements, payment behavior, and what happens immediately after a successful purchase.
 
 <Info>
-  Exclusive purchases currently use Stripe card checkout and supported purchase currencies are `USD`, `EUR`, `GBP`, and `CAD`.
+  Exclusive purchases use secure card checkout. Supported purchase currencies are USD, EUR, GBP, and CAD.
 </Info>
 
 ## Before you start
@@ -20,7 +20,7 @@ You need:
 - A signed-in BeatPass account
 - A track that is still eligible for exclusive purchase
 - A producer who has payment setup completed for that track
-- A payment card accepted by Stripe
+- A supported payment card
 
 ### Common reasons purchase is blocked
 
@@ -42,8 +42,8 @@ You need:
   <Step title="Check the price breakdown">
     BeatPass shows the producer price, the platform fee, and the total amount in the selected currency.
   </Step>
-  <Step title="Complete Stripe checkout">
-    Enter your card details in the Stripe payment form and confirm the purchase.
+  <Step title="Complete secure checkout">
+    Enter your card details in the secure payment form and confirm the purchase.
   </Step>
   <Step title="Wait for success confirmation">
     On success, BeatPass generates the exclusive license, marks the track as sold, and shows the success flow.
@@ -59,9 +59,9 @@ After a successful payment:
 
 - The exclusive license is created
 - The track is marked as sold
-- BeatPass attempts an immediate track download
+- BeatPass prepares the original uploaded WAV for download
 - The purchase is recorded in the selected currency
-- The certificate becomes available in **Library** -> **Licenses**
+- The certificate becomes available in **Library** → **Licenses**
 
 ## Pricing and currencies
 
@@ -70,11 +70,13 @@ After a successful payment:
 | **Track price** | Set by the producer |
 | **Platform fee** | Added on top of the producer price |
 | **Supported currencies** | `USD`, `EUR`, `GBP`, `CAD` |
-| **Payment provider** | Stripe |
+| **Payment method** | Secure card checkout |
 
 <Note>
   BeatPass shows the total before you confirm payment. Do not assume every exclusive track uses the same price or currency.
 </Note>
+
+The producer is responsible for separately delivering any stems or other files promised in the license terms. Review **View License Terms** before paying so you know which files are included.
 
 ## What to expect if payment fails
 
@@ -86,7 +88,7 @@ After a successful payment:
     Exclusive sales are first-come, first-served. If another user completed the purchase first, the track becomes unavailable.
   </Accordion>
   <Accordion title="Payment succeeded but I do not see the license yet" icon="file-lines">
-    Check **Library** -> **Licenses** first. If it still does not appear, use the support path with the purchase details.
+    Check **Library** → **Licenses** first. If it still does not appear, use the support path with the purchase details.
   </Accordion>
 </AccordionGroup>
 
