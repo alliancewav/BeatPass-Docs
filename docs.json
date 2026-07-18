@@ -358,14 +358,10 @@
                 ]
               },
               {
-                "group": "Stripe Connect",
+                "group": "Stripe Connect (Legacy)",
                 "pages": [
                   "help/earnings/stripe-connect/index",
-                  "help/earnings/stripe-connect/setup-guide",
-                  "help/earnings/stripe-connect/requirements",
-                  "help/earnings/stripe-connect/accessing-stripe-dashboard",
-                  "help/earnings/stripe-connect/regional-requirements",
-                  "help/earnings/stripe-connect/unsupported-countries"
+                  "help/earnings/stripe-connect/accessing-stripe-dashboard"
                 ]
               }
             ]

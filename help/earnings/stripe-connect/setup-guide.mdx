@@ -1,88 +1,13 @@
 ---
 audience: help
-title: "Setup Guide"
-description: "Follow the BeatPass Stripe Connect onboarding flow when Producer Finances asks you to use Stripe Connect."
+title: "Stripe Connect Setup (Closed)"
+description: "Stripe Connect onboarding is closed. Producers now set up BEATPAY bank payouts from Finances."
 ---
 
-import NeedHelp from "/snippets/sections/need-help.mdx";
+<Warning>
+  New Stripe Connect accounts can no longer be created. All producers now set up **BEATPAY** bank payouts instead.
+</Warning>
 
-BeatPass uses <Tooltip tip="Stripe platform-managed payout account used to receive money from marketplaces like BeatPass. It is different from a regular Stripe dashboard account." cta="Learn how to sign in" href="/help/earnings/stripe-connect/accessing-stripe-dashboard">Stripe Express</Tooltip> for Stripe Connect payouts. Use this guide when **Finances** shows **Connect Stripe Account Now**. If **Finances** shows **Set up BEATPAY**, follow the BEATPAY bank payout flow instead.
+To receive your earnings, open **Finances**, click **Set up BEATPAY**, choose your payout currency, and add your bank details once. See [BEATPAY](/help/earnings/beatpay) for the full walkthrough.
 
-## Before You Start
-
-- Make sure you have a producer profile
-- Be ready to confirm the country where you reside and have a bank account
-- Have your legal identity and payout details ready for Stripe
-- Confirm that **Finances** is asking you to use Stripe Connect, not BEATPAY
-
-<Card title="Requirements" href="/help/earnings/stripe-connect/requirements" icon="list-checks">
-  Review the information Stripe commonly asks for before you begin.
-</Card>
-
-## Step-by-Step Setup
-
-<Steps>
-  <Step title="Open Producer Finances">
-    Click your **profile avatar**, open **Backstage**, then go to **Finances**.
-  </Step>
-  <Step title="Start onboarding">
-    Click **Connect Stripe Account Now**.
-  </Step>
-  <Step title="Confirm your country">
-    In **Confirm Your Country**, choose the country where you reside and have a bank account. BeatPass warns that this choice cannot be changed after setup is finalized.
-  </Step>
-  <Step title="Continue to Stripe">
-    BeatPass redirects you to the Stripe-hosted onboarding flow for your Stripe Express account.
-  </Step>
-  <Step title="Enter the requested details">
-    Stripe asks for the information it needs for your country and payout setup. This can include identity, address, bank, tax, or business details depending on your situation.
-  </Step>
-  <Step title="Return to BeatPass">
-    After Stripe finishes or pauses the flow, return to **Finances** and review your current status.
-  </Step>
-</Steps>
-
-## What BeatPass Shows After Setup
-
-After onboarding, BeatPass can show whether the account is:
-
-- **Connected**
-- **Charges Enabled**
-- **Payouts Enabled**
-
-If Stripe still needs more information, BeatPass can continue showing setup or warning prompts even after the first onboarding session.
-
-## If Your Country Is Not Listed
-
-The country confirmation dialog also includes a help section for unsupported countries and links to alternative approaches surfaced in the UI.
-
-<CardGroup cols={2}>
-  <Card title="BEATPAY" href="/help/earnings/beatpay" icon="money-bill-transfer">
-    Use BEATPAY if **Finances** shows **Set up BEATPAY** instead of Stripe Connect.
-  </Card>
-  <Card title="Unsupported Countries & Alternatives" href="/help/earnings/stripe-connect/unsupported-countries" icon="globe">
-    Review the alternative options BeatPass currently surfaces for producers outside the supported list.
-  </Card>
-</CardGroup>
-
-## Common Questions
-
-<AccordionGroup>
-  <Accordion title="What if I return to BeatPass and setup is still incomplete?">
-    Stripe probably still needs more information. Go back to **Finances** and follow any remaining prompts.
-  </Accordion>
-
-  <Accordion title="What if I picked the wrong country?">
-    Country selection is sensitive because BeatPass warns that it cannot be changed after setup is finalized. If you caught the issue early, stop and review the situation before continuing.
-  </Accordion>
-
-  <Accordion title="Is this the same as a regular Stripe account?">
-    No. BeatPass creates a Stripe Express account for marketplace payouts. It is separate from a regular account at `dashboard.stripe.com`.
-  </Accordion>
-
-  <Accordion title="Where do I sign in later?">
-    Use Stripe Express at [connect.stripe.com/express_login](https://connect.stripe.com/express_login).
-  </Accordion>
-</AccordionGroup>
-
-<NeedHelp />
+If you connected a Stripe account in the past, it keeps working until your BEATPAY setup is active — see [Stripe Connect (Legacy)](/help/earnings/stripe-connect) for what happens next.

@@ -14,7 +14,7 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 <ProducerOnly />
 
 <Info>
-  If you see **Set up BEATPAY** in **Finances**, complete it to prepare eligible exclusive-sale bank payouts. If it is not shown, follow the payout setup currently presented to your account.
+  If you see **Set up BEATPAY** in **Finances**, complete it to prepare eligible exclusive-sale and subscription-pool bank payouts. **Finances** always shows which earnings streams are active for your account.
 </Info>
 
 ## What BEATPAY Does
@@ -23,8 +23,8 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
   <Card title="Bank payouts" icon="money-bill-transfer">
     Set up a bank account so future eligible earnings can be paid through BEATPAY.
   </Card>
-  <Card title="Current payouts continue" icon="circle-check">
-    If you already use Stripe Connect, subscription payouts can continue there while eligible exclusive sales use BEATPAY.
+  <Card title="All earnings, one setup" icon="circle-check">
+    Once active, BEATPAY handles all your new earnings — subscription payouts and exclusive sales — in one place.
   </Card>
   <Card title="Currency context" icon="chart-line">
     Review source currency, payout currency, exchange-rate movement, and estimated arrival timing when rates are available.
@@ -66,7 +66,7 @@ You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your
 </Steps>
 
 <Note>
-  After your bank account is ready, eligible exclusive sales can use BEATPAY. If Stripe Connect is also active, subscription payouts can continue there. **Finances** shows the status of each earnings stream.
+  After your bank account is active, all new earnings — subscription-pool payouts and eligible exclusive sales — are paid through BEATPAY. If you previously used Stripe Connect, Stripe keeps paying out only until that moment; its remaining balance still reaches your bank, and the old account then closes automatically. **Finances** shows the status of each earnings stream.
 </Note>
 
 ## BEATPAY Statuses
@@ -96,7 +96,7 @@ When exchange-rate details are available, **Finances** can show:
 
 ## What Does Not Change
 
-- Your existing Stripe Connect subscription payout setup keeps working unless **Finances** tells you otherwise
+- Your existing Stripe Connect account keeps paying out until your BEATPAY setup is active; its remaining balance still reaches your bank before the old account closes
 - Your contribution share and payout formulas do not change because you set up BEATPAY
 - Your transaction history remains in **Finances**
 - **Sale completed**, **Payout queued**, **Queued**, **Sending**, **Paid**, **Held**, **Failed**, **Refunded**, and **Excluded** describe the relevant sale or subscription state
@@ -108,7 +108,7 @@ When exchange-rate details are available, **Finances** can show:
     BEATPAY appears when it is available for your producer account. Keep the payout setup shown in **Finances** active and check there for new setup options.
   </Accordion>
   <Accordion title="Do I need to remove Stripe Connect first?">
-    No. If you already use Stripe Connect, keep it active. BEATPAY can receive eligible exclusive-sale payouts while your existing subscription payout route remains active.
+    No. Just set up BEATPAY — there is nothing to remove. Your Stripe account keeps paying out until your bank setup is active. After that, all new earnings use BEATPAY, any remaining Stripe balance still reaches your bank, and the old Stripe account closes automatically.
   </Accordion>
   <Accordion title="Does BEATPAY change my earnings share?">
     No. BEATPAY changes how eligible money reaches you, not how BeatPass calculates the underlying earning.

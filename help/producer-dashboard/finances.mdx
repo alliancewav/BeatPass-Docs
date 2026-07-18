@@ -9,7 +9,7 @@ import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import StripeConnectRequired from "/snippets/callouts/stripe-connect-required.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Finances** page is the earnings view inside the Producer Dashboard. Depending on your payout setup, it shows either BEATPAY or Stripe Connect onboarding, or the reporting dashboard for the current artist.
+The **Finances** page is the earnings view inside the Producer Dashboard. It shows BEATPAY bank payout setup when your account is not payout-ready yet, or the reporting dashboard for the current artist.
 
 <ProducerOnly />
 
@@ -30,18 +30,18 @@ Click your **profile avatar** → **Backstage**, then select **Finances** in the
 
 ## Setup Required
 
-When setup is incomplete, BeatPass shows the action needed for that producer profile. You may see **Set up BEATPAY** for bank payouts powered by Wise or **Connect Stripe Account Now** when Stripe is the route available to your account.
+When setup is incomplete, BeatPass shows **Set up BEATPAY** for bank payouts powered by Wise.
 
 <StripeConnectRequired />
 
 ### What Onboarding Covers
 
 <Steps>
-  <Step title="Choose the available payout setup">
-    Select **Set up BEATPAY** if it appears, or select **Connect Stripe Account Now** when Stripe Connect is the available route.
+  <Step title="Start BEATPAY setup">
+    Click **Set up BEATPAY**.
   </Step>
   <Step title="Complete the requested details">
-    BEATPAY asks for payout currency and bank details. Stripe Connect opens the Stripe-hosted identity, banking, and account verification flow.
+    Choose your payout currency, then enter the bank details requested for that currency. The form adapts to the currency you pick.
   </Step>
   <Step title="Return to BeatPass">
     Once the selected payout setup is ready, the page switches to the active dashboard.
@@ -67,7 +67,18 @@ The top of the page can show:
 - An artist selector when your account manages multiple artists
 - Cache timing information when the finance response includes it
 
-## Balance Overview
+## Account Overview
+
+With **BEATPAY** bank payouts:
+
+| Card | What it means |
+| --- | --- |
+| **Lifetime** | Total received to date |
+| **Queued** | Earnings waiting for the next payout run |
+| **Sending** | Money on the way to your bank |
+| **Bank Account** | The bank account and currency payouts are sent to |
+
+With a legacy **Stripe Connect** account:
 
 | Card | What it means |
 | --- | --- |
@@ -109,7 +120,7 @@ The lower section combines finance events into one list.
 | **Queued** | Waiting in the payout pipeline |
 | **Sending** | Transfer is being sent |
 | **Pending** | Still processing |
-| **Held** | Waiting for review before the payout can move |
+| **Held** | Paused while a refund or dispute on that sale is resolved |
 | **Failed** | Did not complete |
 | **Refunded** | The sale was refunded |
 | **Excluded** | Not included in the payout distribution |

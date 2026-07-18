@@ -27,8 +27,7 @@ BeatPass shows an onboarding panel with:
 
 - The page title **Producer Finances**
 - A setup overview for payout-enabled revenue streams
-- **Set up BEATPAY** when Wise-powered bank payouts are available to your account
-- **Connect Stripe Account Now** when Stripe Connect is the available route
+- **Set up BEATPAY** to add your bank account and start receiving payouts
 
 ### If Payout Setup Is Ready
 
@@ -38,7 +37,18 @@ You see the normal finances dashboard. If you manage more than one producer prof
 
 ## Account Overview
 
-The top summary card is called **Account Overview** and uses four stat cards:
+The top summary card is called **Account Overview** and uses four stat cards. What they show depends on your payout setup.
+
+With **BEATPAY** bank payouts:
+
+| Card | What It Means |
+|------|----------------|
+| **Lifetime** | Total received across the tracked history |
+| **Queued** | Earnings waiting for the next payout run |
+| **Sending** | Money already on the way to your bank |
+| **Bank Account** | The bank account and currency your payouts are sent to |
+
+With a legacy **Stripe Connect** account:
 
 | Card | What It Means |
 |------|----------------|
@@ -82,7 +92,7 @@ Rows in the transaction list can show these user-facing statuses:
 | **Queued** | A subscription split exists but is still waiting to move |
 | **Sending** | BeatPass is actively sending the split through the active payout route |
 | **Paid** | The BeatPass-side payout step completed |
-| **Held** | A sale payout needs review before it can move |
+| **Held** | A sale payout is paused while a refund or dispute on that sale is resolved |
 | **Failed** | The transfer hit an error |
 | **Refunded** | The sale was refunded |
 | **Excluded** | You were not eligible for that subscription split when it ran |
@@ -115,12 +125,12 @@ This section is explanatory. It is meant to help you understand why money appear
 
 ## Practical Tips
 
-- Use **Balance** to see what is ready right now
-- Use **Upcoming** when you want to know what is still moving
+- Use **Lifetime** (or **Balance** on a legacy Stripe account) to see what you have received so far
+- Use **Queued** and **Sending** (or **Upcoming**) when you want to know what is still moving
 - Use the **Subscriptions** filter when reviewing subscription-based earnings only
 - Use the **Sales** filter when checking direct track purchases only
 - Keep an eye on **Setup required**, **Held**, **Failed**, or **Excluded** signals because those are the clearest warnings that something needs attention
-- Follow **Set up BEATPAY** or **Connect Stripe Account Now** based on the setup shown in your account
+- Follow **Set up BEATPAY** if your payout setup is not finished yet
 
 ---
 

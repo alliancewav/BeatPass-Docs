@@ -12,8 +12,8 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
   <Card title="Producer Profile" icon="user">
     You must have a producer profile that can use producer-facing features like **Finances**.
   </Card>
-  <Card title="Available Payout Setup" icon="chart-line">
-    Complete the payout setup shown in **Finances**, either BEATPAY or Stripe Connect.
+  <Card title="Active Payout Setup" icon="chart-line">
+    Complete the **BEATPAY** bank payout setup in **Finances** (legacy Stripe Connect accounts stay eligible until they move).
   </Card>
   <Card title="Verified Details" icon="globe">
     Provide the country, identity, tax, and bank details requested by the active payout setup.
@@ -22,9 +22,9 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
 
 ## Earnings Streams and Payout Routes
 
-Exclusive-sale payouts and subscription contribution payouts are separate earnings streams. They can use different payout routes on the same producer account. For example, **Finances** may show BEATPAY ready for exclusive sales while subscription payouts continue through an active Stripe Connect account.
+Exclusive-sale payouts and subscription contribution payouts are separate earnings streams, but they use the same payout setup. Once your BEATPAY bank account is active, both streams pay to your bank. Producers still on a legacy Stripe Connect account keep receiving both streams through Stripe until their BEATPAY setup is active — after that, all new earnings move to BEATPAY and the Stripe account closes automatically once its remaining balance pays out.
 
-A producer with BEATPAY but without an active subscription payout route can publish eligible **Exclusive Only** offers. **Standard Licensing** stays unavailable until the subscription payout stream is active.
+**Standard Licensing** is available only while every credited producer has an active subscription payout route. If that route is not ready, an eligible producer can still publish **Exclusive Only** offers.
 
 ## Current Payout Routes
 
@@ -32,8 +32,8 @@ A producer with BEATPAY but without an active subscription payout route can publ
   <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
     Eligible producers can set up Wise-powered bank payouts from **Finances** when **Set up BEATPAY** appears.
   </Card>
-  <Card title="Stripe Connect" icon="credit-card">
-    Stripe Connect remains active for producers whose **Finances** page shows it as their current payout route.
+  <Card title="Stripe Connect (Legacy)" icon="credit-card">
+    Producers who connected Stripe in the past keep receiving payouts through it until their BEATPAY setup is active. New Stripe accounts can no longer be connected.
   </Card>
 </CardGroup>
 
@@ -82,8 +82,8 @@ If a subscription payout runs while your account is not ready:
 ## How to Become Eligible
 
 1. Open **Finances**
-2. Click **Set up BEATPAY** if it appears, or click **Connect Stripe Account Now** when Stripe Connect is shown
-3. Provide the bank, identity, country, and tax information requested by the active setup
+2. Click **Set up BEATPAY**
+3. Choose your payout currency and provide the bank details requested for it
 4. Return to BeatPass and finish any remaining prompts if the payout provider still needs more information
 5. Keep payout setup active so future splits can process normally
 

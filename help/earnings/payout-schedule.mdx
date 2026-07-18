@@ -22,10 +22,10 @@ BeatPass records each earning first, then sends eligible money through the route
 | Status | What It Means |
 |--------|----------------|
 | **Sale completed** | A direct sale completed through its established payout route |
-| **Payout queued** | The sale completed and its producer payout is waiting to move |
+| **Payout queued** | The sale completed and its producer payout is waiting out the short refund-protection window before it moves automatically |
 | **Sending** | BeatPass is sending the producer payout |
 | **Paid** | The producer payout completed |
-| **Held** | The payout needs review before it can move |
+| **Held** | The payout is paused while a refund or dispute on that sale is resolved |
 | **Failed** | The payout did not complete |
 | **Refunded** | The sale was refunded |
 
@@ -47,7 +47,16 @@ BeatPass can show these statuses in **Transactions**:
 
 ## What Account Overview Means
 
-Your **Account Overview** cards help you understand where money is:
+Your **Account Overview** cards help you understand where money is. With **BEATPAY** bank payouts:
+
+| Card | Meaning |
+|------|---------|
+| **Lifetime** | Total received so far |
+| **Queued** | Waiting for the next payout run |
+| **Sending** | Already on the way to your bank |
+| **Bank Account** | Where payouts are sent |
+
+With a legacy **Stripe Connect** account:
 
 | Card | Meaning |
 |------|---------|

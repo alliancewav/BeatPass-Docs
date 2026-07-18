@@ -1,73 +1,46 @@
 ---
 audience: help
-title: "Stripe Connect"
-description: "Overview of the BeatPass Stripe Connect payout route, including what it enables and when to use the setup guide."
+title: "Stripe Connect (Legacy)"
+description: "What happens to an existing Stripe Connect payout account now that BEATPAY bank payouts are the standard payout method."
 ---
 
-Stripe Connect remains an active payout route for producers whose **Finances** page shows it. If **Finances** shows **Set up BEATPAY**, complete that bank payout setup for the earnings it can receive. If it shows **Connect Stripe Account Now**, use the Stripe Connect guidance on this page.
+Stripe Connect is a **legacy payout route**. New Stripe accounts can no longer be connected — every producer now sets up **BEATPAY** bank payouts from **Finances**. If you connected a Stripe account in the past, this page explains what happens to it.
 
-## What Stripe Connect Enables
+<Info>
+  Looking to set up payouts? Open **Finances** and click **Set up BEATPAY**. See [BEATPAY](/help/earnings/beatpay) for the full guide.
+</Info>
 
-<CardGroup cols={2}>
-  <Card title="Track Sales" icon="shopping-bag">
-    Producer sales can move through Stripe once the buyer completes checkout.
-  </Card>
-  <Card title="Subscription Payouts" icon="repeat">
-    Subscription revenue can move to eligible producers with a working Stripe Connect setup.
-  </Card>
-  <Card title="Producer Finances" icon="chart-bar">
-    BeatPass uses Stripe-backed data to show balances, statuses, and payout history when Stripe is the active route.
-  </Card>
-  <Card title="Automatic Payout Flow" icon="chart-line">
-    Once money reaches Stripe and your account is ready, Stripe handles the transfer to your payout destination.
-  </Card>
-</CardGroup>
+## If You Still Use Stripe Connect
 
-## What Matters Most Before You Start
+- Your existing Stripe account **keeps receiving payouts as usual** until your BEATPAY setup is active. Nothing changes until you move.
+- Subscription payouts and exclusive-sale earnings continue to route to Stripe in the meantime.
+- You can still sign in to your Stripe Express dashboard — see [Accessing your Stripe dashboard](/help/earnings/stripe-connect/accessing-stripe-dashboard).
 
-- BeatPass uses **Stripe Express**, not a regular Stripe dashboard account
-- You must choose a supported country during setup
-- BeatPass asks you to confirm the country where you reside and have a bank account
-- Incomplete setup can prevent payouts and can cause subscription splits to appear as **Excluded**
-- BEATPAY availability is controlled separately and appears directly in **Finances** when your account is eligible
-
-<Warning>
-  If your payout setup is incomplete, BeatPass can still calculate activity, but it cannot safely treat you as payout-ready.
-</Warning>
-
-## Start From Finances
+## What Happens When You Move to BEATPAY
 
 <Steps>
-  <Step title="Open Backstage">
-    Click your **profile avatar** and open **Backstage**.
+  <Step title="Set up BEATPAY once">
+    Open **Finances**, click **Set up BEATPAY**, choose your payout currency, and add your bank details.
   </Step>
-  <Step title="Go to Finances">
-    Open **Finances** and click **Connect Stripe Account Now** if that is the setup shown for your account.
+  <Step title="New earnings switch to your bank">
+    As soon as your bank account is active, all new earnings — subscription payouts and exclusive sales — are paid straight to your bank through BEATPAY.
   </Step>
-  <Step title="Finish the Stripe flow">
-    Confirm your country and complete the Stripe-hosted onboarding process.
+  <Step title="Your Stripe account winds down on its own">
+    Any money still in your Stripe account pays out to your bank as usual. Once the balance reaches zero, the Stripe account is closed automatically — there is nothing you need to do.
   </Step>
 </Steps>
+
+<Note>
+  Your past Stripe transactions stay visible in **Finances** after the move. Your earnings share does not change — only where the money is sent.
+</Note>
 
 ## Learn More
 
 <CardGroup cols={2}>
   <Card title="BEATPAY" href="/help/earnings/beatpay" icon="money-bill-transfer">
-    Review the bank payout setup shown to eligible producers.
-  </Card>
-  <Card title="Setup Guide" href="/help/earnings/stripe-connect/setup-guide" icon="book-open">
-    Follow the current Stripe Connect onboarding flow.
-  </Card>
-  <Card title="Requirements" href="/help/earnings/stripe-connect/requirements" icon="list-checks">
-    Review the information Stripe commonly asks for.
+    Set up bank payouts — the standard payout method for all producers.
   </Card>
   <Card title="Accessing Dashboard" href="/help/earnings/stripe-connect/accessing-stripe-dashboard" icon="table-columns">
-    Learn how Stripe Express sign-in differs from regular Stripe.
-  </Card>
-  <Card title="Regional Requirements" href="/help/earnings/stripe-connect/regional-requirements" icon="globe">
-    See the supported country list BeatPass currently uses.
-  </Card>
-  <Card title="Unsupported Countries" href="/help/earnings/stripe-connect/unsupported-countries" icon="map">
-    Review the alternative paths BeatPass currently references.
+    Sign in to Stripe Express while your legacy account is still active.
   </Card>
 </CardGroup>
