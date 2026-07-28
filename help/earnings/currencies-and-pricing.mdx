@@ -44,19 +44,30 @@ BeatPass currently supports these currencies for track purchase pricing:
 
 If the purchase currency does not match the card or bank's currency, conversion can happen outside BeatPass. The exact outcome depends on Stripe and the buyer's bank.
 
-## Payout Currency Expectations
+## BEATPAY Bank Account Currencies
 
-Your payout flow depends on the active payout route for your producer account. BEATPAY can show exchange-rate context when Wise-powered bank payouts are available, while Stripe Connect continues to use Stripe-managed balances.
+BEATPAY's **Bank account currency** list is intentionally narrower than the world's currency list. It includes currencies currently available for adding a bank recipient through BeatPass's Wise-powered payout account.
+
+The bank account currency does not have to match your country's local currency. It must match a currency that the receiving account accepts.
+
+- If the account is in the US and uses US bank details, select **USD** and choose **ACH**
+- If a bank outside the US accepts USD and provides SWIFT details, select **USD** and choose **SWIFT**
+- If the local currency is missing, ask the bank whether the account can receive USD, EUR, GBP, or another currency shown in BEATPAY
 
 <Info>
-  BeatPass does not publish a fixed currency-conversion fee in help docs because conversion behavior can vary by payout provider, currency pair, and payout destination.
+  **Jamaica example:** JMD is not currently available for direct BEATPAY recipient setup. A Jamaican producer can select **USD** only if their bank confirms that the receiving account accepts USD, then use the bank's **SWIFT** details.
 </Info>
+
+<Warning>
+  Choosing an unsupported currency can cause a payment to fail or be returned. The receiving bank may also convert the payment or charge receiving or conversion fees. Confirm compatibility and possible fees with the bank before saving the account.
+</Warning>
 
 ## Practical Tips
 
 - Use a pricing currency your buyers already understand
 - Check **Producer Finances** for mixed-currency warnings
 - Expect the active payment or payout provider and your bank to control most conversion details after checkout
+- If a local currency is not listed in BEATPAY, confirm an alternative account currency with your bank before selecting it
 - Review the payout setup shown in **Finances** if you need a different payout arrangement
 
 ## Common Questions
@@ -72,6 +83,10 @@ Your payout flow depends on the active payout route for your producer account. B
 
   <Accordion title="Who controls currency conversion after checkout?">
     The active payment or payout provider and the payout destination handle most of that behavior, not the BeatPass help system.
+  </Accordion>
+
+  <Accordion title="What if my country's local currency is not available in BEATPAY?">
+    Ask your bank whether your account can receive another currency shown during setup, such as USD, EUR, or GBP. Select it only after the bank confirms compatibility. For example, a Jamaican producer whose bank account accepts USD can choose **USD** and use the bank's **SWIFT** details.
   </Accordion>
 
   <Accordion title="Are subscriptions shown in the same currency as track pricing?">

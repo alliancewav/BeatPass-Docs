@@ -54,8 +54,8 @@ You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your
   <Step title="Start bank payout setup">
     Click **Set up BEATPAY** in **Finances**. If the upgrade prompt appears first, click **Set up bank payouts**.
   </Step>
-  <Step title="Choose payout currency">
-    Select **Payout currency**. This is the currency of the bank account you want to be paid in.
+  <Step title="Choose bank account currency">
+    Select **Bank account currency**. Choose a currency that the receiving bank account can accept; it does not need to be your country's local currency.
   </Step>
   <Step title="Continue to bank details">
     Click **Continue to bank details**, then enter the requested bank account information. Depending on the account type, you may also see **Legal name on the bank account** and **Bank account type**.
@@ -68,6 +68,38 @@ You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your
 <Note>
   After your bank account is active, all new earnings — subscription-pool payouts and eligible exclusive sales — are paid through BEATPAY. If you previously used Stripe Connect, Stripe keeps paying out only until that moment; its remaining balance still reaches your bank, and the old account then closes automatically. **Finances** shows the status of each earnings stream.
 </Note>
+
+## How Your Bank Details Are Handled
+
+BEATPAY bank details are entered in the BeatPass setup form and sent through an authenticated BeatPass request to Wise, the payout provider. BeatPass does not retain the full bank account number, routing details, IBAN, full payout address, date of birth, or tax or national identifier submitted for Wise recipient setup.
+
+BeatPass keeps the information needed to operate and support payouts: the legal account-holder name, Wise recipient and profile references, bank account currency and country, route type, setup and verification status, relevant timestamps and audit metadata, and masked account summaries that help you recognize the saved destination. Wise retains the complete recipient details under its own privacy, retention, and legal obligations.
+
+<Info>
+  This is different from legacy Stripe Connect. Stripe onboarding is hosted by Stripe, so identity and bank details for that flow are entered on Stripe. See [Stripe Connect (Legacy)](/help/earnings/stripe-connect) and the [official Privacy Policy](https://open.beatpass.ca/pages/privacy-policy).
+</Info>
+
+## Choose a Supported Bank Account Currency
+
+BEATPAY shows only the currencies currently available for adding a bank recipient through BeatPass's Wise-powered payout account. This is not a list of every currency used in your country.
+
+Your **Bank account currency** can be different from your country's local currency. It must be a currency that the receiving bank account accepts.
+
+<Steps>
+  <Step title="Check with your bank">
+    If your local currency is not listed, ask your bank whether the account can receive a listed currency such as USD, EUR, or GBP.
+  </Step>
+  <Step title="Choose the compatible currency">
+    Select only the currency your bank confirms it can receive. Your bank may convert the payment or charge a receiving or conversion fee.
+  </Step>
+  <Step title="Choose the matching bank route">
+    For USD, choose **ACH** when you have US bank details. Choose **SWIFT** when a bank outside the US accepts USD and provides SWIFT details.
+  </Step>
+</Steps>
+
+<Info>
+  **Jamaica example:** JMD is not currently available for direct BEATPAY recipient setup. If your Jamaican bank confirms that your account can receive USD, select **USD** and enter the bank's **SWIFT** details. Do not select USD unless the receiving account accepts it.
+</Info>
 
 ## BEATPAY Statuses
 
@@ -112,6 +144,9 @@ When exchange-rate details are available, **Finances** can show:
   </Accordion>
   <Accordion title="Does BEATPAY change my earnings share?">
     No. BEATPAY changes how eligible money reaches you, not how BeatPass calculates the underlying earning.
+  </Accordion>
+  <Accordion title="Why is my country's currency not listed?">
+    BEATPAY lists bank account currencies that are currently available for recipient setup. Ask your bank whether your account can receive another listed currency, such as USD, EUR, or GBP. Select an alternative only when your bank confirms the account can receive it.
   </Accordion>
   <Accordion title="Where do I check payout problems?">
     Open **Backstage** → **Finances** and review the current setup state, transaction statuses, and any prompt asking for more information.

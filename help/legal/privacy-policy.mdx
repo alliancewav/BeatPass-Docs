@@ -4,7 +4,7 @@ title: "Privacy Policy"
 description: "A plain-language summary of how BeatPass collects, uses, and protects your information."
 ---
 
-This page provides a simplified overview of the BeatPass Privacy Policy. For the complete policy, visit the BeatPass Privacy Policy page.
+This page provides a simplified overview of the BeatPass Privacy Policy. For the complete policy, visit the [official BeatPass Privacy Policy](https://open.beatpass.ca/pages/privacy-policy).
 
 <Warning>
   This summary is for convenience only. The official Privacy Policy governs how your data is handled.
@@ -36,9 +36,16 @@ When you use BeatPass, the following is automatically collected:
 - **Usage data** — Pages viewed, beats played, downloads, time spent
 - **Cookies** — Small files that help remember your preferences
 
-### Payment Information
+### Payment and Producer Payout Information
 
-When you make a purchase, the payment processor (Stripe) handles your payment details. **BeatPass does not store credit card numbers on its servers.**
+When you make a purchase, Stripe handles your card details. **BeatPass does not store full credit card numbers on its servers.**
+
+Producer bank payouts use one of two flows:
+
+- **Legacy Stripe Connect** — Onboarding is hosted by Stripe. Stripe receives the identity and bank details entered there. BeatPass stores the Stripe account reference and operational status, not the full bank account details.
+- **BEATPAY, powered by Wise** — Bank details are entered in BeatPass and securely forwarded to Wise. BeatPass does not retain raw account numbers, routing details, or IBANs. It keeps the account-holder name, provider references, payout configuration and status, audit metadata, and masked account information needed to operate and support payouts.
+
+Wise and Stripe may retain information under their own privacy, retention, and legal obligations. See [BEATPAY Bank Payouts](/help/earnings/beatpay) and [Stripe Connect (Legacy)](/help/earnings/stripe-connect) for practical guidance.
 
 ## How Your Information Is Used
 
@@ -83,11 +90,7 @@ When you send messages through BeatPass or submit beat requests:
 
 ## Data Protection
 
-BeatPass uses industry-standard security measures:
-
-- Encryption of sensitive data
-- Secure server environments
-- Access controls limiting who can view your information
+BeatPass uses technical and organizational safeguards appropriate to the Services, including secure connections to payout providers, restricted access to operational records, and redaction of sensitive Wise API request and response details from application failure logs.
 
 <Note>
   While BeatPass works hard to protect your data, no online platform can guarantee 100% security.
