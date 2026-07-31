@@ -13,8 +13,8 @@ export const platformFee = {
 export const plans = {
   explorer: { name: "Explorer", price: "Free", priceNum: 0, requests: 1, hidden: true },
   classic: { name: "Classic", price: "$29 CAD/month", priceNum: 29, requests: 1 },
-  plus: { name: "Plus", price: "$45 CAD/month", priceNum: 45, requests: 3, recommended: true },
-  pro: { name: "Pro", price: "$59 CAD/month", priceNum: 59, requests: 5 },
+  plus: { name: "Plus", price: "$45 CAD/month", priceNum: 45, requests: 6, recommended: true, exclusivePurchasePlatformFee: true },
+  pro: { name: "Pro", price: "$59 CAD/month", priceNum: 59, requests: 10, exclusivePurchasePlatformFee: false },
 };
 
 export const apiTokenExpiry = "90 days";
