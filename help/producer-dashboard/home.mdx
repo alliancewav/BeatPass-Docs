@@ -2,13 +2,13 @@
 audience: help
 title: "Dashboard Home"
 sidebarTitle: "Home"
-description: "Your starting point inside the Producer Dashboard — greeting, shortcut cards, and quick stats."
+description: "Use Producer tools, review your Performance snapshot, and open your public producer profile from the dashboard home."
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The Home page is the landing view when you open the Producer Dashboard. It shows who you are signed in as, your current artist context, and quick links to every dashboard page.
+The Home page is the landing view when you open the Producer Dashboard. It keeps your Pro Page guidance, producer tools, and useful catalog signals in one focused flow.
 
 <ProducerOnly />
 
@@ -22,73 +22,86 @@ Click your **profile avatar** in the top bar, then select **Backstage**. The sid
   <Card title="Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
     Unlock status, setup guidance, sharing actions, and performance for your artist storefront.
   </Card>
-  <Card title="Greeting header" icon="hand">
-    Time-based greeting, current date, artist or display name, and level summary.
+  <Card title="Producer tools" icon="compass">
+    Guided links to the work areas available for your producer account.
   </Card>
-  <Card title="Quick Navigation" icon="compass">
-    Shortcut cards generated from the current sidebar menu configuration.
-  </Card>
-  <Card title="Quick Stats" icon="chart-bar">
-    Eight at-a-glance cards for catalog size, activity, and profile access.
+  <Card title="Performance snapshot" icon="chart-bar">
+    Your 30-day play trend followed by six compact catalog and progress metrics.
   </Card>
 </CardGroup>
 
-## Greeting Header
-
-The top of the page personalises the dashboard around the signed-in account.
-
-It can include:
-
-- A greeting such as **Good morning**, **Good afternoon**, or **Good evening**
-- The current day and date
-- Your linked artist name (or your BeatPass display name as a fallback)
-- Your current producer level title and XP total
-
-<Note>
-  The level summary comes from the same progress system used on the [Progress](/help/producer-dashboard/progress) page.
-</Note>
-
 ## Pro Page
 
-The **Pro Page** module appears above **Quick Navigation**. It explains the focused storefront, shows your upload, verification, and BEATPAY requirements, and provides sharing actions after access is ready.
+The **Pro Page** module appears above **Producer tools**. It explains the focused storefront, shows your upload, verification, and BEATPAY requirements, and provides sharing actions after access is ready.
 
 See [Your Producer Pro Page](/help/producer-dashboard/pro-page) for the complete unlock and campaign guide.
 
-## Quick Navigation
+## Producer Tools
 
-The shortcut grid is the fastest way to move between dashboard pages.
+The soft-panel rows help you choose what to work on next. Each row includes an icon, a plain-language description, and a visible destination indicator.
 
-- Cards match the sidebar menu — **Dashboard**, **Finances**, **Activity**, **Progress**, **Leaderboards**, **My Beats**, **My Collections**
-- Some cards may open pages outside the dashboard in a new tab
-- If no menu items are configured, BeatPass shows **No menu items configured** instead of fake shortcuts
+- Tools follow the live primary sidebar order
+- The current **Dashboard** link is omitted because you are already on that page
+- Internal destinations use normal same-tab navigation
+- External destinations show an external-link indicator and follow their configured tab behavior
+- Secondary shortcuts remain in their existing menu and are not mixed into this section
+- If tools cannot be loaded, BeatPass shows producer-facing unavailable guidance
 
-## Quick Stats
+## Performance Snapshot
 
-Eight cards surface the most visible numbers for your current artist.
+The featured **30-day play activity** panel appears first. It shows the latest count, the previous count, and the relative play change without hiding the source numbers. Below it, six compact cards surface the most useful totals for your current producer profile.
 
 | Card | What it tracks |
 | --- | --- |
-| **Tracks** | Total tracks for the current artist |
+| **Tracks** | Total tracks for your current producer profile |
 | **Total Plays** | Lifetime plays across your catalog |
 | **Albums** | Total album count |
 | **Downloads** | Track download count |
 | **Followers** | Follower total |
 | **Level** | Current level and XP |
-| **Growth** | Dashboard-level catalog growth, or a calculating state |
-| **View Profile** | Shortcut to your public artist page |
+
+### How the Play Trend Works
+
+The trend counts plays recorded on BeatPass for tracks connected to your current producer profile. It compares two adjacent, non-overlapping rolling periods:
+
+- **Current:** the latest 30 days
+- **Previous:** the 30 days immediately before the current period
+
+The **Play change** value divides the difference between the two periods by the busier period. This keeps the result naturally between **−100% and +100%** instead of calculating a large percentage and cutting it off. For example, 237 recent plays compared with 42 previous plays is **+82.3%**, not a capped +100%.
+
+Equal counts produce **0%**. Current activity with no previous plays produces **+100%**, while previous activity with no current plays produces **−100%**. The value is rounded to one decimal when needed, and the two play counts remain visible beside it.
+
+| State | Meaning |
+| --- | --- |
+| **Growing** | More than +5%, once enough play data exists |
+| **Steady** | From −5% through +5%, inclusive |
+| **Needs attention** | Below −5% |
+| **Building data** | Fewer than 10 combined plays across both periods |
+| **Play trend unavailable** | The trend could not be calculated or loaded |
+
+<Note>
+  This signal measures BeatPass play activity. It does not measure imported lifetime plays, contribution points, payouts, Pro Page traffic, or catalog value.
+</Note>
+
+## View Your Producer Profile
+
+When your account has a producer profile, **View Producer Profile** appears with the right-side account actions in the floating top navigation on desktop. It opens your public producer profile in the same tab. The former profile tile is no longer part of Performance snapshot, and no mobile replacement is shown.
 
 <Tip>
-  Use the Home page to decide where to investigate next. If a number changes here, open the page that owns that metric for more detail.
+  Use the Home page to decide where to investigate next. The play counts explain the trend; open My Beats when you want to work on the catalog behind it.
 </Tip>
 
 ## When Data Is Missing
 
 <AccordionGroup>
   <Accordion title="You are new to the dashboard" icon="sparkles" defaultOpen>
-    New artists see **0** on several cards until tracks, plays, downloads, or followers begin to accumulate.
+    New producers see **0** for successfully loaded totals until tracks, plays, downloads, or followers begin to accumulate.
   </Accordion>
-  <Accordion title="Growth is still calculating" icon="chart-line">
-    The **Growth** card stays neutral while BeatPass calculates the dashboard-level catalog rate.
+  <Accordion title="A metric request fails" icon="triangle-exclamation">
+    Analytics and progress load independently. BeatPass keeps any successful group visible, marks only unavailable values with a dash, and offers a retry instead of showing realistic-looking zeros.
+  </Accordion>
+  <Accordion title="The play trend is building data" icon="chart-line">
+    BeatPass waits for at least 10 combined plays across the two 30-day periods before assigning a directional state.
   </Accordion>
   <Accordion title="No linked artist profile" icon="user">
     The dashboard shows a not-found state when your account does not have a linked artist profile. Complete your [Producer Program application](/help/producer-program) first.

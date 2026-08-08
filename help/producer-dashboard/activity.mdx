@@ -2,118 +2,114 @@
 audience: help
 title: "Activity"
 sidebarTitle: "Activity"
-description: "Review performance overview cards, yearly upload activity, and download engagement for your artist."
+description: "Review audience downloads, listener activity, licenses, and your current-year upload rhythm."
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Activity** page shows how your artist profile is performing over time. It combines long-range performance cards, a current-year upload graph, and a download panel with time filters.
+The **Activity** page puts audience downloads and listener response first. It also keeps a current-year calendar of your track uploads.
 
 <ProducerOnly />
 
-## How to Get Here
+## Open Activity
 
-Click your **profile avatar** → **Backstage**, then select **Activity** in the sidebar.
+Click your **profile avatar** in the top navigation bar, select **Backstage**, then select **Activity** in the sidebar.
 
-## Main Sections
+The page opens with **Last 90 days** selected. Change **Activity period** to **Last 7 days**, **Last 30 days**, **Last 90 days**, or **All time**. This setting updates **Audience activity** and **Recent downloads**.
+
+## Page Sections
 
 <CardGroup cols={3}>
-  <Card title="Performance Overview" icon="gauge-high">
-    All-time cards for tracks, plays, platform share, and achievements.
+  <Card title="Audience activity" icon="users">
+    Review downloads, downloaders, licenses, plays, likes, reposts, and comments.
   </Card>
-  <Card title="Activity Overview" icon="calendar-days">
-    A current-year day-by-day upload graph with optional X-Ray mode.
+  <Card title="Recent downloads" icon="download">
+    See which listener downloaded each track and open available licenses.
   </Card>
-  <Card title="Downloads & Engagement" icon="download">
-    Period-based download totals, recent activity, and license shortcuts.
+  <Card title="Upload rhythm" icon="calendar-days">
+    View your track uploads for the current year with optional X-Ray context.
   </Card>
 </CardGroup>
 
-## Performance Overview
+## Audience Activity
 
-The first section is labelled **All Time** in the app, so it covers long-term trends rather than short campaign windows.
+**Audience downloads** is the main number. It counts track downloads by listeners who do not manage your artist profile. Repeat downloads count each time.
 
-| Card | What it shows |
+| Metric | What it shows |
 | --- | --- |
-| **Total Tracks** | Current catalog size and recent additions |
-| **Total Plays** | Lifetime play total plus the current comparison change |
-| **Platform Share** | Your contribution share and contribution points |
-| **Achievements** | Achievement totals and recent achievement activity |
+| **People downloading** | Distinct listener accounts that downloaded at least one track |
+| **Licenses issued** | License certificates issued during the selected period |
+| **Audience plays** | Plays by listeners, including signed-out listeners |
+| **Likes** | Track likes created during the selected period |
+| **Reposts** | Track reposts created during the selected period |
+| **Comments** | Visible track comments created during the selected period |
 
-## Activity Overview
+When one track has the most downloads in the selected period, **Top downloaded track** links directly to it.
 
-The middle section is a year view of your upload activity.
+<Note>
+  Downloads and licenses do not need to match. One listener can download the same track more than once while using one license.
+</Note>
 
-### How the Graph Works
+Select **What counts?** for these definitions without leaving the page. Select **How Activity works** to reopen this guide in a new tab.
 
-- Each square represents one day in the current year
-- Darker squares mean more uploads on that day
-- Hover a square on desktop to see a tooltip
-- Select a day to open a details panel with exact upload count and up to five tracks from that date
+## Recent Downloads
 
-### X-Ray Mode
+Each row includes the track, listener, download time, and a license action when an active certificate exists. Expired or revoked certificates are identified with plain text.
 
-Toggle **X-Ray** to add comparison context:
+- Select the track name or artwork to open the track
+- Select the listener name to open their profile
+- Select **View license** to open an available certificate in a new tab
+- Use **Previous** and **Next** to move between groups of eight download records
 
-- Your upload activity stays highlighted
-- Broader platform activity appears behind days where you had no uploads
-- The info button explains the colour logic used in the graph
+The page number and visible record range stay above and below the list. If another page cannot load, the current records stay in place. Select **Try Again** to retry, or **Previous** to return to the earlier page.
 
-## Downloads & Engagement
+The list follows the selected **Activity period** and does not use a separate scroll area.
 
-The bottom section focuses on download activity around your catalog.
+## Upload Rhythm
 
-### Summary Cards
+**Upload rhythm** shows the current calendar year. Each square represents one day. A stronger accent means more of your tracks were uploaded on that day.
 
-| Card | What it tracks |
-| --- | --- |
-| **Downloads** | Total downloads in the selected period |
-| **Unique Users** | Distinct users in that period |
-| **This Week** | Current weekly download count |
-| **Top Track** | Best-performing track for the selected period |
+Select an active day to see its upload count and track list. On mobile, the calendar opens at the most recent week and scrolls horizontally.
 
-### Period Filters
+### X-Ray
 
-Switch between **7D**, **30D**, **90D**, and **All** to adjust the time window.
+**X-Ray** is on when the page opens. It adds days when other BeatPass tracks were uploaded.
 
-### Recent Download List
+- **You** uses the accent colour for your uploads
+- **BeatPass uploads** uses a muted colour for other platform uploads
+- The pulse highlights days revealed only by X-Ray
 
-Each row can include:
+X-Ray provides upload context. It is not a score, ranking, or measure of success. If X-Ray is unavailable, your own upload calendar stays visible.
 
-- The downloader profile
-- The downloaded track with a direct link
-- A relative time showing how long ago the download happened
-- A license action when a certificate can be opened for that download
-
-## Empty and Error States
+## Empty and Unavailable States
 
 <AccordionGroup>
-  <Accordion title="No catalog or low activity" icon="circle-info" defaultOpen>
-    Cards stay near zero until your artist has uploaded music and started collecting plays or downloads.
+  <Accordion title="No tracks" icon="cloud-arrow-up" defaultOpen>
+    Select **Upload your first track** to open the upload page. Activity appears after tracks are available to listeners.
   </Accordion>
-  <Accordion title="No downloads in the selected period" icon="download">
-    The download list stays empty until activity exists for the selected filter.
+  <Accordion title="No audience downloads" icon="download">
+    The page names the selected period. Select **View all time** to check your full download history.
   </Accordion>
-  <Accordion title="Analytics could not be loaded" icon="triangle-exclamation">
-    The page shows a real error state instead of placeholder metrics.
+  <Accordion title="A section is unavailable" icon="triangle-exclamation">
+    Select **Try Again** in that section. Other sections remain available while it reloads.
   </Accordion>
 </AccordionGroup>
 
-## Related
+## Related Guides
 
 <CardGroup cols={2}>
+  <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
+    Return to Producer tools and your Performance snapshot.
+  </Card>
   <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
-    Manage the catalog behind the activity shown here.
+    Manage the tracks behind your Activity data.
   </Card>
-  <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
-    See how activity contributes to rankings.
-  </Card>
-  <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
-    See how uploads, plays, and achievements feed into XP.
+  <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
+    Prepare and publish tracks on BeatPass.
   </Card>
   <Card title="Backstage Insights" icon="chart-bar" href="/help/analytics/backstage-insights">
-    Open deeper analytics for a specific artist, track, or album.
+    Open deeper analytics for an artist, track, or album.
   </Card>
 </CardGroup>
 

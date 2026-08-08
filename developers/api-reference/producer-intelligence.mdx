@@ -205,19 +205,21 @@ GET /api/v1/producer-intelligence/collaboration-leaderboard
 
 ---
 
-## Contribution Graphs
+## Upload Rhythm Graphs
 
-### Artist Contribution Graph
+### Artist Upload Rhythm
 
-Visualize the <Tooltip tip="A visualization showing how a producer's contribution value is distributed across their tracks.">contribution graph</Tooltip> — the contribution value distribution across an artist's tracks.
+Returns one entry per calendar day with the artist's track-upload count and uploaded-track details. The endpoint requires access to the requested artist.
 
 ```http
 GET /api/v1/producer-intelligence/artist/{artistId}/contribution-graph
 ```
 
-### Platform Contribution Graph
+The route name is retained for compatibility; the response measures uploads rather than contribution value.
 
-Platform-wide contribution distribution.
+### Platform Upload Rhythm
+
+Returns daily upload counts across BeatPass. The Producer Activity page uses this response as optional X-Ray context, not as a normalized comparison or ranking.
 
 ```http
 GET /api/v1/producer-intelligence/platform/contribution-graph

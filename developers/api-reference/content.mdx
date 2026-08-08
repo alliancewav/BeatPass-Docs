@@ -219,6 +219,75 @@ GET /api/v1/artists/{artist}/albums
 GET /api/v1/artists/{artist}/producer-analytics
 ```
 
+### Artist Activity
+
+Returns the period summary and a paginated list of audience download events used by the Producer Activity page. Access is limited to users who manage the artist or have analytics access.
+
+```http
+GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `period` | string | `90d` | `7d`, `30d`, `90d`, or `all` |
+| `page` | integer | `1` | Page number, starting at 1 |
+| `per_page` | integer | `20` | Results per page, from 1 to 50 |
+
+```json
+{
+  "hasTracks": true,
+  "period": {
+    "key": "90d",
+    "start": "2026-05-09T12:00:00Z",
+    "end": "2026-08-07T12:00:00Z"
+  },
+  "summary": {
+    "audienceDownloads": 14,
+    "uniqueDownloaders": 2,
+    "licensesIssued": 5,
+    "audiencePlays": 348,
+    "likes": 20,
+    "reposts": 0,
+    "comments": 0,
+    "topDownloadedTrack": {
+      "id": 2182,
+      "name": "Example Track",
+      "image": "https://cdn.example.com/track.webp",
+      "downloads": 4
+    }
+  },
+  "downloadEvents": [
+    {
+      "id": 15168,
+      "occurredAt": "2026-06-01 17:31:39",
+      "track": {
+        "id": 3473,
+        "name": "Example Track",
+        "image": "https://cdn.example.com/track.webp"
+      },
+      "downloader": {
+        "id": 174,
+        "displayName": "Listener",
+        "avatar": null
+      },
+      "license": {
+        "uuid": "532ea5ec-6beb-4f48-8b03-5bbb93416564",
+        "type": "non_exclusive",
+        "status": "active"
+      }
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "perPage": 20,
+    "total": 14,
+    "hasMore": false
+  }
+}
+```
+
+Audience metrics exclude accounts that manage the artist. Anonymous plays remain included. Summary totals are calculated independently from the paginated download list.
+
 ### Downloads Analytics
 
 ```http

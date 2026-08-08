@@ -2,7 +2,7 @@
 audience: help
 title: "My Beats"
 sidebarTitle: "My Beats"
-description: "Review your catalog, track growth signals, filter beats, and explore collaboration tools on the My Beats page."
+description: "Review your catalog, understand its 30-day BeatPass play trend, filter beats, and explore collaboration tools on the My Beats page."
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
@@ -32,15 +32,21 @@ Click your **profile avatar** → **Backstage**, then select **My Beats** in the
 
 ## Growth Status
 
-The page header summarises your dashboard-level catalog growth. Select the help icon to open the growth guide with improvement tips.
+The page header summarises play activity for your current artist. It compares local BeatPass plays from the latest 30 days with the preceding, non-overlapping 30 days. Select the help icon to see the definition, thresholds, data floor, and improvement tips.
 
-| Label | Threshold |
+| Label | Threshold and behavior |
 | --- | --- |
-| **Exceptional growth!** | Above +15% |
-| **Strong growth** | Above +5% |
-| **Growing steadily** | Above 0% |
-| **Slight decline** | Above −5% |
-| **Needs attention** | −5% or below |
+| **Growing** | Above +5% |
+| **Steady** | From −5% through +5%, inclusive |
+| **Needs attention** | Below −5% |
+| **Building play data** | Fewer than 10 combined plays across both periods |
+| **Play trend unavailable** | The comparison could not be calculated or loaded |
+
+The **Play change** value divides the difference between the periods by the busier period. It is rounded to one decimal when needed and stays naturally between **−100% and +100%** without truncating high-growth results. For example, 237 recent plays compared with 42 previous plays is **+82.3%**. No previous plays with current activity is **+100%**; previous activity with no current plays is **−100%**; equal counts are **0%**.
+
+<Note>
+  This trend counts BeatPass `track_play` activity for the artist's resolved tracks. It does not use contribution value, imported lifetime plays, payout data, or Pro Page traffic.
+</Note>
 
 ## Overview Cards
 
@@ -48,7 +54,7 @@ The page header summarises your dashboard-level catalog growth. Select the help 
 | --- | --- |
 | **Total Tracks** | Catalog size plus recent upload context |
 | **Total Plays** | Lifetime plays and recent change |
-| **Growth Rate** | Dashboard-level catalog growth |
+| **Play Trend** | The same naturally bounded 30-day play comparison and qualitative state shown in the page header |
 | **Collaborators** | Unique collaborators and collaborative-track totals |
 
 ## Track Table
