@@ -1,6 +1,7 @@
 # Documentation guideline errata
 
-Application baseline: `alliancewav/open.beatpass.ca@95a6c369c50ffd8c5f75b2775406cd34bf967cfc`  
+Application baseline: `alliancewav/open.beatpass.ca@95a6c369c50ffd8c5f75b2775406cd34bf967cfc`
+
 Production verification date: 2026-08-11
 
 These entries record cases where verified product behavior takes precedence over the supplied documentation examples.
