@@ -3,7 +3,10 @@ audience: help
 title: "Analytics Quick Start"
 sidebarTitle: "Getting Started"
 description: "Get into BeatPass Backstage Insights and understand what you can access today."
+canonical: "https://docs.beatpass.ca/help/analytics/getting-started"
 ---
+
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
 This quick start walks through the current BeatPass Insights flow.
 
@@ -34,7 +37,7 @@ This quick start walks through the current BeatPass Insights flow.
 
 ## Learn The Layout
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Header" icon="compass">
     Shows the content title and high-level stats for the current track, album, or artist.
   </Card>
@@ -47,7 +50,7 @@ This quick start walks through the current BeatPass Insights flow.
   <Card title="Empty states" icon="inbox">
     If there is not enough data yet, BeatPass shows a no-data message instead of forcing a chart.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Important Expectations
 
@@ -56,4 +59,4 @@ This quick start walks through the current BeatPass Insights flow.
 - The standard UI does not currently show a built-in export button.
 - Very recent activity can take time to appear, especially if the page is still serving cached results.
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

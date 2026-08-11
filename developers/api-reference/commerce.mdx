@@ -5,6 +5,8 @@ description: "Track purchases, license certificates, exclusive license presets, 
 keywords: ["beatpass commerce api","track purchases","license certificates","stripe connect","exclusive licenses"]
 "og:title": "Commerce & Licensing API - BeatPass Developer Docs"
 "og:description": "Purchase tracks, manage license certificates, configure exclusive presets, and understand safe producer finance boundaries."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/api-reference/commerce"
 ---
 
 ## Overview
@@ -265,7 +267,7 @@ GET /api/v1/tracks/{track}/download-license-pdf
 Verify a license certificate by its UUID. This endpoint does not require authentication.
 
 ```http
-GET /api/v1/verify-license/{uuid}
+POST /api/v1/verify-license/{uuid}
 ```
 
 <ParamField path="uuid" type="string" required>
@@ -367,7 +369,7 @@ Validate a discount code during checkout. This is the only user-facing coupon en
 Check if a coupon code is valid and calculate the discount amount.
 
 ```http
-POST /api/v1/coupons/validate
+POST /api/v1/billing/coupons/validate
 ```
 
 <ParamField body="code" type="string" required>
@@ -445,11 +447,11 @@ GET /api/v1/artist/stripe-connect/finances
 
 ## Related Resources
 
-<CardGroup cols={2}>
-  <Card title="Webhooks" icon="webhook" href="/developers/webhooks">
+<Columns cols={2}>
+  <Card title="Webhooks" icon="link" href="/developers/webhooks">
     Payment event processing overview for purchase confirmation.
   </Card>
   <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
     Purchase and licensing error codes.
   </Card>
-</CardGroup>
+</Columns>

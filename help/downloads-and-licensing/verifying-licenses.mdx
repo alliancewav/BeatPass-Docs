@@ -7,6 +7,7 @@ keywords: ["verify license", "license verification", "certificate validation", "
 "og:title": "Verifying Licenses - BeatPass"
 "og:description": "Verify the authenticity and status of BeatPass license certificates."
 "twitter:card": "summary_large_image"
+canonical: "https://docs.beatpass.ca/help/downloads-and-licensing/verifying-licenses"
 ---
 
 BeatPass includes a public verification page for license certificates. Anyone with the license UUID can check whether the certificate exists and whether it is currently valid.
@@ -21,11 +22,7 @@ BeatPass includes a public verification page for license certificates. Anyone wi
 
 ## Verification link format
 
-Every certificate points to a URL in this format:
-
-```text
-https://open.beatpass.ca/verify-license/{uuid}
-```
+Every certificate points to the public [license verification page](https://open.beatpass.ca/verify-license/) followed by its unique license UUID.
 
 ## How to verify a certificate
 
@@ -119,7 +116,7 @@ The verification link confirms that the certificate exists in BeatPass records a
 
 ## Related
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="License Certificates" icon="file-lines" href="/help/downloads-and-licensing/license-certificates">
     Learn what the certificate includes beyond verification status.
   </Card>
@@ -144,4 +141,4 @@ The verification link confirms that the certificate exists in BeatPass records a
   <Card title="Trust Stack" icon="layer-group" href="/help/getting-started/beatpass-trust-stack">
     See how public verification fits into BeatPass's proof system.
   </Card>
-</CardGroup>
+</Columns>

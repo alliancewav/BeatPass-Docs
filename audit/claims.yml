@@ -1,0 +1,144 @@
+version: 1
+policy:
+  precedence:
+    - verified-production-configuration
+    - application-code
+    - generated-api-contract
+    - documentation-guidelines
+  unresolved_public_claims: review-warning
+baseline:
+  repository: alliancewav/open.beatpass.ca
+  branch: main
+  source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+  verified_at: 2026-08-11
+claims:
+  - id: ui.account-settings-menu
+    page: help/account-settings/index
+    owner: product
+    claim: The production profile menu label is "Settings" and the destination heading is "Account Settings".
+    evidence:
+      - production:https://open.beatpass.ca/account-settings
+      - common/resources/client/ui/navigation/navbar/navbar-auth-menu.tsx
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: ui.account-settings-sections
+    page: help/account-settings/index
+    owner: product
+    claim: Account details, Social login, Password, Two factor authentication, Active sessions, Location and language, Developers, and Delete account are the current section labels.
+    evidence:
+      - production:https://open.beatpass.ca/account-settings
+      - common/resources/client/auth/ui/account-settings/account-settings-sidenav.tsx
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: uploads.audio-format
+    page: help/uploading/upload-page
+    owner: catalog
+    claim: The current track uploader accepts WAV audio only.
+    evidence:
+      - production:https://open.beatpass.ca/backstage/upload
+      - resources/client/web-player/backstage/upload-page/use-track-uploader.ts
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: ui.license-library-label
+    page: help/downloads-and-licensing/index
+    owner: product
+    claim: The current library navigation label is "My Licenses".
+    evidence:
+      - production:https://open.beatpass.ca/library/licenses
+      - resources/client/web-player/web-player-routes.tsx
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.playlist-update
+    page: developers/api-reference/content
+    owner: api
+    claim: Playlist updates use PUT /playlists/{playlist}.
+    evidence:
+      - routes/api.php:140
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.license-verification
+    page: developers/api-reference/commerce
+    owner: api
+    claim: Public license verification uses POST /verify-license/{uuid}.
+    evidence:
+      - routes/api.php:241
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.coupon-validation
+    page: developers/api-reference/commerce
+    owner: api
+    claim: Coupon validation uses POST /billing/coupons/validate.
+    evidence:
+      - common/routes/api.php:239
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.comments
+    page: developers/api-reference/content
+    owner: api
+    claim: Comments use the generic comment and commentable routes; no dedicated track-comments operation exists.
+    evidence:
+      - common/routes/api.php:181
+      - common/routes/api.php:183
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.pagination
+    page: developers/overview
+    owner: api
+    claim: Paginated responses use page-number fields such as current_page, last_page, and per_page.
+    evidence:
+      - developers/api-reference/openapi.json
+      - application API resource responses at source baseline
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.token-expiry
+    page: developers/auth
+    owner: security
+    claim: API tokens expire after 90 days.
+    evidence:
+      - config/sanctum.php
+    status: verified
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: billing.platform-fee
+    page: help/billing/platform-fee
+    owner: billing
+    claim: The public checkout fee is 12% plus CAD $3 when it applies.
+    evidence:
+      - common/resources/client/billing/checkout/checkout.tsx
+      - common/resources/client/billing/checkout/checkout-product-summary.tsx
+      - production checkout configuration requires owner confirmation
+    status: review-warning
+    warning: Authored checkout defaults match the docs, but a stale 15% payout comment remains elsewhere in source and production configuration is database-backed.
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: api.global-rate-limit
+    page: developers/rate-limits
+    owner: platform
+    claim: The public API limit is documented as 300 requests per minute.
+    evidence:
+      - config/beatpass.php
+      - production response headers require owner confirmation
+    status: review-warning
+    warning: The authored fallback is 1,500 and no matching named api limiter was found; production may override the value.
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11
+  - id: plans.beat-request-limits
+    page: help/plans-and-pricing/plan-comparison
+    owner: growth
+    claim: Beat-request allowances shown by plan are production-configured values.
+    evidence:
+      - product metadata beat_requests_limit
+      - production billing catalog requires owner confirmation
+    status: review-warning
+    warning: Static pricing copy and database-backed plan metadata disagree for Plus and Pro.
+    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+    verified_at: 2026-08-11

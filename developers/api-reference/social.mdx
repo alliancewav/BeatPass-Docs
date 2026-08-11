@@ -5,6 +5,8 @@ description: "User following, artist following, reposts, and library management 
 keywords: ["beatpass social api","following","reposts","user library","liked tracks","followers"]
 "og:title": "Social & Following API - BeatPass Developer Docs"
 "og:description": "Follow users and artists, manage reposts, and curate your personal library of liked content."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/api-reference/social"
 ---
 
 ## Overview
@@ -83,20 +85,20 @@ GET /api/v1/artists/{artistId}/followers
 
 ## Follow Limits
 
-<CardGroup cols={3}>
-  <Card title="Max Following" icon="user-plus" color="#3b82f6">
+<Columns cols={3}>
+  <Card title="Max Following" icon="user-plus">
     <Badge color="blue">5,000 users</Badge>
     Maximum accounts a user can follow
   </Card>
-  <Card title="Follow Rate" icon="gauge" color="#f59e0b">
+  <Card title="Follow Rate" icon="gauge">
     <Badge color="orange">Rate limited</Badge>
     Too many follows in quick succession triggers 429
   </Card>
-  <Card title="Self-Follow" icon="ban" color="#ef4444">
+  <Card title="Self-Follow" icon="ban">
     <Badge color="red">Not allowed</Badge>
     Cannot follow your own account
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -456,11 +458,11 @@ DELETE /api/v1/fcm-tokens
 
 ## Related Resources
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Content API" icon="record-vinyl" href="/developers/api-reference/content">
     Track, album, and artist management.
   </Card>
   <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
     Social and following error codes.
   </Card>
-</CardGroup>
+</Columns>

@@ -5,6 +5,8 @@ description: "Explore BeatPass API endpoints with the interactive OpenAPI explor
 keywords: ["beatpass api reference","api endpoints","openapi","rest api","api documentation"]
 "og:title": "API Reference - BeatPass Developer Docs"
 "og:description": "Complete reference for all BeatPass API endpoints with interactive OpenAPI explorer."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/api-reference/overview"
 ---
 
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
@@ -15,8 +17,8 @@ This section documents all public-facing BeatPass API endpoints. Browse the Open
 
 ### API Documentation
 
-<CardGroup cols={3}>
-  <Card title="Dashboard API" icon="chart-mixed" href="/developers/api-reference/dashboard">
+<Columns cols={3}>
+  <Card title="Dashboard API" icon="chart-line" href="/developers/api-reference/dashboard">
     Producer dashboard metrics, track performance, and upload insights.
   </Card>
   <Card title="Insights API" icon="chart-line" href="/developers/api-reference/insights">
@@ -25,7 +27,7 @@ This section documents all public-facing BeatPass API endpoints. Browse the Open
   <Card title="Commerce & Licensing" icon="cart-shopping" href="/developers/api-reference/commerce">
     Purchases, licenses, safe finance references, and exclusive presets.
   </Card>
-  <Card title="Messaging API" icon="messages" href="/developers/api-reference/messaging">
+  <Card title="Messaging API" icon="comments" href="/developers/api-reference/messaging">
     Direct messages, conversations, and real-time features.
   </Card>
   <Card title="Beat Requests API" icon="wave-square" href="/developers/api-reference/beat-requests">
@@ -43,7 +45,7 @@ This section documents all public-facing BeatPass API endpoints. Browse the Open
   <Card title="Producer Intelligence" icon="trophy" href="/developers/api-reference/producer-intelligence">
     XP, achievements, social analytics, and charts.
   </Card>
-</CardGroup>
+</Columns>
 
 ### OpenAPI Explorer
 
@@ -160,7 +162,7 @@ console.log(data.track.name); // "ZOOM"
   <Tab title="Public">
     These endpoints work without authentication (enhanced data when logged in):
 
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Search" icon="magnifying-glass">
         <Badge color="green">Optional Auth</Badge>
          Full-text search across all content types.
@@ -169,7 +171,7 @@ console.log(data.track.name); // "ZOOM"
         <Badge color="green">Read: Optional</Badge>
          Track listing and details.
       </Card>
-      <Card title="Artists" icon="user-music">
+      <Card title="Artists" icon="user">
         <Badge color="green">Read: Optional</Badge>
          Artist profiles and followers.
       </Card>
@@ -177,13 +179,13 @@ console.log(data.track.name); // "ZOOM"
         <Badge color="green">Read: Optional</Badge>
          Album listing and metadata.
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Mixed Auth">
     Some operations require authentication:
 
-    <CardGroup cols={2}>
-      <Card title="Playlists" icon="list-music">
+    <Columns cols={2}>
+      <Card title="Playlists" icon="list">
         <Badge color="orange">Mixed</Badge>
          Read public, write requires auth.
       </Card>
@@ -191,21 +193,21 @@ console.log(data.track.name); // "ZOOM"
         <Badge color="orange">Mixed</Badge>
          Public profiles, private data requires auth.
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Auth Required">
     Full authentication required:
 
-    <CardGroup cols={2}>
-      <Card title="Insights" icon="chart-line" color="#8b5cf6">
+    <Columns cols={2}>
+      <Card title="Insights" icon="chart-line">
         <Badge color="red">Required</Badge>
          Analytics and insights for content.
       </Card>
-      <Card title="License Certificates" icon="file-certificate">
+      <Card title="License Certificates" icon="file-contract">
         <Badge color="red">Required</Badge>
          Generation and verification.
       </Card>
-      <Card title="Messaging" icon="messages">
+      <Card title="Messaging" icon="comments">
         <Badge color="red">Required</Badge>
          Direct message conversations.
       </Card>
@@ -213,11 +215,11 @@ console.log(data.track.name); // "ZOOM"
         <Badge color="red">Required</Badge>
          Beat request marketplace.
       </Card>
-      <Card title="Audio Recon" icon="radar">
+      <Card title="Audio Recon" icon="bullseye">
         <Badge color="red">Required</Badge>
          Detected audio similarities on streaming platforms.
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
 </Tabs>
 
@@ -229,11 +231,11 @@ console.log(data.track.name); // "ZOOM"
 
 ## Related Resources
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Authentication" icon="key" href="/developers/auth">
     Authentication methods and token generation.
   </Card>
   <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
     Error codes and resolutions.
   </Card>
-</CardGroup>
+</Columns>

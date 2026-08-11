@@ -3,7 +3,10 @@ audience: help
 title: "Getting Help"
 sidebarTitle: "Getting Help"
 description: "Use the verified BeatPass contact form and support email correctly so your issue reaches the right team with the right context."
+canonical: "https://docs.beatpass.ca/help/contact-support/getting-help"
 ---
+
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
 Use this page when you need direct help from BeatPass with an account-specific problem, a payment issue, a producer-access question, or something that the Help Center cannot solve on its own.
 
@@ -11,14 +14,14 @@ Use this page when you need direct help from BeatPass with an account-specific p
 
 ## Best Contact Options
 
-<CardGroup cols={2}>
-  <Card title="Open the Contact Form" icon="arrow-up-right-from-square" href="/contact">
+<Columns cols={2}>
+  <Card title="Open the Contact Form" icon="arrow-up-right-from-square" href="https://open.beatpass.ca/contact">
     Use the live BeatPass contact page for the standard support workflow.
   </Card>
   <Card title="Email BeatPass" icon="envelope" href="mailto:contact@beatpass.ca">
     Write directly to contact@beatpass.ca if you prefer email or cannot use the form.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -34,7 +37,7 @@ If reCAPTCHA is enabled, BeatPass may also ask you to complete a verification ch
 
 <Steps>
   <Step title="Open the page">
-    Go to [/contact](/contact).
+    Go to [/contact](https://open.beatpass.ca/contact).
   </Step>
   <Step title="Enter your contact details">
     Fill in **Name** and **Email** with the address where you want BeatPass to reply.
@@ -129,11 +132,11 @@ Direct email can be simpler when:
 
 ---
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />
 
 ## Related Topics
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Report an Issue" icon="triangle-exclamation" href="/help/contact-support/reporting-issues">
     Use the right path for bugs, abuse reports, account problems, and copyright concerns.
   </Card>
@@ -143,4 +146,4 @@ Direct email can be simpler when:
   <Card title="Submit Feedback" icon="lightbulb" href="/help/contact-support/feedback">
     Share product ideas without mixing them into a support request.
   </Card>
-</CardGroup>
+</Columns>

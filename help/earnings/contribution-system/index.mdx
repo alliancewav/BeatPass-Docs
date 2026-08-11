@@ -2,6 +2,8 @@
 audience: help
 title: "Contribution System"
 description: "Understand how BeatPass uses contribution value to determine each producer's share of subscription revenue."
+sidebarTitle: "Contribution System"
+canonical: "https://docs.beatpass.ca/help/earnings/contribution-system"
 ---
 
 import PlatformFee from "/snippets/callouts/platform-fee.mdx";
@@ -17,7 +19,7 @@ The formula does not guarantee a fixed payout. It explains how contribution valu
 
 ## What Builds Contribution Value
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Time Since Upload" icon="clock">
     Newer tracks get a stronger recency factor, which decays over time with a 6-month half-life.
   </Card>
@@ -27,7 +29,7 @@ The formula does not guarantee a fixed payout. It explains how contribution valu
   <Card title="Collaborator Count" icon="users">
     Contribution is split equally across the producers credited on the track.
   </Card>
-</CardGroup>
+</Columns>
 
 ## How Subscription Payout Share Works
 
@@ -54,7 +56,7 @@ BeatPass recalculates contribution values periodically (roughly every few hours)
 
 ## Related
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Earnings Formula" href="/help/earnings/contribution-system/formula" icon="calculator">
     See the exact formula BeatPass uses.
   </Card>
@@ -64,6 +66,6 @@ BeatPass recalculates contribution values periodically (roughly every few hours)
   <Card title="Trust Stack" href="/help/getting-started/beatpass-trust-stack" icon="layer-group">
     See how payout transparency fits into BeatPass's wider trust system.
   </Card>
-</CardGroup>
+</Columns>
 
 <NeedHelp />

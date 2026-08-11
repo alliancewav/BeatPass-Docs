@@ -5,6 +5,8 @@ description: "Introduction to the BeatPass API for approved developer integratio
 keywords: ["beatpass api","music api","beat marketplace api","producer api","beat licensing api"]
 "og:title": "API Overview - BeatPass Developer Documentation"
 "og:description": "Introduction to the BeatPass API for approved developer integrations."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/overview"
 ---
 
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
@@ -15,7 +17,7 @@ The BeatPass API provides access to platform data for approved developer integra
 
 ## Quick Links
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Quickstart" icon="rocket" href="/developers/quickstart">
     Get up and running quickly
   </Card>
@@ -25,7 +27,7 @@ The BeatPass API provides access to platform data for approved developer integra
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     Explore all endpoints
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -55,17 +57,17 @@ The BeatPass API provides comprehensive functionality across the platform:
 
 <Tabs>
   <Tab title="Content & Discovery">
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Tracks" icon="record-vinyl">
         List, view, upload, update, delete tracks
       </Card>
       <Card title="Albums" icon="layer-group">
         Album management and metadata
       </Card>
-      <Card title="Artists" icon="user-music">
+      <Card title="Artists" icon="user">
         Artist profiles, followers, tracks
       </Card>
-      <Card title="Playlists" icon="list-music">
+      <Card title="Playlists" icon="list">
         Create, manage, share playlists
       </Card>
       <Card title="Search" icon="magnifying-glass">
@@ -80,14 +82,14 @@ The BeatPass API provides comprehensive functionality across the platform:
       <Card title="Radio" icon="radio">
         Personalized music recommendations
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Commerce & Licensing">
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Track Purchases" icon="cart-shopping">
         Per-track purchase and license flow
       </Card>
-      <Card title="License Certificates" icon="file-certificate">
+      <Card title="License Certificates" icon="file-contract">
         Generate, verify, revoke licenses
       </Card>
       <Card title="Exclusive Licenses" icon="lock">
@@ -102,10 +104,10 @@ The BeatPass API provides comprehensive functionality across the platform:
       <Card title="Coupons" icon="ticket">
         Discount code management
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Producer Tools">
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Producer Intelligence" icon="trophy">
         XP, achievements, leaderboards
       </Card>
@@ -121,7 +123,7 @@ The BeatPass API provides comprehensive functionality across the platform:
       <Card title="Audio Fingerprinting" icon="fingerprint">
         Duplicate detection, content ID
       </Card>
-      <Card title="Audio Recon" icon="radar">
+      <Card title="Audio Recon" icon="bullseye">
         Detected audio similarities on streaming platforms
       </Card>
       <Card title="Producer Access Requests" icon="user-check">
@@ -133,11 +135,11 @@ The BeatPass API provides comprehensive functionality across the platform:
       <Card title="Artist Credits" icon="id-badge">
         Professional portfolio credits
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Social & Collaboration">
-    <CardGroup cols={2}>
-      <Card title="Messaging" icon="messages">
+    <Columns cols={2}>
+      <Card title="Messaging" icon="comments">
         Direct messages with typing indicators
       </Card>
       <Card title="Beat Requests" icon="wave-square">
@@ -155,7 +157,7 @@ The BeatPass API provides comprehensive functionality across the platform:
       <Card title="User Library" icon="bookmark">
         Liked tracks, albums, and artists
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
 </Tabs>
 
@@ -165,20 +167,20 @@ The BeatPass API provides comprehensive functionality across the platform:
 
 ### HTTP Methods
 
-<CardGroup cols={4}>
-  <Card title="GET" icon="arrow-down-to-line" color="#22c55e">
+<Columns cols={4}>
+  <Card title="GET" icon="download">
     Retrieve data
   </Card>
-  <Card title="POST" icon="plus" color="#3b82f6">
+  <Card title="POST" icon="plus">
     Create resources
   </Card>
-  <Card title="PUT" icon="pen" color="#f59e0b">
+  <Card title="PUT" icon="pen">
     Update resources
   </Card>
-  <Card title="DELETE" icon="trash" color="#ef4444">
+  <Card title="DELETE" icon="trash">
     Remove resources
   </Card>
-</CardGroup>
+</Columns>
 
 ### Required Headers
 
@@ -220,7 +222,7 @@ Responses vary by endpoint. Most return data directly:
 
 ### Pagination
 
-Paginated endpoints use standard <Tooltip tip="A pagination method using page numbers and per_page counts to navigate through large result sets.">cursor-based pagination</Tooltip>:
+Paginated endpoints use <Tooltip tip="A pagination method that uses current_page, last_page, and per_page values to move through large result sets.">page-number pagination</Tooltip>:
 
 ```json
 {
@@ -297,11 +299,11 @@ The API enforces rate limits to ensure fair usage and platform stability. Exceed
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Authentication" icon="key" href="/developers/auth">
     Learn how API authentication works.
   </Card>
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     Complete endpoint reference.
   </Card>
-</CardGroup>
+</Columns>

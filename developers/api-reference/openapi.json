@@ -129,7 +129,12 @@
   "paths": {
     "/search": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Search"
         ],
@@ -219,7 +224,12 @@
     },
     "/playlists/{id}": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Playlists"
         ],
@@ -306,6 +316,15 @@
         "summary": "Delete a playlist",
         "operationId": "deletePlaylist",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Playlist ID or comma-separated playlist IDs.",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "path",
             "name": "ID",
@@ -425,93 +444,16 @@
             }
           }
         }
-      },
-      "put": {
-        "tags": [
-          "Playlists"
-        ],
-        "summary": "Update specified playlist details",
-        "operationId": "updatePlaylist",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "My playlist"
-                  },
-                  "description": {
-                    "type": "string",
-                    "nullable": true,
-                    "description": "Short description (between 20 and 170 chracaters) for playlist"
-                  },
-                  "image": {
-                    "type": "string",
-                    "nullable": true,
-                    "description": "Image url for playlist"
-                  },
-                  "public": {
-                    "type": "string",
-                    "nullable": true,
-                    "default": false,
-                    "description": "Whether this playlist will be set as public"
-                  },
-                  "collaborative": {
-                    "type": "string",
-                    "nullable": true,
-                    "default": false,
-                    "description": "Whether this playlist will be set as collaborative"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "On success, the response body contains the updated playlist object in JSON format",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "success"
-                    },
-                    "playlist": {
-                      "$ref": "#/components/schemas/Playlist"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Response403"
-          },
-          "422": {
-            "description": "Invalid data specified",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/Response422"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/playlists/{id}/tracks": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Playlists"
         ],
@@ -738,6 +680,15 @@
         "operationId": "followPlaylist",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Playlist ID to follow.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "in": "path",
             "name": "ID",
             "required": true,
@@ -783,6 +734,15 @@
         "operationId": "unfollowPlaylist",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Playlist ID to unfollow.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "in": "path",
             "name": "ID",
             "required": true,
@@ -821,7 +781,12 @@
     },
     "/artists/{id}": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Artists"
         ],
@@ -946,7 +911,12 @@
     },
     "/artists/{id}/tracks": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Artists"
         ],
@@ -1190,7 +1160,12 @@
     },
     "/albums/{id}": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Albums"
         ],
@@ -1272,7 +1247,12 @@
     },
     "/tracks/{id}": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Tracks"
         ],
@@ -1355,91 +1335,14 @@
         }
       }
     },
-    "/tracks/{id}/comments": {
-      "get": {
-        "security": [{}, {"bearerAuth": []}],
-        "tags": [
-          "Tracks"
-        ],
-        "summary": "List all track comments",
-        "operationId": "getTrackComments",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the track",
-            "example": 1,
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "perPage",
-            "in": "query",
-            "description": "How many comments to return per page",
-            "schema": {
-              "type": "integer",
-              "default": 20
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Which page to return",
-            "schema": {
-              "type": "integer",
-              "default": 1
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Response body contains a paginated list of track comments in JSON format.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "success"
-                    },
-                    "pagination": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/Pagination"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "data": {
-                              "type": "array",
-                              "items": {
-                                "$ref": "#/components/schemas/Comment"
-                              }
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Response403"
-          }
-        }
-      }
-    },
     "/tracks/{id}/lyrics": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Tracks"
         ],
@@ -1656,7 +1559,12 @@
     },
     "/genres": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Genres"
         ],
@@ -2500,7 +2408,7 @@
       }
     },
     "/verify-license/{uuid}": {
-      "get": {
+      "post": {
         "tags": [
           "License Certificates"
         ],
@@ -2752,7 +2660,12 @@
     },
     "/tracks": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Tracks"
         ],
@@ -2946,7 +2859,12 @@
     },
     "/albums": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Albums"
         ],
@@ -3661,7 +3579,12 @@
     },
     "/radio/{type}/{id}": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Radio"
         ],
@@ -3831,7 +3754,9 @@
     },
     "/tracks/{id}/purchase/calculate-price": {
       "post": {
-        "tags": ["Track Purchases"],
+        "tags": [
+          "Track Purchases"
+        ],
         "summary": "Calculate track purchase price",
         "operationId": "calculateTrackPrice",
         "parameters": [
@@ -3840,7 +3765,10 @@
             "in": "path",
             "required": true,
             "description": "Track ID",
-            "schema": { "type": "integer", "example": 1 }
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
           }
         ],
         "responses": {
@@ -3851,23 +3779,41 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "base_price": { "type": "number", "example": 100.00 },
-                    "platform_fee": { "type": "number", "example": 15.00 },
-                    "total_price": { "type": "number", "example": 115.00 },
-                    "currency": { "type": "string", "example": "CAD" }
+                    "base_price": {
+                      "type": "number",
+                      "example": 100
+                    },
+                    "platform_fee": {
+                      "type": "number",
+                      "example": 15
+                    },
+                    "total_price": {
+                      "type": "number",
+                      "example": 115
+                    },
+                    "currency": {
+                      "type": "string",
+                      "example": "CAD"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/tracks/{id}/purchase/initiate": {
       "post": {
-        "tags": ["Track Purchases"],
+        "tags": [
+          "Track Purchases"
+        ],
         "summary": "Initiate a track purchase via Stripe",
         "operationId": "initiateTrackPurchase",
         "parameters": [
@@ -3876,7 +3822,10 @@
             "in": "path",
             "required": true,
             "description": "Track ID",
-            "schema": { "type": "integer", "example": 1 }
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
           }
         ],
         "responses": {
@@ -3887,22 +3836,35 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "client_secret": { "type": "string", "description": "Stripe PaymentIntent client secret" },
-                    "purchase_id": { "type": "integer" }
+                    "client_secret": {
+                      "type": "string",
+                      "description": "Stripe PaymentIntent client secret"
+                    },
+                    "purchase_id": {
+                      "type": "integer"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     },
     "/tracks/{id}/purchase/status": {
       "get": {
-        "tags": ["Track Purchases"],
+        "tags": [
+          "Track Purchases"
+        ],
         "summary": "Check purchase status for a track",
         "operationId": "checkTrackPurchaseStatus",
         "parameters": [
@@ -3911,7 +3873,10 @@
             "in": "path",
             "required": true,
             "description": "Track ID",
-            "schema": { "type": "integer", "example": 1 }
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
           }
         ],
         "responses": {
@@ -3922,32 +3887,47 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "purchased": { "type": "boolean" },
-                    "purchase": { "type": "object", "nullable": true }
+                    "purchased": {
+                      "type": "boolean"
+                    },
+                    "purchase": {
+                      "type": "object",
+                      "nullable": true
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/purchases": {
       "get": {
-        "tags": ["Track Purchases"],
+        "tags": [
+          "Track Purchases"
+        ],
         "summary": "Get current user's purchases",
         "operationId": "getUserPurchases",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "schema": { "type": "integer", "example": 1 }
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
           },
           {
             "name": "per_page",
             "in": "query",
-            "schema": { "type": "integer", "example": 25 }
+            "schema": {
+              "type": "integer",
+              "example": 25
+            }
           }
         ],
         "responses": {
@@ -3960,25 +3940,43 @@
                   "properties": {
                     "data": {
                       "type": "array",
-                      "items": { "type": "object" }
+                      "items": {
+                        "type": "object"
+                      }
                     }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/beat-requests": {
       "get": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "List all beat requests",
         "operationId": "listBeatRequests",
         "parameters": [
-          { "name": "page", "in": "query", "schema": { "type": "integer" } },
-          { "name": "per_page", "in": "query", "schema": { "type": "integer" } }
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -3988,17 +3986,26 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "data": { "type": "array", "items": { "type": "object" } }
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       },
       "post": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Create a new beat request",
         "operationId": "createBeatRequest",
         "requestBody": {
@@ -4008,58 +4015,118 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": { "type": "string", "example": "Need a trap beat" },
-                  "description": { "type": "string" },
-                  "budget_min": { "type": "number" },
-                  "budget_max": { "type": "number" },
-                  "genres": { "type": "array", "items": { "type": "string" } }
+                  "title": {
+                    "type": "string",
+                    "example": "Need a trap beat"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "budget_min": {
+                    "type": "number"
+                  },
+                  "budget_max": {
+                    "type": "number"
+                  },
+                  "genres": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Beat request created" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "201": {
+            "description": "Beat request created"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     },
     "/beat-requests/{id}": {
       "get": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Get a specific beat request",
         "operationId": "getBeatRequest",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Beat request details" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Beat request details"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       },
       "delete": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Delete a beat request",
         "operationId": "deleteBeatRequest",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Beat request deleted" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "$ref": "#/components/responses/Response403" }
+          "200": {
+            "description": "Beat request deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          }
         }
       }
     },
     "/beat-requests/{id}/fulfill": {
       "post": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Submit a track to a beat request",
         "operationId": "submitTrackToBeatRequest",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Beat request ID" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Beat request ID"
+          }
         ],
         "requestBody": {
           "required": true,
@@ -4067,71 +4134,134 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["track_id"],
+                "required": [
+                  "track_id"
+                ],
                 "properties": {
-                  "track_id": { "type": "integer", "description": "ID of the track to submit" }
+                  "track_id": {
+                    "type": "integer",
+                    "description": "ID of the track to submit"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Track submitted successfully" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "description": "Not track owner or self-submission blocked" },
-          "409": { "description": "Duplicate submission or duplicate audio detected" },
-          "410": { "description": "Beat request has expired" },
-          "422": { "description": "Track not platform-hosted, fingerprint not completed, or submission limit reached" }
+          "200": {
+            "description": "Track submitted successfully"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "description": "Not track owner or self-submission blocked"
+          },
+          "409": {
+            "description": "Duplicate submission or duplicate audio detected"
+          },
+          "410": {
+            "description": "Beat request has expired"
+          },
+          "422": {
+            "description": "Track not platform-hosted, fingerprint not completed, or submission limit reached"
+          }
         }
       }
     },
     "/beat-requests/{id}/submissions": {
       "get": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Get submissions for a beat request",
         "operationId": "getBeatRequestSubmissions",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Beat request ID" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Beat request ID"
+          }
         ],
         "responses": {
-          "200": { "description": "List of submitted tracks" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "description": "Only request owner can view submissions" }
+          "200": {
+            "description": "List of submitted tracks"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "description": "Only request owner can view submissions"
+          }
         }
       }
     },
     "/beat-requests/{id}/renew": {
       "post": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Renew an expired beat request",
         "operationId": "renewBeatRequest",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Beat request ID" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Beat request ID"
+          }
         ],
         "responses": {
-          "200": { "description": "Beat request renewed" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "description": "Not request owner" },
-          "409": { "description": "Request still active" },
-          "410": { "description": "Renewal window expired (30 days)" },
-          "429": { "description": "No tokens available for renewal" }
+          "200": {
+            "description": "Beat request renewed"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "description": "Not request owner"
+          },
+          "409": {
+            "description": "Request still active"
+          },
+          "410": {
+            "description": "Renewal window expired (30 days)"
+          },
+          "429": {
+            "description": "No tokens available for renewal"
+          }
         }
       }
     },
     "/beat-requests/user/my-requests": {
       "get": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Get current user's beat requests",
         "operationId": "getMyBeatRequests",
         "responses": {
-          "200": { "description": "User's beat requests" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "User's beat requests"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/producer-intelligence/leaderboard": {
       "get": {
-        "tags": ["Producer Intelligence"],
+        "tags": [
+          "Producer Intelligence"
+        ],
         "summary": "Get producer leaderboards",
         "operationId": "getProducerLeaderboards",
         "responses": {
@@ -4142,9 +4272,24 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "weekly": { "type": "array", "items": { "type": "object" } },
-                    "monthly": { "type": "array", "items": { "type": "object" } },
-                    "allTime": { "type": "array", "items": { "type": "object" } }
+                    "weekly": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "monthly": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "allTime": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
                   }
                 }
               }
@@ -4155,7 +4300,9 @@
     },
     "/producer-intelligence/dashboard": {
       "get": {
-        "tags": ["Producer Intelligence"],
+        "tags": [
+          "Producer Intelligence"
+        ],
         "summary": "Get producer dashboard data",
         "operationId": "getProducerDashboard",
         "responses": {
@@ -4166,76 +4313,136 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "xp": { "type": "integer" },
-                    "level": { "type": "integer" },
-                    "achievements": { "type": "array", "items": { "type": "object" } },
-                    "stats": { "type": "object" }
+                    "xp": {
+                      "type": "integer"
+                    },
+                    "level": {
+                      "type": "integer"
+                    },
+                    "achievements": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "stats": {
+                      "type": "object"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/producer-intelligence/achievements": {
       "get": {
-        "tags": ["Producer Intelligence"],
+        "tags": [
+          "Producer Intelligence"
+        ],
         "summary": "Get producer's achievements",
         "operationId": "getProducerAchievements",
         "responses": {
-          "200": { "description": "List of achievements" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "List of achievements"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/producer-intelligence/xp-sources": {
       "get": {
-        "tags": ["Producer Intelligence"],
+        "tags": [
+          "Producer Intelligence"
+        ],
         "summary": "Get XP sources breakdown",
         "operationId": "getXPSources",
         "responses": {
-          "200": { "description": "XP sources breakdown" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "XP sources breakdown"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/artists/{id}/follow": {
       "post": {
-        "tags": ["Artists"],
+        "tags": [
+          "Artists"
+        ],
         "summary": "Follow an artist",
         "operationId": "followArtist",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Artist followed successfully" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Artist followed successfully"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/artists/{id}/unfollow": {
       "post": {
-        "tags": ["Artists"],
+        "tags": [
+          "Artists"
+        ],
         "summary": "Unfollow an artist",
         "operationId": "unfollowArtist",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Artist unfollowed successfully" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Artist unfollowed successfully"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/artists/{id}/follow-status": {
       "get": {
-        "tags": ["Artists"],
+        "tags": [
+          "Artists"
+        ],
         "summary": "Check if current user follows an artist",
         "operationId": "getArtistFollowStatus",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -4245,19 +4452,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "following": { "type": "boolean" }
+                    "following": {
+                      "type": "boolean"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/users/me/add-to-library": {
       "post": {
-        "tags": ["User Library"],
+        "tags": [
+          "User Library"
+        ],
         "summary": "Add a track to user's library",
         "operationId": "addToLibrary",
         "requestBody": {
@@ -4267,21 +4480,30 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "track_id": { "type": "integer", "example": 1 }
+                  "track_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Track added to library" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Track added to library"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/users/me/remove-from-library": {
       "post": {
-        "tags": ["User Library"],
+        "tags": [
+          "User Library"
+        ],
         "summary": "Remove a track from user's library",
         "operationId": "removeFromLibrary",
         "requestBody": {
@@ -4291,21 +4513,30 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "track_id": { "type": "integer", "example": 1 }
+                  "track_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Track removed from library" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Track removed from library"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/leaderboards/global": {
       "get": {
-        "tags": ["Leaderboards"],
+        "tags": [
+          "Leaderboards"
+        ],
         "summary": "Get global producer leaderboard",
         "operationId": "getGlobalLeaderboard",
         "responses": {
@@ -4316,7 +4547,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "producers": { "type": "array", "items": { "type": "object" } }
+                    "producers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
                   }
                 }
               }
@@ -4327,45 +4563,78 @@
     },
     "/leaderboards/genre/{genre}": {
       "get": {
-        "tags": ["Leaderboards"],
+        "tags": [
+          "Leaderboards"
+        ],
         "summary": "Get genre-specific leaderboard",
         "operationId": "getGenreLeaderboard",
         "parameters": [
-          { "name": "genre", "in": "path", "required": true, "schema": { "type": "string" } }
+          {
+            "name": "genre",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Genre leaderboard data" }
+          "200": {
+            "description": "Genre leaderboard data"
+          }
         }
       }
     },
     "/leaderboards/rising-stars": {
       "get": {
-        "tags": ["Leaderboards"],
+        "tags": [
+          "Leaderboards"
+        ],
         "summary": "Get rising stars leaderboard",
         "operationId": "getRisingStarsLeaderboard",
         "responses": {
-          "200": { "description": "Rising stars leaderboard data" }
+          "200": {
+            "description": "Rising stars leaderboard data"
+          }
         }
       }
     },
     "/leaderboards/achievements": {
       "get": {
-        "tags": ["Leaderboards"],
+        "tags": [
+          "Leaderboards"
+        ],
         "summary": "Get achievements leaderboard",
         "operationId": "getAchievementsLeaderboard",
         "responses": {
-          "200": { "description": "Achievements leaderboard data" }
+          "200": {
+            "description": "Achievements leaderboard data"
+          }
         }
       }
     },
     "/tracks/{id}/wave": {
       "get": {
-        "security": [{}, {"bearerAuth": []}],
-        "tags": ["Tracks"],
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Tracks"
+        ],
         "summary": "Get waveform data for a track",
         "operationId": "getTrackWaveform",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -4375,49 +4644,97 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "peaks": { "type": "array", "items": { "type": "number" } }
+                    "peaks": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
                   }
                 }
               }
             }
           },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/users/{id}/reposts": {
       "get": {
-        "tags": ["Reposts"],
+        "tags": [
+          "Reposts"
+        ],
         "summary": "Get user's reposts",
         "operationId": "getUserReposts",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } },
-          { "name": "page", "in": "query", "schema": { "type": "integer" } },
-          { "name": "per_page", "in": "query", "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "User's reposts" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "User's reposts"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/messaging/conversations": {
       "get": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Get user's conversations",
         "operationId": "getConversations",
         "parameters": [
-          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 20 }, "description": "Number of conversations to return" }
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "Number of conversations to return"
+          }
         ],
         "responses": {
-          "200": { "description": "List of conversations with last message and unread count" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "List of conversations with last message and unread count"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/messaging/conversations/start": {
       "post": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Start a new conversation (direct or group)",
         "operationId": "startConversation",
         "requestBody": {
@@ -4426,44 +4743,100 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["message_text"],
+                "required": [
+                  "message_text"
+                ],
                 "properties": {
-                  "user_id": { "type": "integer", "description": "Recipient user ID for direct message" },
-                  "user_ids": { "type": "array", "items": { "type": "integer" }, "description": "User IDs for group conversation (min 2)" },
-                  "message_text": { "type": "string", "maxLength": 2000, "description": "Initial message text" },
-                  "title": { "type": "string", "maxLength": 255, "description": "Optional group conversation title" }
+                  "user_id": {
+                    "type": "integer",
+                    "description": "Recipient user ID for direct message"
+                  },
+                  "user_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "description": "User IDs for group conversation (min 2)"
+                  },
+                  "message_text": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "description": "Initial message text"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "description": "Optional group conversation title"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Conversation created with initial message" },
-          "400": { "description": "Invalid parameters" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "201": {
+            "description": "Conversation created with initial message"
+          },
+          "400": {
+            "description": "Invalid parameters"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/messaging/conversations/{conversationId}/messages": {
       "get": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Get messages for a conversation",
         "operationId": "getMessages",
         "parameters": [
-          { "name": "conversationId", "in": "path", "required": true, "schema": { "type": "integer" } },
-          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 50 } },
-          { "name": "offset", "in": "query", "schema": { "type": "integer", "default": 0 } }
+          {
+            "name": "conversationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Messages in the conversation" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "$ref": "#/components/responses/Response403" }
+          "200": {
+            "description": "Messages in the conversation"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          }
         }
       }
     },
     "/messaging/messages": {
       "post": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Send a message to a conversation",
         "operationId": "sendMessage",
         "requestBody": {
@@ -4472,272 +4845,416 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["conversation_id", "message_text"],
+                "required": [
+                  "conversation_id",
+                  "message_text"
+                ],
                 "properties": {
-                  "conversation_id": { "type": "integer" },
-                  "message_text": { "type": "string", "maxLength": 2000 }
+                  "conversation_id": {
+                    "type": "integer"
+                  },
+                  "message_text": {
+                    "type": "string",
+                    "maxLength": 2000
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Message sent" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "$ref": "#/components/responses/Response403" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "201": {
+            "description": "Message sent"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     },
     "/messaging/unread-count": {
       "get": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Get total unread message count",
         "operationId": "getUnreadCount",
         "responses": {
-          "200": { "description": "Unread count across all conversations" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Unread count across all conversations"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/messaging/conversations/{conversationId}/read": {
       "post": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Mark conversation as read",
         "operationId": "markConversationRead",
         "parameters": [
-          { "name": "conversationId", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "conversationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Conversation marked as read" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Conversation marked as read"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/messaging/conversations/{conversationId}": {
       "delete": {
-        "tags": ["Messaging"],
+        "tags": [
+          "Messaging"
+        ],
         "summary": "Delete conversation for the authenticated user",
         "operationId": "deleteConversation",
         "parameters": [
-          { "name": "conversationId", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "conversationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Conversation deleted" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "$ref": "#/components/responses/Response403" }
+          "200": {
+            "description": "Conversation deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          }
         }
       }
     },
     "/collections": {
       "get": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "List collections",
         "operationId": "listCollections",
         "responses": {
-          "200": { "description": "List of collections" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "List of collections"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       },
       "post": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Create a new collection",
         "operationId": "createCollection",
         "responses": {
-          "201": { "description": "Collection created" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "201": {
+            "description": "Collection created"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     },
     "/collections/featured": {
       "get": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Get featured collections",
         "operationId": "featuredCollections",
         "responses": {
-          "200": { "description": "Featured collections" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Featured collections"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/collections/{id}": {
       "get": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Get a collection by ID",
         "operationId": "getCollection",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Collection details" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Collection details"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       },
       "put": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Update a collection",
         "operationId": "updateCollection",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Collection updated" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Collection updated"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       },
       "delete": {
-        "tags": ["Collections"],
+        "tags": [
+          "Collections"
+        ],
         "summary": "Delete a collection",
         "operationId": "deleteCollection",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Collection deleted" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Collection deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/artist/stripe-connect/status": {
       "get": {
-        "tags": ["Stripe Connect"],
+        "tags": [
+          "Stripe Connect"
+        ],
         "summary": "Check legacy Stripe Connect onboarding status",
         "operationId": "stripeConnectStatus",
         "responses": {
-          "200": { "description": "Legacy Stripe Connect account status" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Legacy Stripe Connect account status"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/artist/stripe-connect/onboard": {
       "post": {
-        "tags": ["Stripe Connect"],
+        "tags": [
+          "Stripe Connect"
+        ],
         "summary": "Create legacy Stripe Connect onboarding link",
         "operationId": "stripeConnectOnboard",
         "responses": {
-          "200": { "description": "Onboarding link generated" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Onboarding link generated"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/artist/stripe-connect/finances": {
       "get": {
-        "tags": ["Stripe Connect"],
+        "tags": [
+          "Stripe Connect"
+        ],
         "summary": "Get artist legacy Stripe Connect financial overview",
         "operationId": "stripeConnectFinances",
         "responses": {
-          "200": { "description": "Financial overview with balance and transactions" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "Financial overview with balance and transactions"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       }
     },
     "/exclusive-license-presets": {
       "get": {
-        "tags": ["Exclusive Licenses"],
+        "tags": [
+          "Exclusive Licenses"
+        ],
         "summary": "List exclusive license presets",
         "operationId": "listPresets",
         "responses": {
-          "200": { "description": "List of exclusive license presets" },
-          "401": { "$ref": "#/components/responses/Response401" }
+          "200": {
+            "description": "List of exclusive license presets"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          }
         }
       },
       "post": {
-        "tags": ["Exclusive Licenses"],
+        "tags": [
+          "Exclusive Licenses"
+        ],
         "summary": "Create an exclusive license preset",
         "operationId": "createPreset",
         "responses": {
-          "201": { "description": "Preset created" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "201": {
+            "description": "Preset created"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     },
     "/tracks/{track}/license-certificate": {
       "get": {
-        "tags": ["License Certificates"],
+        "tags": [
+          "License Certificates"
+        ],
         "summary": "View license certificate for a purchased track",
         "operationId": "viewLicenseCertificate",
         "parameters": [
-          { "name": "track", "in": "path", "required": true, "schema": { "type": "integer" }, "description": "Track ID" }
+          {
+            "name": "track",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Track ID"
+          }
         ],
         "responses": {
-          "200": { "description": "License certificate data" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
-        }
-      }
-    },
-    "/coupons/validate": {
-      "post": {
-        "tags": ["Coupons"],
-        "summary": "Validate a coupon code and calculate discount",
-        "operationId": "validateCoupon",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["code"],
-                "properties": {
-                  "code": { "type": "string", "description": "Coupon code to validate" },
-                  "product_id": { "type": "integer", "description": "Product/plan ID" },
-                  "price_id": { "type": "integer", "description": "Price ID" },
-                  "amount": { "type": "number", "description": "Original amount for discount calculation" }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
           "200": {
-            "description": "Coupon validation result with discount details",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": { "type": "string" },
-                    "coupon": { "type": "object" },
-                    "discount_amount": { "type": "number" },
-                    "final_amount": { "type": "number" },
-                    "savings": { "type": "number" },
-                    "valid": { "type": "boolean" }
-                  }
-                }
-              }
-            }
+            "description": "License certificate data"
           },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/beat-requests/{id}/track-view": {
       "post": {
-        "tags": ["Beat Requests"],
+        "tags": [
+          "Beat Requests"
+        ],
         "summary": "Log a producer view on a beat request",
         "operationId": "logBeatRequestView",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Beat request ID" }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Beat request ID"
+          }
         ],
         "responses": {
-          "200": { "description": "View logged successfully" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "View logged successfully"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/users/{user}/minutes-left": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get remaining upload minutes for a user's plan",
         "operationId": "getUserMinutesLeft",
         "parameters": [
-          { "name": "user", "in": "path", "required": true, "schema": { "type": "integer" }, "description": "User ID" }
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "User ID"
+          }
         ],
         "responses": {
           "200": {
@@ -4747,62 +5264,119 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": { "type": "string" },
-                    "minutesLeft": { "type": "integer", "nullable": true, "description": "Minutes remaining, null if no limit" }
+                    "status": {
+                      "type": "string"
+                    },
+                    "minutesLeft": {
+                      "type": "integer",
+                      "nullable": true,
+                      "description": "Minutes remaining, null if no limit"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "403": { "$ref": "#/components/responses/Response403" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          }
         }
       }
     },
     "/exclusive-license-presets/{preset}": {
       "get": {
-        "tags": ["Exclusive Licenses"],
+        "tags": [
+          "Exclusive Licenses"
+        ],
         "summary": "Get a specific preset",
         "operationId": "getPreset",
         "parameters": [
-          { "name": "preset", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Preset details" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Preset details"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       },
       "put": {
-        "tags": ["Exclusive Licenses"],
+        "tags": [
+          "Exclusive Licenses"
+        ],
         "summary": "Update a preset",
         "operationId": "updatePreset",
         "parameters": [
-          { "name": "preset", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Preset updated" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Preset updated"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       },
       "delete": {
-        "tags": ["Exclusive Licenses"],
+        "tags": [
+          "Exclusive Licenses"
+        ],
         "summary": "Delete a preset",
         "operationId": "deletePreset",
         "parameters": [
-          { "name": "preset", "in": "path", "required": true, "schema": { "type": "integer" } }
+          {
+            "name": "preset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "Preset deleted" },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "200": {
+            "description": "Preset deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       }
     },
     "/notifications/{user}/subscriptions": {
       "get": {
-        "tags": ["Notifications"],
+        "tags": [
+          "Notifications"
+        ],
         "summary": "Get notification subscriptions",
         "description": "Retrieve the authenticated user's notification configuration, available channels, current selections, and user context. The `{user}` path accepts the authenticated user's numeric ID or `me`.",
         "operationId": "getNotificationSubscriptions",
@@ -4826,11 +5400,20 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": { "type": "string", "example": "success" },
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
                     "available_channels": {
                       "type": "array",
-                      "items": { "type": "string" },
-                      "example": ["email", "in_app", "mobile"]
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "email",
+                        "in_app",
+                        "mobile"
+                      ]
                     },
                     "subscriptions": {
                       "type": "array",
@@ -4850,7 +5433,10 @@
                           "requires": {
                             "type": "string",
                             "nullable": true,
-                            "enum": ["artist", "verified_artist"]
+                            "enum": [
+                              "artist",
+                              "verified_artist"
+                            ]
                           },
                           "subscriptions": {
                             "type": "array",
@@ -4872,7 +5458,10 @@
                                 "requires": {
                                   "type": "string",
                                   "nullable": true,
-                                  "enum": ["artist", "verified_artist"]
+                                  "enum": [
+                                    "artist",
+                                    "verified_artist"
+                                  ]
                                 }
                               }
                             }
@@ -4885,9 +5474,19 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "id": { "type": "integer", "nullable": true, "example": 1 },
-                          "name": { "type": "string", "example": "Direct Messages" },
-                          "notif_id": { "type": "string", "example": "new_message" },
+                          "id": {
+                            "type": "integer",
+                            "nullable": true,
+                            "example": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Direct Messages"
+                          },
+                          "notif_id": {
+                            "type": "string",
+                            "example": "new_message"
+                          },
                           "description": {
                             "type": "string",
                             "nullable": true,
@@ -4896,7 +5495,10 @@
                           "requires": {
                             "type": "string",
                             "nullable": true,
-                            "enum": ["artist", "verified_artist"]
+                            "enum": [
+                              "artist",
+                              "verified_artist"
+                            ]
                           },
                           "channels": {
                             "type": "object",
@@ -4915,8 +5517,12 @@
                     "user_context": {
                       "type": "object",
                       "properties": {
-                        "is_artist": { "type": "boolean" },
-                        "is_verified_artist": { "type": "boolean" }
+                        "is_artist": {
+                          "type": "boolean"
+                        },
+                        "is_verified_artist": {
+                          "type": "boolean"
+                        }
                       }
                     }
                   }
@@ -4924,12 +5530,18 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          }
         }
       },
       "put": {
-        "tags": ["Notifications"],
+        "tags": [
+          "Notifications"
+        ],
         "summary": "Update notification subscriptions",
         "description": "Update one or more notification subscription channel selections for the authenticated user. Valid channel keys are `email`, `in_app`, and `mobile`.",
         "operationId": "updateNotificationSubscriptions",
@@ -4951,13 +5563,18 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["selections"],
+                "required": [
+                  "selections"
+                ],
                 "properties": {
                   "selections": {
                     "type": "array",
                     "items": {
                       "type": "object",
-                      "required": ["notif_id", "channels"],
+                      "required": [
+                        "notif_id",
+                        "channels"
+                      ],
                       "properties": {
                         "notif_id": {
                           "type": "string",
@@ -4991,21 +5608,32 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": { "type": "string", "example": "success" }
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "404": { "$ref": "#/components/responses/Response404" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     },
     "/fcm-tokens": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": [
+          "Notifications"
+        ],
         "summary": "Register or refresh FCM token",
         "description": "Store or refresh an FCM device token for the authenticated user.",
         "operationId": "storeFcmToken",
@@ -5015,7 +5643,9 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["token"],
+                "required": [
+                  "token"
+                ],
                 "properties": {
                   "token": {
                     "type": "string",
@@ -5024,7 +5654,11 @@
                   },
                   "platform": {
                     "type": "string",
-                    "enum": ["web", "android", "ios"],
+                    "enum": [
+                      "web",
+                      "android",
+                      "ios"
+                    ],
                     "default": "web"
                   },
                   "device_name": {
@@ -5045,18 +5679,27 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": { "type": "string", "example": "ok" }
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       },
       "delete": {
-        "tags": ["Notifications"],
+        "tags": [
+          "Notifications"
+        ],
         "summary": "Delete FCM token",
         "description": "Remove an FCM device token for the authenticated user. This endpoint currently expects the token in a JSON request body. Some HTTP clients or intermediaries may drop bodies on `DELETE` requests, so clients should ensure their stack preserves the payload. Keeping the token out of the URL avoids encoding and length issues with long FCM tokens.",
         "operationId": "deleteFcmToken",
@@ -5066,7 +5709,9 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["token"],
+                "required": [
+                  "token"
+                ],
                 "properties": {
                   "token": {
                     "type": "string",
@@ -5086,14 +5731,191 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": { "type": "string", "example": "ok" }
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Response401" },
-          "422": { "$ref": "#/components/responses/Response422" }
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
+        }
+      }
+    },
+    "/playlists/{playlist}": {
+      "put": {
+        "tags": [
+          "Playlists"
+        ],
+        "summary": "Update specified playlist details",
+        "operationId": "updatePlaylist",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "My playlist"
+                  },
+                  "description": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Short description (between 20 and 170 chracaters) for playlist"
+                  },
+                  "image": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Image url for playlist"
+                  },
+                  "public": {
+                    "type": "string",
+                    "nullable": true,
+                    "default": false,
+                    "description": "Whether this playlist will be set as public"
+                  },
+                  "collaborative": {
+                    "type": "string",
+                    "nullable": true,
+                    "default": false,
+                    "description": "Whether this playlist will be set as collaborative"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "On success, the response body contains the updated playlist object in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "playlist": {
+                      "$ref": "#/components/schemas/Playlist"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          },
+          "422": {
+            "description": "Invalid data specified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Response422"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "playlist",
+            "in": "path",
+            "required": true,
+            "description": "Playlist ID to update.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/billing/coupons/validate": {
+      "post": {
+        "tags": [
+          "Coupons"
+        ],
+        "summary": "Validate a coupon code and calculate discount",
+        "operationId": "validateCoupon",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "description": "Coupon code to validate"
+                  },
+                  "product_id": {
+                    "type": "integer",
+                    "description": "Product/plan ID"
+                  },
+                  "price_id": {
+                    "type": "integer",
+                    "description": "Price ID"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "Original amount for discount calculation"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Coupon validation result with discount details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "coupon": {
+                      "type": "object"
+                    },
+                    "discount_amount": {
+                      "type": "number"
+                    },
+                    "final_amount": {
+                      "type": "number"
+                    },
+                    "savings": {
+                      "type": "number"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
         }
       }
     }

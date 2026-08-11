@@ -3,7 +3,10 @@ audience: help
 title: "Understanding Tokens"
 sidebarTitle: "Understanding Tokens"
 description: "Learn how Beat Request tokens work, what each request costs, how refunds and renewals behave, and what happens when your plan changes."
+canonical: "https://docs.beatpass.ca/help/beat-requests/understanding-tokens"
 ---
+
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
 Tokens control how many Beat Requests you can create during the current monthly cycle. Your plan sets the limit, and the request duration decides how many tokens are spent.
 
@@ -11,7 +14,7 @@ Tokens control how many Beat Requests you can create during the current monthly 
 
 ## How Tokens Work
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Create a Request" icon="plus">
     **24 hours** costs **1 token**, **48 hours** costs **2**, and **72 hours** costs **3**.
   </Card>
@@ -24,7 +27,7 @@ Tokens control how many Beat Requests you can create during the current monthly 
   <Card title="Plan Changes" icon="arrows-rotate">
     Starting, resuming, or changing a paid plan resets your balance to that plan's token limit.
   </Card>
-</CardGroup>
+</Columns>
 
 Unused tokens do not roll forward forever. BeatPass refreshes your balance on the monthly cycle and shows a **reset date** in the token status area.
 
@@ -200,13 +203,13 @@ If your current token limit is too small for how often you use Beat Requests:
 
 ## Related Topics
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Creating Requests" icon="plus" href="/help/beat-requests/creating-requests">
     Learn how to use your tokens to create requests.
   </Card>
   <Card title="Plans & Pricing" icon="credit-card" href="/help/plans-and-pricing">
     Compare plans and their token allowances.
   </Card>
-</CardGroup>
+</Columns>
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

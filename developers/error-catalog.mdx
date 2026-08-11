@@ -5,6 +5,8 @@ description: "Common API error codes, messages, and suggested resolutions across
 keywords: ["beatpass errors","api error codes","http status codes","error handling","troubleshooting"]
 "og:title": "Error Catalog - BeatPass Developer Docs"
 "og:description": "Complete catalog of BeatPass API error codes with resolutions and troubleshooting guidance."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/error-catalog"
 ---
 
 ## Overview
@@ -30,32 +32,32 @@ All errors follow this structure:
 
 ## HTTP Status Codes
 
-<CardGroup cols={4}>
-  <Card title="400" icon="circle-exclamation" color="#f59e0b">
+<Columns cols={4}>
+  <Card title="400" icon="circle-exclamation">
     **Bad Request** Malformed syntax
   </Card>
-  <Card title="401" icon="lock" color="#ef4444">
+  <Card title="401" icon="lock">
     **Unauthorized** Auth required
   </Card>
-  <Card title="403" icon="ban" color="#dc2626">
+  <Card title="403" icon="ban">
     **Forbidden** Not permitted
   </Card>
-  <Card title="404" icon="magnifying-glass" color="#6b7280">
+  <Card title="404" icon="magnifying-glass">
     **Not Found** Doesn't exist
   </Card>
-  <Card title="409" icon="arrows-split-up-and-left" color="#8b5cf6">
+  <Card title="409" icon="arrows-split-up-and-left">
     **Conflict** State conflict
   </Card>
-  <Card title="422" icon="file-circle-xmark" color="#f97316">
+  <Card title="422" icon="file-circle-xmark">
     **Unprocessable** Validation failed
   </Card>
-  <Card title="429" icon="gauge-high" color="#eab308">
+  <Card title="429" icon="gauge-high">
     **Too Many** Rate limited
   </Card>
-  <Card title="500" icon="server" color="#991b1b">
+  <Card title="500" icon="server">
     **Server Error** Internal issue
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -111,7 +113,7 @@ All errors follow this structure:
         <Badge color="orange">422</Badge>
          Unsupported audio format.
 
-        **Resolution:** Use WAV, FLAC, or AIFF. MP3 files are not accepted.
+        **Resolution:** Upload a WAV file. MP3, FLAC, AIFF, and other formats are not accepted by the current upload flow.
       </Accordion>
       <Accordion title="Duration issues" icon="clock">
         <Badge color="orange">422</Badge>
@@ -129,7 +131,7 @@ All errors follow this structure:
   </Tab>
   <Tab title="Processing">
     <AccordionGroup>
-      <Accordion title="Transcode failed" icon="rotate-exclamation">
+      <Accordion title="Transcode failed" icon="triangle-exclamation">
         <Badge color="red">500</Badge>
          Audio processing encountered an error.
 
@@ -373,20 +375,20 @@ Retry-After: 60
 
 ### Handling Rate Limits
 
-<CardGroup cols={2}>
-  <Card title="Exponential Backoff" icon="clock-rotate-left" color="#3b82f6">
+<Columns cols={2}>
+  <Card title="Exponential Backoff" icon="clock-rotate-left">
     Wait, then double the delay on each retry attempt.
   </Card>
-  <Card title="Check Headers" icon="code" color="#22c55e">
+  <Card title="Check Headers" icon="code">
     Monitor `X-RateLimit-Remaining` before making requests.
   </Card>
-  <Card title="Queue Requests" icon="list-check" color="#f59e0b">
+  <Card title="Queue Requests" icon="list-check">
     Space out API calls to stay under limits.
   </Card>
-  <Card title="Cache Responses" icon="database" color="#8b5cf6">
+  <Card title="Cache Responses" icon="database">
     Reduce redundant calls by caching data locally.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -405,7 +407,7 @@ Retry-After: 60
 
     **Resolution:** Check the [status page](https://status.beatpass.ca) for updates.
   </Accordion>
-  <Accordion title="504 - Gateway Timeout" icon="hourglass-clock">
+  <Accordion title="504 - Gateway Timeout" icon="hourglass-half">
     <Badge color="gray">504</Badge>
      Request took too long to process.
 
@@ -460,11 +462,11 @@ flowchart TD
 
 ## Related Resources
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="API Overview" icon="book" href="/developers/overview">
     API fundamentals.
   </Card>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
     Throttling details.
   </Card>
-</CardGroup>
+</Columns>
