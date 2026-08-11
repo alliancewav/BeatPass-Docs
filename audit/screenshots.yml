@@ -1,0 +1,50 @@
+version: 1
+captured_at: 2026-08-11
+source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
+policy:
+  customer_data: prohibited
+  capture: stable workflow chrome only
+  redaction: crop before any private record, payment method, session, token, or conversation data
+screenshots:
+  - page: help/account-settings/index
+    url: https://open.beatpass.ca/account-settings
+    desktop: /assets/screenshots/account-settings-desktop-light.png
+    mobile: /assets/screenshots/account-settings-mobile-dark.png
+    themes: [light, dark]
+    note: Desktop is cropped to section navigation; mobile is cropped before profile fields.
+  - page: help/billing/index
+    url: https://open.beatpass.ca/billing
+    desktop: /assets/screenshots/billing-desktop-light.png
+    mobile: /assets/screenshots/billing-mobile-dark.png
+    themes: [light, dark]
+    note: Captures stop before invoices or payment-method details.
+  - page: help/uploading/upload-page
+    url: https://open.beatpass.ca/backstage/upload
+    desktop: /assets/screenshots/uploading-desktop-light.png
+    mobile: /assets/screenshots/uploading-mobile-dark.png
+    themes: [light, dark]
+    note: Empty uploader state; no files or catalog data are visible.
+  - page: help/downloads-and-licensing/index
+    url: https://open.beatpass.ca/library/licenses
+    desktop: /assets/screenshots/licensing-desktop-light.png
+    mobile: /assets/screenshots/licensing-mobile-dark.png
+    themes: [light, dark]
+    note: Captures stop before the first license record.
+  - page: help/playlists/index
+    url: https://open.beatpass.ca/library/playlists
+    desktop: /assets/screenshots/playlists-desktop-light.png
+    mobile: /assets/screenshots/playlists-mobile-dark.png
+    themes: [light, dark]
+    note: Empty playlist state; no private playlist names are visible.
+  - page: help/messaging/index
+    url: https://open.beatpass.ca/messages
+    desktop: /assets/screenshots/messaging-desktop-light.png
+    mobile: /assets/screenshots/messaging-mobile-dark.png
+    themes: [light, dark]
+    note: Empty messaging entry state; no contacts or conversations are visible.
+  - page: help/producer-dashboard/index
+    url: https://open.beatpass.ca/producer-dashboard
+    desktop: /assets/screenshots/producer-dashboard-desktop-light.png
+    mobile: /assets/screenshots/producer-dashboard-mobile-dark.png
+    themes: [light, dark]
+    note: Captures navigation and explanatory copy only; no private analytics are visible.

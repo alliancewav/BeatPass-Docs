@@ -3,6 +3,7 @@ audience: help
 title: "Downloads & Licensing"
 sidebarTitle: "Overview"
 description: "Understand how BeatPass downloads, license certificates, audio fingerprinting, and exclusive purchases work."
+canonical: "https://docs.beatpass.ca/help/downloads-and-licensing"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
@@ -14,20 +15,35 @@ BeatPass lets you use tracks in two main ways:
 
 This section explains what happens in the current product, including when licenses appear, where to find them, and what the platform verifies publicly.
 
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="My Licenses on desktop in light mode; license records are excluded from the capture">
+      <img src="/assets/screenshots/licensing-desktop-light.png" alt="My Licenses page heading with non-exclusive and exclusive license categories on desktop" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="My Licenses on mobile in dark mode; license records are excluded from the capture">
+      <img src="/assets/screenshots/licensing-mobile-dark.png" alt="Mobile My Licenses page with license categories and search" />
+    </Frame>
+  </Tab>
+</Tabs>
+
 <Info>
-  Your license certificate is generated automatically when you download a track. You can find it on the track page or in **Your library** → **Licenses**.
+  Your license certificate is generated automatically when you download a track. You can find it on the track page or in **My Licenses**.
 </Info>
 
 ## License types
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Non-exclusive license" icon="users">
     Standard BeatPass download license for eligible users. Multiple artists can license the same beat, and attribution is required.
   </Card>
   <Card title="Exclusive license" icon="crown">
     One-time purchase for eligible tracks. After purchase, no new non-exclusive licenses are issued for that beat.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Fast comparison
 
@@ -58,7 +74,7 @@ This section explains what happens in the current product, including when licens
     Standard downloads deliver the track file and generate a license certificate automatically. Exclusive purchases use secure card checkout and generate an exclusive license on success.
   </Step>
   <Step title="Find your license">
-    Open your certificate from the post-download flow, the track page, or **Your library** → **Licenses**.
+    Open your certificate from the post-download flow, the track page, or **My Licenses**.
   </Step>
   <Step title="Verify when needed">
     Every license can be checked on the public verification page using its unique link.
@@ -69,10 +85,10 @@ This section explains what happens in the current product, including when licens
 
 <AccordionGroup>
   <Accordion title="Standard track downloads" icon="download" defaultOpen>
-    The current standard download flow downloads the track file and generates your license certificate automatically. You can access it from the track page or **Your library** → **Licenses**.
+    The current standard download flow downloads the track file and generates your license certificate automatically. You can access it from the track page or **My Licenses**.
   </Accordion>
   <Accordion title="Exclusive purchases" icon="crown">
-    On successful purchase, BeatPass generates the exclusive license, marks the beat as sold, prepares the original uploaded WAV for download, and stores the license in **Your library** → **Licenses**. The final deliverables are defined by the license preview and certificate for that track.
+    On successful purchase, BeatPass generates the exclusive license, marks the beat as sold, prepares the original uploaded WAV for download, and stores the license in **My Licenses**. The final deliverables are defined by the license preview and certificate for that track.
   </Accordion>
   <Accordion title="Audio fingerprinting" icon="fingerprint">
     The collapsible **BeatPass ID** section brings together licensing, Sample-Safe status, AI disclosure when available, promised deliverables, and the verified fingerprint. Existing certificate access remains available even if an older track has incomplete fingerprint information.
@@ -81,7 +97,7 @@ This section explains what happens in the current product, including when licens
 
 ## Where to go next
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="How Downloads Work" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
     Step-by-step behavior for download access, download completion, and certificate availability.
   </Card>
@@ -94,13 +110,13 @@ This section explains what happens in the current product, including when licens
   <Card title="Verifying Licenses" icon="shield-halved" href="/help/downloads-and-licensing/verifying-licenses">
     How the public verification page works.
   </Card>
-</CardGroup>
+</Columns>
 
 <NeedHelp />
 
 ## Related
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="BeatPassID" icon="fingerprint" href="/help/downloads-and-licensing/beatpass-id">
     Learn how fingerprint data enriches license certificates.
   </Card>
@@ -113,4 +129,4 @@ This section explains what happens in the current product, including when licens
   <Card title="FAQ" icon="circle-question" href="/help/downloads-and-licensing/faq">
     Common questions about downloads and licensing.
   </Card>
-</CardGroup>
+</Columns>

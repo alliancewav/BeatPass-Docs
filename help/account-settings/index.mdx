@@ -3,16 +3,34 @@ audience: help
 title: "Account Settings"
 sidebarTitle: "Overview"
 description: "Manage your BeatPass account settings including profile details, security, connected accounts, and preferences."
+canonical: "https://docs.beatpass.ca/help/account-settings"
 ---
 
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
 Your account settings let you manage your personal profile, security, login methods, and regional preferences on BeatPass.
+
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Account Settings navigation on desktop in light mode">
+      <img src="/assets/screenshots/account-settings-desktop-light.png" alt="Account Settings page with navigation for account details, social login, password, two-factor authentication, sessions, language, developers, and account deletion" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="Account Settings heading on mobile in dark mode">
+      <img src="/assets/screenshots/account-settings-mobile-dark.png" alt="Mobile Account Settings page in dark mode" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 ---
 
 ## Accessing Account Settings
 
 1. Click your profile avatar or name in the top navigation.
-2. Select **Account settings** from the menu.
+2. Select **Settings** from the menu. The page heading is **Account Settings**.
 3. Scroll to the section you want to manage.
 
 Some sections only appear when they are available for your account, such as **Social login** or **Developers**.
@@ -21,7 +39,7 @@ Some sections only appear when they are available for your account, such as **So
 
 ## Settings Overview
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Account Details" icon="user" href="/help/account-settings/account-details">
     Update your first name, last name, and profile image.
   </Card>
@@ -46,7 +64,7 @@ Some sections only appear when they are available for your account, such as **So
   <Card title="Delete Account" icon="trash-can" href="/help/account-settings/delete-account">
     Permanently remove your account.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -54,17 +72,17 @@ Some sections only appear when they are available for your account, such as **So
 
 <Tabs>
   <Tab title="Profile">
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Account Details" icon="id-card">
         Change first name, last name, profile image
       </Card>
       <Card title="Location & Language" icon="globe">
         Set language, country, and timezone
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Security">
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Password" icon="lock">
         Update password or reset it by email
       </Card>
@@ -77,17 +95,17 @@ Some sections only appear when they are available for your account, such as **So
       <Card title="Social Login" icon="share-nodes">
         Enable or disable available social sign-in methods
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
   <Tab title="Advanced">
-    <CardGroup cols={2}>
+    <Columns cols={2}>
       <Card title="Developer API" icon="code">
         Create and delete API access tokens
       </Card>
-      <Card title="Delete Account" icon="trash-can" color="#ef4444">
+      <Card title="Delete Account" icon="trash-can">
         Permanently delete your account
       </Card>
-    </CardGroup>
+    </Columns>
   </Tab>
 </Tabs>
 
@@ -144,15 +162,15 @@ Some fields you might expect, such as email changes, are not currently exposed i
 
 ## Related Topics
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Notifications" icon="bell" href="/help/notifications">
     Customize how you receive alerts and updates.
   </Card>
   <Card title="Profile Visibility" icon="eye-slash" href="/help/profiles/user-profiles/profile-visibility">
     Understand what your public profile currently exposes.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />
