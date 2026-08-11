@@ -61,4 +61,9 @@ jobs:
 
       - name: Record inspected source SHA
         if: always()
-        run: git -C "${BEATPASS_SOURCE_DIR}" rev-parse HEAD
+        run: |
+          if git -C "${BEATPASS_SOURCE_DIR}" rev-parse HEAD >/dev/null 2>&1; then
+            git -C "${BEATPASS_SOURCE_DIR}" rev-parse HEAD
+          else
+            echo "Application source was not checked out."
+          fi
