@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "pageTypes": {
+    "help": {
+      "paths": ["help/**/*.mdx"],
+      "required": ["audience", "title", "sidebarTitle", "description", "canonical"],
+      "audience": ["help"]
+    },
+    "developer": {
+      "paths": ["developers/**/*.mdx"],
+      "required": ["audience", "title", "sidebarTitle", "description", "canonical"],
+      "audience": ["developers"]
+    },
+    "release-note": {
+      "paths": ["release-notes/**/*.mdx"],
+      "required": ["audience", "title", "sidebarTitle", "description", "canonical"]
+    },
+    "legal": {
+      "paths": ["help/legal/**/*.mdx"],
+      "required": ["audience", "title", "sidebarTitle", "description", "canonical"],
+      "audience": ["help"]
+    },
+    "redirect-only-legacy": {
+      "source": "docs.json#/redirects",
+      "required": ["source", "destination", "permanent"],
+      "permanent": true
+    }
+  }
+}

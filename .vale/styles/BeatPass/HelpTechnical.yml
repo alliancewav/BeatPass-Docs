@@ -1,0 +1,13 @@
+extends: existence
+message: "Move developer implementation detail '%s' out of end-user Help."
+level: error
+ignorecase: true
+scope: text
+tokens:
+  - '/api/v[0-9]+/'
+  - 'Route::'
+  - 'music\.create'
+  - 'admin\.access'
+  - 'model_type'
+  - 'database column'
+  - 'middleware'

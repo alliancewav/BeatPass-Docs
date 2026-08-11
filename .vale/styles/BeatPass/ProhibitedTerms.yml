@@ -1,0 +1,9 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: false
+swap:
+  Edit Profile: Settings
+  cursor-based pagination: page-number pagination
+  Choose Files to Upload: Choose files to upload
+  Upload Your Beats: Upload your beats

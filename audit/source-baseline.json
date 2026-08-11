@@ -1,0 +1,10 @@
+{
+  "repository": "alliancewav/open.beatpass.ca",
+  "branch": "main",
+  "sha": "95a6c369c50ffd8c5f75b2775406cd34bf967cfc",
+  "verifiedAt": "2026-08-11",
+  "routeFiles": [
+    "routes/api.php",
+    "common/routes/api.php"
+  ]
+}

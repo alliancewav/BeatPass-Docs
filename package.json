@@ -1,0 +1,25 @@
+{
+  "name": "@beatpass/documentation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quality gates for the BeatPass Mintlify documentation.",
+  "type": "module",
+  "engines": {
+    "node": "22.15.1"
+  },
+  "scripts": {
+    "postinstall": "patch-package",
+    "docs:audit": "node scripts/audit-docs.mjs",
+    "docs:openapi": "node scripts/verify-openapi-routes.mjs",
+    "docs:mint": "mint validate && mint broken-links --check-anchors --check-redirects --check-snippets && mint a11y",
+    "docs:vale": "node scripts/run-vale.mjs",
+    "docs:quality": "npm run docs:audit && npm run docs:openapi && npm run docs:mint && npm run docs:vale"
+  },
+  "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "6.7.2",
+    "@fortawesome/free-solid-svg-icons": "6.7.2",
+    "mdx2vast": "0.5.0",
+    "mint": "4.2.791",
+    "patch-package": "8.0.0"
+  }
+}

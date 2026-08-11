@@ -1,0 +1,13 @@
+diff --git a/node_modules/@mintlify/link-rot/dist/graph.js b/node_modules/@mintlify/link-rot/dist/graph.js
+index 32b3a75..4801910 100644
+--- a/node_modules/@mintlify/link-rot/dist/graph.js
++++ b/node_modules/@mintlify/link-rot/dist/graph.js
+@@ -116,7 +116,7 @@ export class MdxPath {
+         // there may be multiple files/folders corresponding to the node
+         for (const file of allFiles) {
+             const fileWithoutLeadingSlash = file.startsWith('/') ? file.slice(1) : file;
+-            const parsedFilePath = parse(fileWithoutLeadingSlash);
++            const parsedFilePath = parse(fileWithoutLeadingSlash.replaceAll(WINDOWS_SEPARATOR, '/'));
+             if (parsedFilePath.dir === parsedPath.dir && parsedFilePath.name === parsedPath.name) {
+                 resolvedFiles.push(fileWithoutLeadingSlash);
+             }

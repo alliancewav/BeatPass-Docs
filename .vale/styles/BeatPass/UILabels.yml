@@ -1,0 +1,7 @@
+extends: existence
+message: "Format the visible UI label in bold."
+level: warning
+ignorecase: true
+scope: text
+raw:
+  - '\b(?:click|select|choose|open)\s+(?:the\s+)?(?:Settings|Billing|Backstage|Upload beats|Choose files to upload|My Licenses)\b'
