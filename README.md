@@ -32,6 +32,8 @@ Record production-configured or otherwise volatile claims in `audit/claims.yml`.
 
 The application baseline is pinned in `audit/source-baseline.json`. The `docs:openapi` check reads the application route files without modifying the application repository.
 
+The consolidation rationale is grounded in the aggregate 90-day Mintlify snapshot in `audit/analytics-baseline.md`. Re-run that review after the new architecture has collected 90 days of traffic.
+
 ## Local setup
 
 Prerequisites:
