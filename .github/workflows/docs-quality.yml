@@ -1,0 +1,69 @@
+name: Documentation quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BEATPASS_SOURCE_DIR: _source/open.beatpass.ca
+      SOURCE_TOKEN: ${{ secrets.OPEN_BEATPASS_READ_TOKEN }}
+      VALE_VERSION: 3.17.1
+
+    steps:
+      - name: Check out documentation
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require application read token
+        if: env.SOURCE_TOKEN == ''
+        run: |
+          echo "OPEN_BEATPASS_READ_TOKEN is required for source parity checks."
+          exit 1
+
+      - name: Check out application source read-only
+        uses: actions/checkout@v4
+        with:
+          repository: alliancewav/open.beatpass.ca
+          ref: main
+          token: ${{ secrets.OPEN_BEATPASS_READ_TOKEN }}
+          path: _source/open.beatpass.ca
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install pinned dependencies
+        run: npm ci
+
+      - name: Install Vale
+        run: |
+          curl --fail --silent --show-error --location \
+            "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" \
+            --output /tmp/vale.tar.gz
+          tar -xzf /tmp/vale.tar.gz -C /tmp vale
+          sudo install /tmp/vale /usr/local/bin/vale
+          vale --version
+
+      - name: Run documentation quality gate
+        run: npm run docs:quality
+
+      - name: Record inspected source SHA
+        if: always()
+        run: |
+          if git -C "${BEATPASS_SOURCE_DIR}" rev-parse HEAD >/dev/null 2>&1; then
+            git -C "${BEATPASS_SOURCE_DIR}" rev-parse HEAD
+          else
+            echo "Application source was not checked out."
+          fi

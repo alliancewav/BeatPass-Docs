@@ -1,161 +1,112 @@
 # BeatPass Documentation
 
-This is the official documentation site for BeatPass, built with [Mintlify](https://mintlify.com).
+The official BeatPass Help Center, release notes, and developer reference, published with Mintlify at [docs.beatpass.ca](https://docs.beatpass.ca).
 
-## Documentation Structure
+## Information architecture
 
-```
-docs/
-├── api/                    # API reference documentation
-├── account/                # Account settings and management
-├── analytics/              # Analytics dashboards and metrics
-├── changelog/              # Platform update history
-├── contribution/           # Contribution pool and payouts
-├── getting-started/        # Onboarding guides by role
-├── legal/                  # Legal policies and terms
-├── overview/               # Platform overview and concepts
-├── producer-guides/        # Producer-specific guides
-├── product-guides/         # Feature documentation
-├── security/               # Security and privacy guides
-└── support/                # Help and troubleshooting
-```
+The Help Center is organized around eight user tasks:
 
-## Local Development
+1. Start Here
+2. Discover & Play
+3. Library & Community
+4. Licensing & Plans
+5. Producer Setup
+6. Grow & Get Paid
+7. Account & Notifications
+8. Trust & Support
 
-### Prerequisites
+`docs.json` is the tested public navigation and redirect contract. Keep Help navigation at 160 pages or fewer and no deeper than tab → group → page. A page can remain outside navigation when it is still a useful search destination, but every URL in `audit/public-url-baseline.json` must remain a page or permanent redirect.
 
-- Node.js 18+
-- npm or yarn
+Developer navigation stays compact: Introduction, Core Concepts, and API Reference. `developers/api-reference/openapi.json` is the endpoint source of truth and must match the Laravel routes in `alliancewav/open.beatpass.ca`.
 
-### Setup
+## Accuracy contract
 
-1. Install the Mintlify CLI:
+Use evidence in this order:
+
+1. Verified production configuration
+2. Current application code
+3. Generated API contract
+4. Documentation guidelines
+
+Record production-configured or otherwise volatile claims in `audit/claims.yml`. A guideline example that conflicts with verified behavior belongs in `audit/guideline-errata.md`; do not make the product docs match a stale example.
+
+The application baseline is pinned in `audit/source-baseline.json`. The `docs:openapi` check reads the application route files without modifying the application repository.
+
+The consolidation rationale is grounded in the aggregate 90-day Mintlify snapshot in `audit/analytics-baseline.md`. Re-run that review after the new architecture has collected 90 days of traffic.
+
+## Local setup
+
+Prerequisites:
+
+- Node.js 22.15.1 (see `.nvmrc`)
+- npm
+- Vale 3.17.1
+- A read-only checkout of `alliancewav/open.beatpass.ca` next to this repository, or `BEATPASS_SOURCE_DIR` set to its location
+
+Install pinned dependencies:
 
 ```bash
-npm i -g mintlify
+npm ci
 ```
 
-2. Navigate to the docs directory:
+Start the Mintlify preview:
 
 ```bash
-cd docs/BeatPass\ Mintlify\ Docs\ site
+npx mint dev
 ```
 
-3. Start the development server:
+Run the complete quality gate:
 
 ```bash
-mintlify dev
+npm run docs:quality
 ```
 
-4. Open `http://localhost:3000` in your browser.
+That command runs the custom architecture/content audit, OpenAPI route parity, Mintlify validation, strict links and redirects, snippet validation, accessibility, and Vale.
 
-### Making Changes
+## Authoring conventions
 
-1. Edit `.mdx` files in the appropriate directory
-2. Preview changes locally with `mintlify dev`
-3. Commit and push to deploy
+- Help content is non-technical and action-focused. Put code and endpoint detail under `developers/`.
+- Address the reader as “you.” Avoid company-focused “we” and “our” voice outside legal text.
+- Use exact production UI labels in bold.
+- Use root-relative links for docs and absolute `https://open.beatpass.ca/...` links for the app.
+- Use Font Awesome 6 icon names only.
+- Use `Columns` for responsive card grids. `CardGroup` is deprecated.
+- Import reusable snippets after frontmatter with absolute `/snippets/...` paths and PascalCase names.
+- Use `Steps` only for sequences, `Tabs` only for mutually exclusive views, and callouts only when the note changes what the reader should do.
 
-## Content Guidelines
-
-### Writing Style
-
-- Use clear, concise language
-- Write for the target audience (see `<Info>` tags for audience)
-- Use present tense and active voice
-- Include code examples where relevant
-
-### MDX Components
-
-Common Mintlify components used in this documentation:
+Example snippet import:
 
 ```mdx
-<Note>Informational callout</Note>
-<Warning>Important warning</Warning>
-<Info>Contextual information</Info>
-<Tip>Helpful suggestion</Tip>
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
-<Steps>
-  <Step title="Step Name">Content</Step>
-</Steps>
-
-<AccordionGroup>
-  <Accordion title="Title">Content</Accordion>
-</AccordionGroup>
-
-<CardGroup cols={2}>
-  <Card title="Title" icon="icon-name" href="/path">
-    Description
-  </Card>
-</CardGroup>
+<NeedHelp />
 ```
 
-### Keeping Docs in Sync
+Example responsive navigation cards:
 
-When platform features change:
+```mdx
+<Columns cols={2}>
+  <Card title="Upload beats" icon="cloud-arrow-up" href="/help/uploading/upload-page">
+    Upload a WAV file and complete its release details.
+  </Card>
+  <Card title="My Licenses" icon="file-contract" href="/help/downloads-and-licensing">
+    Find and verify your license certificates.
+  </Card>
+</Columns>
+```
 
-1. **API changes**: Update `api/endpoints.mdx` and related auth/rate-limit docs
-2. **New features**: Add to relevant product-guide and update changelog
-3. **UI changes**: Update screenshots and step-by-step guides
-4. **Removed features**: Remove documentation and add deprecation notes
+## Screenshots
 
-## How to Contribute Safely
+Use screenshots only for stable, high-friction workflows. Every screenshot must:
 
-### DO NOT Include
+- be listed in `audit/screenshots.yml`;
+- include descriptive alt text and a `Frame` caption;
+- show desktop/mobile and light/dark coverage across the workflow pair;
+- exclude customer records, contacts, payment details, tokens, session data, and private analytics;
+- be refreshed when the inspected application SHA changes materially.
 
-The following must **never** appear in documentation:
+## CI
 
-| Category | Examples |
-|----------|----------|
-| **Secrets** | API keys, webhook secrets, database credentials |
-| **Internal URLs** | Admin panel paths, staff-only endpoints |
-| **Admin tooling** | Moderation tools, fraud detection details |
-| **Debug endpoints** | Test routes, development-only APIs |
-| **Rate limit thresholds** | Exact abuse detection limits |
-| **User data** | Real user IDs, emails, or personal information |
+`.github/workflows/docs-quality.yml` runs on every pull request and push to `main`. Configure the repository-scoped `OPEN_BEATPASS_READ_TOKEN` secret with read-only access to `alliancewav/open.beatpass.ca`. CI records the exact application SHA it inspected.
 
-### Safe Documentation Practices
-
-<details>
-<summary>Checklist before committing</summary>
-
-- [ ] No hardcoded secrets or API keys
-- [ ] No internal/admin endpoint paths
-- [ ] No real user data in examples (use placeholders)
-- [ ] No fraud detection or security bypass details
-- [ ] Examples use generic IDs like `123`, `{id}`, `{uuid}`
-- [ ] Webhook secrets shown as `your-webhook-secret`
-- [ ] Changelog entry added for significant changes
-
-</details>
-
-### Changelog Requirements
-
-Every feature or documentation change should include a changelog entry:
-
-1. Use the [changelog template](/changelog/template)
-2. Include real dates and version numbers
-3. Note breaking changes prominently
-4. Document deprecations before removal
-5. Link to affected documentation pages
-
-### Review Process
-
-Before publishing:
-
-1. Self-review for sensitive information
-2. Test all code examples work with public APIs only
-3. Verify links resolve correctly
-4. Check that examples use placeholder data
-
-## Deployment
-
-Documentation is automatically deployed when changes are pushed to the main branch via Mintlify's GitHub integration.
-
-### Manual Deployment
-
-If needed, trigger a manual deployment from the [Mintlify Dashboard](https://dashboard.mintlify.com).
-
-## Support
-
-- **Mintlify docs**: https://mintlify.com/docs
-- **BeatPass team**: Contact via internal channels
+The documentation deploy remains handled by Mintlify’s GitHub integration after review and merge.

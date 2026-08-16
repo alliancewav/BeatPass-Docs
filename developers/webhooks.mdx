@@ -5,6 +5,8 @@ description: "Understand BeatPass payment event processing and the current outbo
 keywords: ["beatpass webhooks", "payment events", "purchase notifications", "developer integrations"]
 "og:title": "Webhooks - BeatPass Developer Docs"
 "og:description": "Learn what webhook capabilities are and are not available for BeatPass developer integrations."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/webhooks"
 ---
 
 ## Overview
@@ -19,7 +21,7 @@ BeatPass processes payment and payout events internally to keep purchases, licen
 
 ## What Developers Can Rely On
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="No outbound webhooks" icon="ban">
     BeatPass does not currently send webhook callbacks to partner or developer applications.
   </Card>
@@ -32,7 +34,7 @@ BeatPass processes payment and payout events internally to keep purchases, licen
   <Card title="Use polling carefully" icon="arrows-rotate">
     If your integration needs status updates, poll documented read endpoints conservatively and respect rate limits.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -86,7 +88,7 @@ BeatPass verifies provider-originated payment events internally before updating 
 
 ## Related Resources
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Commerce & Licensing API" icon="cart-shopping" href="/developers/api-reference/commerce">
     Purchase flow, license certificates, and safe finance references.
   </Card>
@@ -96,4 +98,4 @@ BeatPass verifies provider-originated payment events internally before updating 
   <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
     Producer-facing bank payout setup guidance.
   </Card>
-</CardGroup>
+</Columns>

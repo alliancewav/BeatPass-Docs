@@ -5,6 +5,8 @@ description: "Understanding API rate limits on the BeatPass API."
 keywords: ["beatpass rate limits","api throttling","request limits","rate limiting"]
 "og:title": "Rate Limits - BeatPass Developer Docs"
 "og:description": "Understand BeatPass API rate limits and best practices for handling 429 errors."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/rate-limits"
 ---
 
 ## Overview
@@ -15,7 +17,7 @@ The BeatPass API enforces <Tooltip tip="A cap on how many API requests you can m
 
 ## Global Rate Limit
 
-<Card title="Global API Limit" icon="gauge-high" color="#ef4444">
+<Card title="Global API Limit" icon="gauge-high">
   <Badge color="red" size="lg">300 requests/minute</Badge>
   All API endpoints are subject to a global rate limit of 300 requests per minute per client. Route-specific limits below may impose stricter thresholds on individual endpoints.
 </Card>
@@ -33,7 +35,7 @@ Different endpoint categories have different rate limits. The API applies the mo
   <Accordion title="Media Endpoints" icon="headphones">
     Audio and image endpoints have stricter per-minute limits to prevent abuse.
   </Accordion>
-  <Accordion title="Analytics Endpoints" icon="chart-mixed">
+  <Accordion title="Analytics Endpoints" icon="chart-line">
     Analytics and dashboard endpoints have dedicated rate limits appropriate for their resource intensity.
   </Accordion>
   <Accordion title="Write Operations" icon="pen">
@@ -220,11 +222,11 @@ When you hit a rate limit:
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     See all available endpoints.
   </Card>
   <Card title="Authentication" icon="key" href="/developers/auth">
     Understand API authentication.
   </Card>
-</CardGroup>
+</Columns>

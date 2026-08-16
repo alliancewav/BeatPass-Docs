@@ -5,6 +5,8 @@ description: "Create, manage, and fulfill custom beat requests on the BeatPass m
 keywords: ["beatpass beat requests","custom beats","beat marketplace","beat request tokens","producer submissions"]
 "og:title": "Beat Requests API - BeatPass Developer Docs"
 "og:description": "Beat request marketplace API — create requests, submit tracks, manage tokens, and handle fulfillment."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/api-reference/beat-requests"
 ---
 
 ## Overview
@@ -54,7 +56,7 @@ stateDiagram-v2
 
 Beat requests use a token-based system tied to the user's subscription plan:
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Token Cost" icon="coins">
     24h = 1 token, 48h = 2 tokens, 72h = 3 tokens
   </Card>
@@ -64,7 +66,7 @@ Beat requests use a token-based system tied to the user's subscription plan:
   <Card title="Refunds" icon="rotate-left">
     Tokens are refunded when the owner deletes a request (capped at plan allowance)
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -359,11 +361,11 @@ GET /api/v1/beat-requests/duration-tiers
 
 ## Related Resources
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
     API rate limiting and throttling.
   </Card>
   <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
     Beat request error codes.
   </Card>
-</CardGroup>
+</Columns>

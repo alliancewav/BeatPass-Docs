@@ -3,6 +3,7 @@ audience: help
 title: "My Beats"
 sidebarTitle: "My Beats"
 description: "Review your catalog, understand its 30-day BeatPass play trend, filter beats, and explore collaboration tools on the My Beats page."
+canonical: "https://docs.beatpass.ca/help/producer-dashboard/tracks"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
@@ -18,7 +19,7 @@ Click your **profile avatar** → **Backstage**, then select **My Beats** in the
 
 ## Main Sections
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Header and growth status" icon="chart-line">
     Artist context, current growth message, and the growth help dialog.
   </Card>
@@ -28,7 +29,7 @@ Click your **profile avatar** → **Backstage**, then select **My Beats** in the
   <Card title="Collaboration tools" icon="users">
     Collaboration Insights and Collaboration Recommendations.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Growth Status
 
@@ -122,14 +123,14 @@ If BeatPass does not have enough data, the section encourages you to build your 
   <Accordion title="No tracks yet" icon="music">
     The table stays empty until you upload your first track.
   </Accordion>
-  <Accordion title="No recommendation data yet" icon="sparkles">
+  <Accordion title="No recommendation data yet" icon="wand-magic-sparkles">
     Recommendation panels stay in guidance mode until BeatPass has enough track data to suggest matches.
   </Accordion>
 </AccordionGroup>
 
 ## Related
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
     Prepare and publish tracks before managing them here.
   </Card>
@@ -142,6 +143,6 @@ If BeatPass does not have enough data, the section encourages you to build your 
   <Card title="Backstage Insights" icon="chart-bar" href="/help/analytics/backstage-insights">
     Open deeper analytics linked from this page.
   </Card>
-</CardGroup>
+</Columns>
 
 <NeedHelp />

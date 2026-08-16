@@ -2,13 +2,17 @@
 audience: help
 title: "Payout Eligibility"
 description: "Learn what must be true before BeatPass can send producer earnings and what happens when a payout is excluded."
+sidebarTitle: "Payout Eligibility"
+canonical: "https://docs.beatpass.ca/help/earnings/payout-eligibility"
 ---
+
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
 To receive money from BeatPass, you need more than just earnings. Your producer profile and the payout setup available to your account need to be ready.
 
 ## What You Need
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Producer Profile" icon="user">
     You must have a producer profile that can use producer-facing features like **Finances**.
   </Card>
@@ -18,7 +22,7 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
   <Card title="Verified Details" icon="globe">
     Provide the country, identity, tax, and bank details requested by the active payout setup.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Earnings Streams and Payout Routes
 
@@ -28,14 +32,14 @@ Exclusive-sale payouts and subscription contribution payouts are separate earnin
 
 ## Current Payout Routes
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
     Eligible producers can set up Wise-powered bank payouts from **Finances** when **Set up BEATPAY** appears.
   </Card>
   <Card title="Stripe Connect (Legacy)" icon="credit-card">
     Producers who connected Stripe in the past keep receiving payouts through it until their BEATPAY setup is active. New Stripe accounts can no longer be connected.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Readiness Signals
 
@@ -107,4 +111,4 @@ If a subscription payout runs while your account is not ready:
   </Accordion>
 </AccordionGroup>
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

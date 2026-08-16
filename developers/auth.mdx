@@ -5,6 +5,8 @@ description: "How to authenticate with the BeatPass API using developer access t
 keywords: ["beatpass auth", "api authentication", "bearer token", "api access"]
 "og:title": "Authentication - BeatPass Developer Docs"
 "og:description": "Learn how to authenticate with the BeatPass API using developer access tokens."
+audience: "developers"
+canonical: "https://docs.beatpass.ca/developers/auth"
 ---
 
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
@@ -24,14 +26,14 @@ All authenticated API requests use **Bearer tokens** in the `Authorization` head
 
 <BearerAuthExample />
 
-<CardGroup cols={2}>
-  <Card title="Bearer Tokens" icon="key" color="#8b5cf6">
+<Columns cols={2}>
+  <Card title="Bearer Tokens" icon="key">
     Personal access tokens for approved developer integrations
   </Card>
-  <Card title="Token Expiration" icon="clock" color="#3b82f6">
+  <Card title="Token Expiration" icon="clock">
     Tokens expire after 90 days and must be regenerated
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -179,11 +181,11 @@ To revoke a token, return to **Account Settings → Developers** and click **Del
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
     See available endpoints.
   </Card>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
     Understand request limits.
   </Card>
-</CardGroup>
+</Columns>

@@ -3,6 +3,7 @@ audience: help
 title: "Producer Dashboard"
 sidebarTitle: "Dashboard Overview"
 description: "Use the Producer Dashboard to manage your catalog, activity, earnings, rankings, and XP."
+canonical: "https://docs.beatpass.ca/help/producer-dashboard"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
@@ -11,6 +12,21 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 The Producer Dashboard is your central workspace for managing your catalog, monitoring performance, tracking earnings, and viewing your progress on BeatPass.
 
 <ProducerOnly />
+
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Producer Dashboard navigation on desktop in light mode">
+      <img src="/assets/screenshots/producer-dashboard-desktop-light.png" alt="Producer Dashboard navigation with Pro Page, Dashboard, Finances, Activity, Progress, Leaderboards, My Beats, and My Collections" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="Producer Dashboard on mobile in dark mode">
+      <img src="/assets/screenshots/producer-dashboard-mobile-dark.png" alt="Mobile Producer Dashboard page in dark mode" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 ## Open the Dashboard
 
@@ -22,7 +38,7 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
 
 ## Dashboard Pages
 
-<CardGroup cols={3}>
+<Columns cols={3}>
   <Card title="Dashboard" icon="house" href="/help/producer-dashboard/home">
     Greeting, shortcut cards, and a quick stats snapshot.
   </Card>
@@ -47,7 +63,7 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
   <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
     Level, XP, achievements, and manual refresh controls.
   </Card>
-</CardGroup>
+</Columns>
 
 ## How the Dashboard Works
 
@@ -68,7 +84,7 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
 
 ## Related Guides
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
     Upload beats, then return here to monitor performance.
   </Card>
@@ -81,6 +97,6 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
   <Card title="Producer Program" icon="gear" href="/help/producer-program">
     Onboarding, application, and profile management.
   </Card>
-</CardGroup>
+</Columns>
 
 <NeedHelp />

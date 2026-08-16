@@ -3,15 +3,33 @@ audience: help
 title: "Messaging"
 sidebarTitle: "Overview"
 description: "Use the BeatPass messaging panel for direct messages, group chats, and conversation management."
+canonical: "https://docs.beatpass.ca/help/messaging"
 ---
 
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
 BeatPass messaging is a private chat system built into the web player's header. You can open direct messages, create group chats, and manage recent conversations without leaving the current page.
+
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Messaging entry point on desktop in light mode">
+      <img src="/assets/screenshots/messaging-desktop-light.png" alt="Your Messages screen explaining how to open the messaging panel from the header" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="Messaging entry point on mobile in dark mode">
+      <img src="/assets/screenshots/messaging-mobile-dark.png" alt="Mobile Your Messages screen with the message icon visible in the header" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 ---
 
 ## Feature Overview
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Direct Messages" icon="message" href="/help/messaging/direct-messages">
     Start one-on-one conversations from the header, user profiles, or claimed producer pages.
   </Card>
@@ -24,7 +42,7 @@ BeatPass messaging is a private chat system built into the web player's header. 
   <Card title="Real-Time Features" icon="bolt" href="/help/messaging/real-time-features">
     See typing indicators, delivery states, unread badges, and retry states.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -91,13 +109,13 @@ If someone is abusing messaging:
 
 ## Related Topics
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Following System" icon="user-plus" href="/help/social-features/following-system">
     Follow users to easily find them in messaging suggestions.
   </Card>
   <Card title="Notification Settings" icon="bell" href="/help/notifications/notification-settings">
     Customize how you receive message notifications.
   </Card>
-</CardGroup>
+</Columns>
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

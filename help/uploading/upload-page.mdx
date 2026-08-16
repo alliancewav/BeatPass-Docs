@@ -3,6 +3,7 @@ audience: help
 title: "Using the Upload Page"
 sidebarTitle: "Upload Page"
 description: "A step-by-step guide to uploading tracks on BeatPass using the upload interface."
+canonical: "https://docs.beatpass.ca/help/uploading/upload-page"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
@@ -12,9 +13,24 @@ The upload page is where producers add new beats and build collections. This gui
 
 <ProducerOnly />
 
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="WAV upload area on desktop in light mode">
+      <img src="/assets/screenshots/uploading-desktop-light.png" alt="Upload your beats page with a WAV drag-and-drop area and Choose files to upload button" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="WAV upload area on mobile in dark mode">
+      <img src="/assets/screenshots/uploading-mobile-dark.png" alt="Mobile Upload your beats page showing the WAV-only upload area and Create collection toggle" />
+    </Frame>
+  </Tab>
+</Tabs>
+
 ## Accessing the Upload Page
 
-Click **Upload beats** in the top navigation bar. The page heading reads **Upload Your Beats** with the sub-text: "Drag and drop your beats, videos & collections here, or click below to browse."
+Click **Upload beats** in the top navigation bar. The page heading reads **Upload your beats** with the subtext: "Drag and drop WAV files here, or click below to browse."
 
 ## Upload Modes
 
@@ -42,7 +58,7 @@ If you upload an unsupported format, a dialog titled **Unsupported File Format**
 You have two options:
 
 - **Drag and drop** your files directly into the upload area
-- Click **Choose Files to Upload** and select files from your computer
+- Click **Choose files to upload** and select files from your computer
 
 After a file is accepted, BeatPass opens the track form and begins audio fingerprinting in the background.
 
@@ -78,14 +94,14 @@ Upload cover art for your beat. You can use a custom image or select from **AI C
 
 Choose your beat's sample clearance status:
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Cleared" icon="shield">
     The beat is 100% original or all samples are fully cleared.
   </Card>
   <Card title="Needs Clearance" icon="triangle-exclamation">
     The beat contains samples that still require outside clearance.
   </Card>
-</CardGroup>
+</Columns>
 
 If you choose **Needs Clearance**, an additional notes field appears and buyers are warned accordingly.
 
@@ -184,7 +200,7 @@ Your plan determines how many minutes of audio you can upload. A notice at the t
 
 ## Related
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Creating Collections" icon="compact-disc" href="/help/uploading/creating-albums">
     Group multiple beats into a collection.
   </Card>
@@ -194,7 +210,7 @@ Your plan determines how many minutes of audio you can upload. A notice at the t
   <Card title="Sample-Safe Warranty" icon="shield" href="/help/uploading/sample-safe">
     Set the sample clearance state shown to buyers.
   </Card>
-  <Card title="AI Audio Policy" icon="sparkles" href="/help/legal/ai-audio-human-made-content">
+  <Card title="AI Audio Policy" icon="wand-magic-sparkles" href="/help/legal/ai-audio-human-made-content">
     Understand AI-assisted audio and human-made beat requirements.
   </Card>
   <Card title="Producer Upload Agreement" icon="file-contract" href="/help/legal/producer-upload-seller-agreement">
@@ -203,6 +219,6 @@ Your plan determines how many minutes of audio you can upload. A notice at the t
   <Card title="Licensing Setup" icon="file-lines" href="/help/licensing-for-producers">
     Configure licensing models for your beats.
   </Card>
-</CardGroup>
+</Columns>
 
 <NeedHelp />

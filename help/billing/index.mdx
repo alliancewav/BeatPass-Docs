@@ -6,6 +6,7 @@ description: "Manage your subscription, payment methods, and view your billing h
 keywords: ["billing", "subscription", "payments", "invoices", "payment methods"]
 "og:title": "Billing - BeatPass Help"
 "og:description": "Learn how to manage your BeatPass subscription and payments."
+canonical: "https://docs.beatpass.ca/help/billing"
 ---
 
 import PlatformFee from "/snippets/callouts/platform-fee.mdx";
@@ -13,11 +14,26 @@ import SupportContact from "/snippets/sections/support-contact.mdx";
 
 Your **Billing** page is where you manage your paid subscription, saved card for renewals, and payment history on BeatPass.
 
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Billing & Subscription on desktop in light mode">
+      <img src="/assets/screenshots/billing-desktop-light.png" alt="Billing and Subscription page with the Subscription panel on desktop" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="Billing & Subscription on mobile in dark mode">
+      <img src="/assets/screenshots/billing-mobile-dark.png" alt="Billing and Subscription page with the Subscription panel on mobile" />
+    </Frame>
+  </Tab>
+</Tabs>
+
 ---
 
 ## Billing Topics
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Subscription Overview" icon="credit-card" href="/help/billing/subscription-overview">
     View your current plan status and renewal date.
   </Card>
@@ -33,7 +49,7 @@ Your **Billing** page is where you manage your paid subscription, saved card for
   <Card title="Invoices" icon="file-lines" href="/help/billing/invoices">
     Review your payment history and invoice records.
   </Card>
-</CardGroup>
+</Columns>
 
 ---
 
@@ -121,7 +137,7 @@ A 12% platform fee plus a \$3.00 flat fee is currently added on top of eligible 
 
 ## Need Help?
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Discount Codes" icon="tag" href="/help/billing/using-coupons">
     Have a discount code? Learn how to apply it.
   </Card>
@@ -134,6 +150,6 @@ A 12% platform fee plus a \$3.00 flat fee is currently added on top of eligible 
   <Card title="Contact Support" icon="headset" href="/help/contact-support">
     Get help with billing issues.
   </Card>
-</CardGroup>
+</Columns>
 
 <SupportContact />

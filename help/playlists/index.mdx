@@ -2,9 +2,28 @@
 audience: help
 title: "Playlists"
 description: "Create, follow, and manage playlists in BeatPass, including public/private settings and invite-only collaboration."
+sidebarTitle: "Playlists"
+canonical: "https://docs.beatpass.ca/help/playlists"
 ---
 
+import NeedHelp from "/snippets/sections/need-help.mdx";
+
 Playlists are BeatPass's saved collections. You can build your own, follow someone else's public playlist, or work inside an invite-only collaborative playlist.
+
+## Interface Preview
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="My playlists on desktop in light mode">
+      <img src="/assets/screenshots/playlists-desktop-light.png" alt="My playlists page with playlist search and an empty-library message on desktop" />
+    </Frame>
+  </Tab>
+  <Tab title="Mobile">
+    <Frame caption="My playlists on mobile in dark mode">
+      <img src="/assets/screenshots/playlists-mobile-dark.png" alt="Mobile My playlists page with create, search, and sort controls" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 ## What Playlists Support
 
@@ -30,7 +49,7 @@ Playlists are BeatPass's saved collections. You can build your own, follow someo
 
 ## Playlist Topics
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Creating Playlists" icon="plus" href="/help/playlists/creating-playlists">
     Create a playlist from the library or during an add-to-playlist flow.
   </Card>
@@ -46,7 +65,7 @@ Playlists are BeatPass's saved collections. You can build your own, follow someo
   <Card title="Following Playlists" icon="heart" href="/help/playlists/following-playlists">
     Save public playlists to your library and know what changes when you unfollow.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Your Playlist Library
 
@@ -66,4 +85,4 @@ This view primarily lists playlists you have created. Playlists you follow or ha
 | Opened from playlist pages and library views | Opened from the player |
 | Best for keeping collections | Best for temporary playback order |
 
-<Snippet file="sections/need-help.mdx" />
+<NeedHelp />

@@ -1,0 +1,13 @@
+extends: existence
+message: "Replace emoji '%s' with a Mintlify or Font Awesome component."
+level: error
+nonword: true
+tokens:
+  - '✅'
+  - '❌'
+  - '⚠️'
+  - '🚀'
+  - '🎉'
+  - '💡'
+  - '🔥'
+  - '✨'
