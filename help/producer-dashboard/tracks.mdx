@@ -2,14 +2,14 @@
 audience: help
 title: "My Beats"
 sidebarTitle: "My Beats"
-description: "Review your catalog, understand its 30-day BeatPass play trend, filter beats, and explore collaboration tools on the My Beats page."
+description: "Manage your beat catalog, review editable details, and find collaborators through shared genres."
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/tracks"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **My Beats** page is your dashboard-level catalog view. It combines summary cards, a searchable track table, growth guidance, and collaboration tools for your current artist.
+The **My Beats** page keeps catalog work in one place. Search your beats, open insights, review editable legacy details, and explore collaboration connections for each producer profile you manage.
 
 <ProducerOnly />
 
@@ -17,114 +17,110 @@ The **My Beats** page is your dashboard-level catalog view. It combines summary 
 
 Click your **profile avatar** → **Backstage**, then select **My Beats** in the sidebar.
 
+If your account manages more than one producer profile, use **Artist profile** to choose the catalog you want to review. Changing profiles resets the current filters, selected beats, and page.
+
 ## Main Sections
 
-<Columns cols={3}>
-  <Card title="Header and growth status" icon="chart-line">
-    Artist context, current growth message, and the growth help dialog.
+<Columns cols={2}>
+  <Card title="Beat catalog" icon="music">
+    Search, filter, sort, and open the beats connected to the selected producer profile.
   </Card>
-  <Card title="Track table" icon="table">
-    Search, sort, filter, and quick actions for your catalog.
-  </Card>
-  <Card title="Collaboration tools" icon="users">
-    Collaboration Insights and Collaboration Recommendations.
+  <Card title="Collaborations" icon="users">
+    Review current collaborators and artists connected by shared profile genres.
   </Card>
 </Columns>
 
-## Growth Status
+## Beat Catalog
 
-The page header summarises play activity for your current artist. It compares local BeatPass plays from the latest 30 days with the preceding, non-overlapping 30 days. Select the help icon to see the definition, thresholds, data floor, and improvement tips.
+**Beat catalog** is the main working section. It shows 20 beats by default, with 10, 20, or 50 beats per page, and keeps each row readable on desktop, tablet, and mobile.
 
-| Label | Threshold and behavior |
-| --- | --- |
-| **Growing** | Above +5% |
-| **Steady** | From −5% through +5%, inclusive |
-| **Needs attention** | Below −5% |
-| **Building play data** | Fewer than 10 combined plays across both periods |
-| **Play trend unavailable** | The comparison could not be calculated or loaded |
+Each beat shows:
 
-The **Play change** value divides the difference between the periods by the busier period. It is rounded to one decimal when needed and stays naturally between **−100% and +100%** without truncating high-growth results. For example, 237 recent plays compared with 42 previous plays is **+82.3%**. No previous plays with current activity is **+100%**; previous activity with no current plays is **−100%**; equal counts are **0%**.
+- Artwork and beat name
+- BPM, key, scale, and duration
+- Collection name or **Single**
+- Licensing choice
+- **Plays** (all-time audience plays)
+- Last update date
+- **Feature**, **Insights**, and **Edit** actions
 
 <Note>
-  This trend counts BeatPass `track_play` activity for the artist's resolved tracks. It does not use contribution value, imported lifetime plays, payout data, or Pro Page traffic.
+  **Audience plays** counts BeatPass listening activity from people outside the selected producer's team. A real zero stays visible. **Unavailable** means BeatPass could not load that play information.
 </Note>
-
-## Overview Cards
-
-| Card | What it shows |
-| --- | --- |
-| **Total Tracks** | Catalog size plus recent upload context |
-| **Total Plays** | Lifetime plays and recent change |
-| **Play Trend** | The same naturally bounded 30-day play comparison and qualitative state shown in the page header |
-| **Collaborators** | Unique collaborators and collaborative-track totals |
-
-## Track Table
-
-The main working area on the page.
-
-### Columns
-
-| Column | What it shows |
-| --- | --- |
-| **Track** | Artwork and track link |
-| **Artist** | Primary artist |
-| **Duration** | Track length |
-| **Plays** | Play total |
-| **Growth** | Recent BeatPass momentum badge for tracks gaining listener activity |
-| **Points** | Contribution points |
-| **Last uploaded** | Upload date |
-| **Actions** | Quick links for **Insights** and **Edit** |
-
-### Available Actions
-
-- **Upload new track** — opens the upload flow
-- **Insights** — opens the track's backstage insights page
-- **Edit** — opens the track editor
-- **Delete selected** — appears when you select rows
 
 ### Filters
 
-- Artwork
-- Album
-- Plays count
-- Date uploaded
-- Licensing
-- Points
+- **Needs review** — Beats whose artwork cannot be displayed or whose genre, BPM/key/scale, or licensing information needs review
+- **Singles** — Beats that are not in a collection
+- **In a collection** — Beats assigned to a collection
+- **Collaborations** — Beats credited to more than one producer
 
-<Note>
-  Track-level growth badges show recent listening momentum. They are separate from **Points** and do not change payout or contribution calculations. Full editing still happens in the backstage track editor.
-</Note>
+Use **Filter** to add or remove a catalog view or license type. With no filters applied, the table shows all beats and all licensing choices.
 
-## Collaboration Insights
+### Licensing Choices
 
-Focuses on people already connected to your catalog.
+- **Standard**
+- **Standard and exclusive**
+- **Exclusive only**
 
-- Total collaborator count
-- Collaborative-track count
-- A ranked list of top collaborators
-- A detail modal when more collaboration data is available
+Select the **Plays** or **Updated** column heading to sort the whole catalog. Select the same heading again to reverse the order; select it a third time to return to the default newest-first order.
 
-## Collaboration Recommendations
+### Actions and Selection
 
-Suggests artists to explore next based on your genre profile and catalog data.
+- **Upload beat** opens the beat upload flow.
+- **Feature** makes an eligible beat the first beat on the selected producer's Pro Page.
+- **Remove featured beat** clears your saved choice so BeatPass can select an available beat.
+- **Insights** opens detailed performance information for one beat.
+- **Edit** opens the beat editor.
+- Use the checkbox beside any beat to select it, or use **Select all on this page** above the list. **Clear selection** leaves every beat unselected. Use **Delete selected** only when you intend to permanently remove the selected beats.
 
-- Your top genres used as recommendation context
-- Suggested artists with similarity signals and shared genres
-- A **View Profile** action for each suggestion
+Collection names open the connected collection. Use **Items per page** to show 10, 20, or 50 beats. Use **Previous** and **Next** below the list to move between pages. The range text shows which beats are currently visible, and **Updating** indicates a background refresh without hiding the current rows.
 
-If BeatPass does not have enough data, the section encourages you to build your catalog before inventing recommendations.
+### Featured Beat
 
-## Empty States
+You can save one featured beat for each producer profile you own. Featuring another beat replaces the previous choice for that profile.
+
+The **Feature** action is available when the selected producer is the primary owner, the audio is playable, and at least one active licensing or purchase path exists. For an AI-assisted beat, you must also confirm that you hold the commercial rights. An exclusively sold beat cannot be featured for new customers. When the action is unavailable, its explanation points to the field or offer that needs attention.
+
+The public Pro Page uses the saved choice when it is still available. Otherwise it selects another available beat instead of presenting an unavailable offer.
+
+## Review Details
+
+The upload flow requires cover art, a playable audio file, a producer credit, genre information, BPM, key, scale, rights declarations, and a valid licensing choice before a new beat can be published. **My Beats** does not repeat audio or producer credits as separate warnings. It does flag artwork that can no longer be displayed, which can happen to an older or imported beat after upload.
+
+For older or imported catalog entries, **Needs review** identifies editable information that can affect discovery or licensing:
+
+- **Artwork** — Neither the beat artwork nor its collection artwork can be displayed
+- **Genres** — No genre is attached to the beat
+- **BPM, key, or scale** — One or more musical details is missing
+- **Licensing** — The licensing choice or required exclusive-offer details are incomplete
+
+Rows that need attention state the exact details beside the beat metadata. Use **Edit** to correct them.
+
+## Collaborations
+
+**Current collaborators** lists producers already credited with the selected artist and shows their collaborative-beat counts. Verified profiles keep their blue check beside the producer name. Use **Chat** when the collaborator has one connected producer account, or use **View collaborative beats** to apply the matching catalog view.
+
+**Artists with shared genres** compares the canonical genres on producer profiles. Suggestions exclude the selected producer and current collaborators. Each suggestion shows the full number of genres in common and at most two genre names. BeatPass does not display an invented score or default genre.
+
+When a suggested artist has a connected producer account, select **Chat** to open a conversation. Select the artist name to review the profile first.
+
+If the selected producer profile has no genres, use **Add genres to artist profile** before using this section for suggestions.
+
+## Empty and Unavailable States
 
 <AccordionGroup>
-  <Accordion title="No linked artist profile" icon="user" defaultOpen>
-    The page shows a not-found state when your account does not have a linked artist profile. Complete your [Producer Program application](/help/producer-program) first.
+  <Accordion title="No producer profile" icon="user" defaultOpen>
+    Connect a producer profile before managing beats from this page.
   </Accordion>
-  <Accordion title="No tracks yet" icon="music">
-    The table stays empty until you upload your first track.
+  <Accordion title="No beats yet" icon="music">
+    Use **Upload beat** to add the first beat for the selected producer profile.
   </Accordion>
-  <Accordion title="No recommendation data yet" icon="wand-magic-sparkles">
-    Recommendation panels stay in guidance mode until BeatPass has enough track data to suggest matches.
+  <Accordion title="No matching beats" icon="magnifying-glass">
+    Use **Clear filters** to return to the complete catalog.
+  </Accordion>
+  <Accordion title="Catalog unavailable" icon="triangle-exclamation">
+    Use **Try again**. BeatPass does not replace missing play information or catalog responses with zero.
   </Accordion>
 </AccordionGroup>
 
@@ -132,16 +128,19 @@ If BeatPass does not have enough data, the section encourages you to build your 
 
 <Columns cols={2}>
   <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
-    Prepare and publish tracks before managing them here.
+    Prepare and publish beats before managing them here.
   </Card>
   <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
-    See how uploads and downloads move over time.
+    Review listener response, downloads, and upload rhythm.
   </Card>
   <Card title="My Collections" icon="compact-disc" href="/help/producer-dashboard/albums">
-    Group tracks into album releases.
+    Organize beats into releases and review release details.
+  </Card>
+  <Card title="Producer Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
+    Review the public storefront and its featured-beat requirements.
   </Card>
   <Card title="Backstage Insights" icon="chart-bar" href="/help/analytics/backstage-insights">
-    Open deeper analytics linked from this page.
+    Open the detailed beat insights linked from this page.
   </Card>
 </Columns>
 

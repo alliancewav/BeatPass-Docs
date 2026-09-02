@@ -421,7 +421,7 @@ POST /api/v1/billing/coupons/validate
 
 ### Stripe Connect Status
 
-Check whether the authenticated artist has completed Stripe Connect onboarding when Stripe is the payout setup shown to that artist.
+Check the state of an authenticated artist's existing legacy Stripe Connect account.
 
 ```http
 GET /api/v1/artist/stripe-connect/status
@@ -429,7 +429,7 @@ GET /api/v1/artist/stripe-connect/status
 
 ### Stripe Connect Onboarding Link
 
-Generate a Stripe Connect onboarding link for the authenticated artist when Stripe Connect onboarding is available.
+This compatibility endpoint remains available to existing internal consumers. Producer Finances does not offer new or resumed Stripe onboarding. New payout setup must use the BEATPAY workflow shown in the application.
 
 ```http
 POST /api/v1/artist/stripe-connect/onboard
@@ -444,6 +444,40 @@ GET /api/v1/artist/stripe-connect/finances
 ```
 
 ---
+
+### Producer Finances Summary
+
+Return local payout setup, currency-specific earnings totals in minor units, attention count, and calculation time for an artist managed by the authenticated user.
+
+```http
+GET /api/v1/artists/{artist}/finances/summary
+```
+
+The response keeps currencies separate and does not contact Stripe or Wise. `setup.providers.beatpay` describes BEATPAY availability and its current bank-recipient state. `setup.providers.legacyStripe` is present only for a legacy Stripe account that is still active or draining. The compatibility field `setup.canResumeStripe` remains `false` because new or resumed Stripe onboarding is not available.
+
+### Producer Finance Activity
+
+Return a filtered, paginated union of track sales and subscription earnings.
+
+```http
+GET /api/v1/artists/{artist}/finances/transactions?status=all&type=all&page=1&per_page=20
+```
+
+Supported status values are `all`, `waiting`, `sending`, `needs_attention`, `completed`, and `refunded`. Supported type values are `all`, `sales`, and `subscriptions`. The endpoint still accepts the legacy `filter` parameter for compatibility. The default and maximum page size is `20`.
+
+The response includes `pagination.page`, `perPage`, `total`, `from`, `to`, `hasPrevious`, and `hasMore`. Status and type counts describe eligible earnings, so an unsuccessful checkout that never became an earning is not included.
+
+Amounts use `amountMinor`, `minorUnitFactor`, and an ISO currency code. The response does not include buyer email addresses, bank details, Stripe objects, or Wise recipient identifiers.
+
+### Legacy Stripe Provider Balance
+
+Return only the available and pending Stripe Connect balances required by the Finances page.
+
+```http
+GET /api/v1/artists/{artist}/finances/provider-balance
+```
+
+Amounts use the currency-specific `minorUnitFactor`. This endpoint can use a short-lived cached result. It does not return charges, payouts, purchases, or lifetime provider history.
 
 ## Related Resources
 

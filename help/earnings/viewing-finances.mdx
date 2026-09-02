@@ -1,172 +1,66 @@
 ---
 audience: help
 title: "Viewing Finances"
-description: "Use Producer Finances to review payout readiness, BEATPAY or Stripe setup, balance summaries, transaction statuses, and earnings panels."
+description: "A quick guide to reviewing finance activity, earnings, currency context, and payout setup."
 sidebarTitle: "Viewing Finances"
 canonical: "https://docs.beatpass.ca/help/earnings/viewing-finances"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Producer Finances** page is the current payout hub for producers. It shows the payout setup available to your account, balance summaries, and earnings history without requiring you to leave BeatPass.
+Use **Producer Finances** to follow money earned by one artist and manage the payout destination for eligible earnings.
 
-## Opening Producer Finances
+## Open the Page
 
 <Steps>
   <Step title="Open Backstage">
-    Click your **profile avatar** in the top navigation bar, then select **Backstage**.
+    Click your **profile avatar**, then select **Backstage**.
   </Step>
-  <Step title="Go to Finances">
-    In the producer area, open **Finances**.
+  <Step title="Open Finances">
+    Select **Finances** in the producer navigation.
+  </Step>
+  <Step title="Choose an artist">
+    If **Artist finances** appears, choose the profile you want to review.
   </Step>
 </Steps>
 
-## What You See First
+## Review the Page
 
-### If Payout Setup Is Not Finished
-
-BeatPass shows an onboarding panel with:
-
-- The page title **Producer Finances**
-- A setup overview for payout-enabled revenue streams
-- **Set up BEATPAY** to add your bank account and start receiving payouts
-
-### If Payout Setup Is Ready
-
-You see the normal finances dashboard. If you manage more than one producer profile, BeatPass can also show an artist selector at the top of the page.
-
----
-
-## Account Overview
-
-The top summary card is called **Account Overview** and uses four stat cards. What they show depends on your payout setup.
-
-With **BEATPAY** bank payouts:
-
-| Card | What It Means |
-|------|----------------|
-| **Lifetime** | Total received across the tracked history |
-| **Queued** | Earnings waiting for the next payout run |
-| **Sending** | Money already on the way to your bank |
-| **Bank Account** | The bank account and currency your payouts are sent to |
-
-With a legacy **Stripe Connect** account:
-
-| Card | What It Means |
-|------|----------------|
-| **Balance** | Funds currently ready for payout, or **Setup required** if payouts are not ready |
-| **Upcoming** | Money expected to move next, including queued subscription splits |
-| **In Transit** | Funds already moving to your bank or payout destination |
-| **Lifetime** | Total earned across the tracked history |
-
-### Other Details on This Section
-
-- BeatPass shows an **Updated** timestamp when cached finance data was last refreshed
-- If the account has more than one balance currency, the page can show a **Multi-currency account** warning
-- If the history is truncated for performance, the page can show **Showing last 1,000 transactions**
-- If BEATPAY is available, the page can show **Live Exchange Rate** details for the selected currencies
+<Steps>
+  <Step title="Check Finance activity">
+    Start with **Waiting** and **Needs attention**. Use **Status** and **Earning type** when you need a specific record. Each page shows 20 records.
+  </Step>
+  <Step title="Review Earnings">
+    Compare **Total earned**, **Waiting**, **Sending**, and **Sent** in one currency at a time.
+  </Step>
+  <Step title="Use Currency context">
+    Choose a comparison currency and a 7-, 30-, or 90-day range when you want historical exchange-rate context.
+  </Step>
+  <Step title="Review Payout setup">
+    Use **Set up BEATPAY**, **Upgrade to BEATPAY**, or **Use a different bank account** only when that action appears.
+  </Step>
+</Steps>
 
 <Note>
-  The page focuses on summary information. It does not expose every raw payout-provider field or every internal payout-calculation field inside the UI.
+  **Sent** and **Completed** do not confirm bank arrival. The payout provider and receiving bank may continue processing the money.
 </Note>
 
----
+Legacy Stripe information is read-only. New and resumed Stripe setup are not offered from **Finances**.
 
-## Transactions
-
-The main history area is called **Transactions** and includes filter tabs for:
-
-- **All**
-- **Sales**
-- **Subscriptions**
-- **Paid**
-- **Pending**
-- **Failed**
-
-### Status Labels You Can See
-
-Rows in the transaction list can show these user-facing statuses:
-
-| Status | Meaning |
-|--------|---------|
-| **Sale completed** | A direct sale completed through its established payout route |
-| **Payout queued** | A BEATPAY sale completed and its producer payout is waiting to move |
-| **Queued** | A subscription split exists but is still waiting to move |
-| **Sending** | BeatPass is actively sending the split through the active payout route |
-| **Paid** | The BeatPass-side payout step completed |
-| **Held** | A sale payout is paused while a refund or dispute on that sale is resolved |
-| **Failed** | The transfer hit an error |
-| **Refunded** | The sale was refunded |
-| **Excluded** | You were not eligible for that subscription split when it ran |
-
-<Warning>
-  The current UI does not include a separate **Excluded** filter tab, and it does not provide a click-to-open full transaction breakdown drawer for each row.
-</Warning>
-
-### Pending Banner
-
-If you have pending items, BeatPass can show a banner like:
-
-`X queued • payouts move automatically`
-
-That banner is a quick signal that payouts are still moving through the system without any extra action from you.
-
----
-
-## How Earnings Work
-
-At the bottom of the page, BeatPass currently shows a **How Earnings Work** section that explains three sources:
-
-- **Track Sales**
-- **Subscription Payouts**
-- **Bonus Payouts**
-
-This section is explanatory. It is meant to help you understand why money appears in your history, not to replace the transaction list itself.
-
----
-
-## Practical Tips
-
-- Use **Lifetime** (or **Balance** on a legacy Stripe account) to see what you have received so far
-- Use **Queued** and **Sending** (or **Upcoming**) when you want to know what is still moving
-- Use the **Subscriptions** filter when reviewing subscription-based earnings only
-- Use the **Sales** filter when checking direct track purchases only
-- Keep an eye on **Setup required**, **Held**, **Failed**, or **Excluded** signals because those are the clearest warnings that something needs attention
-- Follow **Set up BEATPAY** if your payout setup is not finished yet
-
----
+For complete metric and state definitions, see [Finances](/help/producer-dashboard/finances).
 
 ## Related
 
 <Columns cols={2}>
   <Card title="BEATPAY Bank Payouts" icon="money-bill-transfer" href="/help/earnings/beatpay">
-    Learn how BEATPAY appears in **Finances** and what each bank payout status means.
+    Set up or replace a bank payout destination.
   </Card>
   <Card title="Payout Schedule" icon="calendar" href="/help/earnings/payout-schedule">
-    Understand **Queued**, **Sending**, **Paid**, **Failed**, and **Excluded** statuses.
+    Understand what happens after an earning is recorded.
+  </Card>
+  <Card title="Currencies & Pricing" icon="coins" href="/help/earnings/currencies-and-pricing">
+    Understand currency-specific amounts and bank account currencies.
   </Card>
 </Columns>
-
----
-
-## Common Questions
-
-<AccordionGroup>
-  <Accordion title="Why do I still see setup messaging after connecting a payout account?">
-    BeatPass can show separate readiness for exclusive sales and subscription earnings. Return to **Finances** and complete any remaining prompt for the earnings stream you want to activate.
-  </Accordion>
-
-  <Accordion title="Why does Paid not always mean the money is already in my bank?">
-    On subscription payouts, **Paid** means the BeatPass-side payout step completed. Bank arrival still follows the timing of the active payout route and your bank.
-  </Accordion>
-
-  <Accordion title="Can I filter only excluded payouts?">
-    Not from a dedicated tab today. **Excluded** appears as a status on the affected transaction rows.
-  </Accordion>
-
-  <Accordion title="Why does the page show an Updated timestamp?">
-    Finances data is cached for performance. BeatPass shows the refresh time so you can tell when the current snapshot was last updated.
-  </Accordion>
-</AccordionGroup>
 
 <NeedHelp />

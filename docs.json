@@ -141,6 +141,9 @@
               "help/profiles/user-profiles/index",
               "help/profiles/producer-profiles/index",
               "help/gamification/index",
+              "help/gamification/xp-system/index",
+              "help/gamification/achievements/index",
+              "help/gamification/achievements/catalog",
               "help/gamification/leaderboards/index"
             ]
           },
@@ -203,11 +206,16 @@
               "help/producer-dashboard/index",
               "help/producer-dashboard/home",
               "help/producer-dashboard/tracks",
+              "help/producer-dashboard/albums",
               "help/producer-dashboard/activity",
               "help/producer-dashboard/finances",
+              "help/producer-dashboard/progress",
+              "help/producer-dashboard/leaderboards",
+              "help/producer-dashboard/pro-page",
               "help/analytics/index",
               "help/analytics/getting-started",
               "help/analytics/backstage-insights/index",
+              "help/analytics/backstage-insights/artist-insights",
               "help/analytics/backstage-insights/track-insights",
               "help/analytics/backstage-insights/exporting-data",
               "help/analytics/reference/metrics-glossary",
@@ -306,11 +314,11 @@
             "group": "Current Releases",
             "icon": "rocket",
             "pages": [
+              "release-notes/v3.0/3.4.1",
               "release-notes/v3.0/3.4.0",
               "release-notes/v3.0/3.3.0",
               "release-notes/v3.0/3.2.1",
-              "release-notes/v3.0/3.2.0",
-              "release-notes/v3.0/3.1.9"
+              "release-notes/v3.0/3.2.0"
             ]
           },
           {

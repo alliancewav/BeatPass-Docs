@@ -1,0 +1,109 @@
+---
+title: "Pro Pages for Producers, Safer Licensing & Clearer Insights"
+date: "2026-09-01"
+severity: "patch"
+version: "3.4.1"
+audience: "All"
+tags: ["feature", "improvement", "bugfix", "design", "licensing"]
+components: ["pro-page", "downloads", "licensing", "producer-dashboard", "catalog", "gamification", "artist-profile", "search"]
+status: "published"
+related: ["3.4.0"]
+sidebarTitle: "Pro Pages & Safer Licensing"
+description: "Release notes for Producer Pro Pages, hardened download licensing, clearer producer analytics, and restored Spotify credit search."
+canonical: "https://docs.beatpass.ca/release-notes/v3.0/3.4.1"
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# Pro Pages for Producers, Safer Licensing & Clearer Insights
+
+## Summary
+
+Released September 1, 2026, BeatPass 3.4.1 brings the Producer Pro Page workspace to every producer profile owner while keeping the public storefront behind clear unlock and publication requirements. It also hardens audio downloads and certificate issuance, clarifies producer analytics and catalog management, and restores Spotify credit search.
+
+## What's Improved
+
+- **Safer certificate issuance**: Standard license certificates are issued only for a valid paid plan, while exclusive certificates require a completed exclusive purchase
+- **Strict producer boundaries**: Producer accounts can download only beats associated with their own artist profile; those owner downloads do not create certificates or audience-download analytics
+- **Failure-safe downloads**: BeatPass verifies authorization and the audio source before certificate issuance, and failed source preparation does not leave behind a certificate
+- **Consistent download access**: Track buttons, context menus, and Pro Pages now use the same owner, producer, existing-license, and paid-plan rules
+- **Trustworthy certificate history**: Certificate entitlement details are integrity-protected, invalid certificates cannot grant download rights, and the license library explains why a certificate is unavailable
+- **Cleaner producer metrics**: Producer and artist-team downloads are excluded from audience download totals and activity
+- **Spotify credits restored**: **Add Credits from Spotify** now returns matching songs and albums from the Canadian Spotify catalog instead of showing an empty result for valid searches
+- **Clearer performance snapshot**: Compare **Latest 30 days** with **Previous 30 days**, see the exact **Play change**, and review catalog and progress totals together
+- **Useful trend states**: **Growing**, **Steady**, **Needs attention**, and **Building data** explain recent play movement without hiding the numbers behind it
+- **Focused Activity periods**: Review **Last 7 days**, **Last 30 days**, **Last 90 days**, or **All time** across audience activity and recent downloads, then explore current-year **Upload rhythm** with optional **X-Ray** context
+- **Better download context**: See which listeners downloaded each beat, open their profiles, and review available license certificates or clear expired and revoked states
+- **Guided producer progress**: Review your level, cumulative XP, five recent XP awards, current earning rules, and available or unlocked achievements in one responsive view
+- **More reliable Progress loading**: Level and achievement information remains visible while supplementary XP details finish updating
+- **Cleaner achievement review**: Collection progress now leads a responsive bento summary, latest unlock dates stay visible, and single-page results no longer show redundant pagination controls
+- **Balanced Progress layouts**: Current level, Recent XP, Earn XP, and Collection progress use compact soft rows and responsive bento sizing without stretched empty card space
+- **Clearer producer rankings**: **Earning share** appears first, private earnings stay private, and separate progress, audience play, release, and collaboration rankings replace the opaque Overall score
+- **Reliable ranking views**: **Progress** and **Releases** now open reliably, including rankings that do not need extra activity details
+- **One producer per Progress rank**: Canonical producer profiles prevent additional artist-team access from creating duplicate entries for the same producer
+- **Focused catalog management**: Review 20 readable beats or collections at a time, use the same soft filters as the rest of the producer dashboard, select rows directly, and keep useful metadata on mobile
+- **Native catalog rows**: My Beats and My Collections now use the maintained responsive table selection pattern, aligned checkboxes, direct artwork, and consistent labeled row actions
+- **Practical catalog review**: Open linked collections, see named co-credited producers, find artwork that no longer displays, review editable genre, musical, or licensing gaps, and chat with suggested artists when their producer account is available
+- **Connected collaborations**: Verified collaborators keep their blue check, and both current collaborators and relevant shared-genre artists can open Chat when one producer account is available
+- **Guided release details**: Find collections with unavailable artwork, no release date, or no beats as planning guidance, without presenting those details as a separate publication gate
+- **Dedicated Pro Page workspace**: Every producer profile owner can open **Pro Page** immediately after **My Collections**, switch between owned profiles, and review the selected profile's status and next action
+- **Clear unlock requirements**: The public page unlocks after the profile reaches 20 distinct primary-owned playable beats, profile verification, and active BEATPAY
+- **Permanent catalog milestone**: The 20-beat milestone stays earned after unlock, while verification and BEATPAY remain continuous public-page requirements
+- **Continuous publication safeguards**: The profile must retain a producer owner (`role=artist`), its owner accounts must remain in good standing, and verification and BEATPAY must stay active
+- **Featured beat controls**: Use **Feature** or **Remove featured beat** from **My Beats** to influence which available beat visitors hear first; AI-assisted beats also require confirmed commercial rights
+- **Existing-source page controls**: The Pro Page uses the selected producer profile, catalog, collections, links, credits, and photos; keep identity, featured playback, catalog, player, and licensing fixed while showing or hiding optional links, collections, collaborations, credits, and photos; switches save immediately and preserve the previous choice if a save fails
+- **Original game-inspired interface**: A distinct BeatPass visual system combines cinematic creator presentation, modern storefront cards, and accessible stat panels without copying another game or community platform's names, assets, fonts, terminology, or trade dress
+- **Focused mobile storefront**: Producer identity and available social links lead into a contained marketplace-style featured player, while a desktop QR code makes the phone-first page easy to continue on mobile
+- **Layered glass profile hero**: The producer cover now carries through a polished frosted surface with specular depth, clearer separation, a Safari-compatible backdrop treatment, and a lighter mobile rendering path
+- **Useful sections only**: Collections, collaborations, credits, photos, and links appear only when their public source content is usable, with no setup empty states shown to visitors
+- **Familiar collection browsing**: Collection cards use the same browse-and-play experience as marketplace collections and open the selected collection instead of rearranging the Pro Page catalog
+- **Quiet rollout**: Existing qualifying producers receive the earned Pro Page without a rollout email, push alert, or in-app notification; there are no rollout notifications to dismiss
+- **Reliable Pro Page measurement**: Separate listening sessions can count independently, repeat submissions remain deduplicated, and daily Pro Page Traffic totals stay protected when older raw measurement rows are removed
+- **Faster desktop access**: **Upload beats** and **Insights** remain available in the top navigation for eligible producers
+
+## How to Use
+
+1. Listeners can select **Download** on an eligible beat. An existing valid license or a paid plan unlocks standard files; an exclusive purchase unlocks its contracted files.
+2. Producers can download beats connected to their own artist profile without creating a license certificate or audience-download event. Other catalog beats remain unavailable to producer accounts.
+3. Open **My licenses** to download a valid certificate or review the reason an invalid certificate is unavailable.
+4. Click your **profile avatar**, select **Backstage**, and open **Dashboard** to review **Performance snapshot**.
+5. Select **Activity** to change the period, review **Audience activity**, open **Recent downloads**, or explore **Upload rhythm**.
+6. Select **Progress** to review **Your progress**, understand **Earn XP** rules, or filter **Achievements** by status and category.
+7. Select **Leaderboards** to review **Earning share** or compare a clear progress or activity ranking.
+8. Select **My Beats** to manage the beat catalog or **My Collections** to organize releases and review **Release details**.
+9. Select **Pro Page** immediately after **My Collections** to review the selected producer profile's unlock requirements, public link, guidance, section choices, and performance.
+10. Use **Page sections** to hide or show available links, collections, collaborations, credits, and photos. Core storefront playback and licensing stay in place. Each switch saves immediately; select **Try again** if a warning says the change was not saved.
+11. Open **My Beats** for that producer profile and select **Feature** on the available beat you want visitors to hear first. Confirm commercial rights before featuring an AI-assisted beat.
+12. To add professional credits, open the producer profile editor, find **Your Credits**, and select **Add Credit**. Search under **Songs** or **Spotify albums**, then choose your roles.
+13. On desktop, use **Upload beats** or **Insights** in the top navigation for a direct shortcut.
+
+## Related
+
+<Columns cols={2}>
+  <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
+    Understand your performance snapshot and producer tools
+  </Card>
+  <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
+    Review audience response, downloads, licenses, and upload rhythm
+  </Card>
+  <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
+    Understand levels, recent XP, earning rules, and achievements
+  </Card>
+  <Card title="Producer Profiles" icon="user" href="/help/profiles/producer-profiles">
+    Learn how your public producer presence is presented
+  </Card>
+  <Card title="Producer Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
+    Prepare the profile, choose a featured beat, and understand the unlock requirements
+  </Card>
+  <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
+    Compare earning share, progress, audience plays, releases, and collaborations
+  </Card>
+  <Card title="How Downloads Work" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
+    Understand download eligibility for listeners and producers
+  </Card>
+  <Card title="License Certificates" icon="file-lines" href="/help/downloads-and-licensing/license-certificates">
+    Review how certificates are issued, stored, and verified
+  </Card>
+</Columns>
+
+<ReleaseFeedback />

@@ -15,8 +15,12 @@ A **Pro Page** is a focused, shareable storefront for people coming from your bi
 <ProducerOnly />
 
 <Note>
-  The **Pro Page** section appears near the top of your Producer Dashboard and guides you from unlock requirements to sharing and results.
+  Every producer profile owner can open **Pro Page** from the Producer Dashboard menu. The public page becomes available after that profile completes the unlock checklist.
 </Note>
+
+The producer profile must keep at least one account attached with the owner role (`role=artist`). Managers and collaborators do not satisfy this ownership requirement, and the owner accounts must remain in good account standing for the public page to stay available.
+
+If you own more than one producer profile, use **Choose a producer profile** to switch pages. The selected artist stays in the dashboard URL, so a bookmarked Pro Page, My Beats, or My Collections workspace opens in the same profile context.
 
 ## Pro Page vs Producer Profile
 
@@ -35,8 +39,8 @@ Your Pro Page adds a campaign-ready route to your work. It does not replace your
   <Step title="Open Backstage">
     Click your **profile avatar**, then select **Backstage**.
   </Step>
-  <Step title="Open Dashboard">
-    The Producer Dashboard opens on **Dashboard**. The **Pro Page** section appears above **Producer tools**.
+  <Step title="Open Pro Page">
+    In the Producer Dashboard menu, select **Pro Page** after **My Collections**.
   </Step>
   <Step title="Follow the checklist">
     The card shows what is complete, what still needs attention, and the direct action for each remaining step.
@@ -45,7 +49,7 @@ Your Pro Page adds a campaign-ready route to your work. It does not replace your
 
 ## Unlock Checklist
 
-Complete all three requirements to unlock a Pro Page and keep it ready to publish.
+Complete all three requirements to unlock the public page. The 20-beat target is a permanent milestone. Verification and BEATPAY must remain active to keep the page public.
 
 <Columns cols={3}>
   <Card title="20 playable beats" icon="music">
@@ -91,6 +95,7 @@ When BeatPass finishes granting access, the dashboard card shows your shareable 
 - **Open page** — review the public experience
 - **Copy link** — copy the canonical link for your bio or campaign
 - **Share** — open the device share menu when supported
+- **Copy tagged link** — label a link for Instagram, TikTok, X, or direct messages before sharing it
 - **View performance** — open **Pro Page Traffic** inside Artist Insights
 
 After every checklist item is complete, the card may briefly say that BeatPass is preparing your Pro Page. You do not need to change your catalog again while that state is shown.
@@ -100,11 +105,58 @@ After every checklist item is complete, the card may briefly say that BeatPass i
 Verification and active BEATPAY remain required after you unlock the page.
 
 - If verification or BEATPAY becomes inactive, the public page is temporarily hidden
+- If the profile no longer has an attached producer owner, or an owner account is not in good standing, the public page is hidden
 - The dashboard highlights the requirement that needs attention
 - Complete that step and the existing page returns automatically
 - Your entitlement and past Pro Page Traffic remain in place while the page is hidden
 
 Falling below 20 playable beats after the page has unlocked does not hide it. The 20-beat target is an unlock milestone, not an ongoing publishing quota.
+
+If BeatPass cannot confirm BEATPAY readiness during a temporary service interruption, your saved progress does not change. Use **Try again** from the dashboard instead of changing payout details that were already complete.
+
+## Choose the Featured Beat
+
+Your featured beat is the first product visitors can play and explore.
+
+<Steps>
+  <Step title="Open My Beats">
+    From **Pro Page**, select **Choose featured beat**, or open **My Beats** and confirm the correct producer profile.
+  </Step>
+  <Step title="Find the beat">
+    Search or filter the catalog, then select **Feature** on the beat you want visitors to hear first.
+  </Step>
+  <Step title="Change or remove it">
+    Feature another beat to replace the current choice. Select **Remove featured beat** to return selection to BeatPass.
+  </Step>
+</Steps>
+
+A featured beat must belong to the selected profile as its primary producer, have playable audio, and have an active licensing or purchase option. For an AI-assisted beat, you must also confirm that you hold the commercial rights before it can be featured. A beat sold exclusively cannot be featured for new customers. When a beat is unavailable, **My Beats** explains what to correct.
+
+If the saved choice later becomes unavailable, BeatPass uses another available beat so the public page does not lead visitors to a dead end.
+
+## Choose Which Optional Sections Appear
+
+Use **Page sections** in the Pro Page workspace to keep the public page focused without building a layout from scratch.
+
+Your producer identity, featured beat when one is available, catalog, audio player, and licensing stay on the page. These are the core storefront experience and cannot be hidden.
+
+You can show or hide five optional sections for the selected producer profile:
+
+- **Links**
+- **Collections**
+- **Collaborations**
+- **Credits**
+- **Photos**
+
+An optional section appears automatically when its public source content is usable. If there is no usable content, the section is marked **Not available yet**, its switch is disabled, and visitors see no empty placeholder. Use the management link in that row to add or repair its source content.
+
+When you hide an available section, that choice stays with the producer profile. If its source content later disappears and returns, the section remains hidden until a profile owner shows it again. Every account attached to the profile with the owner role shares the same choices; managers and collaborators cannot change them.
+
+Each switch saves immediately; there is no separate Save button. If a change cannot be saved, your previous choice stays active and the warning offers **Try again**. A failed refresh also keeps the last saved choices visible while you retry.
+
+<Note>
+  Page sections control visibility only. They do not add themes, custom code, arbitrary styling, or a complex page builder.
+</Note>
 
 ## Make the Page Work for Your Campaign
 
@@ -114,12 +166,32 @@ Your Pro Page draws from your existing artist and catalog information. Before sh
 - Add the social links you want visitors to follow
 - Keep cover art, track metadata, collections, and buying options current
 - Add professional credits and gallery images when they strengthen your story
-- Pin the beat you most want to feature; BeatPass can use catalog ranking when no pinned beat is available
+- Feature the beat you most want visitors to hear; BeatPass uses an available catalog choice when you do not select one
 - Test playback and every available action on both phone and desktop
 
 <Tip>
   Give each campaign one clear reason to click. Pair your Pro Page link with a specific beat, collection, credit, or creative direction instead of asking people to browse without context.
 </Tip>
+
+## What Visitors See
+
+The public page is designed for the phone screen first. Your cover image sits behind a layered, Safari-compatible glass profile surface, and the mobile version uses a lighter rendering path for smooth scrolling. Your profile identity and available social links come first, followed by the featured beat in its own contained player. Featured playback uses the same familiar artwork treatment and controls as the marketplace, including artwork motion when the visitor's device settings allow it.
+
+Visitors can then search and filter the full catalog, play audio, and review available licensing without leaving the page. The page URL keeps the active catalog view and selected beat so Back and Forward return visitors to the expected view.
+
+Collection cards follow the same browse-and-play experience as collections elsewhere on BeatPass. Opening one takes the visitor to that collection instead of filtering or moving the Pro Page catalog.
+
+On desktop, a QR code appears beside the focused storefront so visitors can continue on their phone.
+
+BeatPass builds the rest of the page from usable profile and catalog sources:
+
+- Social links appear only when you add them to the producer profile
+- Collections appear only when they contain public beats
+- Collaborations, credits, and photos appear only when usable content exists
+- Empty source sections are omitted instead of showing blank cards or setup instructions to visitors
+- Optional source sections you hide in **Page sections** are omitted as well
+
+Keep the first screen focused. Use a short biography, a strong featured beat, and only the links or proof that help a listener decide what to play or license next.
 
 ## Understand Pro Page Traffic
 
@@ -129,10 +201,12 @@ Open **View performance** or use **Insights** in the desktop top navigation bar.
 | --- | --- |
 | **Engaged visits** | Visitors who stayed active after opening your link |
 | **30-second listens** | Plays that reached at least 30 seconds |
-| **Licenses completed** | Licensed downloads completed from the Pro Page journey |
-| **Exclusive sales** | Exclusive purchases completed from the Pro Page journey |
+| **License actions started** | Standard and exclusive licensing actions visitors started |
+| **Completed licenses and sales** | Confirmed standard downloads and exclusive purchases connected to the Pro Page journey |
 
-You can also review where measured visitors came from, which share buttons they used, and exclusive earnings separated by currency. Use **How these numbers are counted** for the exact definitions available in the selected date range.
+You can also review where measured visitors came from, standard and exclusive licensing progress, memberships started, and exclusive earnings separated by currency. Use **How these numbers are counted** for the exact definitions available in the selected date range.
+
+BeatPass keeps raw Pro Page measurement rows for 180 days. Before older rows are removed, the affected day is recalculated exactly; the daily totals used by Pro Page Traffic remain available. A later listening session can count as a new visit or play, while a repeated submission from the same interaction is deduplicated.
 
 <Note>
   A new page can truthfully show no activity or only part of a date range. Regular marketplace plays remain in the other Artist Insights sections and are not added to Pro Page Traffic.

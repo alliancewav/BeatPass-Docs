@@ -2,14 +2,14 @@
 audience: help
 title: "My Collections"
 sidebarTitle: "My Collections"
-description: "Review album stats, filter your releases, and jump into album editing or insights from the My Collections page."
+description: "Organize beats into releases, review release details, and open collection insights."
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/albums"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **My Collections** page is the album-focused view of the Producer Dashboard. Use it for overview, filtering, and quick actions across your existing releases.
+The **My Collections** page helps you organize beats into releases and correct missing release details. It keeps collection work separate from general catalog statistics so the next useful action stays clear.
 
 <ProducerOnly />
 
@@ -17,70 +17,92 @@ The **My Collections** page is the album-focused view of the Producer Dashboard.
 
 Click your **profile avatar** → **Backstage**, then select **My Collections** in the sidebar.
 
+If your account manages more than one producer profile, use **Artist profile** to choose the collections you want to review. Changing profiles resets the current filters, selection, and page.
+
 ## Main Sections
 
-<Columns cols={3}>
-  <Card title="Header" icon="compact-disc">
-    Current artist context and album total.
+<Columns cols={2}>
+  <Card title="Collections" icon="compact-disc">
+    Search, filter, sort, and open releases for the selected producer profile.
   </Card>
-  <Card title="Albums Overview" icon="chart-bar">
-    Summary cards for albums, album tracks, plays, and current-month activity.
-  </Card>
-  <Card title="Albums table" icon="table">
-    Filterable list of releases with edit and insight shortcuts.
+  <Card title="Release details" icon="calendar-days">
+    Plan collections that do not yet have a release date or any beats.
   </Card>
 </Columns>
 
-## Albums Overview
+## Collections
 
-| Card | What it shows |
-| --- | --- |
-| **Total Albums** | Album count plus current-month additions |
-| **Album Tracks** | Track totals tied to albums |
-| **Total Plays** | Combined plays across the album catalog |
-| **This Month** | New albums added in the current month |
+**Collections** is the main working section. It shows 20 collections by default, with 10, 20, or 50 collections per page, and preserves useful release information on mobile.
 
-## Albums Table
+Each collection shows:
 
-### Columns
+- Artwork and collection name
+- Release date or **Release date not set**
+- Track count, including a real zero
+- **Plays** (all-time audience plays across the collection's beats)
+- Last update date
+- **Insights** and **Edit** actions
 
-| Column | What it shows |
-| --- | --- |
-| **Album** | Artwork and album link |
-| **Artist** | Primary artist |
-| **Release date** | Album release date |
-| **Track count** | Number of tracks in the album |
-| **Plays** | Album play total |
-| **Last updated** | Most recent update date |
-| **Actions** | Quick links for **Insights** and **Edit** |
-
-### Available Actions
-
-- **Upload album** — opens the album creation flow
-- **Insights** — opens the album's backstage insights page
-- **Edit** — opens the album editor
-- **Delete selected** — appears when you select table rows
+<Note>
+  **Audience plays** counts BeatPass listening activity from people outside the selected producer's team. A real zero stays visible. **Unavailable** means BeatPass could not load that play information.
+</Note>
 
 ### Filters
 
-- Artwork
-- Plays count
-- Created date
-- Updated date
-- Artist
+- **Needs review** — Collections whose artwork cannot be displayed, release date is not set, or beat list is empty
+- **Upcoming** — Collections with a future release date
+- **Released** — Collections whose release date is today or earlier
+- **Empty** — Collections with no beats
 
-<Tip>
-  Use this page for release-level triage. Open the linked insights page when you need a deeper breakdown for one album.
-</Tip>
+Use **Filter** to add or remove a collection view. With no filter applied, the table shows all collections.
 
-## Empty States
+Select the **Plays** or **Updated** column heading to sort the whole catalog. Select the same heading again to reverse the order; select it a third time to return to the default recently-updated order.
+
+### Actions and Selection
+
+- **Create collection** opens the collection editor.
+- **Insights** opens detailed performance information for one collection.
+- **Edit** opens the collection editor.
+- Use the checkbox beside any collection to select it, or use **Select all on this page** above the list. **Clear selection** leaves every collection unselected. Use **Delete selected** only when you intend to permanently remove the selected collections.
+
+Use **Items per page** to show 10, 20, or 50 collections. Use **Previous** and **Next** below the list to move between pages. The range text shows which collections are currently visible, and **Updating** indicates a background refresh without hiding the current rows.
+
+## Release Details
+
+**Release details** provides planning guidance and leads back to filtered collections. It does not represent a separate publication gate.
+
+| Issue | What to Review |
+| --- | --- |
+| **Artwork unavailable** | The collection artwork cannot be displayed |
+| **Release date not set** | No release date is set |
+| **No beats added** | The collection does not contain any beats |
+
+Select **Artwork unavailable**, **Release date not set**, or **No beats added** to apply the matching **Needs review** filter and return to **Collections**. New collections require artwork, but artwork on an older or imported collection can stop loading later. When current collections have working artwork, a release date, and at least one beat, the section shows **Release details are complete**.
+
+If a future release exists, **Next upcoming release** links to the closest collection by release date. Upcoming and released labels always use the collection's release date, not the date it was created.
+
+## Collections on Your Pro Page
+
+A collection appears on the public Pro Page only when it has public beats that visitors can play and explore. If no usable collection exists, the public page omits the Collections section.
+
+When a visitor selects a collection, the Pro Page filters the catalog in place instead of sending them away from the producer storefront. The collection remains in the page URL so Back, Forward, and a copied browser URL restore the same catalog view.
+
+Use collections for a real listening path—a beat tape, album, campaign, or focused sound—not simply to fill space on the page.
+
+## Empty and Unavailable States
 
 <AccordionGroup>
-  <Accordion title="No linked artist profile" icon="user" defaultOpen>
-    The page shows a not-found state when your account does not have a linked artist profile. Complete your [Producer Program application](/help/producer-program) first.
+  <Accordion title="No producer profile" icon="user" defaultOpen>
+    Connect a producer profile before managing collections from this page.
   </Accordion>
-  <Accordion title="No albums created yet" icon="compact-disc">
-    The table stays empty until you publish your first album. The **Upload album** action becomes the main next step.
+  <Accordion title="No collections yet" icon="compact-disc">
+    Use **Create collection** to organize the first release for the selected producer profile.
+  </Accordion>
+  <Accordion title="No matching collections" icon="magnifying-glass">
+    Use **Clear filters** to return to the complete collection list.
+  </Accordion>
+  <Accordion title="Collections unavailable" icon="triangle-exclamation">
+    Use **Try again**. BeatPass does not replace missing play information or collection responses with zero.
   </Accordion>
 </AccordionGroup>
 
@@ -88,13 +110,16 @@ Click your **profile avatar** → **Backstage**, then select **My Collections** 
 
 <Columns cols={2}>
   <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
-    Manage the tracks that can be grouped into album releases.
+    Manage the beats that can be organized into releases.
   </Card>
-  <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
-    Prepare artwork, metadata, and files before creating an album.
+  <Card title="Producer Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
+    Understand how usable collections appear in the focused storefront.
+  </Card>
+  <Card title="Creating Collections" icon="compact-disc" href="/help/uploading/creating-albums">
+    Review collection fields and editing guidance.
   </Card>
   <Card title="Backstage Insights" icon="chart-bar" href="/help/analytics/backstage-insights">
-    Explore album-level analytics in more detail.
+    Explore collection-level analytics in more detail.
   </Card>
   <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
     Return to the dashboard overview.

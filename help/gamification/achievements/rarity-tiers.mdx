@@ -2,43 +2,31 @@
 audience: help
 title: "Achievement Rarity Tiers"
 sidebarTitle: "Rarity Tiers"
-description: "Understand the rarity labels used by the current BeatPass achievement experience."
+description: "Understand the four textual rarity labels used in producer achievements."
 canonical: "https://docs.beatpass.ca/help/gamification/achievements/rarity-tiers"
 ---
 
-BeatPass uses rarity labels to help you read achievement difficulty and importance at a glance.
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
-## Current Rarity Labels
+BeatPass uses four rarity labels to describe achievement milestones.
 
-<Columns cols={2}>
-  <Card title="Common" icon="circle-check">
-    Baseline achievement rarity.
-  </Card>
-  <Card title="Rare" icon="star">
-    A stronger milestone than common achievements.
-  </Card>
-  <Card title="Epic" icon="wand-magic-sparkles">
-    A high-value achievement tier.
-  </Card>
-  <Card title="Legendary" icon="crown">
-    The rarest standout tier shown in the current producer progress styling.
-  </Card>
-</Columns>
+## Current rarity labels
 
-## Extra Label You May Encounter
+| Label | Meaning |
+| --- | --- |
+| **Common** | An accessible milestone in the collection |
+| **Rare** | A less common producer milestone |
+| **Epic** | A demanding milestone |
+| **Legendary** | The highest rarity in the current collection |
 
-Some achievement-related producer or community-style surfaces can also surface an **Uncommon** label. If you see it, treat it as a tier between Common and Rare.
+## How rarity appears
 
-## How Rarity Appears In The UI
+Rarity appears as text alongside achievement status and category. Available and unlocked achievements use the same neutral card design, so color and decoration do not carry the meaning.
 
-<AccordionGroup>
-  <Accordion title="Unlocked achievements">
-    Rarity is shown as part of the achievement badge styling and label.
-  </Accordion>
-  <Accordion title="Locked achievements">
-    Locked achievements are muted so the focus stays on whether you have unlocked them yet.
-  </Accordion>
-  <Accordion title="XP and rarity are related but not identical">
-    Higher-rarity achievements often feel more significant, but you should trust the XP shown on the live achievement itself instead of a fixed rarity-to-XP chart.
-  </Accordion>
-</AccordionGroup>
+## Rarity and XP
+
+Rarity and XP are separate. Do not estimate a reward from rarity alone. An available achievement shows its potential XP, while an unlocked achievement shows the XP actually awarded.
+
+A real 0 XP unlock can exist at any configured rarity and still count toward collection progress.
+
+<NeedHelp />

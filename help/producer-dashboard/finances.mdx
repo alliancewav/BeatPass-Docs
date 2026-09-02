@@ -2,165 +2,150 @@
 audience: help
 title: "Finances"
 sidebarTitle: "Finances"
-description: "Review payout setup, balances, BEATPAY and Stripe readiness, and payment activity inside the Producer Dashboard."
+description: "Review finance activity, earnings, currency context, and payout setup inside the Producer Dashboard."
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/finances"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
-import StripeConnectRequired from "/snippets/callouts/stripe-connect-required.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Finances** page is the earnings view inside the Producer Dashboard. It shows BEATPAY bank payout setup when your account is not payout-ready yet, or the reporting dashboard for the current artist.
+The **Finances** page helps you track every earning, see what is waiting, and manage how you get paid.
 
 <ProducerOnly />
 
-## How to Get Here
+## Open Finances
 
-Click your **profile avatar** → **Backstage**, then select **Finances** in the sidebar.
+Click your **profile avatar** → **Backstage**, then select **Finances**.
 
-## Two Page States
+If you manage more than one artist, use **Artist finances** to choose the profile you want to review. Every section updates for that artist.
+
+## Page Order
+
+The page always keeps the same order:
+
+1. **Finance activity**
+2. **Earnings**
+3. **Currency context**
+4. **Payout setup**
+
+If payout setup needs action, a short notice links to **Payout setup** without moving the section.
+
+## Finance Activity
+
+**Finance activity** is the first section because it is the record of your track sales and subscription earnings.
+
+The two summary actions show the current number of:
+
+- **Waiting** earnings
+- Earnings that **Need attention**
+
+Use the separate filters to narrow the list:
+
+| Filter | Options |
+| --- | --- |
+| **Status** | **All activity**, **Waiting**, **Sending**, **Needs attention**, **Completed**, **Refunded** |
+| **Earning type** | **All types**, **Track sales**, **Subscription earnings** |
+
+The list shows 20 records at a time. Use **Previous** and **Next** to move through history. **Showing :from–:to of :total** tells you which records are on the current page.
+
+Each row can show:
+
+- The track or subscription earning period
+- The earning type, date, and payout provider
+- The amount in its original currency
+- **Waiting**, **Sending**, **Needs attention**, **Completed**, or **Refunded**
+
+Failed payment attempts that never became earnings do not appear. A payout failure or hold on a real earning remains visible under **Needs attention**.
+
+## Earnings
+
+**Earnings** keeps every currency separate. Use **Earnings currency** when the artist has earnings in more than one currency.
+
+| Amount | What it means |
+| --- | --- |
+| **Total earned** | Successful, non-refunded track sales and eligible subscription earnings, including money still moving through payout processing |
+| **Waiting** | Earned money waiting to enter payout processing |
+| **Sending** | Money moving through the payout provider |
+| **Sent** | Money sent by the payout provider |
+
+<Note>
+  **Sent** does not confirm that money has arrived in your bank. The payout provider and receiving bank may continue processing it.
+</Note>
+
+A real zero remains visible as zero. If BeatPass cannot load earnings, the section says they are unavailable instead of replacing missing information with zero.
+
+## Currency Context
+
+**Currency context** appears as its own section when BEATPAY is available for the artist.
+
+Use **Comparison currency** to choose a currency, then select **7D**, **30D**, or **90D**. The graph shows:
+
+- The recent exchange-rate line
+- **Current**, **Low**, and **High**
+- The first and last dates in the selected range
+- A date and rate when you point to the graph or use the Left and Right Arrow keys
+
+On a touch screen, tap or drag across the graph to inspect a date. You can still
+scroll the page vertically while using the graph.
+
+<Info>
+  Historical exchange-rate context is not a payout quote. The final rate is set when a payout is created.
+</Info>
+
+An unavailable request, a period without enough history, and a same-currency selection are shown as different states.
+
+## Payout Setup
+
+**Payout setup** is BEATPAY-first.
+
+| What you see | What it means |
+| --- | --- |
+| **Set up BEATPAY** | Add a bank payout destination for eligible earnings |
+| **Upgrade to BEATPAY** | Legacy Stripe is still active and BEATPAY setup is available |
+| **BEATPAY setup is under review** | Submitted bank details are being reviewed; no new action is requested |
+| **BEATPAY is ready** | Eligible earnings use the saved BEATPAY destination |
+| **Use a different bank account** | Replace the current BEATPAY destination |
+
+If no payout destination is active yet, **Payout setup** shows **Setup required**
+and asks you to choose a bank account currency that the receiving account can
+accept. Select **Set up BEATPAY** to continue through the guided bank details
+form.
+
+BeatPass does not offer new or resumed Stripe onboarding from this page.
+
+### Legacy Stripe
+
+**Legacy Stripe** appears only when the selected artist still has an active or draining legacy account.
+
+- Before BEATPAY becomes active, Stripe can remain the current payout route.
+- After BEATPAY becomes active, Stripe may remain visible while previously routed payouts finish.
+- The Stripe balance is read-only and separate from **Earnings**.
+- Retired or incomplete Stripe setup does not create a setup action.
+
+Transaction history can still identify **Legacy Stripe** after the setup card is gone.
+
+See [BEATPAY Bank Payouts](/help/earnings/beatpay) for bank setup and [Payout Schedule](/help/earnings/payout-schedule) for status and timing definitions.
+
+## Loading and Errors
+
+**Finance activity**, **Earnings**, **Currency context**, **Payout setup**, and a legacy Stripe balance load independently. If one area is unavailable, the other sections remain usable.
+
+During a page change, the current finance activity stays visible until the next page is ready. If that request fails, use **Try again** without losing the other sections.
+
+## Related Guides
 
 <Columns cols={2}>
-  <Card title="Setup Required" icon="triangle-exclamation">
-    Onboarding when no payout route is ready for the selected producer profile.
+  <Card title="Earnings" icon="dollar-sign" href="/help/earnings">
+    Understand track sales and subscription earnings.
   </Card>
-  <Card title="Active" icon="circle-check">
-    Payout status, balances, artist switching, cache timestamps, and transaction history after at least one earnings stream is ready.
+  <Card title="BEATPAY Bank Payouts" icon="money-bill-transfer" href="/help/earnings/beatpay">
+    Set up a Wise-powered bank payout destination.
   </Card>
-</Columns>
-
-## Setup Required
-
-When setup is incomplete, BeatPass shows **Set up BEATPAY** for bank payouts powered by Wise.
-
-<StripeConnectRequired />
-
-### What Onboarding Covers
-
-<Steps>
-  <Step title="Start BEATPAY setup">
-    Click **Set up BEATPAY**.
-  </Step>
-  <Step title="Complete the requested details">
-    Choose a bank account currency your bank can receive, then enter the bank details requested for that currency. The form adapts to the currency you pick.
-  </Step>
-  <Step title="Return to BeatPass">
-    Once the selected payout setup is ready, the page switches to the active dashboard.
-  </Step>
-</Steps>
-
-### Revenue Streams Highlighted During Setup
-
-- **Monthly Payouts** - subscription revenue distribution
-- **Exclusive Sales** - exclusive beat licensing
-- **Track Purchases** - individual beat purchases
-
-## Active Dashboard
-
-Once at least one payout stream is ready, the page shows the reporting dashboard for the selected artist. The dashboard can show exclusive-sale readiness separately from subscription licensing readiness.
-
-### Header and Artist Switcher
-
-The top of the page can show:
-
-- The selected artist with an **Active** or **Setup Required** badge
-- The current subscription payout share when available
-- An artist selector when your account manages multiple artists
-- Cache timing information when the finance response includes it
-
-## Account Overview
-
-With **BEATPAY** bank payouts:
-
-| Card | What it means |
-| --- | --- |
-| **Lifetime** | Total received to date |
-| **Queued** | Earnings waiting for the next payout run |
-| **Sending** | Money on the way to your bank |
-| **Bank Account** | The bank account and currency payouts are sent to |
-
-With a legacy **Stripe Connect** account:
-
-| Card | What it means |
-| --- | --- |
-| **Balance** | Funds currently available |
-| **Upcoming** | Funds not yet available |
-| **In Transit** | Funds already moving to payout |
-| **Lifetime** | Lifetime earned volume |
-
-### Notices You May See
-
-- A cache timestamp showing when data was last refreshed
-- A stale-cache warning when data may be outdated
-- A multi-currency warning
-- A transaction-truncation warning when only recent activity is shown
-- A **Live Exchange Rate** section when BEATPAY rates are available
-
-## Transactions
-
-The lower section combines finance events into one list.
-
-### Filter Tabs
-
-| Tab | What it shows |
-| --- | --- |
-| **All** | Every transaction type |
-| **Sales** | Beat sales and exclusive purchases |
-| **Subscriptions** | Subscription payout distributions |
-| **Paid** | Completed transactions only |
-| **Pending** | Still-processing transactions |
-| **Failed** | Transactions that did not complete |
-
-### Status Labels
-
-| Status | Meaning |
-| --- | --- |
-| **Sale completed** | A direct sale completed through its established payout route |
-| **Payout queued** | A BEATPAY sale is waiting for its producer payout |
-| **Paid** | Completed successfully |
-| **Queued** | Waiting in the payout pipeline |
-| **Sending** | Transfer is being sent |
-| **Pending** | Still processing |
-| **Held** | Paused while a refund or dispute on that sale is resolved |
-| **Failed** | Did not complete |
-| **Refunded** | The sale was refunded |
-| **Excluded** | Not included in the payout distribution |
-
-<Tip>
-  Use this page to confirm the status and direction of funds. See the [Earnings docs](/help/earnings) for the payout model behind those numbers.
-</Tip>
-
-## What This Page Does Not Cover
-
-<AccordionGroup>
-  <Accordion title="Exact payout timing" icon="clock" defaultOpen>
-    The page shows status and balance data but does not promise a fixed arrival time for payouts.
-  </Accordion>
-  <Accordion title="Every payout provider control" icon="credit-card">
-    This dashboard is not a full replacement for Stripe Express, Wise, or other payout-provider account tools.
-  </Accordion>
-  <Accordion title="Perfectly fresh data on every load" icon="arrows-rotate">
-    BeatPass can reuse cached finance responses and explicitly labels them when it does.
-  </Accordion>
-</AccordionGroup>
-
-## Related
-
-<Columns cols={2}>
-  <Card title="Earnings Overview" icon="dollar-sign" href="/help/earnings">
-    Full documentation for producer payouts and reporting.
+  <Card title="Payout Schedule" icon="calendar" href="/help/earnings/payout-schedule">
+    Understand payout processing and bank arrival.
   </Card>
-  <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
-    Set up Wise-powered bank payouts when BEATPAY is available to you.
-  </Card>
-  <Card title="Stripe Connect" icon="credit-card" href="/help/earnings/stripe-connect">
-    Setup and troubleshooting guidance when Stripe Connect is shown as your current route.
-  </Card>
-  <Card title="Contribution System" icon="chart-line" href="/help/earnings/contribution-system">
-    How subscription revenue is allocated.
-  </Card>
-  <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
-    Return to the main dashboard overview.
+  <Card title="Currencies & Pricing" icon="coins" href="/help/earnings/currencies-and-pricing">
+    Review pricing and bank account currency guidance.
   </Card>
 </Columns>
 

@@ -1,93 +1,85 @@
 ---
 audience: help
 title: "Payout Schedule"
-description: "Understand how BeatPass earnings move through statuses like Queued, Sending, and Paid before the final payout destination receives funds."
+description: "Understand how earned money moves through Waiting, Sending, and Sent before bank arrival."
 sidebarTitle: "Payout Schedule"
 canonical: "https://docs.beatpass.ca/help/earnings/payout-schedule"
 ---
 
-BeatPass records each earning first, then sends eligible money through the route shown in **Finances**. Exclusive sales and subscription payouts can use different routes on the same producer account.
+import NeedHelp from "/snippets/sections/need-help.mdx";
 
-## The Two Main Earning Paths
+BeatPass records a real earning, then follows the payout route shown in **Finances**. A track sale and a subscription earning can use different providers when they were created at different stages of a payout upgrade.
 
-<Columns cols={2}>
-  <Card title="Track Sales" icon="bag-shopping">
-    Direct purchases appear in your earnings history as **Sale completed**, **Payout queued**, **Sending**, **Paid**, **Held**, **Failed**, or **Refunded**, depending on the active route and payout state.
-  </Card>
-  <Card title="Subscription Payouts" icon="repeat">
-    Subscription revenue moves through BeatPass split statuses before it is sent through the active payout route.
-  </Card>
-</Columns>
+## Finance Activity Statuses
 
-## Track-Sale Payout Statuses
+| Status | What it means |
+| --- | --- |
+| **Waiting** | The earning is recorded but has not entered payout processing |
+| **Sending** | The payout provider is processing the money |
+| **Needs attention** | A real earning has a payout failure, hold, or review that needs attention |
+| **Completed** | The payout provider completed the recorded payout step |
+| **Refunded** | The sale or earning was refunded |
 
-| Status | What It Means |
-|--------|----------------|
-| **Sale completed** | A direct sale completed through its established payout route |
-| **Payout queued** | The sale completed and its producer payout is waiting out the short refund-protection window before it moves automatically |
-| **Sending** | BeatPass is sending the producer payout |
-| **Paid** | The producer payout completed |
-| **Held** | The payout is paused while a refund or dispute on that sale is resolved |
-| **Failed** | The payout did not complete |
-| **Refunded** | The sale was refunded |
+Failed payment attempts that never became earnings do not appear in **Finance activity**.
 
-## Subscription Payout Statuses
+## Earnings Amounts
 
-BeatPass can show these statuses in **Transactions**:
+The **Earnings** section groups non-refunded earnings by currency:
 
-| Status | What It Means |
-|--------|----------------|
-| **Queued** | The split exists, but it is still waiting to move |
-| **Sending** | BeatPass is actively sending the split through the active payout route |
-| **Paid** | The split has completed its BeatPass-side payout step |
-| **Failed** | The transfer encountered an error |
-| **Excluded** | Your payout setup was not eligible when the split ran |
+| Amount | What it means |
+| --- | --- |
+| **Total earned** | Successful, non-refunded track sales and eligible subscription earnings, including money still moving |
+| **Waiting** | Earned money waiting to enter payout processing |
+| **Sending** | Money moving through the payout provider |
+| **Sent** | Money sent by the payout provider |
 
 <Info>
-  On subscription payouts, **Paid** means the BeatPass-side payout step completed. Final bank arrival can still depend on Stripe, Wise, the payout destination, and bank processing times.
+  **Sent** and **Completed** do not confirm bank arrival. The payout provider and receiving bank may continue processing the money.
 </Info>
 
-## What Account Overview Means
+## Legacy Stripe and BEATPAY
 
-Your **Account Overview** cards help you understand where money is. With **BEATPAY** bank payouts:
+If legacy Stripe is active, it remains the current route until BEATPAY becomes active. After the upgrade:
 
-| Card | Meaning |
-|------|---------|
-| **Lifetime** | Total received so far |
-| **Queued** | Waiting for the next payout run |
-| **Sending** | Already on the way to your bank |
-| **Bank Account** | Where payouts are sent |
+- New eligible earnings use BEATPAY.
+- Previously routed Stripe payouts continue through Stripe.
+- A read-only Stripe balance may remain visible while that money finishes moving.
 
-With a legacy **Stripe Connect** account:
-
-| Card | Meaning |
-|------|---------|
-| **Balance** | Ready for payout |
-| **Upcoming** | Scheduled or queued to move next |
-| **In Transit** | Already moving to your bank or payout destination |
-| **Lifetime** | Total earned so far |
+This is why older and newer rows can show different providers.
 
 ## What Can Change the Timeline
 
-The exact arrival time is not fixed by BeatPass alone. Delays or differences can come from:
+Arrival time can change because of:
 
-- Incomplete BEATPAY or Stripe Connect setup
-- Subscription splits that remain **Queued** until they can move
-- Provider verification or account review requirements
-- Bank processing times
-- Currency handling on multi-currency accounts
+- Payout setup that needs attention
+- A provider or bank account review
+- A refund or dispute hold
+- Provider processing time
+- Bank processing time
+- Currency conversion or receiving-bank checks
 
 <Warning>
-  BeatPass does not publish a guaranteed per-country payout speed in help docs because the final timing depends on the active payout route and payout destination you use.
+  BeatPass does not promise a fixed arrival time because the payout provider and receiving bank control part of the process.
 </Warning>
 
-## What to Do If Something Looks Stuck
+## If Money Looks Stuck
 
-1. Open **Backstage** → **Finances**
-2. Check whether the issue is **Payout queued**, **Queued**, **Held**, **Failed**, or **Excluded**
-3. Make sure the payout setup shown in **Finances** is active
-4. Give the provider or your bank time to finish the transfer if the money is already **In Transit**
+<Steps>
+  <Step title="Open Finance activity">
+    Go to **Backstage** → **Finances**. **Finance activity** is the first section.
+  </Step>
+  <Step title="Choose the status">
+    Select **Waiting**, **Sending**, or **Needs attention**.
+  </Step>
+  <Step title="Choose the earning type">
+    Use **Earning type** to narrow the list to **Track sales** or **Subscription earnings**.
+  </Step>
+  <Step title="Review Payout setup">
+    Follow an action only when **Payout setup** asks for one.
+  </Step>
+  <Step title="Allow for bank processing">
+    If the row is **Completed** or the amount is included in **Sent**, allow time for the receiving bank.
+  </Step>
+</Steps>
 
-If the status stays wrong for too long, contact us at **contact@beatpass.ca**.
-
-
+<NeedHelp />

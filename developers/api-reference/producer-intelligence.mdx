@@ -16,7 +16,7 @@ The Producer Intelligence API is BeatPass's comprehensive analytics and gamifica
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1/producer-intelligence`
 
-  **Authentication:** Public endpoints (leaderboards, batch growth) use optional auth. All other endpoints require a valid Bearer token.
+  **Authentication:** Legacy public leaderboards and batch growth use optional auth. Producer Dashboard leaderboards and all other endpoints require a valid Bearer token.
 </Info>
 
 ---
@@ -35,6 +35,8 @@ Producer Intelligence endpoints have route-specific rate limits:
   </Accordion>
   <Accordion title="Authenticated Endpoints" icon="user-check">
     <Badge color="orange" size="lg">500/min</Badge> — Dashboard, XP, achievements, progress data, charts, exports
+    <Badge color="yellow" size="lg">60/min</Badge> — Producer Dashboard leaderboards (scheduled snapshots)
+
 
     <Badge color="gray" size="lg">120/min</Badge> — Social analytics, collaboration network, trending
   </Accordion>
@@ -204,6 +206,103 @@ GET /api/v1/producer-intelligence/leaderboard
 ```http
 GET /api/v1/producer-intelligence/collaboration-leaderboard
 ```
+
+---
+
+## Producer Dashboard Leaderboards (Authenticated)
+
+The Producer Dashboard reads one scheduled ranking snapshot at a time. Customer requests do not trigger platform-wide leaderboard calculations.
+
+```http
+GET /api/v1/producer-intelligence/leaderboards
+```
+
+### Query Parameters
+
+| Parameter | Required | Values |
+| --- | --- | --- |
+| `artist_id` | Yes | Artist profile the authenticated user can manage |
+| `category` | Yes | `earning_share`, `progress`, `audience_plays`, `releases`, or `collaborations` |
+| `period` | Yes | `current` for earning share; `all` for progress; `7d`, `30d`, or `all` for activity categories |
+
+Rate limit: **60 requests/minute**.
+
+### Ranking Definitions
+
+| Category | Definition | Scope |
+| --- | --- | --- |
+| `earning_share` | Current contribution share using the canonical producer-finance contribution pool | Artist |
+| `progress` | Cumulative producer-account XP | Producer account |
+| `audience_plays` | Track-play events on public attributed tracks, excluding known artist-team users while retaining anonymous plays | Artist |
+| `releases` | Public attributed tracks created in the selected period | Artist |
+| `collaborations` | Public attributed tracks credited to at least two artists and created in the selected period | Artist |
+
+The `7d` and `30d` periods use exact `[start, end)` rolling boundaries. `all` has no lower boundary. Equal values use standard competition ranking, so values such as `100, 100, 90` receive ranks `1, 1, 3`.
+
+### Response
+
+The response contains the top 20, the requested producer's entry, and up to one adjacent entry above and below when that producer is outside the top 20.
+
+```json
+{
+  "category": "audience_plays",
+  "scope": "artist",
+  "period": {
+    "key": "30d",
+    "start": "2026-07-23T12:00:00+00:00",
+    "end": "2026-08-22T12:00:00+00:00"
+  },
+  "generatedAt": "2026-08-22T12:00:00+00:00",
+  "sourceUpdatedAt": null,
+  "isStale": false,
+  "participantCount": 42,
+  "leaders": [
+    {
+      "rank": 1,
+      "artist": {
+        "id": 2036,
+        "name": "Producer",
+        "image": null,
+        "url": "/artist/2036/producer"
+      },
+      "value": 320,
+      "context": {
+        "playedTracks": 8
+      }
+    }
+  ],
+  "current": {
+    "eligible": true,
+    "reason": null,
+    "entry": {
+      "rank": 1,
+      "artist": {
+        "id": 2036,
+        "name": "Producer",
+        "image": null,
+        "url": "/artist/2036/producer"
+      },
+      "value": 320,
+      "context": {
+        "playedTracks": 8
+      }
+    },
+    "nearby": []
+  }
+}
+```
+
+`current.reason` is one of `no_public_tracks`, `no_contribution`, `no_activity`, or `null`. A stale snapshot remains usable with `isStale: true`. The endpoint returns `503` only when no current or stale snapshot exists.
+
+### Errors
+
+| Status | Meaning |
+| --- | --- |
+| `401` | Authentication is required |
+| `403` | The authenticated user cannot access the requested artist |
+| `404` | The requested artist does not exist |
+| `422` | A parameter is invalid or the category-period combination is unsupported |
+| `503` | No usable scheduled snapshot is available |
 
 ---
 

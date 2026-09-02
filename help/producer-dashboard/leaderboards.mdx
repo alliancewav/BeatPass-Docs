@@ -2,121 +2,114 @@
 audience: help
 title: "Leaderboards"
 sidebarTitle: "Leaderboards"
-description: "See how rankings work, switch between categories, and understand what each leaderboard measures."
+description: "Compare earning share, producer progress, audience plays, releases, and collaborations with clear ranking rules."
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/leaderboards"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Leaderboards** page compares your artist profile against other BeatPass producers across seven categories. It is a comparison tool, not a guarantee of promotion or visibility.
+The **Leaderboards** page helps you understand where you stand using separate, clearly labeled measures. **Earning share** appears first because it connects directly to the contribution information used in **Finances**.
 
 <ProducerOnly />
 
-## How to Get Here
+## Open Leaderboards
 
 Click your **profile avatar** → **Backstage**, then select **Leaderboards** in the sidebar.
 
-## What the Page Includes
+The page always follows this order:
 
-<Columns cols={3}>
-  <Card title="Your rank" icon="medal">
-    Header card showing your visible rank for the selected category.
-  </Card>
-  <Card title="Category selector" icon="filter">
-    Switch between ranking categories without leaving the page.
-  </Card>
-  <Card title="Ranking view" icon="trophy">
-    Top placements, full list entries, and the **How it works** guide.
-  </Card>
-</Columns>
+1. **Earning share**
+2. **Producer rankings**
 
-## Categories
+If you manage more than one artist profile, use **Artist profile** above the sections to choose which artist you want to review. **Progress** remains account-wide when you switch artists.
 
-| Category | What it focuses on |
-| --- | --- |
-| **Overall** | Composite performance across multiple producer signals |
-| **Quality** | Metadata completeness and track detail quality |
-| **Uploads** | Published output volume |
-| **Plays** | Listening activity |
-| **Points** | XP and achievement-related progress |
-| **Earnings** | Earnings and contribution-related signals |
-| **Collab** | Collaborative output and partner activity |
+## Earning Share
 
-<Note>
-  The page uses category-specific score labels. Depending on the category, BeatPass may show plays, uploads, quality percentage, points, earnings values, or collaboration signals.
-</Note>
+**Earning share** compares each ranked artist's current contribution share. It uses the same current contribution formula as **Finances**, but it never shows anyone's private earnings amount.
 
-## How to Read the Page
+Each row shows:
 
-### Your Rank Card
+- Rank
+- Producer name and profile link
+- Earning share
+- Number of contributing tracks
 
-If BeatPass can place your artist in the current leaderboard response, the header shows your rank. Otherwise a dash appears instead.
-
-### Category Switching
-
-Select a category to change the ranking view. The page keeps previous results visible while the next category loads so you do not lose context during the refresh.
-
-### Ranking Layout
-
-The results area is split into:
-
-- A **top placement section** for the highest-ranked producers
-- A larger **ranking list** for the rest of the returned entries
-
-Each row can include producer identity, rank, category score, and supporting metadata. Select **How it works** to open the in-app rankings guide explaining the scoring logic.
-
-## What Each Category Rewards
-
-<AccordionGroup>
-  <Accordion title="Overall" icon="star" defaultOpen>
-    A blended score tied to points, plays, uploads, metadata quality, collaboration, and earnings.
-  </Accordion>
-  <Accordion title="Quality" icon="circle-check">
-    Better track detail — BPM, key, scale, tags, and metadata completeness.
-  </Accordion>
-  <Accordion title="Uploads" icon="music">
-    Published track volume connected to your producer profile.
-  </Accordion>
-  <Accordion title="Plays" icon="play">
-    Listening activity across your catalog.
-  </Accordion>
-  <Accordion title="Points" icon="bolt">
-    XP and achievement progress.
-  </Accordion>
-  <Accordion title="Earnings" icon="dollar-sign">
-    Revenue and contribution-oriented signals.
-  </Accordion>
-  <Accordion title="Collab" icon="users">
-    Work created with collaborators and partner activity.
-  </Accordion>
-</AccordionGroup>
-
-## Things to Keep in Mind
-
-- Rankings change as source data updates
-- Strong placement in one category does not guarantee strong placement in another
-- Metadata quality matters even when it does not immediately increase plays
-- Not every producer appears in every returned ranking list
+An artist needs at least one track on BeatPass to join producer rankings. An eligible artist without a current contribution share is not ranked in this view.
 
 <Tip>
-  To improve your standing, start with the category description, then open the dashboard page that can improve that signal — for example, [My Beats](/help/producer-dashboard/tracks) for quality and uploads, or [Progress](/help/producer-dashboard/progress) for points.
+  Select **View your earnings** to open [Finances](/help/producer-dashboard/finances) and review your own currency-specific totals and payout stages.
 </Tip>
+
+## Producer Rankings
+
+Use **Ranking** to compare one measure at a time:
+
+| Ranking | What it measures | Scope |
+| --- | --- | --- |
+| **Progress** | Cumulative XP earned by the producer account | All time |
+| **Audience plays** | Plays from listeners who are not part of the artist team | 7 days, 30 days, or all time |
+| **Releases** | Tracks added to BeatPass during the selected period | 7 days, 30 days, or all time |
+| **Collaborations** | Collaborative tracks released during the selected period | 7 days, 30 days, or all time |
+
+On narrow screens, **Ranking** and **Period** use native selection fields. On wider screens, they appear as grouped controls.
+
+### Time Periods
+
+**7 days** and **30 days** are exact rolling periods ending when the ranking snapshot updates. **All time** has no artificial start date. **Progress** is cumulative, so it always uses all-time XP. Each artist profile appears once through its canonical producer account, so additional team access cannot create a duplicate producer row.
+
+### Audience Plays
+
+Known plays from people who manage the ranked artist are excluded. Anonymous listener plays can still count. This keeps the ranking focused on audience response instead of artist-team activity.
+
+### Releases and Collaborations
+
+Tracks published on BeatPass count. A collaboration is a track credited to at least two artist profiles. These rankings count released tracks, not an opaque combined score.
+
+## How Positions Work
+
+- Equal results share the same rank
+- The next rank skips the positions occupied by a tie
+- BeatPass shows the top 20 producers for the selected view
+- If you are outside the top 20, **Your position** shows your row with a nearby producer above and below when available
+- The participant total describes producers who are ranked in the current view, not every eligible artist on BeatPass
+
+Select **Read the Leaderboards guide** to open this guide from the dashboard.
+
+## Update and Error States
+
+Rankings are prepared in the background and normally refresh about every five minutes. This avoids running platform-wide calculations while producers open the page.
+
+- **Showing the most recent available ranking.** means the latest usable snapshot is being shown
+- **Ranking update failed. Showing the last available result.** keeps previously loaded rankings visible after a background update fails
+- **Producer rankings are temporarily unavailable** appears only when no usable result is available
+- A genuine no-activity state is explained separately and is never replaced with a realistic-looking zero
+
+## Use Rankings Constructively
+
+Each view points to a real part of your producer work:
+
+- Review [Finances](/help/producer-dashboard/finances) for your private earning details
+- Review [Progress](/help/producer-dashboard/progress) for XP sources and achievements
+- Review [Activity](/help/producer-dashboard/activity) for audience response and downloads
+- Use [My Beats](/help/producer-dashboard/tracks) to maintain releases and collaboration credits
+
+Rankings are a comparison tool, not a promise of promotion, visibility, or future earnings.
 
 ## Related
 
 <Columns cols={2}>
-  <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
-    Improve the points signals behind the Points leaderboard.
+  <Card title="Finances" icon="credit-card" href="/help/producer-dashboard/finances">
+    Review your private earnings, finance activity, and payout setup.
   </Card>
-  <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
-    Improve metadata quality, uploads, and collaboration signals.
+  <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
+    Understand cumulative XP, earning rules, and achievements.
   </Card>
   <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
-    Follow uploads and downloads over time.
+    Review audience activity, downloads, and upload rhythm.
   </Card>
-  <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
-    Return to the dashboard overview.
+  <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
+    Maintain public releases, metadata, and collaboration credits.
   </Card>
 </Columns>
 

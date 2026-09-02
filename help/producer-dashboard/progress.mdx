@@ -2,123 +2,87 @@
 audience: help
 title: "Progress"
 sidebarTitle: "Progress"
-description: "Track your level, XP, refresh status, and achievements on the Progress page."
+description: "Review your producer level, recent XP, earning rules, and achievements."
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/progress"
 ---
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Progress** page is the XP and achievements view of the Producer Dashboard. It shows your level, current XP, remaining XP to the next level, and the achievements you have unlocked or still have left to earn.
+The **Progress** page explains how your producer account earns XP and how close you are to the next level. It also keeps available and unlocked achievements in one collection.
 
 <ProducerOnly />
 
-## How to Get Here
+## Open Progress
 
-Click your **profile avatar** → **Backstage**, then select **Progress** in the sidebar.
+Click your **profile avatar** in the top navigation bar, select **Backstage**, then select **Progress** in the sidebar.
 
-## Main Areas
+The page is organized as **Progress**, **Earn XP**, and **Achievements**.
 
-<Columns cols={3}>
-  <Card title="Level summary" icon="bolt">
-    Current level title, XP, progress ring, and XP to next level.
-  </Card>
-  <Card title="XP actions" icon="wand-magic-sparkles">
-    The main ways BeatPass awards XP.
-  </Card>
-  <Card title="Achievements" icon="award">
-    Unlocked achievements, locked achievements, and total XP earned from them.
-  </Card>
-</Columns>
+## Progress
 
-## Level Summary
+**Your progress** shows:
 
-The header is built around your current progress state:
+- Your current level number and producer title
+- Your cumulative XP
+- A linear bar showing progress within the current level
+- The exact XP threshold for the next level
+- Up to five of your most recent XP awards, with the source and date
 
-- Your current level title and level number
-- Total XP earned so far
-- A progress ring showing progress toward the next level
-- Remaining XP needed to level up
+A new account starts at Level 1 with 0 XP. This is a valid starting state. At Level 100, the page shows **Maximum level reached** instead of a next-level remainder.
 
-## How XP Is Awarded
+Select **How progress works** for a short explanation of account scope, one-time track awards, achievement rewards, and update timing.
 
-Select the **How XP Works** button in the status bar to open the in-app guide. Current base sources:
+## Earn XP
 
-| Action | XP |
-| --- | --- |
-| **Upload Tracks** | +100 XP per track |
-| **Get Plays** | +1 XP per play |
-| **Complete Metadata** | +50 XP per complete track |
-| **Collaborate** | +25 XP per collaboration |
-| **Achievements** | 100–10,000 XP depending on the achievement |
+**Earn XP** uses the current reward amounts supplied by BeatPass. Each row explains when the award can be earned and links to a relevant producer action when one is available.
 
-<Note>
-  Collaborative play XP depends on collaborator profile completion. Some special achievements count toward progress while awarding 0 XP.
-</Note>
+| Action | Current award | When it is counted |
+| --- | ---: | --- |
+| **Upload a track** | +100 XP | Once for each eligible track |
+| **First counted play** | +1 XP | Once when an eligible track receives its first counted play |
+| **Complete track details** | +50 XP | Once when an eligible track has complete metadata |
+| **Collaborate on a track** | +25 XP | Once for each eligible collaborative track credited to your account |
+| **Unlock achievements** | Varies | Once for each achievement |
 
-## Refresh Behaviour
-
-The status bar above the XP actions includes:
-
-- The last updated time for the current progress snapshot
-- The **How XP Works** button
-- A manual **Refresh** button
-
-Use **Refresh** when you want BeatPass to request newer progress data. New events may not appear instantly without a refresh.
+Audience plays are shown as information. Do not create artificial plays to pursue XP.
 
 ## Achievements
 
-### Summary Cards
+The **Achievements** summary features **Collection progress** with your unlocked count and percentage, plus the XP actually awarded by achievements and your latest unlock date.
 
-| Card | What it tracks |
-| --- | --- |
-| **Unlocked** | Achievements already earned |
-| **Locked** | Achievements still available |
-| **Total XP Earned** | XP received from achievements |
+Use **Status** to choose **Available**, **Unlocked**, or **All**. Use **Category** to narrow the collection. The default view is **Available**, and eight achievements appear per page. **Previous** and **Next** appear only when the filtered collection needs more than one page.
 
-### Achievement Details
+Each achievement separates two values:
 
-Each entry can show:
+- An available achievement shows the XP it can award
+- An unlocked achievement shows the XP actually added to your account
 
-- Achievement name and description
-- Locked or unlocked state with rarity styling
-- XP reward
-- Unlocked time for earned achievements
+A real 0 XP unlock is shown as **No XP bonus**. It still counts as unlocked.
 
-Locked achievements stay visible so you can see what still counts toward your next milestones.
+Select **View Producer Leaderboards** to compare producer activity. Rankings remain separate from your personal Progress view.
 
-<Tip>
-  Use the [My Beats](/help/producer-dashboard/tracks) and [Activity](/help/producer-dashboard/activity) pages alongside this one. Uploads, plays, metadata quality, and collaboration signals all turn into XP here.
-</Tip>
+## Updates and unavailable states
 
-## Common States
+Progress refreshes automatically in the background. A short delay can occur after eligible activity. If a refresh fails, previously loaded information stays visible with **Try again**. If the first request fails, BeatPass shows that Progress is temporarily unavailable; it does not treat missing information as 0 XP. Level and achievement information can remain available while supplementary **Recent XP** or **Earn XP** details are temporarily unavailable.
 
-<AccordionGroup>
-  <Accordion title="No progress yet" icon="circle-info" defaultOpen>
-    New producers see a nearly empty progress state until they upload tracks and start generating activity.
-  </Accordion>
-  <Accordion title="Achievements still locked" icon="lock">
-    Locked achievements remain visible so you know what still counts toward future progress.
-  </Accordion>
-  <Accordion title="Recent progress not visible" icon="arrows-rotate">
-    Use the **Refresh** button if new uploads or milestones have not appeared yet.
-  </Accordion>
-</AccordionGroup>
-
-## Related
+## Related guides
 
 <Columns cols={2}>
-  <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
-    See how your points compare with other producers.
+  <Card title="Earning XP" icon="bolt" href="/help/gamification/xp-system/earning-xp">
+    Review each XP source and its one-time award rule.
+  </Card>
+  <Card title="Achievements" icon="award" href="/help/gamification/achievements">
+    Understand available rewards, unlocks, and rarity labels.
   </Card>
   <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
-    Improve uploads, metadata, and collaborations.
+    Review tracks, details, and collaborations.
   </Card>
   <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
-    Follow the activity that feeds your progress.
+    Review audience response and your upload rhythm.
   </Card>
-  <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
-    Return to the dashboard overview.
+  <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
+    Compare producer activity in the dedicated ranking view.
   </Card>
 </Columns>
 

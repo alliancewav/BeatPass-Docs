@@ -9,7 +9,7 @@ canonical: "https://docs.beatpass.ca/help/earnings"
 import PlatformFee from "/snippets/callouts/platform-fee.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass gives producers two main ways to earn: direct track sales and subscription-based payouts. Your **Producer Finances** page shows payout readiness, account balances, and transaction history in one place.
+BeatPass gives producers two main ways to earn: direct track sales and subscription-based payouts. Your **Producer Finances** page shows currency-specific earnings, finance activity, and payout readiness in one place.
 
 <PlatformFee />
 
@@ -26,7 +26,7 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
     If another producer is excluded from a subscription split because their payout setup is incomplete, eligible producers can receive redistributed value.
   </Card>
   <Card title="Producer Finances" icon="chart-bar">
-    Use **Producer Finances** to see your **Account Overview** cards — lifetime earnings, money queued or on the way to your bank — and your transaction list.
+    Use **Producer Finances** to review **Total earned**, **Waiting**, **Sending**, and **Sent** in one currency at a time, then use **Finance activity** for individual records.
   </Card>
 </Columns>
 
@@ -34,7 +34,7 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
 
 <Steps>
   <Step title="Set up payouts">
-    Open **Backstage** and go to **Finances**, then click **Set up BEATPAY**. Choose a bank account currency that your bank can receive and add your bank details once. Producers with an existing Stripe Connect account keep receiving payouts through Stripe until their BEATPAY setup is active.
+    Open **Backstage** and go to **Finances**, then click **Set up bank payouts**. Choose a bank account currency that your bank can receive and add your bank details once. Producers with an existing Stripe Connect account keep receiving payouts through Stripe until their BEATPAY setup is active.
   </Step>
   <Step title="Upload and price your music">
     Add tracks to your catalog and configure sales or exclusivity where appropriate.
@@ -43,7 +43,7 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
     Track sales generate direct revenue. Subscription payouts are calculated from contribution value and platform participation.
   </Step>
   <Step title="Track payout status">
-    BeatPass records statuses like **Queued**, **Sending**, **Paid**, **Failed**, and **Excluded** so you can see where money is in the process.
+    BeatPass groups finance activity as **Waiting**, **Sending**, **Completed**, **Needs attention**, or **Refunded** so you can see where money is in the process.
   </Step>
   <Step title="Receive payouts through the active route">
     Once funds are eligible to move, BeatPass sends each earnings stream through the route shown for it in **Finances**.
@@ -63,7 +63,7 @@ BeatPass gives producers two main ways to earn: direct track sales and subscript
     Current paid BeatPass plans are listed in **CAD**.
   </Card>
   <Card title="Multi-Currency Support" icon="chart-line">
-    **Producer Finances** can show mixed-currency balances and warns you when the account includes more than one currency.
+    **Producer Finances** keeps currencies separate and adds an **Earnings currency** selector when more than one currency is available.
   </Card>
 </Columns>
 

@@ -2,7 +2,7 @@
 audience: help
 title: "BEATPAY Bank Payouts"
 sidebarTitle: "BEATPAY"
-description: "Set up BEATPAY bank payouts and understand how exclusive-sale and subscription earnings reach you."
+description: "Set up BEATPAY and understand how eligible producer earnings reach your bank."
 keywords: ["beatpay", "wise payouts", "bank payouts", "producer payouts", "producer finances"]
 canonical: "https://docs.beatpass.ca/help/earnings/beatpay"
 ---
@@ -10,41 +10,42 @@ canonical: "https://docs.beatpass.ca/help/earnings/beatpay"
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-**BEATPAY** is BeatPass's bank payout setup for eligible producers. It is powered by Wise and appears inside **Producer Finances** when it is available for your account.
+**BEATPAY** is BeatPass's bank payout setup for eligible producers. It is powered by Wise and appears inside **Producer Finances** when it is available for an artist.
 
 <ProducerOnly />
-
-<Info>
-  If you see **Set up BEATPAY** in **Finances**, complete it to prepare eligible exclusive-sale and subscription-pool bank payouts. **Finances** always shows which earnings streams are active for your account.
-</Info>
 
 ## What BEATPAY Does
 
 <Columns cols={2}>
-  <Card title="Bank payouts" icon="money-bill-transfer">
-    Set up a bank account so future eligible earnings can be paid through BEATPAY.
+  <Card title="Bank destination" icon="money-bill-transfer">
+    Save a bank destination for eligible BeatPass earnings.
   </Card>
-  <Card title="All earnings, one setup" icon="circle-check">
-    Once active, BEATPAY handles all your new earnings — subscription payouts and exclusive sales — in one place.
+  <Card title="One current route" icon="route">
+    Once BEATPAY is active, new eligible earnings use the saved bank destination.
   </Card>
   <Card title="Currency context" icon="chart-line">
-    Review source currency, payout currency, exchange-rate movement, and estimated arrival timing when rates are available.
+    Compare recent exchange-rate history before a payout is created.
   </Card>
   <Card title="Masked account display" icon="shield-halved">
-    BeatPass shows only enough masked account detail to help you recognize the saved bank account.
+    Recognize the saved destination without displaying full bank details.
   </Card>
 </Columns>
 
-## Where You See It
+## Where BEATPAY Appears
 
-Open **Backstage** and go to **Finances**. Eligible producers can see one or more of these BEATPAY areas:
+Open **Backstage** → **Finances**, then review **Payout setup**.
 
-- **Set up BEATPAY** on the finance setup card
-- **BEATPAY bank payouts** with **Powered by Wise**
-- **Live Exchange Rate** for bank payout currency context
-- **Bank account ready**, **Bank payouts active**, or **Bank setup needs a quick review** after setup starts
+You may see:
 
-You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your account. Choose **Set up bank payouts** to start, or **Maybe later** if you are not ready.
+| Label | What it means |
+| --- | --- |
+| **Set up BEATPAY** | No BEATPAY bank destination is active yet |
+| **Upgrade to BEATPAY** | An active legacy Stripe account remains the current route and BEATPAY is available |
+| **BEATPAY setup is under review** | Submitted details are being reviewed |
+| **BEATPAY is ready** | Eligible earnings use the saved destination |
+| **Use a different bank account** | Replace the current BEATPAY destination |
+
+New and resumed Stripe setup are not offered from **Finances**.
 
 ## Set Up BEATPAY
 
@@ -52,125 +53,110 @@ You may also see a payout-upgrade prompt when BeatPass can offer BEATPAY to your
   <Step title="Open Producer Finances">
     Click your **profile avatar**, open **Backstage**, then select **Finances**.
   </Step>
-  <Step title="Start bank payout setup">
-    Click **Set up BEATPAY** in **Finances**. If the upgrade prompt appears first, click **Set up bank payouts**.
+  <Step title="Start BEATPAY">
+    In **Payout setup**, select **Set up BEATPAY**. If legacy Stripe is active, select **Upgrade to BEATPAY**.
   </Step>
   <Step title="Choose bank account currency">
-    Select **Bank account currency**. Choose a currency that the receiving bank account can accept; it does not need to be your country's local currency.
+    Select **Bank account currency**. Choose a currency that the receiving bank account can accept.
   </Step>
-  <Step title="Continue to bank details">
-    Click **Continue to bank details**, then enter the requested bank account information. Depending on the account type, you may also see **Legal name on the bank account** and **Bank account type**.
+  <Step title="Enter bank details">
+    Select **Continue to bank details**, then enter the requested information for the bank account.
   </Step>
-  <Step title="Save and finish">
-    Click **Save bank details**. When the success screen appears, click **Done**.
+  <Step title="Save the destination">
+    Select **Save bank details**. When setup is complete, select **Done**.
   </Step>
 </Steps>
 
 <Note>
-  After your bank account is active, all new earnings — subscription-pool payouts and eligible exclusive sales — are paid through BEATPAY. If you previously used Stripe Connect, Stripe keeps paying out only until that moment; its remaining balance still reaches your bank, and the old account then closes automatically. **Finances** shows the status of each earnings stream.
+  BEATPAY affects how eligible earnings reach you. It does not change your earning share or the amount recorded for a track sale or subscription earning.
 </Note>
 
-## How Your Bank Details Are Handled
+## If You Currently Use Legacy Stripe
 
-BEATPAY bank details are entered in the BeatPass setup form and sent through an authenticated BeatPass request to Wise, the payout provider. BeatPass does not retain the full bank account number, routing details, IBAN, full payout address, date of birth, or tax or national identifier submitted for Wise recipient setup.
+You do not need to remove Stripe before setting up BEATPAY.
 
-BeatPass keeps the information needed to operate and support payouts: the legal account-holder name, Wise recipient and profile references, bank account currency and country, route type, setup and verification status, relevant timestamps and audit metadata, and masked account summaries that help you recognize the saved destination. Wise retains the complete recipient details under its own privacy, retention, and legal obligations.
+- Legacy Stripe remains the current route until BEATPAY is active.
+- If BEATPAY details are under review, **Payout setup** explains that Stripe remains current.
+- After BEATPAY is active, new eligible earnings use BEATPAY.
+- Stripe can remain visible while previously routed payouts and its remaining balance finish.
+- Stripe information on **Finances** is read-only.
 
-<Info>
-  This is different from legacy Stripe Connect. Stripe onboarding is hosted by Stripe, so identity and bank details for that flow are entered on Stripe. See [Stripe Connect (Legacy)](/help/earnings/stripe-connect) and the [official Privacy Policy](https://open.beatpass.ca/pages/privacy-policy).
-</Info>
+Retired or incomplete Stripe records do not create a setup action. Historical finance activity can still identify **Legacy Stripe** as the provider for an older earning.
 
-## Choose a Supported Bank Account Currency
+## Choose a Bank Account Currency
 
-BEATPAY shows only the currencies currently available for adding a bank recipient through BeatPass's Wise-powered payout account. This is not a list of every currency used in your country.
+BEATPAY lists bank account currencies available for the Wise-powered payout destination. The list may not include every currency used in your country.
 
-Your **Bank account currency** can be different from your country's local currency. It must be a currency that the receiving bank account accepts.
+Your bank account currency can differ from your local currency, but the receiving account must accept it.
 
 <Steps>
   <Step title="Check with your bank">
-    If your local currency is not listed, ask your bank whether the account can receive a listed currency such as USD, EUR, or GBP.
+    Ask which listed currencies the account can receive.
   </Step>
-  <Step title="Choose the compatible currency">
-    Select only the currency your bank confirms it can receive. Your bank may convert the payment or charge a receiving or conversion fee.
+  <Step title="Choose a compatible currency">
+    Select only a currency your bank confirms it can accept. The receiving bank may convert the payment or charge a fee.
   </Step>
-  <Step title="Choose the matching bank route">
+  <Step title="Choose the matching route">
     For USD, choose **ACH** when you have US bank details. Choose **SWIFT** when a bank outside the US accepts USD and provides SWIFT details.
   </Step>
 </Steps>
 
 <Info>
-  **Jamaica example:** JMD is not currently available for direct BEATPAY recipient setup. If your Jamaican bank confirms that your account can receive USD, select **USD** and enter the bank's **SWIFT** details. Do not select USD unless the receiving account accepts it.
+  **Jamaica example:** If JMD is not available and your Jamaican bank confirms that the account can receive USD, select **USD** and enter the bank's **SWIFT** details.
 </Info>
 
-## BEATPAY Statuses
+## Currency Context
 
-| Status or label | What it means |
-| --- | --- |
-| **Not started** | No BEATPAY bank account has been saved for the selected artist yet |
-| **Bank account ready** | Your bank account is saved; **Finances** shows which earnings are ready to use it |
-| **Bank payouts active** | BEATPAY is the active payout route for eligible earnings |
-| **Bank setup needs a quick review** | BeatPass or the payout provider needs more time or updated details before the bank account is ready |
-| **Use a different bank account** | Replace the saved active bank account with another one |
-| **Start over with a different bank account** | Remove a pending setup and begin again with new bank details |
+The separate **Currency context** section in **Finances** uses the BeatPass payout source currency and your saved bank currency. Before a destination is saved, it uses a comparison currency you can change.
 
-## Currency and Arrival Details
-
-When exchange-rate details are available, **Finances** can show:
-
-- **Source currency** - the currency BeatPass currently uses for the payout source
-- **Payout currency** - the bank account currency you choose during setup
-- **Live Exchange Rate** - recent exchange-rate movement for the selected currency pair
-- **Estimated payout arrival** - an estimate such as **Usually 1-2 business days**, **Arrives within the hour**, or **Arrives in about 1 day**
-- **Good to know** - BeatPass covers the transfer fee, so you receive your full payout
+Select **7D**, **30D**, or **90D** to review the recent rate, low, and high. Point to the graph or use the Left and Right Arrow keys to inspect a date.
 
 <Warning>
-  Exchange rates and arrival estimates can change. Use **Finances** for the latest available status before relying on a payout timeline.
+  Historical exchange-rate context is not a payout quote. The rate used for a payout can differ from the graph.
 </Warning>
 
-## What Does Not Change
+## How Bank Details Are Handled
 
-- Your existing Stripe Connect account keeps paying out until your BEATPAY setup is active; its remaining balance still reaches your bank before the old account closes
-- Your contribution share and payout formulas do not change because you set up BEATPAY
-- Your transaction history remains in **Finances**
-- **Sale completed**, **Payout queued**, **Queued**, **Sending**, **Paid**, **Held**, **Failed**, **Refunded**, and **Excluded** describe the relevant sale or subscription state
+BEATPAY sends the bank details entered during setup to Wise, the payout provider. BeatPass does not keep the full bank account number, routing details, IBAN, full payout address, date of birth, or tax or national identifier submitted for setup.
+
+BeatPass keeps the account-holder name, bank account currency and country, setup and verification status, and masked details that help you recognize the destination. Wise keeps the complete recipient details under its own privacy and legal obligations.
+
+See the [official Privacy Policy](https://open.beatpass.ca/pages/privacy-policy) for more information.
 
 ## Common Questions
 
 <AccordionGroup>
-  <Accordion title="Why do I not see BEATPAY yet?">
-    BEATPAY appears when it is available for your producer account. Keep the payout setup shown in **Finances** active and check there for new setup options.
+  <Accordion title="Why do I not see BEATPAY?">
+    BEATPAY appears when it is available for the selected artist. **Payout setup** shows the current option or state.
   </Accordion>
-  <Accordion title="Do I need to remove Stripe Connect first?">
-    No. Just set up BEATPAY — there is nothing to remove. Your Stripe account keeps paying out until your bank setup is active. After that, all new earnings use BEATPAY, any remaining Stripe balance still reaches your bank, and the old Stripe account closes automatically.
+  <Accordion title="Do I need to remove Stripe first?">
+    No. Select **Upgrade to BEATPAY** when it appears. Stripe remains the current route until BEATPAY becomes active.
   </Accordion>
   <Accordion title="Does BEATPAY change my earnings share?">
-    No. BEATPAY changes how eligible money reaches you, not how BeatPass calculates the underlying earning.
+    No. BEATPAY changes the payout destination for eligible earnings, not how BeatPass calculates the earning.
   </Accordion>
   <Accordion title="Why is my country's currency not listed?">
-    BEATPAY lists bank account currencies that are currently available for recipient setup. Ask your bank whether your account can receive another listed currency, such as USD, EUR, or GBP. Select an alternative only when your bank confirms the account can receive it.
+    The list contains bank account currencies currently available for setup. Ask your bank whether the account can receive another listed currency.
   </Accordion>
-  <Accordion title="Where do I check payout problems?">
-    Open **Backstage** → **Finances** and review the current setup state, transaction statuses, and any prompt asking for more information.
+  <Accordion title="Where do I check a payout problem?">
+    Open **Backstage** → **Finances**. In **Finance activity**, select **Needs attention**. Also review **Payout setup** for an action.
   </Accordion>
 </AccordionGroup>
 
 ## Related
 
 <Columns cols={2}>
-  <Card title="Producer Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
-    Understand why active BEATPAY is required to unlock and keep a Pro Page live.
-  </Card>
   <Card title="Producer Finances" icon="chart-line" href="/help/producer-dashboard/finances">
-    Review finance status, balances, and transaction history.
-  </Card>
-  <Card title="Payout Eligibility" icon="circle-check" href="/help/earnings/payout-eligibility">
-    Understand what must be ready before payouts can move.
+    Review finance activity, earnings, currency context, and payout setup.
   </Card>
   <Card title="Payout Schedule" icon="calendar" href="/help/earnings/payout-schedule">
-    Learn how payout statuses move from queued to paid or failed.
+    Understand Waiting, Sending, Completed, Refunded, and bank arrival.
+  </Card>
+  <Card title="Payout Eligibility" icon="circle-check" href="/help/earnings/payout-eligibility">
+    Understand what must be ready before an earning can move.
   </Card>
   <Card title="Currencies & Pricing" icon="money-bill-transfer" href="/help/earnings/currencies-and-pricing">
-    Understand pricing currencies, payout currencies, and conversion expectations.
+    Understand pricing and bank account currencies.
   </Card>
 </Columns>
 

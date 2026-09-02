@@ -30,7 +30,7 @@ The Producer Dashboard is your central workspace for managing your catalog, moni
 
 ## Open the Dashboard
 
-Click your **profile avatar** in the top navigation bar, then select **Backstage**. Use the sidebar to navigate between dashboard pages.
+Click your **profile avatar** in the top navigation bar, then select **Backstage**. Use the sidebar to navigate between dashboard pages. Producer profile owners can open **Pro Page** immediately after **My Collections**; the page shows whether the selected profile is locked, ready, live, or needs attention.
 
 <Note>
   If your account does not have a linked artist profile, the dashboard shows a "No Artist Profile" state instead of redirecting. Complete your [Producer Program application](/help/producer-program) first.
@@ -40,28 +40,28 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
 
 <Columns cols={3}>
   <Card title="Dashboard" icon="house" href="/help/producer-dashboard/home">
-    Greeting, shortcut cards, and a quick stats snapshot.
+    Producer tools and a performance snapshot for the selected producer profile.
   </Card>
   <Card title="Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
-    Unlock, prepare, share, and measure your focused storefront.
+    Prepare, unlock, share, and measure one focused producer storefront.
   </Card>
   <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
     Audience downloads, listener activity, licenses, and your yearly upload rhythm.
   </Card>
   <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
-    Track catalog, growth status, collaboration insights, and recommendations.
+    Beat catalog management, concise legacy-detail review, and profile-genre collaboration connections.
   </Card>
   <Card title="My Collections" icon="compact-disc" href="/help/producer-dashboard/albums">
-    Album stats, filters, and quick links to edit or view insights.
+    Collection management, release details, and labeled editing or insight actions.
   </Card>
   <Card title="Finances" icon="credit-card" href="/help/producer-dashboard/finances">
-    Payout setup status, balances, and transaction history.
+    Currency-specific earnings, finance activity, and payout setup states.
   </Card>
   <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
-    Rankings across Overall, Quality, Uploads, Plays, Points, Earnings, and Collab.
+    Earning share first, followed by clear progress and activity rankings.
   </Card>
   <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
-    Level, XP, achievements, and manual refresh controls.
+    Level progress, recent XP, earning rules, and achievements.
   </Card>
 </Columns>
 
@@ -69,7 +69,7 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
 
 <AccordionGroup>
   <Accordion title="Artist context" icon="user" defaultOpen>
-    Most pages load data for your linked artist profile. The **Finances** page can also show an artist switcher when your account manages more than one artist.
+    Most pages load data for your linked artist profile. **Pro Page**, **My Beats**, **My Collections**, **Finances**, and **Leaderboards** can show an artist switcher when your account manages more than one artist. Pro Page, My Beats, and My Collections keep that choice in the URL. The **Progress** ranking remains account-wide.
   </Accordion>
   <Accordion title="Overview first, editing second" icon="table-columns">
     The dashboard is designed for quick stats and navigation. Uploading, editing tracks, and full insights live in the backstage editing tools.
@@ -77,8 +77,8 @@ Click your **profile avatar** in the top navigation bar, then select **Backstage
   <Accordion title="Empty states" icon="circle-info">
     If you do not have uploads, downloads, albums, achievements, or payout setup yet, you will see empty or setup states instead of placeholder data.
   </Accordion>
-  <Accordion title="Refresh and cache behavior" icon="arrows-rotate">
-    Each page refreshes differently. **Progress** has a manual **Refresh** button. **Leaderboards** keep previous results visible while loading new categories. **Finances** can show cache timestamps or stale-cache warnings.
+  <Accordion title="Loading and update behavior" icon="arrows-rotate">
+    Dashboard pages update in the background. **Progress**, **Leaderboards**, and **Finances** keep successfully loaded information visible when a later request is unavailable.
   </Accordion>
 </AccordionGroup>
 

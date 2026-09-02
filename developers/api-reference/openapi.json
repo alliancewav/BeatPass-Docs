@@ -4298,6 +4298,191 @@
         }
       }
     },
+    "/producer-intelligence/leaderboards": {
+      "get": {
+        "tags": [
+          "Producer Intelligence"
+        ],
+        "summary": "Get a Producer Dashboard leaderboard snapshot",
+        "operationId": "getProducerDashboardLeaderboard",
+        "parameters": [
+          {
+            "name": "artist_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "earning_share",
+                "progress",
+                "audience_plays",
+                "releases",
+                "collaborations"
+              ]
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "current",
+                "7d",
+                "30d",
+                "all"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scheduled producer leaderboard snapshot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "category",
+                    "scope",
+                    "period",
+                    "generatedAt",
+                    "sourceUpdatedAt",
+                    "isStale",
+                    "participantCount",
+                    "leaders",
+                    "current"
+                  ],
+                  "properties": {
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "earning_share",
+                        "progress",
+                        "audience_plays",
+                        "releases",
+                        "collaborations"
+                      ]
+                    },
+                    "scope": {
+                      "type": "string",
+                      "enum": [
+                        "artist",
+                        "producer_account"
+                      ]
+                    },
+                    "period": {
+                      "type": "object",
+                      "required": [
+                        "key",
+                        "start",
+                        "end"
+                      ],
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "start": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "end": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    },
+                    "generatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "sourceUpdatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "isStale": {
+                      "type": "boolean"
+                    },
+                    "participantCount": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "leaders": {
+                      "type": "array",
+                      "maxItems": 20,
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "current": {
+                      "type": "object",
+                      "required": [
+                        "eligible",
+                        "reason",
+                        "entry",
+                        "nearby"
+                      ],
+                      "properties": {
+                        "eligible": {
+                          "type": "boolean"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "enum": [
+                            "no_public_tracks",
+                            "no_contribution",
+                            "no_activity"
+                          ],
+                          "nullable": true
+                        },
+                        "entry": {
+                          "type": "object",
+                          "nullable": true
+                        },
+                        "nearby": {
+                          "type": "array",
+                          "maxItems": 2,
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          },
+          "503": {
+            "description": "No current or stale leaderboard snapshot is available"
+          }
+        }
+      }
+    },
     "/producer-intelligence/dashboard": {
       "get": {
         "tags": [
@@ -5138,6 +5323,62 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
+        }
+      }
+    },
+    "/artists/{artist}/finances/summary": {
+      "get": {
+        "tags": ["Producer Finances"],
+        "summary": "Get producer Finances summary",
+        "operationId": "producerFinancesSummary",
+        "parameters": [{
+          "name": "artist",
+          "in": "path",
+          "required": true,
+          "schema": {"type": "integer"}
+        }],
+        "responses": {
+          "200": {"description": "Currency-specific earnings and payout setup summary"},
+          "401": {"$ref": "#/components/responses/Response401"},
+          "403": {"$ref": "#/components/responses/Response403"}
+        }
+      }
+    },
+    "/artists/{artist}/finances/transactions": {
+      "get": {
+        "tags": ["Producer Finances"],
+        "summary": "List producer finance activity",
+        "operationId": "producerFinanceTransactions",
+        "parameters": [
+          {"name": "artist", "in": "path", "required": true, "schema": {"type": "integer"}},
+          {"name": "filter", "in": "query", "schema": {"type": "string", "enum": ["all", "sales", "subscriptions", "waiting", "needs_attention", "completed"]}},
+          {"name": "page", "in": "query", "schema": {"type": "integer", "minimum": 1}},
+          {"name": "per_page", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 20}}
+        ],
+        "responses": {
+          "200": {"description": "Filtered and paginated finance activity"},
+          "401": {"$ref": "#/components/responses/Response401"},
+          "403": {"$ref": "#/components/responses/Response403"},
+          "422": {"$ref": "#/components/responses/Response422"}
+        }
+      }
+    },
+    "/artists/{artist}/finances/provider-balance": {
+      "get": {
+        "tags": ["Producer Finances"],
+        "summary": "Get compact legacy Stripe provider balance",
+        "operationId": "producerFinancesProviderBalance",
+        "parameters": [{
+          "name": "artist",
+          "in": "path",
+          "required": true,
+          "schema": {"type": "integer"}
+        }],
+        "responses": {
+          "200": {"description": "Available and pending provider balances"},
+          "401": {"$ref": "#/components/responses/Response401"},
+          "403": {"$ref": "#/components/responses/Response403"},
+          "503": {"description": "Provider balance unavailable"}
         }
       }
     },
