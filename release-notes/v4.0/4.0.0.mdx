@@ -1,0 +1,217 @@
+---
+title: "The Producer Workspace Rebuilt"
+date: "2026-09-01"
+severity: "major"
+version: "4.0.0"
+audience: "All"
+tags: ["feature", "design", "bugfix"]
+components: ["producer-dashboard", "artist-profile", "licensing", "player", "notifications", "analytics-backend"]
+status: "published"
+related: ["3.4.0"]
+sidebarTitle: "Producer Workspace Rebuilt"
+description: "BeatPass 4.0 rebuilds every core Producer Dashboard page, launches Producer Pro Pages, adds storefront traffic insights, and strengthens payouts and licensing."
+canonical: "https://docs.beatpass.ca/release-notes/v4.0/4.0.0"
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# BeatPass 4.0 — The Producer Workspace Rebuilt
+
+<Card title="Major producer release" icon="rocket">
+  <Badge color="green" size="lg">v4.0.0</Badge>
+  A complete producer workspace, one focused public storefront, and clearer signals from upload to payout.
+</Card>
+
+## Summary
+
+Released September 1, 2026, BeatPass 4.0 rebuilds every core Producer Dashboard page around the work producers do most. It also launches Producer Pro Pages for every producer profile owner, adds Pro Page Traffic to Artist Insights, and strengthens licensing, downloads, payouts, progress, and catalog reliability.
+
+## What's New
+
+- **Every dashboard page rebuilt** — **Dashboard**, **Finances**, **Activity**, **Progress**, **Leaderboards**, **My Beats**, and **My Collections** now share one responsive, task-focused design
+- **Dedicated Pro Page workspace** — Pro Page setup moves out of **Dashboard** and into its own page immediately after **My Collections**, with profile switching, unlock guidance, sharing, and section controls
+- **Producer Pro Pages** — Turn an eligible producer profile into a mobile-first storefront with marketplace playback, catalog browsing, licensing, subscriptions, exclusive sales, social proof, and a desktop QR handoff
+- **Storefront traffic insights** — **Pro Page Traffic** in Artist Insights measures engaged visits, 30-second listens, licensing actions, completed licenses and sales, traffic sources, memberships, and exclusive earnings
+- **Live producer progress** — Eligible activity updates XP, levels, and achievements with useful notifications, while collectible rarity cards make achievement progress easier to understand
+- **Bank-status payout tracking** — **Finances** follows Wise transfers through waiting, sending, payment sent, attention, completion, return, failure, and refund states without overstating bank delivery
+- **Safer licensing and downloads** — Consistent access rules, stronger certificate checks, and cleaner audience metrics protect producers and customers across track pages, menus, libraries, and Pro Pages
+
+## The Producer Dashboard, Rebuilt
+
+### Dashboard
+
+- **Producer tools first** — Clear shortcuts lead to the pages used to publish, measure, organize, and earn
+- **Useful performance snapshot** — Compare **Latest 30 days** with **Previous 30 days**, see the exact **Play change**, and review catalog and progress totals together
+- **Readable trend guidance** — **Growing**, **Steady**, **Needs attention**, and **Building data** explain play movement without replacing the underlying numbers
+- **Resilient loading** — A temporary problem in one area no longer turns valid producer totals into misleading zeroes
+
+### Finances
+
+- **Finance activity leads the page** — Filter 20 records at a time by **Status** or **Earning type**, including track sales and subscription earnings
+- **Real payout states** — Review **Waiting**, **Sending**, **Needs attention**, **Completed**, and **Refunded** records; Wise transfers use **Payment sent** only after Wise sends money to the bank or payment network
+- **Reliable follow-up** — Waiting and sending rows refresh automatically, while later bank returns, failures, and refunds update the same earning instead of leaving stale completion details
+- **Currency-aware earnings** — Keep totals separate by currency and review **Total earned**, **Waiting**, **Sending**, and **Payment sent** without treating missing information as zero
+- **Useful exchange-rate context** — Inspect 7-day, 30-day, or 90-day history with current, low, and high values, including keyboard and touch interaction
+- **BEATPAY-first setup** — Review setup, review, ready, replacement, and legacy Stripe states without hiding the rest of the page when one finance source is unavailable
+- **Timely payout messages** — Producers receive useful updates when a payout is queued, sent, needs attention, or changes after a Wise update
+
+### Activity
+
+- **Focused time periods** — Review **Last 7 days**, **Last 30 days**, **Last 90 days**, or **All time** without leaving the page
+- **Audience activity together** — Plays, likes, reposts, follows, comments, and other listener response use one clear period and selected producer context
+- **Better download context** — See which listeners downloaded each beat, open their profiles, and review a valid certificate or a clear expired or revoked state
+- **Upload rhythm** — Explore the current year's release pattern and use optional **X-Ray** context to compare your uploads with wider BeatPass activity
+- **Honest empty states** — Missing or unavailable data stays distinct from a real period with no activity
+
+### Progress
+
+- **One progress overview** — Review level, producer title, cumulative XP, the next threshold, and up to five recent XP awards in one responsive layout
+- **Clear ways to earn** — **Earn XP** explains current rewards for eligible uploads, first counted plays, completed track details, collaborations, and achievements
+- **Activity-backed updates** — Eligible producer activity can update XP, levels, and achievements right away, with a 30-second refresh fallback
+- **Collectible achievements** — Common, Rare, Epic, and Legendary cards use distinct rarity colors and an original game-card presentation
+- **Better collection review** — Filter achievements by status and category, see collection progress and latest unlocks, and avoid unnecessary pagination controls
+- **Useful notifications** — Larger XP gains, level changes, and achievement unlocks provide feedback without interrupting producers for every small award
+- **Failure-safe progress** — Existing level and achievement information remains visible while supplementary details refresh or recover
+
+### Leaderboards
+
+- **Earning share first** — Compare current contribution share without exposing another producer's private earnings
+- **Rankings with a purpose** — Separate **Progress**, **Audience plays**, **Releases**, and **Collaborations** replace an opaque combined score
+- **Clear periods and positions** — Compare 7-day, 30-day, or all-time activity, understand ties, and see **Your position** when it falls outside the top 20
+- **One producer per Progress rank** — Additional artist-team access no longer creates duplicate producer entries
+- **Reliable ranking views** — Progress and release rankings open consistently, and a failed background update keeps the latest usable result visible
+
+### My Beats
+
+- **Focused catalog management** — Review 20 readable beats at a time with shared soft filters, direct row selection, and useful mobile metadata
+- **Native catalog rows** — Aligned selection, artwork, track details, licensing, plays, collections, and labeled actions follow the maintained BeatPass table pattern
+- **Featured beat controls** — Select **Feature** or **Remove featured beat** without crowding or clipping **Insights** and **Edit** on desktop
+- **Practical review filters** — Find beats that need artwork, genre, BPM, key, scale, or licensing attention, plus singles, collection tracks, and collaborations
+- **Connected collaborations** — See named co-credited producers, retain verified badges, and open Chat when a producer account is available
+- **Safer catalog actions** — Sold-exclusive or otherwise unavailable beats explain why they cannot be featured or offered to new customers
+
+### My Collections
+
+- **Consistent collection management** — Browse 20 collections at a time with the same responsive table, filters, selection, and actions used by **My Beats**
+- **Useful release filters** — Find collections that need review, are upcoming, are released, or contain no beats
+- **Clear release details** — Review missing artwork, release dates, and beat membership as planning guidance instead of presenting them as a separate publishing gate
+- **Reliable catalog totals** — Collection plays and sorting remain usable even when play details are temporarily unavailable
+- **Connected storefront content** — Public collections use the familiar marketplace collection card and browse-and-play experience on the Pro Page
+
+### Pro Page
+
+- **A dedicated workspace** — Every producer profile owner can open **Pro Page**, switch between owned profiles, and see the selected profile's status and next action
+- **Exact unlock checklist** — Public access requires 20 distinct primary-owned playable beats, profile verification, and active BEATPAY
+- **Permanent beat milestone** — After unlock, falling below 20 playable beats does not hide the page; verification and BEATPAY must remain active
+- **Clear storefront guidance** — **Customize your storefront** follows the familiar **Producer tools** pattern instead of mixing setup into the main dashboard
+- **Purposeful Page sections** — Show or hide available **Links**, **Collections**, **Collaborations**, **Credits**, and **Photos** with clear status, saving, and management actions
+- **No public setup clutter** — Unavailable source sections stay disabled in the workspace and disappear from the public page instead of showing empty placeholders
+- **Shared owner control** — Choices stay with the producer profile and are available only to its owners, not unrelated managers or collaborators
+
+## Producer Pro Pages
+
+### A Focused Public Storefront
+
+- **Phone-first presentation** — Producer identity and available social links lead into the featured beat, catalog, playback, and licensing journey
+- **Familiar marketplace playback** — The featured beat uses BeatPass artwork, controls, and artwork motion, while the producer cover adds depth behind a polished Safari-compatible frosted surface
+- **Complete catalog discovery** — Visitors can search, filter, play, open beat details, and review standard or exclusive options without leaving the page
+- **Coherent navigation** — Catalog filters and the selected beat remain in the URL, so Back and Forward restore the expected view without resetting active playback
+- **Marketplace collection cards** — Opening a collection follows the existing collection experience instead of rearranging the Pro Page catalog
+- **Mobile handoff** — A desktop QR code lets visitors continue the same storefront on their phone
+- **Original BeatPass design** — The game-inspired presentation uses BeatPass components, language, and accessible motion instead of copying another platform's assets or trade dress
+
+### Featured Beat Choice
+
+Use **Feature** in **My Beats** when you want a specific available beat to lead the page. Your choice wins while the beat remains playable and available to license or buy.
+
+When no usable beat is featured, BeatPass balances plays, saves, listening completion, release recency, complete track details, and current buying choices. It automatically replaces an unavailable choice so visitors do not land on a dead end.
+
+### Pro Page Traffic in Artist Insights
+
+Open **View performance** from **Pro Page** or use **Insights** in the desktop navigation. **Pro Page Traffic** keeps storefront results separate from regular marketplace analytics:
+
+- **Engaged visits** — Active visits connected to the shared Pro Page
+- **30-second listens** — Plays that reached at least 30 seconds
+- **License actions started** — Standard and exclusive actions visitors began
+- **Completed licenses and sales** — Confirmed downloads and purchases connected to the Pro Page journey
+- **Traffic and licensing context** — Review where visitors came from, standard and exclusive progress, memberships started, and exclusive earnings by currency
+- **Durable daily totals** — Detailed activity remains available for 180 days, while daily Pro Page Traffic totals remain after older detail expires
+
+## Licensing, Downloads, and Customer Protection
+
+- **Safer certificate issuance** — Standard certificates require valid standard access, while exclusive certificates require a completed exclusive purchase
+- **Strict producer boundaries** — Producers can download only beats connected to their own producer profiles; those owner downloads do not create customer certificates or audience-download activity
+- **Failure-safe downloads** — BeatPass confirms access and prepares the audio before issuing a certificate, so a failed source does not leave behind a misleading license
+- **Consistent access** — Track buttons, context menus, libraries, and Pro Pages follow the same owner, existing-license, subscription, and purchase rules
+- **Trustworthy certificate history** — Invalid certificate details cannot unlock files, and **My licenses** explains why a certificate is unavailable
+- **Cleaner producer metrics** — Producer and artist-team downloads stay out of audience download totals and Activity reports
+- **Clearer exclusive purchases** — Purchase confirmation, platform-fee handling, receipts, and producer earnings use the applicable plan terms consistently
+
+## Fixes and Reliability Improvements
+
+- **Spotify credits restored** — **Add Credits from Spotify** once again returns matching songs and albums from the Canadian Spotify catalog and explains recoverable search problems
+- **Desktop actions restored** — Featured-beat controls no longer push **Edit** outside the **My Beats** table when every column is visible
+- **Stable catalog browsing** — Loading more Pro Page beats no longer resets meaningful playback, and failed background or pagination requests keep usable results on screen
+- **Correct collection behavior** — Pro Page collection cards retain their marketplace layout and open the selected collection without inserting a misplaced beat list
+- **Improved mobile layout** — Profile spacing, long content, featured playback, filters, detail views, and fixed-player controls fit narrow screens without crowding the producer avatar
+- **Accessible interaction** — Keyboard operation, reduced motion, image selection, localized messages, and clear error recovery cover the updated storefront and producer controls
+- **Payout status recovery** — Late or repeated Wise updates can repair the related payout status without sending duplicate producer notifications
+- **Quiet Pro Page rollout** — Existing qualifying producers receive access without a rollout email, push alert, or in-app notification
+
+## How to Get Started
+
+1. Click your **profile avatar**, select **Backstage**, and review the rebuilt **Dashboard**.
+2. Open **My Beats** and **My Collections** to review catalog details, collaborations, licensing, and release information.
+3. Open **Pro Page** immediately after **My Collections**, select a producer profile, and review its unlock checklist.
+4. Use **Feature** in **My Beats** to choose the first available beat visitors hear, or let BeatPass choose automatically.
+5. Return to **Pro Page** to manage optional sections, test the public page, copy its link, and open **View performance**.
+6. Use **Activity**, **Progress**, **Leaderboards**, and **Finances** to follow audience response, achievements, rankings, earnings, and payout state.
+
+## Moving from Version 3
+
+No account or catalog migration is required. Existing producer profiles, beats, collections, credits, links, photos, earnings, XP, achievements, and licenses carry into BeatPass 4.0.
+
+Pro Page controls now live on the dedicated **Pro Page** dashboard page. Existing qualifying producers do not need to re-earn the 20-beat milestone.
+
+## Related Guides
+
+<Columns cols={2}>
+  <Card title="Producer Dashboard" icon="table-columns" href="/help/producer-dashboard">
+    Learn how the rebuilt workspace is organized.
+  </Card>
+  <Card title="Dashboard" icon="house" href="/help/producer-dashboard/home">
+    Understand Producer tools and the performance snapshot.
+  </Card>
+  <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
+    Review audience response, downloads, and upload rhythm.
+  </Card>
+  <Card title="Finances" icon="credit-card" href="/help/producer-dashboard/finances">
+    Follow earnings, payout status, currency context, and BEATPAY.
+  </Card>
+  <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
+    Understand XP, levels, and collectible achievements.
+  </Card>
+  <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
+    Compare earning share, progress, plays, releases, and collaborations.
+  </Card>
+  <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
+    Manage catalog details and choose a featured beat.
+  </Card>
+  <Card title="My Collections" icon="compact-disc" href="/help/producer-dashboard/albums">
+    Organize releases and review collection details.
+  </Card>
+  <Card title="Producer Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
+    Prepare, customize, share, and measure the storefront.
+  </Card>
+  <Card title="How Downloads Work" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
+    Understand listener and producer download access.
+  </Card>
+  <Card title="License Certificates" icon="file-lines" href="/help/downloads-and-licensing/license-certificates">
+    Review how certificates are issued, stored, and verified.
+  </Card>
+  <Card title="Artist Insights" icon="chart-bar" href="/help/analytics/backstage-insights/artist-insights">
+    Review Pro Page Traffic and wider artist analytics.
+  </Card>
+</Columns>
+
+<ReleaseFeedback />
