@@ -53,7 +53,9 @@ Each row can show:
 - The track or subscription earning period
 - The earning type, date, and payout provider
 - The amount in its original currency
-- **Waiting**, **Sending**, **Needs attention**, **Completed**, or **Refunded**
+- **Waiting**, **Sending**, **Needs attention**, **Completed**, or **Refunded**. A Wise-powered completed row says **Payment sent** to describe what the bank network has actually reported.
+
+While money is waiting or sending, BeatPass refreshes the finance record automatically and checks again when you return to the page. A refund moves back to **Refunded**, and a bank rejection or non-retryable payout failure moves to **Needs attention** instead of staying completed.
 
 Failed payment attempts that never became earnings do not appear. A payout failure or hold on a real earning remains visible under **Needs attention**.
 
@@ -66,10 +68,10 @@ Failed payment attempts that never became earnings do not appear. A payout failu
 | **Total earned** | Successful, non-refunded track sales and eligible subscription earnings, including money still moving through payout processing |
 | **Waiting** | Earned money waiting to enter payout processing |
 | **Sending** | Money moving through the payout provider |
-| **Sent** | Money sent by the payout provider |
+| **Payment sent** | Money sent by the payout provider to the bank or payment network |
 
 <Note>
-  **Sent** does not confirm that money has arrived in your bank. The payout provider and receiving bank may continue processing it.
+  **Payment sent** does not confirm that money has arrived in your bank. The receiving bank may continue processing it, and a later return or refund updates the record again.
 </Note>
 
 A real zero remains visible as zero. If BeatPass cannot load earnings, the section says they are unavailable instead of replacing missing information with zero.

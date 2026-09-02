@@ -53,6 +53,8 @@ The **Achievements** summary features **Collection progress** with your unlocked
 
 Use **Status** to choose **Available**, **Unlocked**, or **All**. Use **Category** to narrow the collection. The default view is **Available**, and eight achievements appear per page. **Previous** and **Next** appear only when the filtered collection needs more than one page.
 
+Achievement cards use a distinct rarity color so **Common**, **Rare**, **Epic**, and **Legendary** rewards are easy to recognize as a collection. The color does not change the unlock rule or XP amount.
+
 Each achievement separates two values:
 
 - An available achievement shows the XP it can award
@@ -64,7 +66,11 @@ Select **View Producer Leaderboards** to compare producer activity. Rankings rem
 
 ## Updates and unavailable states
 
-Progress refreshes automatically in the background. A short delay can occur after eligible activity. If a refresh fails, previously loaded information stays visible with **Try again**. If the first request fails, BeatPass shows that Progress is temporarily unavailable; it does not treat missing information as 0 XP. Level and achievement information can remain available while supplementary **Recent XP** or **Earn XP** details are temporarily unavailable.
+Progress listens for eligible uploads, completed track details, collaborations, counted plays, level changes, and achievement unlocks. When the live connection is available, the page refreshes as soon as the award is committed. It also checks again every 30 seconds as a fallback.
+
+Larger XP awards and level changes show a short on-screen message. Achievement unlocks also create a notification you can return to later. Small awards still update the XP total without interrupting your work. Managers do not earn XP for activity on a producer profile they only manage; awards belong to the profile owners credited through that producer identity.
+
+If a refresh fails, previously loaded information stays visible with **Try again**. If the first request fails, BeatPass shows that Progress is temporarily unavailable; it does not treat missing information as 0 XP. Level and achievement information can remain available while supplementary **Recent XP** or **Earn XP** details are temporarily unavailable.
 
 ## Related guides
 
