@@ -1,0 +1,70 @@
+---
+title: "Clearer Payouts, a More Native BeatPass"
+sidebarTitle: "Clearer Payouts & New Languages"
+description: "Track BeatPay earnings with clearer statuses, accurate periods, references, and email updates. Try German, Korean, and Simplified Chinese localizations."
+date: "2026-09-08"
+severity: "minor"
+version: "4.1.0"
+audience: "All"
+tags: ["feature", "improvement", "bugfix"]
+components: ["producer-dashboard", "billing", "notifications", "beat-requests", "search"]
+status: "published"
+related: ["4.0.0"]
+canonical: "https://docs.beatpass.ca/release-notes/v4.0/4.1.0"
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# BeatPass 4.1 — Clearer Payouts, a More Native Experience
+
+## Summary
+
+Released September 8, 2026, BeatPass 4.1 makes your earnings easier to follow, from allocation to payout. New language options and smoother checkout journeys help BeatPass feel more familiar wherever you create.
+
+## What's New
+
+### BeatPay and Finances
+
+**Finances** now uses the same five statuses across your earnings and filters:
+
+| Status | What It Means |
+|--------|---------------|
+| **Pending** | Your earning is waiting for payout. |
+| **Processing** | Your payout is being processed. |
+| **Sent** | Your payment provider has sent the funds. Bank arrival can take longer. |
+| **Delayed** | Your payout needs follow-up; the earning remains owed. |
+| **Reversed** | The underlying customer payment was refunded or reversed. |
+
+For legacy Stripe payouts, **Sent** identifies a transfer to your Stripe balance; bank payouts follow your Stripe schedule.
+
+- **Clearer earning dates** — Verified **Subscription period** dates are separate from when an earning was allocated or a beat was sold. Unverified periods are omitted.
+- **A reference for every earning** — Each row shows a **Reference ID**, also included in payout emails, so you can match updates or ask for help.
+- **More reliable follow-up** — Automatic payout checks recover missed status updates. Eligible connection interruptions can be retried safely without creating another payout.
+- **Better payout emails** — Status emails include the amount, reference, and a link to **Finances**. Failed email attempts are retried, and outdated BeatPay updates are suppressed. Your email preferences still apply.
+
+### Three New Language Options
+
+Beta localizations are now available in German (**Deutsch**), Korean (**한국어**), and Simplified Chinese (**简体中文**, for Mandarin readers), alongside English, Spanish, and French.
+
+Translated screens, account messages, and emails work alongside localized date, number, and currency formatting to make everyday tasks feel more natural. The new translations are marked **Beta**; English terms remain authoritative for licensing, billing, payouts, and certificates.
+
+### More Customer Experience Improvements
+
+- **Smoother checkout** — Keep your selected plan through sign-in and email verification. Review charges before paying, see clearer payment outcomes, and browse one payment history in **Billing**.
+- **Clearer billing emails** — Get follow-up about subscription changes, exclusive-purchase refunds, and unsuccessful payments.
+- **Easier beat requests** — Keep your draft while comparing plans, with upgrade guidance based on your available request allowance.
+- **More precise browsing** — Use **Key & Scale** to find a musical match in beat channels and producer catalogs.
+- **Reliable listening history** — Accounts with no recent plays now see an empty history without a loading error.
+
+## How to Use
+
+1. Open [Finances](https://open.beatpass.ca/producer-dashboard/finances) to review your earnings and references.
+2. In [Account Settings](https://open.beatpass.ca/account-settings), open **Location and language**, choose **Language**, and click **Save**.
+
+## Related
+
+- [Producer Finances](/help/producer-dashboard/finances)
+- [Language Preferences](/help/account-settings/localization)
+- [Previous Release: BeatPass 4.0](/release-notes/v4.0/4.0.0)
+
+<ReleaseFeedback />
