@@ -2,96 +2,48 @@
 audience: help
 title: "Managing Conversations"
 sidebarTitle: "Managing Conversations"
-description: "Review recent conversations, manage unread state, and hide chats from your BeatPass message list."
+description: "Search, pin, archive, restore, and manage read reminders in BeatPass messages."
 canonical: "https://docs.beatpass.ca/help/messaging/managing-conversations"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass keeps recent conversations in a single list inside the messaging panel. From there, you can review new activity, change read state, follow or unfollow direct contacts, and hide conversations from your own list.
+Open the message icon in the top navigation, or visit [Messages](https://open.beatpass.ca/messages) for a larger workspace. Your conversation list and the open chat scroll separately, keeping the typing area within reach.
 
----
+## Find a Conversation or Message
 
-## Your Conversation List
-
-Each recent conversation shows:
-
-| Item | What it shows |
-| --- | --- |
-| **Name** | The other participant or group title |
-| **Preview** | Latest message text or `typing...` |
-| **Time** | Relative time for the last activity |
-| **Unread badge** | Current unread count for that conversation |
-| **Seen indicator** | Green double-check for your latest sent direct message when it has been read |
-
----
+Use **Search conversations** in **Inbox** or **Archive** to find a conversation in that view. Inside a chat, use **Search in conversation** to find text in its history. Clear the search to return to the full thread.
 
 ## Conversation Actions
 
-Open a conversation and use the **More** menu to access:
+Open a chat's **More options** menu. On desktop, you can also hover a conversation in the list and select **Conversation options**.
 
-| Action | Current behavior |
+| Action | What it does |
 | --- | --- |
-| **Mark as read** | Clears unread state for that conversation |
-| **Mark as unread** | Re-applies unread state as a reminder |
-| **Follow user / Unfollow user** | Available for direct conversations when the other participant is a user profile |
-| **Delete conversation** | Hides the conversation from your own list |
+| **Pin conversation** | Keeps the conversation near the top of its list; **Unpin conversation** removes the pin |
+| **Mark as read** | Clears your unread state |
+| **Mark as unread** | Leaves a reminder and returns you to the conversation list |
+| **Follow user / Unfollow user** | Changes your follow relationship in a direct chat; sending requires following |
+| **Archive conversation** | Moves the chat out of your inbox without deleting its history |
+| **Move to inbox** | Restores a chat from **Archive** |
+| **Report conversation** | Sends a report to administrators for review |
 
-<Tip>
-  `Ctrl + N` or `Cmd + N` opens the new-message flow while the messaging panel is open.
-</Tip>
+## Archive and Restore
 
----
+1. Choose **Archive conversation** from the conversation menu.
+2. Open **Archive** above the conversation list when you want to find it again.
+3. Choose **Move to inbox** to restore it.
 
-## What Delete Actually Does
+Archiving affects your own list. Other participants keep their conversation, and a new message can return an archived chat to your inbox. Archiving does not block the other person.
 
-Deleting a conversation in the current messaging UI is a **hide** action for your account:
+## Read Reminders
 
-- It removes the conversation from **your** recent list
-- Other participants keep their copy of the conversation
-- If someone sends a new message later, the conversation can reappear for you automatically
-
----
-
-## Read and Unread State
-
-- Opening a conversation marks its unread messages as read
-- The header message badge updates as the unread total changes
-- **Mark as unread** is useful when you want to come back to a conversation later
-
----
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="I deleted a conversation but it came back">
-    This is expected. BeatPass hides the conversation for you, but new incoming messages can unhide it again.
-  </Accordion>
-
-  <Accordion title="My unread count seems wrong">
-    Reopen the messaging panel or refresh the page if the unread badge looks stale.
-  </Accordion>
-
-  <Accordion title="I can't find a conversation I know I had">
-    Use **New** and search for the same person. If a direct conversation already exists, BeatPass can reopen it instead of making a duplicate.
-  </Accordion>
-
-  <Accordion title="Can I stop someone from messaging me from here?">
-    No. The current conversation menu supports follow state and delete or hide actions, but it does not expose blocking.
-  </Accordion>
-</AccordionGroup>
-
----
+Opening a chat marks its messages read. Use **Mark as unread** when you want to return later. Opening the chat again clears that reminder.
 
 ## Related Topics
 
-<Columns cols={2}>
-  <Card title="Direct Messages" icon="comment" href="/help/messaging/direct-messages">
-    Learn how to start one-on-one conversations.
-  </Card>
-  <Card title="Real-Time Features" icon="bolt" href="/help/messaging/real-time-features">
-    Understand typing, seen state, and retry behavior.
-  </Card>
-</Columns>
+- [Direct Messages](/help/messaging/direct-messages)
+- [Reactions and real-time features](/help/messaging/real-time-features)
+- [Reporting conversations](/help/messaging/reporting-conversations)
 
 <NeedHelp />

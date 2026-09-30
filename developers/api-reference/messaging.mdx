@@ -25,7 +25,7 @@ The Messaging API enables direct and group conversations between BeatPass users.
 
 ### List Conversations
 
-Retrieve the authenticated user's conversations, ordered by most recent activity.
+Retrieve the authenticated user's conversations, with pinned conversations first and recent activity next. Use `folder=inbox` or `folder=archive`, `q` for participant/last-message search, and `offset` with the returned `next_offset`. The default limit is 20 (maximum 100). Participant labels are public usernames, never legal names or email addresses.
 
 ```http
 GET /api/v1/messaging/conversations
@@ -60,7 +60,7 @@ GET /api/v1/messaging/conversations
 
 ### Start Conversation
 
-Start a new direct or group conversation with an initial message.
+Start a new direct or group conversation with an initial message. The sender must follow recipients; direct-message replies require the replying user to follow the other participant. Producer ownership or upload permissions are not prerequisites. Paused conversations reject new messages.
 
 ```http
 POST /api/v1/messaging/conversations/start
@@ -112,15 +112,30 @@ POST /api/v1/messaging/conversations/start
 
 ---
 
-### Delete Conversation
+### Legacy Delete Endpoint
 
-Remove a conversation from the authenticated user's view. This does not delete it for other participants.
+The compatibility endpoint archives the conversation for the authenticated user. It does not erase messages. New clients should use the reversible archive endpoint below.
 
 ```http
 DELETE /api/v1/messaging/conversations/{conversationId}
 ```
 
 ---
+
+## Archive, Pin, React, and Report
+
+| Method and path (relative to the base URL) | Body | Behavior |
+| --- | --- | --- |
+| `POST conversations/{conversationId}/archive` | `archived: boolean` | Archive or restore for the current participant |
+| `POST conversations/{conversationId}/pin` | `pinned: boolean` | Pin or unpin for the current participant |
+| `PUT messages/{messageId}/reaction` | `emoji: string or null` | Replace the caller's reaction or remove it with null |
+| `POST conversations/{conversationId}/report` | `reason`, optional `details` | Submit moderation evidence from recent messages |
+
+Each mutation verifies membership. Reactions accept only the six values exposed by the client picker. Report submissions are rate limited. Archive, read reminders, and pins are personal state; they do not change another participant's inbox.
+
+`GET conversations/{conversationId}/messages` accepts `q` to search text. For stable history pagination, pass `pagination=cursor` and the returned `next_cursor` as `cursor`. The offset contract remains available for older clients. Both send endpoints accept an optional `client_message_id` for retry reconciliation; reuse it for the same send rather than creating a new identity.
+
+See [Moderating messages and reports](/help/messaging/moderation) for administrator workflows. Administrative routes have a separate full-admin authorization check; ordinary messaging membership does not grant access.
 
 ## Messages
 

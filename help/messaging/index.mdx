@@ -37,7 +37,7 @@ BeatPass messaging is a private chat system built into the web player's header. 
     Create multi-person chats for collaborations and shared discussions.
   </Card>
   <Card title="Managing Conversations" icon="folder" href="/help/messaging/managing-conversations">
-    Review recent chats, mark them read or unread, follow users, or hide conversations from your list.
+    Review recent chats, mark them read or unread, pin important chats, and archive or restore conversations.
   </Card>
   <Card title="Real-Time Features" icon="bolt" href="/help/messaging/real-time-features">
     See typing indicators, delivery states, unread badges, and retry states.
@@ -53,7 +53,7 @@ BeatPass messaging is a private chat system built into the web player's header. 
     Click the **message** icon in the top navigation to open the messaging panel.
   </Step>
   <Step title="Choose a conversation or start a new one">
-    Select a recent chat or click **New** to create a new conversation.
+    Select a recent chat or click **New Message** to create a new conversation.
   </Step>
   <Step title="Send messages in the same panel">
     The conversation view, input box, and management menu all live inside the same messaging UI.
@@ -61,7 +61,7 @@ BeatPass messaging is a private chat system built into the web player's header. 
 </Steps>
 
 <Note>
-  The `/messages` route exists for sign-in gating and deep links from notifications or emails. It briefly shows an instruction screen and then redirects you back to the main site, where messages open in the header panel. It does not act as a standalone inbox.
+  Use the expand control in the panel to open the full [Messages workspace](https://open.beatpass.ca/messages). On desktop, it fills the available screen while the list and conversation scroll independently.
 </Note>
 
 ---
@@ -74,7 +74,7 @@ BeatPass messaging is a private chat system built into the web player's header. 
 | **Group chats** | Start a group with 2 or more other users from the new message flow |
 | **Message suggestions** | Blank search shows followed users first |
 | **User search** | Search starts after you enter at least 2 characters |
-| **Conversation tools** | Mark read, mark unread, follow or unfollow, delete |
+| **Conversation tools** | Search, pin, mark read or unread, follow or unfollow, archive, restore, and report |
 | **Live states** | Typing indicators, unread counts, seen state, failed-send retry |
 
 ---
@@ -94,7 +94,7 @@ Messaging-related notifications are configured from **Notification Preferences -
 
 ## Privacy & Safety
 
-Messaging is private to the conversation participants. Keep the usual safety rules in mind when chatting with other users.
+Messages are not public posts. Authorized administrators can review conversations and reported exchanges for moderation.
 
 <Warning>
   Never share passwords, payment credentials, or other sensitive information through direct messages.
@@ -102,8 +102,11 @@ Messaging is private to the conversation participants. Keep the usual safety rul
 
 If someone is abusing messaging:
 
-1. Delete the conversation from your recent list if needed
-2. Report the user from their profile if they are violating the [Content Guidelines](/help/legal/content-guidelines)
+1. Open the conversation menu and choose **Report conversation**.
+2. Choose a reason, add relevant details, and submit.
+3. Archive the conversation if you want it out of your inbox.
+
+See [Reporting conversations](/help/messaging/reporting-conversations) for what a report includes. Administrators can follow [Moderating messages and reports](/help/messaging/moderation).
 
 ---
 

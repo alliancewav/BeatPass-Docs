@@ -51,6 +51,23 @@ function extractRoutes(file) {
       }
     }
 
+    // Laravel match() retains each explicitly declared method (radio supports GET and POST).
+    const multiMethodMatch = line.match(
+      /Route::match\(\s*\[([^\]]+)\]\s*,\s*['"]([^'"]+)['"]/,
+    );
+    if (multiMethodMatch) {
+      const methods = [...multiMethodMatch[1].matchAll(/['"]([^'"]+)['"]/g)]
+        .map((match) => match[1].toLowerCase());
+      for (const method of methods) {
+        if (!httpMethods.has(method)) continue;
+        routes.push({
+          method,
+          path: normalizeRoute(`${prefix}/${multiMethodMatch[2]}`),
+          source: `${path.relative(sourceRoot, file).replaceAll('\\', '/')}:${index + 1}`,
+        });
+      }
+    }
+
     const resourceMatch = line.match(/Route::apiResource\(\s*['"]([^'"]+)['"]/);
     if (resourceMatch) {
       const resource = `${prefix}/${resourceMatch[1]}`;

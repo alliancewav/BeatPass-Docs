@@ -1,0 +1,53 @@
+---
+title: "More Reliable BeatPay Payouts"
+sidebarTitle: "Reliable Payouts & Listening Checks"
+description: "Small BeatPay earnings can accumulate, payout updates explain the next step, and stronger listening checks protect subscription revenue shares."
+date: "2026-09-24"
+severity: "patch"
+version: "4.1.1"
+audience: "Producers"
+tags: ["improvement"]
+components: ["billing", "producer-dashboard", "notifications", "analytics"]
+status: "published"
+related: ["4.1.0"]
+canonical: "https://docs.beatpass.ca/release-notes/v4.0/4.1.1"
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# BeatPass 4.1.1 — More Reliable BeatPay Payouts
+
+## Summary
+
+BeatPay now handles small subscription earnings and interrupted payments more reliably. Clearer emails and payout references help you follow your money, while stronger listening checks reduce the effect of manipulated plays on subscription revenue shares.
+
+## What's New
+
+- **Small earnings can accumulate.** Eligible CAD subscription earnings for the same producer, bank account, and currencies can share a payment. Each earning keeps its own reference and remains visible in **Finances**.
+- **Payout timing accounts for transfer fees.** When the Wise fee is below CA$5, eligible earnings can proceed individually without waiting for a batch. When the fee is CA$5 or more, automatic payments wait until compatible earnings total at least CA$5. BeatPass covers the Wise transfer fee. Contact BeatPass to request an earlier withdrawal; the team reviews the request before releasing it.
+- **Interrupted payments get safer follow-up.** Eligible connection failures receive limited automatic retries. Existing payment records are checked before another attempt, helping prevent duplicate payments. Missing transfer information and other exceptions reach the team for review.
+- **Waiting states explain the next step.** **Finances** distinguishes earnings accumulating toward a payment, automatic retries, platform funding waits, and payments that need support. Refunded or disputed earnings stay out of new payments.
+- **Emails match the payment.** A grouped payment sends one status email with an itemized earning breakdown. Delayed-payment emails include **Contact BeatPass** and **View earnings** links. Operational alerts use the same branded layout, and email copy avoids unsupported payout-arrival promises.
+- **Listening checks protect revenue shares.** New listening activity must pass account and playback checks before it counts toward subscription allocations. Repeated or manipulated activity that fails these checks cannot keep increasing financial contribution. Playback remains available when repeat-credit limits are reached.
+- **Reports handle invalid activity consistently.** Reviewed invalid listening is excluded from the relevant counters, reports, and contribution calculations. Completed payment history remains intact.
+
+## Why It Matters
+
+Small subscription earnings no longer remain pending simply because each entry is below the old individual-payment minimum. Higher-fee routes can collect earnings into one payment, while lower-fee routes continue without that wait.
+
+You can match a payment update to every included earning and see whether the system is retrying or the team needs to act. Listening checks also help keep subscription allocations tied to eligible activity, with the same rules applied across contribution calculations.
+
+## How to Use
+
+1. Open [Finances](https://open.beatpass.ca/producer-dashboard/finances) and review each earning's status, waiting reason, and **Reference ID**.
+2. If earnings are accumulating because of higher transfer fees, leave them to accumulate or use [Contact BeatPass](https://open.beatpass.ca/contact) to request an earlier withdrawal.
+3. For a delayed payment, use **Contact BeatPass** in its email. The contact form opens with the payout reference included; you review and send the message yourself.
+
+**Sent** means the payment provider has sent the funds. It does not confirm receipt by your bank. Receiving or intermediary banks can charge separate fees, including on SWIFT transfers.
+
+## Related
+
+- [Producer Finances](/help/producer-dashboard/finances)
+- [Previous Release: BeatPass 4.1](/release-notes/v4.0/4.1.0)
+
+<ReleaseFeedback />

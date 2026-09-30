@@ -318,6 +318,8 @@
               {
                 "group": "September 2026",
                 "pages": [
+                  "release-notes/v4.0/4.2.0",
+                  "release-notes/v4.0/4.1.1",
                   "release-notes/v4.0/4.1.0",
                   "release-notes/v4.0/4.0.0"
                 ]

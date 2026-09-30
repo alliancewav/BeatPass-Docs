@@ -1,0 +1,90 @@
+---
+title: "Smoother Listening, Clearer Producer Tools"
+sidebarTitle: "Listening, Library & Producer Tools"
+description: "YouTube videos on producer profiles, improved messaging and moderation, public handles, richer profiles, clearer licenses, and smoother producer tools."
+date: "2026-09-27"
+severity: "minor"
+version: "4.2.0"
+audience: "All"
+tags: ["feature", "improvement", "bugfix"]
+components: ["player", "search", "messaging", "notifications", "playlists", "licensing", "artist-profile", "producer-dashboard", "beat-requests", "billing", "authentication"]
+status: "published"
+related: ["4.1.1"]
+canonical: "https://docs.beatpass.ca/release-notes/v4.0/4.2.0"
+---
+
+import ReleaseFeedback from "/snippets/sections/release-feedback.mdx";
+
+# BeatPass 4.2.0 — Smoother Listening, Clearer Producer Tools
+
+Watch producer videos without leaving BeatPass, organize conversations, and connect through public handles. This update also improves profiles, comments, license cards, and producer tools.
+
+*Released September 27, 2026.*
+
+## Listening and Discovery
+
+- **Navigation that stays close.** Section tabs merge into the top bar as you scroll. Account, billing, and sign-in screens have more consistent layouts, with better spacing around mobile playback controls.
+- **Playback across more pages.** Your playback position and queue now carry through account settings, notifications, billing, and producer tools. Long mobile queues are fully accessible, and repeated entries can be removed individually.
+- **New Beats filters.** Trending-tag filters narrow the list and remember your selection. Search handles special characters and failed requests correctly; tag links open the selected beat or collection view.
+- **Radio continuation.** Stations add related beats as you listen, even after you leave the page. Save the loaded selection to a playlist, reopen recent stations, or broaden an exhausted station.
+- **Refined artwork backgrounds.** Collection headers and standalone beat rows use more immersive artwork backgrounds. Discovery-slider glows no longer stop abruptly at the side panels.
+
+## Messages and Notifications
+
+- **A roomier chat workspace.** The expanded desktop view keeps the composer visible, with separate scrolling for conversations and message history. Smaller controls, predictable text wrapping, and mobile keyboard spacing make chats easier to read.
+- **Archive, pin, and search.** Archive conversations and restore them from **Archive**. Pin chats to the top, search conversations or past messages, and mark a chat unread as a reminder. Desktop conversation menus expose the same actions as the open chat.
+- **Reactions that stay out of the way.** Press and hold a message on mobile, or use its reaction button on desktop. Choose from six reactions, change yours, or select it again to remove it.
+- **Follow before messaging.** Find people by username or producer name and follow them before sending a direct message. Listener accounts can chat with each other without producer or upload access.
+- **Reporting and review.** Report a conversation from its menu. Administrators can review message exchanges, handle comment and message reports together, and pause or reopen conversations.
+- **More reliable history.** Conversation links open the intended chat, older messages remain reachable, and drafts survive reloads. Failed sends stay visible and eligible retries avoid duplicates.
+- **Read as you view.** Visible notifications become read automatically. **View all** opens older retained history, and **Mark all as read** covers the full unread feed.
+
+## Your Profile and Connections
+
+- **Public handles throughout.** Accounts have usernames and profile links with an **@handle**. You can change your username once every 14 days without losing chats or producer-profile access. Accounts owning a producer profile show a blue badge.
+- **Profile details in view.** Bios, locations with country flags, and social icons appear on user profiles. Portrait and name sizing follows producer profiles while the pages retain distinct purposes. First and last names stay off public profile headers.
+- **People to follow.** Up to six suggestions use shared listening interests and connections. Dismiss the section or reopen it when you want to explore.
+- **More useful comments.** Sort by **Newest first** or **Top comments**, open replies on desktop and mobile, and mention people who follow you back.
+- **Consistent beat rows.** Producer catalogs, liked beats, and reposts share the artwork-colored presentation used in **New Beats**.
+
+## Your Library
+
+- **Correct navigation.** **Your library** opens its overview on desktop and mobile. Smaller, sticky tabs highlight the section you're visiting.
+- **Searchable licenses.** Find licenses by beat, producer, or license ID. Filter exclusive and non-exclusive records, separate your licenses from granted licenses, and browse larger histories. Equal-height cards use green for non-exclusive, blue for exclusive, and red for invalid or inactive records. **Licensed to** now shows the account holder’s name, with a username fallback. Certificates also include available producer account names.
+- **Cleaner request review.** Search and view filters organize requests and submissions. **Submitted Beats** uses compact, playable rows with clearer request context.
+- **Playlist invitation fixes.** Creating a collaborative playlist now moves into editing that saved playlist. Invitation results show individual failures, which you can retry without creating another playlist.
+
+## Producer Profiles and Editing
+
+- **Focused profile settings.** Reorganized sections and a clearer photo gallery separate profile customization from collection management. Failed image replacements preserve the current image, and saves keep you in the editor.
+- **One Create menu.** Profile owners with upload access can choose **Upload a beat**, **Create a Pack**, or **Add Photos** from **Create**.
+- **A clearer Producer pick and Credits section.** The pinned card aligns with **New Beats** on desktop, uses collection artwork when available, and shows useful tempo or genre details. Theme-aware overlays keep it readable. Spotify credits balance artwork, release metadata, and roles; external releases remain **Song** and **Album**.
+- **YouTube on your profile.** Add a channel in **Links** to show recent videos below **Credits** and in a new **Videos** tab. The Videos tab puts Shorts first, followed by a regular-video grid. Videos open inside BeatPass, with a YouTube link when needed. Saved lists survive cache expiry and remain available during feed outages.
+- **More immersive About sections.** Producer profiles and their beat pages reuse the configured producer cover behind their About content.
+- **Public company details by choice.** Add a public company name and website without exposing private application details.
+- **Application attachments improved.** Verification files have clearer upload feedback and private previews.
+
+## Producer Tools
+
+- **Audio Recon across your catalog.** A new dashboard page brings existing track-level scans into one view. **Your beats** includes unscanned tracks, readiness, last scans, and the earliest rescan date; **Matches** collects findings with filters. The next batch time is visible, but doesn't guarantee every beat will run then. Failed scans no longer look like completed scans with no matches.
+- **Insight controls stay visible.** The date picker and profile/dashboard shortcuts remain accessible while scrolling. Your producer insights header now brings platform share, level, XP, and performance indicators together where available.
+- **Simpler Pro Page settings.** A lighter status panel and clearer section rows reduce clutter. Optional tracked-link controls expand only when needed.
+- **Finances at a glance.** Activity rows emphasize the earning, amount, date, and status. Expand a row for its breakdown, payment reference, and next step.
+
+## Other Fixes
+
+- Adding genres no longer incorrectly submits the verification field. **Cancel** and **Save changes** remain accessible while editing long producer profiles.
+- Collection creation fits mobile screens and omits Spotify ID entry for producers. Forms retain your work while producer details load, and release dates keep the calendar date you selected.
+- The top navigation uses consistent frosted surfaces and spacing between messaging and notification controls.
+- Collaborative beats no longer repeat producer information in the mobile player. Profile and beat-page about sections use space more efficiently.
+- Updated pages distinguish empty results from loading failures, with clearer recovery actions. App updates can be postponed until you're ready to refresh.
+
+## Explore the Update
+
+Open [New Beats](https://open.beatpass.ca/new-beats), [Your library](https://open.beatpass.ca/library), or [Messages](https://open.beatpass.ca/messages). Producers can review scans in [Audio Recon](https://open.beatpass.ca/producer-dashboard/audio-recon).
+
+[Watch producer videos](/help/profiles/producer-profiles/youtube-videos), [manage conversations](/help/messaging/managing-conversations), or [edit your public handle](/help/profiles/user-profiles/editing-profile).
+
+[Previous release: BeatPass 4.1.1](/release-notes/v4.0/4.1.1)
+
+<ReleaseFeedback />
