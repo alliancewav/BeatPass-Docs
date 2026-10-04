@@ -2911,7 +2911,8 @@
                       "type": "string",
                       "enum": [
                         "success"
-                      ]
+                      ],
+                      "example": "success"
                     },
                     "pagination": {
                       "allOf": [

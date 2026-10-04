@@ -214,7 +214,18 @@ Response envelopes vary by endpoint. Track listing returns `status` and `paginat
 
 ### Pagination
 
-Pagination envelopes vary by endpoint. `GET /tracks` returns `status: success` and a Laravel paginator inside `pagination`; its records are in `pagination.data`. Page metadata, including `current_page` and `per_page`, is also nested inside `pagination`. Length-aware pagination includes `total` and `last_page`; simple pagination omits those fields.
+Paginated endpoints use <Tooltip tip="A pagination method that uses current_page, last_page, and per_page values to move through large result sets.">page-number pagination</Tooltip>:
+
+```json
+{
+  "data": [...],
+  "current_page": 1,
+  "per_page": 15,
+  "total": 150,
+  "last_page": 10,
+  "links": {...}
+}
+```
 
 ---
 

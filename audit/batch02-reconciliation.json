@@ -33,23 +33,23 @@
       "held": 0
     },
     "guides": {
-      "applied": 69,
+      "applied": 68,
       "reconciled": 3,
       "already-correct": 0,
-      "held": 0
+      "held": 1
     },
     "api": {
-      "applied": 365,
-      "held": 34,
+      "applied": 364,
       "reconciled": 1,
-      "already-correct": 0
+      "already-correct": 0,
+      "held": 35
     }
   },
   "holds": [
     "API-createTrack: all 30 deltas; incomplete conditional POST /tracks contract.",
     "API-updatePlaylist: public/collaborative type and nullable deltas (4); await sanitized production evidence.",
     "Registration request fields: unchanged; configured account-creation validator not verified. Response-only proposals are included.",
-    "Track-pagination response examples: no new example or production fixture added; hold remains. Approved schema/envelope corrections and removal of a misleading generic example are included."
+    "Track-pagination examples: G02 is held and its generic pagination example preserved; the API-getTracks scalar status/example removal is also held. Existing examples are unchanged. Other approved source schema/envelope deltas remain included."
   ],
   "payout_caveat": {
     "units": [
@@ -83,7 +83,8 @@
     "vale": "not run successfully: spawnSync vale ENOENT (exit 2); no installation attempted",
     "rendered_desktop_narrow": "not run; strict prebuild and static a11y are not browser QA",
     "authenticated_product_tests": "not run; no password, upload, bank, payment, payout, or authenticated API mutations",
-    "runtime": "Node v24.19.0 available versus repository pin 22.15.1; no runtime/dependency upgrades"
+    "runtime": "Node v24.19.0 available versus repository pin 22.15.1; no runtime/dependency upgrades",
+    "held_example_verification": "Existing developers/overview Pagination section and all GET /tracks example/examples subtrees equal the PR base after final hold audit."
   },
   "warnings": {
     "preexisting": [
@@ -864,8 +865,8 @@
       "kind": "guides",
       "id": "G02",
       "path": "developers/overview.mdx",
-      "status": "applied",
-      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "status": "held",
+      "reason": "Preserve the existing generic pagination example unchanged under the production-evidence hold; source-only envelope replacement deferred.",
       "source_paths": [
         "common/Core/BaseController.php",
         "app/Http/Controllers/TrackController.php",
@@ -1926,7 +1927,8 @@
       "id": "API-getTracks",
       "root": "/paths/~1tracks/get",
       "counts": {
-        "applied": 4
+        "applied": 3,
+        "held": 1
       },
       "deltas": [
         {
@@ -1942,7 +1944,7 @@
         {
           "delta": 3,
           "pointer": "/paths/~1tracks/get/responses/200/content/application~1json/schema/properties/status/example",
-          "status": "applied"
+          "status": "held"
         },
         {
           "delta": 4,
@@ -1950,7 +1952,9 @@
           "status": "applied"
         }
       ],
-      "exceptions": []
+      "exceptions": [
+        "Preserve the existing GET /tracks scalar status example under the production-evidence hold."
+      ]
     },
     {
       "id": "API-createArtist",
