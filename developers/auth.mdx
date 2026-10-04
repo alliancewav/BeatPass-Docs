@@ -65,18 +65,18 @@ The BeatPass API uses a **two-tier access model** for external consumers:
 
 | Tier | Auth Method | Data Level | Use Case |
 |------|-------------|------------|----------|
-| **Public** | None | Minimal (id, name, model_type only) | Basic resource identification |
+| **Public** | None | Model-specific public fields; see the lists below | Basic resource identification |
 | **Token** | `Authorization: Bearer {token}` | Rich (pricing, plays, BPM, licensing) | Approved developer integrations |
 
 <Warning>
-  **Unauthenticated API requests return minimal data by design.** To receive rich responses with pricing, play counts, licensing info, and more, you must authenticate with a Bearer token. This protects the platform catalog from scraping.
+  **Public model responses use a reduced field set.** Approved token responses expose additional pricing, licensing, and metadata fields. Endpoint-specific projections determine which counters and related records are included.
 </Warning>
 
 ### What Each Tier Returns
 
 <Tabs>
   <Tab title="Public (No Token)">
-    **Track:** `id`, `name`, `image`, `created_at`, `model_type`, `duration_text`
+    **Track:** `id`, `name`, `image`, `created_at`, `model_type`, `duration_text`, plus `artists` and `genres` when loaded. Endpoint controllers can add fields; track listing also exposes `views`, `updated_at`, and `plays`.
     
     **Artist:** `id`, `name`, `model_type`
     
@@ -84,14 +84,14 @@ The BeatPass API uses a **two-tier access model** for external consumers:
     
     **Album:** `id`, `name`, `model_type`, `image`, `release_date`
     
-    No pricing, play counts, BPM, key/scale, licensing, or internal fields.
+    These model-level projections do not define every endpoint response. Use the endpoint-specific field contract, including the track-list counters noted above.
   </Tab>
   <Tab title="Token (Bearer Auth)">
     Everything in Public, plus:
     
     **Track:** `duration`, `price`, `currency`, `bpm`, `key`, `scale`, `plays`, `licensing_type`, `exclusive_status`, `exclusive_price`, `reposts_count`, `likes_count`, `description`, `tags`, and more.
     
-    **Artist:** `bio`, `website`, `verified`, and profile data.
+    **Artist:** `bio`, `website`, `verified`, and profile data. External token serialization hides the raw `image_small` field.
     
     **Album:** `plays`, `created_at`, `tracks` relation.
     
@@ -103,7 +103,7 @@ The BeatPass API uses a **two-tier access model** for external consumers:
 flowchart LR
     A[API Request] --> B{Bearer token\nprovided?}
     B -->|Yes| C[Rich Data\nPricing, plays, BPM,\nlicensing, tags]
-    B -->|No| D[Minimal Data\nid, name, model_type only]
+    B -->|No| D[Public Data\nModel-specific fields]
 ```
 
 ---

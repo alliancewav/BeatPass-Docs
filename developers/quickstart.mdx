@@ -36,7 +36,7 @@ All API requests use **Bearer token authentication**:
 | **Data access** | Token required for rich API responses |
 
 <Info>
-  **Unauthenticated requests return minimal data** (id, name, model_type only). A valid Bearer token is required for rich responses with pricing, plays, BPM, and licensing info.
+  **Public response fields vary by model and endpoint.** Track serialization includes `id`, `name`, `image`, `created_at`, `model_type`, `duration_text`, and loaded `artists`/`genres` relations. Controllers can add fields, including play counts on track listing. Approved token responses include additional pricing, BPM, and licensing fields.
 </Info>
 
 ---
@@ -127,7 +127,9 @@ If you encounter a 403 Forbidden response, the endpoint requires permissions you
 
 ## Error Handling
 
-### Standard Error Format
+### Example Validation Error
+
+Error bodies vary by endpoint. This is one validation-error shape; do not assume every error has an `errors` object.
 
 ```json
 {

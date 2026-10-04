@@ -92,11 +92,12 @@ The data you receive depends on your authentication level:
   <Accordion title="Public (No Token)" icon="globe" defaultOpen>
     <Badge color="gray" size="lg">Minimal Data</Badge>
     
-    Unauthenticated requests return **minimal data only** — just enough to identify resources:
-    - Tracks: `id`, `name`, `image`, `created_at`, `duration_text`, `model_type`
-    - Artists/Genres: `id`, `name`, `model_type`
-    
-    No pricing, plays, licensing, or internal fields are included.
+    Public model serialization uses model-specific field lists:
+    - Tracks: `id`, `name`, `image`, `created_at`, `duration_text`, `model_type`, and loaded `artists`/`genres` relations
+    - Artists: `id`, `name`, `model_type`
+    - Genres: `id`, `name`, `display_name`, `model_type`
+
+    Endpoint controllers can add fields. Track listing also exposes `views`, `updated_at`, and `plays`; use each endpoint's response contract.
   </Accordion>
   <Accordion title="Bearer Token (Approved Developers)" icon="key">
     <Badge color="blue" size="lg">Rich Data</Badge>
@@ -117,7 +118,7 @@ To get **rich responses** from the API playground, you must have an approved dev
 4. Send your request
 
 <Info>
-  Without a token, public endpoints return **minimal data only** (id, name, image, model_type). To get rich responses with pricing, plays, BPM, and licensing data, enter your approved developer token.
+  Public response fields vary by model and endpoint as described above. Enter your approved developer token for additional pricing, BPM, and licensing data.
 </Info>
 
 ---
@@ -127,7 +128,7 @@ To get **rich responses** from the API playground, you must have an approved dev
 ### Public Request (Minimal Data)
 
 ```bash
-# Returns minimal track data (id, name, image, artists only)
+# Returns public track data; fields depend on the endpoint
 curl "https://open.beatpass.ca/api/v1/tracks" \
   -H "Accept: application/json"
 ```

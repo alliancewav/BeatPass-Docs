@@ -199,15 +199,7 @@ Content-Type: application/json
 
 ### Success Response
 
-Responses vary by endpoint. Most return data directly:
-
-```json
-{
-  "id": 1234,
-  "name": "Track Name",
-  "artist": {...}
-}
-```
+Response envelopes vary by endpoint. Track listing returns `status` and `pagination`, while dashboard statistics return `success` and `data`. Dashboard fields such as `total_tracks` and `total_plays` are inside `data`. Use the response contract for the specific endpoint.
 
 ### Error Response
 
@@ -222,28 +214,17 @@ Responses vary by endpoint. Most return data directly:
 
 ### Pagination
 
-Paginated endpoints use <Tooltip tip="A pagination method that uses current_page, last_page, and per_page values to move through large result sets.">page-number pagination</Tooltip>:
-
-```json
-{
-  "data": [...],
-  "current_page": 1,
-  "per_page": 15,
-  "total": 150,
-  "last_page": 10,
-  "links": {...}
-}
-```
+Pagination envelopes vary by endpoint. `GET /tracks` returns `status: success` and a Laravel paginator inside `pagination`; its records are in `pagination.data`. Page metadata, including `current_page` and `per_page`, is also nested inside `pagination`. Length-aware pagination includes `total` and `last_page`; simple pagination omits those fields.
 
 ---
 
 ## Authentication & Data Access
 
-The BeatPass API uses a **<Tooltip tip="Public requests return minimal data (id, name only); authenticated requests with a Bearer token return rich data (pricing, plays, licensing).">two-tier access model</Tooltip>** for external consumers:
+The BeatPass API uses a **<Tooltip tip="Public and token response fields vary by model and endpoint. Public Track data can include image, timestamps and loaded artist/genre relations.">two-tier access model</Tooltip>** for external consumers:
 
 | Tier | Auth | Data |
 |------|------|------|
-| **Public** | None | Minimal (id, name, model_type only) |
+| **Public** | None | Model-specific fields; Track includes image, created_at, duration_text and loaded artists/genres |
 | **Token** | `Bearer {token}` | Rich (pricing, plays, BPM, licensing) |
 
 <Warning>
@@ -254,7 +235,7 @@ The BeatPass API uses a **<Tooltip tip="Public requests return minimal data (id,
 flowchart LR
     A[API Request] --> B{Bearer token\nincluded?}
     B -->|Yes| C[Rich Data\nPricing, plays, BPM,\nlicensing, tags]
-    B -->|No| D[Minimal Data\nid, name, model_type]
+    B -->|No| D[Public Data\nModel-specific fields]
 ```
 
 ---

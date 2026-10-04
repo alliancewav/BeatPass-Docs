@@ -129,7 +129,7 @@ GET /api/v1/tracks/{track}/producer-analytics
     Call `POST /tracks/{fileEntry}/extract-metadata` to parse BPM, key, duration, etc.
   </Step>
   <Step title="Create Track">
-    Call `POST /tracks` with metadata (title, genre, tags, BPM, etc.) and the file entry reference.
+    Call `POST /tracks` with `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, and `src`. A file entry ID alone is not a create payload: `url` must be a URL, and `src` is also required. Additional fields are conditionally required for exclusive licensing, sample-safety declarations, and AI disclosure.
   </Step>
   <Step title="Audio Fingerprinting">
     The system automatically generates an audio fingerprint for duplicate detection.
@@ -328,6 +328,7 @@ GET /api/v1/backstage-request/submission-status
 
 ```json
 {
+  "status": "success",
   "can_submit": true,
   "block_reason": null,
   "message": null,
@@ -340,6 +341,7 @@ GET /api/v1/backstage-request/submission-status
 
 ```json
 {
+  "status": "success",
   "can_submit": false,
   "block_reason": "revoked",
   "message": "Your producer access was revoked. To appeal, contact support at /contact so admins can review your request for reinstatement.",
@@ -364,12 +366,16 @@ POST /api/v1/backstage-request
   Display name for the producer/artist request.
 </ParamField>
 
-<ParamField body="artist_id" type="integer | string">
-  Artist reference for claim/verification flows. Client may pass `CURRENT_USER` in create flow.
+<ParamField body="artist_id" type="integer">
+  Required for `claim-artist`, where it must identify an existing artist. For other new requests, omitting this field defaults to the authenticated user's primary artist when available. `CURRENT_USER` is not resolved as an artist ID by this endpoint.
 </ParamField>
 
 <ParamField body="data" type="object" required>
-  Request payload object (for example: `first_name`, `last_name`, `beats_url`, `role`, `company`, optional supporting fields).
+  Request payload object. Must include `beats_url` as a valid URL. Optional supporting fields include `first_name`, `last_name`, `role`, and `company`.
+</ParamField>
+
+<ParamField body="data.beats_url" type="string" required>
+  Valid URL linking to the applicant's beats.
 </ParamField>
 
 ### Submission Guard Policy
@@ -768,19 +774,27 @@ GET /api/v1/cover-art/templates/{template}
 
 ### Preview Cover Art
 
-Generate a preview with a template and custom parameters.
+Preview cover art selected for the supplied genres.
 
 ```http
 POST /api/v1/cover-art/preview
 ```
 
+<ParamField body="genres" type="array" required>
+  Genre names. After normalization, provide one to three distinct, nonblank names of at most 100 characters each.
+</ParamField>
+
 ### Get Matching Templates
 
-Get templates that match specific criteria (genre, mood, etc.).
+Get templates that match the supplied genres.
 
 ```http
 GET /api/v1/cover-art/matching-templates
 ```
+
+<ParamField query="genres" type="array" required>
+  Genre names, for example `?genres[]=hip-hop`. After normalization, provide one to three nonblank names of at most 100 characters each.
+</ParamField>
 
 ---
 

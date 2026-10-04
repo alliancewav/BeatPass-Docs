@@ -115,10 +115,10 @@ POST /api/v1/beat-requests
 ```
 
 <ParamField body="content" type="string" required>
-  Description of the beat you're looking for.
+  Description of the beat you're looking for. Must be 10–500 characters.
 </ParamField>
 <ParamField body="reference_track" type="string" required>
-  Reference track URL or description for producers to understand the style.
+  Valid reference-track URL, up to 500 characters. Free-text descriptions are not accepted in this field.
 </ParamField>
 <ParamField body="genre" type="string">
   Preferred genre.
@@ -209,19 +209,19 @@ DELETE /api/v1/beat-requests/{id}
 
 ### Submit Track
 
-Submit a track to an active beat request. Producers use this endpoint to send their beats to a requester. Each producer can submit multiple tracks per request, up to the platform limit.
+Submit a track to an active beat request. Producers use this endpoint to send their beats to a requester. Each producer can submit up to 5 tracks per request.
 
 ```http
 POST /api/v1/beat-requests/{id}/fulfill
 ```
 
 <ParamField body="track_id" type="integer" required>
-  The ID of the track to submit. Must be a platform-hosted track owned by (or collaborated on by) the authenticated user, with completed audio processing.
+  The ID of an existing track to submit. Must be a platform-hosted track owned by (or collaborated on by) the authenticated user. A completed audio fingerprint is not required.
 </ParamField>
 
 **Validation Requirements:**
 - Track must be uploaded to the platform (external links not accepted)
-- Track must have completed audio processing
+- The track may still be undergoing fingerprint processing; duplicate-audio checks can reject matching audio
 - Producer must own or collaborate on the track
 - Cannot submit to your own request
 - Cannot submit the same track twice to the same request
@@ -340,21 +340,20 @@ GET /api/v1/beat-requests/duration-tiers
 |-------|------|-------|
 | Request not found | 404 | Invalid request ID |
 | Request expired | 410 | Duration window has closed |
-| Duplicate submission | 409 | Same track already submitted |
+| Duplicate submission | 422 | Same track already submitted |
 | Submission limit reached | 422 | Maximum tracks per request reached |
 | Duplicate audio detected | 409 | Audio fingerprint matches existing submission |
 | Track not platform-hosted | 422 | Track must be uploaded to the platform |
-| Fingerprint not completed | 422 | Track audio processing not finished |
 | Not track owner | 403 | Must own or collaborate on the track |
-| Self-submission blocked | 403 | Cannot submit to your own request |
+| Self-submission blocked | 400 | Cannot submit to your own request |
 
 ### Deletion & Renewal
 
 | Error | Code | Cause |
 |-------|------|-------|
 | Unauthorized | 403 | Only the request owner can delete or renew |
-| Request still active | 409 | Cannot renew a request that hasn't expired |
-| Renewal window expired | 410 | More than 30 days since expiration |
+| Request still active | 400 | Cannot renew a request that hasn't expired |
+| Renewal window expired | 400 | More than 30 days since expiration |
 | No token for renewal | 429 | No tokens available |
 
 ---

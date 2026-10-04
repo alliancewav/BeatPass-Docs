@@ -88,7 +88,7 @@ POST /api/v1/messaging/conversations/start
 </ParamField>
 
 <Note>
-  Provide either `user_id` (direct) or `user_ids` (group), not both. You cannot start a conversation with yourself.
+  Provide `user_id` for a direct conversation or `user_ids` for a group, not both. Omitting both returns `400`. Invalid field values, a direct self-conversation, or a group with fewer than two other participants return `422`. Group IDs must be distinct and contain 2–10 entries.
 </Note>
 
 **Response (201):**
@@ -256,6 +256,10 @@ Notify participants that the authenticated user is typing.
 POST /api/v1/messaging/conversations/{conversationId}/typing
 ```
 
+<ParamField body="is_typing" type="boolean" required>
+  Set `true` while typing and `false` when typing stops.
+</ParamField>
+
 ### Get Typing Status
 
 Check who is currently typing in a conversation.
@@ -279,6 +283,10 @@ Search for users to start a conversation with.
 ```http
 GET /api/v1/messaging/search-users
 ```
+
+<ParamField query="q" type="string">
+  Search text, up to 100 characters. After trimming whitespace, omitted text or text shorter than two characters returns `success: true` with an empty `data` array.
+</ParamField>
 
 ### Get Followed Users
 

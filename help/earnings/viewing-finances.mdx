@@ -7,6 +7,7 @@ canonical: "https://docs.beatpass.ca/help/earnings/viewing-finances"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
+import PayoutBankArrival from "/snippets/callouts/payout-bank-arrival.mdx";
 
 Use **Producer Finances** to follow money earned by one artist and manage the payout destination for eligible earnings.
 
@@ -28,10 +29,10 @@ Use **Producer Finances** to follow money earned by one artist and manage the pa
 
 <Steps>
   <Step title="Check Finance activity">
-    Start with **Waiting** and **Needs attention**. Use **Status** and **Earning type** when you need a specific record. Each page shows 20 records.
+    Start with **Pending** and **Delayed**. Use **Status** and **Earning type** when you need a specific record. Each page shows 20 records.
   </Step>
   <Step title="Review Earnings">
-    Compare **Total earned**, **Waiting**, **Sending**, and **Sent** in one currency at a time.
+    Compare **Total earned**, **Pending**, **Processing**, **Delayed**, and **Sent** in one currency at a time.
   </Step>
   <Step title="Use Currency context">
     Choose a comparison currency and a 7-, 30-, or 90-day range when you want historical exchange-rate context.
@@ -41,9 +42,7 @@ Use **Producer Finances** to follow money earned by one artist and manage the pa
   </Step>
 </Steps>
 
-<Note>
-  **Sent** and **Completed** do not confirm bank arrival. The payout provider and receiving bank may continue processing the money.
-</Note>
+<PayoutBankArrival />
 
 Legacy Stripe information is read-only. New and resumed Stripe setup are not offered from **Finances**.
 

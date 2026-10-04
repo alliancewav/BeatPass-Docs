@@ -37,18 +37,16 @@ POST /api/v1/tracks/{track}/purchase/calculate-price
 
 **Response:**
 
-```json
-{
-  "status": "success",
-  "data": {
-    "base_price": 29.99,
-    "platform_fee": 4.50,
-    "total_amount": 29.99,
-    "currency": "USD",
-    "is_exclusive": true
-  }
-}
-```
+Pricing fields are returned at the top level alongside `status: success`, without a `data` wrapper:
+
+- `track_price`: the exclusive track price
+- `platform_fee`, `platform_fee_rate`, and `platform_fee_flat`: calculated fee and configured fee inputs
+- `platform_fee_waived`, `platform_fee_plan_id`, and `platform_fee_plan_name`: fee-waiver and plan information
+- `total_amount`: `track_price + platform_fee`
+- `artist_amount`: the track price
+- `currency` and `license_terms`
+
+`base_price` and `is_exclusive` are not returned fields. Actual fees depend on configuration and can be waived.
 
 ---
 
@@ -66,21 +64,7 @@ POST /api/v1/tracks/{track}/purchase/initiate
 
 **Response:**
 
-```json
-{
-  "status": "success",
-  "data": {
-    "client_secret": "pi_xxx_secret_xxx",
-    "purchase_id": 42,
-    "pricing": {
-      "base_price": 29.99,
-      "platform_fee": 4.50,
-      "total_amount": 29.99,
-      "currency": "USD"
-    }
-  }
-}
-```
+The response returns `status: success`, `client_secret`, `purchase_id`, and `pricing` at the top level, without a `data` wrapper. `pricing` contains the fields described under Calculate Price, including `track_price`, `platform_fee`, `total_amount`, and `currency`.
 
 <Warning>
   Use the `client_secret` with Stripe.js on the frontend to complete payment confirmation. Do not store or log client secrets.
@@ -107,16 +91,7 @@ GET /api/v1/tracks/{track}/purchase/status
 
 **Response:**
 
-```json
-{
-  "status": "success",
-  "data": {
-    "has_purchased": true,
-    "can_purchase": false,
-    "reason": "already_purchased"
-  }
-}
-```
+The response returns `status: success`, `has_purchased`, `can_purchase`, `reason`, `reason_code`, and `purchase_status` at the top level, without a `data` wrapper. `reason` is a human-readable eligibility message or `null`, not a fixed `already_purchased` code. `reason_code` is supplied for some restrictions and otherwise is `null`; `purchase_status` is the latest purchase status or `null`.
 
 ---
 
@@ -144,31 +119,31 @@ GET /api/v1/artist/sales
 
 **Response:**
 
+Existing response example excerpt (additional fields omitted). Illustrative values, not a deployed response or evidence of settlement.
+
 ```json
 {
   "status": "success",
-  "data": {
-    "earnings": {
-      "total_sales": 12,
-      "total_revenue": 245.50,
-      "total_revenue_formatted": "\$245.50 USD",
-      "pending_payout": 89.00,
-      "paid_out": 156.50,
-      "currency": "USD"
-    },
-    "recent_purchases": [
-      {
-        "id": 1,
-        "track_id": 42,
-        "track_name": "Summer Vibes",
-        "artist_amount": 25.49,
-        "total_amount": 29.99,
-        "platform_fee": 4.50,
-        "status": "succeeded",
-        "purchased_at": "2025-01-15 14:30:00"
-      }
-    ]
-  }
+  "earnings": {
+    "total_sales": 12,
+    "total_revenue": 245.5,
+    "total_revenue_formatted": "$245.50 USD",
+    "pending_payout": 89.0,
+    "paid_out": 156.5,
+    "currency": "USD"
+  },
+  "recent_purchases": [
+    {
+      "id": 1,
+      "track_id": 42,
+      "track_name": "Summer Vibes",
+      "artist_amount": 25.49,
+      "total_amount": 29.99,
+      "platform_fee": 4.5,
+      "status": "succeeded",
+      "purchased_at": "2025-01-15 14:30:00"
+    }
+  ]
 }
 ```
 
@@ -236,7 +211,7 @@ POST /api/v1/tracks/check-licenses-batch
 
 ### View License Certificate
 
-Retrieve the license certificate data for a purchased track.
+Retrieve a rendered HTML license certificate page for a purchased track.
 
 ```http
 GET /api/v1/tracks/{track}/license-certificate
@@ -248,7 +223,7 @@ GET /api/v1/tracks/{track}/license-certificate
 
 ### Download License PDF
 
-Download the license certificate as a PDF document.
+Retrieve JSON data for client-side PDF generation. A successful response has `license`, `track`, `trackChangedToExclusive`, and `message` fields; this endpoint does not return PDF bytes.
 
 ```http
 GET /api/v1/tracks/{track}/download-license-pdf
@@ -265,6 +240,9 @@ POST /api/v1/verify-license/{uuid}
 <ParamField path="uuid" type="string" required>
   License certificate UUID.
 </ParamField>
+<ParamField body="g-recaptcha-response" type="string">
+  Required when registration CAPTCHA protection is enabled. The token must be valid for the `license_verification` action.
+</ParamField>
 
 ### Revoke License
 
@@ -273,6 +251,10 @@ Revoke a previously issued license.
 ```http
 POST /api/v1/licenses/{uuid}/revoke
 ```
+
+<ParamField body="reason" type="string" required>
+  Revocation reason. Maximum 500 characters.
+</ParamField>
 
 ### User Licenses
 

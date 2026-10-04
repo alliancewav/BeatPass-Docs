@@ -17,7 +17,7 @@ This catalog documents common errors you may encounter across BeatPass API endpo
 
 ## Error Response Format
 
-All errors follow this structure:
+Error bodies vary by endpoint. The example below is one validation-error shape. Some controllers return `success: false` plus `message` and optional `errors`; others return `message` alone or an `error` field. Do not require one universal envelope.
 
 ```json
 {
@@ -64,9 +64,9 @@ All errors follow this structure:
 ## Authentication Errors
 
 <AccordionGroup>
-  <Accordion title="Invalid credentials" defaultOpen icon="key">
-    <Badge color="red">401</Badge>
-     Wrong email or password combination.
+  <Accordion title="Invalid mobile-login credentials" defaultOpen icon="key">
+    <Badge color="orange">422</Badge>
+     Mobile login returns a validation error for a wrong email or password combination.
 
     **Resolution:** Verify your credentials. Use "Forgot Password" if needed.
   </Accordion>
@@ -123,7 +123,7 @@ All errors follow this structure:
       </Accordion>
       <Accordion title="Missing required fields" icon="keyboard">
         <Badge color="orange">422</Badge>
-         Title, BPM, or Genre not provided.
+         A required track field is missing, such as `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, or `src`.
 
         **Resolution:** Fill in all required metadata fields.
       </Accordion>
@@ -181,13 +181,18 @@ All errors follow this structure:
 
 ### Purchase Flow
 
-| Error                      | Code | Cause                         | Resolution             |
-| -------------------------- | ---- | ----------------------------- | ---------------------- |
-| `Track not for sale`       | 400  | No license configured         | Contact producer       |
-| `Already purchased`        | 409  | User already owns license     | Check purchases        |
-| `Exclusive already sold`   | 410  | Exclusive no longer available | Track sold exclusively |
-| `Price changed`            | 409  | Price updated since page load | Refresh and retry      |
-| `Checkout expired`         | 400  | Took too long to complete     | Start new checkout     |
+These responses apply to `POST /tracks/{track}/purchase/calculate-price` and `POST /tracks/{track}/purchase/initiate`:
+
+| Error | Code | Cause | Resolution |
+|-------|------|-------|------------|
+| Track purchases are not enabled | 403 | Purchase feature disabled | Stop the purchase flow |
+| Not available for exclusive purchase | 422 | Licensing type or exclusive status is ineligible | Check the current track state |
+| Already sold exclusively | 422 | Exclusive status is sold | Stop the purchase flow |
+| Already purchased | 422 | User already owns the purchase | Check purchase status |
+| Invalid purchase configuration | 422 | Price, currency, artist, payout readiness, or exclusive-license configuration is ineligible | Read the returned `message` |
+| Cannot purchase this track | 422 | Buyer owns the track or has a producer profile | Read the returned `message` |
+
+The `message` is human-readable; do not treat the labels above as machine-readable error codes.
 
 ### Payment Errors
 
@@ -202,11 +207,16 @@ All errors follow this structure:
 
 ### License Errors
 
-| Error               | Code | Cause                   | Resolution            |
-| ------------------- | ---- | ----------------------- | --------------------- |
-| `License not found` | 404  | Invalid license ID      | Verify license ID     |
-| `License revoked`   | 410  | License was revoked     | Contact support       |
-| `Download expired`  | 403  | Download link timed out | Get new download link |
+License response codes are endpoint-specific:
+
+| Endpoint and condition | Code | Response |
+|------------------------|------|----------|
+| Public UUID verification: malformed UUID or missing certificate | 404 | `valid: false` and `message` |
+| Public UUID verification: found but revoked, expired, or invalid certificate | 200 | Inspect `valid`, `status`, and `integrity_verified` |
+| PDF-data retrieval: no active license | 404 | No active license found for this track |
+| PDF-data retrieval or HTML certificate: active certificate invalid or incomplete | 409 | Certificate is invalid or incomplete |
+
+Do not treat every revoked certificate as an HTTP `410` or assume a universal download-expired status.
 
 ---
 
@@ -220,7 +230,7 @@ All errors follow this structure:
 | `Insufficient tokens`        | 429  | Not enough tokens for chosen duration    | Choose a shorter duration or wait   |
 | `Description too short`      | 422  | Under minimum length (10 characters)     | Add more detail                     |
 | `Reference track required`   | 422  | Missing reference track URL              | Provide a valid URL                 |
-| `Invalid reference track`    | 422  | URL format invalid                       | Provide a valid YouTube, Spotify, or SoundCloud link |
+| `Invalid reference track`    | 422  | URL format invalid                       | Provide a valid URL up to 500 characters |
 
 ### Submission
 
@@ -228,21 +238,20 @@ All errors follow this structure:
 | ---------------------------- | ---- | ---------------------------------------- | ----------------------------------- |
 | `Request not found`          | 404  | Invalid request ID                       | Verify ID                           |
 | `Request expired`            | 410  | Duration window (24/48/72h) has closed   | Find an active request              |
-| `Duplicate submission`       | 409  | Same track already submitted             | Choose a different track            |
+| `Duplicate submission`       | 422 | Same track already submitted             | Choose a different track            |
 | `Submission limit reached`   | 422  | Producer already submitted 5 tracks      | Maximum tracks per request reached  |
 | `Duplicate audio detected`   | 409  | Audio fingerprint matches existing submission | Try a different track          |
 | `Track not platform-hosted`  | 422  | Track is an external link, not uploaded  | Upload the track to the platform first |
-| `Fingerprint not completed`  | 422  | Track hasn't finished audio processing   | Wait for processing to complete     |
 | `Not track owner`            | 403  | Producer doesn't own or collaborate on track | Submit only your own tracks     |
-| `Self-submission blocked`    | 403  | Cannot submit to your own request        | Find another user's request         |
+| `Self-submission blocked`    | 400 | Cannot submit to your own request        | Find another user's request         |
 
 ### Deletion & Renewal
 
 | Error                        | Code | Cause                                    | Resolution                          |
 | ---------------------------- | ---- | ---------------------------------------- | ----------------------------------- |
 | `Not request owner`          | 403  | Only the creator can delete or renew     | Verify ownership                    |
-| `Request still active`       | 409  | Cannot renew a request that hasn't expired | Wait for expiration or delete     |
-| `Renewal window expired`     | 410  | Request expired more than 30 days ago    | Create a new request instead        |
+| `Request still active`       | 400 | Cannot renew a request that hasn't expired | Wait for expiration or delete     |
+| `Renewal window expired`     | 400 | Request expired more than 30 days ago    | Create a new request instead        |
 | `No token for renewal`       | 429  | No tokens available to renew             | Wait for monthly reset or upgrade   |
 
 ---
@@ -309,7 +318,7 @@ These errors apply to Backstage request creation and submission eligibility chec
 | `Playlist full`             | 429  | Maximum tracks per playlist   | Create new playlist     |
 | `Playlist limit reached`    | 429  | Maximum playlists reached     | Delete unused playlists |
 | `Track already saved`       | 409  | Already in library            | No action needed        |
-| `Track already in playlist` | 409  | Duplicate in playlist         | Track exists            |
+| Track already in playlist | 200 | Existing tracks are skipped | Read `added_count` and `duplicate_count`; this is a successful response |
 
 ### Collaborative Playlists
 
@@ -328,8 +337,8 @@ These errors apply to Backstage request creation and submission eligibility chec
 
 | Error                  | Code | Cause                            | Resolution                 |
 | ---------------------- | ---- | -------------------------------- | -------------------------- |
-| `Already following`    | 409  | Already followed                 | No action needed           |
-| `Not following`        | 404  | Cannot unfollow if not following | Check following status     |
+| Already following a user | 200 | Existing follow is kept | No action needed; response is `status: success` |
+| Unfollowing a user not followed | 200 | Detach is idempotent | No action needed; response is `status: success` |
 | `Follow limit reached` | 429  | Maximum following reached        | Unfollow some accounts     |
 | `Follow rate limited`  | 429  | Too many follows                 | Wait before following more |
 

@@ -1,0 +1,4900 @@
+{
+  "batch": "02",
+  "state": "draft; not deployed",
+  "date": "2026-10-04",
+  "input": {
+    "kind": "Google Doc readable text; independent of unavailable ZIP",
+    "url": "https://docs.google.com/document/d/1HiPf4x3gZLTXwhQTcnD-p0ZB81_CCgzs_9sNoqZa_7Y/edit",
+    "modified_time": "2026-10-03T15:22:36.720Z",
+    "zip_verified": false
+  },
+  "docs_base": "a5dcd7c5cd6f7e0a2e9a90cf9475e08b7eb48e60",
+  "application_source": "d545521b5d5380e0c158ab407fedc04fddf6544e",
+  "application_deployment": "Founder reports live; not independently verified by this task",
+  "method": [
+    "Exact named Doc replacements; line-content matching recovers exported indentation without whole-file replacement.",
+    "Compared 78 cited API/guide source files: 66 unchanged from review baseline; reviewed relevant drift in 12 changed files.",
+    "Applied JSON-pointer deltas with exact current-before assertions. Independently compared final OpenAPI to planned replay.",
+    "Preserved current BPM corrections and messaging additions; changed G34/G36 and B02-API-103 to current validation behavior."
+  ],
+  "inventory": {
+    "product_units": 47,
+    "guide_blocks": 72,
+    "doc_api_records": 85,
+    "doc_api_deltas": 400,
+    "after_createTrack_exclusion_records": 84,
+    "after_createTrack_exclusion_deltas": 370
+  },
+  "counts": {
+    "products": {
+      "applied": 41,
+      "reconciled": 6,
+      "already-correct": 0,
+      "held": 0
+    },
+    "guides": {
+      "applied": 69,
+      "reconciled": 3,
+      "already-correct": 0,
+      "held": 0
+    },
+    "api": {
+      "applied": 365,
+      "held": 34,
+      "reconciled": 1,
+      "already-correct": 0
+    }
+  },
+  "holds": [
+    "API-createTrack: all 30 deltas; incomplete conditional POST /tracks contract.",
+    "API-updatePlaylist: public/collaborative type and nullable deltas (4); await sanitized production evidence.",
+    "Registration request fields: unchanged; configured account-creation validator not verified. Response-only proposals are included.",
+    "Track-pagination response examples: no new example or production fixture added; hold remains. Approved schema/envelope corrections and removal of a misleading generic example are included."
+  ],
+  "payout_caveat": {
+    "units": [
+      "P21",
+      "P26",
+      "P35",
+      "P44",
+      "P45",
+      "P46",
+      "P47"
+    ],
+    "snippet": "snippets/callouts/payout-bank-arrival.mdx",
+    "pages": [
+      "help/producer-dashboard/finances.mdx",
+      "help/earnings/viewing-finances.mdx",
+      "help/earnings/payout-schedule.mdx"
+    ],
+    "route": "Repository-owned non-navigation MDX snippet imported after frontmatter; no Admin MCP route used.",
+    "strict_prebuild": "passed; shared text found in all three resolved page outputs",
+    "rendered_qa": "not run; desktop/narrow QA required before merge"
+  },
+  "checks": {
+    "docs_audit": "passed: 304 pages, 324 protected URLs, 54 redirects; 160 help-nav pages",
+    "openapi_route_parity": "passed: 115 operations against current authorized app checkout",
+    "route_parser_tests": "passed: 4/4",
+    "mintlify_generator": "passed: installed @mintlify/scraping 4.0.949 generated 115 operation pages in disposable output; tracked generated pages do not exist and none were hand-edited",
+    "mintlify_strict_prebuild": "passed using @mintlify/prebuild 1.0.1233 exported prebuild with strict:true and a writable output cwd",
+    "mintlify_broken_links": "passed with --check-anchors --check-redirects --check-snippets",
+    "mintlify_a11y": "passed; 307 MDX files, no missing image/video alt attributes; primary color AA pass with AAA advisory",
+    "docs_quality": "failed at mint validate: read-only preinstalled preview cache /home/agent/.mintlify/mint/apps/client/public/.gitignore; same baseline failure",
+    "vale": "not run successfully: spawnSync vale ENOENT (exit 2); no installation attempted",
+    "rendered_desktop_narrow": "not run; strict prebuild and static a11y are not browser QA",
+    "authenticated_product_tests": "not run; no password, upload, bank, payment, payout, or authenticated API mutations",
+    "runtime": "Node v24.19.0 available versus repository pin 22.15.1; no runtime/dependency upgrades"
+  },
+  "warnings": {
+    "preexisting": [
+      "3 production-only claims remain public with review warnings",
+      "41 legacy pages exceed the two-callout guideline",
+      "Mintlify preview-cache failure; Vale executable missing"
+    ],
+    "introduced": [
+      "Callout advisory count is now 42; the approved SEARCH-01 explanation adds a Note in the search API guide. Audit still passes."
+    ]
+  },
+  "scope": "Help, approved developer guide/OpenAPI corrections, shared snippet and this audit record only. No Terms, app, workflow, credentials, permissions or unrelated licensing-policy changes. Broader site proposals remain outside this patch.",
+  "text_units": [
+    {
+      "kind": "products",
+      "id": "P01",
+      "path": "help/account-settings/password/index.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P02",
+      "path": "help/account-settings/password/changing-password.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P03",
+      "path": "help/account-settings/password/changing-password.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P04",
+      "path": "help/account-settings/password/forgot-password.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P05",
+      "path": "help/account-settings/index.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P06",
+      "path": "help/getting-started/quick-start-guides/producer-guide.mdx",
+      "status": "reconciled",
+      "reason": "Preserved merged PR 8 range of 60–200; added approved whole-number clarification.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P07",
+      "path": "help/producer-program/after-approval.mdx",
+      "status": "reconciled",
+      "reason": "Preserved merged PR 8 range of 60–200; added approved whole-number clarification.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P08",
+      "path": "help/uploading/index.mdx",
+      "status": "reconciled",
+      "reason": "Preserved merged PR 8 range of 60–200; added approved whole-number clarification.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P09",
+      "path": "help/uploading/index.mdx",
+      "status": "reconciled",
+      "reason": "Preserved merged PR 8 range of 60–200; added approved whole-number clarification.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P10",
+      "path": "help/uploading/upload-page.mdx",
+      "status": "reconciled",
+      "reason": "Preserved merged PR 8 range of 60–200; added approved whole-number clarification.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P11",
+      "path": "help/troubleshooting/upload-issues.mdx",
+      "status": "reconciled",
+      "reason": "Preserved merged PR 8 range of 60–200; added approved whole-number clarification.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P12",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P13",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P14",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P15",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P16",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P17",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P18",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P19",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P20",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P43",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P22",
+      "path": "help/earnings/index.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P23",
+      "path": "help/earnings/index.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P24",
+      "path": "help/earnings/viewing-finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P25",
+      "path": "help/earnings/viewing-finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P27",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P28",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P29",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P30",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P31",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P32",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P33",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P34",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P36",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P37",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P38",
+      "path": "help/earnings/payout-eligibility.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P39",
+      "path": "help/earnings/payout-eligibility.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P40",
+      "path": "help/earnings/currencies-and-pricing.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P41",
+      "path": "help/earnings/beatpay/index.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P42",
+      "path": "help/earnings/beatpay/index.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P21",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P44",
+      "path": "help/producer-dashboard/finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P26",
+      "path": "help/earnings/viewing-finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P45",
+      "path": "help/earnings/viewing-finances.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P35",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P46",
+      "path": "help/earnings/payout-schedule.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "products",
+      "id": "P47",
+      "path": "snippets/callouts/payout-bank-arrival.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/Auth/Fortify/ResetUserPassword.php",
+        "common/Auth/Fortify/UpdateUserPassword.php",
+        "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+        "app/Http/Requests/ModifyTracks.php",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G01",
+      "path": "developers/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Controllers/Api/ArtistController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G02",
+      "path": "developers/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Controllers/TrackController.php",
+        "common/Database/Datasource/Datasource.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G03",
+      "path": "developers/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G04",
+      "path": "developers/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G05",
+      "path": "developers/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G06",
+      "path": "developers/quickstart.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G07",
+      "path": "developers/quickstart.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Traits/ApiResponse.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G08",
+      "path": "developers/auth.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G09",
+      "path": "developers/auth.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G10",
+      "path": "developers/auth.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G11",
+      "path": "developers/auth.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Artist.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G12",
+      "path": "developers/auth.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G13",
+      "path": "developers/api-reference/overview.mdx",
+      "status": "reconciled",
+      "reason": "Review Doc differs from current source only in colon versus em dash; matched current wording before targeted replacement.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php",
+        "app/Models/Artist.php",
+        "app/Models/Genre.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G14",
+      "path": "developers/api-reference/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G15",
+      "path": "developers/api-reference/overview.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G59",
+      "path": "developers/auth.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Models/Track.php",
+        "app/Http/Controllers/TrackController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G16",
+      "path": "developers/api-reference/dashboard.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/Api/ArtistController.php",
+        "app/Http/Controllers/ContentInsightsController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G17",
+      "path": "developers/api-reference/dashboard.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/ContentInsightsController.php",
+        "app/Http/Controllers/Api/ArtistController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G18",
+      "path": "developers/api-reference/dashboard.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/Api/ArtistController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G19",
+      "path": "developers/api-reference/dashboard.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/Api/ArtistController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G20",
+      "path": "developers/api-reference/dashboard.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/Api/ArtistController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G21",
+      "path": "developers/api-reference/dashboard.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/ContentInsightsController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G22",
+      "path": "developers/api-reference/insights.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/Insights/TrackInsightsController.php",
+        "app/Services/TrackAnalyticsService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G23",
+      "path": "developers/api-reference/insights.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/Insights/ArtistInsightsController.php",
+        "app/Services/ProducerIntelligence/ArtistInsightsService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G24",
+      "path": "developers/api-reference/insights.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/Insights/AnalyticsExportController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G25",
+      "path": "developers/api-reference/insights.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Traits/ApiResponse.php",
+        "app/Http/Controllers/Insights/TrackInsightsController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G26",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Controllers/TrackPurchaseController.php",
+        "app/Services/TrackPurchaseService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G27",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Controllers/TrackPurchaseController.php",
+        "app/Services/TrackPurchaseService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G28",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Controllers/TrackPurchaseController.php",
+        "app/Services/TrackPurchaseService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G29",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation. Reformatted the approved JSON example with two-space indentation after recovering exported text.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Controllers/TrackPurchaseController.php",
+        "app/Services/TrackPurchaseService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G30",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/LicenseCertificateController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G31",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/LicenseCertificateController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G32",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/LicenseCertificateController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G33",
+      "path": "developers/api-reference/commerce.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/LicenseCertificateController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G34",
+      "path": "developers/api-reference/messaging.mdx",
+      "status": "reconciled",
+      "reason": "Current MessagingController rejects both selectors and self/undersized groups with 422; search uses trimmed mb_strlen and max:100.",
+      "source_paths": [
+        "app/Http/Controllers/MessagingController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G35",
+      "path": "developers/api-reference/messaging.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/MessagingController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G36",
+      "path": "developers/api-reference/messaging.mdx",
+      "status": "reconciled",
+      "reason": "Current MessagingController rejects both selectors and self/undersized groups with 422; search uses trimmed mb_strlen and max:100.",
+      "source_paths": [
+        "app/Http/Controllers/MessagingController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G37",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Requests/CreateBeatRequestRequest.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G38",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Requests/CreateBeatRequestRequest.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G39",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G40",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Requests/SubmitTrackToBeatRequest.php",
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G41",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G42",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G43",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G44",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G45",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G46",
+      "path": "developers/api-reference/beat-requests.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Deleted the full table row including its newline to keep adjacent rows in the same table.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G47",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G48",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G49",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G50",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G51",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Deleted the full table row including its newline to keep adjacent rows in the same table.",
+      "source_paths": [
+        "app/Http/Controllers/BeatRequestController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G60",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Requests/CreateBeatRequestRequest.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G52",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Core/BaseController.php",
+        "app/Http/Traits/ApiResponse.php",
+        "app/Http/Controllers/LicenseCertificateController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G53",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "common/Auth/Controllers/MobileAuthController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G54",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/TrackPurchaseController.php",
+        "app/Services/TrackPurchaseService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G55",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/LicenseCertificateController.php",
+        "app/Services/LicenseCertificateService.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G56",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/PlaylistTracksController.php",
+        "common/Core/BaseController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G57",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Controllers/UserFollowersController.php",
+        "common/Core/BaseController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G58",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "common/Auth/Controllers/UserFollowersController.php",
+        "common/Core/BaseController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "G61",
+      "path": "developers/error-catalog.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Requests/ModifyTracks.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "SOCIAL-01",
+      "path": "developers/api-reference/social.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/RepostController.php",
+        "app/Models/Album.php",
+        "app/Models/Track.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "SOCIAL-02",
+      "path": "developers/api-reference/social.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/UserLibrary/UserLibraryTracksController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "SOCIAL-03",
+      "path": "developers/api-reference/social.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/UserLibrary/UserLibraryTracksController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "CONTENT-01",
+      "path": "developers/api-reference/content.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/TrackController.php",
+        "app/Http/Requests/ModifyTracks.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "CONTENT-02",
+      "path": "developers/api-reference/content.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/BackstageRequestController.php",
+        "common/Core/BaseController.php",
+        "app/Services/Backstage/BackstageRequestSubmissionEligibility.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "CONTENT-03",
+      "path": "developers/api-reference/content.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/BackstageRequestController.php",
+        "common/Core/BaseController.php",
+        "app/Services/Backstage/BackstageRequestSubmissionEligibility.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "CONTENT-04",
+      "path": "developers/api-reference/content.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/BackstageRequestController.php",
+        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Models/BackstageRequest.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "CONTENT-05",
+      "path": "developers/api-reference/content.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/CoverArtController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "CONTENT-06",
+      "path": "developers/api-reference/content.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated.",
+      "source_paths": [
+        "app/Http/Controllers/CoverArtController.php"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "SEARCH-01",
+      "path": "developers/api-reference/search.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/Search/SearchController.php",
+        "resources/client/web-player/search/search-autocomplete.tsx"
+      ]
+    },
+    {
+      "kind": "guides",
+      "id": "SEARCH-02",
+      "path": "developers/api-reference/search.mdx",
+      "status": "applied",
+      "reason": "Exact review-Doc replacement; current source evidence revalidated. Matched line content exactly after recovering export indentation.",
+      "source_paths": [
+        "app/Http/Controllers/RadioController.php",
+        "routes/api.php"
+      ]
+    }
+  ],
+  "api_records": [
+    {
+      "id": "API-searchIndex",
+      "root": "/paths/~1search/get",
+      "counts": {
+        "applied": 8
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1search/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1search/get/responses/200/content/application~1json/schema/properties/loader",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1search/get/responses/200/content/application~1json/schema/properties/query/example",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1search/get/responses/200/content/application~1json/schema/properties/results/oneOf",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1search/get/responses/200/content/application~1json/schema/properties/results/properties",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1search/get/responses/200/content/application~1json/schema/properties/results/type",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1search/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1search/get/responses/200/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getArtist",
+      "root": "/paths/~1artists~1{id}/get",
+      "counts": {
+        "applied": 7
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists~1{id}/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artists~1{id}/get/responses/200/content/application~1json/schema/properties/albums",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1artists~1{id}/get/responses/200/content/application~1json/schema/properties/artist/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1artists~1{id}/get/responses/200/content/application~1json/schema/properties/loader",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1artists~1{id}/get/responses/200/content/application~1json/schema/properties/selectedAlbumLayout",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1artists~1{id}/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1artists~1{id}/get/responses/200/content/application~1json/schema/properties/tracks",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getArtistAlbums",
+      "root": "/paths/~1artists~1{id}~1albums/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists~1{id}~1albums/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getArtistFollowers",
+      "root": "/paths/~1artists~1{id}~1followers/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists~1{id}~1followers/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getTagTracks",
+      "root": "/paths/~1tags~1{name}~1tracks/get",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tags~1{name}~1tracks/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tags~1{name}~1tracks/get/responses/200/content/application~1json/schema/properties/pagination/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tags~1{name}~1tracks/get/responses/200/content/application~1json/schema/properties/pagination/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tags~1{name}~1tracks/get/responses/200/content/application~1json/schema/properties/pagination/properties",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tags~1{name}~1tracks/get/responses/200/content/application~1json/schema/properties/pagination/type",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getTagAlbums",
+      "root": "/paths/~1tags~1{name}~1albums/get",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tags~1{name}~1albums/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tags~1{name}~1albums/get/responses/200/content/application~1json/schema/properties/pagination/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tags~1{name}~1albums/get/responses/200/content/application~1json/schema/properties/pagination/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tags~1{name}~1albums/get/responses/200/content/application~1json/schema/properties/pagination/properties",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tags~1{name}~1albums/get/responses/200/content/application~1json/schema/properties/pagination/type",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUserLikedTracks",
+      "root": "/paths/~1users~1me~1liked-tracks/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1me~1liked-tracks/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUserLikedAlbums",
+      "root": "/paths/~1users~1me~1liked-albums/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1me~1liked-albums/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUserLikedArtists",
+      "root": "/paths/~1users~1me~1liked-artists/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1me~1liked-artists/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getArtists",
+      "root": "/paths/~1artists/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists/get/responses/200/content/application~1json/schema/properties/artists",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artists/get/responses/200/content/application~1json/schema/properties/pagination",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1artists/get/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1artists/get/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getAlbums",
+      "root": "/paths/~1albums/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1albums/get/responses/200/content/application~1json/schema/properties/albums",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1albums/get/responses/200/content/application~1json/schema/properties/pagination",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1albums/get/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1albums/get/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getTracks",
+      "root": "/paths/~1tracks/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks/get/responses/200/content/application~1json/schema/properties/pagination",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks/get/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks/get/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks/get/responses/200/content/application~1json/schema/properties/tracks",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-createArtist",
+      "root": "/paths/~1artists/post",
+      "counts": {
+        "applied": 6
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists/post/requestBody/content/application~1json/schema/properties/name/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artists/post/requestBody/content/application~1json/schema/properties/name/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1artists/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1artists/post/responses/200",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1artists/post/responses/201",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1artists/post/responses/403",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-createAlbum",
+      "root": "/paths/~1albums/post",
+      "counts": {
+        "applied": 9
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1albums/post/requestBody/content/application~1json/schema/properties/artist_id",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1albums/post/requestBody/content/application~1json/schema/properties/artists",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1albums/post/requestBody/content/application~1json/schema/properties/image",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1albums/post/requestBody/content/application~1json/schema/properties/name/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1albums/post/requestBody/content/application~1json/schema/properties/name/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1albums/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1albums/post/responses/200",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1albums/post/responses/201",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1albums/post/responses/403",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-createTrack",
+      "root": "/paths/~1tracks/post",
+      "counts": {
+        "held": 30
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/ai_commercial_rights_confirmed",
+          "status": "held"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/ai_tool_name",
+          "status": "held"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/ai_usage",
+          "status": "held"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/ai_usage_details",
+          "status": "held"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/artists/items/oneOf",
+          "status": "held"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/artists/items/type",
+          "status": "held"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/artists/minItems",
+          "status": "held"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/bpm",
+          "status": "held"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/duration/minimum",
+          "status": "held"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/exclusive_contact_email",
+          "status": "held"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/exclusive_currency",
+          "status": "held"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/exclusive_license_config",
+          "status": "held"
+        },
+        {
+          "delta": 13,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/exclusive_license_preset_id",
+          "status": "held"
+        },
+        {
+          "delta": 14,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/exclusive_price",
+          "status": "held"
+        },
+        {
+          "delta": 15,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/exclusive_status",
+          "status": "held"
+        },
+        {
+          "delta": 16,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/image",
+          "status": "held"
+        },
+        {
+          "delta": 17,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/key",
+          "status": "held"
+        },
+        {
+          "delta": 18,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/licensing_type",
+          "status": "held"
+        },
+        {
+          "delta": 19,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/name/description",
+          "status": "held"
+        },
+        {
+          "delta": 20,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/name/maxLength",
+          "status": "held"
+        },
+        {
+          "delta": 21,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/name/minLength",
+          "status": "held"
+        },
+        {
+          "delta": 22,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/sample_safe",
+          "status": "held"
+        },
+        {
+          "delta": 23,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/sample_safe_status",
+          "status": "held"
+        },
+        {
+          "delta": 24,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/scale",
+          "status": "held"
+        },
+        {
+          "delta": 25,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/src",
+          "status": "held"
+        },
+        {
+          "delta": 26,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/properties/url",
+          "status": "held"
+        },
+        {
+          "delta": 27,
+          "pointer": "/paths/~1tracks/post/requestBody/content/application~1json/schema/required",
+          "status": "held"
+        },
+        {
+          "delta": 28,
+          "pointer": "/paths/~1tracks/post/responses/200",
+          "status": "held"
+        },
+        {
+          "delta": 29,
+          "pointer": "/paths/~1tracks/post/responses/201",
+          "status": "held"
+        },
+        {
+          "delta": 30,
+          "pointer": "/paths/~1tracks/post/responses/403",
+          "status": "held"
+        }
+      ],
+      "exceptions": [
+        "Partial POST /tracks upload contract excluded: all 30 deltas."
+      ]
+    },
+    {
+      "id": "API-getAlbum",
+      "root": "/paths/~1albums~1{id}/get",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1albums~1{id}/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1albums~1{id}/get/responses/200/content/application~1json/schema/properties/loader",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1albums~1{id}/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getTrack",
+      "root": "/paths/~1tracks~1{id}/get",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}/get/responses/200/content/application~1json/schema/properties/loader",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getTrackLyric",
+      "root": "/paths/~1tracks~1{id}~1lyrics/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1lyrics/get/responses/200/content/application~1json/schema/properties/lyric/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1lyrics/get/responses/200/content/application~1json/schema/properties/lyric/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1lyrics/get/responses/200/content/application~1json/schema/properties/lyric/nullable",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1lyrics/get/responses/200/content/application~1json/schema/properties/lyric/type",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getTrackWaveform",
+      "root": "/paths/~1tracks~1{id}~1wave/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1wave/get/responses/200/content/application~1json/schema/properties/comments",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1wave/get/responses/200/content/application~1json/schema/properties/peaks",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1wave/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1wave/get/responses/200/content/application~1json/schema/properties/waveData",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUserFollowers",
+      "root": "/paths/~1users~1me~1followers/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1me~1followers/get/responses/200/content/application~1json/schema/properties/pagination/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1users~1me~1followers/get/responses/200/content/application~1json/schema/properties/pagination/description",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1users~1me~1followers/get/responses/200/content/application~1json/schema/properties/pagination/properties",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1users~1me~1followers/get/responses/200/content/application~1json/schema/properties/pagination/type",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUser",
+      "root": "/paths/~1users~1{id}/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1{id}/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-searchUsers",
+      "root": "/paths/~1users~1search/get",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1search/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1users~1search/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1users~1search/get/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-unfollowArtist",
+      "root": "/paths/~1artists~1{id}~1unfollow/post",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists~1{id}~1unfollow/post/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artists~1{id}~1unfollow/post/responses/409",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getRadioRecommendations",
+      "root": "/paths/~1radio~1{type}~1{id}/get",
+      "counts": {
+        "applied": 6
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1radio~1{type}~1{id}/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1radio~1{type}~1{id}/get/responses/200/content/application~1json/schema/properties/recommendations",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1radio~1{type}~1{id}/get/responses/200/content/application~1json/schema/properties/seed",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1radio~1{type}~1{id}/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1radio~1{type}~1{id}/get/responses/200/content/application~1json/schema/properties/tracks",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1radio~1{type}~1{id}/get/responses/200/content/application~1json/schema/properties/type",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-sharedArtist",
+      "root": "/components/schemas/Artist",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/components/schemas/Artist/properties/image_small",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-login",
+      "root": "/paths/~1auth~1login/post",
+      "counts": {
+        "applied": 14
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1auth~1login/post/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1auth~1login/post/requestBody/content/application~1json/schema/properties/token_name/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1auth~1login/post/requestBody/content/application~1json/schema/properties/token_name/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1auth~1login/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/locales",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/menus",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/settings",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/themes",
+          "status": "applied"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/user/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1auth~1login/post/responses/200/content/application~1json/schema/properties/user/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 13,
+          "pointer": "/paths/~1auth~1login/post/responses/422/content",
+          "status": "applied"
+        },
+        {
+          "delta": 14,
+          "pointer": "/paths/~1auth~1login/post/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-register",
+      "root": "/paths/~1auth~1register/post",
+      "counts": {
+        "applied": 8
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1auth~1register/post/responses/200/content/application~1json/schema/properties/boostrapData",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1auth~1register/post/responses/200/content/application~1json/schema/properties/bootstrapData",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1auth~1register/post/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1auth~1register/post/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1auth~1register/post/responses/200/content/application~1json/schema/properties/user",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1auth~1register/post/responses/422/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1auth~1register/post/responses/422/content",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1auth~1register/post/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getPlaylist",
+      "root": "/paths/~1playlists~1{id}/get",
+      "counts": {
+        "applied": 6
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}/get/responses/200/content/application~1json/schema/properties/loader",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists~1{id}/get/responses/200/content/application~1json/schema/properties/playlist/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists~1{id}/get/responses/200/content/application~1json/schema/properties/playlist/allOf",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1playlists~1{id}/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1playlists~1{id}/get/responses/200/content/application~1json/schema/properties/totalDuration",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1playlists~1{id}/get/responses/200/content/application~1json/schema/properties/tracks",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-deletePlaylist",
+      "root": "/paths/~1playlists~1{id}/delete",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}/delete/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-followPlaylist",
+      "root": "/paths/~1playlists~1{id}~1follow/post",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1follow/post/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-unfollowPlaylist",
+      "root": "/paths/~1playlists~1{id}~1unfollow/post",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1unfollow/post/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-createPlaylist",
+      "root": "/paths/~1playlists/post",
+      "counts": {
+        "applied": 14
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/collaborative/nullable",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/collaborative/type",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/description/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/description/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/description/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/name/description",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/name/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/name/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/public/nullable",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/properties/public/type",
+          "status": "applied"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1playlists/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1playlists/post/responses/422/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 13,
+          "pointer": "/paths/~1playlists/post/responses/422/content",
+          "status": "applied"
+        },
+        {
+          "delta": 14,
+          "pointer": "/paths/~1playlists/post/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-updatePlaylist",
+      "root": "/paths/~1playlists~1{playlist}/put",
+      "counts": {
+        "held": 4,
+        "applied": 9
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/collaborative/nullable",
+          "status": "held"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/collaborative/type",
+          "status": "held"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/description/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/description/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/description/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/name/description",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/name/maxLength",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/name/minLength",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/public/nullable",
+          "status": "held"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1playlists~1{playlist}/put/requestBody/content/application~1json/schema/properties/public/type",
+          "status": "held"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1playlists~1{playlist}/put/responses/422/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1playlists~1{playlist}/put/responses/422/content",
+          "status": "applied"
+        },
+        {
+          "delta": 13,
+          "pointer": "/paths/~1playlists~1{playlist}/put/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": [
+        "Selective programme hold: sanitized production evidence required for playlist PUT public/collaborative types and nullability."
+      ]
+    },
+    {
+      "id": "API-getPlaylistTracks",
+      "root": "/paths/~1playlists~1{id}~1tracks/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1tracks/get/parameters",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-addTracksToPlaylist",
+      "root": "/paths/~1playlists~1{id}~1tracks~1add/post",
+      "counts": {
+        "applied": 6
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1add/post/requestBody/content/application~1json/schema/properties/ids/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1add/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1add/post/requestBody/required",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1add/post/responses/200/content/application~1json/schema/properties/added_count",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1add/post/responses/200/content/application~1json/schema/properties/duplicate_count",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1add/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-removeTracksFromPlaylist",
+      "root": "/paths/~1playlists~1{id}~1tracks~1remove/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1remove/post/requestBody/content/application~1json/schema/properties/ids/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1remove/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1remove/post/requestBody/required",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1remove/post/responses/200/content/application~1json/schema/properties/removed_count",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1playlists~1{id}~1tracks~1remove/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-generateFingerprint",
+      "root": "/paths/~1tracks~1{id}~1fingerprint/post",
+      "counts": {
+        "applied": 8
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/200/content/application~1json/schema/properties/fingerprint",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/200/content/application~1json/schema/properties/message",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/200/content/application~1json/schema/properties/success",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/200/description",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/403",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getFingerprintStatus",
+      "root": "/paths/~1tracks~1{id}~1fingerprint~1status/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint~1status/get/responses/200/content/application~1json/schema/properties/fingerprint",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint~1status/get/responses/200/content/application~1json/schema/properties/fingerprint_status",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint~1status/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1fingerprint~1status/get/responses/200/content/application~1json/schema/properties/success",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-checkDuplicates",
+      "root": "/paths/~1tracks~1check-duplicates/post",
+      "counts": {
+        "applied": 12
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/requestBody/content/application~1json/schema/properties/artist_names",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/requestBody/content/application~1json/schema/properties/exclude_track_id",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/requestBody/content/application~1json/schema/properties/playback_url",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/requestBody/content/application~1json/schema/properties/track_ids",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/requestBody/content/application~1json/schema/properties/track_name",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/responses/200/content/application~1json/schema/properties/duplicates",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/responses/200/content/application~1json/schema/properties/result",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/responses/200/content/application~1json/schema/properties/success",
+          "status": "applied"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/responses/422",
+          "status": "applied"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1tracks~1check-duplicates/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-inviteToPlaylist",
+      "root": "/paths/~1playlists~1{id}~1invite/post",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1invite/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists~1{id}~1invite/post/responses/422/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists~1{id}~1invite/post/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-removePlaylistEditor",
+      "root": "/paths/~1playlists~1{id}~1remove-editor/post",
+      "counts": {
+        "applied": 8
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/responses/200/content/application~1json/schema/properties/deleted",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/responses/200/content/application~1json/schema/properties/message",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/responses/200/content/application~1json/schema/properties/playlist",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1playlists~1{id}~1remove-editor/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-acceptPlaylistInvite",
+      "root": "/paths/~1playlists~1{id}~1accept-invite/post",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1playlists~1{id}~1accept-invite/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-toggleRepost",
+      "root": "/paths/~1reposts~1toggle/post",
+      "counts": {
+        "applied": 10
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1reposts~1toggle/post/requestBody/content/application~1json/schema/properties/repostable_id",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1reposts~1toggle/post/requestBody/content/application~1json/schema/properties/repostable_type",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1reposts~1toggle/post/requestBody/content/application~1json/schema/properties/track_id",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1reposts~1toggle/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1reposts~1toggle/post/responses/200/content/application~1json/schema/properties/action",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1reposts~1toggle/post/responses/200/content/application~1json/schema/properties/repost",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1reposts~1toggle/post/responses/200/content/application~1json/schema/properties/reposted",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1reposts~1toggle/post/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1reposts~1toggle/post/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1reposts~1toggle/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUserReposts",
+      "root": "/paths/~1users~1{id}~1reposts/get",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1{id}~1reposts/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1users~1{id}~1reposts/get/responses/200/content",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-logTrackPlay",
+      "root": "/paths/~1tracks~1plays~1{track}~1log/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1plays~1{track}~1log/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1plays~1{track}~1log/post/responses/200/content/application~1json/schema/properties/play_token",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1plays~1{track}~1log/post/responses/200/content/application~1json/schema/properties/status/enum",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1plays~1{track}~1log/post/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1plays~1{track}~1log/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getCoverArtTemplates",
+      "root": "/paths/~1cover-art~1templates/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1cover-art~1templates/get/responses/200/content/application~1json/schema/properties/pagination",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1cover-art~1templates/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1cover-art~1templates/get/responses/200/content/application~1json/schema/properties/templates/items/properties/image_url",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1cover-art~1templates/get/responses/200/content/application~1json/schema/properties/templates/items/properties/preview_url",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-previewCoverArt",
+      "root": "/paths/~1cover-art~1preview/post",
+      "counts": {
+        "applied": 11
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1cover-art~1preview/post/requestBody/content/application~1json/schema/properties/artist",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1cover-art~1preview/post/requestBody/content/application~1json/schema/properties/genres",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1cover-art~1preview/post/requestBody/content/application~1json/schema/properties/template_id",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1cover-art~1preview/post/requestBody/content/application~1json/schema/properties/title",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1cover-art~1preview/post/requestBody/content/application~1json/schema/required",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1cover-art~1preview/post/responses/200/content/application~1json/schema/properties/image_url",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1cover-art~1preview/post/responses/200/content/application~1json/schema/properties/preview_url",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1cover-art~1preview/post/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1cover-art~1preview/post/responses/200/content/application~1json/schema/properties/template",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1cover-art~1preview/post/responses/422/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1cover-art~1preview/post/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-096",
+      "root": "/paths/~1users~1me~1add-to-library/post",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1me~1add-to-library/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1users~1me~1add-to-library/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-097",
+      "root": "/paths/~1users~1me~1remove-from-library/post",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1users~1me~1remove-from-library/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1users~1me~1remove-from-library/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-checkLicense",
+      "root": "/paths/~1tracks~1{id}~1check-license/get",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1check-license/get/responses/200/content/application~1json/schema/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1check-license/get/responses/200/content/application~1json/schema/nullable",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1check-license/get/responses/200/content/application~1json/schema/properties/has_license",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1check-license/get/responses/200/content/application~1json/schema/properties/license_details",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{id}~1check-license/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-downloadLicensePdf",
+      "root": "/paths/~1tracks~1{id}~1download-license-pdf/get",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1download-license-pdf/get/responses/200/content/application~1json",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1download-license-pdf/get/responses/200/content/application~1pdf",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1download-license-pdf/get/responses/200/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1download-license-pdf/get/responses/409",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{id}~1download-license-pdf/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-verifyLicense",
+      "root": "/paths/~1verify-license~1{uuid}/post",
+      "counts": {
+        "applied": 14
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/expires_at",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/integrity_verified",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/issued_at",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/license_details",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/license_type",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/license_uuid",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/status/description",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/status/example",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/track_artists",
+          "status": "applied"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/track_name",
+          "status": "applied"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/user_email_masked",
+          "status": "applied"
+        },
+        {
+          "delta": 13,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/200/content/application~1json/schema/properties/valid/example",
+          "status": "applied"
+        },
+        {
+          "delta": 14,
+          "pointer": "/paths/~1verify-license~1{uuid}/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-revokeLicense",
+      "root": "/paths/~1licenses~1{uuid}~1revoke/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1licenses~1{uuid}~1revoke/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1licenses~1{uuid}~1revoke/post/responses/200/content/application~1json/schema/properties/message",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1licenses~1{uuid}~1revoke/post/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1licenses~1{uuid}~1revoke/post/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1licenses~1{uuid}~1revoke/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-viewLicenseCertificate",
+      "root": "/paths/~1tracks~1{track}~1license-certificate/get",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{track}~1license-certificate/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{track}~1license-certificate/get/responses/200/content",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{track}~1license-certificate/get/responses/200/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{track}~1license-certificate/get/responses/403",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{track}~1license-certificate/get/responses/409",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-calculateTrackPrice",
+      "root": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post",
+      "counts": {
+        "applied": 16
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/artist_amount",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/base_price",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/currency/example",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/license_terms",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/platform_fee/example",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/platform_fee_flat",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/platform_fee_plan_id",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/platform_fee_plan_name",
+          "status": "applied"
+        },
+        {
+          "delta": 9,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/platform_fee_rate",
+          "status": "applied"
+        },
+        {
+          "delta": 10,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/platform_fee_waived",
+          "status": "applied"
+        },
+        {
+          "delta": 11,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 12,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/total_amount",
+          "status": "applied"
+        },
+        {
+          "delta": 13,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/total_price",
+          "status": "applied"
+        },
+        {
+          "delta": 14,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/200/content/application~1json/schema/properties/track_price",
+          "status": "applied"
+        },
+        {
+          "delta": 15,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/403",
+          "status": "applied"
+        },
+        {
+          "delta": 16,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1calculate-price/post/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-initiateTrackPurchase",
+      "root": "/paths/~1tracks~1{id}~1purchase~1initiate/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1initiate/post/responses/200/content/application~1json/schema/properties/pricing",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1initiate/post/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1initiate/post/responses/403",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1initiate/post/responses/422/$ref",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1initiate/post/responses/422/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-checkTrackPurchaseStatus",
+      "root": "/paths/~1tracks~1{id}~1purchase~1status/get",
+      "counts": {
+        "applied": 8
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/can_purchase",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/has_purchased",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/purchase",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/purchase_status",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/purchased",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/reason",
+          "status": "applied"
+        },
+        {
+          "delta": 7,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/reason_code",
+          "status": "applied"
+        },
+        {
+          "delta": 8,
+          "pointer": "/paths/~1tracks~1{id}~1purchase~1status/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "API-getUserPurchases",
+      "root": "/paths/~1purchases/get",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1purchases/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1purchases/get/responses/200/content/application~1json/schema/properties/data",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1purchases/get/responses/200/content/application~1json/schema/properties/purchases",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1purchases/get/responses/200/content/application~1json/schema/properties/status",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-082",
+      "root": "/paths/~1beat-requests/get",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests/get/responses/200/content/application~1json/schema/properties/success",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1beat-requests/get/responses/200/content/application~1json/schema/properties/count",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1beat-requests/get/responses/200/description",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1beat-requests/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-083",
+      "root": "/paths/~1beat-requests/post",
+      "counts": {
+        "applied": 4
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests/post/responses/400",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1beat-requests/post/responses/429",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1beat-requests/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-084",
+      "root": "/paths/~1beat-requests~1{id}/get",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1{id}/get/parameters/0/schema/type",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests~1{id}/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-085",
+      "root": "/paths/~1beat-requests~1{id}/delete",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1{id}/delete/parameters/0/schema/type",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests~1{id}/delete/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1beat-requests~1{id}/delete/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-086",
+      "root": "/paths/~1beat-requests~1{id}~1fulfill/post",
+      "counts": {
+        "applied": 6
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1{id}~1fulfill/post/responses/403/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests~1{id}~1fulfill/post/responses/409/description",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1beat-requests~1{id}~1fulfill/post/responses/422/description",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1beat-requests~1{id}~1fulfill/post/responses/400",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1beat-requests~1{id}~1fulfill/post/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1beat-requests~1{id}~1fulfill/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-087",
+      "root": "/paths/~1beat-requests~1{id}~1submissions/get",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1{id}~1submissions/get/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests~1{id}~1submissions/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-088",
+      "root": "/paths/~1beat-requests~1{id}~1renew/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1{id}~1renew/post/responses/409",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests~1{id}~1renew/post/responses/410",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1beat-requests~1{id}~1renew/post/responses/400",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1beat-requests~1{id}~1renew/post/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1beat-requests~1{id}~1renew/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-089",
+      "root": "/paths/~1beat-requests~1user~1my-requests/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1user~1my-requests/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-090",
+      "root": "/paths/~1beat-requests~1{id}~1track-view/post",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1beat-requests~1{id}~1track-view/post/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1beat-requests~1{id}~1track-view/post/responses/200",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1beat-requests~1{id}~1track-view/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-102",
+      "root": "/paths/~1messaging~1conversations/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1messaging~1conversations/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-103",
+      "root": "/paths/~1messaging~1conversations~1start/post",
+      "counts": {
+        "reconciled": 1,
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1messaging~1conversations~1start/post/requestBody/content/application~1json/schema",
+          "status": "reconciled"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1messaging~1conversations~1start/post/responses/422",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1messaging~1conversations~1start/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": [
+        "Current startConversation validator prohibits both selectors, caps group entries at 10, requires distinct IDs and accepts client_message_id."
+      ]
+    },
+    {
+      "id": "B02-API-106",
+      "root": "/paths/~1messaging~1unread-count/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1messaging~1unread-count/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-107",
+      "root": "/paths/~1messaging~1conversations~1{conversationId}~1read/post",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1messaging~1conversations~1{conversationId}~1read/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-110",
+      "root": "/paths/~1collections/post",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1collections/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1collections/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-113",
+      "root": "/paths/~1collections~1{id}/put",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1collections~1{id}/put/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1collections~1{id}/put/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-091",
+      "root": "/paths/~1producer-intelligence~1leaderboard/get",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1producer-intelligence~1leaderboard/get/responses/200/content/application~1json/schema",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1producer-intelligence~1leaderboard/get/responses/200/description",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-092",
+      "root": "/paths/~1producer-intelligence~1leaderboards/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1producer-intelligence~1leaderboards/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-093",
+      "root": "/paths/~1producer-intelligence~1dashboard/get",
+      "counts": {
+        "applied": 6
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1producer-intelligence~1dashboard/get/responses/200/content/application~1json/schema/properties/xp",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1producer-intelligence~1dashboard/get/responses/200/content/application~1json/schema/properties/level",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1producer-intelligence~1dashboard/get/responses/200/content/application~1json/schema/properties/stats",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1producer-intelligence~1dashboard/get/responses/200/content/application~1json/schema/properties/overview",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1producer-intelligence~1dashboard/get/responses/200/description",
+          "status": "applied"
+        },
+        {
+          "delta": 6,
+          "pointer": "/paths/~1producer-intelligence~1dashboard/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-115",
+      "root": "/paths/~1artist~1stripe-connect~1status/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artist~1stripe-connect~1status/get/responses/404",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-116",
+      "root": "/paths/~1artist~1stripe-connect~1onboard/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artist~1stripe-connect~1onboard/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artist~1stripe-connect~1onboard/post/responses/403",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1artist~1stripe-connect~1onboard/post/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1artist~1stripe-connect~1onboard/post/responses/422",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1artist~1stripe-connect~1onboard/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-117",
+      "root": "/paths/~1artist~1stripe-connect~1finances/get",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artist~1stripe-connect~1finances/get/responses/404",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artist~1stripe-connect~1finances/get/responses/429",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1artist~1stripe-connect~1finances/get/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-118",
+      "root": "/paths/~1artists~1{artist}~1finances~1summary/get",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists~1{artist}~1finances~1summary/get/responses/503",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-119",
+      "root": "/paths/~1artists~1{artist}~1finances~1transactions/get",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1artists~1{artist}~1finances~1transactions/get/parameters",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1artists~1{artist}~1finances~1transactions/get/responses/503",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-122",
+      "root": "/paths/~1exclusive-license-presets/post",
+      "counts": {
+        "applied": 3
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1exclusive-license-presets/post/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1exclusive-license-presets/post/responses/201",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1exclusive-license-presets/post/responses/200",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-124",
+      "root": "/paths/~1exclusive-license-presets~1{preset}/put",
+      "counts": {
+        "applied": 2
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1exclusive-license-presets~1{preset}/put/requestBody",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1exclusive-license-presets~1{preset}/put/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-125",
+      "root": "/paths/~1exclusive-license-presets~1{preset}/delete",
+      "counts": {
+        "applied": 1
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1exclusive-license-presets~1{preset}/delete/responses/422",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "B02-API-130",
+      "root": "/paths/~1billing~1coupons~1validate/post",
+      "counts": {
+        "applied": 5
+      },
+      "deltas": [
+        {
+          "delta": 1,
+          "pointer": "/paths/~1billing~1coupons~1validate/post/requestBody/content/application~1json/schema/properties/code/description",
+          "status": "applied"
+        },
+        {
+          "delta": 2,
+          "pointer": "/paths/~1billing~1coupons~1validate/post/requestBody/content/application~1json/schema/properties/amount",
+          "status": "applied"
+        },
+        {
+          "delta": 3,
+          "pointer": "/paths/~1billing~1coupons~1validate/post/requestBody/content/application~1json/schema/properties/product_id/nullable",
+          "status": "applied"
+        },
+        {
+          "delta": 4,
+          "pointer": "/paths/~1billing~1coupons~1validate/post/requestBody/content/application~1json/schema/properties/price_id/nullable",
+          "status": "applied"
+        },
+        {
+          "delta": 5,
+          "pointer": "/paths/~1billing~1coupons~1validate/post/responses/500",
+          "status": "applied"
+        }
+      ],
+      "exceptions": []
+    }
+  ],
+  "source_files": [
+    {
+      "path": "common/Core/BaseController.php",
+      "current_blob": "b5d0e5f8a037c5c188f489083ceb84de169b7c1b",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Api/ArtistController.php",
+      "current_blob": "7259bf1d1b8e41f0b460c46a8549f0026480d3e8",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/TrackController.php",
+      "current_blob": "046020f0c4ca7494621448bb44283502e0e1195b",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Database/Datasource/Datasource.php",
+      "current_blob": "588a388a95049d7cfc92f072e59a6f8714593a4b",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Models/Track.php",
+      "current_blob": "053c381229893dbf3bb1f905aeb9949429e7ec8e",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Traits/ApiResponse.php",
+      "current_blob": "4f46f407e37bbc277d5ceeed1d5a46ad1ecfcff1",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Models/Artist.php",
+      "current_blob": "ecf33a079fd391027fb2810979cf1639e01ab1f4",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Models/Genre.php",
+      "current_blob": "58a7ec6256ef68cd463f6747fd8e006ca1d88da3",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/ContentInsightsController.php",
+      "current_blob": "f25d66a87289e713b4b9eb6ef77ea600bfc571dc",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Insights/TrackInsightsController.php",
+      "current_blob": "852cb518469bc5dd6aa580fd7499e7f86a06a7f3",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/TrackAnalyticsService.php",
+      "current_blob": "acf4ce72b3cb8058c787c8c5c19e5d6f88f0b667",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Insights/ArtistInsightsController.php",
+      "current_blob": "06de6b207a33a4e37c2f25c514089ba843e9357a",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/ProducerIntelligence/ArtistInsightsService.php",
+      "current_blob": "9470e8ea820f6c214c24d199198c18533d26dbe3",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Insights/AnalyticsExportController.php",
+      "current_blob": "8f097b172d201e34bf4a5261236bb5b897c73526",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/TrackPurchaseController.php",
+      "current_blob": "f54db014ad859b5f02679376a530a07cfe10999d",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/TrackPurchaseService.php",
+      "current_blob": "8fa551757ddb0e8bbb73437df35df1a84521e800",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/LicenseCertificateController.php",
+      "current_blob": "6096e8c5780f68cd07f2481090b2489fe6ad72d2",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Http/Controllers/MessagingController.php",
+      "current_blob": "1f3dd297e5de602e4bf3d5ea124efc7cf82d3edb",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Http/Requests/CreateBeatRequestRequest.php",
+      "current_blob": "c022609c700c932e7bcc3a241f7a74d5ce11d7cf",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/BeatRequestController.php",
+      "current_blob": "94c67dbb0db5c619b59f6b82d432833a0bc2b799",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/SubmitTrackToBeatRequest.php",
+      "current_blob": "3c8a468c639ab0eddbe286c3bcf034b6cae6388a",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Auth/Controllers/MobileAuthController.php",
+      "current_blob": "8e3f3e8b20e7ae8c64d7ed20fe539e0d741f005e",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/LicenseCertificateService.php",
+      "current_blob": "c85a4a959be60d31c351e91d2109613c7ab19617",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Http/Controllers/PlaylistTracksController.php",
+      "current_blob": "61fef2e1817e9ff7d3235eb939e7976e63a016d5",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Auth/Controllers/UserFollowersController.php",
+      "current_blob": "64fba94d1173c77535e47b63555edf9bad1c934d",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/ModifyTracks.php",
+      "current_blob": "620960a592c36f4bd3fa34eccb188111d57cc962",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/RepostController.php",
+      "current_blob": "31aef29411ac9942ebf913265dd2eaa48f34a8ef",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Models/Album.php",
+      "current_blob": "3fda5f58ed532677bcb25593d713f4641c6f0d28",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/UserLibrary/UserLibraryTracksController.php",
+      "current_blob": "168b5bc9dfc3a5a49047360cb1e69d7d8f231fa2",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/BackstageRequestController.php",
+      "current_blob": "fcdf766e15e38b022246bfea9e16288bf21d4757",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Services/Backstage/BackstageRequestSubmissionEligibility.php",
+      "current_blob": "260298183152adfa2357f240b55f6c02b59847c4",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+      "current_blob": "f0a4c139ff9edd2f29275e2911100892c78868ed",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Services/Backstage/CrupdateBackstageRequest.php",
+      "current_blob": "e69928c035bbfc61863c5b23b108581054b311d5",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Models/BackstageRequest.php",
+      "current_blob": "8831ba339c2cc1bdaebaf04440e74bc988f4e283",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/CoverArtController.php",
+      "current_blob": "d90c07300dc5d44dd8451f0a834849b49f1435b2",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Search/SearchController.php",
+      "current_blob": "f4c7ce7a606825118e0b0f415a245b187b525ee6",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "resources/client/web-player/search/search-autocomplete.tsx",
+      "current_blob": "c419677c222be966f21073895858161a4aab564c",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Http/Controllers/RadioController.php",
+      "current_blob": "138b50908b7727dd80ce732df821d361ea594dbf",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "routes/api.php",
+      "current_blob": "dce221f2bf8d34434b8e6da03c0feb46e4af2a16",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Http/Controllers/ArtistController.php",
+      "current_blob": "83122ccb51b4406968e0427248e7ad6aa545afda",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/Artists/ArtistLoader.php",
+      "current_blob": "6458d6415ceeb7ffe2f666ec69403061e5fe0c15",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Services/Artists/PaginateArtistAlbums.php",
+      "current_blob": "b00ff9e03b8dd44fae5805fe2eafc6943ec91234",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Artist/ArtistFollowersController.php",
+      "current_blob": "8f2a13a84d6b017e18a89da75d0ef1b7bb8bb970",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/TagMediaController.php",
+      "current_blob": "661d4631b2413164c60f8cf719423561eb33e6dc",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/UserLibrary/UserLibraryAlbumsController.php",
+      "current_blob": "aad45663421fcaae5eb42aa074cd8ee6c8479474",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/UserLibrary/UserLibraryArtistsController.php",
+      "current_blob": "6ea8793396878dc9b382cec971048ff805d5e4d8",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/AlbumController.php",
+      "current_blob": "05bdfb7d8a15b9e6929d2797bf94641a64ff2f56",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/ModifyArtists.php",
+      "current_blob": "d1fedc0868bdf8601a4a52232cb1cd97289f9d23",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "app/Http/Requests/ModifyAlbums.php",
+      "current_blob": "9974963f58ca88abcbb0d4e80ecf7781a12831ac",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/Albums/LoadAlbum.php",
+      "current_blob": "81a1127c96819d9e89f5d3d8c3c44010b1a77b71",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/Tracks/LoadTrack.php",
+      "current_blob": "f1dadaf50a2e8d41d03b6cb7122fd7f091577617",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/LyricsController.php",
+      "current_blob": "ba0a2c4f781889b00a23b9f35f478305a1dc36df",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/WaveController.php",
+      "current_blob": "75b7e41df7e10a8ebebb999655de25a6d106875a",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Auth/Controllers/UserController.php",
+      "current_blob": "e9ca127d29249ef2c3d3d6ebf3322de1c9cfe9bd",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Providers/RouteServiceProvider.php",
+      "current_blob": "d21a0a99abb3c0fe36f7520c322d30384c771a5e",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/routes/api.php",
+      "current_blob": "b5138acd3f9f74ce53bcc704bf9703de257bc3f2",
+      "file_unchanged_since_review_baseline": false
+    },
+    {
+      "path": "common/Core/Bootstrap/MobileBootstrapData.php",
+      "current_blob": "4e5e516af9f777d2cfa94c984926899f5f9c05e7",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Auth/Fortify/RegisterResponse.php",
+      "current_blob": "09b49f993a4aac485c5555d624a1c99665f81214",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/PlaylistController.php",
+      "current_blob": "82119d6331a28275e1ad674c4772ed4873645aa5",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/UserProfile/UserPlaylistsController.php",
+      "current_blob": "0c4157e4cd10bbcc4c1db67f1407c5c231cecc59",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/ModifyPlaylist.php",
+      "current_blob": "039b4ab8a51130bec1829e73aafaf3dbbf31f88f",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/AudioFingerprintController.php",
+      "current_blob": "f15a15b3698ef1d205e8e8ff109837298e9dd8d9",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/AudioFingerprintingService.php",
+      "current_blob": "fad61026298f015cf86e091607415b59460767da",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/PlaylistInviteController.php",
+      "current_blob": "eb61ba3895db19884d7b6b49b5bc2f0e8513161a",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/TrackPlaysController.php",
+      "current_blob": "5d9da5314d40d780042ef49668c060eed263ad31",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Models/CoverArtTemplate.php",
+      "current_blob": "51d78935e6032106a78dbe208dee2586adcfe264",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Services/BeatRequestService.php",
+      "current_blob": "90676505ad8336e93fe81f41beb4c0e2fdf00e25",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/Api/StoreCollectionRequest.php",
+      "current_blob": "91c3df63d840f4a1ee683b0e3799c9029b1e47c9",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Api/V1/CollectionController.php",
+      "current_blob": "39aa7fb9c9dfb8aa610da88e97a6036163b3178e",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Requests/Api/UpdateCollectionRequest.php",
+      "current_blob": "711d02a718baa04d5aeb7004b3d164354d5ff298",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Api/ProducerIntelligenceController.php",
+      "current_blob": "21914e5b96174125ee8a33feed1f9f9b0346f85d",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/ProducerDashboardController.php",
+      "current_blob": "38e064da80e3e9d4f9067b70f29fac99e93f598d",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Artist/StripeConnectController.php",
+      "current_blob": "2568dddd88ef49454cf6df0361db225e1f6fc0e4",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Artist/StripeFinancesController.php",
+      "current_blob": "bf86f1349d10ef3a5db064dd15a682b2106629e6",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/Artist/ProducerFinancesController.php",
+      "current_blob": "e4de5f45b2736fadfcde173f20466418c8f955a0",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Http/Controllers/ExclusiveLicensePresetController.php",
+      "current_blob": "27aed41d6327051e09d574f2453dc03c526b8abe",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "app/Models/ExclusiveLicensePreset.php",
+      "current_blob": "124fe4ecf08ae15ce42faf5b042a4c271dea22a1",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Billing/Coupons/CouponsController.php",
+      "current_blob": "513f3e927e4251bc4af468db6d1e0d75693280ec",
+      "file_unchanged_since_review_baseline": true
+    },
+    {
+      "path": "common/Auth/Fortify/PasswordValidationRules.php",
+      "current_blob": "1a25d4f37df5a1a53dc4a244eb4a2a3a9052a389"
+    },
+    {
+      "path": "common/Auth/Fortify/ResetUserPassword.php",
+      "current_blob": "a5aaee27b86f24439814a06d8583e6b362666248"
+    },
+    {
+      "path": "common/Auth/Fortify/UpdateUserPassword.php",
+      "current_blob": "cc4a38512ac4459dfbcae0a50fa42ab56c0f8263"
+    },
+    {
+      "path": "resources/client/admin/tracks-datatable-page/track-form/track-form-readiness.ts",
+      "current_blob": "787e2075e3916d93f88048b7ad31f9eae8549e40"
+    },
+    {
+      "path": "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+      "current_blob": "1466b37ba34b9bb01e2d35e7649741f24e0ec1fa"
+    },
+    {
+      "path": "app/Services/Finances/ProducerFinancesDashboardService.php",
+      "current_blob": "2788e83affca7f020afa6e7214e1c9ab78a8bac6"
+    }
+  ]
+}

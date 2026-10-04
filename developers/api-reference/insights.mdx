@@ -58,17 +58,9 @@ const response = await fetch('/api/v1/producer-intelligence/insights/tracks/123'
 
 **Response:**
 
-```json
-{
-  "success": true,
-  "data": {
-    "plays": { "total": 1250, "period": 340 },
-    "listeners": { "total": 890, "unique": 456 },
-    "engagement": { "likes": 78, "reposts": 12 },
-    "growth": { "plays_change": 15.2, "listeners_change": 8.4 }
-  }
-}
-```
+The analytics object is returned directly, without a `success` or `data` wrapper. Its top-level keys are `basic_info`, `performance_metrics`, `engagement_metrics`, `xp_and_achievements`, `recent_activity`, `collaboration_metrics`, and `audience_insights`.
+
+The play counts are `performance_metrics.total_plays` and `performance_metrics.period_plays`. Engagement counts include `engagement_metrics.likes` and `engagement_metrics.reposts`. This endpoint does not return top-level `plays`, `listeners`, `engagement`, or `growth` objects.
 
 ### Get Track Charts
 
@@ -153,16 +145,7 @@ GET /api/v1/producer-intelligence/insights/artists/{artistId}/collaborations
 
 **Response:**
 
-```json
-{
-  "success": true,
-  "data": {
-    "total_collaborations": 15,
-    "top_collaborators": [...],
-    "collaboration_tracks": [...]
-  }
-}
-```
+The response has `success` and `data`. Inside `data`, `collaborative_tracks` and `unique_collaborators` are counts, `top_collaborators` is an array, `collaboration_score` is capped at 100, and `network_strength` is `emerging`, `growing`, `moderate`, or `strong`. The response does not include `total_collaborations` or `collaboration_tracks`.
 
 ---
 
@@ -226,8 +209,7 @@ POST /api/v1/producer-intelligence/insights/export/report
 Content-Type: application/json
 
 {
-  "period": "30-days",
-  "include_charts": true
+  "period": "30-days"
 }
 ```
 
@@ -248,25 +230,7 @@ Content-Type: application/json
 
 ## Error Responses
 
-All Insights endpoints use standardized error responses:
-
-| Status | Error               | Description                    |
-| ------ | ------------------- | ------------------------------ |
-| 401    | `unauthorized`      | Authentication required        |
-| 403    | `forbidden`         | Access denied to this resource |
-| 404    | `not_found`         | Resource not found             |
-| 422    | `validation_failed` | Invalid parameters             |
-| 500    | `server_error`      | Internal server error          |
-
-**Example Error Response:**
-
-```json
-{
-  "success": false,
-  "message": "Track not found",
-  "error": "not_found"
-}
-```
+Insights controller error helpers return `success: false` and `message`, with an optional `errors` object. They do not add a string `error` code such as `not_found`. For example, a controller-denied track analytics request uses HTTP `403` with `success: false` and the message `Unauthorized access to track analytics`. Framework validation, authorization, and exception handling may use different bodies; inspect the HTTP status and endpoint response.
 
 ---
 
