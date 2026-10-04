@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "The BeatPass API provides access to platform data for approved developer integrations. API access is invite-only — contact contact@beatpass.ca to request access. Authenticate with a Bearer token. Tokens expire after 90 days. Unauthenticated requests return minimal data (e.g. id, name, image, model_type, and basic metadata). Global rate limit: 300 requests/minute.",
+    "description": "The BeatPass API provides access to platform data for approved developer integrations. API access is invite-only \u2014 contact contact@beatpass.ca to request access. Authenticate with a Bearer token. Tokens expire after 90 days. Unauthenticated requests return minimal data (e.g. id, name, image, model_type, and basic metadata). Global rate limit: 300 requests/minute.",
     "version": "1.0.1",
     "title": "BeatPass API"
   },
@@ -258,7 +258,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -315,7 +315,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "delete": {
         "tags": [
@@ -376,7 +377,7 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "My playlist",
+                    "example": "Synthetic name Fixture",
                     "description": "Unique for this playlist owner.",
                     "maxLength": 250,
                     "minLength": 3
@@ -440,7 +441,8 @@
           "422": {
             "$ref": "#/components/responses/Response422"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/tracks": {
@@ -461,7 +463,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -529,7 +531,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/tracks/add": {
@@ -544,7 +547,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -561,7 +564,7 @@
                     "description": "Existing track IDs. Every ids item must exist in tracks.",
                     "type": "array",
                     "example": [
-                      1
+                      900000001
                     ],
                     "items": {
                       "type": "integer"
@@ -611,7 +614,8 @@
           "422": {
             "description": "Invalid ids array or track ID."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/tracks/remove": {
@@ -626,7 +630,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the playlist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -643,7 +647,7 @@
                     "description": "Existing track IDs. Every ids item must exist in tracks.",
                     "type": "array",
                     "example": [
-                      1
+                      900000001
                     ],
                     "items": {
                       "type": "integer"
@@ -690,7 +694,8 @@
           "422": {
             "description": "Invalid ids array or track ID."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/follow": {
@@ -799,7 +804,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -936,7 +941,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/artists/{id}/tracks": {
@@ -957,7 +963,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -1023,7 +1029,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/artists/{id}/albums": {
@@ -1038,7 +1045,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -1104,7 +1111,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/artists/{id}/followers": {
@@ -1119,7 +1127,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the artist",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -1185,7 +1193,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/albums/{id}": {
@@ -1206,7 +1215,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the album",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -1270,7 +1279,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}": {
@@ -1291,7 +1301,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the track",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -1358,13 +1368,13 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/lyrics": {
       "get": {
         "security": [
-          {},
           {
             "bearerAuth": []
           }
@@ -1379,7 +1389,7 @@
             "name": "id",
             "in": "path",
             "description": "ID of the track",
-            "example": 1,
+            "example": 900000001,
             "required": true,
             "schema": {
               "type": "integer"
@@ -1418,7 +1428,8 @@
           "403": {
             "$ref": "#/components/responses/Response403"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API.\n\nSign-in is required. Returns the signed-in user's personal lyrics for this track."
       }
     },
     "/tags/{name}/tracks": {
@@ -1433,7 +1444,7 @@
             "name": "name",
             "in": "path",
             "description": "Name of the tag",
-            "example": "mellow",
+            "example": "Synthetic name Fixture",
             "required": true,
             "schema": {
               "type": "string"
@@ -1512,7 +1523,8 @@
           "404": {
             "$ref": "#/components/responses/Response404"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tags/{name}/albums": {
@@ -1527,7 +1539,7 @@
             "name": "name",
             "in": "path",
             "description": "Name of the tag",
-            "example": "mellow",
+            "example": "Synthetic name Fixture",
             "required": true,
             "schema": {
               "type": "string"
@@ -1606,7 +1618,8 @@
           "404": {
             "$ref": "#/components/responses/Response404"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/genres": {
@@ -2245,21 +2258,22 @@
                 "properties": {
                   "email": {
                     "type": "string",
-                    "example": "example@gmail.com"
+                    "example": "synthetic-user@example.com"
                   },
                   "password": {
                     "type": "string",
-                    "example": "password"
+                    "example": "SYNTHETIC-NOT-A-CREDENTIAL"
                   },
                   "token_name": {
                     "type": "string",
-                    "example": "iphone 12"
+                    "example": "Synthetic token name Fixture"
                   }
                 }
               }
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/auth/login": {
@@ -2269,7 +2283,7 @@
           "Auth"
         ],
         "summary": "Login",
-        "description": "Authenticates the mobile client and returns bootstrap fields, including user and user.access_token.",
+        "description": "Authenticates the mobile client and returns bootstrap fields, including user and user.access_token.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API.",
         "operationId": "login",
         "responses": {
           "200": {
@@ -2343,15 +2357,15 @@
                 "properties": {
                   "email": {
                     "type": "string",
-                    "example": "example@gmail.com"
+                    "example": "synthetic-user@example.com"
                   },
                   "password": {
                     "type": "string",
-                    "example": "password"
+                    "example": "SYNTHETIC-NOT-A-CREDENTIAL"
                   },
                   "token_name": {
                     "type": "string",
-                    "example": "iphone 12",
+                    "example": "Synthetic token name Fixture",
                     "maxLength": 100,
                     "minLength": 3
                   }
@@ -2382,7 +2396,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -2403,7 +2417,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/download-license-pdf": {
@@ -2421,7 +2436,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -2463,7 +2478,8 @@
           "500": {
             "description": "License data could not be returned for PDF generation."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/verify-license/{uuid}": {
@@ -2481,7 +2497,7 @@
             "description": "License UUID",
             "schema": {
               "type": "string",
-              "example": "550e8400-e29b-41d4-a716-446655440000"
+              "example": "00000000-0000-4000-8000-0000a3a9e1ed"
             }
           }
         ],
@@ -2558,7 +2574,8 @@
               }
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/licenses/{uuid}/revoke": {
@@ -2576,7 +2593,7 @@
             "description": "License UUID",
             "schema": {
               "type": "string",
-              "example": "550e8400-e29b-41d4-a716-446655440000"
+              "example": "00000000-0000-4000-8000-0000a3a9e1ed"
             }
           }
         ],
@@ -2627,7 +2644,8 @@
               }
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/fingerprint": {
@@ -2645,7 +2663,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -2710,7 +2728,8 @@
               }
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/fingerprint/status": {
@@ -2728,7 +2747,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -2777,7 +2796,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/check-duplicates": {
@@ -2957,11 +2977,11 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "My New Track"
+                    "example": "Synthetic name Fixture"
                   },
                   "description": {
                     "type": "string",
-                    "example": "A great new song"
+                    "example": "Synthetic description Fixture"
                   },
                   "duration": {
                     "type": "integer",
@@ -2978,8 +2998,8 @@
                       "type": "integer"
                     },
                     "example": [
-                      1,
-                      2
+                      900000001,
+                      900000002
                     ]
                   }
                 }
@@ -3013,7 +3033,8 @@
           "422": {
             "$ref": "#/components/responses/Response422"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/download": {
@@ -3031,7 +3052,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3056,7 +3077,8 @@
           "404": {
             "$ref": "#/components/responses/Response404"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/albums": {
@@ -3149,13 +3171,13 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "My New Album",
+                    "example": "Synthetic name Fixture",
                     "maxLength": 255,
                     "minLength": 1
                   },
                   "description": {
                     "type": "string",
-                    "example": "A collection of great songs"
+                    "example": "Synthetic description Fixture"
                   },
                   "release_date": {
                     "type": "string",
@@ -3222,7 +3244,8 @@
           "403": {
             "description": "The caller is not authorized to create this resource."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/artists": {
@@ -3309,17 +3332,17 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "New Artist",
+                    "example": "Synthetic name Fixture",
                     "maxLength": 255,
                     "minLength": 1
                   },
                   "description": {
                     "type": "string",
-                    "example": "A talented musician"
+                    "example": "Synthetic description Fixture"
                   },
                   "image_small": {
                     "type": "string",
-                    "example": "https://example.com/artist-small.jpg"
+                    "example": "https://example.com/synthetic-fixture"
                   }
                 },
                 "required": [
@@ -3358,7 +3381,8 @@
           "403": {
             "description": "The caller is not authorized to create this resource."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/invite": {
@@ -3376,7 +3400,7 @@
             "description": "Playlist ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3389,7 +3413,7 @@
                 "properties": {
                   "user_id": {
                     "type": "integer",
-                    "example": 2,
+                    "example": 900000002,
                     "description": "ID of user to invite"
                   }
                 },
@@ -3430,7 +3454,8 @@
           "422": {
             "description": "Invalid user_id or collaboration state."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/accept-invite": {
@@ -3448,7 +3473,7 @@
             "description": "Playlist ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3481,7 +3506,8 @@
           "422": {
             "description": "Invitation was already accepted."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/decline-invite": {
@@ -3499,7 +3525,7 @@
             "description": "Playlist ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3526,7 +3552,8 @@
           "404": {
             "$ref": "#/components/responses/Response404"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/playlists/{id}/remove-editor": {
@@ -3544,7 +3571,7 @@
             "description": "Playlist ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3557,7 +3584,7 @@
                 "properties": {
                   "user_id": {
                     "type": "integer",
-                    "example": 2,
+                    "example": 900000002,
                     "description": "ID of user to remove"
                   }
                 },
@@ -3607,7 +3634,7 @@
             "description": "Invalid user_id or collaboration state."
           }
         },
-        "description": "Removing an editor returns message and playlist. If the supplied user_id strictly matches the playlist owner, the action deletes the entire playlist and returns deleted:true instead of playlist."
+        "description": "Removing an editor returns message and playlist. If the supplied user_id strictly matches the playlist owner, the action deletes the entire playlist and returns deleted:true instead of playlist.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/users/search": {
@@ -3666,7 +3693,7 @@
             "$ref": "#/components/responses/Response401"
           },
           "422": {
-            "description": "query must be 2–100 characters; limit must be 1–50."
+            "description": "query must be 2\u2013100 characters; limit must be 1\u201350."
           }
         }
       }
@@ -3686,7 +3713,7 @@
             "description": "User ID to follow",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3710,7 +3737,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/users/{id}/unfollow": {
@@ -3728,7 +3756,7 @@
             "description": "User ID to unfollow",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3752,7 +3780,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/reposts/toggle": {
@@ -3944,7 +3973,7 @@
             "description": "ID of the entity",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -3991,7 +4020,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/cover-art/templates": {
@@ -4016,11 +4046,11 @@
                         "properties": {
                           "id": {
                             "type": "integer",
-                            "example": 1
+                            "example": 900000001
                           },
                           "name": {
                             "type": "string",
-                            "example": "Modern Template"
+                            "example": "Synthetic name Fixture"
                           },
                           "image_url": {
                             "type": "string"
@@ -4054,7 +4084,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/cover-art/preview": {
@@ -4136,7 +4167,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -4208,7 +4239,8 @@
           "422": {
             "description": "Track cannot currently be purchased."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/purchase/initiate": {
@@ -4226,7 +4258,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -4311,7 +4343,8 @@
           "403": {
             "description": "Track purchases disabled."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/purchase/status": {
@@ -4329,7 +4362,7 @@
             "description": "Track ID",
             "schema": {
               "type": "integer",
-              "example": 1
+              "example": 900000001
             }
           }
         ],
@@ -4373,7 +4406,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/purchases": {
@@ -4507,7 +4541,7 @@
                     "type": "string",
                     "minLength": 10,
                     "maxLength": 500,
-                    "example": "Looking for a melodic trap beat."
+                    "example": "Synthetic content Fixture"
                   },
                   "reference_track": {
                     "type": "string",
@@ -4584,7 +4618,8 @@
           "500": {
             "description": "Failed to create beat request"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/beat-requests/{id}": {
@@ -5756,7 +5791,7 @@
                       "properties": {
                         "likeable_id": {
                           "type": "integer",
-                          "example": 1
+                          "example": 900000001
                         },
                         "likeable_type": {
                           "type": "string",
@@ -5790,7 +5825,8 @@
           "422": {
             "description": "Invalid likeables item identifier or type"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/users/me/remove-from-library": {
@@ -5814,7 +5850,7 @@
                       "properties": {
                         "likeable_id": {
                           "type": "integer",
-                          "example": 1
+                          "example": 900000001
                         },
                         "likeable_type": {
                           "type": "string",
@@ -5848,7 +5884,8 @@
           "422": {
             "description": "Invalid likeables item identifier or type"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/leaderboards/global": {
@@ -7146,7 +7183,7 @@
                   "config"
                 ],
                 "example": {
-                  "name": "Exclusive standard",
+                  "name": "Synthetic name Fixture",
                   "config": {
                     "publishing_share": {
                       "producer": 20,
@@ -7178,7 +7215,8 @@
               }
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{track}/license-certificate": {
@@ -7990,7 +8028,7 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "My playlist",
+                    "example": "Synthetic name Fixture",
                     "description": "Unique for this playlist owner.",
                     "maxLength": 250,
                     "minLength": 3
@@ -8064,7 +8102,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/billing/coupons/validate": {
@@ -8197,14 +8236,15 @@
           },
           "name": {
             "type": "string",
-            "example": "Led Zeppelin"
+            "example": "Synthetic name Fixture"
           },
           "verified": {
             "type": "boolean",
             "example": true,
             "description": "Whether artist has been verified by SITE_NAME staff"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Album": {
         "type": "object",
@@ -8215,11 +8255,11 @@
           },
           "name": {
             "type": "string",
-            "example": "Coda"
+            "example": "Synthetic name Fixture"
           },
           "image": {
             "type": "string",
-            "example": "https://example.com/image1.jpg",
+            "example": "https://example.com/synthetic-fixture",
             "description": "Artwork image for album, usually 300x300px in size"
           },
           "release_date": {
@@ -8248,7 +8288,8 @@
               "$ref": "#/components/schemas/Artist"
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Track": {
         "type": "object",
@@ -8259,7 +8300,7 @@
           },
           "name": {
             "type": "string",
-            "example": "Hey Hey What Can I Do"
+            "example": "Synthetic name Fixture"
           },
           "release_date": {
             "type": "string",
@@ -8268,7 +8309,7 @@
           },
           "image": {
             "type": "string",
-            "example": "https://example.com/image1.jpg",
+            "example": "https://example.com/synthetic-fixture",
             "description": "Artwork image for album, usually 300x300px in size"
           },
           "duration": {
@@ -8289,7 +8330,8 @@
               "$ref": "#/components/schemas/Artist"
             }
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Playlist": {
         "type": "object",
@@ -8300,7 +8342,7 @@
           },
           "name": {
             "type": "string",
-            "example": "Some Playlist"
+            "example": "Synthetic name Fixture"
           },
           "public": {
             "type": "boolean",
@@ -8314,7 +8356,7 @@
           },
           "image": {
             "type": "string",
-            "example": "https://example.com/image1.jpg",
+            "example": "https://example.com/synthetic-fixture",
             "description": "Artwork image for playlist, usually 300x300px in size"
           },
           "description": {
@@ -8322,7 +8364,8 @@
             "nullable": true,
             "description": "description for the playlist"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Genre": {
         "type": "object",
@@ -8330,24 +8373,25 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1
+            "example": 900000001
           },
           "name": {
             "type": "string",
-            "example": "rock"
+            "example": "Synthetic name Fixture"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Comment": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "example": 1
+            "example": 900000001
           },
           "content": {
             "type": "string",
-            "example": "comment text"
+            "example": "Synthetic content Fixture"
           },
           "position": {
             "type": "integer",
@@ -8364,20 +8408,22 @@
           "user": {
             "$ref": "#/components/schemas/User"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Lyric": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "example": 1
+            "example": 900000001
           },
           "text": {
             "type": "string",
             "example": "lyric for a song..."
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "Profile": {
         "type": "object",
@@ -8385,7 +8431,7 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1
+            "example": 900000001
           },
           "description": {
             "type": "string"
@@ -8396,7 +8442,8 @@
           "country": {
             "type": "string"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "ProfileImage": {
         "type": "object",
@@ -8404,13 +8451,14 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1
+            "example": 900000001
           },
           "url": {
             "type": "string",
-            "example": "https://site.com/image.jpg"
+            "example": "https://example.com/synthetic-fixture"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "ProfileLink": {
         "type": "object",
@@ -8418,17 +8466,18 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1
+            "example": 900000001
           },
           "url": {
             "type": "string",
-            "example": "https://facebook.com"
+            "example": "https://example.com/synthetic-fixture"
           },
           "title": {
             "type": "string",
-            "example": "Facebook"
+            "example": "Synthetic title Fixture"
           }
-        }
+        },
+        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       },
       "User": {
         "type": "object",
@@ -8462,7 +8511,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "API access is invite-only. Contact contact@beatpass.ca to request access. Once approved, generate tokens from Account Settings → Developers. Include as: Authorization: Bearer {token}. Tokens expire after 90 days."
+        "description": "API access is invite-only. Contact contact@beatpass.ca to request access. Once approved, generate tokens from Account Settings \u2192 Developers. Include as: Authorization: Bearer {token}. Tokens expire after 90 days."
       }
     },
     "responses": {

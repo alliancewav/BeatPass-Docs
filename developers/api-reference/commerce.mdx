@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/commerce"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Commerce & Licensing API handles the complete purchase lifecycle - from pricing calculation through card payment to license certificate generation. It also covers exclusive license preset management and safe producer finance references for approved integrations.
@@ -121,6 +123,8 @@ GET /api/v1/artist/sales
 
 Existing response example excerpt (additional fields omitted). Illustrative values, not a deployed response or evidence of settlement.
 
+<SyntheticFixtures />
+
 ```json
 {
   "status": "success",
@@ -134,9 +138,9 @@ Existing response example excerpt (additional fields omitted). Illustrative valu
   },
   "recent_purchases": [
     {
-      "id": 1,
-      "track_id": 42,
-      "track_name": "Summer Vibes",
+      "id": 900000001,
+      "track_id": 900000002,
+      "track_name": "Synthetic track name Fixture",
       "artist_amount": 25.49,
       "total_amount": 29.99,
       "platform_fee": 4.5,
@@ -361,12 +365,14 @@ POST /api/v1/billing/coupons/validate
 
 **Success Response:**
 
+<SyntheticFixtures />
+
 ```json
 {
   "status": "success",
   "coupon": {
-    "id": 1,
-    "code": "SAVE20",
+    "id": 900000001,
+    "code": "SYNTHETICCOUPON",
     "type": "percentage",
     "amount": 20
   },

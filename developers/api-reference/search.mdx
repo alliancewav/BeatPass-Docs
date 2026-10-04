@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/search"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Search & Discovery API provides content discovery features — full-text search across all content types, genre and tag browsing, personalized radio recommendations, and platform-wide leaderboards.
@@ -44,8 +46,10 @@ GET /api/v1/search
 
 **Example:**
 
+<SyntheticFixtures />
+
 ```bash
-curl "https://open.beatpass.ca/api/v1/search?query=lofi" \
+curl "https://api.example.com/api/v1/search?query=lofi" \
   -H "Accept: application/json"
 ```
 

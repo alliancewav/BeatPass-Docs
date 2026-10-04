@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/beat-requests"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Beat Requests API powers the custom beat request marketplace. Users spend tokens to create time-limited requests specifying their needs (genre, BPM, mood, budget). Producers browse active requests and submit tracks to fulfill them.
@@ -82,15 +84,17 @@ GET /api/v1/beat-requests
 
 **Response:**
 
+<SyntheticFixtures />
+
 ```json
 {
   "success": true,
   "data": [
     {
-      "id": "req_abc123",
-      "user_id": 1,
-      "user_name": "BeatBuyer",
-      "content": "Looking for dark trap beat, 140 BPM...",
+      "id": "synthetic_fixture_id",
+      "user_id": 900000001,
+      "user_name": "Synthetic text fixture",
+      "content": "Synthetic text fixture",
       "genre": "Trap",
       "bpm_range": "135-145",
       "mood": "Dark",
@@ -141,13 +145,15 @@ POST /api/v1/beat-requests
 
 **Response (201):**
 
+<SyntheticFixtures />
+
 ```json
 {
   "success": true,
   "message": "Beat request created successfully! Active for 24 hours.",
   "data": {
-    "id": "req_abc123",
-    "content": "Looking for dark trap beat...",
+    "id": "synthetic_fixture_id",
+    "content": "Synthetic content Fixture",
     "expires_at": "2025-01-16T14:30:00Z",
     "time_remaining": "24 hours from now",
     "hours_remaining": 24

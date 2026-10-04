@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/quickstart"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 import NoPublicSandbox from "/snippets/warnings/no-public-sandbox.mdx";
 import BearerAuthExample from "/snippets/developer/bearer-auth-example.mdx";
@@ -73,12 +75,10 @@ When developing or documenting:
 
 ### In Code Examples
 
-```javascript
-// Good - uses placeholder
-const trackId = process.env.TEST_TRACK_ID || '{track_id}';
+<SyntheticFixtures />
 
-// Bad - hardcodes production ID
-const trackId = 12345;
+```javascript
+const trackId = '{track_id}'; // Replace only in an authorized environment.
 ```
 
 ### In Documentation
@@ -87,11 +87,6 @@ const trackId = 12345;
 GET /api/v1/tracks/{track_id}
 ```
 
-Not:
-
-```http
-GET /api/v1/tracks/12345
-```
 
 ---
 

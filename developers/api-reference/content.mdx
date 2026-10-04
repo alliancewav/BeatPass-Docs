@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/content"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Content Management API provides full CRUD operations for all content types on BeatPass — tracks, albums, artists, playlists, lyrics, producer access requests, and supporting features like audio fingerprinting, Audio Recon, and cover art generation.
@@ -16,7 +18,7 @@ The Content Management API provides full CRUD operations for all content types o
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
 
-  **Authentication:** Read operations use optional auth (enhanced data when logged in). Write operations require authentication.
+  **Authentication:** Authentication varies by endpoint. Lyrics require sign-in, including read operations. Write operations require authentication.
 </Info>
 
 ---
@@ -339,6 +341,8 @@ GET /api/v1/backstage-request/submission-status
 
 **Response (blocked):**
 
+<SyntheticFixtures />
+
 ```json
 {
   "status": "success",
@@ -346,7 +350,7 @@ GET /api/v1/backstage-request/submission-status
   "block_reason": "revoked",
   "message": "Your producer access was revoked. To appeal, contact support at /contact so admins can review your request for reinstatement.",
   "contact_url": "/contact",
-  "blocking_request_id": 412
+  "blocking_request_id": 900000003
 }
 ```
 
@@ -601,6 +605,8 @@ POST /api/v1/playlists/{playlist}/remove-editor
 
 ## Lyrics
 
+Sign-in is required for every lyrics endpoint. Track lyrics are personal to the signed-in user.
+
 ### List Lyrics
 
 ```http
@@ -687,19 +693,21 @@ GET /api/v1/tracks/{track}/placements
 
 **Response:**
 
+<SyntheticFixtures />
+
 ```json
 {
   "placements": [
     {
-      "id": 42,
-      "title": "Song Title",
-      "artist_name": "Artist Name",
-      "album_name": "Album Name",
+      "id": 900000002,
+      "title": "Synthetic title Fixture",
+      "artist_name": "Synthetic artist name Fixture",
+      "album_name": "Synthetic album name Fixture",
       "release_date": "2025-06-15",
       "confidence_score": 95,
-      "spotify_url": "https://open.spotify.com/track/...",
-      "youtube_url": "https://youtube.com/watch?v=...",
-      "deezer_url": "https://deezer.com/track/...",
+      "spotify_url": "https://example.com/synthetic-fixture",
+      "youtube_url": "https://example.com/synthetic-fixture",
+      "deezer_url": "https://example.com/synthetic-fixture",
       "created_at": "2026-02-20T12:00:00+00:00"
     }
   ],

@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/dashboard"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The **Artist Dashboard API** provides programmatic access to producer analytics displayed in the Producer Dashboard. These endpoints return plays, followers, upload insights, and collaboration data for authenticated producers.
@@ -127,16 +129,18 @@ Update the authenticated artist's profile information.
 
 #### Response
 
+<SyntheticFixtures />
+
 ```json
 {
   "success": true,
   "message": "Profile updated successfully",
   "data": {
-    "bio": "Updated bio text",
-    "website": "https://example.com",
+    "bio": "Synthetic bio Fixture",
+    "website": "https://example.com/synthetic-fixture",
     "social_links": {
-      "twitter": "@producer",
-      "instagram": "@producer"
+      "twitter": "Synthetic twitter Fixture",
+      "instagram": "Synthetic instagram Fixture"
     }
   }
 }

@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/overview"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 
 ## API Reference
@@ -127,32 +129,38 @@ To get **rich responses** from the API playground, you must have an approved dev
 
 ### Public Request (Minimal Data)
 
+<SyntheticFixtures />
+
 ```bash
 # Returns public track data; fields depend on the endpoint
-curl "https://open.beatpass.ca/api/v1/tracks" \
+curl "https://api.example.com/api/v1/tracks" \
   -H "Accept: application/json"
 ```
 
 ### Authenticated Request (Rich Data)
 
+<SyntheticFixtures />
+
 ```bash
 # Returns full track data (pricing, plays, BPM, licensing, etc.)
-curl "https://open.beatpass.ca/api/v1/tracks" \
+curl "https://api.example.com/api/v1/tracks" \
   -H "Accept: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 ### JavaScript Example
 
+<SyntheticFixtures />
+
 ```javascript
-const response = await fetch('https://open.beatpass.ca/api/v1/tracks/3629', {
+const response = await fetch('https://api.example.com/api/v1/tracks/900000007', {
   headers: {
     'Accept': 'application/json',
     'Authorization': 'Bearer YOUR_TOKEN_HERE'
   }
 });
 const data = await response.json();
-console.log(data.track.name); // "ZOOM"
+console.log(data.track.name); // "Synthetic Track Fixture"
 ```
 
 ---
