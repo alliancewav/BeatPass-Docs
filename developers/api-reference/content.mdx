@@ -237,6 +237,8 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
 | `page` | integer | `1` | Page number, starting at 1 |
 | `per_page` | integer | `20` | Results per page, from 1 to 50 |
 
+<SyntheticFixtures />
+
 ```json
 {
   "hasTracks": true,
@@ -254,7 +256,7 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
     "reposts": 0,
     "comments": 0,
     "topDownloadedTrack": {
-      "id": 2182,
+      "id": 900000101,
       "name": "Example Track",
       "image": "https://cdn.example.com/track.webp",
       "downloads": 4
@@ -262,20 +264,20 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
   },
   "downloadEvents": [
     {
-      "id": 15168,
+      "id": 900000102,
       "occurredAt": "2026-06-01 17:31:39",
       "track": {
-        "id": 3473,
+        "id": 900000103,
         "name": "Example Track",
         "image": "https://cdn.example.com/track.webp"
       },
       "downloader": {
-        "id": 174,
+        "id": 900000104,
         "displayName": "Listener",
         "avatar": null
       },
       "license": {
-        "uuid": "532ea5ec-6beb-4f48-8b03-5bbb93416564",
+        "uuid": "00000000-0000-4000-8000-000000000001",
         "type": "non_exclusive",
         "status": "active"
       }
