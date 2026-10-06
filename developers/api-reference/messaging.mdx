@@ -37,26 +37,15 @@ GET /api/v1/messaging/conversations
   Number of conversations to return. Default: `20`.
 </ParamField>
 
-**Response:**
+**Example response when the selected folder has no conversations:**
 
 <SyntheticFixtures />
 
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "id": 900000001,
-      "type": "direct",
-      "participants": [...],
-      "last_message": {
-        "id": 900000002,
-        "message_text": "Synthetic text fixture",
-        "created_at": "2025-01-15T14:30:00Z"
-      },
-      "unread_count": 2
-    }
-  ]
+  "data": [],
+  "next_offset": null
 }
 ```
 

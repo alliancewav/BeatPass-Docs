@@ -33,14 +33,7 @@ All dashboard endpoints require:
 
 ### Response Format
 
-Successful Dashboard API responses wrap their result in `data`; collaborative tracks also include `total`:
-
-```json
-{
-  "success": true,
-  "data": { ... }
-}
-```
+Successful Dashboard API responses include `success: true` and an endpoint-specific `data` object or array; collaborative tracks also include `total`. See the endpoint examples below for payload details.
 
 Profile, statistics, performance, and upload-insights errors include `success: false` and `message` (and may include an `error` string). Collaborative-track errors instead return `error` and an empty `data` array, with HTTP `404` or `500`.
 

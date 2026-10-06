@@ -18,7 +18,7 @@ The Insights API provides focused, domain-specific analytics endpoints for conte
 </Info>
 
 <Note>
-  All Insights endpoints require authentication. Include your Bearer token in the `Authorization` header.
+  All Insights endpoints require authentication. Include your Bearer token in the `Authorization` header. Resource permissions vary by endpoint; use these endpoints only for resources you are authorized to manage. A valid token alone does not establish ownership.
 </Note>
 
 ---
@@ -230,7 +230,7 @@ Content-Type: application/json
 
 ## Error Responses
 
-Insights controller error helpers return `success: false` and `message`, with an optional `errors` object. They do not add a string `error` code such as `not_found`. For example, a controller-denied track analytics request uses HTTP `403` with `success: false` and the message `Unauthorized access to track analytics`. Framework validation, authorization, and exception handling may use different bodies; inspect the HTTP status and endpoint response.
+Explicit Insights controller error helpers return `success: false` and `message`, with an optional `errors` object, and omit a string `error` code. For example, a controller-denied track analytics request uses HTTP `403` with `success: false` and the message `Unauthorized access to track analytics`. Exceptions handled by the same controllers can also include an `error` code such as `not_found`, `unauthorized`, `validation_failed`, or `server_error`. Framework validation, authorization, and middleware may return different bodies; inspect the HTTP status and endpoint response.
 
 ---
 

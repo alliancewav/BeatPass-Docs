@@ -4900,5 +4900,7 @@
       "path": "app/Services/Finances/ProducerFinancesDashboardService.php",
       "current_blob": "2788e83affca7f020afa6e7214e1c9ab78a8bac6"
     }
-  ]
+  ],
+  "record_scope": "Historical Batch 02 application record. Counts, holds and checks describe the original patch, not the follow-up source corrections. The 2026-10-06 source-verification record supersedes its contract holds and records checks for the follow-up.",
+  "superseded_by": "audit/pr9-source-verification-2026-10-06.json"
 }

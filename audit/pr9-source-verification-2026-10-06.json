@@ -1,0 +1,233 @@
+{
+  "title": "PR #9 source-verified documentation corrections",
+  "verified_at_utc": "2026-10-06T17:49:21.103787+00:00",
+  "state": "Draft; not merged or deployed",
+  "method": "Read-only GitHub plugin review of pinned application source; documentation prepared from a fresh pinned PR snapshot and committed through the GitHub plugin. No production API requests or application writes.",
+  "application_repository": "alliancewav/open.beatpass.ca",
+  "application_sha": "d545521b5d5380e0c158ab407fedc04fddf6544e",
+  "docs_pr": "https://github.com/alliancewav/BeatPass-Docs/pull/9",
+  "docs_parent_sha": "12676e4ec2c215a5fe6a3be6905e51c1474ecee0",
+  "docs_branch": "docs/batch02-current-source-reconciliation",
+  "supersedes": "Contract holds in audit/batch02-reconciliation.json. Its original per-delta counts and checks remain historical; they are not validation of this follow-up.",
+  "changes": [
+    {
+      "group": "Playlist PUT",
+      "result": "Optional non-nullable JSON booleans; omission preserves values, no false default.",
+      "evidence": [
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/routes/api.php#L142-L145",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Requests/ModifyPlaylist.php#L26-L46",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/PlaylistController.php#L94-L105",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Models/Playlist.php#L33-L38",
+        "https://github.com/laravel/framework/blob/74e222cee687f957d95aaadddae69270e3205cf7/src/Illuminate/Validation/Concerns/ValidatesAttributes.php#L472-L477"
+      ]
+    },
+    {
+      "group": "Track pagination",
+      "result": "GET /tracks has endpoint-scoped length-aware/simple alternatives and four complete synthetic examples, including empty pages. Shared Pagination changes only repair scalar example arithmetic; other consumers were not migrated.",
+      "evidence": [
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/TrackController.php#L30-L44",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/Tracks/PaginateTracks.php#L83-L104",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Core/BaseController.php#L116-L141",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Database/Datasource/Datasource.php#L66-L92",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Database/Datasource/Datasource.php#L258-L265",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Database/Datasource/Datasource.php#L285-L321",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/config/app.php#L148-L180",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/CommonServiceProvider.php#L279-L283",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Database/CustomLengthAwarePaginator.php#L9-L24",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Core/Commands/UpdateSimplePaginateTables.php#L13-L33",
+        "https://github.com/laravel/framework/blob/74e222cee687f957d95aaadddae69270e3205cf7/src/Illuminate/Database/Concerns/BuildsQueries.php#L499-L519",
+        "https://github.com/laravel/framework/blob/74e222cee687f957d95aaadddae69270e3205cf7/src/Illuminate/Pagination/Paginator.php#L141-L154",
+        "https://github.com/laravel/framework/blob/74e222cee687f957d95aaadddae69270e3205cf7/src/Illuminate/Pagination/AbstractPaginator.php#L324-L336",
+        "https://github.com/laravel/framework/blob/74e222cee687f957d95aaadddae69270e3205cf7/src/Illuminate/Pagination/LengthAwarePaginator.php#L40-L53",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Models/Track.php#L138-L156"
+      ]
+    },
+    {
+      "group": "Response samples",
+      "result": "Four invalid JSON fences corrected; beat-request count and Artist Activity page math and ISO8601 timestamp reconciled. No live response fixture was used.",
+      "evidence": [
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/BeatRequestController.php#L50-L59",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/ContentInsightsController.php#L150-L176",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/ArtistAnalyticsService.php#L370-L386",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/ArtistAnalyticsService.php#L394-L480",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/tests/Unit/Services/ArtistActivityServiceTest.php#L209-L241",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/MessagingController.php#L30-L46"
+      ]
+    },
+    {
+      "group": "Authorization and Insights errors",
+      "result": "Documented source-scoped fingerprint/admin requirements and intended self-use for preferences; removed universal ownership implications; preserved user-scoped notification feed/read/delete. Distinguished explicit error helpers from exception codes. Corrected Audio Recon direct-owner/linked-producer/admin access and any-credited-artist verification wording.",
+      "evidence": [
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/routes/api.php#L284-L296",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/AudioFingerprintController.php#L29-L38",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/AudioFingerprintController.php#L70-L87",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/AudioFingerprintController.php#L117-L138",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/AudioFingerprintController.php#L143-L154",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/AudioFingerprintController.php#L221-L231",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Notifications/NotificationController.php#L16-L49",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Notifications/NotificationController.php#L52-L96",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Notifications/NotificationController.php#L99-L105",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Notifications/NotificationSubscriptionsController.php#L12-L28",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Notifications/NotificationSubscriptionsController.php#L31-L60",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Providers/RouteServiceProvider.php#L40-L46",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Auth/BaseUser.php#L206-L209",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/TrackController.php#L253-L266",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Policies/TrackPolicy.php#L24-L32",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/routes/api.php#L689-L736",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/Insights/TrackInsightsController.php#L41-L90",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/Insights/TrackInsightsController.php#L96-L143",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/TrackAnalyticsService.php#L171-L186",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/Insights/AlbumInsightsController.php#L40-L103",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/Insights/ArtistInsightsController.php#L39-L95",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Traits/ApiResponse.php#L48-L103",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Traits/HandlesExceptions.php#L56-L176",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/TrackPlacementController.php#L105-L141"
+      ]
+    },
+    {
+      "group": "Creation, registration and configuration",
+      "result": "Added source-backed create-track required/conditional fields, HTTP 200 and 403; documented tracked registration baseline and password confirmation. Fees, plan data and rate limits distinguish source mechanisms from unobserved runtime configuration.",
+      "evidence": [
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/routes/api.php#L381-L386",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Controllers/TrackController.php#L69-L108",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Core/BaseController.php#L117-L141",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Requests/ModifyTracks.php#L48-L149",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Requests/ModifyTracks.php#L153-L293",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Policies/TrackPolicy.php#L34-L65",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/Tracks/CrupdateTrack.php#L262-L270",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Models/Track.php#L79-L85",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Auth/Fortify/FortifyServiceProvider.php#L40-L44",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Auth/Controllers/MobileAuthController.php#L59-L67",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Auth/Fortify/FortifyRegisterUser.php#L18-L70",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Auth/Fortify/PasswordValidationRules.php#L12-L19",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Billing/PlatformFeeAmounts.php#L19-L85",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/resources/config/default-settings.php#L62-L66",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Settings/Settings.php#L89-L98",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Settings/Settings.php#L254-L269",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/TrackPurchaseService.php#L65-L119",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/database/migrations/2026_07_31_000001_add_exclusive_purchase_platform_fee_control_to_products.php#L12-L40",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Http/Kernel.php#L59-L64",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/config/beatpass.php#L116-L121",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Providers/RouteServiceProvider.php#L57-L123",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Auth/Fortify/FortifyServiceProvider.php#L46-L83",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/routes/api.php#L296-L309",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Services/BeatRequestTokenService.php#L397-L426",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/common/Billing/Models/Product.php#L19-L31",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/database/seeders/BillingPlanSeeder.php#L12-L17",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/database/seeders/BillingPlanSeeder.php#L20-L102",
+        "https://github.com/alliancewav/open.beatpass.ca/blob/d545521b5d5380e0c158ab407fedc04fddf6544e/app/Policies/TrackPolicy.php#L49-L62"
+      ]
+    }
+  ],
+  "validation": {
+    "changed_files": [
+      "audit/batch02-reconciliation.json",
+      "audit/claims.yml",
+      "audit/pr9-source-verification-2026-10-06.json",
+      "developers/api-reference/beat-requests.mdx",
+      "developers/api-reference/content.mdx",
+      "developers/api-reference/dashboard.mdx",
+      "developers/api-reference/insights.mdx",
+      "developers/api-reference/messaging.mdx",
+      "developers/api-reference/openapi.json",
+      "developers/overview.mdx",
+      "developers/rate-limits.mdx",
+      "help/billing/platform-fee.mdx",
+      "snippets/callouts/platform-fee.mdx",
+      "snippets/data/plan-comparison-table.mdx",
+      "snippets/data/platform-constants.mdx"
+    ],
+    "json_fences": 34,
+    "developer_pages": 16,
+    "openapi_refs": 270,
+    "operations": 115,
+    "track_examples": 4,
+    "root_relative_targets": 15,
+    "checks_passed": [
+      "JSON parsing",
+      "OpenAPI local reference resolution",
+      "track pagination math and mode keys",
+      "artist-activity and beat-request sample counts",
+      "ISO8601 activity timestamp",
+      "shared Pagination unchanged except examples",
+      "fee illustrative arithmetic",
+      "YAML/frontmatter parsing",
+      "changed-file root-relative target presence",
+      "no added trailing whitespace",
+      "notification feed and social guide preservation"
+    ],
+    "limits": [
+      "Partial plugin-fetched snapshot; no full repo docs:quality, OpenAPI route-parity script, Mintlify generation/build/render/a11y, strict links/anchors or Vale run",
+      "Node v24.19.0 differs from pinned 22.15.1; Mintlify and Vale executables absent",
+      "No live API requests, production configuration access or app tests"
+    ]
+  },
+  "remaining_gaps": [
+    {
+      "gap": "Deployed revision and simple_pagination_tables value; no live pagination responses observed.",
+      "docs": {
+        "path": "developers/overview.mdx",
+        "line": 219
+      }
+    },
+    {
+      "gap": "Current registration availability, CAPTCHA setting and deployment-specific rules; active AI-disclosure flag, role permissions, upload quota and payout setup. No successful live registration/upload tested.",
+      "docs": [
+        {
+          "path": "developers/api-reference/openapi.json",
+          "line": 2304
+        },
+        {
+          "path": "developers/api-reference/openapi.json",
+          "line": 3467
+        }
+      ]
+    },
+    {
+      "gap": "Active fee percentage/flat amount/currency, catalog prices, named-plan allowances and exclusive-fee waiver eligibility remain unverified. Existing constants retain export names/types/values to avoid breaking unaudited consumers and are labeled as unverified reference data.",
+      "docs": [
+        {
+          "path": "help/billing/platform-fee.mdx",
+          "line": 14
+        },
+        {
+          "path": "snippets/data/plan-comparison-table.mdx",
+          "line": 2
+        },
+        {
+          "path": "snippets/data/platform-constants.mdx",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "gap": "300/min is source middleware wiring; deployed revision, route cache and observed rate-limit headers remain unverified.",
+      "docs": {
+        "path": "developers/rate-limits.mdx",
+        "line": 22
+      }
+    },
+    {
+      "gap": "Static source review does not establish uniform ownership enforcement across producer analytics, notification preferences and fingerprint status. Intended-use wording does not fix or test application authorization.",
+      "docs": [
+        {
+          "path": "developers/overview.mdx",
+          "line": 340
+        },
+        {
+          "path": "developers/api-reference/openapi.json",
+          "line": 8074
+        },
+        {
+          "path": "developers/api-reference/content.mdx",
+          "line": 652
+        }
+      ]
+    },
+    {
+      "gap": "No full repository quality gate, route-parity rerun, Mintlify generation/build/render/a11y, full link/anchor checks or Vale run for this follow-up. Remote CI must be checked for the resulting commit.",
+      "reason": "Coding task unavailable; partial plugin snapshot without scripts/dependencies. Node v24.19.0 differs from repository pin 22.15.1; mint and vale executables absent."
+    }
+  ],
+  "scope": "Documentation content and audit records only. No application code, Terms, workflows, secrets, permissions, merge or ready-for-review change."
+}

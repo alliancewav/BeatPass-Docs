@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "The BeatPass API provides access to platform data for approved developer integrations. API access is invite-only \u2014 contact contact@beatpass.ca to request access. Authenticate with a Bearer token. Tokens expire after 90 days. Unauthenticated requests return minimal data (e.g. id, name, image, model_type, and basic metadata). Global rate limit: 300 requests/minute.",
+    "description": "The BeatPass API provides access to platform data for approved developer integrations. API access is invite-only \u2014 contact contact@beatpass.ca to request access. Authenticate with a Bearer token. Tokens expire after 90 days. Unauthenticated requests return minimal data (e.g. id, name, image, model_type, and basic metadata). The tracked source applies a shared API limit of 300 requests/minute, with additional route limits. Deployed limits have not been observed; follow response headers and Retry-After.",
     "version": "1.0.1",
     "title": "BeatPass API"
   },
@@ -2258,22 +2258,50 @@
                 "properties": {
                   "email": {
                     "type": "string",
-                    "example": "synthetic-user@example.com"
+                    "example": "synthetic-user@example.com",
+                    "format": "email",
+                    "maxLength": 255,
+                    "description": "Required unique email, checked against the configured domain blacklist."
                   },
                   "password": {
                     "type": "string",
-                    "example": "SYNTHETIC-NOT-A-CREDENTIAL"
+                    "minLength": 8,
+                    "writeOnly": true,
+                    "description": "Required password, at least 8 characters under the tracked default validator. Must match password_confirmation."
                   },
                   "token_name": {
                     "type": "string",
-                    "example": "Synthetic token name Fixture"
+                    "example": "Synthetic token name Fixture",
+                    "minLength": 3,
+                    "maxLength": 50
+                  },
+                  "password_confirmation": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "description": "Required; must match password."
+                  },
+                  "username": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 31,
+                    "description": "Optional username. The tracked default validator does not establish uniqueness."
+                  },
+                  "g-recaptcha-response": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "description": "Required when recaptcha.enable.register is enabled. Do not log or publish CAPTCHA tokens."
                   }
-                }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "password_confirmation"
+                ]
               }
             }
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "This request describes the tracked default validator. Registration availability, CAPTCHA and deployment-specific validation rules are controlled by server configuration. The resolved deployment configuration has not been verified.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/auth/login": {
@@ -2729,7 +2757,7 @@
             }
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Sign-in and administrator permission (admin.access) are required to generate a fingerprint.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/fingerprint/status": {
@@ -2797,7 +2825,7 @@
             "$ref": "#/components/responses/Response401"
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Sign-in is required. Use this endpoint only for tracks you are authorized to work with.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/check-duplicates": {
@@ -2903,10 +2931,13 @@
           {
             "name": "per_page",
             "in": "query",
-            "description": "Items per page",
+            "description": "Items per page; perPage is also accepted. Defaults to 15 and is capped at 500 in the tracked source.",
             "schema": {
               "type": "integer",
-              "example": 25
+              "minimum": 1,
+              "maximum": 500,
+              "default": 15,
+              "example": 1
             }
           },
           {
@@ -2916,6 +2947,17 @@
             "schema": {
               "type": "string",
               "example": "rock music"
+            }
+          },
+          {
+            "name": "paginate",
+            "in": "query",
+            "description": "Set to simple to request a page without total or last_page. The runtime setting can also select this mode when omitted.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "simple"
+              ]
             }
           }
         ],
@@ -2935,22 +2977,224 @@
                       "example": "success"
                     },
                     "pagination": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/Pagination"
-                        },
+                      "oneOf": [
                         {
                           "type": "object",
+                          "description": "Length-aware pagination with total and numeric next/previous pages.",
+                          "required": [
+                            "current_page",
+                            "data",
+                            "from",
+                            "to",
+                            "per_page",
+                            "last_page",
+                            "next_page",
+                            "prev_page",
+                            "total"
+                          ],
                           "properties": {
+                            "current_page": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
                             "data": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Track"
                               }
+                            },
+                            "from": {
+                              "type": "integer",
+                              "nullable": true,
+                              "description": "1-based position of the first returned item; null on an empty page."
+                            },
+                            "to": {
+                              "type": "integer",
+                              "nullable": true,
+                              "description": "1-based position of the last returned item; null on an empty page."
+                            },
+                            "per_page": {
+                              "type": "integer"
+                            },
+                            "last_page": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
+                            "next_page": {
+                              "type": "integer",
+                              "nullable": true
+                            },
+                            "prev_page": {
+                              "type": "integer",
+                              "nullable": true
+                            },
+                            "total": {
+                              "type": "integer",
+                              "minimum": 0
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "description": "Simple pagination with URL fields and no total or last_page.",
+                          "required": [
+                            "current_page",
+                            "data",
+                            "from",
+                            "to",
+                            "per_page",
+                            "first_page_url",
+                            "next_page_url",
+                            "prev_page_url",
+                            "path"
+                          ],
+                          "properties": {
+                            "current_page": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Track"
+                              }
+                            },
+                            "from": {
+                              "type": "integer",
+                              "nullable": true,
+                              "description": "1-based position of the first returned item; null on an empty page."
+                            },
+                            "to": {
+                              "type": "integer",
+                              "nullable": true,
+                              "description": "1-based position of the last returned item; null on an empty page."
+                            },
+                            "per_page": {
+                              "type": "integer"
+                            },
+                            "first_page_url": {
+                              "type": "string",
+                              "format": "uri"
+                            },
+                            "next_page_url": {
+                              "type": "string",
+                              "format": "uri",
+                              "nullable": true
+                            },
+                            "prev_page_url": {
+                              "type": "string",
+                              "format": "uri",
+                              "nullable": true
+                            },
+                            "path": {
+                              "type": "string",
+                              "format": "uri"
                             }
                           }
                         }
                       ]
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "pagination"
+                  ]
+                },
+                "examples": {
+                  "length_aware": {
+                    "summary": "Length aware (synthetic fixture)",
+                    "value": {
+                      "status": "success",
+                      "pagination": {
+                        "current_page": 1,
+                        "data": [
+                          {
+                            "id": 900000001,
+                            "name": "Synthetic track fixture",
+                            "image": "https://example.com/synthetic-fixture.png",
+                            "created_at": "2026-01-01T00:00:00.000000Z",
+                            "updated_at": "2026-01-01T00:00:00.000000Z",
+                            "model_type": "track",
+                            "duration_text": "3:00",
+                            "views": 0,
+                            "plays": 0,
+                            "artists": [],
+                            "genres": []
+                          }
+                        ],
+                        "from": 1,
+                        "last_page": 3,
+                        "next_page": 2,
+                        "per_page": 1,
+                        "prev_page": null,
+                        "to": 1,
+                        "total": 3
+                      }
+                    }
+                  },
+                  "simple": {
+                    "summary": "Simple (synthetic fixture)",
+                    "value": {
+                      "status": "success",
+                      "pagination": {
+                        "current_page": 1,
+                        "data": [
+                          {
+                            "id": 900000001,
+                            "name": "Synthetic track fixture",
+                            "image": "https://example.com/synthetic-fixture.png",
+                            "created_at": "2026-01-01T00:00:00.000000Z",
+                            "updated_at": "2026-01-01T00:00:00.000000Z",
+                            "model_type": "track",
+                            "duration_text": "3:00",
+                            "views": 0,
+                            "plays": 0,
+                            "artists": [],
+                            "genres": []
+                          }
+                        ],
+                        "first_page_url": "https://api.example.com/api/v1/tracks?page=1",
+                        "from": 1,
+                        "next_page_url": "https://api.example.com/api/v1/tracks?page=2",
+                        "path": "https://api.example.com/api/v1/tracks",
+                        "per_page": 1,
+                        "prev_page_url": null,
+                        "to": 1
+                      }
+                    }
+                  },
+                  "empty_length_aware": {
+                    "summary": "Empty length aware (synthetic fixture)",
+                    "value": {
+                      "status": "success",
+                      "pagination": {
+                        "current_page": 1,
+                        "data": [],
+                        "from": null,
+                        "last_page": 1,
+                        "next_page": null,
+                        "per_page": 1,
+                        "prev_page": null,
+                        "to": null,
+                        "total": 0
+                      }
+                    }
+                  },
+                  "empty_simple": {
+                    "summary": "Empty simple (synthetic fixture)",
+                    "value": {
+                      "status": "success",
+                      "pagination": {
+                        "current_page": 1,
+                        "data": [],
+                        "first_page_url": "https://api.example.com/api/v1/tracks?page=1",
+                        "from": null,
+                        "next_page_url": null,
+                        "path": "https://api.example.com/api/v1/tracks",
+                        "per_page": 1,
+                        "prev_page_url": null,
+                        "to": null
+                      }
                     }
                   }
                 }
@@ -2960,7 +3204,8 @@
           "401": {
             "$ref": "#/components/responses/Response401"
           }
-        }
+        },
+        "description": "Returns status and pagination. The tracked source supports length-aware and simple pagination; paginate=simple or the runtime simple_pagination_tables setting selects simple pagination. The deployed setting has not been verified. Neither form includes a links object. All response examples are complete synthetic documentation fixtures, not production responses; never send their identifiers or URLs to a live API."
       },
       "post": {
         "tags": [
@@ -2977,7 +3222,10 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "Synthetic name Fixture"
+                    "example": "Synthetic name Fixture",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "description": "Required clean track title, unique on creation. File extensions, metadata and artist references can be rejected."
                   },
                   "description": {
                     "type": "string",
@@ -2986,29 +3234,208 @@
                   "duration": {
                     "type": "integer",
                     "example": 180000,
-                    "description": "Duration in milliseconds"
-                  },
-                  "genre": {
-                    "type": "string",
-                    "example": "Rock"
+                    "description": "Duration in milliseconds",
+                    "minimum": 1
                   },
                   "artists": {
                     "type": "array",
                     "items": {
-                      "type": "integer"
+                      "oneOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
                     },
                     "example": [
                       900000001,
                       900000002
+                    ],
+                    "minItems": 1,
+                    "description": "Credited artist IDs, or CURRENT_USER for the signed-in user's artist. Prefer numeric IDs or this exact sentinel; the request regex is not a strict integer-only validator."
+                  },
+                  "genres": {
+                    "type": "array",
+                    "items": {},
+                    "description": "Genre collection consumed by the track handler. Use the plural genres field."
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Required cover-art reference for a new track."
+                  },
+                  "number": {
+                    "type": "integer"
+                  },
+                  "spotify_popularity": {
+                    "nullable": true,
+                    "description": "Optional value with source min:1/max:100 rules; no explicit numeric type rule."
+                  },
+                  "album_id": {
+                    "type": "integer",
+                    "nullable": true,
+                    "minimum": 1,
+                    "description": "Existing album ID; the handler checks permission to use the album."
+                  },
+                  "licensing_type": {
+                    "type": "string",
+                    "enum": [
+                      "non_exclusive_only",
+                      "both",
+                      "exclusive_only"
                     ]
+                  },
+                  "exclusive_status": {
+                    "type": "string",
+                    "enum": [
+                      "available",
+                      "not_available"
+                    ],
+                    "description": "Required unless licensing_type is non_exclusive_only. A new track cannot be submitted as sold; that status is set after an exclusive license is issued."
+                  },
+                  "exclusive_price": {
+                    "type": "number",
+                    "nullable": true,
+                    "minimum": 1,
+                    "maximum": 999999.99,
+                    "description": "Required when licensing_type is both or exclusive_only and exclusive_status is available. For not_available offers, the handler clears this value."
+                  },
+                  "exclusive_currency": {
+                    "type": "string",
+                    "nullable": true,
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "enum": [
+                      "USD",
+                      "EUR",
+                      "GBP",
+                      "CAD"
+                    ]
+                  },
+                  "exclusive_buyer_info": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 1000
+                  },
+                  "exclusive_contact_email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 255,
+                    "description": "Required unless licensing_type is non_exclusive_only."
+                  },
+                  "exclusive_license_config": {
+                    "type": "object",
+                    "nullable": true,
+                    "additionalProperties": true,
+                    "description": "Exclusive license configuration, required for exclusive/both publishing unless an accessible preset supplies it. A JSON-encoded configuration string is decoded before validation. This is a configuration object in canonical JSON. Resolved files_to_deliver must include wav and stems, and deliverables_guaranteed must be confirmed for this track. Presets do not supply the track-specific guarantee.",
+                    "properties": {
+                      "files_to_deliver": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Must include wav and stems for exclusive offers."
+                      },
+                      "deliverables_guaranteed": {
+                        "type": "boolean",
+                        "description": "Must be true for exclusive offers; confirms the track-specific deliverables guarantee."
+                      }
+                    }
+                  },
+                  "exclusive_license_preset_id": {
+                    "type": "integer",
+                    "nullable": true,
+                    "minimum": 1,
+                    "description": "A preset available to the signed-in account. Reusable terms do not replace the track-specific deliverables guarantee."
+                  },
+                  "sample_safe": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "sample_safe_status": {
+                    "type": "string",
+                    "enum": [
+                      "cleared",
+                      "requires_clearance",
+                      "unknown"
+                    ],
+                    "description": "Required if sample_safe is true."
+                  },
+                  "sample_safe_notes": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 2000
+                  },
+                  "ai_usage": {
+                    "type": "string",
+                    "nullable": true,
+                    "enum": [
+                      "human_made",
+                      "ai_assisted"
+                    ],
+                    "description": "Required and non-null on creation when catalog.ai_disclosure.enforce is enabled. Otherwise optional and nullable; the active setting has not been verified."
+                  },
+                  "ai_tool_name": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 255,
+                    "description": "Required and nonblank when ai_usage is ai_assisted."
+                  },
+                  "ai_usage_details": {
+                    "type": "string",
+                    "nullable": true,
+                    "minLength": 10,
+                    "maxLength": 2000,
+                    "description": "Required when ai_usage is ai_assisted. Must also contain at least 10 characters after trimming."
+                  },
+                  "ai_commercial_rights_confirmed": {
+                    "type": "boolean",
+                    "nullable": true,
+                    "description": "Required and must be true when ai_usage is ai_assisted. Canonical JSON uses true; the source accepted rule also accepts standard Laravel accepted values. Otherwise optional and nullable."
+                  },
+                  "key": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "scale": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "bpm": {
+                    "type": "integer",
+                    "minimum": 60,
+                    "maximum": 200,
+                    "description": "Whole-number tempo in BPM."
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Required audio URL; checked by duplicate-fingerprint validation."
+                  },
+                  "src": {
+                    "type": "string",
+                    "description": "Required uploaded audio reference; wait for upload completion before creating the track."
                   }
-                }
+                },
+                "required": [
+                  "name",
+                  "image",
+                  "duration",
+                  "artists",
+                  "licensing_type",
+                  "key",
+                  "scale",
+                  "bpm",
+                  "url",
+                  "src"
+                ]
               }
             }
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Track created successfully",
             "content": {
               "application/json": {
@@ -3032,9 +3459,12 @@
           },
           "422": {
             "$ref": "#/components/responses/Response422"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Create a track after audio upload. The tracked creation validator requires the fields below, including for administrators creating new tracks; relaxed administrator-update rules do not apply. Creation requires tracks.create or music.create permission and can be denied by upload-minute restrictions. Standard or both licensing requires every credited producer to be eligible for the subscription payout pool. Exclusive or both licensing requires a payable primary-producer payout route, configured license terms and a track-specific deliverables guarantee. Runtime AI-disclosure settings, account permissions and payout setup have not been verified, and no successful live creation is claimed.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/download": {
@@ -7641,7 +8071,7 @@
           "Notifications"
         ],
         "summary": "Get notification subscriptions",
-        "description": "Retrieve the authenticated user's notification configuration, available channels, current selections, and user context. The `{user}` path accepts the authenticated user's numeric ID or `me`.",
+        "description": "Retrieve your own notification preferences, available channels, current selections and user context. Sign-in is required. Use me for the signed-in user, or provide your own numeric user ID.",
         "operationId": "getNotificationSubscriptions",
         "parameters": [
           {
@@ -7652,7 +8082,7 @@
               "type": "string",
               "example": "me"
             },
-            "description": "Authenticated user ID or `me`."
+            "description": "Use me for the signed-in user, or your own numeric user ID."
           }
         ],
         "responses": {
@@ -7806,7 +8236,7 @@
           "Notifications"
         ],
         "summary": "Update notification subscriptions",
-        "description": "Update one or more notification subscription channel selections for the authenticated user. Valid channel keys are `email`, `in_app`, and `mobile`.",
+        "description": "Update your own notification subscription channel selections. Valid channel keys are email, in_app and mobile. Sign-in is required. Use me for the signed-in user, or provide your own numeric user ID.",
         "operationId": "updateNotificationSubscriptions",
         "parameters": [
           {
@@ -7817,7 +8247,7 @@
               "type": "string",
               "example": "me"
             },
-            "description": "Authenticated user ID or `me`."
+            "description": "Use me for the signed-in user, or your own numeric user ID."
           }
         ],
         "requestBody": {
@@ -8046,16 +8476,14 @@
                     "description": "Image url for playlist"
                   },
                   "public": {
-                    "type": "string",
-                    "nullable": true,
-                    "default": false,
-                    "description": "Whether this playlist will be set as public"
+                    "type": "boolean",
+                    "example": false,
+                    "description": "Optional. Whether this playlist is public. Omit to keep the existing value. Send a JSON boolean; null is rejected."
                   },
                   "collaborative": {
-                    "type": "string",
-                    "nullable": true,
-                    "default": false,
-                    "description": "Whether this playlist will be set as collaborative"
+                    "type": "boolean",
+                    "example": false,
+                    "description": "Optional. Whether this playlist is collaborative. Omit to keep the existing value. Send a JSON boolean; null is rejected."
                   }
                 }
               }
@@ -8208,22 +8636,22 @@
           "to": {
             "type": "integer",
             "format": "int64",
-            "example": 100
+            "example": 1
           },
           "per_page": {
             "type": "integer",
             "format": "int64",
-            "example": 25
+            "example": 1
           },
           "last_page": {
             "type": "integer",
             "format": "int64",
-            "example": 156
+            "example": 3
           },
           "total": {
             "type": "integer",
             "format": "int64",
-            "example": 264
+            "example": 3
           }
         }
       },
