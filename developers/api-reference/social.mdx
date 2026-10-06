@@ -106,14 +106,18 @@ GET /api/v1/artists/{artistId}/followers
 
 ### Toggle Repost
 
-Toggle repost status for a track. If already reposted, it removes the repost.
+Toggle repost status for a track or album. If already reposted, it removes the repost.
 
 ```http
 POST /api/v1/reposts/toggle
 ```
 
-<ParamField body="track_id" type="integer" required>
-  Track ID to repost or un-repost.
+<ParamField body="repostable_type" type="string" required>
+  Use `track` for a track or `album` for an album.
+</ParamField>
+
+<ParamField body="repostable_id" type="integer" required>
+  ID of the existing track or album to repost or un-repost.
 </ParamField>
 
 ### Get User's Reposts
@@ -136,19 +140,43 @@ GET /api/v1/users/{user}/reposts
 
 ### Add to Library
 
-Add a track to the authenticated user's library (liked tracks).
+Add tracks, albums, or artists to the authenticated user's library.
 
 ```http
 POST /api/v1/users/me/add-to-library
 ```
 
+<ParamField body="likeables" type="array">
+  Send an array of items to target. Each item needs `likeable_id` and `likeable_type`.
+</ParamField>
+
+<ParamField body="likeables[].likeable_id" type="integer" required>
+  ID of the item to add.
+</ParamField>
+
+<ParamField body="likeables[].likeable_type" type="string" required>
+  Item type: `track`, `album`, or `artist`.
+</ParamField>
+
 ### Remove from Library
 
-Remove a track from the user's library.
+Remove tracks, albums, or artists from the user's library.
 
 ```http
 POST /api/v1/users/me/remove-from-library
 ```
+
+<ParamField body="likeables" type="array">
+  Send an array of items to target. Each item needs `likeable_id` and `likeable_type`.
+</ParamField>
+
+<ParamField body="likeables[].likeable_id" type="integer" required>
+  ID of the item to remove.
+</ParamField>
+
+<ParamField body="likeables[].likeable_type" type="string" required>
+  Item type: `track`, `album`, or `artist`.
+</ParamField>
 
 ### Get Liked Tracks
 

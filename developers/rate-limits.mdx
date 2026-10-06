@@ -19,32 +19,26 @@ The BeatPass API enforces <Tooltip tip="A cap on how many API requests you can m
 
 <Card title="Global API Limit" icon="gauge-high">
   <Badge color="red" size="lg">300 requests/minute</Badge>
-  All API endpoints are subject to a global rate limit of 300 requests per minute per client. Route-specific limits below may impose stricter thresholds on individual endpoints.
+  The tracked application source applies a shared API limit of 300 requests per minute. Some routes have additional, lower limits. This verifies source wiring, not the deployed revision, route cache or observed production limit. Follow live response headers and Retry-After when retrying.
 </Card>
 
 ---
 
 ## Rate Limit Categories
 
-Different endpoint categories have different rate limits. The API applies the most restrictive applicable limit.
+Limits are attached to middleware and individual routes. Do not assume every endpoint in a category has the same additional ceiling.
 
-<AccordionGroup>
-  <Accordion title="General API Endpoints" defaultOpen icon="globe">
-    Standard content endpoints (tracks, artists, albums, search, genres) are subject to the global rate limit.
-  </Accordion>
-  <Accordion title="Media Endpoints" icon="headphones">
-    Audio and image endpoints have stricter per-minute limits to prevent abuse.
-  </Accordion>
-  <Accordion title="Analytics Endpoints" icon="chart-line">
-    Analytics and dashboard endpoints have dedicated rate limits appropriate for their resource intensity.
-  </Accordion>
-  <Accordion title="Write Operations" icon="pen">
-    Endpoints that create or modify data (uploads, purchases, messages) have stricter limits.
-  </Accordion>
-</AccordionGroup>
+The tracked authentication limiter definitions include:
+
+- Login: 5 attempts per minute, keyed by email and IP
+- Web registration: 5 attempts per minute and 20 per hour, keyed by IP
+- Password actions: 5 attempts per minute, keyed by IP
+- Other routes in the Fortify group: 30 attempts per minute
+
+These are source definitions; the applicable route and deployment configuration determine which limits apply. They do not replace the shared API limit for routes that use that middleware.
 
 <Note>
-  Authentication endpoints have strict rate limits to prevent brute-force attacks. Excessive failed attempts will result in temporary lockout.
+  Authentication endpoints apply limits to reduce brute-force attempts. If a request is throttled, wait for the duration provided by the response before retrying.
 </Note>
 
 ---
@@ -62,7 +56,7 @@ Example: "60 requests per minute" means you can make 60 requests within any 60-s
 
 ## Rate Limit Headers
 
-Responses include standard rate limit headers:
+Inspect the rate-limit headers returned by the endpoint. The following header values are illustrative, not captured production values:
 
 ```http
 X-RateLimit-Limit: 300

@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/messaging"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Messaging API enables direct and group conversations between BeatPass users. It supports real-time features including typing indicators and read receipts.
@@ -35,24 +37,15 @@ GET /api/v1/messaging/conversations
   Number of conversations to return. Default: `20`.
 </ParamField>
 
-**Response:**
+**Example response when the selected folder has no conversations:**
+
+<SyntheticFixtures />
 
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "id": 1,
-      "type": "direct",
-      "participants": [...],
-      "last_message": {
-        "id": 42,
-        "message_text": "Hey, love your beats!",
-        "created_at": "2025-01-15T14:30:00Z"
-      },
-      "unread_count": 2
-    }
-  ]
+  "data": [],
+  "next_offset": null
 }
 ```
 
@@ -88,22 +81,24 @@ POST /api/v1/messaging/conversations/start
 </ParamField>
 
 <Note>
-  Provide either `user_id` (direct) or `user_ids` (group), not both. You cannot start a conversation with yourself.
+  Provide `user_id` for a direct conversation or `user_ids` for a group, not both. Omitting both returns `400`. Invalid field values, a direct self-conversation, or a group with fewer than two other participants return `422`. Group IDs must be distinct and contain 2–10 entries.
 </Note>
 
 **Response (201):**
+
+<SyntheticFixtures />
 
 ```json
 {
   "success": true,
   "data": {
     "conversation": {
-      "id": 5,
+      "id": 900000004,
       "type": "direct"
     },
     "message": {
-      "id": 100,
-      "message_text": "Hey, want to collab?",
+      "id": 900000005,
+      "message_text": "Synthetic message text Fixture",
       "created_at": "2025-01-15T14:30:00Z"
     }
   }
@@ -184,14 +179,19 @@ POST /api/v1/messaging/messages
 
 **Response (201):**
 
+<SyntheticFixtures />
+
 ```json
 {
   "success": true,
   "data": {
-    "id": 101,
-    "conversation_id": 5,
-    "message_text": "Sounds great, let's do it!",
-    "user": { "id": 1, "name": "Producer A" },
+    "id": 900000006,
+    "conversation_id": 900000004,
+    "message_text": "Synthetic message text Fixture",
+    "user": {
+      "id": 900000001,
+      "name": "Synthetic name Fixture"
+    },
     "created_at": "2025-01-15T14:31:00Z"
   }
 }
@@ -256,6 +256,10 @@ Notify participants that the authenticated user is typing.
 POST /api/v1/messaging/conversations/{conversationId}/typing
 ```
 
+<ParamField body="is_typing" type="boolean" required>
+  Set `true` while typing and `false` when typing stops.
+</ParamField>
+
 ### Get Typing Status
 
 Check who is currently typing in a conversation.
@@ -280,6 +284,10 @@ Search for users to start a conversation with.
 GET /api/v1/messaging/search-users
 ```
 
+<ParamField query="q" type="string">
+  Search text, up to 100 characters. After trimming whitespace, omitted text or text shorter than two characters returns `success: true` with an empty `data` array.
+</ParamField>
+
 ### Get Followed Users
 
 Get the authenticated user's followed users for quick messaging.
@@ -292,10 +300,12 @@ GET /api/v1/messaging/followed-users
 
 ## Integration Example
 
+<SyntheticFixtures />
+
 ```javascript
 // Start a conversation and send a message
 async function startConversation(userId, message) {
-  const response = await fetch('https://open.beatpass.ca/api/v1/messaging/conversations/start', {
+  const response = await fetch('https://api.example.com/api/v1/messaging/conversations/start', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

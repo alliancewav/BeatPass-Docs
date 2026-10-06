@@ -2,31 +2,35 @@
 audience: help
 title: "Platform Fee"
 sidebarTitle: "Platform Fee"
-description: "Understand how the 12% + $3 platform fee works on subscriptions, exclusive purchases, and the active Pro exclusive-purchase waiver."
-keywords: ["platform fee", "12%", "$3", "service fee", "transaction fee", "track purchase fee"]
+description: "Understand platform fees on subscriptions and exclusive purchases, including eligible plan waivers."
+keywords: ["platform fee", "service fee", "transaction fee", "track purchase fee"]
 "og:title": "Platform Fee - BeatPass Help"
-"og:description": "Learn about BeatPass platform fees and the Pro benefit for exclusive license purchases."
+"og:description": "Learn how platform fees and eligible exclusive-purchase waivers work."
 canonical: "https://docs.beatpass.ca/help/billing/platform-fee"
 ---
 
-BeatPass currently calculates a `12% + $3.00 flat` platform fee for eligible paid checkouts. Subscription checkout and renewal use this fee for every paid plan. Exclusive license checkout waives it when the buyer has an active plan with that benefit, currently Pro.
+The platform fee is calculated from the configured percentage and flat amount and is shown before payment. Subscription checkout and renewal apply the subscription fee. An active plan may waive the fee for eligible exclusive purchases. Check the current checkout total.
+
+The calculation and plan-benefit checks are verified against application source. The active fee amounts and current plan configuration have not been independently verified for this guide.
 
 ## Where the fee applies
 
-The current fee applies to:
+The source applies a platform fee to:
 
 - Subscription checkout and renewal charges
 - Exclusive track purchases, unless the buyer's active plan waives the fee
 
 <Note>
-  Standard subscription downloads do not trigger a separate per-download platform fee. Pro's exclusive-purchase waiver does not remove the fee from Pro subscription checkout or renewal.
+  Standard subscription downloads do not trigger a separate per-download platform fee. An exclusive-purchase waiver does not remove the subscription checkout or renewal fee.
 </Note>
 
 ## How the calculation works
 
-BeatPass calculates the fee as **(base price × 12%) + $3.00**.
+BeatPass calculates the fee as **(base price × configured percentage) + configured flat amount**.
 
-### Example
+### Illustrative calculation
+
+These examples assume **12% + $3.00** solely to show the arithmetic. They do not establish the current fee or currency. Use the fee displayed at checkout.
 
 | Base price | Fee | Total |
 | --- | --- | --- |
@@ -40,18 +44,18 @@ For an exclusive purchase where the fee applies, the base price is the producer'
 
 ### Subscription checkout
 
-The shared checkout summary currently shows:
+The shared checkout summary includes:
 
 - Plan price
 - Coupon discount, if one is applied
 - Platform fee
 - Total due today
 
-If a coupon is applied to a subscription, BeatPass reduces the percentage portion against the discounted base price. The flat `$3.00` portion still remains.
+If a coupon is applied to a subscription, BeatPass reduces the percentage portion against the discounted base price. The configured flat portion still remains.
 
 ### Exclusive track checkout
 
-The exclusive purchase dialog currently shows:
+The exclusive purchase dialog includes:
 
 - Track price
 - Platform fee with the current percentage and flat-fee formula, or a waived message when an active plan benefit applies
@@ -73,16 +77,16 @@ BeatPass keeps the base subscription price or producer's listed track price sepa
 
 <AccordionGroup>
   <Accordion title="Is the current fee fixed?" icon="percent" defaultOpen>
-    The live BeatPass setting is currently `12% + $3.00 flat`. If BeatPass changes that setting later, trust the amount shown in checkout at the time you pay.
+    The percentage and flat amount are configurable. Trust the amount shown in checkout at the time you pay; this guide does not confirm the current live setting.
   </Accordion>
   <Accordion title="Does the fee show before I pay?" icon="receipt">
     Yes. Subscription checkout shows the fee before payment. Exclusive checkout shows either the fee or the active plan waiver before payment.
   </Accordion>
   <Accordion title="Does the fee come out of the producer's listed track price?" icon="dollar-sign">
-    No. The exclusive purchase flow keeps the producer amount equal to the listed track price. The buyer pays the fee when it applies; an eligible active plan such as Pro can waive it.
+    No. The exclusive purchase flow keeps the producer amount equal to the listed track price. The buyer pays the fee when it applies; an eligible active plan can waive it.
   </Accordion>
-  <Accordion title="Does Pro remove the subscription platform fee?" icon="crown">
-    No. Pro waives the platform fee only on eligible one-time exclusive license purchases. The Pro subscription checkout and renewals still include the subscription platform fee.
+  <Accordion title="Does an exclusive-purchase waiver remove the subscription fee?" icon="crown">
+    No. A qualifying plan benefit waives the fee only on eligible one-time exclusive license purchases. Subscription checkout and renewals still include the subscription platform fee. Check your current plan benefits for eligibility.
   </Accordion>
 </AccordionGroup>
 

@@ -8,6 +8,7 @@ canonical: "https://docs.beatpass.ca/help/producer-dashboard/finances"
 
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
+import PayoutBankArrival from "/snippets/callouts/payout-bank-arrival.mdx";
 
 The **Finances** page helps you track every earning, see what is waiting, and manage how you get paid.
 
@@ -36,14 +37,14 @@ If payout setup needs action, a short notice links to **Payout setup** without m
 
 The two summary actions show the current number of:
 
-- **Waiting** earnings
-- Earnings that **Need attention**
+- **Pending** earnings
+- **Delayed** earnings
 
 Use the separate filters to narrow the list:
 
 | Filter | Options |
 | --- | --- |
-| **Status** | **All activity**, **Waiting**, **Sending**, **Needs attention**, **Completed**, **Refunded** |
+| **Status** | **All activity**, **Pending**, **Processing**, **Delayed**, **Sent**, **Reversed** |
 | **Earning type** | **All types**, **Track sales**, **Subscription earnings** |
 
 The list shows 20 records at a time. Use **Previous** and **Next** to move through history. **Showing :from–:to of :total** tells you which records are on the current page.
@@ -52,12 +53,13 @@ Each row can show:
 
 - The track or subscription earning period
 - The earning type, date, and payout provider
+- The **Reference ID** and, when shown, the payout group reference
 - The amount in its original currency
-- **Waiting**, **Sending**, **Needs attention**, **Completed**, or **Refunded**. A Wise transfer says **Payment sent** after Wise sends it to the bank or payment network.
+- **Pending**, **Processing**, **Delayed**, **Sent**, or **Reversed**, with an explanation when one is available
 
-BeatPass refreshes records while money is waiting or sending. It also checks again when you return to the page. Refunds move to **Refunded**, while a bank rejection or payout problem that needs your action moves to **Needs attention**.
+BeatPass refreshes records while payouts are pending or processing and checks again when you return to the page. A reversed customer payment appears as **Reversed**. A payout issue can appear as **Delayed**; read the earning for the reason and any action requested.
 
-Failed payment attempts that never became earnings do not appear. A payout failure or hold on a real earning remains visible under **Needs attention**.
+Failed payment attempts that never became earnings do not appear. A payout failure or hold on a real earning remains visible under **Delayed**.
 
 ## Earnings
 
@@ -66,13 +68,12 @@ Failed payment attempts that never became earnings do not appear. A payout failu
 | Amount | What it means |
 | --- | --- |
 | **Total earned** | Successful, non-refunded track sales and eligible subscription earnings, including money still moving through payout processing |
-| **Waiting** | Earned money waiting to enter payout processing |
-| **Sending** | Money moving through the payout provider |
-| **Payment sent** | Money sent by the payout provider to the bank or payment network |
+| **Pending** | Earned money waiting to enter payout processing |
+| **Processing** | Money moving through the payout provider |
+| **Delayed** | Earned money with a payout issue; open the earning for details |
+| **Sent** | Money sent by the payout provider; bank arrival can happen later |
 
-<Note>
-  **Payment sent** does not confirm that money has arrived in your bank. The receiving bank may continue processing it, and a later return or refund updates the record again.
-</Note>
+<PayoutBankArrival />
 
 A real zero remains visible as zero. If BeatPass cannot load earnings, the section says they are unavailable instead of replacing missing information with zero.
 

@@ -199,15 +199,7 @@ Content-Type: application/json
 
 ### Success Response
 
-Responses vary by endpoint. Most return data directly:
-
-```json
-{
-  "id": 1234,
-  "name": "Track Name",
-  "artist": {...}
-}
-```
+Response envelopes vary by endpoint. Track listing returns `status` and `pagination`, while dashboard statistics return `success` and `data`. Dashboard fields such as `total_tracks` and `total_plays` are inside `data`. Use the response contract for the specific endpoint.
 
 ### Error Response
 
@@ -222,28 +214,110 @@ Responses vary by endpoint. Most return data directly:
 
 ### Pagination
 
-Paginated endpoints use <Tooltip tip="A pagination method that uses current_page, last_page, and per_page values to move through large result sets.">page-number pagination</Tooltip>:
+Pagination is endpoint-specific. `GET /tracks` wraps its page in `pagination` alongside `status: "success"`. It uses the following source-supported page-number forms; other endpoints can use different field names or cursor/offset pagination.
+
+Length-aware pages include `total`, `last_page`, and numeric `next_page`/`prev_page`. Simple pages omit totals and last-page counts and instead include `next_page_url`/`prev_page_url`. The `paginate=simple` query parameter, or the runtime `simple_pagination_tables` setting, selects simple pagination. The deployed setting has not been verified here.
+
+For track listing, `per_page` defaults to 15 and is capped at 500 in source. `from` and `to` are 1-based positions for the displayed items and are null on an empty page. A length-aware `last_page` is at least 1, including when `total` is 0. Retain the request's page size and filters when moving between pages.
+
+Synthetic, nonfunctional documentation fixtures only. Names, identifiers, URLs and counts are invented, not copied from accounts or a live response. Numeric IDs can coincide with real records; never send these fixtures to a live API.
+
+Length-aware example for a first page requested with `per_page=1`:
 
 ```json
 {
-  "data": [...],
-  "current_page": 1,
-  "per_page": 15,
-  "total": 150,
-  "last_page": 10,
-  "links": {...}
+  "status": "success",
+  "pagination": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 900000001,
+        "name": "Synthetic track fixture",
+        "image": "https://example.com/synthetic-fixture.png",
+        "created_at": "2026-01-01T00:00:00.000000Z",
+        "updated_at": "2026-01-01T00:00:00.000000Z",
+        "model_type": "track",
+        "duration_text": "3:00",
+        "views": 0,
+        "plays": 0,
+        "artists": [],
+        "genres": []
+      }
+    ],
+    "from": 1,
+    "last_page": 3,
+    "next_page": 2,
+    "per_page": 1,
+    "prev_page": null,
+    "to": 1,
+    "total": 3
+  }
 }
 ```
+
+Simple example with one displayed item and another page available:
+
+```json
+{
+  "status": "success",
+  "pagination": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 900000001,
+        "name": "Synthetic track fixture",
+        "image": "https://example.com/synthetic-fixture.png",
+        "created_at": "2026-01-01T00:00:00.000000Z",
+        "updated_at": "2026-01-01T00:00:00.000000Z",
+        "model_type": "track",
+        "duration_text": "3:00",
+        "views": 0,
+        "plays": 0,
+        "artists": [],
+        "genres": []
+      }
+    ],
+    "first_page_url": "https://api.example.com/api/v1/tracks?page=1",
+    "from": 1,
+    "next_page_url": "https://api.example.com/api/v1/tracks?page=2",
+    "path": "https://api.example.com/api/v1/tracks",
+    "per_page": 1,
+    "prev_page_url": null,
+    "to": 1
+  }
+}
+```
+
+Empty length-aware example:
+
+```json
+{
+  "status": "success",
+  "pagination": {
+    "current_page": 1,
+    "data": [],
+    "from": null,
+    "last_page": 1,
+    "next_page": null,
+    "per_page": 1,
+    "prev_page": null,
+    "to": null,
+    "total": 0
+  }
+}
+```
+
+An empty simple page uses `data: []`, null `from`/`to`, and null `next_page_url`; it still omits `total` and `last_page`. Neither track paginator form has a `links` object.
 
 ---
 
 ## Authentication & Data Access
 
-The BeatPass API uses a **<Tooltip tip="Public requests return minimal data (id, name only); authenticated requests with a Bearer token return rich data (pricing, plays, licensing).">two-tier access model</Tooltip>** for external consumers:
+The BeatPass API uses a **<Tooltip tip="Public and token response fields vary by model and endpoint. Public Track data can include image, timestamps and loaded artist/genre relations.">two-tier access model</Tooltip>** for external consumers:
 
 | Tier | Auth | Data |
 |------|------|------|
-| **Public** | None | Minimal (id, name, model_type only) |
+| **Public** | None | Model-specific fields; Track includes image, created_at, duration_text and loaded artists/genres |
 | **Token** | `Bearer {token}` | Rich (pricing, plays, BPM, licensing) |
 
 <Warning>
@@ -254,7 +328,7 @@ The BeatPass API uses a **<Tooltip tip="Public requests return minimal data (id,
 flowchart LR
     A[API Request] --> B{Bearer token\nincluded?}
     B -->|Yes| C[Rich Data\nPricing, plays, BPM,\nlicensing, tags]
-    B -->|No| D[Minimal Data\nid, name, model_type]
+    B -->|No| D[Public Data\nModel-specific fields]
 ```
 
 ---
@@ -262,6 +336,8 @@ flowchart LR
 ## Endpoint Categories
 
 The API provides read access to public content (tracks, artists, albums, genres, search) and authenticated access to user-specific features (library, playlists, messaging, purchases, analytics).
+
+Authentication and permissions vary by endpoint. Use producer and insights endpoints only for resources you are authorized to manage. A valid token alone does not establish ownership or authorize access to another producer's data.
 
 See the [API Reference](/developers/api-reference/overview) for the full endpoint listing.
 

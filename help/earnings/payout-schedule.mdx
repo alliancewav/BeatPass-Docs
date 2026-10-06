@@ -1,12 +1,13 @@
 ---
 audience: help
 title: "Payout Schedule"
-description: "Understand how earned money moves through Waiting, Sending, and Sent before bank arrival."
+description: "Understand how earned money moves through Pending, Processing, and Sent before bank arrival."
 sidebarTitle: "Payout Schedule"
 canonical: "https://docs.beatpass.ca/help/earnings/payout-schedule"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
+import PayoutBankArrival from "/snippets/callouts/payout-bank-arrival.mdx";
 
 BeatPass records a real earning, then follows the payout route shown in **Finances**. A track sale and a subscription earning can use different providers when they were created at different stages of a payout upgrade.
 
@@ -14,11 +15,11 @@ BeatPass records a real earning, then follows the payout route shown in **Financ
 
 | Status | What it means |
 | --- | --- |
-| **Waiting** | The earning is recorded but has not entered payout processing |
-| **Sending** | The payout provider is processing the money |
-| **Needs attention** | A real earning has a payout failure, hold, or review that needs attention |
-| **Completed** | The payout provider completed the recorded payout step |
-| **Refunded** | The sale or earning was refunded |
+| **Pending** | The earning is recorded but has not entered payout processing |
+| **Processing** | The payout provider is processing the money |
+| **Delayed** | An earning exists but its payout has an issue; open the earning for the reason and next step |
+| **Sent** | The payout provider has sent the payment. Legacy Stripe entries mean sent to the Stripe balance, with bank payout following the Stripe schedule |
+| **Reversed** | The customer payment was reversed; this amount is no longer included in total earned |
 
 Failed payment attempts that never became earnings do not appear in **Finance activity**.
 
@@ -29,13 +30,12 @@ The **Earnings** section groups non-refunded earnings by currency:
 | Amount | What it means |
 | --- | --- |
 | **Total earned** | Successful, non-refunded track sales and eligible subscription earnings, including money still moving |
-| **Waiting** | Earned money waiting to enter payout processing |
-| **Sending** | Money moving through the payout provider |
+| **Pending** | Earned money waiting to enter payout processing |
+| **Processing** | Money moving through the payout provider |
+| **Delayed** | Earned money with a payout issue; open the earning for details |
 | **Sent** | Money sent by the payout provider |
 
-<Info>
-  **Sent** and **Completed** do not confirm bank arrival. The payout provider and receiving bank may continue processing the money.
-</Info>
+<PayoutBankArrival />
 
 ## Legacy Stripe and BEATPAY
 
@@ -69,7 +69,7 @@ Arrival time can change because of:
     Go to **Backstage** → **Finances**. **Finance activity** is the first section.
   </Step>
   <Step title="Choose the status">
-    Select **Waiting**, **Sending**, or **Needs attention**.
+    Select **Pending**, **Processing**, or **Delayed**.
   </Step>
   <Step title="Choose the earning type">
     Use **Earning type** to narrow the list to **Track sales** or **Subscription earnings**.
@@ -78,7 +78,7 @@ Arrival time can change because of:
     Follow an action only when **Payout setup** asks for one.
   </Step>
   <Step title="Allow for bank processing">
-    If the row is **Completed** or the amount is included in **Sent**, allow time for the receiving bank.
+    If the row or earnings amount is **Sent**, review its provider explanation. BEATPAY bank arrival can happen later; Legacy Stripe bank payouts follow the Stripe schedule. Contact support with the earning reference if you need help.
   </Step>
 </Steps>
 

@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/producer-intelligence"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Producer Intelligence API is BeatPass's comprehensive analytics and gamification system for producers. It covers <Tooltip tip="Experience Points earned through uploads, plays, and engagement that determine a producer's level and leaderboard rank.">XP</Tooltip> tracking, achievements, social analytics, collaboration networks, contribution graphs, advanced charting, and real-time metrics.
@@ -243,6 +245,8 @@ The `7d` and `30d` periods use exact `[start, end)` rolling boundaries. `all` ha
 
 The response contains the top 20, the requested producer's entry, and up to one adjacent entry above and below when that producer is outside the top 20.
 
+<SyntheticFixtures />
+
 ```json
 {
   "category": "audience_plays",
@@ -260,10 +264,10 @@ The response contains the top 20, the requested producer's entry, and up to one 
     {
       "rank": 1,
       "artist": {
-        "id": 2036,
-        "name": "Producer",
+        "id": 900000201,
+        "name": "Synthetic Producer Fixture 1",
         "image": null,
-        "url": "/artist/2036/producer"
+        "url": "/artist/900000201/producer"
       },
       "value": 320,
       "context": {
@@ -277,10 +281,10 @@ The response contains the top 20, the requested producer's entry, and up to one 
     "entry": {
       "rank": 1,
       "artist": {
-        "id": 2036,
-        "name": "Producer",
+        "id": 900000201,
+        "name": "Synthetic Producer Fixture 1",
         "image": null,
-        "url": "/artist/2036/producer"
+        "url": "/artist/900000201/producer"
       },
       "value": 320,
       "context": {
@@ -302,6 +306,7 @@ The response contains the top 20, the requested producer's entry, and up to one 
 | `403` | The authenticated user cannot access the requested artist |
 | `404` | The requested artist does not exist |
 | `422` | A parameter is invalid or the category-period combination is unsupported |
+| `500` | Unexpected failure reading a producer leaderboard snapshot |
 | `503` | No usable scheduled snapshot is available |
 
 ---

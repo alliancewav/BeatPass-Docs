@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/quickstart"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 import NoPublicSandbox from "/snippets/warnings/no-public-sandbox.mdx";
 import BearerAuthExample from "/snippets/developer/bearer-auth-example.mdx";
@@ -36,7 +38,7 @@ All API requests use **Bearer token authentication**:
 | **Data access** | Token required for rich API responses |
 
 <Info>
-  **Unauthenticated requests return minimal data** (id, name, model_type only). A valid Bearer token is required for rich responses with pricing, plays, BPM, and licensing info.
+  **Public response fields vary by model and endpoint.** Track serialization includes `id`, `name`, `image`, `created_at`, `model_type`, `duration_text`, and loaded `artists`/`genres` relations. Controllers can add fields, including play counts on track listing. Approved token responses include additional pricing, BPM, and licensing fields.
 </Info>
 
 ---
@@ -73,12 +75,10 @@ When developing or documenting:
 
 ### In Code Examples
 
-```javascript
-// Good - uses placeholder
-const trackId = process.env.TEST_TRACK_ID || '{track_id}';
+<SyntheticFixtures />
 
-// Bad - hardcodes production ID
-const trackId = 12345;
+```javascript
+const trackId = '{track_id}'; // Replace only in an authorized environment.
 ```
 
 ### In Documentation
@@ -87,11 +87,6 @@ const trackId = 12345;
 GET /api/v1/tracks/{track_id}
 ```
 
-Not:
-
-```http
-GET /api/v1/tracks/12345
-```
 
 ---
 
@@ -127,7 +122,9 @@ If you encounter a 403 Forbidden response, the endpoint requires permissions you
 
 ## Error Handling
 
-### Standard Error Format
+### Example Validation Error
+
+Error bodies vary by endpoint. This is one validation-error shape; do not assume every error has an `errors` object.
 
 ```json
 {

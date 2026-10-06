@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/search"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Search & Discovery API provides content discovery features — full-text search across all content types, genre and tag browsing, personalized radio recommendations, and platform-wide leaderboards.
@@ -31,20 +33,23 @@ Search across albums, artists, playlists, tracks, and users.
 GET /api/v1/search
 ```
 
-<ParamField query="query" type="string" required>
-  Search keywords.
+<ParamField query="query" type="string">
+  Search keywords. An omitted or empty query returns an empty `results` array.
 </ParamField>
-<ParamField query="types" type="string">
-  Comma-separated content types to search: `album`, `artist`, `playlist`, `track`, `user`. Searches all types if omitted.
+<ParamField query="loader" type="string">
+  Defaults to `searchPage`, which requests up to 20 results per content type. Other loader values request up to 3 results per type; the autocomplete client uses `search`.
 </ParamField>
-<ParamField query="limit" type="integer">
-  Maximum results per type. Default: `3`.
-</ParamField>
+
+<Note>
+  `types` and `limit` query parameters are not used by this endpoint. It searches the permitted artist, album, track, user, playlist, and tag types.
+</Note>
 
 **Example:**
 
+<SyntheticFixtures />
+
 ```bash
-curl "https://open.beatpass.ca/api/v1/search?query=lofi&types=track,artist&limit=5" \
+curl "https://api.example.com/api/v1/search?query=lofi" \
   -H "Accept: application/json"
 ```
 
@@ -130,17 +135,17 @@ GET /api/v1/tags/{tagName}/albums
 
 ### Get Recommendations
 
-Get personalized music recommendations based on a seed entity (artist, track, genre, or tag).
+Get personalized music recommendations based on a seed entity (artist, track, or genre).
 
 ```http
 GET /api/v1/radio/{type}/{id}
 ```
 
 <ParamField path="type" type="string" required>
-  Seed type: `artist`, `track`, `genre`, or `tag`.
+  Seed type: `artist`, `track`, or `genre`.
 </ParamField>
-<ParamField path="id" type="string" required>
-  Seed entity ID or name.
+<ParamField path="id" type="integer" required>
+  Numeric ID of an existing seed entity.
 </ParamField>
 
 ---

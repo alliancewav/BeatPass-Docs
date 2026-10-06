@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/content"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The Content Management API provides full CRUD operations for all content types on BeatPass — tracks, albums, artists, playlists, lyrics, producer access requests, and supporting features like audio fingerprinting, Audio Recon, and cover art generation.
@@ -16,7 +18,7 @@ The Content Management API provides full CRUD operations for all content types o
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
 
-  **Authentication:** Read operations use optional auth (enhanced data when logged in). Write operations require authentication.
+  **Authentication:** Authentication varies by endpoint. Lyrics require sign-in, including read operations. Write operations require authentication.
 </Info>
 
 ---
@@ -41,7 +43,7 @@ GET /api/v1/tracks/{track}
 
 ### Create Track
 
-Upload a new track. Requires authentication.
+Upload a new track. Requires authentication and permission to create tracks. Upload-minute limits and licensing requirements can also restrict creation. A successful create returns HTTP `200`.
 
 ```http
 POST /api/v1/tracks
@@ -117,6 +119,8 @@ GET /api/v1/tracks/{track}/engagement-metrics
 GET /api/v1/tracks/{track}/producer-analytics
 ```
 
+Access depends on the endpoint's permissions. Use producer analytics only for resources you are authorized to manage; a valid token alone does not establish ownership.
+
 ---
 
 ## Track Upload Flow
@@ -129,7 +133,7 @@ GET /api/v1/tracks/{track}/producer-analytics
     Call `POST /tracks/{fileEntry}/extract-metadata` to parse BPM, key, duration, etc.
   </Step>
   <Step title="Create Track">
-    Call `POST /tracks` with metadata (title, genre, tags, BPM, etc.) and the file entry reference.
+    Call `POST /tracks` with `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, and `src`. A file entry ID alone is not a create payload: `url` must be a URL, and `src` is also required. Additional fields are conditionally required for exclusive licensing, sample-safety declarations, and AI disclosure.
   </Step>
   <Step title="Audio Fingerprinting">
     The system automatically generates an audio fingerprint for duplicate detection.
@@ -226,7 +230,7 @@ GET /api/v1/artists/{artist}/producer-analytics
 Returns the period summary and a paginated list of audience download events used by the Producer Activity page. Access is limited to users who manage the artist or have analytics access.
 
 ```http
-GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
+GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=1
 ```
 
 | Parameter | Type | Default | Description |
@@ -234,6 +238,8 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
 | `period` | string | `90d` | `7d`, `30d`, `90d`, or `all` |
 | `page` | integer | `1` | Page number, starting at 1 |
 | `per_page` | integer | `20` | Results per page, from 1 to 50 |
+
+<SyntheticFixtures />
 
 ```json
 {
@@ -252,7 +258,7 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
     "reposts": 0,
     "comments": 0,
     "topDownloadedTrack": {
-      "id": 2182,
+      "id": 900000101,
       "name": "Example Track",
       "image": "https://cdn.example.com/track.webp",
       "downloads": 4
@@ -260,20 +266,20 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
   },
   "downloadEvents": [
     {
-      "id": 15168,
-      "occurredAt": "2026-06-01 17:31:39",
+      "id": 900000102,
+      "occurredAt": "2026-06-01T17:31:39+00:00",
       "track": {
-        "id": 3473,
+        "id": 900000103,
         "name": "Example Track",
         "image": "https://cdn.example.com/track.webp"
       },
       "downloader": {
-        "id": 174,
+        "id": 900000104,
         "displayName": "Listener",
         "avatar": null
       },
       "license": {
-        "uuid": "532ea5ec-6beb-4f48-8b03-5bbb93416564",
+        "uuid": "00000000-0000-4000-8000-000000000001",
         "type": "non_exclusive",
         "status": "active"
       }
@@ -281,14 +287,14 @@ GET /api/v1/artists/{artist}/activity?period=90d&page=1&per_page=20
   ],
   "pagination": {
     "page": 1,
-    "perPage": 20,
+    "perPage": 1,
     "total": 14,
-    "hasMore": false
+    "hasMore": true
   }
 }
 ```
 
-Audience metrics exclude accounts that manage the artist. Anonymous plays remain included. Summary totals are calculated independently from the paginated download list.
+Audience metrics exclude accounts that manage the artist. Anonymous plays remain included. Summary totals cover the entire matching period, while `downloadEvents` contains only the selected page. `pagination.total` and `summary.audienceDownloads` both count the matching downloads; `hasMore` is true when `page * perPage` is less than that total.
 
 ### Downloads Analytics
 
@@ -328,6 +334,7 @@ GET /api/v1/backstage-request/submission-status
 
 ```json
 {
+  "status": "success",
   "can_submit": true,
   "block_reason": null,
   "message": null,
@@ -338,13 +345,16 @@ GET /api/v1/backstage-request/submission-status
 
 **Response (blocked):**
 
+<SyntheticFixtures />
+
 ```json
 {
+  "status": "success",
   "can_submit": false,
   "block_reason": "revoked",
   "message": "Your producer access was revoked. To appeal, contact support at /contact so admins can review your request for reinstatement.",
   "contact_url": "/contact",
-  "blocking_request_id": 412
+  "blocking_request_id": 900000003
 }
 ```
 
@@ -364,12 +374,16 @@ POST /api/v1/backstage-request
   Display name for the producer/artist request.
 </ParamField>
 
-<ParamField body="artist_id" type="integer | string">
-  Artist reference for claim/verification flows. Client may pass `CURRENT_USER` in create flow.
+<ParamField body="artist_id" type="integer">
+  Required for `claim-artist`, where it must identify an existing artist. For other new requests, omitting this field defaults to the authenticated user's primary artist when available. `CURRENT_USER` is not resolved as an artist ID by this endpoint.
 </ParamField>
 
 <ParamField body="data" type="object" required>
-  Request payload object (for example: `first_name`, `last_name`, `beats_url`, `role`, `company`, optional supporting fields).
+  Request payload object. Must include `beats_url` as a valid URL. Optional supporting fields include `first_name`, `last_name`, `role`, and `company`.
+</ParamField>
+
+<ParamField body="data.beats_url" type="string" required>
+  Valid URL linking to the applicant's beats.
 </ParamField>
 
 ### Submission Guard Policy
@@ -517,6 +531,8 @@ POST /api/v1/playlists
 PUT /api/v1/playlists/{playlist}
 ```
 
+`public` and `collaborative` are optional JSON booleans. Omit either field to keep its existing value; `null` is rejected.
+
 ### Delete Playlist(s)
 
 ```http
@@ -595,6 +611,8 @@ POST /api/v1/playlists/{playlist}/remove-editor
 
 ## Lyrics
 
+Sign-in is required for every lyrics endpoint. Track lyrics are personal to the signed-in user.
+
 ### List Lyrics
 
 ```http
@@ -631,6 +649,8 @@ DELETE /api/v1/lyrics/{ids}
 
 Detect duplicate audio content using acoustic fingerprints.
 
+All fingerprint endpoints require sign-in. Generating or retrying a fingerprint additionally requires administrator permission. Use fingerprint status and duplicate checks only for tracks or audio you are authorized to work with.
+
 ### Generate Fingerprint
 
 ```http
@@ -661,7 +681,7 @@ POST /api/v1/fingerprints/{fingerprint}/retry
 
 ## Audio Recon
 
-Audio Recon detects songs on streaming platforms (Spotify, YouTube, Deezer) that share audio characteristics with tracks on BeatPass. Results are available to the track's credited producers and admins.
+Audio Recon detects songs on streaming platforms (Spotify, YouTube, Deezer) that share audio characteristics with tracks on BeatPass. Results are available to the direct track owner, linked credited producers, or users with administrator permission.
 
 <Note>
   Audio Recon scanning runs on a scheduled background job (daily), with tracks rescanned on a rolling cycle (target around 30 days).
@@ -669,7 +689,7 @@ Audio Recon detects songs on streaming platforms (Spotify, YouTube, Deezer) that
 
 ### Get Audio Recon Matches
 
-Retrieve detected audio similarities for a specific track. Requires authentication. Only accessible by producers credited on the track.
+Retrieve detected audio similarities for a specific track. Requires authentication. Available to the direct track owner, linked credited producers, or users with administrator permission.
 
 ```http
 GET /api/v1/tracks/{track}/placements
@@ -681,19 +701,21 @@ GET /api/v1/tracks/{track}/placements
 
 **Response:**
 
+<SyntheticFixtures />
+
 ```json
 {
   "placements": [
     {
-      "id": 42,
-      "title": "Song Title",
-      "artist_name": "Artist Name",
-      "album_name": "Album Name",
+      "id": 900000002,
+      "title": "Synthetic title Fixture",
+      "artist_name": "Synthetic artist name Fixture",
+      "album_name": "Synthetic album name Fixture",
       "release_date": "2025-06-15",
       "confidence_score": 95,
-      "spotify_url": "https://open.spotify.com/track/...",
-      "youtube_url": "https://youtube.com/watch?v=...",
-      "deezer_url": "https://deezer.com/track/...",
+      "spotify_url": "https://example.com/synthetic-fixture",
+      "youtube_url": "https://example.com/synthetic-fixture",
+      "deezer_url": "https://example.com/synthetic-fixture",
       "created_at": "2026-02-20T12:00:00+00:00"
     }
   ],
@@ -737,7 +759,7 @@ GET /api/v1/tracks/{track}/placements
 </ResponseField>
 
 <ResponseField name="artist_verified" type="boolean">
-  Whether the track's primary artist has a verified profile. Scanning requires a verified artist.
+  Whether any artist credited on the track has a verified profile. The endpoint returns no placements when this is false.
 </ResponseField>
 
 <Warning>
@@ -747,7 +769,7 @@ GET /api/v1/tracks/{track}/placements
 | Error | Code | Cause |
 |-------|------|-------|
 | Unauthenticated | 401 | No valid Bearer token provided |
-| Forbidden | 403 | You are not a credited producer on this track |
+| Forbidden | 403 | You are not the direct track owner, a linked credited producer, or an administrator |
 | Not Found | 404 | Track does not exist |
 
 ---
@@ -768,19 +790,27 @@ GET /api/v1/cover-art/templates/{template}
 
 ### Preview Cover Art
 
-Generate a preview with a template and custom parameters.
+Preview cover art selected for the supplied genres.
 
 ```http
 POST /api/v1/cover-art/preview
 ```
 
+<ParamField body="genres" type="array" required>
+  Genre names. After normalization, provide one to three distinct, nonblank names of at most 100 characters each.
+</ParamField>
+
 ### Get Matching Templates
 
-Get templates that match specific criteria (genre, mood, etc.).
+Get templates that match the supplied genres.
 
 ```http
 GET /api/v1/cover-art/matching-templates
 ```
+
+<ParamField query="genres" type="array" required>
+  Genre names, for example `?genres[]=hip-hop`. After normalization, provide one to three nonblank names of at most 100 characters each.
+</ParamField>
 
 ---
 

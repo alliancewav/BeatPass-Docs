@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/overview"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 
 ## API Reference
@@ -92,11 +94,12 @@ The data you receive depends on your authentication level:
   <Accordion title="Public (No Token)" icon="globe" defaultOpen>
     <Badge color="gray" size="lg">Minimal Data</Badge>
     
-    Unauthenticated requests return **minimal data only** — just enough to identify resources:
-    - Tracks: `id`, `name`, `image`, `created_at`, `duration_text`, `model_type`
-    - Artists/Genres: `id`, `name`, `model_type`
-    
-    No pricing, plays, licensing, or internal fields are included.
+    Public model serialization uses model-specific field lists:
+    - Tracks: `id`, `name`, `image`, `created_at`, `duration_text`, `model_type`, and loaded `artists`/`genres` relations
+    - Artists: `id`, `name`, `model_type`
+    - Genres: `id`, `name`, `display_name`, `model_type`
+
+    Endpoint controllers can add fields. Track listing also exposes `views`, `updated_at`, and `plays`; use each endpoint's response contract.
   </Accordion>
   <Accordion title="Bearer Token (Approved Developers)" icon="key">
     <Badge color="blue" size="lg">Rich Data</Badge>
@@ -117,7 +120,7 @@ To get **rich responses** from the API playground, you must have an approved dev
 4. Send your request
 
 <Info>
-  Without a token, public endpoints return **minimal data only** (id, name, image, model_type). To get rich responses with pricing, plays, BPM, and licensing data, enter your approved developer token.
+  Public response fields vary by model and endpoint as described above. Enter your approved developer token for additional pricing, BPM, and licensing data.
 </Info>
 
 ---
@@ -126,32 +129,38 @@ To get **rich responses** from the API playground, you must have an approved dev
 
 ### Public Request (Minimal Data)
 
+<SyntheticFixtures />
+
 ```bash
-# Returns minimal track data (id, name, image, artists only)
-curl "https://open.beatpass.ca/api/v1/tracks" \
+# Returns public track data; fields depend on the endpoint
+curl "https://api.example.com/api/v1/tracks" \
   -H "Accept: application/json"
 ```
 
 ### Authenticated Request (Rich Data)
 
+<SyntheticFixtures />
+
 ```bash
 # Returns full track data (pricing, plays, BPM, licensing, etc.)
-curl "https://open.beatpass.ca/api/v1/tracks" \
+curl "https://api.example.com/api/v1/tracks" \
   -H "Accept: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 ### JavaScript Example
 
+<SyntheticFixtures />
+
 ```javascript
-const response = await fetch('https://open.beatpass.ca/api/v1/tracks/3629', {
+const response = await fetch('https://api.example.com/api/v1/tracks/900000007', {
   headers: {
     'Accept': 'application/json',
     'Authorization': 'Bearer YOUR_TOKEN_HERE'
   }
 });
 const data = await response.json();
-console.log(data.track.name); // "ZOOM"
+console.log(data.track.name); // "Synthetic Track Fixture"
 ```
 
 ---

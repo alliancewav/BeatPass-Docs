@@ -9,6 +9,8 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/dashboard"
 ---
 
+import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
+
 ## Overview
 
 The **Artist Dashboard API** provides programmatic access to producer analytics displayed in the Producer Dashboard. These endpoints return plays, followers, upload insights, and collaboration data for authenticated producers.
@@ -31,16 +33,11 @@ All dashboard endpoints require:
 
 ### Response Format
 
-All Dashboard API responses use a standard envelope:
+Successful Dashboard API responses include `success: true` and an endpoint-specific `data` object or array; collaborative tracks also include `total`. See the endpoint examples below for payload details.
 
-```json
-{
-  "success": true,
-  "data": { ... }
-}
-```
+Profile, statistics, performance, and upload-insights errors include `success: false` and `message` (and may include an `error` string). Collaborative-track errors instead return `error` and an empty `data` array, with HTTP `404` or `500`.
 
-On error, the envelope contains:
+Example profile/statistics error:
 
 ```json
 {
@@ -125,16 +122,18 @@ Update the authenticated artist's profile information.
 
 #### Response
 
+<SyntheticFixtures />
+
 ```json
 {
   "success": true,
   "message": "Profile updated successfully",
   "data": {
-    "bio": "Updated bio text",
-    "website": "https://example.com",
+    "bio": "Synthetic bio Fixture",
+    "website": "https://example.com/synthetic-fixture",
     "social_links": {
-      "twitter": "@producer",
-      "instagram": "@producer"
+      "twitter": "Synthetic twitter Fixture",
+      "instagram": "Synthetic instagram Fixture"
     }
   }
 }
@@ -151,7 +150,7 @@ Retrieves headline metrics used on the Backstage dashboard.
 #### Response Fields
 
 <ResponseField name="total_tracks" type="integer" required>
-  How many tracks the artist has published.
+  Count of all tracks linked to the artist; this query does not filter to published tracks.
 </ResponseField>
 <ResponseField name="total_plays" type="integer" required>
   Total lifetime plays.
@@ -163,7 +162,7 @@ Retrieves headline metrics used on the Backstage dashboard.
   Tracks uploaded in the last 30 days.
 </ResponseField>
 <ResponseField name="play_growth_percentage" type="number" required>
-  Month-over-month play growth percentage.
+  Percentage difference between current stored play totals for tracks created this calendar month and tracks created last calendar month. Returns `0` when the last-month cohort has no plays. This measures upload cohorts, not play events occurring in each month.
 </ResponseField>
 <ResponseField name="top_track" type="object">
   <Expandable title="Top track object">
@@ -248,7 +247,7 @@ Provides upload cadence analysis and recommendations for optimal release timing.
       Month key in `YYYY-MM` format.
     </ResponseField>
     <ResponseField name="total_plays" type="integer" required>
-      Total plays earned that month.
+      Current play total across tracks uploaded in that month.
     </ResponseField>
     <ResponseField name="track_count" type="integer" required>
       Number of tracks uploaded that month.
@@ -282,17 +281,17 @@ Retrieves tracks where the artist has collaborated with other producers.
 
 #### Response Fields (Array)
 
-<ResponseField name="[].track_id" type="integer" required>
+<ResponseField name="[].id" type="integer" required>
   Collaborative track ID.
 </ResponseField>
-<ResponseField name="[].title" type="string" required>
+<ResponseField name="[].name" type="string" required>
   Track name.
 </ResponseField>
-<ResponseField name="[].primary_artist" type="string" required>
-  Primary artist credit.
+<ResponseField name="[].artists" type="array" required>
+  All credited artists, each with `id`, `name`, and `image_small`.
 </ResponseField>
 <ResponseField name="[].collaborators" type="array" required>
-  List of collaborating artists on the track.
+  Credited artists other than the artist requested in the path, each with `id`, `name`, and `image_small`.
 </ResponseField>
 <ResponseField name="[].plays" type="integer">
   Play count for the collaborative track.
