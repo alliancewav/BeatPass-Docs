@@ -719,7 +719,7 @@
     {
       "path": "help/billing/refund-policy.mdx",
       "reviewed": true,
-      "reviewed_sha256": "ee7acf717024229024f01521995037662be76e30c019019d48d24d9603fbb29f",
+      "reviewed_sha256": "dee9183bd33fb439d5a691da424ba12a666f71b6f0e1d692cc43045f1e663f21",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/refund-policy",
@@ -773,7 +773,7 @@
     {
       "path": "help/contact-support/feedback.mdx",
       "reviewed": true,
-      "reviewed_sha256": "8ee410380d8964c565b01b8bc56a174b7ca8a0d8759a99244ba6be72e13d9094",
+      "reviewed_sha256": "f9805b2981af95a45a57b0ac298a8ebec7e79756caebface394de6612c78eee3",
       "generated": false,
       "source_paths": [
         "common/resources/client/contact/contact-us-page.tsx",
@@ -788,7 +788,7 @@
     {
       "path": "help/contact-support/getting-help.mdx",
       "reviewed": true,
-      "reviewed_sha256": "18c06b107393b9c7d4e61bb0785dc656315fe2b8c629e74271b59bcb86f9cd73",
+      "reviewed_sha256": "41f6b54ee7051bff1d567de2bbf1fa55ae9796c056325199f53387aa8a70f814",
       "generated": false,
       "source_paths": [
         "common/resources/client/contact/contact-us-page.tsx",
@@ -803,7 +803,7 @@
     {
       "path": "help/contact-support/index.mdx",
       "reviewed": true,
-      "reviewed_sha256": "cc39a8c35c27e0ecbaadcd99dd2974109cd0f0d4fad9bc94b08bc8ed86eda5cd",
+      "reviewed_sha256": "359bc17bf9b4450a676c6c6299915ed3e255aa9972d8b8b78748ab4104d859e4",
       "generated": false,
       "source_paths": [
         "common/resources/client/contact/contact-us-page.tsx",
@@ -818,7 +818,7 @@
     {
       "path": "help/contact-support/reporting-issues.mdx",
       "reviewed": true,
-      "reviewed_sha256": "759fe2c200f2e249e9c5c3661c581a4dc9582f9469804b4320d27f1cce8bfebf",
+      "reviewed_sha256": "6c6c46acc188bcc926ff1848f1cbe369fdf5e9fe62ba4e0e3b1e3403f16b3025",
       "generated": false,
       "source_paths": [
         "common/resources/client/contact/contact-us-page.tsx",
@@ -1953,7 +1953,7 @@
     {
       "path": "help/legal/content-guidelines.mdx",
       "reviewed": true,
-      "reviewed_sha256": "f8eae8773e5a2e93ff11325e700218c838280d02ff139c02f391169711c4b89f",
+      "reviewed_sha256": "403d0659adc0c81058ed7310b388197070adf23bd2730cc3813d1ef99d46dceb",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/producer-upload-and-seller-agreement"
@@ -1981,7 +1981,7 @@
     {
       "path": "help/legal/copyright-and-dmca.mdx",
       "reviewed": true,
-      "reviewed_sha256": "b03c8ef4dfd60796b52ff382b643da0ddc11c5bbaaf4a517e115dd5f35f17f85",
+      "reviewed_sha256": "ee1c8b56461179648815dc29043e1ace8b6369aae30a26c9bc12f6fbfa0a0e3b",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/dmca-notice-and-takedown-policy",
@@ -2039,7 +2039,7 @@
     {
       "path": "help/legal/index.mdx",
       "reviewed": true,
-      "reviewed_sha256": "967c6235a8c3b33ccd9d99a9a7eb955bb980367b7045b82cf3649c281ef1ef63",
+      "reviewed_sha256": "8f6eef2c6a14f39a0eb651979e86040c0ddfa0fe8beffab4506644697e999393",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/terms-of-service",
@@ -2140,7 +2140,7 @@
     {
       "path": "help/legal/non-dmca-rights-trust-report-policy.mdx",
       "reviewed": true,
-      "reviewed_sha256": "4624f462507e99f704fe2e19ed693019b8535a8b75cfde3170b335ecf93e3a85",
+      "reviewed_sha256": "b203b00c082e68bc82b5c73281107592b902392094096d92af6711f2b9703786",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/non-dmca-rights-and-trust-report-policy"
@@ -3230,7 +3230,7 @@
     {
       "path": "help/producer-program/application-types/claim-existing-artist.mdx",
       "reviewed": true,
-      "reviewed_sha256": "8e1dcabf6cb920a5080a3e307e75d7c28ed61aac34a73021d8e142638255cdda",
+      "reviewed_sha256": "a215735ad7ee43e88ccfda8eb29d7ebe94c78fc32321693ffb726178065e6a00",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
@@ -3555,7 +3555,7 @@
     {
       "path": "help/troubleshooting/account-access.mdx",
       "reviewed": true,
-      "reviewed_sha256": "da8f7a1ace841a04a44db12821e0c4538bfe6f88a59311f10e8f3a81a6eece79",
+      "reviewed_sha256": "213fc18d8894e97eae5e9790bb41eeba0d2b11b5648cc0b5974a9d0670fc2ddc",
       "generated": false,
       "source_paths": [
         "common/Auth/Fortify/FortifyServiceProvider.php",
@@ -3657,7 +3657,7 @@
     {
       "path": "help/troubleshooting/upload-issues.mdx",
       "reviewed": true,
-      "reviewed_sha256": "1efe047d9902608847d7e96b06eb5548213c686e0a6bacb26f4fe1fd53ea507d",
+      "reviewed_sha256": "da0dae95f2514fdf7812fdcfca309ea54ce138a751d2f1d81c45bf543e7c7456",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/backstage/upload-page/tracks-uploader.tsx",
@@ -4111,7 +4111,7 @@
     {
       "path": "developers/auth.mdx",
       "reviewed": true,
-      "reviewed_sha256": "c92c97ee1d793290489e31698bdd8306402e1537f934a652200793def89206e8",
+      "reviewed_sha256": "48ed57b8dc3d56d43f5ad7900c0e3eb6d509a3b7cb91621920e3c07c99f02e2d",
       "generated": false,
       "source_paths": [
         "routes/api.php",
@@ -4133,7 +4133,7 @@
     {
       "path": "developers/error-catalog.mdx",
       "reviewed": true,
-      "reviewed_sha256": "417104f063e892f782de0b7c71e2271ac1ae40d9dba93abda6f89495af4906bb",
+      "reviewed_sha256": "2324365f3c7c9e55fc370d2ebefb470f099cdcead2ae4f7ac05a6f8c2a44d44f",
       "generated": false,
       "source_paths": [
         "routes/api.php",
@@ -4152,7 +4152,7 @@
     {
       "path": "developers/overview.mdx",
       "reviewed": true,
-      "reviewed_sha256": "563fb86af2b036bf209b679f05c01fde2ab7dcbe135a828d30eb6cc3524de0d2",
+      "reviewed_sha256": "22c793bc99ed63d46d0bb827ae9043ad306cfdb98d6530566edb0df09ca7f591",
       "generated": false,
       "source_paths": [
         "routes/api.php",
@@ -4171,7 +4171,7 @@
     {
       "path": "developers/quickstart.mdx",
       "reviewed": true,
-      "reviewed_sha256": "a0551ce15fe6b7a11422765cccff9050500b799c7346a64af464dc411d5619cf",
+      "reviewed_sha256": "cbff0a7870f413f13c82406d17ce80867a7f8ac1b4c224155603b1ebe37b4ffa",
       "generated": false,
       "source_paths": [
         "routes/api.php",
@@ -5322,7 +5322,7 @@
     {
       "path": "snippets/data/platform-constants.mdx",
       "reviewed": true,
-      "reviewed_sha256": "e9ee178f6e0b5d5c2712eac156b7ab922972118da18c97113caaa4049d08287a",
+      "reviewed_sha256": "040ad897681b74ef4ae930db9b0428829b40ead3fd982ad057bd29cfdb65ba89",
       "generated": false,
       "source_paths": [
         "config/sanctum.php",
@@ -5645,7 +5645,7 @@
     {
       "path": "snippets/sections/api-getting-help.mdx",
       "reviewed": true,
-      "reviewed_sha256": "f9b0c85dc310149639705c73464cea5e57765a124a1d75dcd1c8f682cdb1e835",
+      "reviewed_sha256": "c7158fa24562f36533cc0d64af2ae878b5d00f65b82a34b94f5108e9f81a8c13",
       "generated": false,
       "source_paths": [
         "Documentation/audit/policy-sources.json",
@@ -5659,7 +5659,7 @@
     {
       "path": "snippets/sections/need-help.mdx",
       "reviewed": true,
-      "reviewed_sha256": "abeb8e94314129be93751bf3fb57bf5135f91ee7e3619972fd33b441638369e7",
+      "reviewed_sha256": "4306952b35de5020ad8afe55951edeeae6c2034734e2e1ac81bb012c4ae53369",
       "generated": false,
       "source_paths": [
         "Documentation/audit/policy-sources.json",
@@ -5673,7 +5673,7 @@
     {
       "path": "snippets/sections/release-feedback.mdx",
       "reviewed": true,
-      "reviewed_sha256": "c08867e5a4cdec7c694d61b75cc2f61baca09b973a578235ea3bd126bc41cfb1",
+      "reviewed_sha256": "acd0ae833f7d09d742a7d6529e0d626827bea3e827e6a5bd357e01d74cd65208",
       "generated": false,
       "source_paths": [
         "Documentation/audit/policy-sources.json",
@@ -5701,7 +5701,7 @@
     {
       "path": "snippets/sections/still-need-help.mdx",
       "reviewed": true,
-      "reviewed_sha256": "66d3b83c45fc1b790bdc62ce76c201acd4aaebdfec3370f2123e4d7eb080a3b3",
+      "reviewed_sha256": "c0d2ba603a774001c57a37647196a2cc279e96369b38460bfff249a6aeee6702",
       "generated": false,
       "source_paths": [
         "Documentation/audit/policy-sources.json",
@@ -5715,7 +5715,7 @@
     {
       "path": "snippets/sections/support-contact.mdx",
       "reviewed": true,
-      "reviewed_sha256": "534fa11972ea71f354c27cedb4927dad763be3105dfb556a6421004b34563685",
+      "reviewed_sha256": "8b629506378a57fabdd1d125aa811f21ed262df7b263f4846fb9a3b946f2796e",
       "generated": false,
       "source_paths": [
         "Documentation/audit/policy-sources.json",
@@ -5729,7 +5729,7 @@
     {
       "path": "snippets/warnings/api-invite-only.mdx",
       "reviewed": true,
-      "reviewed_sha256": "ee55cb2d43ada0314478cbd3945791c7442e3962fde3fd06dfae207cf6b4e1fe",
+      "reviewed_sha256": "f8dacc2e07f882437d000b98d7171469257efee57f0a7642cc7cbf3f7d8f71f5",
       "generated": false,
       "source_paths": [
         "Documentation/audit/policy-sources.json",
@@ -5788,5 +5788,6 @@
       "review_method": "retained exact bytes from previous full editorial review; current source delta scans"
     }
   ],
-  "last_targeted_review_at": "2026-11-04T04:27:17.949400+00:00"
+  "last_targeted_review_at": "2026-11-04T04:27:17.949400+00:00",
+  "support_inbox_review": {"reviewed_at": "2026-11-04T17:48:14+00:00", "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.", "authority": "Owner confirmed support@beatpass.ca on 2026-11-04; existing formal copyright/privacy and partnership contacts retained."}
 }

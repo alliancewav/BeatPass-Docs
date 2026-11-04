@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "The BeatPass API provides account-authorized platform data for approved developer integrations. External integrations require prior BeatPass approval; contact contact@beatpass.ca. Protected operations require a Bearer token and endpoint-specific permission. Tokens expire after 90 days. The shared API budget is 300 requests per minute; additional limits can apply. Follow returned rate-limit headers and Retry-After. Examples use synthetic, nonfunctional fixtures and must not be sent to the live platform.",
+    "description": "The BeatPass API provides account-authorized platform data for approved developer integrations. External integrations require prior BeatPass approval; contact support@beatpass.ca. Protected operations require a Bearer token and endpoint-specific permission. Tokens expire after 90 days. The shared API budget is 300 requests per minute; additional limits can apply. Follow returned rate-limit headers and Retry-After. Examples use synthetic, nonfunctional fixtures and must not be sent to the live platform.",
     "version": "1.0.1",
     "title": "BeatPass API"
   },
@@ -9165,7 +9165,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "External integrations require prior BeatPass approval. Contact contact@beatpass.ca to request approval. Once approved, generate tokens from Account Settings → Developers. Include as: Authorization: Bearer {token}. Tokens expire after 90 days."
+        "description": "External integrations require prior BeatPass approval. Contact support@beatpass.ca to request approval. Once approved, generate tokens from Account Settings → Developers. Include as: Authorization: Bearer {token}. Tokens expire after 90 days."
       }
     },
     "responses": {

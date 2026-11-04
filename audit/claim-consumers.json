@@ -143,7 +143,7 @@
         },
         {
           "path": "snippets/data/platform-constants.mdx",
-          "sha256": "e9ee178f6e0b5d5c2712eac156b7ab922972118da18c97113caaa4049d08287a"
+          "sha256": "040ad897681b74ef4ae930db9b0428829b40ead3fd982ad057bd29cfdb65ba89"
         },
         {
           "path": "snippets/callouts/platform-fee.mdx",
@@ -165,7 +165,7 @@
       "consumers": [
         {
           "path": "help/billing/refund-policy.mdx",
-          "sha256": "ee7acf717024229024f01521995037662be76e30c019019d48d24d9603fbb29f"
+          "sha256": "dee9183bd33fb439d5a691da424ba12a666f71b6f0e1d692cc43045f1e663f21"
         },
         {
           "path": "help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive.mdx",
@@ -177,7 +177,7 @@
         },
         {
           "path": "help/contact-support/reporting-issues.mdx",
-          "sha256": "759fe2c200f2e249e9c5c3661c581a4dc9582f9469804b4320d27f1cce8bfebf"
+          "sha256": "6c6c46acc188bcc926ff1848f1cbe369fdf5e9fe62ba4e0e3b1e3403f16b3025"
         }
       ]
     },
@@ -337,7 +337,7 @@
       "consumers": [
         {
           "path": "help/legal/copyright-and-dmca.mdx",
-          "sha256": "b03c8ef4dfd60796b52ff382b643da0ddc11c5bbaaf4a517e115dd5f35f17f85"
+          "sha256": "ee1c8b56461179648815dc29043e1ace8b6369aae30a26c9bc12f6fbfa0a0e3b"
         },
         {
           "path": "help/legal/terms-of-service.mdx",
@@ -533,7 +533,7 @@
         },
         {
           "path": "snippets/data/platform-constants.mdx",
-          "sha256": "e9ee178f6e0b5d5c2712eac156b7ab922972118da18c97113caaa4049d08287a"
+          "sha256": "040ad897681b74ef4ae930db9b0428829b40ead3fd982ad057bd29cfdb65ba89"
         },
         {
           "path": "help/legal/license-terms/usage-rights.mdx",
@@ -555,7 +555,7 @@
         },
         {
           "path": "help/billing/refund-policy.mdx",
-          "sha256": "ee7acf717024229024f01521995037662be76e30c019019d48d24d9603fbb29f"
+          "sha256": "dee9183bd33fb439d5a691da424ba12a666f71b6f0e1d692cc43045f1e663f21"
         },
         {
           "path": "help/legal/custom-beat-request-terms.mdx",
@@ -577,5 +577,6 @@
         }
       ]
     }
-  ]
+  ],
+  "support_inbox_review": {"reviewed_at": "2026-11-04T17:48:14+00:00", "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.", "authority": "Owner confirmed support@beatpass.ca on 2026-11-04; existing formal copyright/privacy and partnership contacts retained."}
 }
