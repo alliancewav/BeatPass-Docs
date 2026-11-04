@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "The BeatPass API provides access to platform data for approved developer integrations. API access is invite-only \u2014 contact contact@beatpass.ca to request access. Authenticate with a Bearer token. Tokens expire after 90 days. Unauthenticated requests return minimal data (e.g. id, name, image, model_type, and basic metadata). The tracked source applies a shared API limit of 300 requests/minute, with additional route limits. Deployed limits have not been observed; follow response headers and Retry-After.",
+    "description": "The BeatPass API provides account-authorized platform data for approved developer integrations. External integrations require prior BeatPass approval; contact contact@beatpass.ca. Protected operations require a Bearer token and endpoint-specific permission. Tokens expire after 90 days. The shared API budget is 300 requests per minute; additional limits can apply. Follow returned rate-limit headers and Retry-After. Examples use synthetic, nonfunctional fixtures and must not be sent to the live platform.",
     "version": "1.0.1",
     "title": "BeatPass API"
   },
@@ -51,7 +51,7 @@
     },
     {
       "name": "Audio Fingerprinting",
-      "description": "Generate audio fingerprints and detect duplicates"
+      "description": "Check authorized uploaded audio for duplicates"
     },
     {
       "name": "Beat Requests",
@@ -63,15 +63,15 @@
     },
     {
       "name": "Tags",
-      "description": "Manage track and album tags"
+      "description": "Browse tracks and albums by tag"
     },
     {
       "name": "Genres",
-      "description": "Manage music genres"
+      "description": "Browse music genres"
     },
     {
       "name": "Users",
-      "description": "User management, search and social features"
+      "description": "Public profiles, search and follows"
     },
     {
       "name": "User Library",
@@ -98,20 +98,12 @@
       "description": "Generate custom cover art using templates"
     },
     {
-      "name": "Auth",
-      "description": "Authenticate requests to the API"
-    },
-    {
       "name": "Messaging",
       "description": "Direct messages, group conversations, and real-time features"
     },
     {
       "name": "Collections",
       "description": "Curated content collections"
-    },
-    {
-      "name": "Stripe Connect",
-      "description": "Legacy Stripe Connect onboarding and financial overview where available"
     },
     {
       "name": "Exclusive Licenses",
@@ -124,6 +116,10 @@
     {
       "name": "Notifications",
       "description": "Manage notification preferences and FCM device tokens"
+    },
+    {
+      "name": "Insights",
+      "description": "Account-authorized track engagement and Pro Page analytics."
     }
   ],
   "paths": {
@@ -2167,248 +2163,6 @@
         }
       }
     },
-    "/auth/register": {
-      "post": {
-        "security": [],
-        "tags": [
-          "Auth"
-        ],
-        "summary": "Register for a new account",
-        "operationId": "register",
-        "responses": {
-          "200": {
-            "description": "User registered",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "success",
-                        "needs_email_verification"
-                      ]
-                    },
-                    "boostrapData": {
-                      "type": "object",
-                      "properties": {
-                        "themes": {
-                          "type": "object",
-                          "properties": {}
-                        },
-                        "user": {
-                          "allOf": [
-                            {
-                              "$ref": "#/components/schemas/User"
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "access_token": {
-                                  "type": "string",
-                                  "description": "Sensitive token. Do not log or publish it. Write-only examples are intentionally omitted."
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        "menus": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {}
-                          }
-                        },
-                        "settings": {
-                          "type": "object",
-                          "properties": {}
-                        },
-                        "locales": {
-                          "description": "Available locale payload from the localization repository."
-                        }
-                      },
-                      "description": "Mobile response when token_name is present. boostrapData is the exact current spelling."
-                    },
-                    "bootstrapData": {
-                      "type": "string",
-                      "description": "Encoded web bootstrap response when token_name is absent."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Response403"
-          },
-          "422": {
-            "$ref": "#/components/responses/Response422"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "example": "synthetic-user@example.com",
-                    "format": "email",
-                    "maxLength": 255,
-                    "description": "Required unique email, checked against the configured domain blacklist."
-                  },
-                  "password": {
-                    "type": "string",
-                    "minLength": 8,
-                    "writeOnly": true,
-                    "description": "Required password, at least 8 characters under the tracked default validator. Must match password_confirmation."
-                  },
-                  "token_name": {
-                    "type": "string",
-                    "example": "Synthetic token name Fixture",
-                    "minLength": 3,
-                    "maxLength": 50
-                  },
-                  "password_confirmation": {
-                    "type": "string",
-                    "writeOnly": true,
-                    "description": "Required; must match password."
-                  },
-                  "username": {
-                    "type": "string",
-                    "nullable": true,
-                    "maxLength": 31,
-                    "description": "Optional username. The tracked default validator does not establish uniqueness."
-                  },
-                  "g-recaptcha-response": {
-                    "type": "string",
-                    "writeOnly": true,
-                    "description": "Required when recaptcha.enable.register is enabled. Do not log or publish CAPTCHA tokens."
-                  }
-                },
-                "required": [
-                  "email",
-                  "password",
-                  "password_confirmation"
-                ]
-              }
-            }
-          }
-        },
-        "description": "This request describes the tracked default validator. Registration availability, CAPTCHA and deployment-specific validation rules are controlled by server configuration. The resolved deployment configuration has not been verified.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
-      }
-    },
-    "/auth/login": {
-      "post": {
-        "security": [],
-        "tags": [
-          "Auth"
-        ],
-        "summary": "Login",
-        "description": "Authenticates the mobile client and returns bootstrap fields, including user and user.access_token.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API.",
-        "operationId": "login",
-        "responses": {
-          "200": {
-            "description": "Operation successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "success"
-                      ]
-                    },
-                    "user": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/User"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "access_token": {
-                              "type": "string",
-                              "description": "Sensitive token. Do not log or publish it. Write-only examples are intentionally omitted."
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "locales": {
-                      "description": "Available locale payload from the localization repository."
-                    },
-                    "menus": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {}
-                      }
-                    },
-                    "settings": {
-                      "type": "object",
-                      "properties": {}
-                    },
-                    "themes": {
-                      "type": "object",
-                      "properties": {}
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Response403"
-          },
-          "422": {
-            "description": "Invalid credentials or request validation failure, including token_name or verified-email checks."
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "example": "synthetic-user@example.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "SYNTHETIC-NOT-A-CREDENTIAL"
-                  },
-                  "token_name": {
-                    "type": "string",
-                    "example": "Synthetic token name Fixture",
-                    "maxLength": 100,
-                    "minLength": 3
-                  }
-                },
-                "required": [
-                  "email",
-                  "password",
-                  "token_name"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
     "/tracks/{id}/check-license": {
       "get": {
         "tags": [
@@ -2574,6 +2328,18 @@
                     },
                     "user_email_masked": {
                       "type": "string"
+                    },
+                    "replacement_license_uuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "nullable": true
+                    },
+                    "replacement_valid": {
+                      "type": "boolean"
+                    },
+                    "replacement_status": {
+                      "type": "string",
+                      "nullable": true
                     }
                   }
                 }
@@ -2584,7 +2350,7 @@
             "$ref": "#/components/responses/Response404"
           },
           "422": {
-            "description": "Configured reCAPTCHA validation failed."
+            "description": "CAPTCHA verification failed when required."
           }
         },
         "requestBody": {
@@ -2596,236 +2362,15 @@
                 "properties": {
                   "g-recaptcha-response": {
                     "type": "string",
-                    "description": "Required only when registration reCAPTCHA protection is enabled. Uses the license_verification action."
+                    "description": "CAPTCHA response when required by the verification flow. Keep it out of logs and shared examples."
                   }
                 }
               }
             }
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
-      }
-    },
-    "/licenses/{uuid}/revoke": {
-      "post": {
-        "tags": [
-          "License Certificates"
-        ],
-        "summary": "Revoke a license certificate",
-        "operationId": "revokeLicense",
-        "parameters": [
-          {
-            "name": "uuid",
-            "in": "path",
-            "required": true,
-            "description": "License UUID",
-            "schema": {
-              "type": "string",
-              "example": "00000000-0000-4000-8000-0000a3a9e1ed"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "License revoked successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Response403"
-          },
-          "404": {
-            "description": "License certificate not found."
-          },
-          "422": {
-            "description": "Missing or invalid reason."
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "reason": {
-                    "type": "string",
-                    "maxLength": 500
-                  }
-                },
-                "required": [
-                  "reason"
-                ]
-              }
-            }
-          }
-        },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
-      }
-    },
-    "/tracks/{id}/fingerprint": {
-      "post": {
-        "tags": [
-          "Audio Fingerprinting"
-        ],
-        "summary": "Generate audio fingerprint for a track",
-        "operationId": "generateFingerprint",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Track ID",
-            "schema": {
-              "type": "integer",
-              "example": 900000001
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Fingerprint record returned; inspect fingerprint.status and fingerprint.error_message.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "fingerprint": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "status": {
-                          "type": "string"
-                        },
-                        "fingerprinted_at": {
-                          "type": "string",
-                          "format": "date-time",
-                          "nullable": true
-                        },
-                        "error_message": {
-                          "type": "string",
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "success": {
-                      "type": "boolean"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "description": "Caller lacks fingerprint-generation permission."
-          },
-          "500": {
-            "description": "Fingerprint generation failed."
-          }
-        },
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "force_refresh": {
-                    "type": "boolean",
-                    "default": false
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "Sign-in and administrator permission (admin.access) are required to generate a fingerprint.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
-      }
-    },
-    "/tracks/{id}/fingerprint/status": {
-      "get": {
-        "tags": [
-          "Audio Fingerprinting"
-        ],
-        "summary": "Get fingerprint generation status",
-        "operationId": "getFingerprintStatus",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Track ID",
-            "schema": {
-              "type": "integer",
-              "example": 900000001
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Fingerprint status",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "fingerprint": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "status": {
-                          "type": "string"
-                        },
-                        "fingerprinted_at": {
-                          "type": "string",
-                          "format": "date-time",
-                          "nullable": true
-                        },
-                        "error_message": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "fingerprint_hash": {
-                          "type": "string",
-                          "nullable": true,
-                          "description": "Present as a non-null value only for a completed fingerprint."
-                        }
-                      },
-                      "nullable": true
-                    },
-                    "success": {
-                      "type": "boolean"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          }
-        },
-        "description": "Sign-in is required. Use this endpoint only for tracks you are authorized to work with.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Public UUID verification. Read valid, status, integrity_verified and any replacement fields together; HTTP 200 means the record was found, not that a grant is currently usable. Preserve the original record and any separately issued replacement. Responses are private and non-cacheable.",
+        "security": []
       }
     },
     "/tracks/check-duplicates": {
@@ -2856,7 +2401,8 @@
                   },
                   "playback_url": {
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "description": "The URL returned for your completed authorized audio upload."
                   },
                   "track_name": {
                     "type": "string",
@@ -2902,7 +2448,8 @@
           "500": {
             "description": "Duplicate check unavailable or failed."
           }
-        }
+        },
+        "description": "Check audio from a completed upload authorized for your account for acoustic duplicates. A similarity result does not establish ownership or legal clearance.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks": {
@@ -2931,7 +2478,7 @@
           {
             "name": "per_page",
             "in": "query",
-            "description": "Items per page; perPage is also accepted. Defaults to 15 and is capped at 500 in the tracked source.",
+            "description": "Items per page; perPage is also accepted. Defaults to 15, maximum 500.",
             "schema": {
               "type": "integer",
               "minimum": 1,
@@ -3205,7 +2752,7 @@
             "$ref": "#/components/responses/Response401"
           }
         },
-        "description": "Returns status and pagination. The tracked source supports length-aware and simple pagination; paginate=simple or the runtime simple_pagination_tables setting selects simple pagination. The deployed setting has not been verified. Neither form includes a links object. All response examples are complete synthetic documentation fixtures, not production responses; never send their identifiers or URLs to a live API."
+        "description": "Returns status and pagination. Length-aware pages include totals and page counts; simple pages include next/previous page URLs without totals. Request paginate=simple for simple pagination, and handle either returned form. Neither form includes a links object. Examples are synthetic fixtures, not production responses."
       },
       "post": {
         "tags": [
@@ -3254,12 +2801,12 @@
                       900000002
                     ],
                     "minItems": 1,
-                    "description": "Credited artist IDs, or CURRENT_USER for the signed-in user's artist. Prefer numeric IDs or this exact sentinel; the request regex is not a strict integer-only validator."
+                    "description": "Credited artist IDs, or CURRENT_USER for the signed-in account's associated artist."
                   },
                   "genres": {
                     "type": "array",
                     "items": {},
-                    "description": "Genre collection consumed by the track handler. Use the plural genres field."
+                    "description": "Genre collection for the track. Use the plural genres field."
                   },
                   "image": {
                     "type": "string",
@@ -3268,15 +2815,11 @@
                   "number": {
                     "type": "integer"
                   },
-                  "spotify_popularity": {
-                    "nullable": true,
-                    "description": "Optional value with source min:1/max:100 rules; no explicit numeric type rule."
-                  },
                   "album_id": {
                     "type": "integer",
                     "nullable": true,
                     "minimum": 1,
-                    "description": "Existing album ID; the handler checks permission to use the album."
+                    "description": "An existing album you are permitted to use."
                   },
                   "licensing_type": {
                     "type": "string",
@@ -3299,7 +2842,7 @@
                     "nullable": true,
                     "minimum": 1,
                     "maximum": 999999.99,
-                    "description": "Required when licensing_type is both or exclusive_only and exclusive_status is available. For not_available offers, the handler clears this value."
+                    "description": "Required for an available exclusive offer. Express the amount in the major unit of exclusive_currency; omitted for an unavailable offer."
                   },
                   "exclusive_currency": {
                     "type": "string",
@@ -3328,7 +2871,7 @@
                     "type": "object",
                     "nullable": true,
                     "additionalProperties": true,
-                    "description": "Exclusive license configuration, required for exclusive/both publishing unless an accessible preset supplies it. A JSON-encoded configuration string is decoded before validation. This is a configuration object in canonical JSON. Resolved files_to_deliver must include wav and stems, and deliverables_guaranteed must be confirmed for this track. Presets do not supply the track-specific guarantee.",
+                    "description": "Exclusive terms, supplied directly or through an accessible preset. Exclusive offers must promise WAV and stems in files_to_deliver and confirm deliverables_guaranteed for this specific track. Reusable presets do not supply that guarantee.",
                     "properties": {
                       "files_to_deliver": {
                         "type": "array",
@@ -3374,7 +2917,7 @@
                       "human_made",
                       "ai_assisted"
                     ],
-                    "description": "Required and non-null on creation when catalog.ai_disclosure.enforce is enabled. Otherwise optional and nullable; the active setting has not been verified."
+                    "description": "Declare human_made or ai_assisted. Required when the upload flow requests AI disclosure; do not omit a declaration to avoid eligibility checks."
                   },
                   "ai_tool_name": {
                     "type": "string",
@@ -3392,7 +2935,7 @@
                   "ai_commercial_rights_confirmed": {
                     "type": "boolean",
                     "nullable": true,
-                    "description": "Required and must be true when ai_usage is ai_assisted. Canonical JSON uses true; the source accepted rule also accepts standard Laravel accepted values. Otherwise optional and nullable."
+                    "description": "Required and true when ai_usage is ai_assisted. Confirms commercial rights for the declared AI-assisted use."
                   },
                   "key": {
                     "type": "string",
@@ -3411,11 +2954,11 @@
                   "url": {
                     "type": "string",
                     "format": "uri",
-                    "description": "Required audio URL; checked by duplicate-fingerprint validation."
+                    "description": "Audio URL returned for your completed, authorized upload. Arbitrary remote audio URLs are not accepted for publication."
                   },
                   "src": {
                     "type": "string",
-                    "description": "Required uploaded audio reference; wait for upload completion before creating the track."
+                    "description": "Audio reference returned by the same completed authorized upload. Do not substitute another account's file reference."
                   }
                 },
                 "required": [
@@ -3464,7 +3007,7 @@
             "$ref": "#/components/responses/Response403"
           }
         },
-        "description": "Create a track after audio upload. The tracked creation validator requires the fields below, including for administrators creating new tracks; relaxed administrator-update rules do not apply. Creation requires tracks.create or music.create permission and can be denied by upload-minute restrictions. Standard or both licensing requires every credited producer to be eligible for the subscription payout pool. Exclusive or both licensing requires a payable primary-producer payout route, configured license terms and a track-specific deliverables guarantee. Runtime AI-disclosure settings, account permissions and payout setup have not been verified, and no successful live creation is claimed.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Create a track after a completed audio upload authorized for your account. Requires upload permission and sufficient upload allowance. Complete the required metadata, licensing terms, deliverables guarantee, sample declarations, and AI disclosure as applicable. Producers can configure their catalog before payout setup; eligibility to acquire a new license or purchase is checked separately. A successful save does not establish completed processing or rights clearance.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
       }
     },
     "/tracks/{id}/download": {
@@ -4123,7 +3666,7 @@
             "$ref": "#/components/responses/Response401"
           },
           "422": {
-            "description": "query must be 2\u2013100 characters; limit must be 1\u201350."
+            "description": "query must be 2–100 characters; limit must be 1–50."
           }
         }
       }
@@ -4405,6 +3948,38 @@
               "type": "integer",
               "example": 900000001
             }
+          },
+          {
+            "name": "exclude[]",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "description": "Previously seen track IDs to omit. Use repeated exclude[] parameters."
+          },
+          {
+            "name": "broaden",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "Request a broader selection where supported."
+          },
+          {
+            "name": "refresh",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "Request a different selection where supported; not a freshness guarantee."
           }
         ],
         "responses": {
@@ -4441,6 +4016,15 @@
                         "genre",
                         "track"
                       ]
+                    },
+                    "broadened": {
+                      "type": "boolean"
+                    },
+                    "exhausted": {
+                      "type": "boolean"
+                    },
+                    "continuation_supported": {
+                      "type": "boolean"
                     }
                   }
                 }
@@ -4449,9 +4033,12 @@
           },
           "401": {
             "$ref": "#/components/responses/Response401"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Recommendations for an accessible artist, track or genre seed. Preserve previously seen IDs as exclusions. Respect exhausted and continuation_supported instead of repeatedly requesting an empty selection."
       }
     },
     "/cover-art/templates": {
@@ -4651,6 +4238,11 @@
                     },
                     "track_price": {
                       "type": "number"
+                    },
+                    "license_terms_hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$",
+                      "description": "Hash of current exclusive rights, track price, platform fee, total, and currency. Submit it only after the buyer explicitly accepts this quote."
                     }
                   }
                 }
@@ -4748,7 +4340,7 @@
                           "properties": {}
                         }
                       },
-                      "description": "Source calculation contract. Monetary values are major-unit decimal amounts. Rate/flat settings and plan waiver affect the returned values. No deployed pricing or settlement behavior was tested."
+                      "description": "Current quote amounts in major currency units. Use all returned price, fee, total and currency values together; do not hard-code pricing or waivers."
                     },
                     "status": {
                       "type": "string",
@@ -4772,9 +4364,43 @@
           },
           "403": {
             "description": "Track purchases disabled."
+          },
+          "409": {
+            "description": "The displayed terms changed; obtain and accept updated pricing."
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Requires complete buyer and producer legal names, a producer-signed current offer, and explicit buyer acceptance of the exact displayed terms before creating a PaymentIntent.\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "accept_license_terms",
+                  "license_terms_hash"
+                ],
+                "properties": {
+                  "accept_license_terms": {
+                    "type": "boolean",
+                    "enum": [
+                      true
+                    ]
+                  },
+                  "license_terms_hash": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "description": "Hash of the current rights, price, platform fee, total and currency returned by pricing. Re-read and accept any changed quote."
+                  },
+                  "pro_context": {
+                    "type": "object",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/tracks/{id}/purchase/status": {
@@ -4919,27 +4545,37 @@
         "operationId": "listBeatRequests",
         "responses": {
           "200": {
-            "description": "All active beat requests in data, with success and count. This operation does not read page or per_page.",
+            "description": "success, data, count for this page, and pagination total/current_page/last_page.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
                     "data": {
                       "type": "array",
                       "items": {
                         "type": "object"
                       }
                     },
-                    "success": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
                     "count": {
-                      "type": "integer",
-                      "minimum": 0
+                      "type": "integer"
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        }
+                      }
                     }
                   }
                 }
@@ -4952,7 +4588,67 @@
           "500": {
             "description": "Failed to retrieve beat requests"
           }
-        }
+        },
+        "description": "Paginated active request discovery. My Requests lists the authenticated account's history, including expired requests. Read status and expiry on returned records.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            "description": "Page number."
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            },
+            "description": "Items per page."
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search request text and displayed metadata."
+          },
+          {
+            "name": "genre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Genre filter."
+          },
+          {
+            "name": "responses",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "none",
+                "budget"
+              ]
+            },
+            "description": "Requests without submissions or with a budget."
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Use ending for earliest expiry; otherwise newest first."
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5017,7 +4713,13 @@
                       72
                     ],
                     "default": 24,
-                    "description": "Read and validated by the controller after integer conversion."
+                    "description": "Requested duration in hours. Use an available duration tier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "nullable": true,
+                    "description": "Optional UUID for one intended posting attempt. Reuse with the identical fields and duration to reconcile a retry without another token debit."
                   }
                 },
                 "required": [
@@ -5031,7 +4733,7 @@
         },
         "responses": {
           "201": {
-            "description": "Beat request created"
+            "description": "New request posted; replayed false. Includes data and current token_info."
           },
           "401": {
             "$ref": "#/components/responses/Response401"
@@ -5039,17 +4741,20 @@
           "422": {
             "$ref": "#/components/responses/Response422"
           },
-          "400": {
-            "description": "Invalid duration; choose 24, 48 or 72 hours"
-          },
           "429": {
-            "description": "Insufficient beat-request tokens, including an unsuccessful atomic token-consumption attempt"
+            "description": "Insufficient request tokens or exhausted posting allowance. Inspect message and token_info; tokens_spent is 0."
           },
           "500": {
-            "description": "Failed to create beat request"
+            "description": "Posting could not be confirmed. Reconcile My Requests and the original posting UUID before another attempt."
+          },
+          "200": {
+            "description": "Existing request returned for the matching posting UUID and unchanged payload; replayed true and no additional token debit."
+          },
+          "409": {
+            "description": "The posting UUID identifies a changed or unavailable request attempt. Review before creating another."
           }
         },
-        "description": "\n\nSynthetic, nonfunctional documentation fixtures only. Names and identifiers are invented, not copied from accounts. Numeric IDs and valid-format UUIDs can coincide with real records; never send these fixtures to a live API."
+        "description": "Create a request using the chosen duration and token cost. A new post returns 201 and replayed:false; a matching request_id retry returns 200 and replayed:true without another debit. A changed attempt using the same UUID returns 409. After an uncertain response, reconcile the original posting attempt before creating a different one. Notification delivery is separate from successful posting."
       }
     },
     "/beat-requests/{id}": {
@@ -5164,7 +4869,7 @@
             "$ref": "#/components/responses/Response401"
           },
           "403": {
-            "description": "Missing music.create permission, or caller is neither track owner nor collaborator"
+            "description": "Upload permission is required, and the track must belong to or credit the caller"
           },
           "409": {
             "description": "Duplicate audio detected by the duplicate scan"
@@ -5264,7 +4969,8 @@
           "500": {
             "description": "Failed to renew beat request"
           }
-        }
+        },
+        "description": "Renew an expired request within its renewal window. Spends one token and retains the original request duration. Read the returned expires_at. After an uncertain write response, refresh the request before retrying."
       }
     },
     "/beat-requests/user/my-requests": {
@@ -5276,7 +4982,42 @@
         "operationId": "getMyBeatRequests",
         "responses": {
           "200": {
-            "description": "User's beat requests"
+            "description": "success, data, count for this page, and pagination total/current_page/last_page.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Response401"
@@ -5284,7 +5025,8 @@
           "500": {
             "description": "Failed to retrieve your requests"
           }
-        }
+        },
+        "description": "Authenticated request history with pagination; status active or expired filters the list. Discovery filters and page size apply."
       }
     },
     "/producer-intelligence/leaderboard": {
@@ -5733,7 +5475,7 @@
                             "type": "object"
                           },
                           "maxItems": 0,
-                          "description": "The current successful controller path returns an empty array; omitted from its error fallback."
+                          "description": "Account-position information, when available; can be empty."
                         }
                       },
                       "required": [
@@ -5742,7 +5484,7 @@
                     },
                     "error": {
                       "type": "string",
-                      "description": "Present when the controller returns empty ranking categories after a retrieval exception."
+                      "description": "Present when ranking data is temporarily unavailable."
                     }
                   },
                   "required": [
@@ -7113,123 +6855,6 @@
         }
       }
     },
-    "/artist/stripe-connect/status": {
-      "get": {
-        "tags": [
-          "Stripe Connect"
-        ],
-        "summary": "Check legacy Stripe Connect onboarding status",
-        "operationId": "stripeConnectStatus",
-        "responses": {
-          "200": {
-            "description": "Legacy Stripe Connect account status"
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "404": {
-            "description": "The caller has no artist profile",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "error",
-                    "message"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/artist/stripe-connect/onboard": {
-      "post": {
-        "tags": [
-          "Stripe Connect"
-        ],
-        "summary": "Create legacy Stripe Connect onboarding link",
-        "operationId": "stripeConnectOnboard",
-        "responses": {
-          "200": {
-            "description": "Onboarding link generated"
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "description": "Onboarding disabled for a new payout account, or the profile is retiring_to_wise/retired_to_wise"
-          },
-          "404": {
-            "description": "No artist profile found"
-          },
-          "422": {
-            "description": "Missing, malformed, unsupported, or provider-rejected country; active-account country change; or another provider invalid-request error"
-          },
-          "500": {
-            "description": "Unexpected failure creating the onboarding link"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "country": {
-                    "type": "string",
-                    "minLength": 2,
-                    "maxLength": 2,
-                    "example": "CA",
-                    "description": "Two-character country code; normalized to uppercase, then checked against the current application allowlist. The remote provider may reject an otherwise locally allowed country."
-                  }
-                },
-                "required": [
-                  "country"
-                ]
-              }
-            }
-          },
-          "description": "Legacy compatibility operation. The controller enforces account-retirement and new-onboarding gates before country processing."
-        }
-      }
-    },
-    "/artist/stripe-connect/finances": {
-      "get": {
-        "tags": [
-          "Stripe Connect"
-        ],
-        "summary": "Get artist legacy Stripe Connect financial overview",
-        "operationId": "stripeConnectFinances",
-        "responses": {
-          "200": {
-            "description": "Financial overview with balance and transactions"
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "404": {
-            "description": "No accessible artist profile resolved"
-          },
-          "429": {
-            "description": "Provider rate-limit failure when no stale-cache fallback is available"
-          },
-          "500": {
-            "description": "Provider authentication or data-fetch failure when no stale-cache fallback is available"
-          }
-        }
-      }
-    },
     "/artists/{artist}/finances/summary": {
       "get": {
         "tags": [
@@ -7395,39 +7020,6 @@
         }
       }
     },
-    "/artists/{artist}/finances/provider-balance": {
-      "get": {
-        "tags": [
-          "Producer Finances"
-        ],
-        "summary": "Get compact legacy Stripe provider balance",
-        "operationId": "producerFinancesProviderBalance",
-        "parameters": [
-          {
-            "name": "artist",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available and pending provider balances"
-          },
-          "401": {
-            "$ref": "#/components/responses/Response401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Response403"
-          },
-          "503": {
-            "description": "Provider balance unavailable"
-          }
-        }
-      }
-    },
     "/exclusive-license-presets": {
       "get": {
         "tags": [
@@ -7485,12 +7077,12 @@
                         "type": "object",
                         "properties": {
                           "producer": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 100
                           },
                           "licensee": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 100
                           }
@@ -7499,7 +7091,7 @@
                           "producer",
                           "licensee"
                         ],
-                        "description": "Supply both shares; the controller requires their sum to equal 100. Integer JSON values are safest for the current strict sum comparison."
+                        "description": "Supply producer and licensee shares as whole-number percentages totaling 100."
                       },
                       "territory": {
                         "type": "string",
@@ -7519,7 +7111,7 @@
                             "type": "string"
                           }
                         },
-                        "description": "Required nonempty PHP-array-compatible value. The controller does not validate specific child keys; these are model-default keys."
+                        "description": "Arbitration location for the proposed terms, with state_province and country."
                       },
                       "broadcasting_rights": {
                         "type": "boolean"
@@ -7550,39 +7142,147 @@
                         "type": "boolean"
                       },
                       "content_id_registration_allowed": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "distribute_copies_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "audio_streams_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits. Normalization sets this limit to 0 when streaming_rights is false.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\". Set streaming_rights to enable this allowance.",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "monetized_music_videos_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "non_monetized_music_videos_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "monetized_video_streams_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "non_monetized_video_streams_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "radio_stations_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits. Normalization sets this limit to 0 when broadcasting_rights is false.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\". Set broadcasting_rights to enable this allowance.",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "performances_not_for_profit_allowed": {
-                        "description": "Required value; null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       }
                     },
                     "required": [
@@ -7636,7 +7336,8 @@
                     "broadcasting_rights": true,
                     "performances_for_profit": true,
                     "files_to_deliver": [
-                      "wav"
+                      "wav",
+                      "stems"
                     ],
                     "producer_royalty_percentage": 3
                   },
@@ -7904,12 +7605,12 @@
                         "type": "object",
                         "properties": {
                           "producer": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 100
                           },
                           "licensee": {
-                            "type": "number",
+                            "type": "integer",
                             "minimum": 0,
                             "maximum": 100
                           }
@@ -7918,7 +7619,7 @@
                           "producer",
                           "licensee"
                         ],
-                        "description": "Supply both shares; the controller requires their sum to equal 100. Integer JSON values are safest for the current strict sum comparison."
+                        "description": "Supply producer and licensee shares as whole-number percentages totaling 100."
                       },
                       "territory": {
                         "type": "string",
@@ -7938,7 +7639,7 @@
                             "type": "string"
                           }
                         },
-                        "description": "Required nonempty PHP-array-compatible value. The controller does not validate specific child keys; these are model-default keys."
+                        "description": "Arbitration location for the proposed terms, with state_province and country."
                       },
                       "broadcasting_rights": {
                         "type": "boolean"
@@ -7969,39 +7670,147 @@
                         "type": "boolean"
                       },
                       "content_id_registration_allowed": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "distribute_copies_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "audio_streams_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits. Normalization sets this limit to 0 when streaming_rights is false.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\". Set streaming_rights to enable this allowance.",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "monetized_music_videos_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "non_monetized_music_videos_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "monetized_video_streams_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "non_monetized_video_streams_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "radio_stations_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits. Normalization sets this limit to 0 when broadcasting_rights is false.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\". Set broadcasting_rights to enable this allowance.",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       },
                       "performances_not_for_profit_allowed": {
-                        "description": "When supplied, null, empty strings and empty arrays are rejected. The controller does not constrain its scalar type; normalization preserves \"unlimited\" or converts positive numeric values to integer limits.",
-                        "example": "unlimited"
+                        "description": "A positive whole-number allowance or the string \"unlimited\".",
+                        "example": "unlimited",
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "unlimited"
+                            ]
+                          }
+                        ]
                       }
                     },
                     "description": "When config is supplied, its normalized value replaces the stored configuration; omitted config fields are filled from application defaults, not preserved from the existing preset. Supply every configuration value you want to retain. Supplied fields must satisfy their validation rules. If publishing_share is present, provide both producer and licensee."
@@ -8010,7 +7819,7 @@
               }
             }
           },
-          "description": "Partial update. is_default is not part of this update validator."
+          "description": "Update the supplied preset fields. Change the default preset with the separate Set Default Preset operation."
         }
       },
       "delete": {
@@ -8616,6 +8425,423 @@
           }
         }
       }
+    },
+    "/pro/{artist}/insights": {
+      "get": {
+        "tags": [
+          "Insights"
+        ],
+        "summary": "Get your Pro Page insights",
+        "operationId": "getProPageInsights",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Aggregate analytics for a Pro Page owned by the authenticated producer. Read availability before metrics. An onboarding response contains requirements instead of analytics. Preserve null rates, distinguish partial or unavailable measurement from zero, and keep revenue currencies separate. Responses are private and non-cacheable.",
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "Range start."
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "At or after startDate; range at most 366 days."
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "IANA time zone, such as America/Toronto."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inspect availability: analytics or onboarding.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "artist_id": {
+                      "type": "integer"
+                    },
+                    "availability": {
+                      "type": "string",
+                      "enum": [
+                        "analytics",
+                        "onboarding"
+                      ]
+                    },
+                    "data_status": {
+                      "type": "string",
+                      "enum": [
+                        "ready",
+                        "empty",
+                        "partial",
+                        "pre_instrumentation"
+                      ]
+                    },
+                    "range": {
+                      "type": "object"
+                    },
+                    "previous_range": {
+                      "type": "object"
+                    },
+                    "current": {
+                      "type": "object"
+                    },
+                    "previous": {
+                      "type": "object"
+                    },
+                    "comparisons": {
+                      "type": "object"
+                    },
+                    "dimensions": {
+                      "type": "object"
+                    },
+                    "definitions": {
+                      "type": "object"
+                    },
+                    "onboarding": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
+        }
+      }
+    },
+    "/tracks/{track}/engagement-metrics": {
+      "get": {
+        "tags": [
+          "Insights"
+        ],
+        "summary": "Get track engagement metrics",
+        "operationId": "getTrackEngagementMetrics",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Duration and completion analytics for a track your account is permitted to access. Tracked-duration plays can be fewer than total plays; missing data is distinct from a measured zero. Metrics are subject to review and need not equal public counters or earnings. Respect cache restrictions.",
+        "parameters": [
+          {
+            "name": "track",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "30-days"
+            },
+            "description": "Relative period, such as 7-days, 30-days, 90-days or year, or explicit YYYY-MM-DD:YYYY-MM-DD range."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Track engagement metrics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "properties": {
+                        "totalPlays": {
+                          "type": "integer"
+                        },
+                        "trackedPlays": {
+                          "type": "integer"
+                        },
+                        "avgListenDuration": {
+                          "type": "number"
+                        },
+                        "avgCompletionRate": {
+                          "type": "number"
+                        },
+                        "totalListenTime": {
+                          "type": "number"
+                        },
+                        "completedListens": {
+                          "type": "integer"
+                        },
+                        "hasEngagementData": {
+                          "type": "boolean"
+                        },
+                        "listenDurationSeries": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "completionBreakdown": {
+                          "type": "object"
+                        }
+                      }
+                    },
+                    "trackDuration": {
+                      "type": "number",
+                      "nullable": true,
+                      "description": "Track duration in seconds."
+                    },
+                    "hasDuration": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Response403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Response404"
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          }
+        }
+      }
+    },
+    "/producer-intelligence/progress-data": {
+      "get": {
+        "tags": [
+          "Producer Intelligence"
+        ],
+        "summary": "Get your producer-account progress",
+        "operationId": "getProducerProgressData",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Combined producer-account progress with level, achievements, recent XP and community previews. This does not replace every dashboard metric. Respect private no-store response handling and returned freshness information.",
+        "responses": {
+          "200": {
+            "description": "Producer-account progress.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "type": "object"
+                    },
+                    "earningRules": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "cadence": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "achievements": {
+                      "type": "object"
+                    },
+                    "achievementCommunity": {
+                      "type": "object",
+                      "nullable": true
+                    },
+                    "achievementProfiles": {
+                      "type": "object",
+                      "nullable": true
+                    },
+                    "scope": {
+                      "type": "string",
+                      "enum": [
+                        "producer_account"
+                      ]
+                    },
+                    "recentXp": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "cached_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "cache_duration_seconds": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "500": {
+            "description": "Progress temporarily unavailable."
+          }
+        }
+      }
+    },
+    "/producer-intelligence/achievements/{achievementKey}/producers": {
+      "get": {
+        "tags": [
+          "Producer Intelligence"
+        ],
+        "summary": "Get recent producers who unlocked an achievement",
+        "operationId": "getAchievementProducers",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Producer-only selection of recent public profiles for an achievement. Use the returned achievement key and pagination. Coverage is a recent selection, not a complete member directory. Respect private no-store handling; a stale selection is distinct from an empty one.",
+        "parameters": [
+          {
+            "name": "achievementKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Achievement key returned by producer progress."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5,
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recent unlockers and snapshot freshness.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "achievementKey": {
+                      "type": "string"
+                    },
+                    "generatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "isStale": {
+                      "type": "boolean"
+                    },
+                    "coverage": {
+                      "type": "object"
+                    },
+                    "producers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "page": {
+                          "type": "integer"
+                        },
+                        "perPage": {
+                          "type": "integer"
+                        },
+                        "hasMore": {
+                          "type": "boolean"
+                        },
+                        "nextPage": {
+                          "type": "integer",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Response401"
+          },
+          "403": {
+            "description": "Producer access is required."
+          },
+          "404": {
+            "description": "Achievement unavailable."
+          },
+          "422": {
+            "$ref": "#/components/responses/Response422"
+          },
+          "503": {
+            "description": "Recent unlockers are temporarily unavailable."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -8939,7 +9165,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "API access is invite-only. Contact contact@beatpass.ca to request access. Once approved, generate tokens from Account Settings \u2192 Developers. Include as: Authorization: Bearer {token}. Tokens expire after 90 days."
+        "description": "External integrations require prior BeatPass approval. Contact contact@beatpass.ca to request approval. Once approved, generate tokens from Account Settings → Developers. Include as: Authorization: Bearer {token}. Tokens expire after 90 days."
       }
     },
     "responses": {

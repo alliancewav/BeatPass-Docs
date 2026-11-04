@@ -9,9 +9,7 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/social"
 ---
 
-## Overview
-
-The Social API covers the platform's social graph — following users and artists, reposting content, and managing the user's personal library of liked tracks, albums, and artists.
+Use these endpoints for follows, reposts, and a user's library. Public profile reads and authenticated personal actions have different permissions; approval does not grant access to private profiles or another user's preferences.
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
@@ -37,9 +35,8 @@ POST /api/v1/users/{user}/unfollow
 
 ### Check Follow Status
 
-```http
-GET /api/v1/users/{user}/follow-status
-```
+Read the authenticated account's followed-users list and compare user IDs. Keep the displayed state in sync after a successful follow or unfollow.
+
 
 ### Get User's Followers
 
@@ -85,20 +82,7 @@ GET /api/v1/artists/{artistId}/followers
 
 ## Follow Limits
 
-<Columns cols={3}>
-  <Card title="Max Following" icon="user-plus">
-    <Badge color="blue">5,000 users</Badge>
-    Maximum accounts a user can follow
-  </Card>
-  <Card title="Follow Rate" icon="gauge">
-    <Badge color="orange">Rate limited</Badge>
-    Too many follows in quick succession triggers 429
-  </Card>
-  <Card title="Self-Follow" icon="ban">
-    <Badge color="red">Not allowed</Badge>
-    Cannot follow your own account
-  </Card>
-</Columns>
+Shared API throttles apply; this reference does not specify a separate account-following quota. Repeating a user follow or unfollow is successful and leaves the existing state unchanged; a self-follow is ignored. Artist follow is also idempotent, but unfollowing an artist not currently followed returns `409`.
 
 ---
 
@@ -128,11 +112,7 @@ GET /api/v1/users/{user}/reposts
 
 ### Repost Limits
 
-| Limit | Value |
-|-------|-------|
-| Daily repost limit | 100 per day |
-| Hourly repost limit | 20 per hour |
-| Self-repost | Not allowed |
+Shared API throttles apply. No separate repost quota is specified here. A successful response returns `action: added` or `action: removed`. Because this is a toggle, blindly retrying can undo the first request.
 
 ---
 
@@ -198,11 +178,7 @@ GET /api/v1/users/{user}/liked-artists
 
 ### Library Limits
 
-| Limit | Value |
-|-------|-------|
-| Max saved items | 10,000 |
-| Max playlists | 100 |
-| Max tracks per playlist | 500 |
+Use endpoint pagination and returned validation errors for library and playlist limits. This reference does not specify fixed saved-item or playlist-size ceilings. Library writes do not document universal retry idempotency.
 
 ---
 
@@ -315,13 +291,7 @@ GET /api/v1/users/{user}/minutes-left
   Returns `null` for `minutesLeft` if the user's plan has no minute-based upload restriction.
 </Note>
 
-### Get Contact Info
 
-Retrieve a user's contact information. Rate limited to 30 requests per minute.
-
-```http
-GET /api/v1/users/{user}/contact-info
-```
 
 ### Search Users
 
@@ -333,7 +303,7 @@ GET /api/v1/users/search
 
 ## Notification Preferences
 
-Manage notification delivery channels for the authenticated user. Each notification type (for example new follower, comment reply, or analytics report) has independent channel toggles for `email`, `in_app`, and `mobile`.
+Manage notification delivery channels for the authenticated user. Available notification types have independent channel selections. Use the returned `available_channels` and subscription definitions; channel availability does not guarantee delivery on every device.
 
 <Note>
   Use `me` for the authenticated user route, or pass the authenticated user's numeric ID. The backend resolves both forms.
@@ -343,7 +313,7 @@ Manage notification delivery channels for the authenticated user. Each notificat
 
 - `email` — Email notifications
 - `in_app` — Notification center storage and live activity in open tabs
-- `mobile` — FCM-backed push delivery for registered devices, including supported browsers and mobile apps
+- `mobile` — FCM-backed push for registered, supported devices with permission to receive notifications
 
 ### Get Notification Subscriptions
 
@@ -435,7 +405,7 @@ POST /api/v1/fcm-tokens
 ```
 
 <ParamField body="token" type="string" required>
-  FCM registration token returned by the Firebase client SDK.
+  FCM registration token returned by the Firebase client SDK. Maximum 500 characters.
 </ParamField>
 
 <ParamField body="platform" type="string">
@@ -443,7 +413,7 @@ POST /api/v1/fcm-tokens
 </ParamField>
 
 <ParamField body="device_name" type="string">
-  Optional device label, typically the user agent or app/device name.
+  Optional device label, typically the user agent or app/device name. Maximum 200 characters.
 </ParamField>
 
 **Response:**
@@ -455,7 +425,7 @@ POST /api/v1/fcm-tokens
 ```
 
 <Note>
-  Tokens are upserted by token value. Re-registering the same token refreshes its metadata and ownership. These FCM token endpoints currently return `{ "status": "ok" }`, while the notification subscription endpoints above use the standard `{ "status": "success" }` response envelope.
+  Register a token only for a device used by the authenticated account. These FCM token endpoints return `{ "status": "ok" }`, while the notification subscription endpoints above use the standard `{ "status": "success" }` response envelope.
 </Note>
 
 ### Delete FCM Token

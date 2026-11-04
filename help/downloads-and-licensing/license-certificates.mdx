@@ -6,6 +6,8 @@ description: "What a BeatPass license certificate shows, how to access it, and h
 canonical: "https://docs.beatpass.ca/help/downloads-and-licensing/license-certificates"
 ---
 
+import LicenseWalletFigure from "/snippets/media/license-wallet.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
 A BeatPass license certificate records your right to use a track under a specific license. It combines track details, your license identity, the usage terms, and a public verification link.
@@ -14,51 +16,52 @@ BeatPass issues certificates based on producer warranties, disclosures, and Proo
 
 ## Check the terms for your license
 
-This page is a guide. Read the [Terms of Service](https://open.beatpass.ca/pages/terms-of-service) and the applicable [Non-Exclusive License Agreement](https://open.beatpass.ca/pages/non-exclusive-license-agreement) or [Exclusive License Agreement](https://open.beatpass.ca/pages/exclusive-license-agreement), together with your transaction terms and certificate. The Terms control conflicts unless a signed written license says otherwise.
-
-The standard non-exclusive agreement covers one project, with limits of **100,000 physical or digital units**, **500,000 streams**, and **one music video no longer than five minutes**. Follow the caps and parameters attached to your download. Performance royalties and synchronization income default to **50% for the producer and 50% for the licensee**, unless the transaction terms, certificate, or a separate agreement provide otherwise. An income split does not itself grant permission for a sync use.
-
-Use the terms that apply to your issued license. This guide does not change earlier grants. Exclusive permissions and deliverables depend on the specific purchase.
+Read your certificate with the [Terms of Service](https://open.beatpass.ca/pages/terms-of-service), the applicable agreement, and your transaction or signed terms. The [standard license guide](/help/legal/license-terms/non-exclusive) explains the current one-project limits and income-sharing obligations; exclusive rights depend on the individual offer. This guide does not change an earlier grant.
 
 ## How to Access a Certificate
 
 <Steps>
-  <Step title="Open My Licenses">
-    Navigate to **My Licenses**.
+  <Step title="Open Your licenses">
+    Open [Library → My Licenses](https://open.beatpass.ca/library/licenses). The page is titled **Your licenses**.
   </Step>
   <Step title="Find the license">
     Search by track, artist, licensee, or license ID.
   </Step>
   <Step title="Open the certificate">
-    Select **Download** on the license card to open the printable certificate page for that license UUID.
+    Select **Download** on the license card to open the printable certificate page for that license.
   </Step>
 </Steps>
 
+
+
 ### Other Ways to Reach the Certificate
 
-- The **Download Complete** modal after a successful track download
-- A direct printable URL tied to the track and license UUID
+- **My licenses** in the **Download requested** dialog after requesting the audio
+- A saved link to that certificate
 
 <Note>
   An eligible non-owner download can generate a license certificate automatically. A repeat download may return the existing valid certificate rather than create another project license.
 </Note>
 
+<LicenseWalletFigure />
+
 ## What the Certificate Shows
 
-| Section | What it includes |
-| --- | --- |
-| **License identity** | Certificate UUID and license type (Non-Exclusive or Exclusive) |
-| **Track information** | Track name, credited artists, duration, release date, genre, and track ID |
-| **Audio Fingerprint Details** | Fingerprint status, fingerprint date, analysed duration, and fingerprint hash when available |
-| **Licensed User Verification** | Licensed user name and masked email |
-| **Usage terms** | Rights and restrictions for the specific license type |
-| **Verification link** | Public URL at `/verify-license/{uuid}` |
+The printable document records the certificate ID, license type, licensed party, beat, producer identities, issued terms, and verification link. Exclusive documents also include purchase and acceptance evidence when recorded.
+
+**Audio fingerprint evidence** can include the saved audio hash when available. A missing fingerprint is different from proof that the underlying rights do not exist. Ask support about a record that cannot be opened or checked.
 
 ## Names and License Cards
 
-The **Licensed to** line uses the account holder's first and last name when available, with a username fallback. Certificates also identify available names for the accounts managing the beat's producer profiles. Update your own name in [Editing your profile](/help/profiles/user-profiles/editing-profile); it does not replace your public handle.
+Use your complete legal first and last name for the certificate. Your public handle stays separate. Customers use **Review legal name** and **Confirm and lock name**; producers follow **Review payout details** or their Finances setup. [Account details](/help/account-settings/account-details) explains locked-name corrections.
 
-In [My Licenses](https://open.beatpass.ca/library/licenses), green cards identify non-exclusive licenses and blue cards identify exclusive licenses. Invalid or inactive records use red and explain their status in text. Read the status and verification result before relying on a certificate.
+When missing identity details are saved, BeatPass automatically completes eligible certificates. An older record may still need producer-credit review or support. Follow the action on the card rather than assuming every missing-name record needs another manual confirmation.
+
+If another person needs to act, finish your own step first. Use **Message producer** or **Ask license holder** when offered, review the message, and send it yourself. A saved draft is preserved.
+
+The card shows the beat, licensed party, license type, and status. Open **Details** for the issued date and certificate ID, then choose **Verify** inside that dialog for a public status check. Use **Download** when the certificate is ready. Text labels explain status without relying on colour.
+
+A technical identity or certificate problem does not itself revoke an original grant. Original records, signed names, and issued terms remain part of the history. A separately issued replacement has its own record; use the new certificate when directed and keep the original for your records.
 
 ## Certificate vs receipt vs download history
 
@@ -68,26 +71,18 @@ A BeatPass license certificate records the license identity, track details, appl
 
 ## AI and Rights-Issue Context
 
-BeatPass certificates do not allow AI training, dataset creation, model development, sample-pack creation, or competing library use unless separate written permission is granted by all required parties.
+Certificates do not include AI training, datasets, sample packs, or competing-library use without separate written permission. BeatPass relies on producer rights and declarations; it cannot grant rights the producer did not own.
 
-If BeatPass later removes, disables, or materially restricts a beat because of a verified rights issue, AI misrepresentation, failure of Proof of Rights, breach of the AI Audio Policy, or another producer-side licensing problem, BeatPass may provide support, replacement credit, account credit, refund review, documentation support, certificate-status context, or another commercially reasonable remedy under the applicable policies.
-
-BeatPass cannot grant rights the producer did not own or control.
-
-## What a certificate does not promise
-
-A certificate documents the license record BeatPass issued. It does not promise that no third-party rights issue, AI-origin dispute, producer-side breach, or platform review can ever arise.
-
-If a verified issue appears later, BeatPass may provide commercially reasonable support under the applicable policies. BeatPass cannot grant rights the producer did not own or control.
+If a verified rights issue arises, support may review documentation, credits, replacements, or a refund under the [Refund Policy](/help/billing/refund-policy). A monetary refund or third-party clearance is not guaranteed.
 
 ## Standard Non-Exclusive Terms
 
 <AccordionGroup>
   <Accordion title="What you can do" icon="circle-check" defaultOpen>
-    Create one original musical work with the beat and credit the producer. Follow the applicable limits: the standard agreement allows 100,000 physical or digital units, 500,000 streams, and one music video no longer than five minutes. BeatPass's intended live-event policy remains up to 50 attendees per event. Performance royalties and synchronization income default to 50/50 between producer and licensee unless the transaction terms, certificate, or a separate agreement provide otherwise.
+    Create one original musical work with the beat and credit the producer. Follow the applicable limits: the standard agreement allows 100,000 physical or digital units, 500,000 streams, and one music video no longer than five minutes. The current standard certificate limits live events to 50 attendees per event; use your issued terms for an earlier grant. Performance royalties and synchronization income default to 50/50 between producer and licensee unless the transaction terms, certificate, or a separate agreement provide otherwise.
   </Accordion>
   <Accordion title="What you cannot do" icon="circle-xmark">
-    Release the beat by itself, use it in film/TV/broadcast radio/commercials/video games, perform at larger paid events, claim ownership of the beat, resell or share the beat or stems, or register the beat in Content ID.
+    Release the beat by itself, use it in film/TV/broadcast radio/commercials/video games, perform at events exceeding the licensed attendance limit, claim ownership of the beat, resell or share the beat or stems, or register the beat in Content ID.
   </Accordion>
   <Accordion title="Attribution" icon="signature">
     Standard non-exclusive terms require credit in this format: **Produced by [Producer Name]**.
@@ -128,13 +123,13 @@ The certificate opens as a printable BeatPass page. In practice, you can:
     The certificate and public verification page show the current recorded status. Technical integrity, missing-data or expiry checks can affect certificate display or printing. A certificate check failure alone does not establish that a perpetual legal grant has expired. Keep the license record and contact support to clarify the issue.
   </Accordion>
   <Accordion title="Rights issue or review status" icon="triangle-exclamation">
-    Future certificate states may include under review, disputed, rights issue notice, or revoked for licensee breach. A review or rights-issue status does not automatically mean the buyer acted wrongly; it means BeatPass has identified a license, rights, compliance, or verification issue that may require support.
+    Read the explanation shown with the certificate and contact support when it asks for review. A review result does not itself show that the buyer acted wrongly, and a technical certificate issue does not by itself revoke the original grant.
   </Accordion>
   <Accordion title="Exclusive vs non-exclusive priority" icon="crown">
     An exclusive purchase stops future licensing to new buyers while earlier valid non-exclusive licenses continue under their applicable terms. Interface display priority does not cancel those earlier rights. Exclusive licenses are colour-coded blue; non-exclusive licenses are green.
   </Accordion>
   <Accordion title="Producer view" icon="user">
-    If you own tracks, **My Licenses** also shows licenses granted to other users for your catalog.
+    If you own tracks, **Your licenses** also shows licenses granted to other users for your catalog.
   </Accordion>
 </AccordionGroup>
 

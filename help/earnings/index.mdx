@@ -6,91 +6,70 @@ sidebarTitle: "Earnings"
 canonical: "https://docs.beatpass.ca/help/earnings"
 ---
 
+import FinancesFigure from "/snippets/media/finances.mdx";
 import PlatformFee from "/snippets/callouts/platform-fee.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass gives producers two main ways to earn: direct track sales and subscription-based payouts. Your **Producer Finances** page shows currency-specific earnings, finance activity, and payout readiness in one place.
+See what your music has earned and what needs to happen before it reaches your bank. Start in [Finances](https://open.beatpass.ca/producer-dashboard/finances) for your own recorded amounts, payout readiness, and individual activity.
 
-<PlatformFee />
+Producer access is free. A paid customer plan does not let producer accounts acquire new standard or exclusive catalog licenses.
 
 ## Revenue Streams
 
 <Columns cols={2}>
-  <Card title="Track Sales" icon="bag-shopping">
-    When someone buys a priced track or exclusive offer, the transaction appears in your earnings history and moves through the current payout flow.
+  <Card title="Exclusive sales" icon="bag-shopping" href="/help/licensing-for-producers/when-beat-sells">
+    An eligible exclusive purchase creates an earning that follows its recorded payout route.
   </Card>
-  <Card title="Subscription Payouts" icon="repeat">
-    Subscription revenue is shared based on your <Tooltip tip="A score BeatPass calculates from recency, play activity, and collaborator count to determine subscription payout share." cta="See the formula" href="/help/earnings/contribution-system/formula">contribution value</Tooltip>.
-  </Card>
-  <Card title="Bonus Redistribution" icon="bolt">
-    If another producer is excluded from a subscription split because their payout setup is incomplete, eligible producers can receive redistributed value.
-  </Card>
-  <Card title="Producer Finances" icon="chart-bar">
-    Use **Producer Finances** to review **Total earned**, **Pending**, **Processing**, **Delayed**, and **Sent** in one currency at a time, then use **Finance activity** for individual records.
+  <Card title="Subscription earnings" icon="repeat" href="/help/earnings/contribution-system">
+    A contribution value based on recency, play activity, and collaborators helps determine your subscription payout share.
   </Card>
 </Columns>
+
+If a producer is excluded from a subscription split because payout setup is incomplete, eligible producers can receive redistributed value. The [contribution guides](/help/earnings/contribution-system) explain the calculation separately from bank setup.
 
 ## How It Works
 
 <Steps>
-  <Step title="Set up payouts">
-    Open **Backstage** and go to **Finances**, then click **Set up bank payouts**. Choose a bank account currency that your bank can receive and add your bank details once. Producers with an existing Stripe Connect account keep receiving payouts through Stripe until their BEATPAY setup is active.
+  <Step title="Check payout readiness">
+    Open **Producer Dashboard** → **Finances** → **Payout setup**. Follow **Set up BEATPAY** or **Upgrade to BEATPAY** when offered. Readiness can differ for subscription earnings and exclusive sales.
   </Step>
-  <Step title="Upload and price your music">
-    Add tracks to your catalog and configure sales or exclusivity where appropriate.
+  <Step title="Keep your catalog ready">
+    Upload your music and complete the licensing choices for each beat. Saving a catalog choice does not by itself make every customer licensing route available.
   </Step>
-  <Step title="Earn from activity and sales">
-    Track sales generate direct revenue. Subscription payouts are calculated from contribution value and platform participation.
-  </Step>
-  <Step title="Track payout status">
-    BeatPass groups finance activity as **Pending**, **Processing**, **Sent**, **Delayed**, or **Reversed** so you can see where money is in the process.
-  </Step>
-  <Step title="Receive payouts through the active route">
-    Once funds are eligible to move, BeatPass sends each earnings stream through the route shown for it in **Finances**.
+  <Step title="Follow an earning">
+    Choose an earnings currency when more than one is available. In **Finance activity**, find the record and read its amount, provider, and current status.
   </Step>
 </Steps>
 
+<FinancesFigure />
+
+**Pending** is waiting, **Processing** is moving through the provider, and **Delayed** needs a closer look. **Sent** means the provider sent the money; arrival at your bank can happen later. **Reversed** identifies a reversed customer payment. See [payout timing](/help/earnings/payout-schedule) for the full explanation.
+
 ## Key Facts
 
-<Columns cols={2}>
-  <Card title="You Keep Your Set Price" icon="percent">
-    BeatPass adds the platform fee on top at checkout when it applies instead of deducting it from your listed price. Eligible active Pro buyers have it waived without changing your producer amount.
-  </Card>
-  <Card title="Track Pricing Currencies" icon="globe">
-    BeatPass currently supports **USD**, **EUR**, **GBP**, and **CAD** for track purchase pricing.
-  </Card>
-  <Card title="Current Subscription Plans" icon="credit-card">
-    Current paid BeatPass plans are listed in **CAD**.
-  </Card>
-  <Card title="Multi-Currency Support" icon="chart-line">
-    **Producer Finances** keeps currencies separate and adds an **Earnings currency** selector when more than one currency is available.
-  </Card>
-</Columns>
+<AccordionGroup>
+  <Accordion title="How are exclusive-sale fees shown?">
+    The platform fee is added at checkout when it applies, rather than deducted from your listed producer price. Only a waiver confirmed for the buyer's eligible active plan applies. Check the transaction's currency and final total.
+  </Accordion>
+  <Accordion title="Which currency should I look at?">
+    Finances keeps currencies separate. Use **Earnings currency** when more than one is available. Track purchase pricing supports **USD**, **EUR**, **GBP**, and **CAD**; a bank account currency is a separate payout choice.
+  </Accordion>
+  <Accordion title="Where do I check a customer subscription price?">
+    Use the [current pricing page](https://open.beatpass.ca/pricing). Plan prices and billing currencies are separate from your producer payout destination.
+  </Accordion>
+</AccordionGroup>
+
+<PlatformFee />
 
 ## Learn More
 
 <Columns cols={2}>
-  <Card title="BEATPAY Bank Payouts" href="/help/earnings/beatpay" icon="money-bill-transfer">
-    Set up BEATPAY and understand exclusive-sale and subscription payout readiness.
-  </Card>
-  <Card title="Viewing Finances" href="/help/earnings/viewing-finances" icon="chart-bar">
-    See exactly what the Finances page shows today.
-  </Card>
-  <Card title="Payout Eligibility" href="/help/earnings/payout-eligibility" icon="circle-check">
-    Understand what must be complete before money can move.
-  </Card>
-  <Card title="Payout Schedule" href="/help/earnings/payout-schedule" icon="calendar">
-    Learn how earnings move from BeatPass to your payout destination.
-  </Card>
-  <Card title="Stripe Connect (Legacy)" href="/help/earnings/stripe-connect" icon="chart-line">
-    Already on Stripe from before? See how your account winds down after you move to BEATPAY.
-  </Card>
-  <Card title="Contribution System" href="/help/earnings/contribution-system" icon="chart-line">
-    Learn how BeatPass calculates subscription payout share.
-  </Card>
-  <Card title="Currencies & Pricing" href="/help/earnings/currencies-and-pricing" icon="money-bill-transfer">
-    Understand pricing currencies, payout currencies, and conversion expectations.
-  </Card>
+  <Card title="Set up BEATPAY" icon="building-columns" href="/help/earnings/beatpay">Choose a compatible bank currency and complete the details requested.</Card>
+  <Card title="Read your Finances page" icon="chart-line" href="/help/earnings/viewing-finances">Recognize amounts, filters, and individual earning records.</Card>
+  <Card title="Check eligibility" icon="circle-check" href="/help/earnings/payout-eligibility">See what must be ready before money can move.</Card>
+  <Card title="Understand timing" icon="calendar" href="/help/earnings/payout-schedule">Follow provider processing and bank arrival.</Card>
 </Columns>
+
+[Currency guidance](/help/earnings/currencies-and-pricing) helps you check receiving-bank details. [Legacy Stripe help](/help/earnings/stripe-connect) remains available for older routed earnings and an existing account.
 
 <NeedHelp />

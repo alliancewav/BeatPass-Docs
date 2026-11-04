@@ -6,6 +6,8 @@ description: "Review finance activity, earnings, currency context, and payout se
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/finances"
 ---
 
+import FinancesFigure from "/snippets/media/finances.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 import PayoutBankArrival from "/snippets/callouts/payout-bank-arrival.mdx";
@@ -14,52 +16,23 @@ The **Finances** page helps you track every earning, see what is waiting, and ma
 
 <ProducerOnly />
 
+
+
 ## Open Finances
 
-Click your **profile avatar** → **Backstage**, then select **Finances**.
+Open [Finances](https://open.beatpass.ca/producer-dashboard/finances), or choose your **profile avatar** → **Producer Dashboard** → **Finances**.
 
-If you manage more than one artist, use **Artist finances** to choose the profile you want to review. Every section updates for that artist.
+The page uses your own producer profile. Use the section links to jump to the earnings, setup, activity, or currency information you need.
 
 ## Page Order
 
 The page always keeps the same order:
 
-1. **Finance activity**
-2. **Earnings**
-3. **Currency context**
-4. **Payout setup**
+1. **Earnings**, with **Payout setup** below the amounts in the same card
+2. **Finance activity**
+3. **Currency context**, which you can expand when available
 
 If payout setup needs action, a short notice links to **Payout setup** without moving the section.
-
-## Finance Activity
-
-**Finance activity** is the first section because it is the record of your track sales and subscription earnings.
-
-The two summary actions show the current number of:
-
-- **Pending** earnings
-- **Delayed** earnings
-
-Use the separate filters to narrow the list:
-
-| Filter | Options |
-| --- | --- |
-| **Status** | **All activity**, **Pending**, **Processing**, **Delayed**, **Sent**, **Reversed** |
-| **Earning type** | **All types**, **Track sales**, **Subscription earnings** |
-
-The list shows 20 records at a time. Use **Previous** and **Next** to move through history. **Showing :from–:to of :total** tells you which records are on the current page.
-
-Each row can show:
-
-- The track or subscription earning period
-- The earning type, date, and payout provider
-- The **Reference ID** and, when shown, the payout group reference
-- The amount in its original currency
-- **Pending**, **Processing**, **Delayed**, **Sent**, or **Reversed**, with an explanation when one is available
-
-BeatPass refreshes records while payouts are pending or processing and checks again when you return to the page. A reversed customer payment appears as **Reversed**. A payout issue can appear as **Delayed**; read the earning for the reason and any action requested.
-
-Failed payment attempts that never became earnings do not appear. A payout failure or hold on a real earning remains visible under **Delayed**.
 
 ## Earnings
 
@@ -77,29 +50,9 @@ Failed payment attempts that never became earnings do not appear. A payout failu
 
 A real zero remains visible as zero. If BeatPass cannot load earnings, the section says they are unavailable instead of replacing missing information with zero.
 
-## Currency Context
-
-**Currency context** appears as its own section when BEATPAY is available for the artist.
-
-Use **Comparison currency** to choose a currency, then select **7D**, **30D**, or **90D**. The graph shows:
-
-- The recent exchange-rate line
-- **Current**, **Low**, and **High**
-- The first and last dates in the selected range
-- A date and rate when you point to the graph or use the Left and Right Arrow keys
-
-On a touch screen, tap or drag across the graph to inspect a date. You can still
-scroll the page vertically while using the graph.
-
-<Info>
-  Historical exchange-rate context is not a payout quote. The final rate is set when a payout is created.
-</Info>
-
-An unavailable request, a period without enough history, and a same-currency selection are shown as different states.
-
 ## Payout Setup
 
-**Payout setup** is BEATPAY-first.
+**Payout setup** sits below the amounts in **Earnings** and shows the route available to your account. Bank setup and payout readiness are related, but subscription earnings and exclusive sales can have different availability during a rollout. Follow the readiness shown for the earning type rather than assuming one active destination enables every sale or payout.
 
 | What you see | What it means |
 | --- | --- |
@@ -118,7 +71,7 @@ BeatPass does not offer new or resumed Stripe onboarding from this page.
 
 ### Legacy Stripe
 
-**Legacy Stripe** appears only when the selected artist still has an active or draining legacy account.
+**Legacy Stripe** appears only while your producer profile has an active or draining legacy account.
 
 - Before BEATPAY becomes active, Stripe can remain the current payout route.
 - After BEATPAY becomes active, Stripe may remain visible while previously routed payouts finish.
@@ -128,6 +81,68 @@ BeatPass does not offer new or resumed Stripe onboarding from this page.
 Transaction history can still identify **Legacy Stripe** after the setup card is gone.
 
 See [BEATPAY Bank Payouts](/help/earnings/beatpay) for bank setup and [Payout Schedule](/help/earnings/payout-schedule) for status and timing definitions.
+
+## Finance Activity
+
+<FinancesFigure />
+
+**Finance activity** is below Earnings and records individual track sales and subscription earnings.
+
+The two summary actions show the current number of:
+
+- **Pending** earnings
+- **Delayed** earnings
+
+Use the separate filters to narrow the list:
+
+| Filter | Options |
+| --- | --- |
+| **Status** | **All activity**, **Pending**, **Processing**, **Delayed**, **Sent**, **Reversed** |
+| **Earning type** | **All types**, **Track sales**, **Subscription earnings** |
+
+<Steps>
+  <Step title="Choose the records you need">
+    Select **Status** and **Earning type**. Use **Delayed** to investigate an earning with an issue, or choose **All activity** to see the full list.
+  </Step>
+  <Step title="Open the earning">
+    Review the original-currency amount, provider, status explanation, and **Reference ID**. Keep that reference if you need support.
+  </Step>
+  <Step title="Continue through history">
+    The list shows 20 records at a time. Use **Previous** and **Next** and check the displayed range.
+  </Step>
+</Steps>
+
+Each row can show:
+
+- The track or subscription earning period
+- The earning type, date, and payout provider
+- The **Reference ID** and, when shown, the payout group reference
+- The amount in its original currency
+- **Pending**, **Processing**, **Delayed**, **Sent**, or **Reversed**, with an explanation when one is available
+
+BeatPass refreshes records while payouts are pending or processing and checks again when you return to the page. A reversed customer payment appears as **Reversed**. A payout issue can appear as **Delayed**; read the earning for the reason and any action requested.
+
+Failed payment attempts that never became earnings do not appear. A payout failure or hold on a real earning remains visible under **Delayed**.
+
+## Currency Context
+
+Expand **Currency context** below Finance activity to see the exchange-rate information available for your payout setup.
+
+Use **Comparison currency** to choose a currency, then select **7D**, **30D**, or **90D**. The graph shows:
+
+- The recent exchange-rate line
+- **Current**, **Low**, and **High**
+- The first and last dates in the selected range
+- A date and rate when you point to the graph or use the Left and Right Arrow keys
+
+On a touch screen, tap or drag across the graph to inspect a date. You can still
+scroll the page vertically while using the graph.
+
+<Info>
+  Historical exchange-rate context is not a payout quote. The final rate is set when a payout is created.
+</Info>
+
+An unavailable request, a period without enough history, and a same-currency selection are shown as different states.
 
 ## Loading and Errors
 

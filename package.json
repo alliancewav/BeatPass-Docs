@@ -11,9 +11,17 @@
     "postinstall": "patch-package",
     "docs:audit": "node scripts/audit-docs.mjs",
     "docs:openapi": "node scripts/verify-openapi-routes.mjs",
-    "docs:mint": "mint validate && mint broken-links --check-anchors --check-redirects --check-snippets && mint a11y",
+    "docs:mint": "mint validate --client-version 0.0.3517 && mint broken-links --check-anchors --check-redirects --check-snippets && mint a11y",
     "docs:vale": "node scripts/run-vale.mjs",
-    "docs:quality": "npm run docs:audit && npm run docs:openapi && npm run docs:mint && npm run docs:vale"
+    "docs:quality": "npm run docs:audit && npm run docs:publication && npm run docs:developer-publication && npm run docs:review && npm run docs:release && npm run docs:coverage && npm run docs:media && npm run docs:test && npm run docs:openapi && npm run docs:mint && npm run docs:vale",
+    "docs:test": "node --test scripts/test-*.mjs",
+    "docs:review": "node scripts/review-contract.mjs",
+    "docs:media": "node scripts/media-catalog.mjs",
+    "docs:coverage": "node scripts/review-coverage.mjs",
+    "docs:media:refresh": "node scripts/refresh-media.mjs",
+    "docs:release": "node scripts/check-pending-release.mjs",
+    "docs:publication": "node scripts/check-publication.mjs",
+    "docs:developer-publication": "node scripts/check-developer-publication.mjs"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "6.7.2",

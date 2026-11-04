@@ -6,79 +6,43 @@ description: "Solutions for track download problems on BeatPass, including subsc
 canonical: "https://docs.beatpass.ca/help/troubleshooting/download-issues"
 ---
 
+import DownloadFigure from "/snippets/media/download.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-If downloads are not working, start by checking your account state and the track's licensing state.
+Start with the message shown beside the beat or in your license library. A new standard license, an existing license, and your own producer file have different access rules.
 
-## I Cannot See the Download Button
+<DownloadFigure />
 
-<AccordionGroup>
-  <Accordion title="You need a paid plan" icon="credit-card" defaultOpen>
-    Downloads require a paid subscription. Free accounts can stream and save music but cannot download. If you click **Download** without the right permission, BeatPass opens an upgrade prompt.
-  </Accordion>
-  <Accordion title="You are not signed in" icon="right-to-bracket">
-    BeatPass requires an authenticated account for download actions. Sign in first.
-  </Accordion>
-  <Accordion title="The track is not downloadable" icon="ban">
-    The **Download** button is hidden when a track is exclusive-only, sold exclusively, or otherwise not available through the standard download flow.
-  </Accordion>
-</AccordionGroup>
+## Check which download you need
 
-## The Download Fails
+| Your situation | Next step |
+| --- | --- |
+| You want a new standard catalog license | Sign in with an eligible customer account and an active paid plan that includes downloads |
+| You are a producer | Download your own original files, or retrieve beats covered by valid earlier licenses; a paid plan does not unlock new standard catalog licenses |
+| You already licensed the beat | Open [Library → My Licenses](https://open.beatpass.ca/library/licenses) and check that license's status |
+| The beat sold exclusively | New standard licenses stop; earlier valid licenses remain subject to their issued terms |
+| Your payment is overdue | Resolve the payment in [Billing](https://open.beatpass.ca/billing) before requesting a new standard license |
+| The beat is not ready for standard licensing | Choose another eligible beat or check back later; subscribing does not override the track's availability |
 
-<AccordionGroup>
-  <Accordion title="Your subscription payment is overdue" icon="triangle-exclamation" defaultOpen>
-    BeatPass blocks downloads when your subscription is overdue. You see the message: **"Your subscription payment is overdue. Please resolve your payment to download tracks."** Resolve the billing issue in **Billing** from the avatar menu, then retry.
-  </Accordion>
-  <Accordion title="The track was sold exclusively" icon="lock">
-    If a track has been sold exclusively, the download is blocked with: **"This track has been sold exclusively and is no longer available for download."** Only the owner and exclusive buyer can still download it.
-  </Accordion>
-  <Accordion title="The browser download never starts" icon="globe">
-    Check popup or download blocking in your browser settings, clear browser cache, and try another modern browser.
-  </Accordion>
-</AccordionGroup>
+## You see Download requested but no file
 
-## Exclusive Tracks Will Not Download
+**Download requested** means BeatPass handed the request to your browser. It cannot confirm that the file was saved.
 
-<AccordionGroup>
-  <Accordion title="The track is exclusive-only" icon="crown" defaultOpen>
-    Exclusive-only tracks are not part of the standard subscription download flow. An info modal appears explaining that the track requires an exclusive purchase.
-  </Accordion>
-  <Accordion title="The track was already sold exclusively" icon="cart-shopping">
-    Once sold, the track is blocked for all standard downloads. Only the owner and the exclusive buyer can still access it.
-  </Accordion>
-</AccordionGroup>
+1. Open your browser's downloads and check for a blocked, paused, or failed request.
+2. Allow the download when your browser asks, and check your device's storage space.
+3. Retry from the beat or from your valid license entry. A retry does not grant a second project.
 
-## I Downloaded a Track but Cannot Find My License
+## Your certificate needs attention
 
-Licenses are auto-generated when you download a track as a non-owner. Open **My Licenses** to find the certificate.
+Open **Your licenses** and follow any name-confirmation or review action shown for the entry. Completing a browser download does not resolve a certificate identity problem. See [license certificates](/help/downloads-and-licensing/license-certificates) and [account details](/help/account-settings/account-details).
 
-If you do not see the entry:
+Downloading your own producer file does not issue a license certificate to yourself.
 
-- Refresh the page
-- Confirm the download actually completed
-- If you are a track owner, no license is generated for self-downloads
+## Exclusive files or persistent failures
 
-## File Format
+For an exclusive purchase, check its purchase record, certificate, and agreed deliverables. Follow [exclusive purchase help](/help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive).
 
-BeatPass serves the original uploaded audio file. Downloads are not a format bundle — you receive the single file the producer uploaded (typically WAV). There is no format picker during the standard download flow.
-
-## I Downloaded the Wrong Track
-
-Download the correct track instead. If you believe a platform error caused the issue, contact **contact@beatpass.ca** with the track URL and account email.
-
-## Related
-
-<Columns cols={2}>
-  <Card title="Payment Issues" icon="credit-card" href="/help/troubleshooting/payment-issues">
-    Problems with your subscription or billing?
-  </Card>
-  <Card title="How Downloads Work" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
-    Full download flow walkthrough.
-  </Card>
-  <Card title="Downloads & Licensing" icon="file-lines" href="/help/downloads-and-licensing">
-    Review the current license and certificate rules.
-  </Card>
-</Columns>
+If you still cannot retrieve a file, [contact support](/help/contact-support) with the beat link, the time of the attempt, and the exact error. Do not send passwords, payment-card details, or session information.
 
 <NeedHelp />

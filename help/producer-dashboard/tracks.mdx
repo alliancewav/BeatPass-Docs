@@ -6,33 +6,40 @@ description: "Manage your beat catalog, review editable details, and find collab
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/tracks"
 ---
 
+import BeatCatalogFigure from "/snippets/media/beat-catalog.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **My Beats** page keeps catalog work in one place. Search your beats, open insights, review editable legacy details, and explore collaboration connections for each producer profile you manage.
+The **My Beats** page keeps catalog work in one place. Find a beat, play it, review its details, update offers, and connect with collaborators.
 
 <ProducerOnly />
 
+
+
 ## How to Get Here
 
-Click your **profile avatar** → **Backstage**, then select **My Beats** in the sidebar.
+Open [My Beats](https://open.beatpass.ca/producer-dashboard/tracks), or choose your **profile avatar** → **Producer Dashboard** → **My Beats**.
 
-If your account manages more than one producer profile, use **Artist profile** to choose the catalog you want to review. Changing profiles resets the current filters, selected beats, and page.
+The workspace uses your own producer profile. Use **Your catalog**, **Impact**, and **Collaborations** to jump to a section.
 
 ## Main Sections
 
-<Columns cols={2}>
-  <Card title="Beat catalog" icon="music">
-    Search, filter, sort, and open the beats connected to the selected producer profile.
+<Columns cols={3}>
+  <Card title="Your catalog" icon="music">
+    Search, play, filter, and manage your beats.
+  </Card>
+  <Card title="Impact" icon="chart-line">
+    Understand Trending and contribution points.
   </Card>
   <Card title="Collaborations" icon="users">
-    Review current collaborators and artists connected by shared profile genres.
+    Meet producers already credited with you or connected by shared genres.
   </Card>
 </Columns>
 
 ## Beat Catalog
 
-**Beat catalog** is the main working section. It shows 20 beats by default, with 10, 20, or 50 beats per page, and keeps each row readable on desktop, tablet, and mobile.
+**Your catalog** is the main working section. Start with **Search beats**, choose a catalog view, then narrow the **License type** or sort order. Use **Items per page**, **Previous**, and **Next** below the catalog to browse more results.
 
 Each beat shows:
 
@@ -42,20 +49,20 @@ Each beat shows:
 - Licensing choice
 - **Plays** (all-time audience plays)
 - Last update date
-- **Feature**, **Insights**, and **Edit** actions
+- Featured-beat, **Insights**, and **Edit** actions
 
 <Note>
-  **Audience plays** counts BeatPass listening activity from people outside the selected producer's team. A real zero stays visible. **Unavailable** means BeatPass could not load that play information.
+  **Audience plays** counts BeatPass listening activity from people outside your producer team. A real zero stays visible. **Unavailable** means BeatPass could not load that play information.
 </Note>
 
 ### Filters
 
-- **Needs review** — Beats whose artwork cannot be displayed or whose genre, BPM/key/scale, or licensing information needs review
-- **Singles** — Beats that are not in a collection
-- **In a collection** — Beats assigned to a collection
-- **Collaborations** — Beats credited to more than one producer
+- **Needs review**: Beats whose artwork cannot be displayed or whose genre, BPM/key/scale, or licensing information needs review
+- **Singles**: Beats that are not in a collection
+- **In collections**: beats assigned to a collection
+- **Collaborations**: Beats credited to more than one producer
 
-Use **Filter** to add or remove a catalog view or license type. With no filters applied, the table shows all beats and all licensing choices.
+Choose **All beats**, **Needs review**, **Singles**, **In collections**, or **Collaborations** above the search field. Choose **All licenses** to include every licensing choice.
 
 ### Licensing Choices
 
@@ -63,26 +70,49 @@ Use **Filter** to add or remove a catalog view or license type. With no filters 
 - **Standard and exclusive**
 - **Exclusive only**
 
-Select the **Plays** or **Updated** column heading to sort the whole catalog. Select the same heading again to reverse the order; select it a third time to return to the default newest-first order.
+Use the sort menu for **Newest first**, **Recently updated**, **Oldest updates**, **Most played**, or **Least played**.
 
 ### Actions and Selection
 
+Open the beat's **More** actions menu to find **Edit**, **Insights**, and **View track**. On a phone, these appear in a sheet at the bottom of the screen. Desktop also provides direct **Edit** and **Insights** shortcuts.
+
+<BeatCatalogFigure />
+
 - **Upload beat** opens the beat upload flow.
-- **Feature** makes an eligible beat the first beat on the selected producer's Pro Page.
-- **Remove featured beat** clears your saved choice so BeatPass can select an available beat.
+- The featured-beat area lets you choose an eligible beat for the first spot on your Pro Page.
+- **Remove from featured beat** in the beat's actions, or **Remove featured beat** in the featured area, clears your choice so BeatPass can select an available beat.
 - **Insights** opens detailed performance information for one beat.
 - **Edit** opens the beat editor.
-- Use the checkbox beside any beat to select it, or use **Select all on this page** above the list. **Clear selection** leaves every beat unselected. Use **Delete selected** only when you intend to permanently remove the selected beats.
+- Choose **Select**, then select beats or use **Select all on this page**. Choose **Edit** for shared license or price changes, or use the delete action and read its confirmation before removing beats. **Done** leaves selection mode.
 
 Collection names open the connected collection. Use **Items per page** to show 10, 20, or 50 beats. Use **Previous** and **Next** below the list to move between pages. The range text shows which beats are currently visible, and **Updating** indicates a background refresh without hiding the current rows.
 
 ### Featured Beat
 
-You can save one featured beat for each producer profile you own. Featuring another beat replaces the previous choice for that profile.
+You can save one featured beat for your producer profile. Choosing another replaces the previous choice.
 
-The **Feature** action is available when the selected producer is the primary owner, the audio is playable, and at least one active licensing or purchase path exists. For an AI-assisted beat, you must also confirm that you hold the commercial rights. An exclusively sold beat cannot be featured for new customers. When the action is unavailable, its explanation points to the field or offer that needs attention.
+The **Feature on Pro Page** action is available when you are the primary producer, the audio is playable, and at least one active licensing or purchase path exists. For an AI-assisted beat, you must also confirm that you hold the commercial rights. An exclusively sold beat cannot be featured for new customers. When the action is unavailable, its explanation points to the field or offer that needs attention.
 
 The Pro Page uses your featured beat while it remains available. Otherwise, BeatPass chooses from your playable beats with an active buying choice. It balances listener response, freshness, and complete track details instead of choosing only the newest or most-played beat. See [Producer Pro Page](/help/producer-dashboard/pro-page#how-the-automatic-choice-works) for details.
+
+## Edit Several Beats Together
+
+<Steps>
+  <Step title="Select your beats">
+    Choose **Select**, then select beats on the current page.
+  </Step>
+  <Step title="Choose Edit">
+    Enable **Change license availability**, **Set an exclusive price**, or both. Fields you leave off keep their current values.
+  </Step>
+  <Step title="Review changes">
+    Check the beats, licensing choice, price per beat, and currency. The same price applies to each selected beat, rather than to the selection as a bundle.
+  </Step>
+  <Step title="Apply the change">
+    Use the **Apply** action shown for your selection. If some beats need attention, follow their explanations, adjust the changes, and review again.
+  </Step>
+</Steps>
+
+A bulk price change does not complete an unsigned exclusive offer or make an unavailable offer ready for checkout. Review [Setting prices](/help/licensing-for-producers/exclusive-licenses/setting-prices) for signing and delivery requirements.
 
 ## Review Details
 
@@ -90,31 +120,37 @@ The upload flow requires cover art, a playable audio file, a producer credit, ge
 
 For older or imported catalog entries, **Needs review** identifies editable information that can affect discovery or licensing:
 
-- **Artwork** — Neither the beat artwork nor its collection artwork can be displayed
-- **Genres** — No genre is attached to the beat
-- **BPM, key, or scale** — One or more musical details is missing
-- **Licensing** — The licensing choice or required exclusive-offer details are incomplete
+- **Artwork**: Neither the beat artwork nor its collection artwork can be displayed
+- **Genres**: No genre is attached to the beat
+- **BPM, key, or scale**: One or more musical details is missing
+- **Licensing**: The licensing choice or required exclusive-offer details are incomplete
 
 Rows that need attention state the exact details beside the beat metadata. Use **Edit** to correct them.
 
+## Understand Your Impact
+
+Choose **Impact** to reach **Understand your impact**, then **How it works** for the explanation. **Trending** follows recent BeatPass listening compared with the previous week. **Contribution** uses eligible beats' recency, counted plays, and producer credits to help calculate a share of subscription earnings.
+
+Contribution points are neither cash nor XP. A calculation can differ from the public play total, and no Trending badge does not mean your beat is declining. See [Contribution System](/help/earnings/contribution-system) for the earning rules.
+
 ## Collaborations
 
-**Current collaborators** lists producers already credited with the selected artist and shows their collaborative-beat counts. Verified profiles keep their blue check beside the producer name. Use **Chat** when the collaborator has one connected producer account, or use **View collaborative beats** to apply the matching catalog view.
+**Current collaborators** lists producers already credited with you and shows their collaborative-beat counts. Verified profiles keep their blue check beside the producer name. Use **Chat** when the collaborator has one connected producer account, or use **View collaborative beats** to apply the matching catalog view.
 
-**Artists with shared genres** compares the canonical genres on producer profiles. Suggestions exclude the selected producer and current collaborators. Each suggestion shows the full number of genres in common and at most two genre names. BeatPass does not display an invented score or default genre.
+**Artists with shared genres** compares the genres saved on producer profiles. Suggestions exclude you and your current collaborators. Each suggestion shows the full number of genres in common and at most two genre names. Use the listed genres to decide which profile to explore.
 
 When a suggested artist has a connected producer account, select **Chat** to open a conversation. Select the artist name to review the profile first.
 
-If the selected producer profile has no genres, use **Add genres to artist profile** before using this section for suggestions.
+If your producer profile has no genres, use **Add genres to artist profile** before using this section for suggestions.
 
 ## Empty and Unavailable States
 
 <AccordionGroup>
   <Accordion title="No producer profile" icon="user" defaultOpen>
-    Connect a producer profile before managing beats from this page.
+    Check that you are signed in to the approved producer account. If your profile is missing, review your [Producer Program application](/help/producer-program).
   </Accordion>
   <Accordion title="No beats yet" icon="music">
-    Use **Upload beat** to add the first beat for the selected producer profile.
+    Use **Upload beat** to add the first beat for your producer profile.
   </Accordion>
   <Accordion title="No matching beats" icon="magnifying-glass">
     Use **Clear filters** to return to the complete catalog.

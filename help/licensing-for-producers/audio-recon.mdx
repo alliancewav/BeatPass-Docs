@@ -6,19 +6,38 @@ sidebarTitle: "Audio Recon"
 canonical: "https://docs.beatpass.ca/help/licensing-for-producers/audio-recon"
 ---
 
+import AudioReconFigure from "/snippets/media/audio-recon.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Audio Recon is BeatPass's feature for spotting songs that sound similar to your beats on supported streaming platforms.
+Audio Recon helps you find recordings that sound similar to your beats and review them in one workspace. Open [Audio Recon](https://open.beatpass.ca/producer-dashboard/audio-recon), or choose **Producer Dashboard** → **Audio Recon** under Catalog.
 
 <Warning>
   Audio Recon detects **similarity**, not confirmed placements. A match may come from shared royalty-free samples, similar sound design, or coincidence. Always verify by listening before assuming your beat was used.
 </Warning>
 
-## Audio Recon is not a beat-finder for copying sounds
+<AudioReconFigure />
 
-Audio Recon is a producer protection and review tool. It detects high-similarity matches so credited producers can review possible uses of their beats.
+## Start with Matches or Your Beats
 
-It is not a permission system, not a claim that a match is infringement, and not a tool for artists to clone another producer's sound.
+<Steps>
+  <Step title="Open Matches">
+    Review beats with similarity findings. Search by title or choose **Platform** to narrow the recordings to Spotify, YouTube, or Deezer.
+  </Step>
+  <Step title="Open a beat">
+    Expand the beat to compare your original audio with the findings. **View track** opens its track page.
+  </Step>
+  <Step title="Check Your beats">
+    Use this tab to see scan status even when no match is listed. Filter **Status** by **Not scanned**, **Processing**, **Scan unavailable**, **Complete**, or **No matches**.
+  </Step>
+  <Step title="Review before taking action">
+    Listen to both recordings and check your licensing history before contacting support about suspected unauthorized use.
+  </Step>
+</Steps>
+
+
+
+Audio Recon helps you investigate possible uses. A similarity result does not grant permission to copy another recording.
 
 ## Who Can Use Audio Recon
 
@@ -26,7 +45,7 @@ Audio Recon scans run for tracks where **at least one credited producer has a ve
 
 - The scan is gated on the artist being verified, not the individual user account.
 - For collaborative beats, the scan can run when any one of the credited producers is verified.
-- All linked producers on a matching track are notified — not just the verified one.
+- All linked producers on a matching track are notified: not just the verified one.
 
 <Note>
   If you are credited on a track alongside a verified producer, you can still receive Audio Recon match notifications even if your own profile is not yet verified.
@@ -38,24 +57,35 @@ Audio Recon scans run for tracks where **at least one credited producer has a ve
   <Step title="Your beat is fingerprinted">
     BeatPass fingerprints the track when it is uploaded or when the audio file is replaced.
   </Step>
-  <Step title="BeatPass scans on a monthly cycle">
-    Audio Recon scans run automatically on a rolling monthly schedule for eligible tracks.
+  <Step title="BeatPass scans eligible audio">
+    Scans need uploaded audio, a completed fingerprint, and a verified credited producer. New beats are checked first; scanned beats return after the interval shown in the scan-schedule explanation. The next batch time does not promise a scan time for every beat.
   </Step>
-  <Step title="High-similarity matches are stored">
-    BeatPass records matches when streaming data is similar enough to your beat. Only matches above **80% similarity** are surfaced.
+  <Step title="Review matching recordings">
+    Results ready for your review appear here. A higher score is a stronger similarity signal, rather than proof of use.
   </Step>
   <Step title="You review the result">
-    BeatPass notifies linked producers and surfaces the match in the **Audio Recon** section on the track page.
+    Review results in the dashboard's **Matches** tab or the **Audio Recon** section on the track page. Notifications follow your enabled channels.
   </Step>
 </Steps>
 
 ## Where Matches Appear
 
-When BeatPass finds a match, it appears in the **Audio Recon** section on the track page. This section is intended for producers credited on the beat, not for listeners.
+**Matches** in the dashboard groups findings by beat. **Your beats** also includes tracks without displayed findings, so you can check what has or has not been scanned. The track page keeps its own **Audio Recon** section for authorized producers.
+
+If there are no matches, open **Your beats** and check the status before drawing a conclusion. **Scan unavailable** is different from **No matches**. Use **Clear filters** when a search hides the results you expected, or **Retry** if the page could not load.
+
+| Readiness message | Your next step |
+| --- | --- |
+| **Verification required** | Follow **Request Verification** |
+| **Upload an audio file to enable scanning.** | Add the beat's audio |
+| **Waiting for audio fingerprinting** | Check again after processing |
+| **Ready for an upcoming batch** | Wait for the automatic rotation |
+| **Next rotation from** | Use the date as eligibility context, rather than a guaranteed completion time |
+| **Scan schedule unavailable** | Retry or contact support if it continues |
 
 ## Similarity Scores
 
-BeatPass uses a higher internal similarity threshold (around 95%) to flag potential duplicates, and shows matches at **80% similarity or above** to producers. Higher scores are stronger signals, but not proof of use.
+The score describes how similar the recordings appear to the matching system. Listen before deciding whether it is your beat. Shared samples, common sound design, and coincidental similarities can produce matches. Fingerprint checks on new uploads are a separate process.
 
 ## Notifications
 
@@ -95,7 +125,7 @@ Audio Recon currently references:
 
 <AccordionGroup>
   <Accordion title="Can I trigger a manual scan?">
-    Not at the moment. Audio Recon runs automatically on a monthly cycle.
+    Scans run automatically. **Refresh results** reloads the dashboard; it does not start a scan. Check **Your beats** for readiness and the next rotation.
   </Accordion>
 
   <Accordion title="Why do I not see Audio Recon on my track?">
@@ -107,7 +137,7 @@ Audio Recon currently references:
   </Accordion>
 
   <Accordion title="What if I am not verified?">
-    You can still receive notifications if a verified co-producer's track matches. For your own tracks, complete the producer verification flow first.
+    You can still receive notifications if a verified co-producer's track matches. For a beat with no verified credited producer, complete the producer verification flow first.
   </Accordion>
 </AccordionGroup>
 

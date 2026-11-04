@@ -6,11 +6,15 @@ sidebarTitle: "Managing Tracks"
 canonical: "https://docs.beatpass.ca/help/playlists/managing-tracks"
 ---
 
+import PlaylistFigure from "/snippets/media/playlist.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
 Track management happens in two places: while you browse the catalog and on the playlist page itself.
 
-## Adding Tracks
+<PlaylistFigure />
+
+## Adding tracks
 
 1. Open a track context menu.
 2. Choose **Add to playlist**.
@@ -18,7 +22,7 @@ Track management happens in two places: while you browse the catalog and on the 
 
 If you create a new playlist from that flow, the track you started from becomes the first item in the playlist.
 
-## What The Playlist Page Shows
+## What the playlist page shows
 
 A playlist page includes:
 
@@ -27,25 +31,25 @@ A playlist page includes:
 - A search field: **Search within playlist**.
 - The main play button and follow/unfollow state.
 
-If the playlist has no tracks yet, BeatPass shows: `This playlist does not have any tracks yet`.
+If the playlist is empty, use **Browse beats** to find the first track, then choose **Add to playlist** from its menu.
 
-## Removing and Reordering Tracks
+## Removing and reordering tracks
 
 | Role | Can add tracks | Can remove tracks | Can reorder tracks |
 | --- | --- | --- | --- |
 | Owner | Yes | Yes | Yes |
-| Accepted collaborator | Yes | Owner only in UI | Owner only in UI |
+| Accepted collaborator | Yes, while collaborative | Yes, while collaborative | Yes, where reorder controls are available |
 | Follower or viewer | No | No | No |
 
 <Note>
-  The UI may show remove and drag-reorder controls to collaborators, but the backend currently restricts those actions to the playlist owner. If a remove or reorder attempt fails, this is the reason.
+  Drag to reorder is available with a supported desktop pointer when the list is sorted by its saved position. Touch layouts do not offer the same drag interaction. If an action fails, check your current collaborator access and retry after the page finishes updating.
 </Note>
 
-## Searching Inside A Playlist
+## Searching inside a playlist
 
 Use **Search within playlist** on the playlist page to narrow a long track list without leaving the playlist.
 
-## Playback From A Playlist
+## Playback from a playlist
 
 - Use the main play control to queue the playlist.
 - Start from a specific row to continue playback from that point.

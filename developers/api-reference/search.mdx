@@ -11,14 +11,12 @@ canonical: "https://docs.beatpass.ca/developers/api-reference/search"
 
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-## Overview
-
-The Search & Discovery API provides content discovery features — full-text search across all content types, genre and tag browsing, personalized radio recommendations, and platform-wide leaderboards.
+Use search, genres, tags, radio seeds, and leaderboard routes to discover content. Search results depend on permitted content types and visibility; the endpoint list is not permission to collect the catalog in bulk.
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
 
-  **Authentication:** All discovery endpoints use optional auth. Authenticated users get personalized results and enhanced data.
+  **Authentication:** Many catalog reads use optional authentication. Endpoint permissions and visibility rules still apply; a token does not guarantee access to every discovery result.
 </Info>
 
 ---
@@ -57,7 +55,7 @@ curl "https://api.example.com/api/v1/search?query=lofi" \
 
 ### Artist Search Suggestions
 
-Get autocomplete suggestions for artists.
+Get autocomplete suggestions for artists available to the signed-in account. Artist and album suggestion operations require authentication; they are not the same as general public catalog search.
 
 ```http
 GET /api/v1/search/suggestions/artist
@@ -79,14 +77,6 @@ GET /api/v1/search/suggestions/album
 
 ```http
 GET /api/v1/search/suggestions/album/{id}
-```
-
-### Audio Search
-
-Search for tracks by audio similarity.
-
-```http
-GET /api/v1/search/audio/{trackId}/{artistName}/{trackName}
 ```
 
 ---
@@ -148,6 +138,15 @@ GET /api/v1/radio/{type}/{id}
   Numeric ID of an existing seed entity.
 </ParamField>
 
+| Optional query | Behavior |
+| --- | --- |
+| `exclude[]` | Previously seen track IDs to omit; at most 1,000 distinct positive IDs |
+| `broaden` | Request broader recommendations when supported |
+| `refresh` | Request a different selection where supported; not a guarantee of fresh results |
+
+The response includes `type`, `seed`, `recommendations`, `broadened`, `exhausted`, and `continuation_supported`. Keep a local record of played or queued IDs and send them as exclusions for continuation. If `exhausted` is true, show that the current selection has run out; avoid repeatedly requesting the same empty result. Do not promise continuation when `continuation_supported` is false.
+
+
 ---
 
 ## Leaderboards
@@ -193,7 +192,7 @@ GET /api/v1/leaderboard/stats
 ```
 
 <Note>
-  Leaderboard data is cached with a 5-minute TTL. Polling more frequently than every 30 seconds is unnecessary and wastes your rate limit quota.
+  Leaderboard endpoints can use different caches and scheduled snapshots. Read timestamps and freshness fields where provided, cache results locally, and avoid continuous polling. A route name does not promise live rankings.
 </Note>
 
 ---

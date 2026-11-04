@@ -6,59 +6,41 @@ sidebarTitle: "Beat Requests"
 canonical: "https://docs.beatpass.ca/help/library/beat-requests"
 ---
 
+import RequestsFigure from "/snippets/media/requests.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Your library includes a dedicated **Beat requests** page. Open it from **Your library** → **Beat requests**. This is the management view for requests you have already posted.
+Open your **profile avatar** → **My library** → **My Requests**, or **Library** on your phone, to keep your briefs and the music sent back together. The page is titled **Your requests**. Producer accounts can also revisit the tracks they sent to other people.
 
-<Info>
-  Current page title: **Your beat requests**. Requests are grouped into active and expired sections, and the page shows your token status at the top.
-</Info>
+## Manage requests you created
 
-## What You Can Do Here
+Use **Your requests** for your own briefs. Choose **Find a request** to reveal search, **All requests**, **Open**, or **Closed**, and **Newest first** or **Ending soon** sorting. **Load more requests** opens the next set when offered.
 
-- Review your active requests and their remaining time.
-- Search your requests by text, genre, or mood.
-- See how many producer submissions each request has received.
-- Renew eligible expired requests.
-- Delete requests you no longer want to keep open.
+Each brief shows its description, musical details, reference, timing and received-beat count. Choose **Review beats** to open **Beats for your brief**. Listen with a row's play button, then select the track title or open arrow to review licensing. **Done** returns to the workspace.
 
-## What A Request Card Shows
+## Renewing an expired request
 
-<Columns cols={2}>
-  <Card title="Core request details" icon="message">
-    Your description, creation date, and request status.
-  </Card>
-  <Card title="Timing" icon="clock">
-    Remaining hours for active requests or renewal timing for expired requests.
-  </Card>
-  <Card title="Specification tags" icon="sliders">
-    Genre, BPM range, key, mood, and budget when provided.
-  </Card>
-  <Card title="Extras" icon="link">
-    Reference links and the number of submissions received.
-  </Card>
-</Columns>
+An eligible closed request offers **Reopen · 1 token** or **Reopen request**, with its duration shown. Reopening costs **one token** and uses the original request's **24**, **48**, or **72-hour** window. The renewal window is **30 days** after expiry.
 
-## Renewing An Expired Request
+If the action is absent, create a new brief when you have enough available tokens. [Managing requests](/help/beat-requests/managing-requests) explains the lifecycle and recovery paths.
 
-<AccordionGroup>
-  <Accordion title="Renewal window">
-    Expired requests stay visible during their renewal window so you can restore them instead of creating a brand-new request.
-  </Accordion>
-  <Accordion title="Current cost">
-    The current renew action is labeled **Renew (1 token)**.
-  </Accordion>
-  <Accordion title="When renewal is not available">
-    If a request is outside its renewal window, the page will stop offering the renew action and you will need to create a new request.
-  </Accordion>
-</AccordionGroup>
+## Deleting a request
 
-## Deleting A Request
+Read **Delete request?** before confirming. Deleting removes the brief and its submission history from your workspace; this flow has no restore action. Deleting an open or closed request returns its original token cost only up to your current plan cap. After **Request deleted.**, choose **New request** to check the refreshed available tokens.
 
-Deleting a request removes it from your library management view. When applicable, BeatPass also refunds the token tied to that request and refreshes the token status bar.
+## If you are a producer
 
-## Create A New Request
+Choose **Sent beats** to revisit the music you sent with its original brief. Use **Find a brief** to return to the main board and discover another match. **Your requests** remains the separate view of briefs you posted yourself. The example below shows the main board opened through **Find a brief**.
 
-This page manages existing requests. To publish a new one, use the beat request flow from the main **Beat requests** page.
+<RequestsFigure />
+
+On an eligible open brief, **Send beats** opens your hosted catalog. The **Review & send** step identifies the result for each selected track; **Retry** covers eligible failures. [Producer request help](/help/beat-requests/for-producers) explains the five-track limit, upload-and-send flow and restrictions.
+
+## Create a new request
+
+Choose **New request** when offered. Write your brief, add the required reference, choose a duration, and review the token cost before **Post request**. [Create a request](/help/beat-requests/creating-requests) explains the fields.
+
+## If a view does not load
+
+Choose **Try again** and check your filters. A failed load does not mean your requests have been deleted. If a returned beat is no longer available, its row says so; a submission does not itself grant release rights.
 
 <NeedHelp />

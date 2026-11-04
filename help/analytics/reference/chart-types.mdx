@@ -2,53 +2,38 @@
 audience: help
 title: "Chart Types Reference"
 sidebarTitle: "Chart Types"
-description: "Quick reference for the chart types currently used in BeatPass Backstage Insights."
+description: "Find listening trends, audience breakdowns and track listening detail in the right Insights tab."
 canonical: "https://docs.beatpass.ca/help/analytics/reference/chart-types"
 ---
 
-This reference lists the chart and summary modules you can currently encounter in Backstage Insights.
+import AudienceFigure from "/snippets/media/insights-audience.mdx";
+
+Use **Insights** to answer one question at a time: when listening changed, which beats led a release, or where your audience came from.
 
 ## Shared Charts
 
-<Columns cols={2}>
-  <Card title="Plays Over Time" icon="chart-line">
-    Appears on track, album, and artist insights.
-  </Card>
-  <Card title="Top Devices" icon="mobile">
-    Appears on track, album, and artist insights.
-  </Card>
-  <Card title="Top Platforms" icon="desktop">
-    Appears on track, album, and artist insights.
-  </Card>
-  <Card title="Top Listeners" icon="users">
-    Appears on track, album, and artist insights.
-  </Card>
-  <Card title="Top Locations" icon="globe">
-    Appears on track, album, and artist insights.
-  </Card>
-</Columns>
+| View | Chart | What to look for |
+| --- | --- | --- |
+| **Overview** | **Plays Over Time** | Listening activity across the selected dates |
+| **Audience** | **Top Devices** | Share of plays with device information |
+| **Audience** | **Top Platforms** | Share of plays with platform information |
+| **Audience** | **Top Listeners** | Share of plays across the listeners shown, including grouped guest listening |
+| **Audience** | **Top Locations** | Share of plays across the locations shown |
 
-## Track-Only Modules
+Read the total and subtitle on each chart. A percentage of **plays shown** can differ from a share of all plays. **Other** and **Unknown** categories keep missing or less common information in context when offered.
 
-<Columns cols={3}>
-  <Card title="Engagement Overview" icon="gauge">
-    A summary of track engagement quality.
-  </Card>
-  <Card title="Listen Duration" icon="clock">
-    Average listening-time reporting.
-  </Card>
-  <Card title="Completion Breakdown" icon="chart-pie">
-    Distribution of how much of the track listeners hear.
-  </Card>
-</Columns>
+<AudienceFigure />
+
+## Listening detail for one beat
+
+A beat's **Overview** adds **Avg Listen Duration** and **Completion Breakdown** when duration-tracked listening is available. The tracked-play total is separate from plays without duration information. [Read listening detail](/help/analytics/backstage-insights/engagement-metrics).
 
 ## Album And Artist Extras
 
-  <Card title="Most Played Tracks" icon="clipboard-list">
-  Appears on album insights and artist insights to rank the top-performing tracks inside that release or artist catalog.
-</Card>
+**Most Played Tracks** appears in collection and producer **Overview** reports. Choose a beat in that list to open its own Insights.
 
-## Availability Notes
+Your own primary producer report also has **Pro Page** for storefront activity. It is separate from marketplace listening in Overview. [Read Pro Page Traffic](/help/analytics/backstage-insights/artist-insights#pro-page-traffic).
 
-- A chart can be empty if there is not enough activity in the selected range.
-- Album and artist pages intentionally omit the track-only engagement modules.
+## Read the result in context
+
+If a chart is empty, check the selected dates and whether activity exists. If a section fails, choose **Try again** there; a failure is not a zero result.

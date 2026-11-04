@@ -8,7 +8,7 @@ canonical: "https://docs.beatpass.ca/help/downloads-and-licensing/exclusive-lice
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-This page explains the current exclusive checkout flow in BeatPass. It covers requirements, payment behavior, and what happens immediately after a successful purchase.
+Buy an exclusive BeatPass license by reviewing the exact offer, confirming your legal name, and completing one-time card checkout. Keep the purchase record with your release files afterwards.
 
 <Info>
   Exclusive purchases use secure card checkout. Supported purchase currencies are USD, EUR, GBP, and CAD.
@@ -18,9 +18,9 @@ This page explains the current exclusive checkout flow in BeatPass. It covers re
 
 You need:
 
-- A signed-in BeatPass account
+- A signed-in customer account with complete, confirmed legal identity; follow [Account details](/help/account-settings/account-details). Producer accounts cannot start new catalog purchases, even with a paid subscription; existing valid purchases and licenses remain separate.
 - A track that is still eligible for exclusive purchase
-- A producer who has payment setup completed for that track
+- Producers with complete legal names, a signed exclusive offer, and payment setup completed for that track
 - A supported payment card
 
 ### Common reasons purchase is blocked
@@ -29,9 +29,12 @@ You need:
 - The track is not configured for exclusive purchase
 - You already purchased it
 - You are trying to buy your own track
+- You are using a producer account
 - The producer does not have the required payment setup
+- The buyer or any producer is missing a legal first or last name
+- The producer has not signed the current exclusive offer
 
-## Current purchase flow
+## Buy the license
 
 <Steps>
   <Step title="Open the track page">
@@ -44,17 +47,23 @@ You need:
     BeatPass shows the producer price, either the platform fee or an active plan waiver, and the total amount in the selected currency.
   </Step>
   <Step title="Complete secure checkout">
-    Enter your card details in the secure payment form and confirm the purchase.
+    Accept the displayed exclusive terms and electronic signature using your legal account name, then continue to the secure payment form. Review changed terms again before paying.
   </Step>
   <Step title="Wait for success confirmation">
     On success, BeatPass generates the exclusive license, marks the track as sold, and shows the success flow.
   </Step>
   <Step title="Find the license later">
-    Your exclusive license is stored in **My Licenses**.
+    Your exclusive license is stored in **Your licenses**.
   </Step>
 </Steps>
 
-## What success looks like
+## Signed offer and checkout record
+
+The producer signs the exclusive offer from Backstage using their legal account name and confirms authority to license the beat for all rights holders. Changing the offered terms requires a new producer signature. A reusable preset does not carry another track’s authorization.
+
+Checkout records the buyer’s acceptance time, legal name, producer identities, producer authorization, and exact license terms. Certificate issuance uses that accepted snapshot even if the producer later edits the offer. Incomplete identity can require action before a usable certificate or licensed download is available. Complete your legal identity in [Account details](/help/account-settings/account-details), then return to **Your licenses**; eligible certificate records can complete automatically when the identities match. Producers use their connected payout identity. An identity or viewing issue does not erase the original purchase and grant.
+
+## After payment
 
 After a successful payment:
 
@@ -62,22 +71,13 @@ After a successful payment:
 - The track is marked as sold
 - BeatPass prepares the original uploaded WAV for download
 - The purchase is recorded in the selected currency
-- The certificate becomes available in **Library** → **Licenses**
+- The certificate becomes available in **Library** → **My Licenses**
 
-## Pricing and currencies
+## Check the total and promised files
 
-| Pricing item | Current behavior |
-| --- | --- |
-| **Track price** | Set by the producer |
-| **Platform fee** | Added on top unless the buyer's active plan waives it; Pro currently includes this waiver |
-| **Supported currencies** | `USD`, `EUR`, `GBP`, `CAD` |
-| **Payment method** | Secure card checkout |
+The producer sets the track price. Checkout shows any platform fee or eligible active-plan waiver, the full total, and the currency before you pay. Secure card checkout supports USD, EUR, GBP, and CAD. An exclusive-purchase benefit does not remove subscription checkout or renewal fees.
 
-<Note>
-  BeatPass shows the total before you confirm payment. Pro's waiver applies only to the exclusive purchase, not the Pro subscription charge. Do not assume every exclusive track uses the same price or currency.
-</Note>
-
-The producer is responsible for separately delivering any stems or other files promised in the license terms. Review **View License Terms** before paying so you know which files are included.
+Use **View License Terms** to check the file list. The producer separately delivers stems or other files promised in the offer.
 
 ## What to expect if payment fails
 
@@ -89,13 +89,13 @@ The producer is responsible for separately delivering any stems or other files p
     Exclusive sales are first-come, first-served. If another user completed the purchase first, the track becomes unavailable.
   </Accordion>
   <Accordion title="Payment succeeded but I do not see the license yet" icon="file-lines">
-    Check **Library** → **Licenses** first. If it still does not appear, use the support path with the purchase details.
+    Check **Library** → **My Licenses** first. If it still does not appear, use the support path with the purchase details.
   </Accordion>
 </AccordionGroup>
 
 ## Refund and billing issues
 
-If you have a charge problem after purchase, use the current BeatPass billing/support path rather than relying on old timing promises. Do not assume a fixed refund window unless the billing policy for your account says so.
+If an exclusive purchase was made by mistake, contact support **within 24 hours**. The [refund exception](/help/billing/refund-policy) requires an erroneous purchase, a request within 24 hours, no access to beat files, and no use, sharing, submission, or reliance on its certificate. Automatic certificate generation alone does not disqualify review. Approval is not guaranteed.
 
 BeatPass may also review remedies if a beat is later restricted because of a verified rights issue, AI misrepresentation, Proof of Rights failure, or AI policy breach. Remedies can include support, credit, refund review, certificate-status context, or another commercially reasonable response under the applicable policies.
 

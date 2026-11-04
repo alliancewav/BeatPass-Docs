@@ -12,180 +12,78 @@ canonical: "https://docs.beatpass.ca/developers/auth"
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 import BearerAuthExample from "/snippets/developer/bearer-auth-example.mdx";
 
-## Overview
-
-The BeatPass API supports **<Tooltip tip="A personal access token included in the Authorization header. Expires after 90 days.">Bearer token</Tooltip> authentication** for approved developer integrations.
+Use a personal access token for an approved BeatPass integration. Your token identifies your account. Follow each documented operation's authentication, eligibility and resource-access requirements.
 
 <ApiInviteOnly />
 
----
+## Requesting API Access
+
+<Steps>
+  <Step title="Describe your integration">
+    Email [contact@beatpass.ca](mailto:contact@beatpass.ca) with your use case, organization, and expected request volume. Access is reviewed individually.
+  </Step>
+  <Step title="Create a token after approval">
+    Open **Account Settings → Developers**, select **Create token**, enter a **Token name**, then select **Create**. Select **Copy** before closing with **Done**. The full token is shown only once.
+  </Step>
+  <Step title="Keep the token on your server">
+    Store it in your application's secret storage. Send it in the `Authorization` header of approved protected requests.
+
+    <BearerAuthExample />
+  </Step>
+</Steps>
 
 ## Authentication Method
 
-All authenticated API requests use **Bearer tokens** in the `Authorization` header:
+| Property | Contract |
+| --- | --- |
+| Header | `Authorization: Bearer {token}` |
+| Expiration | 90 days from creation |
+| Revocation | **Delete** the token in **Account Settings → Developers** |
+| Permissions | API approval and the endpoint's account and resource rules still apply |
 
-<BearerAuthExample />
+Create a replacement before a token expires, update your integration, and delete the old token once the replacement works. Deleting a token does not delete your account.
 
-<Columns cols={2}>
-  <Card title="Bearer Tokens" icon="key">
-    Personal access tokens for approved developer integrations
-  </Card>
-  <Card title="Token Expiration" icon="clock">
-    Tokens expire after 90 days and must be regenerated
-  </Card>
-</Columns>
+<Warning>
+  Treat the token like a password. Keep it out of browser code, URLs, analytics, logs, screenshots, support messages, and version control. If it is exposed, delete it and create a replacement.
+</Warning>
 
----
+## API Access Tiers
+
+| Request | Expected access |
+| --- | --- |
+| Documented public read without a token | Public fields for that endpoint |
+| Approved token with permission for the operation | The fields and actions allowed by that endpoint |
+| Protected request without valid authentication | `401` |
+| Authenticated request without the required access | `403` |
+
+Response fields differ between endpoints. Do not assume that a token unlocks every field, grants ownership, or makes a protected operation public when authentication fails. Use the endpoint's response contract.
 
 ## Authentication Errors
 
 <AccordionGroup>
-  <Accordion title="401 Unauthenticated" icon="circle-xmark">
-    <Badge color="red"><Tooltip tip="The server could not verify your identity. Usually means the token is missing, invalid, or expired.">401</Tooltip></Badge> Token missing, invalid, or expired.
-    
-    **Solution:** Verify your token is correct and has not expired. Contact support if you need a new token.
-    
+  <Accordion title="401 — check the token" icon="key">
+    Check that the token is present, complete, and unexpired. Generate a replacement if needed. Avoid repeatedly retrying the same rejected credentials.
+
     ```json
     { "message": "Unauthenticated." }
     ```
   </Accordion>
-  
-  <Accordion title="403 Forbidden" icon="ban">
-    <Badge color="orange"><Tooltip tip="You authenticated successfully, but your account lacks permission to access this specific resource.">403</Tooltip></Badge> Your account lacks permission for this resource.
-    
-    **Solution:** Ensure your account has been granted API access. Contact support if you believe this is an error.
+  <Accordion title="403 — check permission" icon="lock">
+    Confirm your account has API approval, access to the feature, and permission for the requested resource. A new token does not change account eligibility. Contact BeatPass when the account should have access.
   </Accordion>
 </AccordionGroup>
-
----
-
-## API Access Tiers
-
-The BeatPass API uses a **two-tier access model** for external consumers:
-
-| Tier | Auth Method | Data Level | Use Case |
-|------|-------------|------------|----------|
-| **Public** | None | Model-specific public fields; see the lists below | Basic resource identification |
-| **Token** | `Authorization: Bearer {token}` | Rich (pricing, plays, BPM, licensing) | Approved developer integrations |
-
-<Warning>
-  **Public model responses use a reduced field set.** Approved token responses expose additional pricing, licensing, and metadata fields. Endpoint-specific projections determine which counters and related records are included.
-</Warning>
-
-### What Each Tier Returns
-
-<Tabs>
-  <Tab title="Public (No Token)">
-    **Track:** `id`, `name`, `image`, `created_at`, `model_type`, `duration_text`, plus `artists` and `genres` when loaded. Endpoint controllers can add fields; track listing also exposes `views`, `updated_at`, and `plays`.
-    
-    **Artist:** `id`, `name`, `model_type`
-    
-    **Genre:** `id`, `name`, `display_name`, `model_type`
-    
-    **Album:** `id`, `name`, `model_type`, `image`, `release_date`
-    
-    These model-level projections do not define every endpoint response. Use the endpoint-specific field contract, including the track-list counters noted above.
-  </Tab>
-  <Tab title="Token (Bearer Auth)">
-    Everything in Public, plus:
-    
-    **Track:** `duration`, `price`, `currency`, `bpm`, `key`, `scale`, `plays`, `licensing_type`, `exclusive_status`, `exclusive_price`, `reposts_count`, `likes_count`, `description`, `tags`, and more.
-    
-    **Artist:** `bio`, `website`, `verified`, and profile data. External token serialization hides the raw `image_small` field.
-    
-    **Album:** `plays`, `created_at`, `tracks` relation.
-    
-    Sensitive fields remain hidden even with authentication, including audio source URLs, internal ownership references, licensing configuration, and processing metadata.
-  </Tab>
-</Tabs>
-
-```mermaid
-flowchart LR
-    A[API Request] --> B{Bearer token\nprovided?}
-    B -->|Yes| C[Rich Data\nPricing, plays, BPM,\nlicensing, tags]
-    B -->|No| D[Public Data\nModel-specific fields]
-```
-
----
-
-## Requesting API Access
-
-API access is granted on a **case-by-case basis** to approved developers and partners.
-
-<Steps>
-  <Step title="Contact BeatPass">
-    Email [**contact@beatpass.ca**](mailto:contact@beatpass.ca) with your use case, expected request volume, and organization details.
-  </Step>
-  
-  <Step title="Review & Approval">
-    The BeatPass team will review your request. Approved developers will receive API access on their account.
-  </Step>
-  
-  <Step title="Generate Token">
-    Once approved, navigate to **Account Settings → Developers** and click **Create** to generate your token. Copy it immediately — it is only shown once.
-  </Step>
-  
-  <Step title="Authenticate Requests">
-    Include the token in the `Authorization` header of all API requests:
-    ```http
-    Authorization: Bearer {your-token}
-    ```
-  </Step>
-</Steps>
-
-```mermaid
-flowchart LR
-    A[Contact BeatPass] --> B[Approved]
-    B --> C[Generate Token]
-    C --> D[Use in Requests]
-    D --> E{Token expired?\n90 days}
-    E -->|Yes| C
-    E -->|No| D
-```
-
-### Token Details
-
-| Property | Value |
-|----------|-------|
-| **Access** | Invite-only, granted by BeatPass team |
-| **Expiration** | 90 days from creation |
-| **Header format** | `Authorization: Bearer {token}` |
-
-<Warning>
-  Treat your API token like a password. Do not share it, commit it to version control, or expose it in client-side code. Misuse of API tokens will result in immediate revocation and potential account termination.
-</Warning>
-
-### Revoking Tokens
-
-To revoke a token, return to **Account Settings → Developers** and click **Delete** next to the token.
-
----
 
 ## Security
 
-<AccordionGroup>
-  <Accordion title="HTTPS Only">
-    All API requests must use HTTPS. Non-secure requests are rejected.
-  </Accordion>
-  
-  <Accordion title="Token Security">
-    Never expose tokens in client-side code, URLs, or public repositories.
-  </Accordion>
-  
-  <Accordion title="Abuse Monitoring">
-    All API activity is logged and monitored. Abusive patterns (scraping, excessive requests, unauthorized access attempts) result in immediate token revocation and account termination.
-  </Accordion>
-</AccordionGroup>
-
----
+Use HTTPS and stay within your approved integration scope and the [Terms of Service](https://open.beatpass.ca/pages/terms-of-service). Request only data your integration needs. Remove private account data from diagnostic reports before sharing them.
 
 ## Next Steps
 
 <Columns cols={2}>
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
-    See available endpoints.
+    Find an operation and its access requirements.
   </Card>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
-    Understand request limits.
+    Handle request budgets and retries.
   </Card>
 </Columns>

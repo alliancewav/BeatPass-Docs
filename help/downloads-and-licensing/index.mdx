@@ -1,19 +1,31 @@
 ---
 audience: help
 title: "Downloads & Licensing"
-sidebarTitle: "Overview"
+sidebarTitle: "Downloads & licenses"
 description: "Understand how BeatPass downloads, license certificates, audio fingerprinting, and exclusive purchases work."
 canonical: "https://docs.beatpass.ca/help/downloads-and-licensing"
 ---
 
+import TrackFigure from "/snippets/media/track.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass lets you use tracks in two main ways:
+Found the sound for your next song? Check the beat's license, request the audio, and keep its certificate with your release records. A download and an exclusive purchase are different paths.
 
-- Download a track under a standard non-exclusive license when your account has download access
-- Buy an exclusive license for eligible tracks through one-time secure card checkout
+<Columns cols={2}>
+  <Card title="Standard download" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
+    Use eligible customer download access for a standard non-exclusive license tied to one project.
+  </Card>
+  <Card title="Exclusive purchase" icon="crown" href="/help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive">
+    Review that beat's offer and complete a separate one-time card checkout when available.
+  </Card>
+</Columns>
 
-This section explains what happens in the current product, including when licenses appear, where to find them, and what the platform verifies publicly.
+<Note>
+  Producer access is free, but current producer accounts cannot acquire new standard licenses or make new exclusive catalog purchases for other producers' beats, including with a paid plan. Producers can retrieve their own audio and audio covered by an existing valid certificate. See [How Downloads Work](/help/downloads-and-licensing/how-downloads-work) for the access rules.
+</Note>
+
+<TrackFigure />
 
 ## Check the terms for your license
 
@@ -23,35 +35,12 @@ The standard non-exclusive agreement covers one project, with limits of **100,00
 
 Use the terms that apply to your issued license. This guide does not change earlier grants. Exclusive permissions and deliverables depend on the specific purchase.
 
-## Interface Preview
-
-<Tabs>
-  <Tab title="Desktop">
-    <Frame caption="My Licenses on desktop in light mode; license records are excluded from the capture">
-      <img src="/assets/screenshots/licensing-desktop-light.png" alt="My Licenses page heading with non-exclusive and exclusive license categories on desktop" />
-    </Frame>
-  </Tab>
-  <Tab title="Mobile">
-    <Frame caption="My Licenses on mobile in dark mode; license records are excluded from the capture">
-      <img src="/assets/screenshots/licensing-mobile-dark.png" alt="Mobile My Licenses page with license categories and search" />
-    </Frame>
-  </Tab>
-</Tabs>
 
 <Info>
-  An eligible download can generate a license certificate automatically. Repeat downloads may use your existing valid certificate. Find your license on the track page or in **My Licenses**.
+  An eligible download can generate a license certificate automatically. Repeat downloads may use your existing valid certificate. Find your license on the track page or in **Your licenses**.
 </Info>
 
-## License types
 
-<Columns cols={2}>
-  <Card title="Non-exclusive license" icon="users">
-    Standard BeatPass download license for eligible users. Multiple artists can license the same beat, and attribution is required.
-  </Card>
-  <Card title="Exclusive license" icon="crown">
-    One-time purchase for eligible tracks. After purchase, no new non-exclusive licenses are issued for that beat.
-  </Card>
-</Columns>
 
 ## Fast comparison
 
@@ -69,45 +58,35 @@ Use the terms that apply to your issued license. This guide does not change earl
   Read the exclusive preview and certificate with the checkout terms, governing Terms, applicable agreement and any signed addendum. Rights and deliverables depend on the particular purchase.
 </Note>
 
-## How the current flow works
+## From beat to licensed audio
 
 <Steps>
   <Step title="Choose a track">
     On the track page, use **Download** for standard access or **Buy Exclusive** when an instant exclusive offer is available.
   </Step>
-  <Step title="BeatPass checks access">
+  <Step title="Check your access">
     New standard licenses require eligible download access. A later exclusive sale stops new licenses for new buyers; earlier valid non-exclusive grants continue under their terms. Re-download access is checked separately, and an existing valid certificate may permit retrieval. Contact support if you hold a valid license but cannot retrieve the file.
   </Step>
-  <Step title="Your audio or purchase completes">
-    Eligible standard downloads deliver the track file and create or retrieve the applicable certificate. Re-downloading does not itself grant a new project. Exclusive purchases use secure card checkout. After payment, check your purchase status and certificate; contact support if license delivery is pending or incomplete.
+  <Step title="Confirm the result">
+    **Download requested** means your browser has been asked to save the audio. Check its download list, then open **My licenses** in the dialog to reach **Your licenses**. A qualifying download creates or retrieves the applicable certificate; repeating it does not grant a new project. Exclusive purchases use separate secure card checkout.
   </Step>
   <Step title="Find your license">
-    Open your certificate from the post-download flow, the track page, or **My Licenses**.
+    Open [Library → My Licenses](https://open.beatpass.ca/library/licenses), titled **Your licenses**, and follow any identity action before opening the certificate.
   </Step>
   <Step title="Verify when needed">
     Every license can be checked on the public verification page using its unique link.
   </Step>
 </Steps>
 
-## What is included today
+An exclusive purchase prepares the original uploaded WAV for download. Other promised files are defined by that offer's preview and certificate; the producer delivers them separately.
 
-<AccordionGroup>
-  <Accordion title="Standard track downloads" icon="download" defaultOpen>
-    An eligible standard download delivers the track file and creates or retrieves the applicable certificate. Find it on the track page or in **My Licenses**. Re-downloading does not itself grant another project.
-  </Accordion>
-  <Accordion title="Exclusive purchases" icon="crown">
-    On successful purchase, BeatPass generates the exclusive license, marks the beat as sold, prepares the original uploaded WAV for download, and stores the license in **My Licenses**. The final deliverables are defined by the license preview and certificate for that track.
-  </Accordion>
-  <Accordion title="Audio fingerprinting" icon="fingerprint">
-    The collapsible **BeatPass ID** section brings together licensing, Sample-Safe status, AI disclosure when available, promised deliverables, and the verified fingerprint. A missing current track fingerprint is different from a problem with a stored certificate. Certificate access or printing may fail if the stored record is incomplete or fails integrity checks; contact support for help confirming your record.
-  </Accordion>
-</AccordionGroup>
+For provenance, expand **BeatPass ID** on the track. It brings together licensing, Sample-Safe status, available AI disclosure, promised files, and fingerprint information. A missing current track fingerprint is separate from a problem with a stored certificate. If a certificate cannot open or print because its record is incomplete or fails its checks, contact support.
 
 ## Where to go next
 
 <Columns cols={2}>
   <Card title="How Downloads Work" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
-    Step-by-step behavior for download access, download completion, and certificate availability.
+    Save your audio and find the certificate afterwards.
   </Card>
   <Card title="License Certificates" icon="file-lines" href="/help/downloads-and-licensing/license-certificates">
     What the certificate shows and how to access it.

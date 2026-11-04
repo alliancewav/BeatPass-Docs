@@ -6,28 +6,32 @@ sidebarTitle: "Collaborative Playlists"
 canonical: "https://docs.beatpass.ca/help/playlists/collaborative-playlists"
 ---
 
+import PlaylistFigure from "/snippets/media/playlist.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
 BeatPass collaboration is invite-based. Turning on **Collaborative** does not make a playlist editable by everyone who can see it; editing stays limited to the owner and accepted collaborators.
 
-## Who Can Do What
+<PlaylistFigure />
+
+## Who can do what
 
 | Action | Owner | Accepted collaborator | Follower or public viewer |
 | --- | --- | --- | --- |
 | View public playlist | Yes | Yes | Yes |
 | View private playlist | Yes | Yes | No |
 | Add tracks | Yes | Yes | No |
-| Remove tracks | Yes | Owner only in UI | No |
-| Reorder tracks | Yes | Owner only in UI | No |
+| Remove tracks | Yes | Yes, while collaboration is enabled | No |
+| Reorder tracks | Yes | Yes, where reorder controls are available | No |
 | Edit name, image, description, privacy | Yes | No | No |
 | Invite collaborators | Yes | No | No |
 | Delete playlist | Yes | No | No |
 
 <Note>
-  The backend grants accepted editors broader update authority, but the current UI restricts some actions (like removing and reordering tracks) to the playlist owner. Your experience may reflect this UI limitation.
+  Accepted collaborators can work on tracks while **Collaborative** is enabled. The owner controls the playlist details shown by the editor. On a supported desktop pointer, drag to reorder while the list uses its saved position order.
 </Note>
 
-## Creating A Collaborative Playlist
+## Creating a collaborative playlist
 
 You can enable collaboration in either place:
 
@@ -36,7 +40,7 @@ You can enable collaboration in either place:
 
 When collaboration is on, the playlist form uses the description: **Invite other users to add tracks.**
 
-## Inviting People
+## Inviting people
 
 <Steps>
   <Step title="Turn on collaboration">
@@ -53,7 +57,7 @@ When collaboration is on, the playlist form uses the description: **Invite other
   </Step>
 </Steps>
 
-## Leaving A Collaborative Playlist
+## Leaving a collaborative playlist
 
 If you are an invited editor:
 
@@ -61,7 +65,7 @@ If you are an invited editor:
 - Unfollowing triggers a confirmation flow because you are leaving the collaboration.
 - Confirming removes your editor access, not just a library entry.
 
-## Privacy Still Applies
+## Privacy still applies
 
 Collaboration and privacy are separate:
 

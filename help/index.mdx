@@ -1,205 +1,70 @@
 ---
-title: "Welcome to BeatPass"
+title: "BeatPass Help"
 audience: "help"
-sidebarTitle: "Welcome"
-description: "Browse the BeatPass Help Center by goal, feature area, or workflow. Find guides for listening, subscriptions, producer tools, billing, licensing, and support."
+sidebarTitle: "Help home"
+description: "Find your next beat, get a licensed song ready to release, or manage your producer catalog with visual guides to the screens you use on BeatPass."
 icon: "house"
 mode: "default"
 canonical: "https://docs.beatpass.ca/help"
 ---
 
-<Frame>
-  ![Welcome](/assets/images/welcome.png)
-</Frame>
+import DiscoverFigure from "/snippets/media/discover.mdx";
+import LicenseWalletFigure from "/snippets/media/license-wallet.mdx";
+import DashboardFigure from "/snippets/media/dashboard.mdx";
 
-# Help Center
+Choose a BeatPass task below to see the screen to look for and a short guide to your next step. Already in the middle of something? Use the shortcuts below.
 
-Find the right BeatPass guide based on what you are trying to do: discover music, manage a subscription, download licensed beats, or grow as a producer.
+<Tabs sync={false}>
+  <Tab title="Listen" icon="headphones">
+    Explore a sound, save the beats you love, and build a playlist. A free account is enough to start.
 
----
+    <Card title="Listen & discover" icon="play" href="/help/getting-started/quick-start-guides/listener-guide" horizontal>
+      Play your first beat, keep a shortlist, and follow a producer you want to hear again.
+    </Card>
 
-## Start Here
-
-<Columns cols={2}>
-  <Card title="Getting Started" icon="rocket" href="/help/getting-started" img="/assets/images/getting-started.png">
-    Create an account, learn the navigation, and understand listener, subscriber, and producer roles.
-  </Card>
-
-  <Card title="Plans & Pricing" icon="credit-card" href="/help/plans-and-pricing" img="/assets/images/plans.png">
-    Compare current plans, request limits, and checkout costs before you subscribe.
-  </Card>
-
-  <Card title="Producer Program" icon="microphone-lines" href="/help/producer-program">
-    Apply for producer access, understand approval paths, and learn what happens after acceptance.
-  </Card>
-
-  <Card title="Contact Support" icon="headset" href="/help/contact-support">
-    Find all the verified BeatPass support channels, reporting paths, and feedback guidance. 
-  </Card>
-</Columns>
-
-<Tip>
-  If you already know the area you need, use the left sidebar or the search bar at the top of the docs to jump directly to that section.
-</Tip>
-
----
-
-## Browse by Goal
-
-<Tabs>
-  <Tab title="I Listen">
-    Use these guides if you mainly browse music, save favorites, and manage your listening experience.
-
-    <Columns cols={2}>
-      <Card title="Discovering Music" icon="music" href="/help/discovering-music" img="/assets/images/discover.png">
-        Search, browse channels, explore producer pages, and find the right tracks faster.
-      </Card>
-
-      <Card title="Playing Music" icon="play" href="/help/playing-music" img="/assets/images/play.png">
-        Learn the player controls, queue behavior, lyrics, and waveform comments.
-      </Card>
-
-      <Card title="Library" icon="folder" href="/help/library">
-        Manage saved tracks, collections, licenses, listening history, and lyrics.
-      </Card>
-
-      <Card title="Playlists" icon="list" href="/help/playlists">
-        Create playlists, control privacy, and understand collaboration rules.
-      </Card>
-    </Columns>
+    <DiscoverFigure />
   </Tab>
-  <Tab title="I Subscribe">
-    Use these guides if you are comparing plans, paying for access, downloading beats, or sending beat requests.
+  <Tab title="Release music" icon="microphone-lines">
+    Find a beat for your song, check its license, and keep the audio and certificate together. New standard licenses need an eligible customer account with download access.
 
-    <Columns cols={2}>
-      <Card title="Plans & Pricing" icon="credit-card" href="/help/plans-and-pricing">
-        Review the current paid tiers, monthly request allowances, and plan differences.
-      </Card>
+    <Card title="Download & release music" icon="download" href="/help/getting-started/quick-start-guides/subscriber-guide" horizontal>
+      Check your access before subscribing, then follow the download and release steps.
+    </Card>
 
-      <Card title="Billing" icon="credit-card" href="/help/billing">
-        Manage your current plan, saved card, invoice history, coupons, and subscription changes.
-      </Card>
-
-      <Card title="Downloads & Licensing" icon="download" href="/help/downloads-and-licensing">
-        Understand download rules, license certificates, verification, and release-safe use.
-      </Card>
-
-      <Card title="Beat Requests" icon="wave-square" href="/help/beat-requests">
-        Create beat requests, spend tokens, manage open requests, and review submissions.
-      </Card>
-    </Columns>
+    <LicenseWalletFigure />
   </Tab>
-  <Tab title="I Produce">
-    Use these guides if you want to upload music, manage your catalog, set licensing, and get paid.
+  <Tab title="Produce" icon="sliders">
+    Bring your own beats to BeatPass. Producer access is free and needs approval; a paid customer plan does not unlock new catalog licenses for producer accounts.
 
-    <Columns cols={2}>
-      <Card title="Producer Program" icon="microphone-lines" href="/help/producer-program">
-        See the application types, requirements, review flow, and producer access rules.
-      </Card>
+    <Card title="Produce & get paid" icon="music" href="/help/getting-started/quick-start-guides/producer-guide" horizontal>
+      Apply, publish your music, and follow the payout setup offered to your account.
+    </Card>
 
-      <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
-        Upload WAV files, manage metadata, cover art, collections, and fingerprinting.
-      </Card>
-
-      <Card title="Licensing for Producers" icon="file-lines" href="/help/licensing-for-producers">
-        Configure standard and custom exclusive licensing, pricing, and sale behavior.
-      </Card>
-
-      <Card title="Producer Dashboard" icon="table-columns" href="/help/producer-dashboard">
-        Work with tracks, albums, activity, progress, leaderboards, finances, and insights.
-      </Card>
-    </Columns>
+    <DashboardFigure />
   </Tab>
 </Tabs>
 
----
-
-## Popular Help Areas
+## Pick up where you left off
 
 <Columns cols={2}>
-  <Card title="Profiles" icon="user" href="/help/profiles" img="/assets/images/profile.png">
-    Learn the difference between user profiles and producer profiles, including edit and visibility controls.
+  <Card title="Find your licenses" icon="file-contract" href="/help/downloads-and-licensing/license-certificates">
+    Open a certificate, complete a name confirmation, or retrieve an already licensed beat.
   </Card>
-
-  <Card title="Messaging" icon="comments" href="/help/messaging" img="/assets/images/chat.png">
-    Start direct messages, manage conversations, and understand real-time behavior.
+  <Card title="Manage your plan" icon="credit-card" href="/help/billing/managing-subscription">
+    Check renewal, change your subscription, or stop future payments.
   </Card>
-
-  <Card title="Notifications" icon="bell" href="/help/notifications">
-    Control in-app, email, and push notifications by category.
+  <Card title="Upload a beat" icon="cloud-arrow-up" href="/help/uploading/upload-page">
+    Start with a WAV, add the musical details, and choose your licensing options.
   </Card>
-
-  <Card title="Troubleshooting" icon="triangle-exclamation" href="/help/troubleshooting">
-    Fix common account, payment, upload, playback, and download problems.
+  <Card title="Set up payouts" icon="building-columns" href="/help/earnings/beatpay">
+    Find out what Finances needs before your earnings can move.
   </Card>
 </Columns>
 
----
+## Explore at your own pace
 
-## Producer Tools
+Keep a [playlist](/help/playlists), start a [conversation](/help/messaging), post a [beat request](/help/beat-requests), or make your [profile](/help/profiles) yours. Search using the label you see in the app when you need a specific screen.
 
-<Columns cols={2}>
-  <Card title="Analytics" icon="chart-line" href="/help/analytics" img="/assets/images/analytics.png">
-    Understand producer dashboard Insights, chart types, and metric definitions.
-  </Card>
+Before releasing music, check your [license terms](/help/legal/license-terms). If something gets in the way, [find a fix](/help/troubleshooting) or [ask support](/help/contact-support). You do not need to know the technical cause.
 
-  <Card title="Earnings" icon="money-bill-wave" href="/help/earnings" img="/assets/images/credit-card.png">
-    Review BEATPAY, Stripe Connect, contribution payouts, payout timing, and finance pages.
-  </Card>
-
-  <Card title="Gamification" icon="trophy" href="/help/gamification">
-    See how XP points, achievements, progress, and leaderboards work for producers.
-  </Card>
-
-  <Card title="Account Settings" icon="gear" href="/help/account-settings">
-    Manage password, sessions, developer API access, localization, and security settings.
-  </Card>
-</Columns>
-
----
-
-## Social and Community
-
-<Columns cols={3}>
-  <Card title="Social Features" icon="users" href="/help/social-features">
-    Following, reposts, comments, likes and sharing.
-  </Card>
-
-  <Card title="Messaging" icon="comments" href="/help/messaging">
-    Direct messages and group chat conversations.
-  </Card>
-
-  <Card title="Beat Requests" icon="wave-square" href="/help/beat-requests">
-    Request music from producers and manage responses.
-  </Card>
-</Columns>
-
----
-
-## Reference and Policies
-
-<Columns cols={2}>
-  <Card title="Legal" icon="scale-balanced" href="/help/legal">
-    Terms of service, privacy policy, content rules, and license terms.
-  </Card>
-
-  <Card title="FAQ" icon="circle-question" href="/help/faq">
-    Quick answers to the most common questions.
-  </Card>
-
-  <Card title="Glossary" icon="book" href="/help/glossary">
-    Definitions for every BeatPass term and concept.
-  </Card>
-
-  <Card title="Release Notes" icon="bullhorn" href="/release-notes">
-    Stay up to date with the latest features and improvements.
-  </Card>
-</Columns>
-
-<Note>
-  Need direct help with an unresolved issue? Start at [Contact Support](/help/contact-support).
-</Note>
-
-<Tip>
-  Looking for developer-facing integration docs instead of end-user help? Use the [Developer Documentation](/developers/overview).
-</Tip>
+[What's new](/release-notes) follows product updates. Building an integration? The separate [API & Developers](/developers/overview) area has the technical reference.

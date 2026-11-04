@@ -1,16 +1,19 @@
 ---
 audience: help
-title: "Real-Time Features"
-sidebarTitle: "Real-Time Features"
+title: "Reactions and Message Status"
+sidebarTitle: "Reactions & Message Status"
 description: "Understand typing indicators, seen states, unread badges, and retry behavior in BeatPass messaging."
 canonical: "https://docs.beatpass.ca/help/messaging/real-time-features"
 ---
 
+import MessagingFigure from "/snippets/media/messaging.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass messaging updates live while the panel is open. You can see typing activity, unread state changes, delivery status, and failed-message retry behavior without manually refreshing the page.
+See when someone is typing, react to a message, and check whether your reply was sent or read. Updates appear while the conversation is open.
 
----
+
+<MessagingFigure />
 
 ## Reactions
 
@@ -20,7 +23,7 @@ Choose **Love**, **Like**, **Laugh**, **Surprised**, **Sad**, or **Thanks**. Sel
 
 Scrolling or lifting your finger before the hold finishes does not open the picker. The mobile picker also includes **Copy** for the message text; links keep their usual browser actions.
 
-## Typing Indicators
+## Typing indicators
 
 Typing indicators appear in two places:
 
@@ -33,13 +36,12 @@ In group chats, the typing indicator shows one participant typing at a time in t
   Typing indicators are only visible while the conversation is active. They are not delivered as notifications.
 </Note>
 
----
 
-## Delivery and Read States
+## Delivery and read states
 
 | State | What it means |
 | --- | --- |
-| **Sending...** | Your message is still in its optimistic send state |
+| **Sending...** | Your message is being sent; delivery is not confirmed yet |
 | **Sent** | BeatPass accepted the message |
 | **Seen** | The message has been read |
 | **Failed** | The send did not complete and can be retried |
@@ -53,18 +55,16 @@ Read state appears:
   Opening a conversation marks unread messages as read. BeatPass does not expose a toggle to disable read receipts.
 </Info>
 
----
 
-## Other Live Behaviors
+## Keep up with new replies
 
 - New messages appear automatically while a conversation is open
 - The message icon badge updates as unread counts change
 - If a message send fails, BeatPass shows a retry control on that bubble
 - If you are scrolled away from the newest messages, the chat view can surface a jump-to-latest cue
 
----
 
-## Privacy and Visibility
+## Privacy and visibility
 
 | Feature | What other participants can see |
 | --- | --- |
@@ -72,9 +72,8 @@ Read state appears:
 | **Read receipts** | When you open the conversation |
 | **Online status** | Not currently shown |
 
----
 
-## Troubleshooting Real-Time Features
+## When something needs attention
 
 <AccordionGroup>
   <Accordion title="Typing indicator isn't showing">
@@ -94,9 +93,8 @@ Read state appears:
   </Accordion>
 </AccordionGroup>
 
----
 
-## Related Topics
+## Related topics
 
 <Columns cols={2}>
   <Card title="Direct Messages" icon="comment" href="/help/messaging/direct-messages">

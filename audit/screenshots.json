@@ -1,0 +1,754 @@
+{
+  "version": 1,
+  "source": {
+    "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+    "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c",
+    "historical_manifest_reference_sha256": "7747223723d81d600c7b3f8bb5b6bc026a1ce03b6425afa3d32a7480af49d3d3"
+  },
+  "screenshots": [
+    {
+      "path": "/assets/screenshots/release-review/download-requested-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:47.051684+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/track/11/smoke-track",
+      "state": "download-requested",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. After Download audio; explains the browser handoff and My licenses link",
+      "pages": [
+        "help/downloads-and-licensing/how-downloads-work",
+        "help/troubleshooting/download-issues"
+      ],
+      "placement": "After Download audio; explains the browser handoff and My licenses link",
+      "image": {
+        "width": 620,
+        "height": 396,
+        "sha256": "e56bcd4a1d66dc6c24a47a1c88105aeddb2fc02c30e1a34de69a830c04a591bc",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/certificate-identity-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:33.197919+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/library/licenses",
+      "state": "certificate-identity",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Beside the once-only legal-name confirmation instructions",
+      "pages": [
+        "help/downloads-and-licensing/license-certificates"
+      ],
+      "placement": "Beside the once-only legal-name confirmation instructions",
+      "image": {
+        "width": 1125,
+        "height": 338,
+        "sha256": "064f75051a9f83cafc07f5f23b78984eae72351a443a8903c5487e33ae0f6196",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/certificate-identity-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:45.323732+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/library/licenses",
+      "state": "certificate-identity",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. Beside the once-only legal-name confirmation instructions",
+      "pages": [
+        "help/downloads-and-licensing/license-certificates"
+      ],
+      "placement": "Beside the once-only legal-name confirmation instructions",
+      "image": {
+        "width": 371,
+        "height": 578,
+        "sha256": "6a5f00d107e6ec101f26d9015b64863490e174ec1b77041a023b31159a66f08a",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/legal-identity-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:21.927110+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/account-settings",
+      "state": "legal-identity",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. After the legal-name lock and correction guidance",
+      "pages": [
+        "help/account-settings/account-details",
+        "help/account-settings/index"
+      ],
+      "placement": "After the legal-name lock and correction guidance",
+      "image": {
+        "width": 786,
+        "height": 528,
+        "sha256": "5ebc27ba79674ec7ecc33b564893566ee78b7add065643df5a2f8fcc72deeb14",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/legal-identity-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:33.314936+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/account-settings",
+      "state": "legal-identity",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. After the legal-name lock and correction guidance",
+      "pages": [
+        "help/account-settings/account-details",
+        "help/account-settings/index"
+      ],
+      "placement": "After the legal-name lock and correction guidance",
+      "image": {
+        "width": 361,
+        "height": 764,
+        "sha256": "83bd3f6adec01dc57fbb0e9c1d4864a68b118a3089cc848ada7799a3932a824c",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/upload-rights-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:19.429153+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/backstage/tracks/11/edit",
+      "state": "upload-rights",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Beside Protection & Verification; selected Human-made is synthetic demonstration",
+      "pages": [
+        "help/uploading/upload-page",
+        "help/uploading/sample-safe"
+      ],
+      "placement": "Beside Protection & Verification; selected Human-made is synthetic demonstration",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "f1e6a0a4a37fcd6ee0db648f3b00b1bc05eacadad77b8fc3d8072466ddfeede0",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/payout-currency-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:25.054057+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/account-settings",
+      "state": "payout-currency",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. After Choose bank account currency; shown entry from Account details uses same real BEATPAY wizard",
+      "pages": [
+        "help/earnings/beatpay",
+        "help/earnings/currencies-and-pricing"
+      ],
+      "placement": "After Choose bank account currency; shown entry from Account details uses same real BEATPAY wizard",
+      "image": {
+        "width": 620,
+        "height": 531,
+        "sha256": "5dfd4e7738e35a6a3341919e0d90aa5a139e1ef5512b53137b2915b02a727b14",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/payout-introduction-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:24.355069+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/account-settings",
+      "state": "payout-introduction",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. After Open Set up BEATPAY; no bank details entered or saved",
+      "pages": [
+        "help/earnings/beatpay"
+      ],
+      "placement": "After Open Set up BEATPAY; no bank details entered or saved",
+      "image": {
+        "width": 620,
+        "height": 462,
+        "sha256": "e29e905986ca963a298fec8141f9c43a1099f41e6a24d04866d8ce9683542f0b",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/pro-page-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:30.044972+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/producer-dashboard/pro-page",
+      "state": "pro-page",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. After Pro Page status; synthetic live storefront",
+      "pages": [
+        "help/producer-dashboard/pro-page",
+        "help/producer-dashboard/index"
+      ],
+      "placement": "After Pro Page status; synthetic live storefront",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "5372cd059514d6f8dbb3f2aefde960198f0208383817009ab873b2aa493e09e8",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/pro-page-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:42.033788+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/producer-dashboard/pro-page",
+      "state": "pro-page",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. After Pro Page status; synthetic live storefront",
+      "pages": [
+        "help/producer-dashboard/pro-page",
+        "help/producer-dashboard/index"
+      ],
+      "placement": "After Pro Page status; synthetic live storefront",
+      "image": {
+        "width": 393,
+        "height": 852,
+        "sha256": "7f676dbdf0f055f0a4ff4257cbb073d817e1ee6394d68cfdb527e58e0165cc1d",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/pro-page-sections-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:30.565964+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/producer-dashboard/pro-page",
+      "state": "pro-page-sections",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Beside section visibility controls",
+      "pages": [
+        "help/producer-dashboard/pro-page"
+      ],
+      "placement": "Beside section visibility controls",
+      "image": {
+        "width": 744,
+        "height": 445,
+        "sha256": "506e4160e685a9e5b3ecf9980a1703e15aedb5be17db7cf8f4996048a428d92b",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/audio-recon-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:38.270833+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/producer-dashboard/audio-recon",
+      "state": "audio-recon",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. After Open Audio Recon; similarity findings and scan activity are illustrative",
+      "pages": [
+        "help/licensing-for-producers/audio-recon"
+      ],
+      "placement": "After Open Audio Recon; similarity findings and scan activity are illustrative",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "b67d78d49390dbb37e62a55d4eb1ac6a38d5d702b7e0eb668ba4465d540b5285",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/audio-recon-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:50.433645+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/producer-dashboard/audio-recon",
+      "state": "audio-recon",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. After Open Audio Recon; similarity findings and scan activity are illustrative",
+      "pages": [
+        "help/licensing-for-producers/audio-recon"
+      ],
+      "placement": "After Open Audio Recon; similarity findings and scan activity are illustrative",
+      "image": {
+        "width": 393,
+        "height": 852,
+        "sha256": "85163c8577e126d4a7862b29b94ca2513192d4e43358b4887aa5829a14dd9132",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/privacy-preferences-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:13.428255+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/library/songs",
+      "state": "privacy-preferences",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Beside managing optional tracking choices or in a linked plain-language privacy guide",
+      "pages": [
+        "help/legal/cookie-tracking-policy"
+      ],
+      "placement": "Beside managing optional tracking choices or in a linked plain-language privacy guide",
+      "image": {
+        "width": 1440,
+        "height": 75,
+        "sha256": "d1841d2b36db7d1a9e55bb00c7e608b48bd0c18c7160ed178fcddc0f531ac269",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/privacy-preferences-mobile-dark.png",
+      "captured_at": "2026-10-29T03:43:59.635508+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/library/songs",
+      "state": "privacy-preferences",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. Beside managing optional tracking choices or in a linked plain-language privacy guide",
+      "pages": [
+        "help/legal/cookie-tracking-policy"
+      ],
+      "placement": "Beside managing optional tracking choices or in a linked plain-language privacy guide",
+      "image": {
+        "width": 393,
+        "height": 149,
+        "sha256": "4039e4426f95ccefa53187723d82a26763b9c4cda92eeef83334bcd4109e0955",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/playlists-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:27.564014+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/playlist/30/late-night-beats",
+      "state": "playlists",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old Interface Preview; synthetic empty playlist",
+      "pages": [
+        "help/playlists/index"
+      ],
+      "placement": "Replace old Interface Preview; synthetic empty playlist",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "68a1c7ad79acabae3de28a9b34311d9a76f2200e93aebba23c14706cd9a54dcd",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/playlists-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:39.245835+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/playlist/30/late-night-beats",
+      "state": "playlists",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old Interface Preview; synthetic empty playlist",
+      "pages": [
+        "help/playlists/index"
+      ],
+      "placement": "Replace old Interface Preview; synthetic empty playlist",
+      "image": {
+        "width": 393,
+        "height": 852,
+        "sha256": "49f97aeec727b1992d5a160a9b1db658510f510fabf04de341e9de61cb89db05",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/messaging-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:15.976211+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/messages",
+      "state": "messaging",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old Interface Preview; empty synthetic inbox",
+      "pages": [
+        "help/messaging/index"
+      ],
+      "placement": "Replace old Interface Preview; empty synthetic inbox",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "8a2fe3ed06ef0d8938fd9b1bcb46255b5ee363669ba7bd69536693bed69d7abc",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/messaging-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:13.200277+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/messages",
+      "state": "messaging",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old Interface Preview; empty synthetic inbox",
+      "pages": [
+        "help/messaging/index"
+      ],
+      "placement": "Replace old Interface Preview; empty synthetic inbox",
+      "image": {
+        "width": 393,
+        "height": 852,
+        "sha256": "4daace3fa9a100edbd9164466586d8aa9aeb3c11f1b977d4f5476bc363e6930b",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/billing-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:41.115784+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/billing",
+      "state": "billing",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old Interface Preview; no active subscription and no current plan prices implied",
+      "pages": [
+        "help/billing/index"
+      ],
+      "placement": "Replace old Interface Preview; no active subscription and no current plan prices implied",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "09b8f06c189981c30a417de64c42ce909aee85c1a21d78f574e12f61a044762a",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/billing-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:56.519542+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/billing",
+      "state": "billing",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old Interface Preview; no active subscription and no current plan prices implied",
+      "pages": [
+        "help/billing/index"
+      ],
+      "placement": "Replace old Interface Preview; no active subscription and no current plan prices implied",
+      "image": {
+        "width": 393,
+        "height": 852,
+        "sha256": "f8a3995af6f71914d81315990b70b2916d545442bf54da920988d1106b4dd963",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/upload-entry-desktop-light.png",
+      "captured_at": "2026-10-29T03:45:35.704876+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/backstage/upload",
+      "state": "upload-entry",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "theme": "light",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old uploader entry screenshot; no files submitted",
+      "pages": [
+        "help/uploading/upload-page"
+      ],
+      "placement": "Replace old uploader entry screenshot; no files submitted",
+      "image": {
+        "width": 1440,
+        "height": 900,
+        "sha256": "cebdf924bf0107c3ab5cefdde05763a5a6d9bb5133bd1b29aa9af7ef775c8da1",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    },
+    {
+      "path": "/assets/screenshots/release-review/upload-entry-mobile-dark.png",
+      "captured_at": "2026-10-29T03:44:47.760690+00:00",
+      "source": {
+        "head": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+        "frontend_sha256": "8035850224717fc73fce51409aaf9681e62d13562f6f3d4e0616d8f9b342779c"
+      },
+      "route": "/backstage/upload",
+      "state": "upload-entry",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "theme": "dark",
+      "synthetic": true,
+      "caption": "Example with demo data. Replace old uploader entry screenshot; no files submitted",
+      "pages": [
+        "help/uploading/upload-page"
+      ],
+      "placement": "Replace old uploader entry screenshot; no files submitted",
+      "image": {
+        "width": 393,
+        "height": 852,
+        "sha256": "29ece57931101ce84525af14afcfc8aca4724718bb34354d64204e8ffcc9f9eb",
+        "format": "png"
+      },
+      "harness": "Existing repository Puppeteer/Chromium fail-closed synthetic fixture; Browser plugin unavailable",
+      "crop": null,
+      "limitations": [
+        "Synthetic example, not a live account or backend/payment/payout validation."
+      ]
+    }
+  ],
+  "coverage": "Historical first-pass provenance only. Current active workflow figures are governed by media-catalog.json; incomplete attempts remain private."
+}

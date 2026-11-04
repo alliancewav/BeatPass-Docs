@@ -2,7 +2,7 @@
 title: "Commerce & Licensing API"
 sidebarTitle: "Commerce & Licensing"
 description: "Track purchases, license certificates, exclusive license presets, and safe producer finance references."
-keywords: ["beatpass commerce api","track purchases","license certificates","stripe connect","exclusive licenses"]
+keywords: ["beatpass commerce api","track purchases","license certificates","exclusive licenses"]
 "og:title": "Commerce & Licensing API - BeatPass Developer Docs"
 "og:description": "Purchase tracks, manage license certificates, configure exclusive presets, and understand safe producer finance boundaries."
 audience: "developers"
@@ -11,14 +11,12 @@ canonical: "https://docs.beatpass.ca/developers/api-reference/commerce"
 
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-## Overview
-
-The Commerce & Licensing API handles the complete purchase lifecycle - from pricing calculation through card payment to license certificate generation. It also covers exclusive license preset management and safe producer finance references for approved integrations.
+These routes describe price quotes, accepted exclusive terms, purchases, and license certificates. It also covers exclusive license preset management and safe producer finance references for approved integrations.
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
 
-  **Authentication:** All endpoints require a valid Bearer token unless noted otherwise.
+  **Authentication:** Most routes require an approved token and endpoint permission. Public UUID verification and checkout coupon validation are exceptions. Write and payment tests require a separately authorized isolated environment; the public host is production.
 </Info>
 
 ---
@@ -47,6 +45,7 @@ Pricing fields are returned at the top level alongside `status: success`, withou
 - `total_amount`: `track_price + platform_fee`
 - `artist_amount`: the track price
 - `currency` and `license_terms`
+- `license_terms_hash`: acceptance hash covering the current rights, track price, platform fee, total, and currency
 
 `base_price` and `is_exclusive` are not returned fields. Actual fees depend on configuration and can be waived.
 
@@ -64,6 +63,17 @@ POST /api/v1/tracks/{track}/purchase/initiate
   Track ID to purchase.
 </ParamField>
 
+<ParamField body="accept_license_terms" type="boolean" required>
+  Must be `true` after the buyer has reviewed and explicitly accepted the displayed terms and quote.
+</ParamField>
+<ParamField body="license_terms_hash" type="string" required>
+  The current 64-character hash returned by Calculate Price. Send the hash for the terms and quote the buyer accepted.
+</ParamField>
+
+The buyer and every recorded producer must have confirmed legal identities. Complete the identity steps shown in BeatPass; saving a public display name is not sufficient. The producer must sign the current exclusive offer before checkout is available. Names, rights, the accepted quote, and consent evidence are preserved with the purchase.
+
+If the rights, price, fee, total, or currency change, initiation returns `409` before creating a payment intent. Fetch a fresh quote, display it, and obtain acceptance again. Missing or invalid acceptance fields return `422`.
+
 **Response:**
 
 The response returns `status: success`, `client_secret`, `purchase_id`, and `pricing` at the top level, without a `data` wrapper. `pricing` contains the fields described under Calculate Price, including `track_price`, `platform_fee`, `total_amount`, and `currency`.
@@ -76,10 +86,14 @@ The response returns `status: success`, `client_secret`, `purchase_id`, and `pri
 
 | Error | Code | Cause |
 |-------|------|-------|
-| Track purchases not enabled | 403 | Feature disabled in config |
-| Cannot purchase own track | 422 | Buyer is the track artist |
+| Track purchases not enabled | 403 | Purchases are unavailable |
+| Cannot purchase own track | 422 | Buyer owns the track |
+| Producer catalog restriction | 422 | Producer accounts cannot start new exclusive catalog purchases |
 | Already purchased | 422 | User already owns license |
 | Artist not set up for payments | 422 | Artist is not payout-ready |
+| Legal name or signed offer missing | 422 | Required party identity or current producer authorization is incomplete |
+| Acceptance missing or invalid | 422 | The request does not include explicit acceptance and a valid quote hash |
+| Accepted quote changed | 409 | Display a fresh quote and obtain acceptance again |
 
 ---
 
@@ -93,7 +107,7 @@ GET /api/v1/tracks/{track}/purchase/status
 
 **Response:**
 
-The response returns `status: success`, `has_purchased`, `can_purchase`, `reason`, `reason_code`, and `purchase_status` at the top level, without a `data` wrapper. `reason` is a human-readable eligibility message or `null`, not a fixed `already_purchased` code. `reason_code` is supplied for some restrictions and otherwise is `null`; `purchase_status` is the latest purchase status or `null`.
+The response returns `status: success`, `has_purchased`, `can_purchase`, `can_start_checkout`, `requires_legal_name`, `reason`, `reason_code`, and `purchase_status` at the top level, without a `data` wrapper. `reason` is a human-readable eligibility message or `null`, not a fixed `already_purchased` code. `reason_code` is supplied for some restrictions and otherwise is `null`; `purchase_status` is the latest purchase status or `null`. `can_start_checkout` checks eligibility before the buyer-name gate; `requires_legal_name` indicates that gate. Treat eligibility as current state, not a reservation of the beat. Producer accounts cannot start new catalog purchases; existing purchase and valid-license records remain separate from new-purchase eligibility.
 
 ---
 
@@ -113,43 +127,7 @@ GET /api/v1/purchases
 
 ### Artist Sales
 
-Get sales data for the authenticated artist, including payout and balance summary fields when available.
-
-```http
-GET /api/v1/artist/sales
-```
-
-**Response:**
-
-Existing response example excerpt (additional fields omitted). Illustrative values, not a deployed response or evidence of settlement.
-
-<SyntheticFixtures />
-
-```json
-{
-  "status": "success",
-  "earnings": {
-    "total_sales": 12,
-    "total_revenue": 245.5,
-    "total_revenue_formatted": "$245.50 USD",
-    "pending_payout": 89.0,
-    "paid_out": 156.5,
-    "currency": "USD"
-  },
-  "recent_purchases": [
-    {
-      "id": 900000001,
-      "track_id": 900000002,
-      "track_name": "Synthetic track name Fixture",
-      "artist_amount": 25.49,
-      "total_amount": 29.99,
-      "platform_fee": 4.5,
-      "status": "succeeded",
-      "purchased_at": "2025-01-15 14:30:00"
-    }
-  ]
-}
-```
+For currency-aware sales reporting, use [Producer Finance Activity](#producer-finance-activity) and [Producer Finances Summary](#producer-finances-summary). Sales, available earnings, and completed payouts are different states; do not present one as another.
 
 ---
 
@@ -157,16 +135,16 @@ Existing response example excerpt (additional fields omitted). Illustrative valu
 
 <Steps>
   <Step title="Calculate Price">
-    Call `POST /tracks/{track}/purchase/calculate-price` to get current pricing.
+    Call `POST /tracks/{track}/purchase/calculate-price` to get the current terms, pricing, and `license_terms_hash`. Display them for explicit buyer acceptance.
   </Step>
   <Step title="Initiate Purchase">
-    Call `POST /tracks/{track}/purchase/initiate` to create a Stripe PaymentIntent.
+    Call `POST /tracks/{track}/purchase/initiate` with `accept_license_terms: true` and the accepted `license_terms_hash`. A changed quote requires fresh acceptance before a PaymentIntent can be created.
   </Step>
   <Step title="Confirm Payment">
     Use the returned `client_secret` with Stripe.js `confirmCardPayment()` on the frontend.
   </Step>
   <Step title="Webhook Confirmation">
-    Stripe sends a `payment_intent.succeeded` webhook to BeatPass. The platform activates the license and generates a certificate.
+    BeatPass confirms the payment and updates purchase and certificate availability. Read purchase status before showing completion; the browser payment result alone is not the final license state.
   </Step>
   <Step title="Access License">
     The buyer can download the track and retrieve their license certificate.
@@ -176,21 +154,15 @@ Existing response example excerpt (additional fields omitted). Illustrative valu
 ```mermaid
 sequenceDiagram
     participant Client
-    participant API as BeatPass API
-    participant Stripe
-
-    Client->>API: POST /tracks/{id}/purchase/calculate-price
-    API-->>Client: Pricing breakdown
-    Client->>API: POST /tracks/{id}/purchase/initiate
-    API->>Stripe: Create PaymentIntent
-    Stripe-->>API: client_secret
-    API-->>Client: client_secret
-    Client->>Stripe: confirmCardPayment(client_secret)
-    Stripe-->>Client: Payment confirmed
-    Stripe->>API: Webhook (payment_intent.succeeded)
-    API->>API: Activate license & generate certificate
-    Client->>API: GET /tracks/{id}/license
-    API-->>Client: License certificate
+    participant BeatPass
+    participant Payment
+    Client->>BeatPass: Request current quote
+    BeatPass-->>Client: Terms, price, currency, quote hash
+    Client->>BeatPass: Accept quote and initiate
+    BeatPass-->>Client: Payment confirmation details
+    Client->>Payment: Confirm payment
+    Client->>BeatPass: Read purchase status
+    BeatPass-->>Client: Purchase and certificate availability
 ```
 
 ---
@@ -245,24 +217,17 @@ POST /api/v1/verify-license/{uuid}
   License certificate UUID.
 </ParamField>
 <ParamField body="g-recaptcha-response" type="string">
-  Required when registration CAPTCHA protection is enabled. The token must be valid for the `license_verification` action.
+  Supply a CAPTCHA response when the verification flow requires one. Keep it out of logs and shared examples.
 </ParamField>
 
-### Revoke License
+### Identity and Certificate Recovery
 
-Revoke a previously issued license.
+If a certificate requires legal-name confirmation, direct the account holder to **My licenses** in BeatPass. Use the in-product confirmation flow; changing a public profile name does not complete certificate identity. Keep the original certificate and any separately issued replacement with their own records.
 
-```http
-POST /api/v1/licenses/{uuid}/revoke
-```
-
-<ParamField body="reason" type="string" required>
-  Revocation reason. Maximum 500 characters.
-</ParamField>
 
 ### User Licenses
 
-Get all license certificates for the authenticated user.
+List license records for the authenticated user, including the history and identity state returned by the endpoint. An original grant, a replacement certificate, and current certificate usability are separate concepts; do not infer revocation from an identity or rendering issue.
 
 ```http
 GET /api/v1/user/licenses
@@ -272,7 +237,7 @@ GET /api/v1/user/licenses
 
 ## Exclusive License Presets
 
-Manage reusable pricing presets — <Tooltip tip="A saved set of pricing and rights configurations that producers can reuse across multiple beats for exclusive sales.">exclusive license presets</Tooltip> — for exclusive license sales.
+Manage reusable license-term presets — <Tooltip tip="A saved set of rights and delivery terms that producers can reuse across multiple beats for exclusive sales.">exclusive license presets</Tooltip> — for exclusive license sales.
 
 ### List Presets
 
@@ -340,7 +305,7 @@ POST /api/v1/artist/exclusive-license-default
 
 ## Coupon Validation
 
-Validate a discount code during checkout. This is the only user-facing coupon endpoint — coupon creation and management require administrative access.
+Validate a discount code during checkout. Use this validation operation for checkout discounts.
 
 ### Validate Coupon Code
 
@@ -363,7 +328,7 @@ POST /api/v1/billing/coupons/validate
   Original amount (before discount) for calculating savings.
 </ParamField>
 
-**Success Response:**
+**Success response excerpt** (other coupon model fields omitted):
 
 <SyntheticFixtures />
 
@@ -374,7 +339,7 @@ POST /api/v1/billing/coupons/validate
     "id": 900000001,
     "code": "SYNTHETICCOUPON",
     "type": "percentage",
-    "amount": 20
+    "value": "20.00"
   },
   "discount_amount": 5.99,
   "final_amount": 23.99,
@@ -399,31 +364,8 @@ POST /api/v1/billing/coupons/validate
   BEATPAY bank payout setup is an in-product Producer Finances workflow, not a public developer integration surface. Do not build integrations against undocumented payout setup routes.
 </Info>
 
-### Stripe Connect Status
+For setup, country eligibility, and bank details, direct the producer to **Finances** in BeatPass. The API operations below provide account-authorized reporting.
 
-Check the state of an authenticated artist's existing legacy Stripe Connect account.
-
-```http
-GET /api/v1/artist/stripe-connect/status
-```
-
-### Stripe Connect Onboarding Link
-
-Legacy Stripe Connect compatibility endpoint. Producer Finances does not offer new or resumed Stripe onboarding. For payout setup, follow the workflow shown in the application.
-
-```http
-POST /api/v1/artist/stripe-connect/onboard
-```
-
-### View Legacy Stripe Finances
-
-Get the artist's legacy Stripe Connect financial overview where available.
-
-```http
-GET /api/v1/artist/stripe-connect/finances
-```
-
----
 
 ### Producer Finances Summary
 
@@ -433,7 +375,7 @@ Return local payout setup, currency-specific earnings totals in minor units, att
 GET /api/v1/artists/{artist}/finances/summary
 ```
 
-The response keeps currencies separate and does not contact Stripe or Wise. `setup.providers.beatpay` describes BEATPAY availability and its current bank-recipient state. `setup.providers.legacyStripe` is present only for a legacy Stripe account that is still active or draining. The compatibility field `setup.canResumeStripe` remains `false` because new or resumed Stripe onboarding is not available.
+The response keeps currencies separate and includes payout setup readiness. Use the returned setup status to guide the producer back to **Finances** when action is needed. A finance read does not complete setup or release a payout.
 
 ### Producer Finance Activity
 
@@ -447,17 +389,9 @@ Supported status values are `all`, `waiting`, `sending`, `needs_attention`, `com
 
 The response includes `pagination.page`, `perPage`, `total`, `from`, `to`, `hasPrevious`, and `hasMore`. Status and type counts describe eligible earnings, so an unsuccessful checkout that never became an earning is not included.
 
-Amounts use `amountMinor`, `minorUnitFactor`, and an ISO currency code. The response does not include buyer email addresses, bank details, Stripe objects, or Wise recipient identifiers.
+Amounts use `amountMinor`, `minorUnitFactor`, and an ISO currency code. Use the returned ISO currency and factor for formatting; never add amounts in different currencies into one total.
 
-### Legacy Stripe Provider Balance
 
-Return only the available and pending Stripe Connect balances required by the Finances page.
-
-```http
-GET /api/v1/artists/{artist}/finances/provider-balance
-```
-
-Amounts use the currency-specific `minorUnitFactor`. This endpoint can use a short-lived cached result. It does not return charges, payouts, purchases, or lifetime provider history.
 
 ## Related Resources
 

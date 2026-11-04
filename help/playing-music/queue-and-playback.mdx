@@ -6,22 +6,26 @@ sidebarTitle: "Queue & Playback"
 canonical: "https://docs.beatpass.ca/help/playing-music/queue-and-playback"
 ---
 
+import QueueFigure from "/snippets/media/queue.mdx";
+
 The queue is the temporary list BeatPass is using for the current listening session. It is separate from playlists and is built from whatever you last played or explicitly added to the queue.
 
-## How The Queue Gets Built
+<QueueFigure />
+
+## How the queue gets built
 
 - Playing a track, playlist, collection, radio page, or channel can seed a queue.
 - Context menus can add more items with **Add to queue**.
 - Playback controls then move through that queue using previous, next, shuffle, and repeat.
 
-## Where To Open The Queue
+## Where to open the queue
 
 | Device | Queue surface |
 | --- | --- |
 | Desktop | Right-side panel labeled **Queue** |
 | Mobile | The expanded player overlay, with **Now playing** and **Up next** sections |
 
-## What You Can Do In The Queue
+## What you can do in the queue
 
 <Columns cols={2}>
   <Card title="Review the session order" icon="list">
@@ -38,7 +42,7 @@ The queue is the temporary list BeatPass is using for the current listening sess
   </Card>
 </Columns>
 
-## Desktop Details
+## Desktop details
 
 On desktop, the queue panel:
 
@@ -47,15 +51,15 @@ On desktop, the queue panel:
 - Keeps a dedicated **Now playing** area at the top.
 - Includes a shuffle toggle inside the panel.
 
-## Mobile Details
+## Mobile details
 
 On mobile, the queue lives inside the expanded player overlay:
 
 - The overlay separates the current item from the upcoming list.
 - The queue section is labeled with **Now playing** and **Up next**.
-- The current implementation shows a shortened upcoming list in the mobile queue view instead of the entire queue at once.
+- Scroll the upcoming list to review the session. Use **Now playing** to return to the current beat.
 
-## Queue vs. Playlists
+## Queue vs. playlists
 
 | Queue | Playlist |
 | --- | --- |

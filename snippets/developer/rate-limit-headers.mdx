@@ -1,5 +1,8 @@
+Illustrative response headers; read the values returned by your request.
+
 ```http
 X-RateLimit-Limit: 300
 X-RateLimit-Remaining: 298
-X-RateLimit-Reset: 1700000060
 ```
+
+Throttled responses can also include **Retry-After** and **X-RateLimit-Reset**. Use the values returned by that response.

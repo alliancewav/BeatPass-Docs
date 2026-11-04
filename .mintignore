@@ -1,0 +1,22 @@
+# Internal review and authoring evidence must not become public pages or search hits.
+audit/
+scripts/
+tests/
+patches/
+.github/
+.git/
+.mintlify/
+.vale/
+README.md
+LICENSE
+package.json
+package-lock.json
+.vale.ini
+.nvmrc
+# Unused starter snippet; retained locally to preserve existing work.
+assets/snippets/
+
+.docs-runtime/
+
+# The read-only application checkout used by CI is never documentation content.
+_source/

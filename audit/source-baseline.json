@@ -1,10 +1,35 @@
 {
   "repository": "alliancewav/open.beatpass.ca",
   "branch": "main",
-  "sha": "95a6c369c50ffd8c5f75b2775406cd34bf967cfc",
-  "verifiedAt": "2026-08-11",
+  "sha": "58388335f5eb50671bdf3d8c0db82a91021d5a5c",
+  "verifiedAt": "2026-10-29T03:42:48.688768+00:00",
+  "verificationScope": "Historical October 29 source baseline only; not a deployed-product or current worktree claim. Current complete-tree review is audit/pending-release.json.",
+  "target": "historical-source-baseline",
+  "worktreeDirty": true,
   "routeFiles": [
     "routes/api.php",
     "common/routes/api.php"
-  ]
+  ],
+  "sourceFingerprints": {
+    "app/Policies/TrackPolicy.php": "e5f099daaaa4ebb5aca6a2c5021eadb8b16bb6cadf190addabb6fc8a8d36536b",
+    "app/Services/StandardNonExclusiveTerms.php": "ad85b564272f24e1c99d7f962f47244fdc848ee782f4608cd6cb1b361bab1e18",
+    "app/Services/AccountLegalIdentity.php": "45573512951fc99f40ba5f21469738e58d278dadccba465f035b36c0f0dd8623",
+    "app/Http/Requests/ModifyTracks.php": "606f1ecaf152e09e23a2fd5c66c572236ca9307fd80255b47e162bcf34294d67",
+    "resources/client/producer-dashboard/producer-navigation.ts": "d39306c6ec9bf179e5a3640899659210719912c4ce0e978f298f78203a01985e",
+    "resources/client/producer-dashboard/pages/producer-finances.tsx": "dda9009c8fbb5544463a0b1df650f1c8edc928127a11c3a2b4f87895a963e85f",
+    "resources/client/producer-dashboard/pages/producer-pro-page.tsx": "158709bb9e2addb1328261a6690daef548796df946c338f0787336b630ec2c2e",
+    "resources/client/web-player/tracks/pre-download-modal.tsx": "11ad4c0e149a05e7ca73f0e7fee0e9aea551b80ab790ec85e0d7887eaea4cd9d",
+    "resources/views/partials/license-certificate-document.blade.php": "d3bc513b80e7e57e04b2515222e00669965d034fdcef7339cbd4a3eec1b64773"
+  },
+  "previousBaseline": {
+    "repository": "alliancewav/open.beatpass.ca",
+    "branch": "main",
+    "sha": "95a6c369c50ffd8c5f75b2775406cd34bf967cfc",
+    "verifiedAt": "2026-08-11",
+    "routeFiles": [
+      "routes/api.php",
+      "common/routes/api.php"
+    ]
+  },
+  "currentReviewFingerprintManifest": "audit/pending-release.json"
 }

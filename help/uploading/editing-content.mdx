@@ -9,9 +9,13 @@ keywords: ["edit", "update", "track", "album", "collection", "manage", "metadata
 canonical: "https://docs.beatpass.ca/help/uploading/editing-content"
 ---
 
-After a beat or collection is live, BeatPass still lets you return and update the content. This guide covers the current producer-side editing behavior.
+import RightsDeclarationsFigure from "/snippets/media/rights-declarations.mdx";
 
----
+import UploadFigure from "/snippets/media/upload.mdx";
+
+Refresh artwork, correct a credit, or improve a beat description from your producer workspace. Open [My Beats](https://open.beatpass.ca/producer-dashboard/tracks) or [My Collections](https://open.beatpass.ca/producer-dashboard/albums), then choose the item you want to edit.
+
+<UploadFigure />
 
 ## Editing a Track
 
@@ -25,7 +29,7 @@ To edit a beat:
     Update metadata, cover art, licensing, or audio as needed.
   </Step>
   <Step title="Save the changes">
-    BeatPass applies the update once the form validations pass.
+    Choose **Save Track**, then check the saved beat. If it cannot save, review the highlighted fields and try again.
   </Step>
 </Steps>
 
@@ -33,17 +37,16 @@ All five track sections open by default on the edit page so you can scan the sav
 
 ## Track Fields You Can Usually Edit
 
-| Area | Current Examples |
+| Area | What you can change |
 |------|------------------|
 | **Basic details** | Track name, description, credited artists, collection |
 | **Discovery metadata** | Tags, genres |
 | **Music properties** | Key, scale, BPM |
 | **Protection** | Sample-safe status, AI use declaration, and audio fingerprint status |
 | **Artwork** | Custom cover art or AI preset choice |
-| **Licensing** | Model, exclusive price, exclusive config, subject to sale locks |
+| **Licensing** | Model, exclusive price, and license terms, subject to sale locks |
 | **Audio** | Replace the uploaded audio file before an exclusive sale |
 
----
 
 ## Replacing Audio
 
@@ -54,7 +57,7 @@ If you need to update the audio file:
 3. Wait for BeatPass to process the new upload
 4. Save once the track is ready
 
-Replacing audio triggers a new fingerprint workflow for the updated file.
+BeatPass checks the replacement audio for duplicates again.
 
 <Warning>
   **Replace audio** is unavailable after an exclusive certificate is issued. Only cover art can be changed on a sold beat.
@@ -62,15 +65,16 @@ Replacing audio triggers a new fingerprint workflow for the updated file.
 
 ## Declaring AI Use on Older Tracks
 
-If a beat was uploaded before AI declarations were added, choose **Human-made** or **AI-assisted** in **Protection & Verification** before saving the producer edit. An AI-assisted declaration also requires the tool name, usage details, and commercial-rights confirmation.
+<RightsDeclarationsFigure />
 
----
+If an unsold beat is missing an AI declaration, choose **Human-made** or **AI-assisted** in **Protection & Verification** before saving the producer edit. Sold beats keep the artwork-only edit flow. An AI-assisted declaration also requires the tool name, usage details, and commercial-rights confirmation.
+
 
 ## Editing a Collection
 
 Collections can also be edited after creation.
 
-The current collection tools support changes to:
+In the collection editor, you can update:
 
 - Name
 - Cover art
@@ -83,11 +87,10 @@ The current collection tools support changes to:
 
 You can also upload new beats into the collection or add existing tracks from your catalog.
 
----
 
 ## Collection Track Management
 
-Inside a collection, BeatPass currently supports:
+To work on the collection's beats, use:
 
 - **Upload beats**
 - **Add existing tracks**
@@ -99,7 +102,6 @@ Inside a collection, BeatPass currently supports:
   Removing a beat from a collection changes the grouping. It does not automatically mean the beat stops existing as a track in your catalog.
 </Note>
 
----
 
 ## Licensing Locks You Should Expect
 
@@ -111,23 +113,21 @@ Some edits become limited after an exclusive sale.
   </Accordion>
 
   <Accordion title="Standard licensing after a sale">
-    BeatPass stops future standard licensing for beats that are sold exclusively, so you should not expect sold beats to behave like open catalog tracks.
+    BeatPass stops future standard licensing for beats that are sold exclusively, while customers with an earlier valid standard license can still retrieve that license and its files. An exclusive sale does not erase those earlier rights.
   </Accordion>
 </AccordionGroup>
 
----
 
 ## If Changes Do Not Appear Immediately
 
 If your edit saves but you do not see it everywhere right away:
 
 1. Refresh the page
-2. Wait a short moment for cached views to update
+2. Allow a short moment for your other views to refresh
 3. Re-open the track or collection to confirm the saved values
 
 If the problem persists, use the troubleshooting guides or contact support.
 
----
 
 ## Related
 

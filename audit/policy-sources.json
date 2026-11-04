@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-10-29T03:05:00.649281+00:00",
+  "method": "Unauthenticated public custom-pages API; body HTML decoded and UTF-8 hashed. No credentials or customer rows.",
+  "link_closure": "15 first-party policies; no external HTTP policy links.",
+  "policies": [
+    {
+      "slug": "terms-of-service",
+      "url": "https://open.beatpass.ca/pages/terms-of-service",
+      "http_status": 200,
+      "body_sha256": "9d2308ff827dcc37b0882dac9d87d3351052309a77830cd22e5e182b8da69a60"
+    },
+    {
+      "slug": "privacy-policy",
+      "url": "https://open.beatpass.ca/pages/privacy-policy",
+      "http_status": 200,
+      "body_sha256": "76832dbb8a924dad2ed5af675eee3f158d9b0a1b474c409252af4e62f3fbe1ed"
+    },
+    {
+      "slug": "refund-policy",
+      "url": "https://open.beatpass.ca/pages/refund-policy",
+      "http_status": 200,
+      "body_sha256": "fa145d715e382e87db440753b2620ba0d980837f7ef42e9c4f89eb493109f0dd"
+    },
+    {
+      "slug": "dmca-notice-and-takedown-policy",
+      "url": "https://open.beatpass.ca/pages/dmca-notice-and-takedown-policy",
+      "http_status": 200,
+      "body_sha256": "47c6e5bf223699e0bbb0a601527736941683dd3e036b761b0a5f9b68b05926dd"
+    },
+    {
+      "slug": "ai-audio-human-made-content-policy",
+      "url": "https://open.beatpass.ca/pages/ai-audio-human-made-content-policy",
+      "http_status": 200,
+      "body_sha256": "b55a5d7abbcd3738b5ffbc36b23c8176d175374a788a20e9f0bc5e77c5c9e5f2"
+    },
+    {
+      "slug": "producer-upload-and-seller-agreement",
+      "url": "https://open.beatpass.ca/pages/producer-upload-and-seller-agreement",
+      "http_status": 200,
+      "body_sha256": "0a7655454591b33af5d109f8bd2107ee7bceb985f345ed61e5bb2dfd2c9bb93e"
+    },
+    {
+      "slug": "non-exclusive-license-agreement",
+      "url": "https://open.beatpass.ca/pages/non-exclusive-license-agreement",
+      "http_status": 200,
+      "body_sha256": "9f18a286c7566dcc627bd7c0099ffc5cb37b1931bc5aa18d029266d60ba81391"
+    },
+    {
+      "slug": "exclusive-license-agreement",
+      "url": "https://open.beatpass.ca/pages/exclusive-license-agreement",
+      "http_status": 200,
+      "body_sha256": "b18814b55ca2b2f179541f5fe90701fd1ac26600838c1387aae57b8e8fb66273"
+    },
+    {
+      "slug": "exclusive-license-ai-and-rights-addendum",
+      "url": "https://open.beatpass.ca/pages/exclusive-license-ai-and-rights-addendum",
+      "http_status": 200,
+      "body_sha256": "35582729c309e633059da66f97c3389898c34bcb071990ad1af5aa77cc49048c"
+    },
+    {
+      "slug": "custom-beat-and-beat-request-terms",
+      "url": "https://open.beatpass.ca/pages/custom-beat-and-beat-request-terms",
+      "http_status": 200,
+      "body_sha256": "45c43f0e14fc5f0ec2a8ef2e935f8f58ef4babecb281ef917f176848119b6be0"
+    },
+    {
+      "slug": "subscription-and-plan-terms",
+      "url": "https://open.beatpass.ca/pages/subscription-and-plan-terms",
+      "http_status": 200,
+      "body_sha256": "1a4422c6f007f488f1908183dc42d7b83cf5ccf30d0bdd71f874a7c46f52ce47"
+    },
+    {
+      "slug": "cookie-and-tracking-policy",
+      "url": "https://open.beatpass.ca/pages/cookie-and-tracking-policy",
+      "http_status": 200,
+      "body_sha256": "d5d8047317c8aef794184fafba758bbf641da66a5dbd03c45e6da5c15b3545fa"
+    },
+    {
+      "slug": "marketing-communications-and-casl-consent-notice",
+      "url": "https://open.beatpass.ca/pages/marketing-communications-and-casl-consent-notice",
+      "http_status": 200,
+      "body_sha256": "1dbe68b67514d20eb2d0d91dc53b42136b360b80e4b16d45a28781a365232115"
+    },
+    {
+      "slug": "privacy-governance-and-privacy-officer-notice",
+      "url": "https://open.beatpass.ca/pages/privacy-governance-and-privacy-officer-notice",
+      "http_status": 200,
+      "body_sha256": "9954e7db03e12953c81a2f2cea8570c8ce6126e5ba233574ec237c7ac2de0b9c"
+    },
+    {
+      "slug": "non-dmca-rights-and-trust-report-policy",
+      "url": "https://open.beatpass.ca/pages/non-dmca-rights-and-trust-report-policy",
+      "http_status": 200,
+      "body_sha256": "cdf25bb1d5e540c6c3976f7b1c699386207ed99302d0929fe5856b9d81dcb485"
+    }
+  ],
+  "reverified_at": "2026-10-29T06:14:31.785108+00:00",
+  "reverification": {
+    "policies": 15,
+    "http_200": 15,
+    "body_hashes_unchanged": 15,
+    "method": "Unauthenticated public custom-pages API; body HTML decoded and UTF-8 hashed. No credentials or customer rows.",
+    "evidence": "audit/policy-freshness.json"
+  },
+  "final_freshness_record": "audit/handoff-policy-recheck-20261103.json",
+  "final_attempted_at": "2026-11-04T04:20:49.078582+00:00",
+  "final_freshness_status": "unverified403; all 15 anonymous retry responses denied; retain prior successful policy body evidence without claiming current alignment"
+}

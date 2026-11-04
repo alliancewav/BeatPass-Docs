@@ -10,18 +10,18 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 
 Link your channel once to let visitors explore your recent YouTube uploads from your BeatPass producer profile. You do not need to add each video manually.
 
-## Link Your Channel
+## Link your channel
 
 1. Open your producer profile and choose **More** → **Edit**.
 2. In **Links**, add your YouTube channel URL, such as `https://www.youtube.com/@YourChannel`.
 3. Select **Save changes**.
 4. Return to your profile and open **Videos**, before **Followers**.
 
-Use a channel link, rather than an individual video, Shorts, or playlist link. A channel ID URL also works. Removing the channel link removes the Videos tab.
+Use a channel link, rather than an individual video, Shorts, or playlist link. A channel ID URL also works. Without a channel URL, visitors do not see a YouTube section. Owners can use **Add YouTube channel** on the profile or in **Videos** to open the correct Links settings.
 
-## Videos and Shorts
+## Videos and shorts
 
-Recent regular videos appear below **Credits**. In **Videos**, the **YouTube Shorts** portrait carousel comes first, followed by a responsive grid of regular videos. Each section shows up to 15 recent entries when YouTube provides them; the profile overview shows up to 12 regular videos.
+Recent regular videos appear below **Credits**. In **Videos**, the **YouTube Shorts** portrait carousel appears only when Shorts are available, followed by a responsive grid of regular videos. Each section shows up to 15 recent entries when YouTube provides them; the profile overview shows up to 12 regular videos.
 
 YouTube determines which feed contains an upload. Regular videos can occasionally have a portrait or square frame. BeatPass keeps the two feeds separate instead of guessing a video's format from its thumbnail. This view shows recent uploads, not a channel's full archive.
 
@@ -31,12 +31,18 @@ Select a video to open its player. BeatPass pauses the current beat, and closing
 
 Use **View on YouTube** if a creator has disabled embedded playback, a video is restricted, or you prefer to visit the channel directly.
 
-## Updates and Temporary Outages
+## Updates and temporary outages
 
 BeatPass reuses fetched lists and normally checks for new uploads after about an hour when someone visits the profile or keeps it open in the foreground. Reopening the same profile does not force another YouTube fetch. Updates can take longer during busy periods or YouTube outages.
 
-BeatPass saves successful video lists. If a refresh fails, the saved cards remain visible and watchable while updates retry in the background. A successful update replaces the saved list, so removed entries do not remain indefinitely.
+If a refresh fails, previously loaded cards remain available while BeatPass tries again. Deleted or restricted videos can disappear after their availability is confirmed. A temporary refresh failure does not mean your channel is empty.
 
 A newly linked channel still needs one successful fetch before cards can appear. If YouTube is unavailable before that first fetch, the profile keeps a link to the channel. Repeatedly refreshing the page will not speed up recovery.
+
+## Empty channels
+
+If you have linked a channel without public uploads, your profile shows a clean empty state with a link to YouTube and guidance to upload your beats. Visitors do not see the empty overview section or a Videos tab once an empty channel has been confirmed. A channel with regular videos but no Shorts shows only the regular videos.
+
+A pending first fetch shows loading feedback. Temporary unavailability means BeatPass cannot fetch the feed; it does not mean a successfully fetched channel has no uploads.
 
 <NeedHelp />

@@ -48,11 +48,7 @@
     "library": "fontawesome"
   },
   "search": {
-    "prompt": "Search guides, API docs, or ask a question..."
-  },
-  "banner": {
-    "content": "Browse the **Help Center** for platform guides or **API & Developers** for integration docs.",
-    "dismissible": true
+    "prompt": "Find a BeatPass guide..."
   },
   "metadata": {
     "timestamp": true
@@ -93,7 +89,7 @@
               "help/getting-started/password-reset",
               "help/getting-started/navigating-beatpass",
               "help/getting-started/understanding-roles",
-              "help/getting-started/quick-start-guides/index",
+              "help/getting-started/quick-start-guides/subscriber-guide",
               "help/getting-started/quick-start-guides/listener-guide",
               "help/getting-started/quick-start-guides/producer-guide",
               "help/faq",
@@ -223,8 +219,8 @@
               "help/earnings/viewing-finances",
               "help/earnings/payout-eligibility",
               "help/earnings/payout-schedule",
-              "help/earnings/stripe-connect/index",
-              "help/earnings/stripe-connect/setup-guide",
+              "help/licensing-for-producers/audio-recon",
+              "help/earnings/currencies-and-pricing",
               "help/earnings/contribution-system/index",
               "help/earnings/beatpay/index",
               "help/beat-requests/index",
@@ -247,7 +243,7 @@
               "help/account-settings/two-factor-authentication",
               "help/account-settings/active-sessions",
               "help/account-settings/localization",
-              "help/account-settings/developer-api",
+              "help/profiles/user-profiles/editing-profile",
               "help/account-settings/delete-account",
               "help/notifications/index",
               "help/notifications/notification-center",
@@ -315,6 +311,12 @@
             "icon": "rocket",
             "pages": [
               "release-notes/v4.0/index",
+              {
+                "group": "BeatPass 4.2.1",
+                "pages": [
+                  "release-notes/v4.0/4.2.1"
+                ]
+              },
               {
                 "group": "September 2026",
                 "pages": [
@@ -778,7 +780,7 @@
           },
           {
             "label": "DMCA",
-            "href": "https://open.beatpass.ca/pages/dmca"
+            "href": "https://open.beatpass.ca/pages/dmca-notice-and-takedown-policy"
           }
         ]
       }

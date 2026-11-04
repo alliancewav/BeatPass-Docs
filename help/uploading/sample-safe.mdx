@@ -2,14 +2,16 @@
 audience: help
 title: "Sample-Safe Warranty"
 sidebarTitle: "Sample-Safe"
-description: "Learn about the Sample-Safe Warranty on BeatPass. Understand how to certify your tracks and inform buyers about sample clearance status."
+description: "Choose the sample-clearance status for your beat and explain anything buyers still need to clear."
 keywords: ["sample", "clearance", "warranty", "licensing", "samples", "cleared"]
 "og:title": "Sample-Safe Warranty - BeatPass Help"
-"og:description": "Understand sample clearance certification for your tracks on BeatPass."
+"og:description": "Understand your Sample-Safe declaration and what buyers see."
 canonical: "https://docs.beatpass.ca/help/uploading/sample-safe"
 ---
 
-The **Sample-Safe(TM) Warranty** section tells BeatPass whether your beat is fully cleared or whether a buyer should expect extra sample-clearance work.
+import SampleSafeFigure from "/snippets/media/sample-safe.mdx";
+
+The **Sample-Safe™ warranty** section tells BeatPass whether your beat is fully cleared or whether a buyer should expect extra sample-clearance work.
 
 This is producer self-certification. BeatPass relies on the status you choose when showing sample-related warnings to buyers.
 
@@ -17,17 +19,18 @@ This is producer self-certification. BeatPass relies on the status you choose wh
   Sample-Safe is about sample clearance. It does not replace BeatPass's AI Audio Policy, human-made beat requirement, AI disclosure obligations, or Proof of Rights requirements for AI-generated elements.
 </Warning>
 
----
 
-## Current Sample-Safe States
+## Choose the sample status
 
-When uploading or editing a beat, BeatPass currently gives you two main choices:
+<SampleSafeFigure />
+
+In **Protection & Verification**, choose:
 
 <Columns cols={2}>
   <Card title="Cleared" icon="shield">
     Use this when the beat is 100% original or all samples are fully cleared.
   </Card>
-  <Card title="Needs Clearance" icon="triangle-exclamation">
+  <Card title="Needs clearance" icon="triangle-exclamation">
     Use this when the beat includes samples that still require outside clearance.
   </Card>
 </Columns>
@@ -36,27 +39,29 @@ When uploading or editing a beat, BeatPass currently gives you two main choices:
 
 <Steps>
   <Step title="Open Protection & Verification">
-    On the track form, go to the section that includes **Sample-Safe(TM) Warranty**.
+    On the track form, go to the section that includes **Sample-Safe™ warranty**.
   </Step>
   <Step title="Choose the status card">
-    Click either **Cleared** or **Needs Clearance**.
+    Click either **Cleared** or **Needs clearance**.
   </Step>
   <Step title="Add notes if needed">
-    BeatPass only shows the **Sample details** field when you choose **Needs Clearance**.
+    BeatPass only shows the **Sample details** field when you choose **Needs clearance**.
   </Step>
   <Step title="Save the track">
     Your selected state is saved with the beat.
   </Step>
 </Steps>
 
+
+
 ## What Buyers See
 
-The current UI behavior is:
+Your saved choice tells buyers:
 
 - **Cleared** → BeatPass shows the beat as sample-safe certified
-- **Needs Clearance** → BeatPass shows a buyer-facing clearance warning
+- **Needs clearance** → BeatPass shows a buyer-facing clearance warning
 
-That warning is important because it changes how comfortable a buyer may be using the beat commercially.
+The warning does not grant missing rights. Buyers must resolve the disclosed clearance issue before using material that needs permission.
 
 ## What Counts as Cleared?
 
@@ -64,23 +69,23 @@ Choose **Cleared** only when one of these is true:
 
 - The beat is built entirely from original material
 - All sampled material is properly licensed or cleared
-- The sample source is truly safe for your intended distribution
+- Your permission covers licensing the material to BeatPass customers for the uses you offer
 
-## What Counts as Needs Clearance?
+## What Counts as Needs clearance?
 
-Choose **Needs Clearance** when:
+Choose **Needs clearance** when:
 
 - You sampled another recording or composition without full clearance
 - You used material that could trigger outside permissions
 - You are unsure whether the sample use is fully cleared
 
 <Warning>
-  When in doubt, **Needs Clearance** is the safer choice. Mislabeling a beat as cleared can create legal and business problems for both you and the buyer.
+  When in doubt, **Needs clearance** is the safer choice. Mislabeling a beat as cleared can create legal and business problems for both you and the buyer.
 </Warning>
 
 ## Notes for Uncleared Samples
 
-If you choose **Needs Clearance**, use the notes field to add context such as:
+If you choose **Needs clearance**, use the notes field to add context such as:
 
 - What type of sample was used
 - Whether clearance is in progress
@@ -96,7 +101,7 @@ Keep the note short and practical.
   </Accordion>
 
   <Accordion title="Update the status if things change">
-    If you later clear the sample, come back and switch the beat from **Needs Clearance** to **Cleared**.
+    If you later obtain all required permissions, update an unsold beat from **Needs clearance** to **Cleared**. For a sold beat with locked details, contact support with the track link and evidence.
   </Accordion>
 
   <Accordion title="Do not treat this as legal advice">
@@ -106,18 +111,17 @@ Keep the note short and practical.
 
 ## How This Differs From AI Use
 
-Sample-Safe and AI Use & Rights Verification are separate checks:
+Sample-Safe and the AI use declaration are separate checks:
 
 | Area | What it answers |
 | --- | --- |
 | **Sample-Safe** | Are samples original, cleared, or still needing outside clearance? |
-| **AI Use & Rights Verification** | Was AI used, does the beat remain human-made, and can the producer prove commercial-use rights for AI material? |
+| **AI use declaration** | Was AI used, does the beat remain human-made, and can the producer prove commercial-use rights for AI material? |
 
-Choosing **Needs Clearance** for sample status does not make unverifiable AI content acceptable. If an AI sample, loop, vocal, stem, or generated source cannot be verified or licensed through BeatPass, it should not remain in your catalog.
+Choosing **Needs clearance** for sample status does not make unverifiable AI content acceptable. If an AI sample, loop, vocal, stem, or generated source cannot be verified or licensed through BeatPass, it should not remain in your catalog.
 
 See [AI Audio and Human-Made Content](/help/legal/ai-audio-human-made-content) for the AI policy.
 
----
 
 ## Related
 

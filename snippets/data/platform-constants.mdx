@@ -2,29 +2,12 @@ export const supportEmail = "contact@beatpass.ca";
 
 export const supportEmailLink = "[**contact@beatpass.ca**](mailto:contact@beatpass.ca)";
 
-{/* Unverified documentation reference values, not live billing configuration. Render fee examples only with an illustrative label; checkout supplies the current amount. */}
-export const platformFee = {
-  percent: 12,
-  flat: 3,
-  currency: "CAD",
-  formatted: "12% + $3",
-  formula: "(Beat Price × 0.12) + $3",
-};
-
-{/* Unverified reference catalog. Current prices, quotas and benefits are database-backed. Check the pricing page and account allowance rather than inferring current values here. */}
-export const plans = {
-  explorer: { name: "Explorer", price: "Free", priceNum: 0, requests: 1, hidden: true },
-  classic: { name: "Classic", price: "$29 CAD/month", priceNum: 29, requests: 1 },
-  plus: { name: "Plus", price: "$49 CAD/month", priceNum: 49, requests: 6, recommended: true, exclusivePurchasePlatformFee: true },
-  pro: { name: "Pro", price: "$79 CAD/month", priceNum: 79, requests: 10, exclusivePurchasePlatformFee: false },
-};
+{/* Volatile prices, request allowances, and fee values belong to the current app. */}
+export const pricingUrl = "https://open.beatpass.ca/pricing";
+export const billingUrl = "https://open.beatpass.ca/billing";
 
 export const apiTokenExpiry = "90 days";
 
 export const baseUrl = "https://open.beatpass.ca/api/v1";
 
-export const publishingSplit = { producer: 20, licensee: 80 };
-
 export const performanceLimit = 50;
-
-;

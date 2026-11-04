@@ -1,176 +1,81 @@
 ---
 audience: help
 title: "Account Settings"
-sidebarTitle: "Overview"
+sidebarTitle: "Account settings"
 description: "Manage your BeatPass account settings including profile details, security, connected accounts, and preferences."
 canonical: "https://docs.beatpass.ca/help/account-settings"
 ---
 
+import AccountFigure from "/snippets/media/account.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Your account settings let you manage your personal profile, security, login methods, and regional preferences on BeatPass.
+Keep your sign-in secure and your details accurate. Account settings brings your personal details, login methods, and regional preferences together.
 
-## Interface Preview
+<AccountFigure />
 
-<Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Account Settings navigation on desktop in light mode">
-      <img src="/assets/screenshots/account-settings-desktop-light.png" alt="Account Settings page with navigation for account details, social login, password, two-factor authentication, sessions, language, developers, and account deletion" />
-    </Frame>
-  </Tab>
-  <Tab title="Mobile">
-    <Frame caption="Account Settings heading on mobile in dark mode">
-      <img src="/assets/screenshots/account-settings-mobile-dark.png" alt="Mobile Account Settings page in dark mode" />
-    </Frame>
-  </Tab>
-</Tabs>
+## Open account settings
 
----
+<Steps>
+  <Step title="Open your account">
+    Use your **profile avatar** menu, or [open Account Settings](https://open.beatpass.ca/account-settings) directly.
+  </Step>
+  <Step title="Choose the section you need">
+    Scroll to the relevant section. Some options, such as **Social login**, depend on what is available to your account.
+  </Step>
+  <Step title="Save and check">
+    Follow that section's save or confirmation action before leaving. If a field is locked, use its guidance rather than creating a second account.
+  </Step>
+</Steps>
 
-## Accessing Account Settings
-
-1. Click your profile avatar or name in the top navigation.
-2. Select **Settings** from the menu. The page heading is **Account Settings**.
-3. Scroll to the section you want to manage.
-
-Some sections only appear when they are available for your account, such as **Social login** or **Developers**.
-
----
-
-## Settings Overview
+## Choose what to change
 
 <Columns cols={2}>
-  <Card title="Account Details" icon="user" href="/help/account-settings/account-details">
-    Update your first name, last name, and profile image.
+  <Card title="Account and legal details" icon="user" href="/help/account-settings/account-details">
+    Review your details, legal-name confirmation, and payout identity.
+  </Card>
+  <Card title="Your public profile" icon="image" href="/help/profiles/user-profiles/editing-profile">
+    Update the avatar, handle, bio, and links people see.
   </Card>
   <Card title="Password" icon="lock" href="/help/account-settings/password">
-    Change your password or use email recovery to reset or create one.
+    Change your password or recover it through your email.
   </Card>
-  <Card title="Two-Factor Authentication" icon="shield-halved" href="/help/account-settings/two-factor-authentication">
-    Add an extra layer of security to your account.
+  <Card title="Two-factor authentication" icon="shield-halved" href="/help/account-settings/two-factor-authentication">
+    Add a verification step and keep recovery codes accessible.
   </Card>
-  <Card title="Active Sessions" icon="desktop" href="/help/account-settings/active-sessions">
-    Review recent devices and sign out other sessions.
+  <Card title="Signed-in devices" icon="desktop" href="/help/account-settings/active-sessions">
+    Review sessions and sign out other devices.
   </Card>
-  <Card title="Social Login" icon="share-nodes" href="/help/account-settings/social-login">
-    Enable or disable the social sign-in options currently available on BeatPass.
-  </Card>
-  <Card title="Location and Language" icon="globe" href="/help/account-settings/localization">
-    Set your language, country, and timezone.
-  </Card>
-  <Card title="Developer API" icon="code" href="/help/account-settings/developer-api">
-    Manage API access tokens if API access has been enabled for your account.
-  </Card>
-  <Card title="Delete Account" icon="trash-can" href="/help/account-settings/delete-account">
-    Permanently remove your account.
+  <Card title="Language and location" icon="globe" href="/help/account-settings/localization">
+    Choose your language, country, and timezone.
   </Card>
 </Columns>
 
----
+[Social login](/help/account-settings/social-login) explains connected sign-in options. [Delete account](/help/account-settings/delete-account) explains permanent removal before you confirm it.
 
-## Quick Reference
+## Keep your account secure
 
-<Tabs>
-  <Tab title="Profile">
-    <Columns cols={2}>
-      <Card title="Account Details" icon="id-card">
-        Change first name, last name, profile image
-      </Card>
-      <Card title="Location & Language" icon="globe">
-        Set language, country, and timezone
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Security">
-    <Columns cols={2}>
-      <Card title="Password" icon="lock">
-        Update password or reset it by email
-      </Card>
-      <Card title="Two-Factor Auth" icon="shield-halved">
-        Enable 2FA and manage recovery codes
-      </Card>
-      <Card title="Active Sessions" icon="desktop">
-        See recent sign-ins and log out other sessions
-      </Card>
-      <Card title="Social Login" icon="share-nodes">
-        Enable or disable available social sign-in methods
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Advanced">
-    <Columns cols={2}>
-      <Card title="Developer API" icon="code">
-        Create and delete API access tokens
-      </Card>
-      <Card title="Delete Account" icon="trash-can">
-        Permanently delete your account
-      </Card>
-    </Columns>
-  </Tab>
-</Tabs>
+Use a unique password, enable two-factor authentication, and keep access to your sign-in email. New passwords need at least eight characters; a longer password you do not use elsewhere is a better choice.
 
----
+Keep recovery codes somewhere you can reach if you lose your phone. Review [active sessions](/help/account-settings/active-sessions) if a device looks unfamiliar.
 
-## Security Recommendations
-
-To keep your account secure:
-
-- **Use a strong, unique password**: New passwords must contain at least 8 characters. Choose a longer password that you do not use elsewhere.
-- **Enable two-factor authentication** — Adds an extra verification step
-- **Review active sessions** — Check for unfamiliar devices regularly
-- **Keep access to your sign-in email** — Password recovery depends on it
-
-<Tip>
-  Enable two-factor authentication for maximum account security. It only takes a minute to set up.
-</Tip>
-
----
-
-## What You Can Change Here
-
-From the current account settings page, you can directly manage:
-
-- **First name**
-- **Last name**
-- **Profile image**
-- **Password**
-- **Two-factor authentication**
-- **Recent sessions**
-- **Language, country, and timezone**
-- **Available social sign-in methods**
-- **API access tokens** if your account has API access
-
-Some fields you might expect, such as email changes, are not currently exposed in the standard account settings form.
-
----
+Email changes are not offered in the standard account settings form. Confirmed or payout-synchronized legal names may be locked. Follow [Account details](/help/account-settings/account-details) if a name needs attention.
 
 ## Need Help?
 
 <AccordionGroup>
-  <Accordion title="I can't access my account">
-    If you're locked out, use [Forgot Password](/help/account-settings/password/forgot-password) to reset or create your password by email.
+  <Accordion title="I cannot sign in">
+    Use [password recovery](/help/account-settings/password/forgot-password) to reset or create a password by email.
   </Accordion>
-  <Accordion title="I don't see every section shown in this guide">
-    Some sections only appear when they are enabled for your account. For example, **Social login** only shows enabled providers, and **Developers** only appears when API access is available for your user.
+  <Accordion title="My settings look different">
+    Some sections only appear for eligible accounts. **Social login** lists enabled providers. Integration access is explained separately in [API & Developers](/developers/overview).
   </Accordion>
-  <Accordion title="Someone else is using my account">
-    Go to [Active Sessions](/help/account-settings/active-sessions) and log out all other devices. Then change your password immediately.
+  <Accordion title="Someone else may be using my account">
+    [Sign out other sessions](/help/account-settings/active-sessions), change your password, and [contact support](/help/contact-support) if you need help regaining control.
   </Accordion>
 </AccordionGroup>
 
----
-
 ## Related Topics
 
-<Columns cols={2}>
-  <Card title="Notifications" icon="bell" href="/help/notifications">
-    Customize how you receive alerts and updates.
-  </Card>
-  <Card title="Profile Visibility" icon="eye-slash" href="/help/profiles/user-profiles/profile-visibility">
-    Understand what your public profile currently exposes.
-  </Card>
-</Columns>
-
----
+Set your [notification preferences](/help/notifications/notification-settings), check [profile visibility](/help/profiles/user-profiles/profile-visibility), or manage an approved integration's [account access tokens](/help/account-settings/developer-api). Integration instructions live in the separate developer reference.
 
 <NeedHelp />

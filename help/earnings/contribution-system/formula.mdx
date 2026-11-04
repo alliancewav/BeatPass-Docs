@@ -24,7 +24,7 @@ $$
 | Part | Purpose |
 |------|---------|
 | **Time decay** | Rewards newer uploads with a 6-month half-life |
-| **Popularity boost** | Increases value as play count grows, up to 3x |
+| **Popularity boost** | Increases value as counted plays grow, approaching 3x |
 | **Collaboration split** | Divides the track's value equally across credited producers |
 
 ## Time Decay
@@ -37,7 +37,7 @@ The time-decay term uses a 6-month half-life. In plain language:
 
 ## Popularity Boost
 
-The popularity term uses a logarithmic play curve:
+The popularity term uses plays that qualify for contribution, which can differ from the audience totals elsewhere in the app. It follows a logarithmic curve:
 
 - Early plays matter a lot
 - Later growth still helps, but the boost rises more gradually
@@ -62,8 +62,8 @@ This distinction matters because your share can change when:
 
 ## Important Notes
 
-- Tracks marked **exclusive-only** get a contribution value of **0** for subscription sharing
-- BeatPass recalculates contribution values periodically (roughly every few hours) so new plays and time decay continue to affect payout calculations
+- **Exclusive-only** and exclusively sold tracks do not contribute; standard licensing also requires the credited producers to be payout-ready
+- BeatPass recalculates contribution values periodically; use the displayed calculation time when comparing snapshots
 - Your share can change even if your own plays stay flat, because the platform total can change too
 
 ## Worked Example

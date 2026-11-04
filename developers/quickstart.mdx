@@ -17,9 +17,7 @@ import BearerAuthExample from "/snippets/developer/bearer-auth-example.mdx";
 import HttpStatusCodes from "/snippets/developer/http-status-codes.mdx";
 import ApiGettingHelp from "/snippets/sections/api-getting-help.mdx";
 
-## Overview
-
-This guide helps approved developers get started with the BeatPass API.
+Start with an approved read operation, then add only the endpoints and permissions agreed for your integration.
 
 <ApiInviteOnly />
 
@@ -27,7 +25,7 @@ This guide helps approved developers get started with the BeatPass API.
 
 ## Authentication
 
-All API requests use **Bearer token authentication**:
+Approved external integrations use **Bearer token authentication** for protected endpoints. Some public reads also work without a token:
 
 <BearerAuthExample />
 
@@ -35,10 +33,10 @@ All API requests use **Bearer token authentication**:
 |--------|-------|
 | **Access** | Invite-only, granted by BeatPass team |
 | **Token expiration** | 90 days from creation |
-| **Data access** | Token required for rich API responses |
+| **Data access** | Endpoint-specific permissions apply |
 
 <Info>
-  **Public response fields vary by model and endpoint.** Track serialization includes `id`, `name`, `image`, `created_at`, `model_type`, `duration_text`, and loaded `artists`/`genres` relations. Controllers can add fields, including play counts on track listing. Approved token responses include additional pricing, BPM, and licensing fields.
+  **Response fields vary by endpoint.** A token permits only the fields and operations allowed for your account. Use the endpoint-specific response contract.
 </Info>
 
 ---
@@ -51,12 +49,12 @@ All API requests use **Bearer token authentication**:
 
 ### Development Best Practices
 
-| Practice | Why |
-|----------|-----|
-| Use personal test accounts | Avoid affecting real users |
-| Test with minimal data | Don't create spam content |
-| Clean up test data | Delete test uploads promptly |
-| Never test payments with real cards | Use Stripe test mode when available |
+Use synthetic fixtures while developing locally. A sample account, placeholder ID, or small payment does not create a sandbox.
+
+- Confirm the approved host and read endpoints before making requests.
+- Run write and payment tests only in a separately authorized, isolated test environment.
+- Do not create uploads, messages, purchases, or cleanup jobs on the live platform as a development exercise.
+- Keep tokens and personal data out of logs and shared examples.
 
 ---
 
@@ -93,7 +91,7 @@ GET /api/v1/tracks/{track_id}
 ## Restricted Access
 
 <Warning>
-  **Undocumented endpoints are off-limits.** Unauthorized access attempts are logged, monitored, and may result in immediate token revocation and account termination.
+  **Undocumented endpoints are off-limits.** API approval does not authorize internal routes or another account's private data. API use remains subject to the [Terms of Service](https://open.beatpass.ca/pages/terms-of-service).
 </Warning>
 
 If you encounter a 403 Forbidden response, the endpoint requires permissions your account does not have. Contact support if you believe this is an error.
@@ -107,7 +105,7 @@ If you encounter a 403 Forbidden response, the endpoint requires permissions you
 - Use documented endpoints only
 - Respect rate limits
 - Handle errors gracefully
-- Clean up test data
+- Keep development fixtures in an authorized isolated environment
 - Log responsibly (no sensitive data)
 
 ### Don't
@@ -173,7 +171,7 @@ Error bodies vary by endpoint. This is one validation-error shape; do not assume
   </Step>
   
   <Step title="Start Building">
-    - Begin with read-only endpoints (tracks, artists, search)
+    - Begin with approved read-only endpoints (tracks, artists, search)
     - Use placeholder IDs in development
     - Monitor rate limit headers
     - Handle errors gracefully

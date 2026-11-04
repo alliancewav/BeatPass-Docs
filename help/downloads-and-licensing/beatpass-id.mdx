@@ -8,96 +8,34 @@ canonical: "https://docs.beatpass.ca/help/downloads-and-licensing/beatpass-id"
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass ID brings a track’s licensing model, sample declaration, AI-use disclosure when available, promised exclusive deliverables, and verified audio fingerprint into one provenance record. The fingerprint is generated from the uploaded audio and helps connect a certificate to the track it covers.
+Open **BeatPass ID** on a track page to understand its licensing choices and producer declarations before you choose a license. Its audio fingerprint helps connect the license record to the uploaded audio; it is not a guarantee of copyright clearance.
 
-<Info>
-  Producers must wait for **Verified Unique** before publishing newly uploaded audio. Once a track is available, BeatPass ID presents its licensing and verification details together. A qualifying download or exclusive purchase generates its own license certificate.
-</Info>
+## Read the track's BeatPass ID
 
-## What BeatPassID does
+<Steps>
+  <Step title="Open a track">
+    Find a beat on BeatPass and expand **BeatPass ID** on its page.
+  </Step>
+  <Step title="Review the declarations">
+    Check **Licensing model**, **Offer status**, **Sample declaration**, and **Creation declaration**. Read producer notes or AI assistance details when shown.
+  </Step>
+  <Step title="Check files and terms">
+    Review **Promised buyer files** for an exclusive offer and use **Preview exact license terms** when available. The listed file package belongs to that offer.
+  </Step>
+</Steps>
 
-When a producer uploads a track, BeatPass analyzes the audio and creates a fingerprint. BeatPass ID combines that fingerprint with the licensing model, Sample-Safe declaration, AI-use disclosure when available, and promised exclusive deliverables. Certificates and public verification tools use the available record to help identify the audio and terms they cover.
+## Understand the audio fingerprint
 
-## Where fingerprint data appears
+**Verified audio hash** displays the recorded fingerprint when available, or **Not available**. A certificate can also include the saved fingerprint as evidence of the audio it covers.
 
-- License certificates
-- The license certificate modal
-- Public verification pages
-- Producer upload and track-management tools
-- The collapsible **BeatPass ID** section on the track page
+A fingerprint identifies audio in BeatPass's record. It does not prove that every sample is cleared, that the beat is AI-free, or that a third-party distributor will accept a release. Producer declarations and rights obligations still apply.
 
-## Fingerprint statuses
+Producers see processing checks when uploading audio. Follow the upload result before publishing; a **Verified Unique** result is a platform check, not a legal clearance certificate.
 
-| Status | What it means |
-| --- | --- |
-| **Pending** | BeatPass is still analyzing the track audio |
-| **Fingerprinted** | BeatPass completed the fingerprint for the saved audio |
-| **Failed** | BeatPass could not complete the analysis for this track |
+## Find your license proof
 
-## What fingerprint details can include
+A qualifying download issues a certificate or reuses your existing valid certificate. Open [Your licenses](https://open.beatpass.ca/library/licenses) for the document and verification link. **Download requested** confirms a browser save request, so also check that the file arrived on your device.
 
-When fingerprint analysis is complete, certificates and verification pages can display:
-
-- Fingerprint status
-- Fingerprinted date
-- Analyzed duration
-- Fingerprint hash
-
-## BeatPassID vs similarity search
-
-BeatPassID supports license proof by connecting certificate tools with fingerprint metadata when it is available.
-
-It is different from a similarity search tool. BeatPassID helps document what was licensed; it does not grant permission to copy other tracks or avoid licensing the original work.
-
-## Good to know
-
-<AccordionGroup>
-  <Accordion title="Certificates are created on download" icon="file-lines" defaultOpen>
-    For listeners and buyers, qualifying downloads and purchases create certificates automatically. For producers, a new upload must reach **Verified Unique** before the track can be published.
-  </Accordion>
-  <Accordion title="Verification details" icon="shield-halved">
-    Completed fingerprint data lets BeatPass display fingerprint information on the certificate and public verification pages.
-  </Accordion>
-  <Accordion title="Producer workflows" icon="music">
-    Producers see fingerprint status during upload and catalog management as part of track-processing workflows.
-  </Accordion>
-</AccordionGroup>
-
-## Common questions
-
-<AccordionGroup>
-  <Accordion title="My certificate seems to be missing — what should I do?" icon="download" defaultOpen>
-    Certificates are generated when you download a track. If you cannot find yours, go to **My Licenses** and search for the track. If it still does not appear, contact support at contact@beatpass.ca.
-  </Accordion>
-  <Accordion title="What if fingerprint status shows failed?" icon="triangle-exclamation">
-    A failed check blocks a new producer upload from being published. If an older saved track already has a certificate, that certificate remains accessible while BeatPass reviews or reprocesses the fingerprint.
-  </Accordion>
-  <Accordion title="Does BeatPassID change the audio file I download?" icon="wave-square">
-    No. BeatPassID is metadata about the track analysis, not a modification to the downloaded audio file.
-  </Accordion>
-</AccordionGroup>
+Use [Audio Recon](/help/licensing-for-producers/audio-recon) for the separate producer similarity-review workflow, or [license verification](/help/downloads-and-licensing/verifying-licenses) to check a specific certificate.
 
 <NeedHelp />
-
-## Related
-
-<Columns cols={2}>
-  <Card title="How Downloads Work" icon="download" href="/help/downloads-and-licensing/how-downloads-work">
-    Step-by-step download and certificate behavior.
-  </Card>
-  <Card title="License Certificates" icon="file-lines" href="/help/downloads-and-licensing/license-certificates">
-    Learn where fingerprint details appear on certificates.
-  </Card>
-  <Card title="Verifying Licenses" icon="shield-halved" href="/help/downloads-and-licensing/verifying-licenses">
-    How the public verification page works.
-  </Card>
-  <Card title="FAQ" icon="circle-question" href="/help/downloads-and-licensing/faq">
-    Common questions about licensing and downloads.
-  </Card>
-  <Card title="Audio Recon" icon="wave-square" href="/help/licensing-for-producers/audio-recon">
-    Understand the separate producer-review tool for high-similarity matches.
-  </Card>
-  <Card title="Trust Stack" icon="layer-group" href="/help/getting-started/beatpass-trust-stack">
-    See how fingerprinting fits into BeatPass's wider proof system.
-  </Card>
-</Columns>

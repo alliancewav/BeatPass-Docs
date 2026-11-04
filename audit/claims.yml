@@ -1,21 +1,31 @@
 version: 1
 policy:
+  precedence_applies_to: product-behavior
+  legal_authority: governing Terms, incorporated agreements, and applicable transaction documents
   precedence:
     - verified-production-configuration
     - application-code
     - generated-api-contract
     - documentation-guidelines
   unresolved_public_claims: review-warning
+  review_states: [source-confirmed, live-observed, upcoming, owner-required]
+  consumer_fingerprints: audit/claim-consumers.json
 baseline:
   repository: alliancewav/open.beatpass.ca
   branch: main
-  source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
-  verified_at: 2026-08-11
+  source_sha: 58388335f5eb50671bdf3d8c0db82a91021d5a5c
+  reviewed_at: 2026-11-03
+  target: upcoming-release
+  worktree_dirty: true
+  evidence_record: audit/polish-review.json
+  source_record: audit/pending-release.json
+  latest_source_record: audit/pending-release.json
+  historical_entry_scope: Each entry retains its own source_sha and verified_at; older observations do not certify the current deployed app.
 claims:
   - id: ui.account-settings-menu
     page: help/account-settings/index
     owner: product
-    claim: The production profile menu label is "Settings" and the destination heading is "Account Settings".
+    claim: Profile-menu account settings entries are configuration-dependent; Account settings is directly reachable at /account-settings.
     evidence:
       - production:https://open.beatpass.ca/account-settings
       - common/resources/client/ui/navigation/navbar/navbar-auth-menu.tsx
@@ -25,7 +35,7 @@ claims:
   - id: ui.account-settings-sections
     page: help/account-settings/index
     owner: product
-    claim: Account details, Social login, Password, Two factor authentication, Active sessions, Location and language, Developers, and Delete account are the current section labels.
+    claim: Account settings uses section navigation. Location and language is the navigation item; the target panel is Date, time and language. Social login and Developers depend on configuration and permission.
     evidence:
       - production:https://open.beatpass.ca/account-settings
       - common/resources/client/auth/ui/account-settings/account-settings-sidenav.tsx
@@ -45,13 +55,17 @@ claims:
   - id: ui.license-library-label
     page: help/downloads-and-licensing/index
     owner: product
-    claim: The current library navigation label is "My Licenses".
+    claim: The saved current English public configuration labels the library destination My Licenses; the visible wallet heading is Your licenses. Configured labels can differ by account or locale.
     evidence:
-      - production:https://open.beatpass.ca/library/licenses
-      - resources/client/web-player/web-player-routes.tsx
+      - resources/client/web-player/library/library-licenses-page.tsx
+      - resources/client/web-player/library/use-library-navigation.ts
+      - audit/public-navigation-review.json
+      - audit/public-navigation-alignment.json
     status: verified
-    source_sha: 95a6c369c50ffd8c5f75b2775406cd34bf967cfc
-    verified_at: 2026-08-11
+    review_state: source-confirmed
+    source_sha: 58388335f5eb50671bdf3d8c0db82a91021d5a5c
+    verified_at: 2026-10-29
+    verification_scope: Current dirty worktree source and anonymously retrieved public menu settings; synthetic rendered review is distinct from a deployed customer session.
   - id: api.playlist-update
     page: developers/api-reference/content
     owner: api
@@ -131,7 +145,7 @@ claims:
       - app/Providers/RouteServiceProvider.php:57-123
       - common/Auth/Fortify/FortifyServiceProvider.php:46-83
     status: review-warning
-    warning: Source wiring is verified; the 1500 config fallback is not consumed by this middleware. Deployed revision, route cache and live response headers remain unverified.
+    warning: The documented shared budget matches inspected middleware. Deployed settings and live response headers remain unverified; callers follow returned headers and Retry-After.
     source_sha: d545521b5d5380e0c158ab407fedc04fddf6544e
     verified_at: 2026-10-06
   - id: plans.beat-request-limits
@@ -143,6 +157,59 @@ claims:
       - common/Billing/Models/Product.php:19-31
       - database/seeders/BillingPlanSeeder.php:12-102
     status: review-warning
-    warning: Current named-plan catalog, prices, allowances and benefits have not been verified. The shared comparison table and constants are labeled as unverified reference data; fallback and seed values cannot establish the live catalog.
+    warning: Current named-plan catalog, prices, allowances and benefits have not been verified. Numeric plan references have been removed from the shared comparison and constants. Current guides link to Pricing and checkout; fallback and seed values cannot establish the live catalog.
     source_sha: d545521b5d5380e0c158ab407fedc04fddf6544e
     verified_at: 2026-10-06
+  - id: roles.producer-standard-downloads
+    page: help/getting-started/understanding-roles
+    owner: product
+    claim: Producer access is free; producer accounts cannot acquire new standard catalog licenses even with a paid plan. Own files and valid prior licenses remain separate.
+    evidence:
+      - app/Policies/TrackPolicy.php:125-155
+      - tests/Unit/Policies/TrackDownloadPolicyTest.php
+    status: verified
+    review_state: source-confirmed
+    verified_at: 2026-10-28
+    verification_scope: Current source and Architect-confirmed intent; canonical eligibility disclosure remains an owner action.
+  - id: legal.refund-accidental-exclusive
+    page: help/billing/refund-policy
+    owner: legal
+    claim: Accidental exclusive purchase review requires a request within 24 hours, an erroneous purchase, no deliverable access or download, and no certificate use or reliance. Approval is discretionary.
+    evidence:
+      - https://open.beatpass.ca/pages/refund-policy
+    status: verified
+    review_state: live-observed
+    verified_at: 2026-10-28
+    verification_scope: Public governing policy body; no refund transaction executed.
+  - id: legal.canonical-follow-up
+    page: help/legal/index
+    owner: legal
+    claim: Canonical DMCA wording, producer eligibility and attendance disclosures, request token rules, and financial terminology require owner review separately from local Help edits.
+    evidence:
+      - audit/maintainer-handoff.md
+    status: review-warning
+    review_state: owner-required
+    warning: Local summaries do not amend governing policies or historical grants. Fresh anonymous retrieval failed on November 3; retain the earlier successful policy evidence without claiming fresh legal verification.
+
+  - id: roles.producer-exclusive-purchases
+    page: help/downloads-and-licensing/exclusive-licenses
+    owner: product
+    claim: Current purchase logic blocks new exclusive catalog purchases by producer accounts; prior valid licenses remain separate.
+    evidence:
+      - app/Services/TrackPurchaseService.php:449-454
+      - app/Policies/TrackPolicy.php:133-140
+    status: review-warning
+    review_state: source-confirmed
+    verified_at: 2026-10-29
+    warning: Current candidate behavior is broader than the previously confirmed standard-license restriction. Product intent and canonical pre-purchase disclosure require owner confirmation; no application behavior was changed.
+  - id: ui.current-workflow-review
+    page: help/index
+    owner: product
+    claim: Current per-page source reviews and exact-byte prior editorial coverage describe the reviewed application tree.
+    evidence:
+      - audit/polish-review.json
+      - audit/pending-release.json
+    status: verified
+    review_state: source-confirmed
+    verified_at: 2026-11-03
+    verification_scope: Changed Help flows, all developer documents and current release summaries were freshly reviewed. Unchanged copy retains exact prior review with dependency delta checks. Generated media has separate visual acceptance. Live settings and completed transactions remain unverified.

@@ -6,24 +6,28 @@ description: "Organize beats into releases, review release details, and open col
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/albums"
 ---
 
+import CollectionCatalogFigure from "/snippets/media/collection-catalog.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **My Collections** page helps you organize beats into releases and correct missing release details. It keeps collection work separate from general catalog statistics so the next useful action stays clear.
+The **My Collections** page helps you organize beats into releases and correct missing release details. Open a release, add the right beats, and check its artwork and date before sharing.
 
 <ProducerOnly />
 
+<CollectionCatalogFigure />
+
 ## How to Get Here
 
-Click your **profile avatar** → **Backstage**, then select **My Collections** in the sidebar.
+Open [My Collections](https://open.beatpass.ca/producer-dashboard/albums), or choose your **profile avatar** → **Producer Dashboard** → **My Collections**.
 
-If your account manages more than one producer profile, use **Artist profile** to choose the collections you want to review. Changing profiles resets the current filters, selection, and page.
+The workspace uses your own producer profile. Choose grid or list view to browse your releases in the way that suits you.
 
 ## Main Sections
 
 <Columns cols={2}>
   <Card title="Collections" icon="compact-disc">
-    Search, filter, sort, and open releases for the selected producer profile.
+    Search, filter, sort, and open your releases in **Your collections**.
   </Card>
   <Card title="Release details" icon="calendar-days">
     Plan collections that do not yet have a release date or any beats.
@@ -32,7 +36,7 @@ If your account manages more than one producer profile, use **Artist profile** t
 
 ## Collections
 
-**Collections** is the main working section. It shows 20 collections by default, with 10, 20, or 50 collections per page, and preserves useful release information on mobile.
+**Your collections** is the main working section. Use **Search collections**, choose a catalog view, and switch between grid and list. **Items per page**, **Previous**, and **Next** help you browse more releases.
 
 Each collection shows:
 
@@ -40,32 +44,50 @@ Each collection shows:
 - Release date or **Release date not set**
 - Track count, including a real zero
 - **Plays** (all-time audience plays across the collection's beats)
-- Last update date
-- **Insights** and **Edit** actions
+- Actions to manage the collection, view it, or open **Insights**
 
 <Note>
-  **Audience plays** counts BeatPass listening activity from people outside the selected producer's team. A real zero stays visible. **Unavailable** means BeatPass could not load that play information.
+  **Audience plays** counts BeatPass listening activity from people outside your producer team. A real zero stays visible. **Unavailable** means BeatPass could not load that play information.
 </Note>
 
 ### Filters
 
-- **Needs review** — Collections whose artwork cannot be displayed, release date is not set, or beat list is empty
-- **Upcoming** — Collections with a future release date
-- **Released** — Collections whose release date is today or earlier
-- **Empty** — Collections with no beats
+- **Needs review**: Collections whose artwork cannot be displayed, release date is not set, or beat list is empty
+- **Upcoming**: Collections with a future release date
+- **Released**: Collections whose release date is today or earlier
+- **Empty**: Collections with no beats
 
-Use **Filter** to add or remove a collection view. With no filter applied, the table shows all collections.
+Choose **All collections**, **Released**, **Upcoming**, **Needs review**, or **Empty** above the search field.
 
-Select the **Plays** or **Updated** column heading to sort the whole catalog. Select the same heading again to reverse the order; select it a third time to return to the default recently-updated order.
+Use the sort menu to browse by update, name, release date, or plays.
 
 ### Actions and Selection
 
 - **Create collection** opens the collection editor.
 - **Insights** opens detailed performance information for one collection.
-- **Edit** opens the collection editor.
-- Use the checkbox beside any collection to select it, or use **Select all on this page** above the list. **Clear selection** leaves every collection unselected. Use **Delete selected** only when you intend to permanently remove the selected collections.
+- **Manage collection** or **Manage** opens the collection editor; the label depends on the chosen view.
+- Choose **Select**, then select collections or use **Select all on this page**. Use the delete action only after reading its confirmation, including its effect on tracks. **Done** leaves selection mode.
 
 Use **Items per page** to show 10, 20, or 50 collections. Use **Previous** and **Next** below the list to move between pages. The range text shows which collections are currently visible, and **Updating** indicates a background refresh without hiding the current rows.
+
+## Update Several Release Dates
+
+<Steps>
+  <Step title="Select collections">
+    Choose **Select**, then select the collections on the current page.
+  </Step>
+  <Step title="Choose Edit">
+    In **Edit release dates**, choose the new date for the selected collections.
+  </Step>
+  <Step title="Review release dates">
+    Check the affected collections and new date before applying the change. Follow any validation message if a collection needs attention.
+  </Step>
+  <Step title="Check the saved dates">
+    After the save succeeds, review the dates in your catalog. Use **Done** to leave selection mode when needed.
+  </Step>
+</Steps>
+
+A release date is planning information. It does not schedule or hide a collection, or change its beats' licenses and prices.
 
 ## Release Details
 
@@ -85,18 +107,18 @@ If a future release exists, **Next upcoming release** links to the closest colle
 
 A collection appears on the public Pro Page only when it has public beats that visitors can play and explore. If no usable collection exists, the public page omits the Collections section.
 
-When a visitor selects a collection, the Pro Page filters the catalog in place instead of sending them away from the producer storefront. The collection remains in the page URL so Back, Forward, and a copied browser URL restore the same catalog view.
+Visitors can open a collection from your Pro Page to hear that release. Show or hide the available Collections section from your Pro Page workspace.
 
-Use collections for a real listening path—a beat tape, album, campaign, or focused sound—not simply to fill space on the page.
+Use collections for a real listening path, such as a beat tape, album, campaign, or focused sound.
 
 ## Empty and Unavailable States
 
 <AccordionGroup>
   <Accordion title="No producer profile" icon="user" defaultOpen>
-    Connect a producer profile before managing collections from this page.
+    Check that you are signed in to the approved producer account. If your profile is missing, review your [Producer Program application](/help/producer-program).
   </Accordion>
   <Accordion title="No collections yet" icon="compact-disc">
-    Use **Create collection** to organize the first release for the selected producer profile.
+    Use **Create collection** to organize the first release for your producer profile.
   </Accordion>
   <Accordion title="No matching collections" icon="magnifying-glass">
     Use **Clear filters** to return to the complete collection list.

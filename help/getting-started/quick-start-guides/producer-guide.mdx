@@ -6,128 +6,67 @@ description: "Get started as an approved producer on BeatPass — dashboard acce
 canonical: "https://docs.beatpass.ca/help/getting-started/quick-start-guides/producer-guide"
 ---
 
+import DashboardFigure from "/snippets/media/dashboard.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import StripeConnectRequired from "/snippets/callouts/stripe-connect-required.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-This guide is for approved producers who need the fastest path to your dashboard, payouts, uploads, and profile.
+Publish your first BeatPass beat, complete the payout setup offered to you, and make your producer profile ready for visitors. Producer access is free; this guide is for approved producers.
 
 <ProducerOnly />
 
-## Open the Producer Dashboard
 
-Click your **profile avatar** in the top navigation bar, then select **Backstage**.
+<DashboardFigure />
 
-The dashboard is your central hub for managing everything as a producer. Here's what you'll find in the sidebar:
+## Open your workspace
 
-| Section | What it does |
-|---------|-------------|
-| **Dashboard** | Your producer overview |
-| **Finances** | Earnings, payouts, and payout setup |
-| **Activity** | Performance analytics |
-| **Progress** | XP, level, and achievements |
-| **Leaderboards** | Producer rankings |
-| **My Beats** | Manage your track catalog |
-| **My Collections** | Organize your albums and collections |
+Select your profile avatar and **Producer Dashboard**, or [open the dashboard](https://open.beatpass.ca/producer-dashboard). Use **My Beats** and **My Collections** for your catalog, **Activity** for performance, and **Finances** for payout setup and earnings.
 
-## Connect Payouts
+## Set up payouts
 
-Before you can receive earnings, complete the payout setup shown on your **Finances** page.
+Start with the [BEATPAY guide](/help/earnings/beatpay) if you want each screen explained as you go.
 
-<Steps>
-  <Step title="Open Finances">
-    In the Producer Dashboard sidebar, click **Finances**.
-  </Step>
-  <Step title="Start the setup">
-    Click **Set up BEATPAY** to begin bank payout setup.
-  </Step>
-  <Step title="Complete payout setup">
-    Choose a bank account currency your bank can receive, then enter the bank details requested for that currency. The form adapts to your currency, and some banks ask for one extra detail (for example, a branch) after you pick them.
-  </Step>
-</Steps>
+Open **Finances** and follow **Payout setup**. When offered, select **Set up BEATPAY** and choose **Set up bank payouts**. Select a currency your bank account can receive, then enter the fields requested for that bank route and select **Save bank details**.
+
+A submitted destination does not mean every earning type is already available for payout. Read the status in Finances. Existing eligible Stripe routes can remain active until the relevant BEATPAY route is ready.
 
 <StripeConnectRequired />
 
-## Upload Your First Beat
+## Upload your first beat
 
 <Steps>
-  <Step title="Go to the upload page">
-    Click **Upload beats** in the top navigation bar, or navigate directly to the upload page from the backstage area.
+  <Step title="Choose your WAV">
+    From the dashboard, select **Upload beat** and choose the original WAV audio. To group files as a collection, select **Create Collection** before choosing them.
   </Step>
-  <Step title="Choose your audio file">
-    Drag and drop your file or click **Choose files to upload**. BeatPass accepts **WAV** audio for producer track uploads.
-
-    <Info>
-      MP3, FLAC, and other audio formats are not accepted in the current track upload flow.
-    </Info>
-  </Step>
-  <Step title="Fill in track details">
-    Complete the required fields:
-
-    - **Track Name**
-    - **Key** and **Scale**
-    - **BPM** (whole number, 60–200)
-
-    Add cover art and choose at least one genre. You can also add a description, tags, and assign the track to a collection.
+  <Step title="Complete the musical details">
+    Add **Track Name**, cover art, a genre, **Key**, **Scale**, and a whole-number **BPM** from 60 to 200. Your producer profile is filled in as the credited producer.
   </Step>
   <Step title="Complete protection and licensing">
-    Choose a **Sample-Safe** status and an AI use declaration, then wait for the fingerprint check to finish. Under **Licensing Options**, choose one of the models available for every credited producer. Some accounts can publish **Exclusive Only** before standard subscription licensing becomes available.
+    In **Protection & Verification**, select the sample declaration and **Human-made** or **AI-assisted**. Add required AI-use details and commercial-rights confirmation, then wait for the audio check. Under **Licensing Options**, choose an available model and complete its terms.
   </Step>
-  <Step title="Save your track">
-    Review the completion count on each section, then click **Save Track**. BeatPass locks the form while the track is publishing.
-  </Step>
-</Steps>
-
-<Tip>
-  To upload multiple tracks as a collection, enable the **Create Collection** toggle before selecting your files.
-</Tip>
-
-## Edit Your Producer Profile
-
-Your public producer profile is managed separately from the dashboard.
-
-<Steps>
-  <Step title="Open the edit page">
-    From the backstage area, go to your artist profile edit page.
-  </Step>
-  <Step title="Update your information">
-    Use the tabs to manage different sections of your profile:
-
-    - **Details** — Your producer name and genres
-    - **Links** — Social media and website links
-    - **Biography** — Country, city, and a description of your style
-    - **Images** — Profile photos and gallery images
-    - **Credits** — Professional credits and collaborations
-  </Step>
-  <Step title="Save your changes">
-    Click **Save Artist** to publish your updates.
+  <Step title="Publish and check">
+    Resolve any incomplete section, then select **Save Track**. Wait for completion before leaving or retrying. Check the saved beat in **My Beats**.
   </Step>
 </Steps>
 
-## Monitor Your Performance
+For an exclusive offer, check the contact details, price when available, WAV and stems, delivery guarantee, and your signed authorization. Standard catalog availability also depends on credited producers' payout readiness. See [uploading](/help/uploading) for the full workflow.
 
-Once your tracks are live, use these sections in the Producer Dashboard to track your growth:
+## Make the profile yours
 
-- **Activity** — View play counts, downloads, and engagement analytics
-- **Progress** — Track your XP, level up, and unlock achievements
-- **Leaderboards** — See how you rank among other producers
-- **Finances** — Monitor your earnings, payout status, and transaction history
+Open your producer profile's edit action. In the profile editor, use **Details**, **Images**, **Biography**, **Links**, and **Credits** to update the relevant section. Select **Save changes** to publish, then **Preview** to check the public result.
 
-## Related Guides
+## Keep growing
+
+Use **Activity** for performance, **Progress** for achievements, and **Finances** for recorded earnings and payout status. Figures and milestones can update after processing; a visible balance is not the same as a completed bank payout.
+
+Producer accounts can retrieve their own audio and valid earlier licenses. A paid plan does not unlock new standard licenses or exclusive catalog purchases for other producers' beats.
 
 <Columns cols={2}>
-  <Card title="Earnings Guide" icon="dollar-sign" href="/help/earnings">
-    Understand subscription revenue, exclusives, and finances.
-  </Card>
-  <Card title="Uploading Guide" icon="cloud-arrow-up" href="/help/uploading">
-    Learn the full track and collection upload workflow.
-  </Card>
-  <Card title="Producer Profiles" icon="music" href="/help/profiles/producer-profiles">
-    Manage your public producer identity.
-  </Card>
-  <Card title="Payout Eligibility" icon="credit-card" href="/help/earnings/payout-eligibility">
-    Review what must be ready before payouts can move.
-  </Card>
+  <Card title="Read your earnings" icon="chart-line" href="/help/earnings">Follow your recorded amounts and payout readiness.</Card>
+  <Card title="Make your profile yours" icon="user" href="/help/profiles/producer-profiles">Prepare the public page behind your music.</Card>
 </Columns>
+
+Check [payout eligibility](/help/earnings/payout-eligibility) when an earning cannot move yet.
 
 <NeedHelp />

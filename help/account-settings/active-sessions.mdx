@@ -9,139 +9,30 @@ keywords: ["active sessions", "logged in devices", "security", "logout", "remote
 canonical: "https://docs.beatpass.ca/help/account-settings/active-sessions"
 ---
 
-Active sessions show you all the devices and browsers where your BeatPass account is currently logged in. This helps you monitor account access and log out from devices you no longer use.
+Check **Active sessions** when you want to sign out an old browser or review account access. Open [Account Settings](https://open.beatpass.ca/account-settings#sessions) to see your recent sessions.
 
----
+## Sign out other browsers
 
-## Viewing Your Sessions
+<Steps>
+  <Step title="Review the list">
+    In **Active sessions**, look for your browser and platform. **This device** marks the session you are using now.
+  </Step>
+  <Step title="End other sessions">
+    Select **Logout other sessions** and enter your current password when prompted. Your current browser stays signed in.
+  </Step>
+  <Step title="Check the result">
+    Wait for **Logged out other sessions.** If an error appears, retry before assuming the other sessions have ended.
+  </Step>
+</Steps>
 
-1. Open the **Account Settings** page from your profile avatar menu
-2. Scroll to the **Active sessions** section
-3. You'll see a list of all devices where you're logged in
+This action ends other browser sessions. [API tokens](/help/account-settings/developer-api) are managed separately. If you use Google and do not know your password, [reset or create it by email](/help/account-settings/password/forgot-password) first.
 
-### Session Information
+## Understand the list
 
-Each session shows:
+Each row can show browser, platform, approximate city and country, IP address, and last activity. A mobile network or VPN can make the location look unfamiliar. Missing details may appear as **Unknown**.
 
-| Information | Description |
-|-------------|-------------|
-| **Browser and platform** | The browser and device platform BeatPass detected |
-| **Location** | City and country (approximate, based on IP) |
-| **IP Address** | Your network address at time of login |
-| **Last Active** | When the session was last used |
-| **Current Device** | Badge indicating your current session |
+BeatPass displays up to **30 recent sessions**. A session falling outside that list does not by itself prove it was deleted or signed out.
 
-<Note>
-  Location is determined from your IP address and may not be exact. VPN users may see different locations.
-</Note>
+## Something looks unfamiliar
 
----
-
-## Identifying Your Current Session
-
-Your current session is clearly marked with a **"This device"** label. This helps you distinguish between the session you're using now and other active sessions.
-
----
-
-## Logging Out Other Devices
-
-If you see a session you don't recognize or want to log out from a device you're no longer using:
-
-### Log Out All Other Devices
-
-1. Open the **Account Settings** page from your profile avatar menu
-2. Scroll to the **Active sessions** section
-3. Click the **Logout other sessions** button
-4. Confirm your password when prompted
-5. All sessions except your current one will be ended
-
-<Warning>
-  This will log you out from all other devices immediately. You'll need to log in again on those devices.
-</Warning>
-
-### Why Password Is Required
-
-You must enter your password to log out other devices. This security measure ensures that:
-- Only you can end your sessions
-- Someone with temporary access to your account can't lock you out
-
----
-
-## When to Review Sessions
-
-Check your active sessions regularly, especially if:
-
-- You logged in on a public or shared computer
-- You suspect unauthorized access to your account
-- You're receiving notifications from devices you don't use
-- You recently changed your password
-- You lost a device that was logged in
-
-<Tip>
-  Make it a habit to review your sessions monthly. This helps catch any suspicious activity early.
-</Tip>
-
----
-
-## Suspicious Sessions
-
-### Signs of Unauthorized Access
-
-Watch for sessions that show:
-- **Unfamiliar locations** — Cities or countries you haven't visited
-- **Unknown devices** — Device types or browsers you don't use
-- **Unusual timing** — Activity when you know you weren't online
-
-### What to Do
-
-If you see a suspicious session:
-
-1. **Log out all other devices** immediately
-2. **Change your password** right away
-3. **Enable two-factor authentication** if not already enabled
-4. **Review recent account activity** for unauthorized changes
-
-<Warning>
-  If you believe your account was compromised, change your password immediately and review any changes made to your account settings, uploaded content, or payment information.
-</Warning>
-
----
-
-## Session Limits
-
-BeatPass tracks up to **30 recent sessions**. Older sessions are automatically removed from the list as new ones are added.
-
----
-
-## Common Questions
-
-<AccordionGroup>
-  <Accordion title="Why do I see multiple sessions from the same location?">
-    Each browser or device creates a separate session. If you use multiple browsers (Chrome and Safari, for example), each will appear as a separate session.
-  </Accordion>
-
-  <Accordion title="The location shown is wrong">
-    Location is approximate and based on your IP address. VPNs, corporate networks, and mobile carriers may show different locations than where you actually are.
-  </Accordion>
-
-  <Accordion title="A session disappeared from my list">
-    Sessions are removed when you log out, when they expire due to inactivity, or when they're older than the 30-session limit.
-  </Accordion>
-
-  <Accordion title="Can I log out a specific device instead of all?">
-    Currently, you can log out all other devices at once. Individual session logout may not be available.
-  </Accordion>
-</AccordionGroup>
-
----
-
-## Related Topics
-
-<Columns cols={2}>
-  <Card title="Password" icon="lock" href="/help/account-settings/password">
-    Change your password for better security.
-  </Card>
-  <Card title="Two-Factor Authentication" icon="shield-halved" href="/help/account-settings/two-factor-authentication">
-    Add extra security to prevent unauthorized access.
-  </Card>
-</Columns>
+Sign out other browsers, [change your password](/help/account-settings/password/changing-password), and review your account details. Consider [two-factor authentication](/help/account-settings/two-factor-authentication). If access or account details changed without your permission, [contact support](/help/contact-support).

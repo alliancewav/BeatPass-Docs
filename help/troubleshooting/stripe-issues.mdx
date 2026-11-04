@@ -8,118 +8,35 @@ canonical: "https://docs.beatpass.ca/help/troubleshooting/stripe-issues"
 
 import StillNeedHelp from "/snippets/sections/still-need-help.mdx";
 
-This guide is for producers using Stripe Connect through BeatPass. If **Finances** shows **Set up BEATPAY**, use [BEATPAY Bank Payouts](/help/earnings/beatpay) instead.
+Use this guide if an existing Stripe Connect payout route needs attention. Subscription card payments are a different task; use [payment help](/help/troubleshooting/payment-issues) for those.
 
-<Note>
-  Stripe Connect issues are separate from subscriber billing issues. If you are trying to pay for a subscription, use [Payment Issues](/help/troubleshooting/payment-issues).
-</Note>
+## Check the active route in Finances
 
-## Start in the Right Place
+Open [Producer Dashboard → Finances](https://open.beatpass.ca/producer-dashboard/finances). Review **Payout setup** and the status for the earning type involved. A connected destination is not the same as a completed payment.
 
-Producer payout setup and status live in **Producer Dashboard** → **Finances**. Follow the setup shown for the selected artist.
+New and resumed Stripe onboarding are closed. If offered, use **Set up BEATPAY** rather than opening a new Stripe account. An eligible legacy route can stay active until BEATPAY is ready for the relevant earnings; earlier routed earnings keep their provider history.
 
-If you manage more than one producer profile, make sure you are looking at the correct selected artist before troubleshooting balances or onboarding state.
+## Existing Stripe requirements need attention
 
-## Finances Asks for Payout Setup
+Use the available Stripe account access or [Stripe Express login](https://connect.stripe.com/express_login) for the connected account. Check pending verification, payout, and bank requirements there. Creating a separate regular Stripe account will not reconnect the legacy route.
 
-New Stripe Connect accounts can no longer be created. If **Finances** shows that payout setup is required, click **Set up BEATPAY**, choose a bank account currency your bank can receive, and add your bank details. See [BEATPAY](/help/earnings/beatpay).
+If BeatPass does not offer an action you expect, [contact support](/help/contact-support) with the status shown. Do not repeatedly try new or resumed onboarding.
 
-If you connected a Stripe account in the past, it keeps paying out until your BEATPAY setup is active — the rest of this page covers issues with those existing accounts.
+## A payout has not arrived
 
-## I Opened the Wrong Stripe Dashboard
+Check the transaction and selected earning period in Finances:
 
-BeatPass uses **Stripe Express**, not a standard Stripe dashboard account.
+- A queued or processing record is not proof of bank arrival.
+- An already routed payout can retain its earlier provider even after a setup change.
+- Different currencies are not directly interchangeable; read the currency and amount on each record.
+- Bank timing, compliance review, receiving-bank charges, and conversions can affect arrival.
 
-Use:
+Use the transaction or payout reference when contacting support. Send the status and currency, not full account numbers or identity documents unless requested through an appropriate process.
 
-- [connect.stripe.com/express_login](https://connect.stripe.com/express_login) for BeatPass payouts
-- `dashboard.stripe.com` only for separate, regular Stripe accounts you manage outside BeatPass
+## Bank details need changing
 
-## The Connect Button or Redirect Isn't Working
+Manage a legacy Stripe destination through the connected Stripe Express account. For an active BEATPAY route, follow the bank setup or update action shown in Finances and use the [BEATPAY guide](/help/earnings/beatpay).
 
-<AccordionGroup>
-  <Accordion title="Nothing happens when I start onboarding">
-    Check popup blocking, refresh the page, and retry in another browser if needed.
-  </Accordion>
-  <Accordion title="Stripe opens but I can't finish">
-    Complete the missing identity or bank details Stripe requests. If Stripe rejects a document, use Stripe's guidance or support from the Express flow itself.
-  </Accordion>
-  <Accordion title="My country is not available in the BeatPass country step">
-    If BeatPass does not offer your country in the onboarding dialog, the current producer payout flow cannot continue for that country. Contact support if you need clarification on eligibility.
-  </Accordion>
-</AccordionGroup>
-
-## My Account Shows Connected but Not Fully Ready
-
-Finances can show a connected account that still lacks full payout readiness.
-
-<AccordionGroup>
-  <Accordion title="Charges or payouts are not enabled">
-    Your Stripe account still has missing requirements. Re-open the setup flow from **Producer Dashboard** → **Finances** or log in to Stripe Express to complete the pending steps.
-  </Accordion>
-  <Accordion title="The page says pending or verification required">
-    Stripe is still reviewing information or waiting on more details. Check the Express dashboard for requirements before contacting BeatPass.
-  </Accordion>
-</AccordionGroup>
-
-## I'm Not Receiving Money
-
-<AccordionGroup>
-  <Accordion title="Subscription payouts are queued">
-    A queued payout means BeatPass calculated the split but is waiting for platform funds to become available in Stripe. This does not automatically mean your Stripe account is broken.
-  </Accordion>
-  <Accordion title="My bank details are wrong">
-    Sign in to Stripe Express and review the payout destination there.
-  </Accordion>
-  <Accordion title="I have no visible payout yet">
-    Check the selected artist in **Producer Dashboard** → **Finances**, review the transaction list, and remember that BeatPass financial data can include cached metadata rather than instant live settlement.
-  </Accordion>
-  <Accordion title="I see mixed-currency warnings">
-    BeatPass can surface mixed-currency balance states in Finances. Review the balance details carefully before assuming money is missing.
-  </Accordion>
-</AccordionGroup>
-
-## When Stripe Connect Is The Active Route
-
-When Stripe Connect is the active route, BeatPass can use it for:
-
-- Monthly payout activity
-- Exclusive sales
-- Track purchases
-
-<Tip>
-For exclusive sales and track purchases, BeatPass is designed so the producer keeps 100% of the listed price. The platform fee is added for the buyer when it applies; eligible active Pro buyers have it waived.
-</Tip>
-
-## Common Questions
-
-<AccordionGroup>
-  <Accordion title="Can I change my bank account?">
-    Manage payout destinations from Stripe Express after logging in with the onboarding email or phone verification flow.
-  </Accordion>
-  <Accordion title="Can I view my Stripe Express dashboard directly?">
-    Yes. Use [connect.stripe.com/express_login](https://connect.stripe.com/express_login).
-  </Accordion>
-  <Accordion title="What does BeatPass see from Stripe?">
-    BeatPass can see connection and readiness status, but Stripe keeps the sensitive banking and identity details inside its own onboarding flow.
-  </Accordion>
-</AccordionGroup>
+BeatPass retains operational references and masked payout details; providers have their own retention and verification duties. Read the [Privacy Policy](/help/legal/privacy-policy) for those boundaries.
 
 <StillNeedHelp />
-
-## Related
-
-<Columns cols={2}>
-  <Card title="Stripe Connect Guide" icon="credit-card" href="/help/earnings/stripe-connect">
-    Full setup and onboarding guide.
-  </Card>
-  <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
-    Use this if **Finances** shows **Set up BEATPAY**.
-  </Card>
-  <Card title="Producer Finances" icon="chart-line" href="/help/earnings/viewing-finances">
-    Understand the finances page and transaction states.
-  </Card>
-  <Card title="Payment Issues" icon="credit-card" href="/help/troubleshooting/payment-issues">
-    Subscriber billing problems?
-  </Card>
-</Columns>

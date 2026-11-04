@@ -6,23 +6,27 @@ description: "Browse the current BeatPass producer achievement collection by sta
 canonical: "https://docs.beatpass.ca/help/gamification/achievements/catalog"
 ---
 
+import AchievementGalleryFigure from "/snippets/media/achievement-gallery.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
 The live achievement collection appears in **Achievements** on the Producer Dashboard **Progress** page. BeatPass shows the complete current collection, including achievements you have not unlocked.
 
 ## Browse by status
 
-Use **Status** to choose:
+<AchievementGalleryFigure />
 
-- **Available** — Achievements you can still unlock
-- **Unlocked** — Achievements already recorded for your account
-- **All** — The complete collection
+Use the buttons below search and category to choose:
 
-**Available** is selected when the page opens.
+- **Not unlocked**: achievements not yet recorded as unlocked for your account
+- **Unlocked**: Achievements already recorded for your account
+- **All**: The complete collection
+
+**All** is selected on a fresh visit. Your **Unlocked** collection scrolls horizontally; **Explore achievements** shows uncollected goals below it. Saved links can reopen filters or an achievement detail.
 
 ## Browse by category
 
-Use **Category** to narrow the collection. Current categories can cover:
+Use **Search achievements** to search names and requirements. Open **Category** and choose a category to narrow the collection. Current categories can cover:
 
 - Uploads and track milestones
 - Plays and track performance
@@ -33,24 +37,31 @@ Use **Category** to narrow the collection. Current categories can cover:
 
 The exact category labels available depend on the current collection.
 
+An available goal may be seasonal, historical, or subject to account-age requirements. Open it and read its requirement before choosing it as your next goal.
+
 ## Read an achievement
 
 Each achievement shows:
 
 - Name and requirement
-- **Available** or **Unlocked** status
+- **Not unlocked** or **Unlocked** status
 - **Common**, **Rare**, **Epic**, or **Legendary** rarity
-- Category
-- Potential XP for an available achievement, or actual XP for an unlocked achievement
+- Potential XP when an uncollected goal has a reward, or recorded XP when unlocked
 - Unlock date when available
 
 <Note>
-  Several requirements compare activity across BeatPass and are not linear. Progress does not show a fabricated percent-complete bar for an achievement.
+  Open a card for its full requirement and category. Some goals compare your activity with other producers, so there is no individual percent-complete bar.
 </Note>
 
 ## Pagination
 
-Eight matching achievements appear per page. The range text shows which items you are viewing. Use **Previous** and **Next** to move between pages. Changing **Status** or **Category** returns you to the first page.
+Uncollected goals appear six per page. Use **Previous** and **Next** below them. Your unlocked collection scrolls separately with **Previous achievement** and **Next achievement** when needed. Use **Clear filters** to return to the full collection.
+
+Open a card to browse details with **Previous achievement** and **Next achievement**. Scroll to read the requirement and producer examples; use **Choose this goal** at the bottom when offered to keep that achievement above the collection.
+
+You can also start with **Choose a goal** when it appears. Your chosen card offers **View goal**, **Change goal** when another is available, and **Remove goal**. Changing opens another achievement to review before you choose it. This choice does not unlock anything or add XP. **Early Adopter** explains its historical requirement instead of offering goal selection.
+
+A recorded 0 XP award says **No XP bonus**. Missing historical reward information stays **Unlocked** without a number.
 
 The live collection can change as BeatPass adds or updates achievements. The **Progress** page is the current reference for names, requirements, rarity, and rewards.
 

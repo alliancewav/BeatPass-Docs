@@ -2,28 +2,25 @@
 audience: help
 title: "Metric Definitions"
 sidebarTitle: "Metrics"
-description: "Definitions for the current user-visible metrics in BeatPass Backstage Insights."
+description: "Understand plays, audience shares, listening duration and Pro Page outcomes."
 canonical: "https://docs.beatpass.ca/help/analytics/reference/metrics-glossary"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-This glossary covers the labels producers can see in the current Backstage Insights UI.
+Use this glossary while reading **Insights** to tell period listening, lifetime summaries, audience shares, and completion apart.
 
 ## Core Listening Metrics
 
 <AccordionGroup>
   <Accordion title="Plays">
-    The number of plays recorded for the current track, album, or artist inside the selected date range.
+    Plays Over Time describes recorded listening in the selected period. Counts marked Lifetime in the summary describe a different time span.
   </Accordion>
-  <Accordion title="Likes">
-    A saved or liked count shown in relevant headers, such as album-level summaries.
+  <Accordion title="Likes and followers">
+    Available summary counts identify the music or producer profile. A Lifetime label means they are separate from the dates selected for the charts.
   </Accordion>
-  <Accordion title="Followers">
-    The follower count shown in the artist insights header.
-  </Accordion>
-  <Accordion title="Total Duration">
-    The combined duration shown for an album header.
+  <Accordion title="Duration">
+    The length of a beat or combined length of a collection, shown in its details. Total Listen Time measures listening activity instead.
   </Accordion>
 </AccordionGroup>
 
@@ -31,37 +28,38 @@ This glossary covers the labels producers can see in the current Backstage Insig
 
 <AccordionGroup>
   <Accordion title="Avg Listen Duration">
-    The average amount of time listeners spend on the track.
+    Average listening time for plays with duration tracking in the selected period. Compare it with the track length and the tracked-play total shown.
   </Accordion>
-  <Accordion title="Avg Completion Rate">
-    The average percentage of the track that gets heard.
+  <Accordion title="Average portion heard">
+    The average share of the beat heard in tracked listening. It appears with Completion Breakdown.
   </Accordion>
   <Accordion title="Total Listen Time">
-    Combined listening time across the selected range.
+    Combined listening time represented by the report's duration-tracked plays.
   </Accordion>
-  <Accordion title="Completed Listens">
-    A listen where the listener hears strictly more than 80% of the track.
+  <Accordion title="Completed">
+    A tracked listen in which more than 80% of the beat was heard. The other completion bands describe shorter portions of the recording.
   </Accordion>
 </AccordionGroup>
 
 ## Audience Breakdown Metrics
 
 <AccordionGroup>
-  <Accordion title="Top Devices">
-    The device types most commonly used by your listeners.
-  </Accordion>
-  <Accordion title="Top Platforms">
-    The operating-system style platform groups used by your listeners.
+  <Accordion title="Top Devices and Top Platforms">
+    Shares of plays with the corresponding device or platform information. Read recorded plays and any Other or Unknown category shown.
   </Accordion>
   <Accordion title="Top Listeners">
-    The users or grouped listener buckets generating the most listening activity.
+    Listening activity across the accounts and guest group shown. Guest Listeners combines guest activity; it is not a count of identified people.
   </Accordion>
   <Accordion title="Top Locations">
-    The geographic areas contributing the most plays.
+    Shares across the locations shown. The displayed chart total gives the basis for those percentages.
   </Accordion>
   <Accordion title="Most Played Tracks">
-    The best-performing tracks in the current album or artist view.
+    Ranked beats in the selected collection or producer report. Choose a beat to open its own Insights.
   </Accordion>
 </AccordionGroup>
+
+## Pro Page outcomes
+
+**Engaged visits**, **30-second listens**, **License actions started**, and **Completed licenses and sales** measure activity connected to your shared storefront. Use **What counts?** in the **Pro Page** tab for its current definitions. Started actions can repeat; a completed license or sale requires confirmation by BeatPass.
 
 <NeedHelp />

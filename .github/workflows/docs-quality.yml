@@ -14,7 +14,6 @@ jobs:
     timeout-minutes: 20
     env:
       BEATPASS_SOURCE_DIR: _source/open.beatpass.ca
-      SOURCE_TOKEN: ${{ secrets.OPEN_BEATPASS_READ_TOKEN }}
       VALE_VERSION: 3.17.1
 
     steps:
@@ -24,10 +23,13 @@ jobs:
           fetch-depth: 0
 
       - name: Require application read token
-        if: env.SOURCE_TOKEN == ''
+        env:
+          SOURCE_TOKEN: ${{ secrets.OPEN_BEATPASS_READ_TOKEN }}
         run: |
-          echo "OPEN_BEATPASS_READ_TOKEN is required for source parity checks."
-          exit 1
+          if [ -z "${SOURCE_TOKEN}" ]; then
+            echo "OPEN_BEATPASS_READ_TOKEN is required for source parity checks."
+            exit 1
+          fi
 
       - name: Check out application source read-only
         uses: actions/checkout@v4

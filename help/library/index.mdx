@@ -6,75 +6,47 @@ sidebarTitle: "Your Library"
 canonical: "https://docs.beatpass.ca/help/library"
 ---
 
-import NeedHelp from "/snippets/sections/need-help.mdx";
+import LibraryFigure from "/snippets/media/library.mdx";
 
-Your library is the personal side of BeatPass. It collects the music and tools you have already interacted with so you can get back to them quickly without browsing the full catalog again.
+Keep your favorite beats, people, playlists, and licenses close. Sign in, open your **profile avatar**, and choose **My library**, or use **Library** on your phone.
 
-<Info>
-  On desktop, opening **Library** takes you straight to **Your tracks**. On smaller screens, the top-level library page shows tiles for each library section.
-</Info>
+<LibraryFigure />
 
-## What You Can Keep In Your Library
+## Find your next stop
 
-<Columns cols={2}>
-  <Card title="Your tracks" href="/help/library/your-tracks" icon="heart">
-    Tracks you have saved to your library.
-  </Card>
-  <Card title="Your collections" href="/help/library/your-collections" icon="folder">
-    Collections you have saved for later.
-  </Card>
-  <Card title="Your producers" href="/help/library/your-producers" icon="users">
-    Producer profiles you have saved.
-  </Card>
-  <Card title="Listening history" href="/help/library/listening-history" icon="clock">
-    Tracks you have recently played.
-  </Card>
-  <Card title="Beat requests" href="/help/library/beat-requests" icon="message">
-    Requests you have created and posted.
-  </Card>
-  <Card title="Licenses" href="/help/library/licenses" icon="file-lines">
-    Your license records and certificates.
-  </Card>
-  <Card title="Playlists" href="/help/playlists" icon="clipboard-list">
-    Playlist management from your library and playlist pages.
-  </Card>
-  <Card title="Lyrics" href="/help/library/lyrics" icon="microphone-lines">
-    Your saved lyric notes from the player.
-  </Card>
-</Columns>
+**Your library** opens the overview. Choose a section along the top; on a narrow screen, swipe the section chips sideways to find more.
 
-## Accessing Library Sections
+<Tabs sync={false}>
+  <Tab title="Music" icon="music">
+    <Columns cols={2}>
+      <Card title="Liked Beats" icon="heart" href="/help/library/your-tracks">Replay a favorite or compare your shortlist.</Card>
+      <Card title="Playlists" icon="list" href="/help/playlists">Arrange your next listening session and share it.</Card>
+      <Card title="Liked Collections" icon="compact-disc" href="/help/library/your-collections">Return to a release you saved.</Card>
+      <Card title="History" icon="clock" href="/help/library/listening-history">Find a beat you recently played.</Card>
+    </Columns>
+  </Tab>
+  <Tab title="People & lyrics" icon="users">
+    <Columns cols={2}>
+      <Card title="Following" icon="user-plus" href="/help/library/your-producers">Find a producer you want to hear again.</Card>
+      <Card title="Saved Lyrics" icon="microphone-lines" href="/help/library/lyrics">Pick up your private notes for a song.</Card>
+    </Columns>
+  </Tab>
+  <Tab title="Licenses & requests" icon="file-contract">
+    <Columns cols={2}>
+      <Card title="My Licenses" icon="file-contract" href="/help/library/licenses">Find a certificate and its current next action.</Card>
+      <Card title="My Requests" icon="message" href="/help/library/beat-requests">Review requests or the beats you submitted as a producer.</Card>
+    </Columns>
+  </Tab>
+</Tabs>
 
-<AccordionGroup>
-  <Accordion title="Desktop behavior">
-    The left navigation includes **Library** and the individual library destinations. Opening **Library** routes to **Your tracks**, where you can switch into other sections such as **Collections**, **Producers**, **Play history**, **Beat requests**, **Licenses**, and **Lyrics**.
-  </Accordion>
-  <Accordion title="Mobile behavior">
-    The top-level library screen acts like a hub. It shows large shortcuts for **Beats**, **Playlists**, **Collections**, **Producers**, **Play history**, **Beat requests**, **Licenses**, and **Lyrics**.
-  </Accordion>
-  <Accordion title="Account requirement">
-    Library pages are tied to your account. You need to be signed in to save content and access these sections.
-  </Accordion>
-</AccordionGroup>
+## Add something worth keeping
 
-## How Items Get Here
+Like a beat, save a collection, follow a producer, or create a playlist. Return to its library section to find it again. History appears as you listen; licenses appear after a qualifying download or completed purchase.
 
-- Tracks and collections appear after you save them to your library.
-- Producer profiles appear after you save that producer.
-- Listening history is created automatically as you play music.
-- Beat requests appear after you publish a request.
-- Licenses appear when BeatPass generates a license record for your download or purchase.
-- Lyrics appear after you write and save lyrics from the player lyrics editor.
+<Accordion title="Something is missing from my library">
+  Check that you are signed in to the same account, then clear any search or filter that could hide the item. A followed or collaborative playlist can appear when it is attached to your account. For certificates, follow [license recovery](/help/downloads-and-licensing/license-certificates).
+</Accordion>
 
-<NeedHelp />
+Saving or playing music does not grant release rights. Check [Downloads and licensing](/help/downloads-and-licensing) before using a beat in your project.
 
-## Related Help
-
-<Columns cols={2}>
-  <Card title="Playlists" href="/help/playlists" icon="clipboard-list">
-    Create, organize, and share playlists.
-  </Card>
-  <Card title="Downloads and Licensing" href="/help/downloads-and-licensing" icon="shield-halved">
-    Understand downloads, certificates, and verification.
-  </Card>
-</Columns>
+[Need a hand? Contact support](/help/contact-support).

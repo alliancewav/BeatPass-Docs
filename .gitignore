@@ -1,2 +1,28 @@
 node_modules/
-.mintlify/
+.mintlify/*
+!.mintlify/product-brief.md
+
+.docs-runtime/
+
+# Private application checkouts and local review evidence must never enter this public repository.
+_source/
+audit/*
+# Only screened machine-readable contracts needed by the quality gate are publishable.
+!audit/analytics-baseline.md
+!audit/claims.yml
+!audit/frontmatter-schemas.json
+!audit/guideline-errata.md
+!audit/public-url-baseline.json
+!audit/screenshots.yml
+!audit/source-baseline.json
+!audit/claim-consumers.json
+!audit/media-catalog.json
+!audit/media-descriptions.json
+!audit/pending-release.json
+!audit/policy-sources.json
+!audit/polish-review.json
+!audit/screenshots.json
+# Capture scratch output is always disposable; source fixtures remain versioned.
+*.orig
+*.patch
+!patches/*.patch

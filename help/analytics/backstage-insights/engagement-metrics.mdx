@@ -1,53 +1,56 @@
 ---
 audience: help
-title: "Engagement Metrics | Backstage Insights"
+title: "Listening duration and completion"
 sidebarTitle: "Engagement Metrics"
 description: "Understand the engagement metrics shown on BeatPass track insight pages."
 canonical: "https://docs.beatpass.ca/help/analytics/backstage-insights/engagement-metrics"
 ---
 
-Engagement metrics explain how people listen, not just how often they press play. BeatPass currently exposes this layer on **Track Insights** only.
+import TrackOverviewFigure from "/snippets/media/insights-track-overview.mdx";
 
-<Info>
-  If you open album or artist insights, you will not see this engagement section there.
-</Info>
+A beat's listening detail shows how long people stay and how much of the recording they hear. Open **Track Insights** and choose **Overview** to read it alongside the play trend.
 
-## Current Engagement Metrics
+## Read the engagement numbers
 
 <Columns cols={2}>
   <Card title="Avg Listen Duration" icon="clock">
-    The average amount of time listeners stay with the track.
+    Read average listening time alongside track length, total listen time, and the tracked-play count.
   </Card>
-  <Card title="Avg Completion Rate" icon="chart-pie">
-    The average share of the track that gets heard.
-  </Card>
-  <Card title="Total Listen Time" icon="clock">
-    Combined listening time across the selected range.
-  </Card>
-  <Card title="Completed Listens" icon="circle-check">
-    BeatPass currently treats a listen above 80% as completed.
+  <Card title="Completion Breakdown" icon="chart-pie">
+    See the average portion heard and the distribution across Completed, Mostly, Half, Partial, and Skipped.
   </Card>
 </Columns>
 
+<TrackOverviewFigure />
+
 ## Track-Only Sections
 
-<AccordionGroup>
-  <Accordion title="Engagement Overview">
-    A summary block that turns the raw engagement metrics into a quick quality read.
-  </Accordion>
-  <Accordion title="Listen Duration">
-    Shows average listening duration along with trend information.
-  </Accordion>
-  <Accordion title="Completion Breakdown">
-    Splits listening behavior into bands such as completed, mostly, half, partial, and skipped.
-  </Accordion>
-</AccordionGroup>
+**Avg Listen Duration** and **Completion Breakdown** are available for individual beats. Collection and producer reports show their listening trend and most-played tracks; open one beat for listening depth.
 
-## Quality Labels
+Completion bands describe the share of a beat heard:
 
-The engagement overview can show labels such as **High Engagement**, **Good Engagement**, **Moderate Engagement**, or **Low Engagement** based on the current track data.
+| Band | Portion heard |
+| --- | --- |
+| **Completed** | More than 80% |
+| **Mostly** | More than 60%, up to 80% |
+| **Half** | More than 40%, up to 60% |
+| **Partial** | More than 20%, up to 40% |
+| **Skipped** | 20% or less |
 
-## States You May Encounter
+## Use the tracked-play total
 
-- **No engagement data yet** when the track does not have enough engagement history.
-- **Engagement tracking coming soon** when the deeper engagement layer is not available for that track yet.
+Duration and completion use plays with listening-duration information. The report identifies its tracked-play count and, where available, how many plays have no duration data. Those plays can remain in the overall play total without supplying a duration or completion result.
+
+Compare like with like: use the same beat, dates, and chart total. An audience percentage, play total, and completion percentage describe different groups.
+
+## Analytics plays and payout-counted plays
+
+When shown, **Plays in analytics** and **Plays counted toward payouts** are different measures. Ordinary guest listening can appear in analytics. Reviewed artificial activity and plays above the repeat limit are excluded. Historical plays keep their original payout rules. Use the explanation shown on the report rather than treating every play as an earning.
+
+## If the numbers are missing
+
+- **No engagement data yet** means there is not enough duration-tracked listening to show the detail.
+- **No tracked listens in this period** can appear when the chosen dates have no usable listening-duration information.
+- On an error, choose **Try again** in the failed section. An unavailable report is different from zero listening.
+
+[Return to Track Insights](/help/analytics/backstage-insights/track-insights) or [read the metrics glossary](/help/analytics/reference/metrics-glossary).

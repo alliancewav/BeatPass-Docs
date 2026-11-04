@@ -11,8 +11,6 @@ canonical: "https://docs.beatpass.ca/developers/api-reference/messaging"
 
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-## Overview
-
 The Messaging API enables direct and group conversations between BeatPass users. It supports real-time features including typing indicators and read receipts.
 
 <Info>
@@ -126,11 +124,11 @@ DELETE /api/v1/messaging/conversations/{conversationId}
 | `PUT messages/{messageId}/reaction` | `emoji: string or null` | Replace the caller's reaction or remove it with null |
 | `POST conversations/{conversationId}/report` | `reason`, optional `details` | Submit moderation evidence from recent messages |
 
-Each mutation verifies membership. Reactions accept only the six values exposed by the client picker. Report submissions are rate limited. Archive, read reminders, and pins are personal state; they do not change another participant's inbox.
+Each mutation verifies membership. Reactions accept the JSON Unicode escapes `"\u2764\ufe0f"` (heart), `"\ud83d\udc4d"` (thumbs up), `"\ud83d\ude02"` (laugh), `"\ud83d\ude2e"` (surprised), `"\ud83d\ude22"` (sad), or `"\ud83d\ude4f"` (thanks); `null` removes the caller's reaction. Report submissions are rate limited. Archive, read reminders, and pins are personal state; they do not change another participant's inbox.
 
-`GET conversations/{conversationId}/messages` accepts `q` to search text. For stable history pagination, pass `pagination=cursor` and the returned `next_cursor` as `cursor`. The offset contract remains available for older clients. Both send endpoints accept an optional `client_message_id` for retry reconciliation; reuse it for the same send rather than creating a new identity.
+`GET conversations/{conversationId}/messages` accepts `q` to search text. For stable history pagination, pass `pagination=cursor` and the returned `next_cursor` as `cursor`. The offset contract remains available for older clients. Both send endpoints accept an optional `client_message_id` for retry reconciliation; reuse the same UUID and unchanged payload for the same send. Reusing it with a different payload returns a validation error.
 
-See [Moderating messages and reports](/help/messaging/moderation) for administrator workflows. Administrative routes have a separate full-admin authorization check; ordinary messaging membership does not grant access.
+Reports can be reviewed by the BeatPass team. Reporting does not change your conversation membership or grant access to another conversation.
 
 ## Messages
 
@@ -190,7 +188,11 @@ POST /api/v1/messaging/messages
     "message_text": "Synthetic message text Fixture",
     "user": {
       "id": 900000001,
-      "name": "Synthetic name Fixture"
+      "username": "synthetic_user",
+      "display_name": "synthetic_user",
+      "artist_name": null,
+      "avatar": null,
+      "verified": false
     },
     "created_at": "2025-01-15T14:31:00Z"
   }
@@ -269,7 +271,7 @@ GET /api/v1/messaging/conversations/{conversationId}/typing
 ```
 
 <Note>
-  Typing indicators are delivered in real-time. The REST endpoints provide fallback support.
+  Typing state can be read through these REST endpoints. Live delivery depends on the client connection and broadcast configuration; indicators are transient, not a delivery guarantee.
 </Note>
 
 ---

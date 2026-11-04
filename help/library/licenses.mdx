@@ -6,52 +6,57 @@ sidebarTitle: "Licenses"
 canonical: "https://docs.beatpass.ca/help/library/licenses"
 ---
 
+import LicenseWalletFigure from "/snippets/media/license-wallet.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
 The **Licenses** page is the central place to review BeatPass license records tied to your account.
 
-## How to Get Here
+## How to get here
 
-Open **My Licenses**. The page title is **Your licenses** with the subtitle **View and manage all your track licenses**.
+Open your **profile avatar** → **My library**, then choose **My Licenses**. The page title is **Your licenses** with the subtitle **View and manage all your track licenses**.
 
-## What You Can Do
+<LicenseWalletFigure />
+
+## What you can do
 
 - **Search** by track, artist, licensee, or license ID
-- **Download** a printable certificate for any license you received
-- **Verify License** to open the public verification page in a new tab
+- **Download** a printable certificate when that license is ready
+- Open **Details**, then **Verify**, for the public verification page in a new tab
 - Review licenses granted to other users if you own tracks on BeatPass
 
-## What Appears on Each License Card
+## What appears on each license card
 
 Each card shows:
 
 - Track name (linked to the track page) and credited artists
-- License type badge — non-exclusive (green) or exclusive (blue)
-- Issued date
-- Status badge (**Active**, **Revoked**, or **Warned**)
-- License UUID
+- License type and licensed party
+- Status and any required identity review or waiting state
+- **Details**, where you can find the issued date and certificate ID
 
-## Your Licenses vs Granted Licenses
+Read the status label rather than relying on colour: an incomplete or unavailable certificate can use a warning colour.
+
+## Your licenses vs granted licenses
 
 <AccordionGroup>
   <Accordion title="Your own licenses" icon="file-lines" defaultOpen>
-    When you download a track as a non-owner, BeatPass automatically generates a license and it appears here.
+    An authorized licensed download or completed exclusive purchase can create a license record here. Open the record to see whether its certificate is ready or needs an action.
   </Accordion>
   <Accordion title="Granted licenses" icon="users">
     If you are a track owner, this page also shows licenses issued to other users for your catalog. Granted licenses are identified by the licensee name.
   </Accordion>
 </AccordionGroup>
 
-## Empty State
+## Empty state
 
 If you have no licenses yet, the page shows:
 
-> **No licenses yet** — When you download tracks, licenses will automatically be generated and appear here for easy access.
+**No licenses yet** means there are no records to show. An eligible licensed download or completed purchase can create one; downloading your own producer source file does not.
 
-## Important Notes
+## Important notes
 
 - The **Download** action on a license card opens the printable certificate page — it does not re-download the audio file.
 - License records reflect the terms at the time of issuance. Certificates include the available BeatPass ID and fingerprint details used for verification.
-- The library label in the sidebar is **Licenses** (not "My Licenses").
+- Open **My Licenses** from the library, or **My licenses** from the download confirmation. Both lead to your license wallet.
 
 <NeedHelp />

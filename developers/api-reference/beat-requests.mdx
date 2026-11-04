@@ -11,8 +11,6 @@ canonical: "https://docs.beatpass.ca/developers/api-reference/beat-requests"
 
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-## Overview
-
 The Beat Requests API powers the custom beat request marketplace. Users spend tokens to create time-limited requests specifying their needs (genre, BPM, mood, budget). Producers browse active requests and submit tracks to fulfill them.
 
 <Info>
@@ -45,7 +43,7 @@ stateDiagram-v2
     [*] --> Active: Tokens spent
     Active --> Active: Producers submit tracks
     Active --> Expired: Duration ends (24/48/72h)
-    Expired --> Active: Renew (spend tokens)
+    Expired --> Active: Renew (spend a token)
     Active --> Deleted: Owner deletes (tokens refunded)
     Expired --> Deleted: Owner deletes
     Expired --> [*]: No renewal (30-day window)
@@ -74,13 +72,21 @@ Beat requests use a token-based system tied to the user's subscription plan:
 
 ## Endpoints
 
-### List Active Requests
+### List Visible Requests
 
-Get all active beat requests on the marketplace.
+Browse active requests with pagination. Read `status`, `expires_at`, and `can_renew` from each record. Use **My Requests** to find your own expired requests and renewal options.
 
 ```http
 GET /api/v1/beat-requests
 ```
+
+| Query | Behavior |
+| --- | --- |
+| `page`, `per_page` | Page number and page size; default 20 items, maximum 50 |
+| `q` | Search request text and displayed request metadata |
+| `genre` | Filter by genre |
+| `responses` | `none` for no submissions, or `budget` for requests with a budget |
+| `sort` | `ending` for earliest expiry; otherwise newest first |
 
 **Response:**
 
@@ -91,7 +97,7 @@ GET /api/v1/beat-requests
   "success": true,
   "data": [
     {
-      "id": "synthetic_fixture_id",
+      "id": "00000000-0000-4000-8000-000000000042",
       "user_id": 900000001,
       "user_name": "Synthetic text fixture",
       "content": "Synthetic text fixture",
@@ -104,7 +110,8 @@ GET /api/v1/beat-requests
       "hours_remaining": 23
     }
   ],
-  "count": 1
+  "count": 1,
+  "pagination": {"total": 1, "current_page": 1, "last_page": 1}
 }
 ```
 
@@ -112,12 +119,15 @@ GET /api/v1/beat-requests
 
 ### Create Request
 
-Create a new beat request by spending tokens.
+Create a new beat request by spending tokens. Supply a new `request_id` UUID for each intended request and keep it with the unchanged payload until you know the result. This lets a retry reconcile an interrupted response instead of spending tokens on a second post.
 
 ```http
 POST /api/v1/beat-requests
 ```
 
+<ParamField body="request_id" type="string">
+  Optional client-generated UUID identifying this posting attempt. Reuse it only with the identical request fields and duration. A matching retry returns `200` with `replayed: true` and no additional token debit. Reusing the UUID for changed details returns `409`; review the intended request before starting another attempt.
+</ParamField>
 <ParamField body="content" type="string" required>
   Description of the beat you're looking for. Must be 10–500 characters.
 </ParamField>
@@ -143,16 +153,17 @@ POST /api/v1/beat-requests
   How long the request stays active: `24`, `48`, or `72`. Default: `24`.
 </ParamField>
 
-**Response (201):**
+**New request response (201, excerpt):**
 
 <SyntheticFixtures />
 
 ```json
 {
   "success": true,
-  "message": "Beat request created successfully! Active for 24 hours.",
+  "message": "Beat request posted successfully",
+  "replayed": false,
   "data": {
-    "id": "synthetic_fixture_id",
+    "id": "00000000-0000-4000-8000-000000000042",
     "content": "Synthetic content Fixture",
     "expires_at": "2025-01-16T14:30:00Z",
     "time_remaining": "24 hours from now",
@@ -171,21 +182,11 @@ POST /api/v1/beat-requests
 }
 ```
 
-**Token Errors (429):**
+**Token or posting allowance exhausted (429):**
 
-```json
-{
-  "success": false,
-  "message": "You need 2 tokens for a 48-hour request, but you only have 1 token.",
-  "token_info": {
-    "current_tokens": 1,
-    "tokens_needed": 2,
-    "monthly_limit": 5,
-    "used_this_month": 4,
-    "reset_date": "2025-02-01"
-  }
-}
-```
+Read `message` and the current `token_info`. Posting failures return `tokens_spent: 0`; a matching replay also spends no additional tokens. A feature allowance does not reset simply because the HTTP retry interval has passed. Check token status before offering another post.
+
+**Uncertain result:** Keep the posting UUID and payload. Refresh **My Requests** and reconcile with the same UUID before creating a different attempt. A delayed notification is not evidence that posting failed.
 
 ---
 
@@ -201,7 +202,7 @@ GET /api/v1/beat-requests/{id}
 
 ### Delete Request
 
-Delete a beat request. Only the request owner can delete.
+Delete a beat request. The request owner can delete. Any eligible request-token refund goes to that owner.
 
 ```http
 DELETE /api/v1/beat-requests/{id}
@@ -228,7 +229,7 @@ POST /api/v1/beat-requests/{id}/fulfill
 **Validation Requirements:**
 - Track must be uploaded to the platform (external links not accepted)
 - The track may still be undergoing fingerprint processing; duplicate-audio checks can reject matching audio
-- Producer must own or collaborate on the track
+- Producer must have upload permission and own or collaborate on the track
 - Cannot submit to your own request
 - Cannot submit the same track twice to the same request
 
@@ -236,7 +237,7 @@ POST /api/v1/beat-requests/{id}/fulfill
 
 ### Get Submissions
 
-Get the list of tracks submitted to a beat request. Only available to the request owner.
+Get tracks submitted to your request. The response has `data` and `pagination.total`, `current_page`, and `last_page`. Pages contain up to 20 submissions.
 
 ```http
 GET /api/v1/beat-requests/{id}/submissions
@@ -246,7 +247,7 @@ GET /api/v1/beat-requests/{id}/submissions
 
 ### Renew Request
 
-Renew an expired beat request for an additional period. The renewal uses the same duration as the original request and costs the same number of tokens. Requests can only be renewed within 30 days of expiration.
+Renew an expired request within 30 days of expiration. Renewal consumes one token and uses the request's existing duration. Read the returned `expires_at` for the actual end time rather than parsing the success message or assuming the original token cost is charged again.
 
 ```http
 POST /api/v1/beat-requests/{id}/renew
@@ -272,7 +273,7 @@ POST /api/v1/beat-requests/{id}/track-view
 
 ### My Requests
 
-Get the authenticated user's own beat requests.
+Get the authenticated user's own beat requests, with the same paginated envelope as discovery. Use `status=active` or `status=expired` to filter; omit the filter to include both. `q`, `genre`, `sort`, `responses`, and `per_page` are also supported.
 
 ```http
 GET /api/v1/beat-requests/user/my-requests
@@ -319,11 +320,11 @@ GET /api/v1/beat-requests/duration-tiers
 ```json
 {
   "success": true,
-  "data": [
-    { "hours": 24, "tokens": 1, "label": "24 Hours" },
-    { "hours": 48, "tokens": 2, "label": "48 Hours" },
-    { "hours": 72, "tokens": 3, "label": "72 Hours" }
-  ]
+  "data": {
+    "24": { "hours": 24, "tokens": 1, "label": "24 hours" },
+    "48": { "hours": 48, "tokens": 2, "label": "48 hours" },
+    "72": { "hours": 72, "tokens": 3, "label": "72 hours" }
+  }
 }
 ```
 
@@ -335,7 +336,8 @@ GET /api/v1/beat-requests/duration-tiers
 
 | Error | Code | Cause |
 |-------|------|-------|
-| Invalid duration | 400 | Duration must be 24, 48, or 72 |
+| Invalid duration | 422 | Duration must be 24, 48, or 72 |
+| Posting UUID reused with changed fields | 409 | Reconcile the original attempt before creating another |
 | Insufficient tokens | 429 | Not enough tokens for chosen duration |
 | Description too short | 422 | Content under minimum length |
 | Reference track required | 422 | Missing reference track URL |
@@ -357,7 +359,7 @@ GET /api/v1/beat-requests/duration-tiers
 
 | Error | Code | Cause |
 |-------|------|-------|
-| Unauthorized | 403 | Only the request owner can delete or renew |
+| Unauthorized | 403 | Only the owner can renew; deletion requires permission for the request |
 | Request still active | 400 | Cannot renew a request that hasn't expired |
 | Renewal window expired | 400 | More than 30 days since expiration |
 | No token for renewal | 429 | No tokens available |

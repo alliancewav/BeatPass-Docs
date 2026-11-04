@@ -9,17 +9,66 @@ audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/insights"
 ---
 
-## Overview
-
-The Insights API provides focused, domain-specific analytics endpoints for content creators. These endpoints offer comprehensive analytics data, charts, and export capabilities.
+Use these track, album, artist, and Pro Page analytics endpoints for an approved integration. Payloads and export permissions differ between operations; inspect each response rather than assuming one shared schema.
 
 <Info>
-  **Base URL:** `https://open.beatpass.ca/api/v1/producer-intelligence/insights`
+  **API host:** `https://open.beatpass.ca/api/v1`
+
+  Focused track, album, and artist operations use `/producer-intelligence/insights`. Pro Page and engagement operations use the full paths shown below.
 </Info>
 
 <Note>
-  All Insights endpoints require authentication. Include your Bearer token in the `Authorization` header. Resource permissions vary by endpoint; use these endpoints only for resources you are authorized to manage. A valid token alone does not establish ownership.
+  Include your approved Bearer token in the `Authorization` header. Resource permissions vary by endpoint; use these endpoints only for resources you are authorized to manage. A valid token alone does not establish ownership.
 </Note>
+
+---
+
+## Pro Page Insights
+
+Retrieve aggregate results for a Pro Page owned by the authenticated producer. Availability follows the account's Pro Page access.
+
+```http
+GET /api/v1/pro/{artist}/insights
+```
+
+| Query parameter | Required | Description |
+| --- | --- | --- |
+| `startDate` | Yes | Start date/time in ISO format |
+| `endDate` | Yes | End date/time, at or after the start; range at most 366 days |
+| `timezone` | Yes | IANA time zone, such as `America/Toronto` |
+
+Check `availability` before reading analytics:
+
+<Tabs>
+  <Tab title="Analytics available">
+    `availability: "analytics"` includes `range`, `previous_range`, `current`, `previous`, `comparisons`, `dimensions`, and `definitions`.
+
+    `data_status` distinguishes `ready`, `empty`, `partial`, and `pre_instrumentation`. An empty or partially covered range does not establish that the page received no activity before measurement began.
+
+    Primary values include completed licensing actions, engaged sessions, and actions per engaged session. Rates can be `null` when their denominator is zero. These are aggregate activity measures, not a list of identifiable visitors or guaranteed sales.
+
+    Keep `revenue_by_currency` amounts separate. Format each `amount_minor` with its `minor_unit_factor` and ISO currency; do not combine currencies into a total.
+  </Tab>
+  <Tab title="Setup required">
+    `availability: "onboarding"` returns an `onboarding` object with the current state and requirements. Direct the producer to Pro Page setup in BeatPass instead of presenting missing analytics as zero.
+  </Tab>
+</Tabs>
+
+`401` requires authentication; `403` denies access to another producer's page; `404` can mean the feature or page is unavailable to this account; `422` indicates invalid range or time-zone parameters. Respect the private, non-cacheable response.
+
+## Track Engagement
+
+Read duration and completion metrics for a track your account is permitted to access.
+
+```http
+GET /api/v1/tracks/{track}/engagement-metrics?period=30-days
+```
+
+`period` accepts relative values such as `7-days`, `30-days`, `90-days`, or `year`, and an explicit date range in `YYYY-MM-DD:YYYY-MM-DD` format.
+
+The response includes `metrics`, `trackDuration` in seconds, and `hasDuration`. Within `metrics`, use `totalPlays`, `trackedPlays`, `avgListenDuration`, `avgCompletionRate`, `totalListenTime`, `completedListens`, `listenDurationSeries`, `completionBreakdown`, and `hasEngagementData` for their specific purposes.
+
+Tracked duration can cover fewer plays than the total. A missing duration or unavailable engagement data must stay distinguishable from a measured zero. Metrics are subject to review and can differ from public counters or earnings. Respect the response's cache restrictions.
 
 ---
 
@@ -29,17 +78,19 @@ The Insights API provides focused, domain-specific analytics endpoints for conte
 
 Retrieve comprehensive analytics for a track including plays, engagement, and performance metrics.
 
+The examples below use a nonfunctional host and synthetic ID. Do not send fixture IDs to the live API.
+
 <CodeGroup>
 
 ```bash cURL
-curl "https://open.beatpass.ca/api/v1/producer-intelligence/insights/tracks/123" \
+curl "https://api.example.com/api/v1/producer-intelligence/insights/tracks/900000001" \
   -H "Accept: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 
 ```javascript JavaScript
-const response = await fetch('/api/v1/producer-intelligence/insights/tracks/123', {
+const response = await fetch('https://api.example.com/api/v1/producer-intelligence/insights/tracks/900000001', {
   headers: {
     'Accept': 'application/json',
     'Authorization': 'Bearer YOUR_TOKEN_HERE'
@@ -54,7 +105,7 @@ const response = await fetch('/api/v1/producer-intelligence/insights/tracks/123'
 | Parameter | Type    | Required | Description                                                               |
 | --------- | ------- | -------- | ------------------------------------------------------------------------- |
 | `trackId` | integer | Yes      | Track ID                                                                  |
-| `period`  | string  | No       | Time period: `7-days`, `30-days`, `90-days`, `1-year`. Default: `30-days` |
+| `period`  | string  | No       | Time period: `7-days`, `30-days`, `90-days`, `year`. Default: `30-days` |
 
 **Response:**
 
@@ -66,7 +117,7 @@ The play counts are `performance_metrics.total_plays` and `performance_metrics.p
 
 Retrieve chart data for visualizing track performance over time.
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/tracks/{trackId}/charts?timeframe=30d
 ```
 
@@ -79,9 +130,9 @@ GET /api/v1/producer-intelligence/insights/tracks/{trackId}/charts?timeframe=30d
 
 ### Get Real-Time Metrics
 
-Get live metrics for a track (active listeners, recent plays).
+Returns `success` and `data`, with track ID, plays, likes, reposts, comments, trending score, and engagement rate. It does not return an `active_listeners` field. Cache and processing delays can affect freshness.
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/tracks/{trackId}/realtime
 ```
 
@@ -93,7 +144,7 @@ GET /api/v1/producer-intelligence/insights/tracks/{trackId}/realtime
 
 Retrieve analytics for an album including aggregate track performance.
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/albums/{albumId}?period=30-days
 ```
 
@@ -106,7 +157,7 @@ GET /api/v1/producer-intelligence/insights/albums/{albumId}?period=30-days
 
 ### Get Album Charts
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/albums/{albumId}/charts?timeframe=30d
 ```
 
@@ -118,7 +169,7 @@ GET /api/v1/producer-intelligence/insights/albums/{albumId}/charts?timeframe=30d
 
 Retrieve comprehensive analytics for an artist's content.
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/artists/{artistId}?period=30-days
 ```
 
@@ -131,7 +182,7 @@ GET /api/v1/producer-intelligence/insights/artists/{artistId}?period=30-days
 
 ### Get Artist Charts
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/artists/{artistId}/charts?timeframe=30d
 ```
 
@@ -139,7 +190,7 @@ GET /api/v1/producer-intelligence/insights/artists/{artistId}/charts?timeframe=3
 
 Retrieve collaboration statistics and network data.
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/artists/{artistId}/collaborations
 ```
 
@@ -151,15 +202,17 @@ The response has `success` and `data`. Inside `data`, `collaborative_tracks` and
 
 ## Export
 
+CSV, JSON, and report operations additionally require export eligibility, such as an eligible active subscription or separately approved export access. A token alone is not enough. The examples show request shapes; check the returned content type and endpoint-specific envelope.
+
 ### Get Available Formats
 
 List available export formats.
 
-```bash
+```http
 GET /api/v1/producer-intelligence/insights/export/formats
 ```
 
-**Response:**
+**Response excerpt** (descriptions and MIME-type fields omitted):
 
 ```json
 {
@@ -230,7 +283,7 @@ Content-Type: application/json
 
 ## Error Responses
 
-Explicit Insights controller error helpers return `success: false` and `message`, with an optional `errors` object, and omit a string `error` code. For example, a controller-denied track analytics request uses HTTP `403` with `success: false` and the message `Unauthorized access to track analytics`. Exceptions handled by the same controllers can also include an `error` code such as `not_found`, `unauthorized`, `validation_failed`, or `server_error`. Framework validation, authorization, and middleware may return different bodies; inspect the HTTP status and endpoint response.
+Insights errors can return `success: false` and `message`, with an optional `errors` object, and omit a string `error` code. For example, a denied track analytics request uses HTTP `403` with `success: false` and the message `Unauthorized access to track analytics`. Exceptions handled by the same controllers can also include an `error` code such as `not_found`, `unauthorized`, `validation_failed`, or `server_error`. Framework validation, authorization, and middleware may return different bodies; inspect the HTTP status and endpoint response.
 
 ---
 

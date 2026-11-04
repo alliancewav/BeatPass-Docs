@@ -14,10 +14,10 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
 
 <Columns cols={3}>
   <Card title="Producer Profile" icon="user">
-    You must have a producer profile that can use producer-facing features like **Finances**.
+    Use your approved producer account and its **Finances** page.
   </Card>
   <Card title="Active Payout Setup" icon="chart-line">
-    Complete the **BEATPAY** bank payout setup in **Finances** (legacy Stripe Connect accounts stay eligible until they move).
+    Follow **Payout setup** in **Finances**. BEATPAY and existing legacy Stripe routes depend on the readiness shown for your account.
   </Card>
   <Card title="Verified Details" icon="globe">
     Provide the country, identity, tax, and bank details requested by the active payout setup.
@@ -26,24 +26,26 @@ To receive money from BeatPass, you need more than just earnings. Your producer 
 
 ## Earnings Streams and Payout Routes
 
-Exclusive-sale payouts and subscription contribution payouts are separate earnings streams, but they use the same payout setup. Once your BEATPAY bank account is active, both streams pay to your bank. Producers still on a legacy Stripe Connect account keep receiving both streams through Stripe until their BEATPAY setup is active — after that, all new earnings move to BEATPAY and the Stripe account closes automatically once its remaining balance pays out.
+Exclusive sales and subscription earnings are separate streams. The same bank destination can serve both, but each stream must be available and ready for your account. Check **Payout setup** in [Finances](https://open.beatpass.ca/producer-dashboard/finances) before relying on a sale or subscription payout. An active bank destination alone does not promise that both streams are enabled.
 
-**Standard Licensing** is available only while every credited producer has an active subscription payout route. If that route is not ready, an eligible producer can still publish **Exclusive Only** offers.
+When BEATPAY is active for an eligible stream, new earnings use that route. Previously routed Stripe earnings keep their original provider. A legacy Stripe account can remain visible while its balance and outstanding payouts finish; account retirement depends on those checks.
 
-## Current Payout Routes
+New customer **Standard Licensing** requires every credited producer to have an active subscription payout route. Exclusive checkout requires the primary producer's exclusive-sale route and offer checks to be ready. You can still save catalog settings before payout setup is complete; follow the notices in the beat editor.
+
+## Check your payout options
 
 <Columns cols={2}>
   <Card title="BEATPAY" icon="money-bill-transfer" href="/help/earnings/beatpay">
     Eligible producers can set up Wise-powered bank payouts from **Finances** when **Set up BEATPAY** appears.
   </Card>
   <Card title="Stripe Connect (Legacy)" icon="credit-card">
-    Producers who connected Stripe in the past keep receiving payouts through it until their BEATPAY setup is active. New Stripe accounts can no longer be connected.
+    An existing eligible Stripe account can remain the route while BEATPAY is unavailable or not ready for an earning type. New Stripe onboarding is closed.
   </Card>
 </Columns>
 
 ## Readiness Signals
 
-If your active route is Stripe Connect, BeatPass checks these signals behind the scenes:
+An existing Stripe route depends on the provider confirming these capabilities:
 
 | Signal | What It Means |
 |--------|----------------|
@@ -51,10 +53,10 @@ If your active route is Stripe Connect, BeatPass checks these signals behind the
 | **Charges Enabled** | Stripe has enabled incoming payment capability for the account |
 | **Payouts Enabled** | Stripe has enabled payouts from the account |
 
-If [BEATPAY](/help/earnings/beatpay) is available, **Finances** shows the bank payout setup state instead. A ready BEATPAY setup can show **Bank payouts active** or **Bank account ready**. A setup that needs review can show **Bank setup needs a quick review**.
+If [BEATPAY](/help/earnings/beatpay) is available, **Finances** shows the bank payout setup state instead. The Finances card can show **BEATPAY is ready** or **BEATPAY setup is under review**. Follow the explanation and the action on that card.
 
 <Info>
-  The main BeatPass Finances page focuses on connection and payout readiness at a high level. A payout provider may still ask for more details later if regulations or account reviews require it.
+  Follow the state shown in **Finances**. The provider may ask for more details during a later account review.
 </Info>
 
 ## What Happens If You Are Not Eligible
@@ -73,7 +75,7 @@ If a subscription payout runs while your account is not ready:
 
 <Steps>
   <Step title="Open Producer Finances">
-    Go to **Backstage** → **Finances**.
+    Go to **Producer Dashboard** → **Finances**.
   </Step>
   <Step title="Check the dashboard state">
     Read the **Payout setup** state and follow an action only when one appears.
@@ -83,10 +85,10 @@ If a subscription payout runs while your account is not ready:
   </Step>
 </Steps>
 
-## How to Become Eligible
+## Complete setup and check the result
 
 1. Open **Finances**
-2. Select **Set up bank payouts**
+2. Select **Set up BEATPAY** or **Upgrade to BEATPAY** when offered
 3. Choose a bank account currency that your bank can receive and provide the requested bank details
 4. Return to BeatPass and finish any remaining prompts if the payout provider still needs more information
 5. Keep payout setup active so future splits can process normally
@@ -95,11 +97,11 @@ If a subscription payout runs while your account is not ready:
 
 <AccordionGroup>
   <Accordion title="Do I need Stripe Connect for both track sales and subscription payouts?">
-    Not always. Stripe Connect remains active, but eligible producers may be guided to BEATPAY bank payouts instead. Follow the setup shown in **Finances**.
+    Follow the route shown in **Finances** for each earning type. BEATPAY is offered to eligible accounts; an existing eligible Stripe route can remain in use. New or resumed Stripe onboarding is not offered.
   </Accordion>
 
   <Accordion title="Can I still earn before setup is finished?">
-    Exclusive sales require an active exclusive-sale payout route. Standard subscription licensing requires an active subscription payout route for every credited producer.
+    You can upload and organize your catalog before setup is finished. New exclusive sales need an active exclusive-sale payout route; new standard customer licenses need an active subscription payout route for every credited producer.
   </Accordion>
 
   <Accordion title="Why does a subscription earning need attention?">

@@ -10,143 +10,32 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 
-<Tooltip tip="Secret keys that let external applications access your BeatPass account through the API. Treat them like passwords." cta="Developer docs" href="/developers/overview">API access tokens</Tooltip> allow authorized users to connect third-party applications, tools, or scripts to their BeatPass account. API access is **invite-only** — it must be granted by the BeatPass team before you can generate tokens.
+Use **Developers** in Account Settings to create or remove access tokens for an approved integration. Treat each token like a password: it lets an application act with the access your account has.
 
 <ApiInviteOnly />
 
----
-
-## What Are API Tokens?
-
-API tokens are like passwords for apps:
-
-- They allow external programs to access your BeatPass account
-- Each token has a name so you can identify what it's used for
-- Tokens can be deleted without affecting your main password
-
-<Note>
-  The **Developers** section only appears in account settings when API access has been enabled for your account.
-</Note>
-
----
-
-## Creating an API Token
+## Create a token
 
 <Steps>
-  <Step title="Go to Account Settings">
-    Open **Account Settings** from the user menu, then open **Developers**.
+  <Step title="Open Developers">
+    Open [Account Settings](https://open.beatpass.ca/account-settings#developers) and select **Developers**. This section appears only when API access is available to your account.
   </Step>
-  <Step title="Click Create Token">
-    Click **Create token**.
+  <Step title="Give the token a name">
+    Select **Create token**. Enter a **Token name** of 3 to 100 characters that identifies the application, then select **Create**.
   </Step>
-  <Step title="Name Your Token">
-    In **Create new token**, enter a **Token name**. BeatPass currently requires 3 to 100 characters.
-  </Step>
-  <Step title="Save the Token">
-    Click **Create** to generate your token.
-  </Step>
-  <Step title="Copy Your Token">
-    Copy the token immediately. BeatPass only shows the full token once. When you are done, click **Done**.
+  <Step title="Save the token once">
+    Select **Copy**, store the token securely, then select **Done**. The full token cannot be viewed again after closing the dialog.
   </Step>
 </Steps>
 
-<Warning>
-  The complete token is only displayed once when created. Copy and store it securely. If you lose it, you'll need to create a new token.
-</Warning>
+## Remove access
 
----
+Find the token in **Developers**, select **Delete**, and confirm **Delete token?**. The application using that token loses access. Deleting a token does not change your password or sign out your browser.
 
-## Token Security
+If a token is lost or exposed, delete it and create a replacement. Update the intended application with the replacement; never send tokens to support or include them in screenshots.
 
-### Best Practices
+## Continue with an integration
 
-- **Keep tokens secret** — Never share tokens publicly or commit them to code repositories
-- **Use descriptive names** — Name tokens by their use so you know what to revoke later
-- **Revoke unused tokens** — Delete tokens you no longer need
-- **Rotate periodically** — Consider creating new tokens and deleting old ones regularly
-
-### What Tokens Can Do
-
-Tokens provide access to your account through the BeatPass API. The specific permissions depend on your account type and the API endpoints used.
-
----
-
-## Deleting API Tokens
-
-If you no longer need a token or suspect it's compromised:
-
-1. Open **Account Settings** from the user menu.
-2. Open **Developers** and find the token in your list.
-3. Click **Delete**
-4. Confirm the **Delete token?** prompt
-
-### Effects of Deletion
-
-- The token stops working immediately
-- Any applications using that token will lose access
-- You cannot recover a deleted token (create a new one instead)
-
-<Tip>
-  If you're not sure which token an application is using, create a new one with a clear name and update the application, then delete the old tokens.
-</Tip>
-
----
-
-## Managing Multiple Tokens
-
-You can create multiple tokens for different purposes:
-
-| Token Name | Use Case |
-|------------|----------|
-| "Mobile App" | Your personal mobile integration |
-| "Analytics Tool" | Third-party analytics service |
-| "Backup Script" | Automated backup program |
-
-This way, if one token is compromised, you can revoke just that one without affecting other integrations.
-
----
-
-## Common Questions
-
-<AccordionGroup>
-  <Accordion title="I lost my token. Can I see it again?">
-    No. For security, the full token is only shown once when created. You'll need to create a new token.
-  </Accordion>
-  
-  <Accordion title="How many tokens can I create?">
-    You can create multiple tokens. Keep only the ones you need so the list stays easy to manage.
-  </Accordion>
-  
-  <Accordion title="Will deleting a token log me out?">
-    No. API tokens are separate from your login session. Deleting a token only affects applications using that specific token.
-  </Accordion>
-  
-  <Accordion title="What if someone gets my token?">
-    Delete the token immediately in your settings. Then create a new one and update any legitimate applications that need access.
-  </Accordion>
-</AccordionGroup>
-
----
-
-## API Documentation
-
-For developers looking to build integrations:
-
-- Start with [Developers Overview](/developers/overview)
-- Review [Quickstart](/developers/quickstart)
-- Browse the [API Reference](/developers/api-reference/overview)
-
----
-
-## Related Topics
-
-<Columns cols={2}>
-  <Card title="Account Security" icon="shield-halved" href="/help/account-settings/two-factor-authentication">
-    Secure your account with 2FA.
-  </Card>
-  <Card title="Active Sessions" icon="desktop" href="/help/account-settings/active-sessions">
-    Manage where you're logged in.
-  </Card>
-</Columns>
+Use the [developer quickstart](/developers/quickstart) for integration instructions. If **Developers** is missing, [contact support](/help/contact-support) about access rather than creating another account.
 
 <NeedHelp />

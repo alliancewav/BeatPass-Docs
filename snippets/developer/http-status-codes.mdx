@@ -5,9 +5,10 @@
 | 400 | Bad Request | Fix request format |
 | 401 | Unauthorized | Re-authenticate |
 | 403 | Forbidden | Check permissions |
-| 404 | Not Found | Resource doesn't exist |
-| 422 | Validation Error | Fix input data |
-| 429 | Rate Limited | Back off and retry |
-| 500 | Server Error | Report to support |
+| 404 | Not Found | Check the ID and whether the resource is available to your account |
+| 409 | Conflict | Refresh state and review any changed quote or consent |
+| 422 | Validation Error | Correct the indicated input or eligibility problem |
+| 429 | Limit Reached | Read the message and Retry-After; a feature allowance can need a different recovery |
+| 5xx | Server Error | Check the operation state before retrying a write |
 
 See [Error Catalog](/developers/error-catalog) for feature-specific errors.

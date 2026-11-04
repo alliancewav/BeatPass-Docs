@@ -6,6 +6,10 @@ description: "Review your producer level, recent XP, earning rules, and achievem
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/progress"
 ---
 
+import ProgressFigure from "/snippets/media/progress.mdx";
+
+import AchievementGoalFigure from "/snippets/media/achievement-goal.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
@@ -15,21 +19,24 @@ The **Progress** page explains how your producer account earns <Tooltip tip="Poi
 
 ## Open Progress
 
-Click your **profile avatar** in the top navigation bar, select **Backstage**, then select **Progress** in the sidebar.
+Click your **profile avatar** in the top navigation bar, select **Producer Dashboard**, then select **Progress** in the sidebar.
 
-The page is organized as **Progress**, **Earn XP**, and **Achievements**.
+The page follows **Progress** → **Achievements** → **Earn XP**. Use the section links to jump to what you need.
 
 ## Progress
 
-**Your progress** shows:
+<ProgressFigure />
+
+The level card shows:
 
 - Your current level number and producer title
 - Your cumulative XP
-- A linear bar showing progress within the current level
+- A ring showing progress within the current level
 - The exact XP threshold for the next level
-- Up to five of your most recent XP awards, with the source and date
 
-A new account starts at Level 1 with 0 XP. This is a valid starting state. At Level 100, the page shows **Maximum level reached** instead of a next-level remainder.
+Select **Recent XP** for up to five recent awards, with their source and date. **Earn XP** jumps to the earning actions below.
+
+A new account starts at Level 1 with 0 XP. This is a valid starting state. At Level 100, the page shows **Maximum level reached** instead of a next-level remainder. You can still earn XP and unlock achievements.
 
 Select **How progress works** for a short explanation of account scope, one-time track awards, achievement rewards, and update timing.
 
@@ -41,7 +48,7 @@ Select **How progress works** for a short explanation of account scope, one-time
 | --- | ---: | --- |
 | **Upload a track** | +100 XP | Once for each eligible track |
 | **First counted play** | +1 XP | Once when an eligible track receives its first counted play |
-| **Complete track details** | +50 XP | Once when an eligible track has complete metadata |
+| **Complete track details** | +50 XP | Once when an eligible track has BPM, key, and at least one genre |
 | **Collaborate on a track** | +25 XP | Once for each eligible collaborative track credited to your account |
 | **Unlock achievements** | Varies | Once for each achievement |
 
@@ -49,20 +56,32 @@ Audience plays are shown as information. Do not create artificial plays to pursu
 
 ## Achievements
 
-The **Achievements** summary features **Collection progress** with your unlocked count and percentage, plus the XP actually awarded by achievements and your latest unlock date.
+**Your achievements** shows how many you have unlocked, how many remain to explore, a collection progress meter, and XP from achievements. Individual unlocked cards show their recorded dates when available.
 
-Use **Status** to choose **Available**, **Unlocked**, or **All**. Use **Category** to narrow the collection. The default view is **Available**, and eight achievements appear per page. **Previous** and **Next** appear only when the filtered collection needs more than one page.
+The collection opens on **All**. Browse the **Unlocked** row, then **Explore achievements** below. Use **Search achievements**, open **Category** to choose a category, and select **All**, **Unlocked**, or **Not unlocked** to narrow it. **Clear filters** starts again.
 
-Achievement cards use a distinct rarity color so **Common**, **Rare**, **Epic**, and **Legendary** rewards are easy to recognize as a collection. The color does not change the unlock rule or XP amount.
+Uncollected achievements appear six per page. Use **Previous** and **Next** below that list. The unlocked row scrolls separately with **Previous achievement** and **Next achievement** when needed.
+
+Locked artwork is muted and marked with a lock; open it to read the requirement. Rarity pills identify **Common**, **Rare**, **Epic**, and **Legendary** achievements. That assigned rarity is separate from the measured community unlock rate. Scroll through a card's details for its reward, public producer examples, and your unlock history when available. Goal and suggested-task buttons appear at the bottom when offered.
 
 Each achievement separates two values:
 
-- An available achievement shows the XP it can award
-- An unlocked achievement shows the XP actually added to your account
+- **Not unlocked** cards show potential XP when the goal has an XP reward
+- **Unlocked** cards show recorded XP awarded at the time
 
-A real 0 XP unlock is shown as **No XP bonus**. It still counts as unlocked.
+A recorded 0 XP unlock says **No XP bonus** and still counts. If the historical award is missing, the card says **Unlocked** without inventing a number.
 
-Select **View Producer Leaderboards** to compare producer activity. Rankings remain separate from your personal Progress view.
+### Keep a goal in view
+
+<AchievementGoalFigure />
+
+Select **Choose a goal** when it appears, or open a locked achievement yourself. Read its requirement, then select **Choose this goal** at the bottom when offered. **Your next goal** keeps its artwork, requirement, and reward above the collection.
+
+Use **View goal** to reopen it. **Change goal**, when offered, opens another achievement to review before you choose it. **Remove goal** clears your choice. A completed choice says **Goal unlocked** until you change or remove it.
+
+The choice is remembered for this account on this device when browser storage is available; otherwise it lasts **For this visit**. Choosing a goal does not unlock it or award XP. Historical goals such as **Early Adopter** explain their original requirements instead of offering this action.
+
+Select **Leaderboards** below the collection to compare producer activity. Rankings remain separate from your personal Progress view.
 
 ## Updates and unavailable states
 

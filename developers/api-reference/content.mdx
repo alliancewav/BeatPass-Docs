@@ -1,19 +1,17 @@
 ---
 title: "Content Management API"
 sidebarTitle: "Content"
-description: "Manage tracks, albums, artists, playlists, Backstage producer requests, audio fingerprinting, audio recon, and cover art on BeatPass."
-keywords: ["beatpass content api","tracks api","albums api","artists api","lyrics","audio fingerprinting","audio recon","backstage request api","producer requests","playlists"]
+description: "Manage tracks, albums, artists, playlists, Backstage producer requests, upload checks, Audio Recon, and cover art on BeatPass."
+keywords: ["beatpass content api","tracks api","albums api","artists api","lyrics","audio recon","backstage request api","producer requests","playlists"]
 "og:title": "Content Management API - BeatPass Developer Docs"
-"og:description": "CRUD operations for tracks, albums, artists, playlists, Backstage producer requests, fingerprinting, audio recon, and cover art."
+"og:description": "CRUD operations for tracks, albums, artists, playlists, Backstage producer requests, upload checks, Audio Recon, and cover art."
 audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/content"
 ---
 
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-## Overview
-
-The Content Management API provides full CRUD operations for all content types on BeatPass — tracks, albums, artists, playlists, lyrics, producer access requests, and supporting features like audio fingerprinting, Audio Recon, and cover art generation.
+Browse content routes for tracks, albums, artists, playlists, lyrics, producer requests, and supporting tools. Each operation has its own authorization and validation rules; a listed route does not grant upload or publication permission.
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
@@ -130,16 +128,16 @@ Access depends on the endpoint's permissions. Use producer analytics only for re
     Upload the audio file via the file upload system to get a `fileEntry` ID.
   </Step>
   <Step title="Extract Metadata">
-    Call `POST /tracks/{fileEntry}/extract-metadata` to parse BPM, key, duration, etc.
+    Call `POST /tracks/{fileEntry}/extract-metadata` for the available audio metadata. Review and supply required musical fields; extraction does not guarantee a complete create payload.
   </Step>
   <Step title="Create Track">
-    Call `POST /tracks` with `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, and `src`. A file entry ID alone is not a create payload: `url` must be a URL, and `src` is also required. Additional fields are conditionally required for exclusive licensing, sample-safety declarations, and AI disclosure.
+    Call `POST /tracks` with `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, and `src`. A file entry ID alone is not a create payload: `url` and `src` must refer to the completed audio upload authorized for your account. Arbitrary remote audio URLs are not accepted for publication. Additional fields are conditionally required for exclusive licensing, sample-safety declarations, and AI disclosure. Exclusive offers require complete terms, WAV and stems deliverables, and your deliverables guarantee. Uploading does not complete payout or licensing readiness.
   </Step>
   <Step title="Audio Fingerprinting">
-    The system automatically generates an audio fingerprint for duplicate detection.
+    Fingerprint processing runs separately from the create response. A successful save is not proof of completed fingerprinting or rights clearance.
   </Step>
-  <Step title="Published">
-    Track is published and available on the platform.
+  <Step title="Check the saved state">
+    Read the returned track and its visibility. Confirm licensing readiness and processing status before treating it as available for streaming, licensing, or sale.
   </Step>
 </Steps>
 
@@ -147,8 +145,8 @@ Access depends on the endpoint's permissions. Use producer analytics only for re
 flowchart LR
     A[Upload Audio] --> B[Extract\nMetadata]
     B --> C[Create Track\nwith metadata]
-    C --> D[Audio\nFingerprinting]
-    D --> E[Published]
+    C --> D[Check saved track\nand processing state]
+    D --> E[Confirm visibility\nand licensing readiness]
 ```
 
 ---
@@ -388,16 +386,8 @@ POST /api/v1/backstage-request
 
 ### Submission Guard Policy
 
-The create endpoint enforces a global per-user guard across all request types:
+Read the returned `can_submit`, `block_reason`, and message before offering a new producer application. A pending application must finish review first. If access has been revoked, follow the contact guidance instead of submitting repeatedly. A conflict response does not consume a new application.
 
-| Existing status | Can submit new request? | Behavior |
-|----------------|-------------------------|----------|
-| `pending` | No | `409 Conflict` with `error_code: backstage_request_pending` |
-| `revoked` | No | `409 Conflict` with `error_code: backstage_request_revoked` |
-| `denied` | Yes | Submission allowed |
-| `approved` | Yes | Submission allowed |
-
-If both `pending` and `revoked` exist, `pending` takes precedence for messaging and error code.
 
 ### Conflict Responses (Create)
 
@@ -604,7 +594,7 @@ POST /api/v1/playlists/{playlist}/remove-editor
 ```
 
 <Note>
-  Collaborative playlists support up to 10 editors. Invitations expire after 7 days. A 24-hour cooldown applies between re-invites.
+  The owner or another authorized editor can invite users only when the playlist is collaborative. Existing editors, pending invitations, and invitations to the owner are rejected. No editor cap, invitation expiry, or re-invite cooldown is specified by this endpoint contract.
 </Note>
 
 ---
@@ -647,49 +637,38 @@ DELETE /api/v1/lyrics/{ids}
 
 ## Audio Fingerprinting
 
-Detect duplicate audio content using acoustic fingerprints.
-
-All fingerprint endpoints require sign-in. Generating or retrying a fingerprint additionally requires administrator permission. Use fingerprint status and duplicate checks only for tracks or audio you are authorized to work with.
-
-### Generate Fingerprint
-
-```http
-POST /api/v1/tracks/{track}/fingerprint
-```
-
-### Check Fingerprint Status
-
-```http
-GET /api/v1/tracks/{track}/fingerprint/status
-```
+Audio processing can continue after an upload is saved. Processing completion does not establish ownership or clear third-party rights.
 
 ### Check Duplicates
 
-Check uploaded audio against existing fingerprints.
+Check completed audio uploaded for your account against existing fingerprints. Sign-in is required.
 
 ```http
 POST /api/v1/tracks/check-duplicates
 ```
 
-### Retry Failed Fingerprint
+| Field | Type | Requirement |
+| --- | --- | --- |
+| `playback_url` | string | URL returned for your authorized completed audio upload |
+| `track_name` | string | Required; up to 255 characters |
+| `artist_names` | string[] | Required; each name up to 255 characters |
+| `exclude_track_id` | integer | Optional existing track you are allowed to update |
 
-```http
-POST /api/v1/fingerprints/{fingerprint}/retry
-```
+A match requires review. It is not a legal finding and does not grant permission to publish another person's audio.
 
 ---
 
 ## Audio Recon
 
-Audio Recon detects songs on streaming platforms (Spotify, YouTube, Deezer) that share audio characteristics with tracks on BeatPass. Results are available to the direct track owner, linked credited producers, or users with administrator permission.
+Audio Recon detects songs on streaming platforms (Spotify, YouTube, Deezer) that share audio characteristics with tracks on BeatPass. Results are available to the direct track owner or linked credited producers.
 
 <Note>
-  Audio Recon scanning runs on a scheduled background job (daily), with tracks rescanned on a rolling cycle (target around 30 days).
+  Audio Recon processes eligible audio over time. Use `scan_status` and `scanned_at` to show the available result and its freshness. A response does not promise a scan by a particular date.
 </Note>
 
 ### Get Audio Recon Matches
 
-Retrieve detected audio similarities for a specific track. Requires authentication. Available to the direct track owner, linked credited producers, or users with administrator permission.
+Retrieve detected audio similarities for a specific track. Requires authentication. Available to the direct track owner or linked credited producers.
 
 ```http
 GET /api/v1/tracks/{track}/placements
@@ -731,7 +710,7 @@ GET /api/v1/tracks/{track}/placements
 </ResponseField>
 
 <ResponseField name="placements[].confidence_score" type="integer">
-  Audio similarity percentage. The endpoint returns high-confidence matches only (current display threshold is 90+).
+  Provider confidence score on a 0–100 scale, not a calibrated probability of infringement. A high score still requires listening and checking the context before taking action.
 </ResponseField>
 
 <ResponseField name="placements[].spotify_url" type="string | null">
@@ -769,7 +748,7 @@ GET /api/v1/tracks/{track}/placements
 | Error | Code | Cause |
 |-------|------|-------|
 | Unauthenticated | 401 | No valid Bearer token provided |
-| Forbidden | 403 | You are not the direct track owner, a linked credited producer, or an administrator |
+| Forbidden | 403 | You are not the direct track owner or a linked credited producer |
 | Not Found | 404 | Track does not exist |
 
 ---

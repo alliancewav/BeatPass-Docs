@@ -8,258 +8,72 @@ canonical: "https://docs.beatpass.ca/help/beat-requests/managing-requests"
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Once you start posting Beat Requests, you need to know where to find them, when they can be renewed, and what happens if you delete one. This page covers the current management flow.
-
----
+Return to **Your requests** to review the beats sent back, reopen an eligible brief, or remove a request you no longer need. Read the token and deletion consequences before confirming.
 
 ## Viewing Your Requests
 
-### Where to Find Them
+Open [Library → My Requests](https://open.beatpass.ca/library/custom-requests). The page is titled **Your requests**. From the main **Beat Requests** board, **Your requests** opens the same workspace.
 
-You can manage requests in two places:
+If you have producer upload access, choose **Your requests** for your own briefs or **Sent beats** for music you submitted to other people.
 
-| Location | What You See |
-|----------|--------------|
-| **Beat Requests** → **My Requests** | Your own requests mixed into the main Beat Requests experience |
-| **Library** → **Beat requests** | The dedicated **My Beat Requests** page with separate **Active Requests** and **Expired Requests** sections |
-
-The public **All Requests** tab shows active requests only. Your own request-management views can include expired requests as long as BeatPass still keeps them in the renewal/history window.
+Use **Find a request** to reveal search and filters. Search your briefs, choose **All requests**, **Open**, or **Closed**, and sort by **Newest first** or **Ending soon**. **Load more requests** opens the next set when available.
 
 ### Request Status
 
-Each of your requests shows its current status:
-
-| Status | Meaning |
-|--------|---------|
-| **Active** | Still accepting submissions (countdown timer shown on the card) |
-| **Expired** | No longer accepting submissions |
-
-Expired requests that are within the 30-day renewal window show a **Renew (1 token)** button.
-
-### What You Can See on Each Request Card
-
-Request cards can show:
-
-- Your original description
-- Genre, BPM, key, mood, and budget if you added them
-- The **Reference** link
-- Time remaining for active requests
-- Submission count
-- **Renew (1 token)** when the request is eligible for renewal
-
----
+- An open brief accepts new producer submissions until its selected time ends.
+- **Closed** means new submissions have stopped. Existing received beats can still be reviewed while the record is retained.
+- Eligible closed requests offer **Reopen · 1 token** or **Reopen request** with the duration shown.
 
 ## Tracking Active Requests
 
-### Time Remaining
+Your brief shows its musical details, reference, remaining time and number of beats received. Counts represent submitted tracks, not distinct producers.
 
-Active requests show how much time is left:
-- **Hours remaining** — Countdown until expiration
-- **Human-readable format** — "23 hours from now" or "2 hours left"
-- **Posted time** — Relative timestamp showing when the request was created (e.g., "5m ago", "2h ago")
-
-### Submission Count
-
-Watch your submission count grow as producers respond:
-- Each number represents one submitted track
-- Multiple tracks from the same producer still count individually
-- Counts appear on both the main request cards and the dedicated **My Beat Requests** page
-
-<Tip>
-  If you want the easiest path back to a submitted beat, leave your submission notifications enabled. BeatPass does not currently provide a dedicated request-details submissions inbox.
-</Tip>
-
----
+Choose **Review beats** to open **Beats for your brief**. Play a response inline, select its title or open arrow for its track page and licensing, then choose **Done** to return. Receiving a submission does not grant a license.
 
 ## Deleting a Request
 
-### How to Delete
+Open the request's delete action and read **Delete request?** before confirming **Delete request**. The action removes the brief and its submission history from your workspace. Keep the record if you still need it for review or follow-up; there is no restore action in this flow.
 
-1. Find the request you want to delete
-2. Click the delete option (usually a trash icon or "Delete" button)
-3. Confirm the deletion
-
-### What Happens When You Delete
-
-- **Request is removed** — No longer visible to producers
-- **Tokens may be refunded** — Active requests can refund up to the original token cost, capped by your current plan limit
-- **Submission flow stops** — Producers can no longer submit to that request
-- **Recovery is limited** — The current BeatPass UI does not provide a way to restore a deleted request later
-
-### Token Refund Rules
-
-| Situation | Tokens Refunded? |
-|-----------|------------------|
-| Delete active 24h request, below monthly limit | 1 token |
-| Delete active 48h request, below monthly limit | Up to 2 tokens |
-| Delete active 72h request, below monthly limit | Up to 3 tokens |
-| Delete request when at monthly limit | No (already at cap) |
-| Delete expired request | No |
-
-<Note>
-  Refunds never push your token balance above your current plan's monthly limit.
-</Note>
-
-<Warning>
-  Deleting is best treated as final. If you still need the request for follow-up, renewal, or notification context, do not delete it yet.
-</Warning>
-
-### Why Delete a Request?
-
-Common reasons to delete:
-- You made a mistake in the specifications
-- Your needs changed
-- You want to reclaim the token for a different request
-- You found what you needed elsewhere
-- Renew the request (see renewal details below)
-
----
+Deleting an open or closed request returns the original token cost only up to your current plan cap. Deletion never raises the balance above that cap. After **Request deleted.**, choose **New request** to check the available tokens. If the result does not follow these rules, contact support with the request details.
 
 ## Request History
 
-### Viewing Past Requests
-
-Your request history includes:
-- **All requests you've created** — Both active and expired
-- **Submission counts** — How much producer activity each request received
-- **Request details** — Your original specifications
-
-### Expired Requests
-
-Expired requests cannot receive new submissions. On the current UI, expired request cards are mainly for reviewing the brief, checking counts, renewing eligible requests, or deciding whether to delete them.
+Your briefs and received beats stay in **Your requests** after expiry while the records are retained. The **30-day** reopening window does not itself remove the history. Use the status filter instead of looking for separate active and expired sections. A notification link can reopen a particular brief. If it is no longer available, the page explains that and shows your request history.
 
 ### Renewing Expired Requests
 
-If a request expires, you have a **30-day renewal window**:
+Eligible requests can be reopened within **30 days** of expiry for **one token**. The new window matches the original **24**, **48**, or **72-hour** duration.
 
-- Look for **Renew (1 token)** on eligible expired requests
-- Renewing consumes **1 token** and reactivates the request for another window **matching the original duration** (24, 48, or 72 hours)
-- You can only renew your own requests
-- Requests that expired more than 30 days ago can't be renewed—you'll need to create a new one
-
-<Tip>
-  If you plan to renew, make sure you have a token available before hitting **Renew**. The token is deducted immediately.
-</Tip>
-
----
-
-## Request Lifecycle Summary
-
-| Event | What Happens |
-|-------|-------------|
-| **Token consumed** | Request is created and goes live |
-| **Duration ends** | Request expires automatically |
-| **You delete it (below cap)** | Token is refunded |
-| **You delete it (at cap)** | No refund |
-| **You renew it** | 1 token consumed, request reactivated for original duration |
-
-### Key Dates
-
-- **Created** — When you submitted the request
-- **Expires** — After the chosen duration (24, 48, or 72 hours)
-- **Deleted** — If you removed it manually
-
----
+Read the duration shown, choose **Reopen request** or **Reopen · 1 token**, then check the new status and allowance. You can reopen only your own eligible requests. If the action is absent, create a new brief when you have enough tokens.
 
 ## My Requests vs. All Requests
 
-### **My Requests**
+The main [Beat Requests board](https://open.beatpass.ca/beat-requests) is for finding briefs. **All briefs**, **No replies yet**, and **With a budget** narrow that feed; search and genre controls refine it further.
 
-Shows only requests **you** created:
-- Active requests you posted
-- Expired requests that are still in the current retention/renewal window
-- Submission counts for each request
-- Renewal actions when available
-
-### **All Requests**
-
-Shows **everyone's** active requests:
-- Only active requests (expired requests are automatically hidden)
-- Filter by **genre** to find specific styles
-- Sort by **Newest First**, **Expiring Soon**, **Most Submissions**, or **Has Budget**
-- Your own requests may appear here too
-
----
-
-## Request Statistics
-
-For each request, you can see:
-
-| Metric | Description |
-|--------|-------------|
-| **Submission count** | Number of beats submitted |
-| **Time remaining** | Hours until expiration |
-| **Status** | Active or Expired |
-| **Created at** | When you posted the request |
-
----
+**Your requests** in the Library is for your own records. Producers also have **Sent beats**, which keeps each submitted track with its original brief. Those submissions remain separate from requests you created.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="I can't find my request">
-    Check if:
-    - It expired and is outside the visible renewal/history window
-    - You accidentally deleted it
-    - You're logged into the correct account
+  <Accordion title="I cannot find a brief">
+    Check the account, search and status filters. Choose **Clear filters** when offered. A deleted or no-longer-retained brief may no longer open from an older link.
   </Accordion>
-  
-  <Accordion title="My token wasn't refunded after deleting">
-    Tokens are only refunded if:
-    - The request was still active (not expired)
-    - You're below your plan's monthly token limit
-    If you're already at max tokens, the refund is skipped.
+  <Accordion title="The view could not load">
+    Choose **Try again**. A loading failure is different from an empty request list; the error does not mean your saved requests were deleted.
   </Accordion>
-  
-  <Accordion title="The submission count seems wrong">
-    Submission counts reflect the number of tracks sent to the request. If it seems stuck:
-    - Refresh the page
-    - Wait a few seconds
-    - Multiple submissions from the same producer each count separately (if different tracks)
+  <Accordion title="I cannot see or play a submitted beat">
+    Open **Review beats** and allow the list to load. An unavailable track is identified in its row. A submitted track still needs the normal license before release use.
   </Accordion>
-  
-  <Accordion title="Can I reactivate an expired request?">
-    Yes, within 30 days. Look for the **Renew** option on eligible expired requests. Renewing costs 1 token and reactivates the request for another window matching the original duration you chose. Requests older than 30 days cannot be renewed — you'll need to create a new one.
-  </Accordion>
-  
-  <Accordion title="Can I edit a request after posting?">
-    No. Requests cannot be edited once submitted. If you need to change something, delete the request (get your token back) and create a new one with corrected details.
+  <Accordion title="My token result looks wrong">
+    Check the balance and current plan cap after the action succeeds. Contact support with the request reference and visible result if they do not match the confirmation.
   </Accordion>
 </AccordionGroup>
-
----
-
-## Best Practices
-
-### During the Active Window
-
-- **Check submissions regularly** — Don't wait until expiration
-- **Respond to promising producers** — Start conversations early
-- **Don't delete prematurely** — You might get more submissions
-
-### After Expiration
-
-- **Review your notifications and conversations** — Those are the main ways to revisit submitted beats in the current flow
-- **Follow up with producers** — Message anyone whose work you liked
-- **Learn for next time** — Note what worked in your request description
-
-### Managing Tokens
-
-- **Plan your requests** — Use tokens strategically
-- **Delete unused requests** — Reclaim tokens if you change your mind
-- **Monitor renewal costs** — Renewals always cost 1 token
-
----
 
 ## Related Topics
 
 <Columns cols={2}>
-  <Card title="Understanding Tokens" icon="coins" href="/help/beat-requests/understanding-tokens">
-    Learn about token refunds when deleting requests.
-  </Card>
-  <Card title="Receiving Submissions" icon="inbox" href="/help/beat-requests/receiving-submissions">
-    How to review and respond to submissions.
-  </Card>
+  <Card title="Receive and review beats" icon="headphones" href="/help/beat-requests/receiving-submissions">Listen to responses and open the right licensing choices.</Card>
+  <Card title="Understand tokens" icon="coins" href="/help/beat-requests/understanding-tokens">Check request costs, monthly allowance, and reopening rules.</Card>
 </Columns>
 
 <NeedHelp />

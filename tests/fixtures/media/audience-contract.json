@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "note": "Source-default user permissions with explicit customer download entitlement or producer upload entitlement; never an admin. Synthetic frontend state is not a live eligibility certification.",
+  "sources": [
+    {
+      "path": "resources/defaults/permissions.php",
+      "sha256": "d212ece35e35ad2723f417d2c58c66cffc751839addf3610b09f2c92af2c5c05"
+    },
+    {
+      "path": "common/resources/defaults/permissions.php",
+      "sha256": "077268cbddc756d7e57728889d41b6a8db7ad9db423d70b1485d91b5103a71e0"
+    },
+    {
+      "path": "common/resources/client/auth/use-auth.ts",
+      "sha256": "4fa74618768084c8dc13f900a3facf9fd128b8a3222815159b5026c523369c23"
+    },
+    {
+      "path": "resources/client/web-player/tracks/pre-download-modal.tsx",
+      "sha256": "11ad4c0e149a05e7ca73f0e7fee0e9aea551b80ab790ec85e0d7887eaea4cd9d"
+    }
+  ],
+  "customer": {
+    "permissions": [
+      "music.view",
+      "music.embed",
+      "music.play",
+      "lyrics.view",
+      "users.view",
+      "playlists.create",
+      "localizations.view",
+      "playlists.view",
+      "uploads.create",
+      "comments.view",
+      "comments.create",
+      "backstageRequests.create",
+      "custom_pages.view",
+      "files.create",
+      "plans.view",
+      "tags.view",
+      "music.download"
+    ],
+    "owned_artist_count": 0,
+    "music_create": false,
+    "valid_subscription": true
+  },
+  "producer": {
+    "permissions": [
+      "music.view",
+      "music.embed",
+      "music.play",
+      "lyrics.view",
+      "users.view",
+      "playlists.create",
+      "localizations.view",
+      "playlists.view",
+      "uploads.create",
+      "comments.view",
+      "comments.create",
+      "backstageRequests.create",
+      "custom_pages.view",
+      "files.create",
+      "plans.view",
+      "tags.view",
+      "music.create"
+    ],
+    "owned_artist_count": 1,
+    "music_create": true,
+    "valid_subscription": false
+  }
+}

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {fab} from '@fortawesome/free-brands-svg-icons';
+import {validateHelpBoundaries} from './help-boundaries.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const docs = JSON.parse(fs.readFileSync(path.join(root, 'docs.json'), 'utf8'));
@@ -123,6 +124,7 @@ for (const file of pageFiles) {
   }
 
   if (/<CardGroup\b/.test(body)) errors.push(`${fileName}: deprecated CardGroup component`);
+  if (fileName.startsWith('help/') && /\/assets\/(?:screenshots|media\/screenshots)\//.test(body)) errors.push(`${fileName}: workflow media must use a catalog-generated snippet`);
   if (/<Snippet\s+file=/.test(body)) errors.push(`${fileName}: legacy Snippet component call`);
   if (/<Card\b[^>]*\scolor=/.test(body)) errors.push(`${fileName}: per-card color is not permitted`);
   if (type === 'help' && /```/.test(body)) errors.push(`${fileName}: code fences are not permitted in end-user Help`);
@@ -188,6 +190,8 @@ if (JSON.stringify(releaseGroups) !== JSON.stringify(['Overview', 'Changelog', '
   errors.push(`docs.json: release navigation groups must be Overview, Changelog, Current Releases, Archives`);
 }
 
+errors.push(...validateHelpBoundaries(docs, new Map(pageFiles.filter(file=>relative(file).startsWith('help/')).map(file=>[relative(file),fs.readFileSync(file,'utf8')]))));
+
 const developerTab = docs.navigation.tabs.find((tab) => tab.tab === 'API & Developers');
 const developerGroups = developerTab?.groups.map((group) => group.group) ?? [];
 if (JSON.stringify(developerGroups) !== JSON.stringify(['Introduction', 'Core Concepts', 'API Reference'])) {
@@ -214,7 +218,7 @@ if (baseline.count !== 324 || baseline.urls.length !== 324) {
 
 const claimLedger = fs.readFileSync(path.join(root, 'audit', 'claims.yml'), 'utf8');
 const warningClaims = (claimLedger.match(/^\s+status: review-warning$/gm) ?? []).length;
-if (warningClaims > 0) warnings.push(`${warningClaims} production-only claims remain public with review warnings`);
+if (warningClaims > 0) warnings.push(`${warningClaims} claims retain recorded verification limits; see audit/claims.yml`);
 if (calloutHeavyPages > 0) warnings.push(`${calloutHeavyPages} legacy pages exceed the normal two-callout guideline`);
 
 if (errors.length > 0) {

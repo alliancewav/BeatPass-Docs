@@ -6,13 +6,13 @@ sidebarTitle: "Privacy Policy"
 canonical: "https://docs.beatpass.ca/help/legal/privacy-policy"
 ---
 
+import PrivacyFigure from "/snippets/media/privacy.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-This page provides a simplified overview of the BeatPass Privacy Policy. For the complete policy, visit the [official BeatPass Privacy Policy](https://open.beatpass.ca/pages/privacy-policy).
+This guide explains how BeatPass handles your information and how to make a privacy request. The [official Privacy Policy](https://open.beatpass.ca/pages/privacy-policy) governs how your data is handled.
 
-<Warning>
-  This summary is for convenience only. The official Privacy Policy governs how your data is handled.
-</Warning>
+<PrivacyFigure />
 
 ## About BeatPass
 
@@ -26,19 +26,19 @@ Privacy questions and complaints can be sent to the **BeatPass Privacy Officer**
 
 When you create an account or use BeatPass, the following information is collected:
 
-- **Account details** — Name, email address, username, password
-- **Transaction information** — Details when you subscribe or purchase licenses
-- **Communications** — Messages you send to other users or to support
-- **Beat request details** — Specifications for custom beat requests
-- **AI disclosure and rights-verification information** — AI tool names, source notes, license records, receipts, screenshots, plan confirmations, generation records, stems, project files, written attestations, and other Proof of Rights when needed to enforce BeatPass policies
+- **Account details**: Name, email address, username, password
+- **Transaction information**: Details when you subscribe or purchase licenses
+- **Communications**: Messages you send to other users or to support
+- **Beat request details**: Specifications for custom beat requests
+- **AI disclosure and rights-verification information**: AI tool names, source notes, license records, receipts, screenshots, plan confirmations, generation records, stems, project files, written attestations, and other Proof of Rights when needed to enforce BeatPass policies
 
 ### Information Collected Automatically
 
 When you use BeatPass, the following is automatically collected:
 
-- **Device information** — IP address, browser type, operating system
-- **Usage data** — Pages viewed, beats played, downloads, time spent
-- **Cookies** — Small files that help remember your preferences
+- **Device information**: IP address, browser type, operating system
+- **Usage data**: Pages viewed, beats played, downloads, time spent
+- **Cookies**: Small files that help remember your preferences
 
 ### Payment and Producer Payout Information
 
@@ -46,24 +46,22 @@ When you make a purchase, Stripe handles your card details. **BeatPass does not 
 
 Producer bank payouts use one of two flows:
 
-- **Legacy Stripe Connect** — Onboarding is hosted by Stripe. Stripe receives the identity and bank details entered there. BeatPass stores the Stripe account reference and operational status, not the full bank account details.
-- **BEATPAY, powered by Wise** — Bank details are entered in BeatPass and securely forwarded to Wise. BeatPass does not retain raw account numbers, routing details, or IBANs. It keeps the account-holder name, provider references, payout configuration and status, audit metadata, and masked account information needed to operate and support payouts.
+- **Legacy Stripe Connect**: Onboarding is hosted by Stripe. Stripe receives the identity and bank details entered there. BeatPass stores the Stripe account reference and operational status, not the full bank account details.
+- **BEATPAY, powered by Wise**: Bank details are entered in BeatPass and securely forwarded to Wise. BeatPass does not retain raw account numbers, routing details, or IBANs. It keeps the account-holder name, provider references, payout configuration and status, audit metadata, and masked account information needed to operate and support payouts.
 
 Wise and Stripe may retain information under their own privacy, retention, and legal obligations. See [BEATPAY Bank Payouts](/help/earnings/beatpay) and [Stripe Connect (Legacy)](/help/earnings/stripe-connect) for practical guidance.
 
 ## How Your Information Is Used
 
-Your information is used to:
+Your information helps BeatPass:
 
-| Purpose | Examples |
-|---------|----------|
-| **Run the service** | Manage accounts, process transactions, track licensing |
-| **Personalize your experience** | Recommend beats, remember preferences |
-| **Improve BeatPass** | Analyze usage patterns, develop new features |
-| **Process payments** | Handle subscriptions and purchases |
-| **Communicate with you** | Send service updates, respond to support requests |
-| **Prevent fraud** | Detect unauthorized access, protect accounts |
-| **Verify rights and AI policy compliance** | Review AI disclosures, Proof of Rights, source records, and policy reports |
+- Run accounts, transactions, and licensing.
+- Recommend beats and remember your preferences.
+- Understand usage and improve features.
+- Process subscriptions and purchases.
+- Send service updates and answer support requests.
+- Prevent fraud and protect accounts.
+- Check AI disclosures, source records, Proof of Rights, and policy reports.
 
 <Warning>
   When submitting Proof of Rights, do not provide passwords, private credentials, unnecessary third-party personal data, confidential records, or full unredacted AI-platform records unless BeatPass specifically asks for them.
@@ -77,10 +75,10 @@ BeatPass may use recommendations, personalization, fraud-prevention tools, and m
 
 Information may be shared with:
 
-- **Service providers** — Companies that help run BeatPass (hosting, payments, analytics) under confidentiality agreements
-- **Producers and consumers** — Transaction data shared as needed for licensing (e.g., producers see aggregate download data for royalty calculations)
-- **Legal requirements** — When required by law or to respond to legal processes
-- **Business transfers** — If BeatPass is acquired, your information may transfer to the new owner
+- **Service providers**: Companies that help run BeatPass (hosting, payments, analytics) under confidentiality agreements
+- **Producers and consumers**: Transaction data shared as needed for licensing (e.g., producers see aggregate download data for royalty calculations)
+- **Legal requirements**: When required by law or to respond to legal processes
+- **Business transfers**: If BeatPass is acquired, your information may transfer to the new owner
 
 Some service providers may process information outside Quebec or outside your country, including in Canada, the United States, or other jurisdictions where BeatPass or its providers operate.
 
@@ -94,7 +92,7 @@ When you send messages through BeatPass or submit beat requests:
 
 ## Data Protection
 
-BeatPass uses technical and organizational safeguards appropriate to the Services, including secure connections to payout providers, restricted access to operational records, and redaction of sensitive Wise API request and response details from application failure logs.
+BeatPass uses technical and organizational safeguards, including secure connections to payout providers, restricted access to operational records, and removal of sensitive payout details from failure logs.
 
 <Note>
   While BeatPass works hard to protect your data, no online platform can guarantee 100% security.
@@ -113,9 +111,12 @@ Depending on your location, you may have rights to:
 - Access the personal information BeatPass holds about you
 - Correct inaccurate information
 - Request deletion of your information
+- Request a portable copy of certain information
+- Ask to restrict certain processing while a request or accuracy concern is reviewed
 - Object to certain uses of your information
+- Ask about or seek human review of a solely automated decision with significant effects, where the applicable right exists
 
-To exercise these rights, contact the support team at **contact@beatpass.ca**.
+To make a request, email [contact@beatpass.ca](mailto:contact@beatpass.ca?subject=Privacy%20Inquiry) or use the [contact form](https://open.beatpass.ca/contact). Use **Privacy Inquiry** or **Data Protection Request** as the email subject or first line of the form message and explain what you want to access, correct, or delete. BeatPass may need to verify your identity. The official policy provides for a response within **30 days**, or the period required by applicable law.
 
 Deletion requests may be limited where records are needed for active licenses, legal obligations, accounting, tax records, fraud prevention, rights verification, AI policy enforcement, disputes, or security.
 
@@ -128,7 +129,7 @@ BeatPass uses cookies to:
 - Understand how you use BeatPass
 - Improve the service
 
-You can control cookies through your browser settings, but some features may not work properly without them.
+Choose **Refuse** or **Accept** when asked about optional tracking. To change your choice, select **Privacy preferences** in the BeatPass website footer. You can refuse optional analytics and marketing tracking and keep using BeatPass. Blocking all cookies in your browser may affect login or checkout. See the [step-by-step privacy controls](/help/legal/cookie-tracking-policy#change-your-choice).
 
 See [Cookie and Tracking Policy](/help/legal/cookie-tracking-policy) for more detail about cookie categories and controls.
 

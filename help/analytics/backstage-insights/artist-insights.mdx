@@ -1,76 +1,67 @@
 ---
 audience: help
-title: "Artist Insights | Backstage Insights"
+title: "Artist Insights"
 sidebarTitle: "Artist Insights"
-description: "Review the current artist-level analytics page in BeatPass Backstage Insights."
+description: "Read your producer listening and audience reports, then follow engaged visits and licensing activity in the Pro Page tab."
 canonical: "https://docs.beatpass.ca/help/analytics/backstage-insights/artist-insights"
 ---
 
+import ProPageInsightsFigure from "/snippets/media/insights-artist-pro-page.mdx";
+
+import ArtistOverviewFigure from "/snippets/media/insights-artist-overview.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Artist Insights is the broadest Backstage Insights view. It combines activity across one artist profile so you can review catalog performance from a single page.
+Use **Artist Insights** to follow listening across your producer catalog, then choose a beat to investigate. **Overview**, **Audience**, and your own **Pro Page** keep the different questions separate.
 
 ## Opening Artist Insights
 
-Open the **Insights** action on any artist profile you manage from Backstage. The page loads with the **This year** date range by default — adjust it with the floating date-range selector if needed.
+Open your producer **Insights** action from the desktop top navigation or producer tools. Check the profile name, then choose dates above the report. A fresh report starts at **This year**; saved links can keep other dates and views.
 
 ## Header Information
 
-The current artist header can include:
+The summary identifies your profile and its available lifetime counts, including **Followers**, **Albums**, and **Plays**. **Details** opens more profile information. These summary counts are separate from the selected reporting period.
 
-- Follower count
-- Album count
-- Total plays
-- Genres
+## Explore the charts
 
-<Note>
-  The artist insights header does not display a track count. For track-level detail, open the insights page for a specific track or album instead.
-</Note>
+<Tabs sync={false}>
+  <Tab title="Overview" icon="chart-line">
+    Read **Plays Over Time**, then use **Most Played Tracks** to find the beats leading activity in your chosen period. Select a track to open its own Insights.
 
-## Current Chart Set
+    <ArtistOverviewFigure />
 
-<Columns cols={2}>
-  <Card title="Plays Over Time" icon="chart-line">
-    Overall listening trend for the artist profile in the selected date range.
-  </Card>
-  <Card title="Top Devices" icon="mobile">
-    Device split for listeners.
-  </Card>
-  <Card title="Top Platforms" icon="desktop">
-    Platform split for listeners.
-  </Card>
-  <Card title="Top Listeners" icon="users">
-    The listeners contributing the most activity.
-  </Card>
-  <Card title="Top Locations" icon="globe">
-    Geographic breakdown of listeners.
-  </Card>
-  <Card title="Most Played Tracks" icon="clipboard-list">
-    Top-performing tracks inside the artist catalog.
-  </Card>
-</Columns>
+    Your own producer report can also show contribution share, level, and performance context. Use the period stated on each section rather than assuming it matches every chart. [Finances](/help/producer-dashboard/finances) shows actual earnings; [Progress](/help/producer-dashboard/progress) explains XP.
+  </Tab>
+  <Tab title="Audience" icon="users">
+    Review **Top Devices**, **Top Platforms**, **Top Listeners**, and **Top Locations**. Each chart explains the plays used for its percentages. **Guest Listeners** is grouped listening, not a list of identified people.
+  </Tab>
+</Tabs>
 
 ## Pro Page Traffic
 
-When Pro Page measurement is available for your artist and date range, **Pro Page Traffic** appears above the regular Artist Insights charts. It focuses on the outcomes created by your shareable storefront:
+Your primary producer profile has a **Pro Page** tab. Open it to review activity connected to your shareable storefront. If the page is not ready, follow the unlock checklist shown there.
 
-- **Engaged visits** — visitors who stayed active
-- **30-second listens** — plays that reached at least 30 seconds
-- **License actions started** — standard and exclusive licensing actions visitors started
-- **Completed licenses and sales** — confirmed standard downloads and exclusive purchases connected to the Pro Page journey
+<ProPageInsightsFigure />
 
-The section can also show where measured visitors came from, standard and exclusive licensing progress, memberships started, and exclusive earnings separated by currency. Select **How these numbers are counted** to read the definitions used for the current report.
+| Result | What it describes |
+| --- | --- |
+| **Engaged visits** | Active sessions on your shared page |
+| **30-second listens** | Plays that reached at least 30 seconds |
+| **License actions started** | Standard or exclusive licensing actions selected on the Pro Page |
+| **Completed licenses and sales** | Matching downloads or purchases confirmed by BeatPass |
 
-Raw Pro Page measurement rows are kept for 180 days. BeatPass recalculates each affected day before older rows are removed, so the daily metrics shown for retained historical ranges remain available. Repeat submissions for one interaction are deduplicated, while a genuinely later listening session can count separately.
+Select **What counts?** to read the definitions and dates used by the current report. Started actions are separate from completed licenses; repeated actions can count more than once.
 
-<Note>
-  A date range before measurement began shows guidance instead of estimated activity. A partly measured range is marked clearly, and regular marketplace plays stay in the reports below.
-</Note>
+The tab also shows **Where visits came from**, **Licensing activity**, memberships started, and **Exclusive earnings** when available. Earnings stay separate by currency. A similarity in numbers does not make visits, plays, subscriptions, and sales interchangeable.
+
+Detailed Pro Page activity has a retention limit; daily totals remain available for older measured periods. Before tracking began, the report gives guidance instead of estimated activity. A partly measured range is identified. Regular marketplace listening remains in **Overview**.
 
 See [Your Producer Pro Page](/help/producer-dashboard/pro-page) for the unlock, sharing, and campaign guide.
 
-## What Artist Insights Does Not Show
+## Open a beat for listening depth
 
-Artist Insights does not include the track-only engagement modules: **Engagement Overview**, **Listen Duration**, or **Completion Breakdown**. Open a specific [Track Insights](/help/analytics/backstage-insights/track-insights) page for that detail.
+Open [Track Insights](/help/analytics/backstage-insights/track-insights) for **Avg Listen Duration** and **Completion Breakdown**. These charts use the beat's plays with duration tracking, so their total can differ from all recorded plays.
+
+If a section fails, choose **Try again** there. If it is empty, check your dates and the explanation shown before treating a missing report as zero.
 
 <NeedHelp />

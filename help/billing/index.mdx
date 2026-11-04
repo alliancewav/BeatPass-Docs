@@ -1,7 +1,7 @@
 ---
 audience: help
 title: "Billing"
-sidebarTitle: "Overview"
+sidebarTitle: "Billing & subscription"
 description: "Manage your subscription, payment methods, and view your billing history on BeatPass."
 keywords: ["billing", "subscription", "payments", "invoices", "payment methods"]
 "og:title": "Billing - BeatPass Help"
@@ -9,27 +9,13 @@ keywords: ["billing", "subscription", "payments", "invoices", "payment methods"]
 canonical: "https://docs.beatpass.ca/help/billing"
 ---
 
+import BillingFigure from "/snippets/media/billing.mdx";
+
 import PlatformFee from "/snippets/callouts/platform-fee.mdx";
 import SupportContact from "/snippets/sections/support-contact.mdx";
 
-Your **Billing** page is where you manage your paid subscription, saved card for renewals, and payment history on BeatPass.
+Open your **profile avatar** menu and choose **Billing** to manage your plan, saved renewal card, and payment history.
 
-## Interface Preview
-
-<Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Billing & Subscription on desktop in light mode">
-      <img src="/assets/screenshots/billing-desktop-light.png" alt="Billing and Subscription page with the Subscription panel on desktop" />
-    </Frame>
-  </Tab>
-  <Tab title="Mobile">
-    <Frame caption="Billing & Subscription on mobile in dark mode">
-      <img src="/assets/screenshots/billing-mobile-dark.png" alt="Billing and Subscription page with the Subscription panel on mobile" />
-    </Frame>
-  </Tab>
-</Tabs>
-
----
 
 ## Billing Topics
 
@@ -51,12 +37,11 @@ Your **Billing** page is where you manage your paid subscription, saved card for
   </Card>
 </Columns>
 
----
 
-## Quick Reference
+## Find the card you need
 
-<Tabs>
-  <Tab title="No Paid Plan">
+<Tabs defaultTabIndex={1} sync={false}>
+  <Tab title="No paid plan">
     When you do not have an active paid subscription, **Billing** shows:
 
     - A **Subscription** panel with **View Plans**
@@ -66,7 +51,7 @@ Your **Billing** page is where you manage your paid subscription, saved card for
       You will not see a **Payment method** section until you have a paid subscription with a saved card.
     </Note>
   </Tab>
-  <Tab title="Active Paid Plan">
+  <Tab title="Active paid plan">
     When you have an active paid subscription, **Billing** shows:
 
     - **Current plan**
@@ -74,66 +59,48 @@ Your **Billing** page is where you manage your paid subscription, saved card for
     - **Payment history**
 
     The **Current plan** card includes **Change plan** and **Cancel plan**.
+
+    <BillingFigure />
   </Tab>
-  <Tab title="Cancelled Plan">
+  <Tab title="Cancelled plan">
     If you cancelled but your paid period has not ended yet, **Billing** shows:
 
-    - **Current plan** with **Subscription Cancelled**
+    - **Current plan** with an access-ending status
     - An **Access ends** date
     - A **Renew plan** button
   </Tab>
 </Tabs>
 
----
 
-## How Billing Works
+## Renewals and plan changes
 
-### Open Billing
+### Your billing interval
 
-To manage billing:
-
-1. Click your **profile avatar**
-2. Select **Billing**
-
-### Monthly Billing
-
-Current paid plans are billed monthly. If you keep a paid plan active, BeatPass renews it automatically using the saved payment method on file.
+Your plan shows its billing interval and renewal date. An active renewing plan charges the saved payment method according to those terms.
 
 ### Subscription Changes
 
-- **Upgrade** — Higher-priced plans can be applied immediately or scheduled for renewal, depending on the checkout state
-- **Downgrade** — Lower-priced plans are scheduled for your renewal date
-- **Cancel** — Stops future renewal but keeps access until the current period ends
-- **Renew** — Removes a pending cancellation before access ends
+- **Upgrade**: Higher-priced plans can be applied immediately or scheduled for renewal, depending on the checkout state
+- **Downgrade**: Lower-priced plans are scheduled for your renewal date
+- **Cancel**: Stops future renewal but keeps access until the current period ends
+- **Renew**: Removes a pending cancellation before access ends
 
----
 
 ## Payment Processing
 
 BeatPass currently accepts subscription card payments through **Stripe**.
 
-Accepted card brands currently configured on BeatPass:
-
-- **Visa**
-- **Mastercard**
-- **American Express**
-- **Discover**
-
-<Note>
-  PayPal is not currently enabled on BeatPass.
-</Note>
+Use one of the payment methods offered at checkout. Availability can depend on the purchase and your location.
 
 If you do not already have a saved card, you usually add it during checkout when starting a paid subscription.
 
----
 
 ## Platform Fee
 
-A 12% platform fee plus a \$3.00 flat fee is currently added on top of eligible paid BeatPass checkouts. It applies to subscription checkout and renewal. For exclusive purchases, an active eligible plan such as Pro can waive it.
+The platform fee is shown separately at checkout. Its percentage, flat amount, currency, and any active-plan waiver depend on the current offer. Check the final total before payment; an exclusive-purchase benefit does not automatically change subscription fees.
 
 <PlatformFee />
 
----
 
 ## Need Help?
 
@@ -143,9 +110,6 @@ A 12% platform fee plus a \$3.00 flat fee is currently added on top of eligible 
   </Card>
   <Card title="Billing FAQ" icon="circle-question" href="/help/billing/faq">
     Common questions about billing and payments.
-  </Card>
-  <Card title="Subscription and Plan Terms" icon="file-contract" href="/help/legal/subscription-plan-terms">
-    Review plan billing, renewal, token, and cancellation terms.
   </Card>
   <Card title="Contact Support" icon="headset" href="/help/contact-support">
     Get help with billing issues.

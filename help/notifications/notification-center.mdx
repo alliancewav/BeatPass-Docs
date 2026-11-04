@@ -9,65 +9,35 @@ og:description: "Learn how to view and manage notifications on BeatPass."
 canonical: "https://docs.beatpass.ca/help/notifications/notification-center"
 ---
 
-BeatPass exposes notifications in two in-app places:
+import NotificationsFigure from "/snippets/media/notifications.mdx";
 
-- the **bell icon** for a recent-notifications popover
-- the full **`/notifications`** page for a longer list view
+Check a reply, open a new beat, or respond to a playlist invite from your notifications.
 
----
+<NotificationsFigure />
 
-## Bell Menu
+## Check recent alerts
 
-The bell menu shows:
+Select the **bell icon** in the top navigation. Its badge shows your unread count. Alerts can become read as they appear in the open list, so the badge may change while you review them. Select an alert to open its linked destination when one is available.
 
-- your unread badge count
-- recent notifications
-- a **Mark all** action when unread items exist
-- a shortcut to **Notification Preferences**
+Use **Mark all** to mark every unread notification as read. The gear shortcut opens **Notification Preferences**.
 
-Clicking a notification marks it as read and opens the related destination when one is available.
+## See more notifications
 
----
-
-## Notifications Page
-
-The full page at `/notifications` provides:
-
-- a larger notification list
-- a **Mark all as read** button when unread items are currently loaded
-- a settings shortcut when there are no unread items in view
+Open the full [Notifications page](https://open.beatpass.ca/notifications) from the bell menu for a longer list. Use the page controls at the bottom for older alerts and **Settings** to change your preferences. Some alerts have actions you can use directly, such as **Accept** and **Decline** for playlist invitations.
 
 <Note>
-  In the current UI, the bell menu's **Mark all** action marks all unread notifications as read. The full page button marks the notifications currently loaded on that page.
+  **Mark all as read** on the full page and **Mark all** in the bell menu clear unread notifications across your account. The full-page action is disabled when there are no unread notifications left.
 </Note>
 
----
+## No alerts yet?
 
-## Notification Item Behavior
-
-Depending on the notification type, an item can:
-
-- open a track, album, playlist, profile, or other internal destination
-- open a linked action page
-- show inline action buttons, such as **Accept** and **Decline** for playlist invites
-
-Unread notifications are visually highlighted until they are marked as read.
-
----
-
-## Empty State
-
-If you do not have any notifications yet, BeatPass shows the **Hang tight!** empty state and a shortcut to notification settings.
-
----
-
-## Related
+**Hang tight!** means there are no notifications to show. Use the settings shortcut to review what you want to receive. **Settings** remains available on the full page.
 
 <Columns cols={2}>
-  <Card title="Notification Types" icon="list" href="/help/notifications/notification-types">
-    See every notification category and name exposed in preferences.
+  <Card title="Choose your alerts" icon="list" href="/help/notifications/notification-types">
+    Find the categories and notification names available to your account.
   </Card>
-  <Card title="Notification Settings" icon="gear" href="/help/notifications/notification-settings">
-    Change channels and bulk-toggle categories.
+  <Card title="Notification preferences" icon="gear" href="/help/notifications/notification-settings">
+    Choose email, supported push alerts, and in-app notifications.
   </Card>
 </Columns>

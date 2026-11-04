@@ -1,7 +1,7 @@
 ---
 audience: help
 title: "Payment Methods"
-sidebarTitle: "Overview"
+sidebarTitle: "Payment methods"
 description: "Manage your payment methods on BeatPass. Add, update, or remove credit cards and other payment options."
 keywords: ["payment methods", "credit card", "payment", "billing", "card"]
 "og:title": "Payment Methods - BeatPass Help"
@@ -9,108 +9,32 @@ keywords: ["payment methods", "credit card", "payment", "billing", "card"]
 canonical: "https://docs.beatpass.ca/help/billing/payment-methods"
 ---
 
-BeatPass currently uses saved cards for subscription billing. This section explains when you add a card, when you can update it, and what appears on the Billing page.
+Use **Payment method** on BeatPass Billing to update the card used for subscription charges. When you first start a paid plan, you normally enter a payment method during checkout.
 
----
+## Update a saved card
 
-## Payment Method Topics
+<Steps>
+  <Step title="Open Billing">
+    Open your profile avatar menu and select **Billing**, or go directly to [Billing](https://open.beatpass.ca/billing).
+  </Step>
+  <Step title="Choose Update">
+    In **Payment method**, check the displayed card brand and last four digits, then select **Update**.
+  </Step>
+  <Step title="Finish with the payment form">
+    Complete the available update form and follow any authentication requested by the payment provider. Return to Billing to check the saved method.
+  </Step>
+</Steps>
 
-<Columns cols={2}>
-  <Card title="Supported Methods" icon="credit-card" href="/help/billing/payment-methods">
-    See what payment options are available.
-  </Card>
-  <Card title="Adding a Payment Method" icon="plus" href="/help/billing/payment-methods">
-    Learn how your first card is usually saved during checkout.
-  </Card>
-  <Card title="Updating Payment Method" icon="arrows-rotate" href="/help/billing/payment-methods">
-    Change your current payment details.
-  </Card>
-</Columns>
+The panel may display the expiry date when available. Your full card number is not shown. If your subscription uses a different payment provider, follow the provider action offered in that panel.
 
----
+## No saved method is shown
 
-## Your Saved Payment Method
+Without a paid subscription, Billing can show **View Plans** rather than a saved-card panel. You do not need to buy a plan simply to browse or listen. Add payment information when starting a purchase you intend to make.
 
-When you have an active paid subscription with a saved card, the **Payment method** section shows:
+Only use payment options offered for the current checkout. A saved subscription card does not mean every one-time purchase uses the same payment flow.
 
-| Information | Description |
-|-------------|-------------|
-| **Card brand** | Visa, Mastercard, American Express, etc. |
-| **Last 4 digits** | The final four numbers of your card |
-| **Expiration** | Month and year the card expires |
+## A payment failed
 
-<Note>
-  For security, your full card number is never displayed. Only the last 4 digits are shown for identification.
-</Note>
+Check the card expiry and the provider's error. If the bank declined the payment, contact the card issuer or try another offered method. After updating, check your subscription status in Billing before assuming access has returned.
 
----
-
-## Where to Manage Payment Methods
-
-Use the right flow for your situation:
-
-- **Starting a paid plan or upgrading from no saved card** — Enter your card during checkout
-- **Already on a paid subscription** — Go to **Billing** and use **Update** in the **Payment method** section
-
----
-
-## Payment Security
-
-Your payment information is handled securely:
-
-- **Not stored on BeatPass servers** — Card details are managed by Stripe, the payment processor
-- **Encrypted transmission** — All payment data is encrypted
-- **PCI compliant** — Industry security standards are followed
-
----
-
-## When You Need a Payment Method
-
-A payment method is required for:
-
-- **Subscribing to a paid plan** — To process recurring payments
-- **Upgrading your plan** — To charge the price difference
-- **Purchasing beats** — For one-time transactions
-
-### Without a Payment Method
-
-If you don't have a payment method saved:
-
-- You can still use BeatPass without a paid subscription
-- Billing will prompt you to enter a card during checkout when needed
-- You will not see a saved **Payment method** section until there is a paid subscription to manage
-
----
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="My payment failed">
-    Common reasons include:
-    - Card expired
-    - Insufficient funds
-    - Card issuer declined the charge
-    
-    Try updating your payment method or contact your bank.
-  </Accordion>
-  
-  <Accordion title="I don't see a Payment method section">
-    That usually means you do not currently have an active paid subscription with a saved card. Start or change a paid plan first, then BeatPass can show the saved card on **Billing**.
-  </Accordion>
-  <Accordion title="Can I use PayPal?">
-    Not on the current BeatPass setup. Subscription billing currently uses cards through Stripe.
-  </Accordion>
-</AccordionGroup>
-
----
-
-## Related Topics
-
-<Columns cols={2}>
-  <Card title="Subscription Overview" icon="credit-card" href="/help/billing/subscription-overview">
-    View your current subscription status.
-  </Card>
-  <Card title="Invoices" icon="file-lines" href="/help/billing/invoices">
-    View your payment history.
-  </Card>
-</Columns>
+For a charge you do not recognize, contact your card issuer and [BeatPass support](/help/contact-support). Never send support full card or bank details.

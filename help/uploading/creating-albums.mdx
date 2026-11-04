@@ -9,17 +9,19 @@ keywords: ["album", "collection", "beats", "organize", "project", "producer"]
 canonical: "https://docs.beatpass.ca/help/uploading/creating-albums"
 ---
 
-BeatPass uses the word **Collection** in the current producer upload flow. Collections help you group multiple beats into one release, such as a beat pack, tape, or themed drop.
+import CollectionCatalogFigure from "/snippets/media/collection-catalog.mdx";
 
----
+Group related beats into a **collection**, such as a beat pack, tape, or themed drop. Start in [My Collections](https://open.beatpass.ca/producer-dashboard/albums), or turn on **Create collection** before uploading several WAV files.
 
-## The Current Collection Workflow
+<CollectionCatalogFigure />
 
-Create a collection directly from **My Collections**. You can also turn on **Create collection** while uploading multiple beats:
+## Create a collection
+
+From **My Collections**:
 
 <Steps>
   <Step title="Open My Collections">
-    Click your **profile avatar**, select **Backstage**, then open **My Collections**.
+    Click your **profile avatar**, select **Producer Dashboard**, then open **My Collections**.
   </Step>
   <Step title="Create the collection">
     Select **Create collection**. Add the beats that belong to this release in the collection editor.
@@ -28,21 +30,18 @@ Create a collection directly from **My Collections**. You can also turn on **Cre
     Add collection metadata, cover art, and any optional description details.
   </Step>
   <Step title="Review the tracks">
-    Make sure each track has its own required fields completed.
+    Make sure each track has its own required fields completed, then save. Reopen the collection from **My Collections** to check its artwork and track order.
   </Step>
 </Steps>
 
----
 
-## Current Collection Fields
-
-For new collections, BeatPass currently expects:
+## Add the collection details
 
 | Field | Required? | Notes |
 |-------|-----------|-------|
 | **Name** | Yes | Collection title |
 | **Cover Art** | Yes | Required for new collections |
-| **Release Date** | No | Optional scheduling / reference field |
+| **Release date** | No | A calendar date for the release; setting a future date does not schedule or hide the published collection |
 | **Artists** | Yes | Credited producers |
 | **Genres** | No | Helps with discovery |
 | **Tags** | No | Helpful keywords |
@@ -52,21 +51,14 @@ For new collections, BeatPass currently expects:
   New tracks added inside a collection still need their own audio upload and cover art to pass BeatPass validation.
 </Note>
 
-## Metadata Inheritance
+## Check each beat
 
-When you upload tracks inside a collection, BeatPass currently carries the collection's:
+New beats uploaded inside a collection start with its **Artists**, **Genres**, and **Tags**. Review those starting values for each beat before saving.
 
-- Artists
-- Genres
-- Tags
-
-onto those new track forms as a starting point.
-
----
 
 ## Managing Tracks Inside a Collection
 
-On existing collections, BeatPass currently supports:
+Open an existing collection to:
 
 - **Upload beats** to add new tracks
 - Adding **existing tracks** from your catalog
@@ -74,9 +66,8 @@ On existing collections, BeatPass currently supports:
 - Removing tracks from the collection
 - Reordering tracks
 
-This makes collections useful even after the first publish.
+If an action is unavailable, check whether you manage the collection or only contributed a beat. Removing a beat from a collection changes its grouping; it does not delete the beat from your catalog.
 
----
 
 ## Best Practices
 
@@ -94,7 +85,6 @@ This makes collections useful even after the first publish.
   </Accordion>
 </AccordionGroup>
 
----
 
 ## Related
 

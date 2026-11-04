@@ -1,9 +1,53 @@
-/* ==========================================================================
-   BeatPass Documentation — Custom Styles
-   WCAG AAA Compliant | All accent text contrasts ≥ 7:1
-   
-   Color mapping (docs.json → CSS variables):
-     colors.primary  #3B8CB8 → --primary       (general use)
-     colors.light    #7AB8DA → --primary-light  (text on dark backgrounds, 9.15:1 AAA)
-     colors.dark     #034D75 → --primary-dark   (text on light backgrounds, 9.0:1 AAA)
-   ========================================================================== */
+/* Mintlify owns shared styles; docs.json defines BeatPass colors and fonts.
+   Contrast, keyboard focus, and reflow require rendered verification. */
+
+/* Keep footer branding and appearance controls reachable at enlarged text sizes. */
+@media (max-width: 48rem) {
+  #footer .flex.items-center.justify-between {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* Mintlify's table-layout wrapper must shrink before its table scrolls locally. */
+#content-area div.table {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Long words and URLs must fit enlarged text without widening the page. */
+#content-area {
+  overflow-wrap: anywhere;
+}
+
+/* Generated figures follow Mintlify's chosen theme, including a manual override. */
+/* Follow the selected Mintlify theme, independently of the OS preference. */
+.bp-media-variant { display: none; }
+.bp-media-light.bp-media-desktop { display: block; }
+html.dark .bp-media-light.bp-media-desktop { display: none; }
+html.dark .bp-media-dark.bp-media-desktop { display: block; }
+@media (max-width: 640px) {
+  .bp-media-light.bp-media-desktop,
+  html.dark .bp-media-dark.bp-media-desktop { display: none; }
+  .bp-media-light.bp-media-mobile { display: block; }
+  html.dark .bp-media-light.bp-media-mobile { display: none; }
+  html.dark .bp-media-dark.bp-media-mobile { display: block; }
+}
+.bp-media { width: 100%; min-width: 0; }
+.bp-media-variant, .bp-media img { max-width: 100%; }
+.bp-media img { display: block; width: 100%; height: auto; }
+
+/* Open the original image without the pinned client's Safari-dependent zoom wrapper. */
+.bp-media a { display: block; cursor: zoom-in; }
+.bp-media a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+/* Keep a complete phone capture readable as one figure, with full-size access on tap. */
+@media (max-width: 640px) {
+  .bp-media .bp-media-mobile img {
+    width: auto;
+    max-height: calc(100svh - 14rem);
+    margin-inline: auto;
+  }
+}

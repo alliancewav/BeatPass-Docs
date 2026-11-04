@@ -9,118 +9,30 @@ keywords: ["social login", "Google", "connect accounts", "sign in"]
 canonical: "https://docs.beatpass.ca/help/account-settings/social-login"
 ---
 
-Social login lets you use supported third-party accounts to sign in to BeatPass instead of typing your password every time.
+Use **Social login** to connect an available sign-in provider to your BeatPass account. Only enabled providers appear; use the options shown in your account rather than assuming a provider is supported.
 
----
-
-## What Is Available Right Now
-
-Only providers that are enabled on BeatPass appear in **Social login**. On the current BeatPass setup, the available option is:
-
-| Provider | What you can do |
-|----------|-----------------|
-| **Google** | Sign in with your Google account and connect it to your BeatPass user |
-
-<Note>
-  If more providers are enabled in the future, they will appear in the same section automatically.
-</Note>
-
----
-
-## Enable Google Sign-In
+## Connect a provider
 
 <Steps>
-  <Step title="Open account settings">
-    Open the **Account Settings** page from your profile avatar menu.
+  <Step title="Open Social login">
+    Open [Account Settings](https://open.beatpass.ca/account-settings#social-login), then select **Social login**. The panel is titled **Manage social login**.
   </Step>
-  <Step title="Find Social login">
-    Scroll to the **Social login** section.
+  <Step title="Enable the account">
+    Select **Enable** beside the provider, such as **Google account**. Complete the provider's sign-in window.
   </Step>
-  <Step title="Enable Google">
-    Click **Enable** next to **Google account**.
-  </Step>
-  <Step title="Finish the Google flow">
-    Complete the Google sign-in window and approve the connection.
+  <Step title="Check the connection">
+    The row shows the linked account instead of **Disabled** when the connection succeeds. If the popup is blocked, allow popups for BeatPass and retry.
   </Step>
 </Steps>
 
-After the connection succeeds, BeatPass shows the linked Google account in that row instead of **Disabled**.
+If an account already exists with the same email, BeatPass may ask for its existing password before linking the provider. Sign in to that account first if needed.
 
----
+## Disconnect safely
 
-## Disable Google Sign-In
+Make sure you can sign in another way before selecting **Disable**. If you have only used Google, [create a password through email recovery](/help/account-settings/password/forgot-password) first and check that it works.
 
-To remove Google as a sign-in option for your BeatPass account:
+Disabling the connection changes your BeatPass sign-in method; it does not delete your Google account. You can also review connected-app access in the provider's own account settings.
 
-1. Open the **Account Settings** page from your profile avatar menu
-2. Open the **Social login** section
-3. Click **Disable** next to the connected **Google account**
+## What information is used
 
-<Warning>
-  If Google is your only way to sign in, create a password first using the **Forgot password?** flow on the login page before you disable it.
-</Warning>
-
----
-
-## If A BeatPass Account Already Exists
-
-If you try to connect or sign in with Google and BeatPass already has an account with the same email address, BeatPass may ask for your existing account password before finishing the connection.
-
----
-
-## What BeatPass Accesses
-
-When you connect Google, BeatPass may receive:
-
-| Information | Purpose |
-|-------------|---------|
-| **Email address** | Account identification |
-| **Name** | To identify the connected account |
-| **Profile picture** | To help populate your account avatar |
-
-BeatPass does **not**:
-- Post on your behalf
-- Access your messages
-- Access your contacts
-- Store your social password
-
----
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="Social login popup was blocked">
-    Allow popups for BeatPass and try again. The social sign-in flow opens in a separate window.
-  </Accordion>
-  <Accordion title="'Account already exists' error">
-    BeatPass may already have a user with that email address. Sign in with your existing BeatPass credentials first, then try enabling Google from **Social login**.
-  </Accordion>
-  <Accordion title="I signed up with Google and never made a password">
-    Use the **Forgot password?** link on the login page to create a password by email before disabling Google sign-in.
-  </Accordion>
-  <Accordion title="Social provider isn't showing">
-    Only enabled providers appear. If you do not see a provider in the **Social login** section or on the sign-in page, it is not available on the current BeatPass setup.
-  </Accordion>
-</AccordionGroup>
-
----
-
-## Privacy Notes
-
-- Your social account login credentials are never shared with BeatPass
-- Authentication happens directly with the social provider
-- You can revoke BeatPass access from your social account settings at any time
-- Disabling the connection on BeatPass does not change your Google account itself
-
----
-
-## Related Topics
-
-<Columns cols={2}>
-  <Card title="Account Details" icon="user" href="/help/account-settings/account-details">
-    Update your profile information.
-  </Card>
-  <Card title="Password" icon="lock" href="/help/account-settings/password">
-    Change your password or create one by email.
-  </Card>
-</Columns>
+The provider can share account information such as your email, name, and profile image for sign-in. Your provider password is not entered into BeatPass. Review the [Privacy Policy](/help/legal/privacy-policy) for account information handling.

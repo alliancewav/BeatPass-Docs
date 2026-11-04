@@ -8,208 +8,108 @@ canonical: "https://docs.beatpass.ca/help/beat-requests/understanding-tokens"
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Tokens control how many Beat Requests you can create during the current monthly cycle. Your plan sets the limit, and the request duration decides how many tokens are spent.
-
----
+Tokens are your allowance for posting **Beat Requests**. The length of a brief decides its cost; receiving or sending a beat does not grant a license.
 
 ## How Tokens Work
 
 <Columns cols={2}>
-  <Card title="Create a Request" icon="plus">
+  <Card title="Post a brief" icon="plus">
     **24 hours** costs **1 token**, **48 hours** costs **2**, and **72 hours** costs **3**.
   </Card>
-  <Card title="Renew an Expired Request" icon="rotate-left">
-    Eligible expired requests always cost **1 token** to renew, even if the original request cost more.
+  <Card title="Reopen an eligible brief" icon="rotate-left">
+    Reopening costs **1 token** and keeps the original **24**, **48**, or **72-hour** duration.
   </Card>
-  <Card title="Monthly Allowance" icon="coins">
-    Your plan decides how many tokens you can hold during the monthly cycle.
+  <Card title="Monthly allowance" icon="coins">
+    Your plan sets the allowance. Unused tokens are replaced when the monthly cycle resets.
   </Card>
-  <Card title="Plan Changes" icon="arrows-rotate">
-    Starting, resuming, or changing a paid plan resets your balance to that plan's token limit.
+  <Card title="Plan changes" icon="arrows-rotate">
+    An eligible plan change can refresh the allowance when processed. Check the resulting balance after the change takes effect.
   </Card>
 </Columns>
 
-Unused tokens do not roll forward forever. BeatPass refreshes your balance on the monthly cycle and shows a **reset date** in the token status area.
-
----
-
 ## Token Allowance by Plan
 
-The number of tokens you receive depends on your BeatPass subscription:
-
-| Plan | Monthly Tokens |
-|------|----------------|
-| **Explorer** (Free) | 1 |
-| **Classic** (\$29/mo) | 1 |
-| **Plus** (\$49/mo) | 3 |
-| **Pro** (\$79/mo) | 5 |
-
-<Note>
-  Your current token balance is shown in the Beat Requests experience, alongside your monthly limit and reset date.
-</Note>
-
----
+Compare the current request allowances on the [pricing page](https://open.beatpass.ca/pricing). Use the choices offered to your account; producer access stays free, and a paid plan does not bypass producer licensing restrictions.
 
 ## Checking Your Token Balance
 
-You can see your current token balance in several places:
+<Steps>
+  <Step title="Open a new request">
+    Open [Beat Requests](https://open.beatpass.ca/beat-requests) or **Your requests** in your Library, then choose **New request**.
+  </Step>
+  <Step title="Check available tokens and cost">
+    In **New beat request**, the footer shows the number of tokens available. Choose **24**, **48**, or **72 hours** under **How long should it stay open?** and compare the cost beside **Post request**.
+  </Step>
+  <Step title="Check a changed balance">
+    After posting, reopening, deleting, or a plan change, open **New request** again to check the refreshed allowance. If you have no available tokens, **Your next request** shows the reset information offered to your account.
+  </Step>
+</Steps>
 
-1. **Beat Requests Section** — Your balance is displayed prominently
-2. **Before Creating a Request** — Shows tokens remaining
-3. **After Creating a Request** — Updated balance confirmation
-
-Your token status includes:
-- **Current tokens** — How many you have right now
-- **Monthly limit** — Your total allowance for the month
-- **Used this month** — How many you've already used
-- **Reset date** — When your tokens will refresh
-- **Days until reset** — How much time is left in the current cycle
-
----
+If **We could not load your request allowance.** appears, choose **Try again**. A failed check does not mean the balance is zero.
 
 ## Using Tokens
 
-### When Tokens Are Consumed
+Tokens are spent when a request is successfully posted or an eligible closed request is reopened. Browsing briefs, listening to responses, or preparing an unposted draft does not spend them.
 
-A token is used when you:
-- **Successfully submit** a beat request
-- **Renew** an eligible expired request
-
-### When Tokens Are NOT Used
-
-Tokens are not consumed when you:
-- Browse other people's requests
-- Monitor request counts or notifications
-- Start creating a request but don't submit
-
----
+If posting or reopening cannot be confirmed, check **Your requests** before trying again. An interrupted response does not necessarily mean the action failed.
 
 ## Getting Tokens Back (Refunds)
 
-You can get tokens refunded by **deleting your request**:
+Deleting one of your open or closed requests returns its original token cost, limited by your current plan allowance. There is no restore action in this flow, so keep a brief if you still need its submission history.
 
-1. Go to your active requests
-2. Delete a request you no longer need
-3. BeatPass refunds as many tokens as it can without pushing you above your plan limit
-
-The refund amount matches the original cost:
-- **24h request** — 1 token refunded
-- **48h request** — Up to 2 tokens refunded
-- **72h request** — Up to 3 tokens refunded
+| Scenario | Token return |
+| --- | --- |
+| Delete an open or closed request with enough room below your cap | Original cost of **1**, **2**, or **3 tokens** |
+| Delete a request with only some room below your cap | Only the amount needed to reach the cap |
+| Delete a request while already at the cap | None |
+| A request expires naturally | No automatic return |
 
 <Warning>
-  Token refunds are capped at your plan's monthly limit. If refunding would push your balance above the cap, only the amount needed to reach the cap is returned.
+  Deletion never takes your balance above your plan's current allowance. Token returns are not cash refunds, and tokens are returned to the original request owner.
 </Warning>
 
-### Refund Conditions
-
-| Scenario | Tokens Refunded? |
-|----------|------------------|
-| Delete active request, below cap | Full cost (1, 2, or 3 tokens) |
-| Delete active request, partially below cap | Partial (up to the cap) |
-| Delete expired request | No |
-| Request expires naturally | No |
-| You're at max token limit | No (already at cap) |
-
-<Note>
-  When a request is removed by BeatPass on your behalf, the refunded token still goes back to **you**. Tokens are only refunded to the original request owner, and only if your current balance is below your plan's cap.
-</Note>
-
-### Staying Under the Cap
-
-- You can never hold more tokens than your plan's monthly allowance (e.g., a 3-token plan will never show 4 tokens)
-- Refunds stop once your balance reaches that limit, even if multiple requests are deleted
-- Plan changes reset the balance to the new plan limit immediately
-
----
+Read **Delete request?** before confirming **Delete request**. **Request deleted.** confirms removal. Open **New request** to check the resulting available tokens. If the outcome does not match these rules, contact support with the request details.
 
 ## Token Reset Cycle
 
-BeatPass refreshes tokens on a **monthly cycle**. Your token status area shows the reset date and how many days remain in the current cycle.
+On the monthly reset, your balance is replaced by your plan's current allowance. Unused tokens do not carry over. When no tokens are available, the request form shows **Your request tokens reset on** with the available date.
 
-- On reset day, your balance is set back to your plan's full monthly allowance.
-- Unused tokens do not carry over — they are replaced by the fresh balance.
-
-### Important Dates
-
-- **Reset date** — Shown in your token status
-- **Days until reset** — Also shown in the same status area
-- **Unused tokens** — Lost at reset (don't carry over)
-
-<Tip>
-  If you have tokens left and know you need more requests this month, use them before the reset date instead of letting them expire.
-</Tip>
-
----
+A successfully processed plan change can also refresh your allowance. Follow the effective date in **Billing**; choosing a future change does not give you the new allowance immediately.
 
 ## Running Out of Tokens
 
-If your token balance reaches zero:
+Existing open briefs can still receive beats. For another request, wait for the reset, delete a brief you no longer need to recover tokens within your cap, or compare a higher allowance if **View plans** is offered.
 
-1. **You cannot create new requests** until tokens reset
-2. **Existing requests continue** as normal
-3. **You can still receive submissions** on active requests
-4. **Options to get more:**
-   - Wait for monthly reset
-   - Change to a plan with a higher token allowance
-   - Delete an existing request (if below cap)
-
-### What You See
-
-When out of tokens, you'll see a message like:
-> "You've used all your tokens for this month. Your tokens will reset on [date]."
-
-For free users:
-> "You've used all your tokens for this month. Upgrade to get more tokens or wait until next month."
-
----
+Your draft stays saved while you explore plans. Check it again before posting.
 
 ## Upgrading for More Tokens
 
-If your current token limit is too small for how often you use Beat Requests:
+Open **Billing → Change plan**, or **View plans** when offered in the request form. Compare the allowance, price, full charge, and effective date. After the change is processed, return to **New request** to check your balance.
 
-1. Click your **profile avatar** → **Billing**
-2. Use **Change plan** to review your options
-3. Pick a plan with a higher Beat Request allowance
-4. After the change takes effect, BeatPass resets your token balance to the new plan limit
-
-<Info>
-  BeatPass does not sell one-off token packs today. Tokens come from your current plan and the monthly reset cycle.
-</Info>
-
----
+BeatPass has no one-off token-pack purchase in this flow.
 
 ## Common Questions
 
 <AccordionGroup>
-  <Accordion title="Do unused tokens carry over?">
-    No. They are replaced by your refreshed monthly balance on the reset cycle.
+  <Accordion title="Can I reopen any closed request?">
+    You can reopen your own eligible request within **30 days** of expiry. **Reopen · 1 token** or **Reopen request** shows the action and its original duration. If it is unavailable, create a new brief when you have enough tokens.
   </Accordion>
-  
-  <Accordion title="What happens if I downgrade my plan?">
-    BeatPass resets your token balance to the new plan's allowance when the subscription change is processed.
+  <Accordion title="Why did deletion return fewer tokens than the request cost?">
+    Returns stop at your current plan allowance. A request that cost three tokens returns only one if your balance has room for one. At the cap, nothing is added.
   </Accordion>
-  
-  <Accordion title="Can I buy extra tokens?">
-    Currently, tokens are only available through your subscription plan. Upgrading your plan is the way to get more monthly tokens.
+  <Accordion title="Does a closed request disappear when it can no longer reopen?">
+    Reopening eligibility and your saved history are separate. Closed briefs and received beats remain in **Your requests** while the records are retained; use the status filter to find them.
   </Accordion>
-  
-  <Accordion title="Why wasn't my token refunded when I deleted a request?">
-    Tokens are only refunded if you're below your plan's monthly limit. If you're already at the maximum, the system doesn't add extra tokens.
+  <Accordion title="Does a request guarantee a beat or a license?">
+    No. Producers send catalog tracks that may fit your brief. Listen and review the track's licensing choices before downloading, buying, or releasing music.
   </Accordion>
 </AccordionGroup>
-
----
 
 ## Related Topics
 
 <Columns cols={2}>
-  <Card title="Creating Requests" icon="plus" href="/help/beat-requests/creating-requests">
-    Learn how to use your tokens to create requests.
-  </Card>
-  <Card title="Plans & Pricing" icon="credit-card" href="/help/plans-and-pricing">
-    Compare plans and their token allowances.
-  </Card>
+  <Card title="Create a request" icon="plus" href="/help/beat-requests/creating-requests">Write a clear brief and review the posting cost.</Card>
+  <Card title="Manage your requests" icon="list-check" href="/help/beat-requests/managing-requests">Review responses, reopen a brief, or delete one you no longer need.</Card>
 </Columns>
 
 <NeedHelp />

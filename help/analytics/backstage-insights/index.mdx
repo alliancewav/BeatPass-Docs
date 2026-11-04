@@ -1,61 +1,59 @@
 ---
 audience: help
-title: "Backstage Insights"
-sidebarTitle: "Insights Overview"
-description: "Understand the current BeatPass Backstage Insights pages for tracks, albums, and artists."
+title: "Insights reports"
+sidebarTitle: "Insights reports"
+description: "Choose the right BeatPass report and switch between Overview, Audience, and the Pro Page activity available for your producer profile."
 canonical: "https://docs.beatpass.ca/help/analytics/backstage-insights"
 ---
 
-Backstage Insights is the detailed analytics layer for specific content. Instead of one combined dashboard, BeatPass gives you a separate page for each track, album, or artist profile.
-
-<Info>
-  Access depends on the content you are allowed to manage. If BeatPass does not recognize you as an owner or collaborator for that item, the insight route will not be available.
-</Info>
+Use **Insights** to follow one beat, collection, or producer profile through its listening history. Choose the report, set your dates, and select the view that answers your question.
 
 ## Choose The Right View
 
 <Columns cols={3}>
   <Card title="Track Insights" href="/help/analytics/backstage-insights/track-insights" icon="music">
-    The deepest view, including engagement metrics and completion behavior.
+    See listening over time, duration, and how much of one beat people hear.
   </Card>
   <Card title="Album Insights" href="/help/analytics/backstage-insights/album-insights" icon="folder">
-    Rolled-up album reporting plus top-performing tracks in that album.
+    Review a collection as a whole and find its most-played beats.
   </Card>
   <Card title="Artist Insights" href="/help/analytics/backstage-insights/artist-insights" icon="microphone-lines">
-    Catalog-level reporting for one artist profile.
+    Follow your catalog and the activity connected to your Pro Page.
   </Card>
 </Columns>
 
-## Shared Behaviors Across Insight Pages
+## Read your report
 
-<AccordionGroup>
-  <Accordion title="Date range filtering">
-    All current insight pages live inside the same insights layout, which includes a floating date-range control. The default preset is **This year**.
-  </Accordion>
-  <Accordion title="Header stats">
-    Each page starts with a header that summarizes the current item before you get into charts.
-  </Accordion>
-  <Accordion title="Chart-based reporting">
-    The main body uses charts and ranked lists instead of long tables.
-  </Accordion>
-  <Accordion title="Exports">
-    The standard producer-facing Backstage Insights UI does not currently expose export controls directly on the page.
-  </Accordion>
-</AccordionGroup>
+<Steps>
+  <Step title="Check the music and dates">
+    Confirm the name and artwork. Open **Details** for more context. A fresh report starts at **This year**; saved links can keep other dates. Counts marked **Lifetime** do not change with the reporting period.
+  </Step>
+  <Step title="Start in Overview">
+    Read **Plays Over Time**. Collection and producer reports add **Most Played Tracks**; choose a track there to open its own Insights. A beat adds duration and completion detail when listening has been tracked.
+  </Step>
+  <Step title="Explore Audience">
+    Choose **Audience** or **Explore your audience** to see devices, platforms, listeners, and locations. Check each chart's subtitle and total before comparing percentages.
+  </Step>
+  <Step title="Review your shared storefront">
+    Your own primary producer report also has a **Pro Page** tab. This activity is connected to your shareable storefront and is separate from regular marketplace listening.
+  </Step>
+</Steps>
 
-## Current Chart Coverage
+## Find the right chart
 
 <Columns cols={2}>
-  <Card title="Shared charts" href="/help/analytics/reference/chart-types" icon="chart-line">
-    Plays Over Time, Top Devices, Top Platforms, Top Listeners, and Top Locations.
+  <Card title="Listening and audience charts" href="/help/analytics/reference/chart-types" icon="chart-line">
+    Match a chart to a listening or audience question.
   </Card>
-  <Card title="Track-only engagement" href="/help/analytics/backstage-insights/engagement-metrics" icon="wave-square">
-    Engagement Overview, Listen Duration, and Completion Breakdown.
+  <Card title="Listening depth for one beat" href="/help/analytics/backstage-insights/engagement-metrics" icon="wave-square">
+    Read Avg Listen Duration and Completion Breakdown using tracked plays.
   </Card>
-  <Card title="Album and artist extras" icon="clipboard-list">
-    Album and artist insights also show **Most Played Tracks**.
+  <Card title="Metrics glossary" href="/help/analytics/reference/metrics-glossary" icon="list">
+    Understand the numbers and the people or plays they represent.
   </Card>
-  <Card title="Metrics glossary" href="/help/analytics/reference/metrics-glossary" icon="code">
-    Definitions for the labels you see across these pages.
+  <Card title="Keep a record" href="/help/analytics/backstage-insights/exporting-data" icon="camera">
+    Save the report link or capture a chart with its dates.
   </Card>
 </Columns>
+
+If a chart fails, select **Try again** in that section. A loading failure is different from a report with no activity.

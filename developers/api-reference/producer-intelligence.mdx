@@ -11,9 +11,7 @@ canonical: "https://docs.beatpass.ca/developers/api-reference/producer-intellige
 
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-## Overview
-
-The Producer Intelligence API is BeatPass's comprehensive analytics and gamification system for producers. It covers <Tooltip tip="Experience Points earned through uploads, plays, and engagement that determine a producer's level and leaderboard rank.">XP</Tooltip> tracking, achievements, social analytics, collaboration networks, contribution graphs, advanced charting, and real-time metrics.
+The Producer Intelligence API supplies producer progress, achievements, and analytics. It covers <Tooltip tip="Experience Points earned through eligible activity. They determine the producer-account level and the Progress leaderboard.">XP</Tooltip> tracking, achievements, social analytics, collaboration networks, contribution graphs, advanced charting, and real-time metrics.
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1/producer-intelligence`
@@ -25,35 +23,7 @@ The Producer Intelligence API is BeatPass's comprehensive analytics and gamifica
 
 ## Rate Limits
 
-Producer Intelligence endpoints have route-specific rate limits:
-
-<AccordionGroup>
-  <Accordion title="Public Endpoints" defaultOpen icon="globe">
-    <Badge color="green" size="lg">600/min</Badge> — Leaderboard, collaboration leaderboard (cached responses)
-
-    <Badge color="blue" size="lg">120/min</Badge> — Batch growth data (up to 100 tracks per request)
-
-    <Badge color="purple" size="lg">1200/min</Badge> — Single track growth (prefer batch endpoint)
-  </Accordion>
-  <Accordion title="Authenticated Endpoints" icon="user-check">
-    <Badge color="orange" size="lg">500/min</Badge> — Dashboard, XP, achievements, progress data, charts, exports
-    <Badge color="yellow" size="lg">60/min</Badge> — Producer Dashboard leaderboards (scheduled snapshots)
-
-
-    <Badge color="gray" size="lg">120/min</Badge> — Social analytics, collaboration network, trending
-  </Accordion>
-</AccordionGroup>
-
-```mermaid
-flowchart TD
-    A[Uploads & Plays] --> B[XP System]
-    B --> C[Levels & Titles]
-    C --> D[Achievements]
-    B --> E[Leaderboards]
-    A --> F[Contribution Graphs]
-    A --> G[Advanced Charts]
-    A --> H[Social Analytics\n& Collaboration Network]
-```
+Shared and endpoint-specific limits apply. Follow returned rate-limit headers and `Retry-After`; see [Rate Limits](/developers/rate-limits). Prefer batch growth reads and fetch detailed analytics only when needed.
 
 ---
 
@@ -85,14 +55,14 @@ GET /api/v1/producer-intelligence/producer-level
 
 ### Get Progress Data (Combined)
 
-Optimized combined endpoint that returns dashboard + XP + achievements in a single request. **Use this instead of multiple individual calls.**
+Combined producer-account progress endpoint. It returns `scope`, `level`, `earningRules`, `recentXp`, `achievements`, `cached_at`, `cache_duration_seconds`, `achievementCommunity`, and `achievementProfiles`. Community counts and profile previews can be `null` while unavailable; do not treat that as a count of zero. This endpoint does not replace the full dashboard or return the standalone `xp-sources` response.
 
 ```http
 GET /api/v1/producer-intelligence/progress-data
 ```
 
 <Tip>
-  The `progress-data` endpoint consolidates multiple API calls into one. Use it on dashboard page load to minimize requests and stay within rate limits.
+  Use `progress-data` when your screen needs level and achievement progress. Fetch other analytics only when that screen needs them.
 </Tip>
 
 ---
@@ -114,6 +84,20 @@ Get details for a specific achievement.
 ```http
 GET /api/v1/producer-intelligence/achievements/{achievementId}/details
 ```
+
+---
+
+### Recent Achievement Unlockers
+
+Read a recent selection of public producer profiles for an achievement. Producer access is required.
+
+```http
+GET /api/v1/producer-intelligence/achievements/{achievementKey}/producers?page=1
+```
+
+Use the achievement's returned key, rather than its display name or a numeric database ID. `page` accepts 1–5 and defaults to 1. The response includes `achievementKey`, `generatedAt`, `isStale`, `coverage`, `producers`, and `pagination` with `page`, `perPage`, `hasMore`, and `nextPage`.
+
+Follow `nextPage` only when `hasMore` is true. Coverage describes the available recent selection; it is not a complete list of everyone who has ever unlocked the achievement. Preserve unavailable or stale states instead of presenting them as no unlockers. A temporarily unavailable selection returns `503`.
 
 ---
 
@@ -155,7 +139,7 @@ GET /api/v1/producer-intelligence/trending-collaborations
 
 ### Collaboration Opportunities
 
-Get AI-suggested collaboration opportunities based on genre, style, and activity.
+Get suggested collaborators based on shared genres, existing collaboration relationships, and compatibility signals. This endpoint does not establish that recommendations were generated by an AI model.
 
 ```http
 GET /api/v1/producer-intelligence/collaboration-opportunities
@@ -169,7 +153,7 @@ GET /api/v1/producer-intelligence/collaboration-opportunities
 
 Get local track trend rates for up to 100 tracks in a single request. **Always prefer this over individual calls.**
 
-The response includes only tracks that are currently trending. A track must have recent BeatPass play momentum, meet minimum recent-play and distinct-listener thresholds, and outperform the previous comparison window. Tracks that are not trending are omitted from `growth_rates`.
+The response includes only tracks that are currently trending. Tracks that are not trending are omitted from `growth_rates`.
 
 ```http
 POST /api/v1/producer-intelligence/tracks/growth-batch
@@ -188,14 +172,14 @@ GET /api/v1/producer-intelligence/track/{trackId}/growth
 ```
 
 <Note>
-  This endpoint has a 1200/min rate limit, but the batch endpoint is strongly recommended for efficiency. Track trend rates are based on local BeatPass play activity, not Spotify popularity or payout contribution values.
+  Prefer the batch endpoint for multiple tracks. Track trend rates are based on local BeatPass play activity, not Spotify popularity or payout contribution values.
 </Note>
 
 ---
 
 ## Leaderboards (Public)
 
-These endpoints are public and cached. Rate limit: **600 requests/minute**.
+These endpoints return public ranking snapshots. Read their freshness information and follow the response rate-limit headers.
 
 ### Producer Leaderboard
 
@@ -213,7 +197,7 @@ GET /api/v1/producer-intelligence/collaboration-leaderboard
 
 ## Producer Dashboard Leaderboards (Authenticated)
 
-The Producer Dashboard reads one scheduled ranking snapshot at a time. Customer requests do not trigger platform-wide leaderboard calculations.
+Read a producer ranking snapshot for a supported category and period. Use freshness fields to show when the ranking was generated.
 
 ```http
 GET /api/v1/producer-intelligence/leaderboards
@@ -233,7 +217,7 @@ Rate limit: **60 requests/minute**.
 
 | Category | Definition | Scope |
 | --- | --- | --- |
-| `earning_share` | Current contribution share using the canonical producer-finance contribution pool | Artist |
+| `earning_share` | Current producer earnings-contribution share | Artist |
 | `progress` | Cumulative producer-account XP | Producer account |
 | `audience_plays` | Track-play events on public attributed tracks, excluding known artist-team users while retaining anonymous plays | Artist |
 | `releases` | Public attributed tracks created in the selected period | Artist |
@@ -363,7 +347,7 @@ GET /api/v1/producer-intelligence/dashboard/charts
 
 ### Analytics Insights
 
-AI-generated insights about the producer's performance trends.
+Computed commentary and recommendations about performance trends. Treat these as descriptive signals, not financial forecasts or a guarantee of AI-generated analysis.
 
 ```http
 GET /api/v1/producer-intelligence/insights
@@ -375,7 +359,7 @@ GET /api/v1/producer-intelligence/insights
 
 ### Live Analytics
 
-Get live platform-wide analytics data.
+Get the available platform activity snapshot. Processing and cache state can delay updates; this is not an event-stream or delivery-latency guarantee.
 
 ```http
 GET /api/v1/producer-intelligence/live-analytics
@@ -383,7 +367,7 @@ GET /api/v1/producer-intelligence/live-analytics
 
 ### Real-Time Track Metrics
 
-Get live metrics (active listeners, recent plays) for a specific track.
+Get available track metrics: plays, likes, reposts, comments, trending score, and engagement rate. The response does not include an active-listener count.
 
 ```http
 GET /api/v1/producer-intelligence/track/{trackId}/real-time
@@ -457,13 +441,7 @@ Contribution value for a specific track.
 GET /api/v1/tracks/{track}/contribution
 ```
 
-### Update My Contributions
 
-Trigger a recalculation of the authenticated producer's contribution values.
-
-```http
-POST /api/v1/producer/update-contributions
-```
 
 ### Platform Stats
 
@@ -517,16 +495,16 @@ GET /api/v1/artist/subscription-payouts/{splitId}
 
 <AccordionGroup>
   <Accordion title="Use combined endpoints" icon="layer-group">
-    Use `progress-data` instead of calling `dashboard`, `xp-sources`, and `achievements` separately.
+    Use `progress-data` for level and achievement progress. It does not include every dashboard metric or the standalone XP-source payload.
   </Accordion>
   <Accordion title="Use batch track trend endpoint" icon="bolt">
     Use `tracks/growth-batch` for up to 100 tracks per request instead of individual `track/{id}/growth` calls. Non-trending tracks are omitted from the response.
   </Accordion>
   <Accordion title="Respect cache TTLs" icon="clock">
-    Leaderboard data is cached for 5 minutes. Dashboard data is cached for 15 minutes. Don't poll faster than these intervals.
+    Cache behavior differs between legacy leaderboards, scheduled Producer Dashboard snapshots, and per-account analytics. Use returned timestamps, `isStale`, and cache metadata where available; no single refresh interval applies to all of them.
   </Accordion>
   <Accordion title="Debounce real-time requests" icon="gauge">
-    Real-time analytics endpoints are database-intensive. Debounce requests and use appropriate intervals (30s+).
+    Real-time analytics endpoints are expensive. Debounce requests and use appropriate intervals (30s+).
   </Accordion>
 </AccordionGroup>
 

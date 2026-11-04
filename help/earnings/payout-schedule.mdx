@@ -9,7 +9,7 @@ canonical: "https://docs.beatpass.ca/help/earnings/payout-schedule"
 import NeedHelp from "/snippets/sections/need-help.mdx";
 import PayoutBankArrival from "/snippets/callouts/payout-bank-arrival.mdx";
 
-BeatPass records a real earning, then follows the payout route shown in **Finances**. A track sale and a subscription earning can use different providers when they were created at different stages of a payout upgrade.
+Follow an earning from **Pending** to **Sent** in [Finances](https://open.beatpass.ca/producer-dashboard/finances). The row keeps the payout route assigned to that earning. A track sale and a subscription earning can use different providers when they were created at different stages of a payout upgrade.
 
 ## Finance Activity Statuses
 
@@ -39,7 +39,7 @@ The **Earnings** section groups non-refunded earnings by currency:
 
 ## Legacy Stripe and BEATPAY
 
-If legacy Stripe is active, it remains the current route until BEATPAY becomes active. After the upgrade:
+Check the route shown for the earning type in **Finances**. Subscription earnings and exclusive sales can have different readiness during a rollout. When BEATPAY becomes active for a stream:
 
 - New eligible earnings use BEATPAY.
 - Previously routed Stripe payouts continue through Stripe.
@@ -66,7 +66,7 @@ Arrival time can change because of:
 
 <Steps>
   <Step title="Open Finance activity">
-    Go to **Backstage** → **Finances**. **Finance activity** is the first section.
+    Go to **Producer Dashboard** → **Finances** and open **Finance activity**, below the Earnings card.
   </Step>
   <Step title="Choose the status">
     Select **Pending**, **Processing**, or **Delayed**.

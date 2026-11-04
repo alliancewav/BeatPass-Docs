@@ -1,0 +1,150 @@
+{
+  "discover": {
+    "alt": "Discover with featured collection artwork and listening controls",
+    "caption": "Explore a featured collection and find your next sound. Example with demo data."
+  },
+  "track": {
+    "alt": "A beat page with artwork, producer details and licensing actions",
+    "caption": "Explore a beat before choosing its license. Example with demo data."
+  },
+  "player": {
+    "alt": "The music player with a beat ready to play",
+    "caption": "Keep listening as you explore. Example with demo data."
+  },
+  "queue": {
+    "alt": "The player queue with several beats ready to play",
+    "caption": "Arrange what plays next. Example with demo data."
+  },
+  "library": {
+    "alt": "Saved beats with artwork and playback controls",
+    "caption": "Return to the beats you liked. Example with demo data."
+  },
+  "playlist": {
+    "alt": "A playlist with several beats and its listening controls",
+    "caption": "Build a listening session you can revisit. Example with demo data."
+  },
+  "messaging": {
+    "alt": "A conversation with Mira about Golden Hour, with the message composer visible",
+    "caption": "Keep the conversation moving. Example with demo data."
+  },
+  "notifications": {
+    "alt": "Notifications about new music, follows and a beat request",
+    "caption": "Catch up on music and people you follow. Example with demo data."
+  },
+  "profile": {
+    "alt": "Your user profile with Edit, public music tabs and connections",
+    "caption": "Your own view of a public profile. Example with demo data."
+  },
+  "producer-profile": {
+    "alt": "A producer profile with beats, collections and public details",
+    "caption": "Let listeners explore your sound and your story. Example with demo data."
+  },
+  "storefront": {
+    "alt": "A public Producer Pro Page with featured music and catalog artwork",
+    "caption": "Share a focused home for your music. Example with demo data."
+  },
+  "license-wallet": {
+    "alt": "Your licenses filtered to Golden Hour, with its Active license card, Details and Download actions",
+    "caption": "Find your license, then open its details or request the audio download. Example with demo data."
+  },
+  "download": {
+    "alt": "The Download requested confirmation and My licenses action",
+    "caption": "Check the browser download, then keep your certificate close. Example with demo data."
+  },
+  "license-verification": {
+    "alt": "A public license record confirmation with its certificate details",
+    "caption": "Check the recorded status before sharing a certificate. Example with demo data."
+  },
+  "account": {
+    "alt": "Account details with legal identity and correction guidance",
+    "caption": "Keep your account and certificate details accurate. Example with demo data."
+  },
+  "billing": {
+    "alt": "Billing with a Demo plan, renewal details and payment-method controls",
+    "caption": "Review your plan and payment method. Demo example; check your account for current amounts and options."
+  },
+  "privacy": {
+    "alt": "Privacy choices with Refuse, Accept and Privacy preferences",
+    "caption": "Choose how optional tracking is used. Example with demo data."
+  },
+  "requests": {
+    "alt": "Open briefs on the desktop Beat Requests board; the phone view shows native beat selection before sending",
+    "caption": "Find a brief that fits your sound, then choose Send beats. The phone view shows the beat picker before sending. Example with demo data."
+  },
+  "dashboard": {
+    "alt": "The Producer Dashboard with recent beats and a shortcut to the full catalog",
+    "caption": "Find a recent beat and pick up your next task. Example with demo producer data."
+  },
+  "beat-catalog": {
+    "alt": "My Beats controls for editing a beat, viewing insights and changing its featured status",
+    "caption": "Open a beat’s actions to find its next step. Example with demo data."
+  },
+  "collection-catalog": {
+    "alt": "My Collections with release artwork on desktop and a collection action menu on phone",
+    "caption": "Organize your beats into releases. The phone view shows a collection’s action menu. Example with demo data."
+  },
+  "upload": {
+    "alt": "An existing demo beat in the editor with its title, collection, tags and description",
+    "caption": "Editing a saved beat. Example with demo data."
+  },
+  "rights-declarations": {
+    "alt": "The AI use declaration in a saved beat editor, with Human-made and AI-assisted choices",
+    "caption": "Declare how AI was used and keep the required rights evidence. Saved-beat editor with demo producer data."
+  },
+  "pro-page": {
+    "alt": "Your Pro Page link with copy, share and Open page controls",
+    "caption": "Copy or share your Pro Page link. Example with demo producer data."
+  },
+  "audio-recon": {
+    "alt": "Audio Recon with a catalog and similarity findings",
+    "caption": "Review a possible match, then listen and investigate. Example with demo data."
+  },
+  "finances": {
+    "alt": "Finance activity with an example earning and its current status",
+    "caption": "Follow the status of an earning. Demo amounts; check your account for current details."
+  },
+  "payout-setup": {
+    "alt": "BEATPAY setup with bank-account currency choices",
+    "caption": "Choose a currency your bank account can receive. Example with demo data."
+  },
+  "activity": {
+    "alt": "Producer Activity with recent download and license actions",
+    "caption": "Catch up on recent activity around your beats. Example with demo data."
+  },
+  "progress": {
+    "alt": "Your producer level and XP, with progress toward the next level",
+    "caption": "Check your level and how much XP you need next. Example with demo data."
+  },
+  "leaderboards": {
+    "alt": "Producer Leaderboards with ranking choices and example producers",
+    "caption": "Explore the current ranking and your position. Example with demo data."
+  },
+  "achievement-goal": {
+    "alt": "A chosen achievement goal with progress and options to view, change or remove it",
+    "caption": "Choose a next step for your progress. Example with demo data."
+  },
+  "achievement-gallery": {
+    "alt": "Unlocked achievements in your producer gallery",
+    "caption": "Revisit the achievements you have unlocked. Example with demo producer data."
+  },
+  "sample-safe": {
+    "alt": "The Sample-Safe warranty with Cleared and Needs clearance choices",
+    "caption": "Record the sample-clearance status of your beat. Example with demo producer data."
+  },
+  "insights-artist-overview": {
+    "alt": "Artist Overview report panels on desktop and Plays Over Time on phone",
+    "caption": "See how your beats reach listeners in Overview. The phone view focuses on Plays Over Time. Example with demo data."
+  },
+  "insights-artist-pro-page": {
+    "alt": "Pro Page Traffic with engaged visits, meaningful listens and completed licensing outcomes",
+    "caption": "Follow activity on your Pro Page. The phone view focuses on visitor outcomes. Example with demo data."
+  },
+  "insights-track-overview": {
+    "alt": "Beat Overview report on desktop and Avg Listen Duration on phone",
+    "caption": "Explore how a beat is heard. The phone view focuses on Avg Listen Duration. Example with demo data."
+  },
+  "insights-audience": {
+    "alt": "Audience reports on desktop and Top Devices on phone",
+    "caption": "Explore the audience behind your plays. The phone view focuses on Top Devices. Example with demo data."
+  }
+}

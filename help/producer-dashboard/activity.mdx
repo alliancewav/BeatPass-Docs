@@ -6,18 +6,20 @@ description: "Review audience downloads, listener activity, licenses, and your c
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/activity"
 ---
 
+import ActivityFigure from "/snippets/media/activity.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Activity** page puts audience downloads and listener response first. It also keeps a current-year calendar of your track uploads.
+Follow your upload rhythm, listener response, and downloads in [Activity](https://open.beatpass.ca/producer-dashboard/activity). The page starts with your current-year upload calendar, followed by **Audience activity** and **Recent downloads**.
 
 <ProducerOnly />
 
 ## Open Activity
 
-Click your **profile avatar** in the top navigation bar, select **Backstage**, then select **Activity** in the sidebar.
+Click your **profile avatar** in the top navigation bar, select **Producer Dashboard**, then select **Activity** in the sidebar.
 
-The page opens with **Last 90 days** selected. Change **Activity period** to **Last 7 days**, **Last 30 days**, **Last 90 days**, or **All time**. This setting updates **Audience activity** and **Recent downloads**.
+The page opens with **All time** selected unless a saved link specifies another period. Change **Activity period** to **Last 7 days**, **Last 30 days**, **Last 90 days**, or **All time**. This setting updates **Audience activity** and **Recent downloads**.
 
 ## Page Sections
 
@@ -55,6 +57,8 @@ When one track has the most downloads in the selected period, **Top downloaded t
 Select **What counts?** for these definitions without leaving the page. Select **How Activity works** to reopen this guide in a new tab.
 
 ## Recent Downloads
+
+<ActivityFigure />
 
 Each row includes the track, listener, download time, and a license action when an active certificate exists. Expired or revoked certificates are identified with plain text.
 
@@ -101,7 +105,7 @@ X-Ray provides upload context. It is not a score, ranking, or measure of success
 
 <Columns cols={2}>
   <Card title="Dashboard Home" icon="house" href="/help/producer-dashboard/home">
-    Return to Producer tools and your Performance snapshot.
+    Return to Recent beats and your Performance snapshot.
   </Card>
   <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
     Manage the tracks behind your Activity data.

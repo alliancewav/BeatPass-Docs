@@ -8,167 +8,37 @@ canonical: "https://docs.beatpass.ca/help/account-settings/two-factor-authentica
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Two-factor authentication (2FA) adds an extra layer of security to your account. When enabled, you'll need both your password and a verification code from your phone to log in.
+Add two-factor authentication to your BeatPass password sign-in with codes from an authenticator app. Keep recovery codes as a backup so a lost device does not leave you without a way to sign in.
 
----
-
-## Why Use Two-Factor Authentication?
-
-With 2FA enabled:
-
-- **Extra protection** — Even if someone knows your password, they can't access your account without your phone
-- **Prevent unauthorized access** — Protects against password theft and phishing
-- **Peace of mind** — Know your account is secured with industry-standard protection
-
-<Tip>
-  Enabling 2FA is strongly recommended, especially if you're a producer with uploaded content or have an active subscription.
-</Tip>
-
----
-
-## How It Works
-
-1. You enter your password as usual
-2. BeatPass asks for a verification code
-3. You open your authenticator app to get the code
-4. Enter the code to complete login
-
-The code changes every 30 seconds, so even if someone sees it, they can't use it later.
-
----
-
-## Setting Up 2FA
-
-### What You Need
-
-- An **<Tooltip tip="A mobile app (e.g. Google Authenticator, Authy) that generates time-based one-time codes for two-factor login.">authenticator app</Tooltip>** on your smartphone:
-  - Google Authenticator (iOS/Android)
-  - Microsoft Authenticator (iOS/Android)
-  - Authy (iOS/Android)
-  - 1Password (iOS/Android/Desktop)
-  - Any TOTP-compatible app
-
-### Step-by-Step Setup
+## Set up your authenticator
 
 <Steps>
-  <Step title="Go to Account Settings">
-    Open **Account Settings** from the user menu, then scroll to the **Two factor authentication** section.
+  <Step title="Enable the extra sign-in check">
+    Open [Account Settings](https://open.beatpass.ca/account-settings#two-factor), select **Two factor authentication**, and select **Enable**. Confirm your password if asked.
   </Step>
-  <Step title="Start Setup">
-    Click **Enable**.
+  <Step title="Add BeatPass to your authenticator">
+    Scan the QR code with your authenticator app. If scanning is unavailable, enter the displayed **Setup key** in the app instead.
   </Step>
-  <Step title="Scan QR Code">
-    Open your authenticator app and scan the QR code displayed on screen.
-
-    If you can't scan, you can manually enter the secret key shown below the QR code.
+  <Step title="Confirm a code">
+    Enter the app's current code in **Code**, then select **Confirm** to finish enabling the check.
   </Step>
-  <Step title="Enter Verification Code">
-    Your authenticator app will show a code. Enter it in **Code**, then click **Confirm**.
-  </Step>
-  <Step title="Save Recovery Codes">
-    You'll receive recovery codes. **Save these in a safe place** — they're your backup if you lose your phone.
+  <Step title="Save the recovery codes">
+    Store the displayed codes somewhere you can reach without the authenticator device. Treat the QR code, setup key, and recovery codes as secrets.
   </Step>
 </Steps>
 
----
+## Sign in with a code
 
-## Recovery Codes
+After your password, enter the authenticator's current code and select **Continue**. If the code is rejected, check your device's automatic time, wait for a fresh code, and confirm you selected the BeatPass account in the authenticator.
 
-<Tooltip tip="One-time backup codes that let you log in if you lose access to your authenticator app. Each code can only be used once.">Recovery codes</Tooltip> are one-time use codes that let you access your account if you lose your phone or authenticator app.
+If you cannot use the authenticator, select **Use recovery code instead** and enter an unused saved recovery code. Each recovery code works once.
 
-### Saving Recovery Codes
+## Replace recovery codes or change devices
 
-When you enable 2FA, you'll receive recovery codes. Store them safely:
-- Write them down and keep in a secure location
-- Save in a password manager
-- Store in an encrypted file
+While signed in, select **Regenerate recovery codes** in the same settings section. Confirm your password when prompted and save the replacement codes. The old codes stop working.
 
-<Warning>
-  Each recovery code can only be used once. If you use all your codes, generate new ones while you still have access to your account.
-</Warning>
+To replace the authenticator itself, make sure you still have account access, select **Disable**, then enable the check with the new authenticator. Disabling removes the extra check until setup is completed again.
 
-### Using a Recovery Code
-
-If you can't access your authenticator app:
-1. On the 2FA verification screen, click **"Use recovery code instead"**.
-2. Enter one of your saved recovery codes.
-3. You'll be logged in and the used code will be invalidated.
-
----
-
-## Logging In with 2FA
-
-Once 2FA is enabled, logging in works like this:
-
-1. Enter your email and password
-2. When prompted, open your authenticator app
-3. Enter the code shown
-4. Click **Continue** to complete login
-
-<Note>
-  Codes refresh every 30 seconds. If your code doesn't work, wait for a new one and try again. Make sure your phone's time is accurate.
-</Note>
-
----
-
-## Disabling 2FA
-
-To turn off two-factor authentication:
-
-1. Open **Account Settings** from the user menu.
-2. Scroll to the **Two factor authentication** section.
-3. Click **Disable**
-4. Confirm your password when prompted
-
-<Warning>
-  Disabling 2FA removes the extra security layer from your account. Only disable if necessary.
-</Warning>
-
-## Managing Recovery Codes
-
-Once 2FA is enabled, the account settings panel also lets you click **Regenerate recovery codes**. BeatPass asks for your password before replacing the old codes.
-
----
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="My code isn't working">
-    - Make sure your phone's time is set correctly (use automatic time)
-    - Wait for a new code to generate (they change every 30 seconds)
-    - Verify you're entering the code for the correct account (check the label in your app)
-  </Accordion>
-  
-  <Accordion title="I lost my phone">
-    Use one of your recovery codes to log in. Once logged in, disable 2FA, then set it up again with your new device.
-  </Accordion>
-
-  <Accordion title="I didn't save my recovery codes">
-    If you can still log in:
-    1. Go to 2FA settings
-    2. Disable 2FA
-    3. Re-enable it to get new recovery codes
-    4. Save them this time!
-
-    If you can't log in, contact support for account recovery.
-  </Accordion>
-
-  <Accordion title="Can I use 2FA on multiple devices?">
-    Yes. When you scan the QR code during setup, you can scan it with multiple authenticator apps/devices. The same code will work from any of them.
-  </Accordion>
-</AccordionGroup>
-
----
-
-## Related Topics
-
-<Columns cols={2}>
-  <Card title="Password" icon="lock" href="/help/account-settings/password">
-    Manage your account password.
-  </Card>
-  <Card title="Active Sessions" icon="desktop" href="/help/account-settings/active-sessions">
-    See where your account is logged in.
-  </Card>
-</Columns>
+If both the authenticator and recovery codes are unavailable, [contact support](/help/contact-support). Do not send a password, setup key, QR code, or recovery code in a support message.
 
 <NeedHelp />

@@ -4,478 +4,190 @@ sidebarTitle: "Error Catalog"
 description: "Common API error codes, messages, and suggested resolutions across BeatPass features."
 keywords: ["beatpass errors","api error codes","http status codes","error handling","troubleshooting"]
 "og:title": "Error Catalog - BeatPass Developer Docs"
-"og:description": "Complete catalog of BeatPass API error codes with resolutions and troubleshooting guidance."
+"og:description": "Common BeatPass API errors with resolutions and troubleshooting guidance."
 audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/error-catalog"
 ---
 
-## Overview
-
-This catalog documents common errors you may encounter across BeatPass API endpoints, along with their meanings and suggested resolutions.
-
----
+Read the HTTP status first, then the endpoint's payload. These notes cover verified common cases; they are not an exhaustive list of every provider, proxy, or framework error.
 
 ## Error Response Format
 
-Error bodies vary by endpoint. The example below is one validation-error shape. Some controllers return `success: false` plus `message` and optional `errors`; others return `message` alone or an `error` field. Do not require one universal envelope.
+There is no universal error envelope. Framework validation can return `message` and `errors`; some endpoints add `success: false` or a string `error`. Commerce endpoints can use `status`. Never require fields that the specific endpoint does not document.
+
+Illustrative validation response:
 
 ```json
 {
-  "message": "Human-readable error description",
+  "message": "Validation failed",
   "errors": {
-    "field_name": ["Specific validation error"]
+    "field_name": ["A value needs correction."]
   }
 }
 ```
 
----
+Use explicit fields such as `error_code` or `reason_code` only where documented. Human-readable messages can change or be translated.
 
 ## HTTP Status Codes
 
-<Columns cols={4}>
-  <Card title="400" icon="circle-exclamation">
-    **Bad Request** Malformed syntax
-  </Card>
-  <Card title="401" icon="lock">
-    **Unauthorized** Auth required
-  </Card>
-  <Card title="403" icon="ban">
-    **Forbidden** Not permitted
-  </Card>
-  <Card title="404" icon="magnifying-glass">
-    **Not Found** Doesn't exist
-  </Card>
-  <Card title="409" icon="arrows-split-up-and-left">
-    **Conflict** State conflict
-  </Card>
-  <Card title="422" icon="file-circle-xmark">
-    **Unprocessable** Validation failed
-  </Card>
-  <Card title="429" icon="gauge-high">
-    **Too Many** Rate limited
-  </Card>
-  <Card title="500" icon="server">
-    **Server Error** Internal issue
-  </Card>
-</Columns>
-
----
+| Status | How to handle it |
+| --- | --- |
+| `400` | Check the request and the operation's current state |
+| `401` | Check authentication before sending another protected request |
+| `403` | Stop and check account, endpoint, and resource permission |
+| `404` | Check the identifier and whether the resource is available to this account |
+| `409` | Refresh the relevant state; some operations require renewed acceptance |
+| `422` | Correct the indicated fields or eligibility problem |
+| `429` | Read the message and headers; distinguish HTTP throttling from an exhausted feature allowance |
+| `5xx` | Preserve the request context and check the operation's state before retrying a write |
 
 ## Authentication Errors
 
-<AccordionGroup>
-  <Accordion title="Invalid mobile-login credentials" defaultOpen icon="key">
-    <Badge color="orange">422</Badge>
-     Mobile login returns a validation error for a wrong email or password combination.
+Missing, invalid, or expired tokens normally produce `401` on protected routes. An authenticated account can still receive `403` because it lacks API approval, endpoint permission, verified email where required, or access to the resource.
 
-    **Resolution:** Verify your credentials. Use "Forgot Password" if needed.
-  </Accordion>
-  <Accordion title="Account disabled" icon="user-slash">
-    <Badge color="red">403</Badge>
-     Account has been suspended.
-
-    **Resolution:** Contact [contact@beatpass.ca](mailto:contact@beatpass.ca) for assistance.
-  </Accordion>
-  <Accordion title="Email not verified" icon="envelope">
-    <Badge color="orange">403</Badge>
-     Email verification is pending.
-
-    **Resolution:** Check your inbox for the verification link. Request a new one if needed.
-  </Accordion>
-  <Accordion title="Token expired" icon="clock">
-    <Badge color="gray">401</Badge>
-     Your authentication token has expired.
-
-    **Resolution:** Generate a new token from **Account Settings → Developers**.
-  </Accordion>
-  <Accordion title="Unauthenticated" icon="lock">
-    <Badge color="red">401</Badge>
-     No valid authentication token found.
-
-    **Resolution:** Include a valid Bearer token in your request. Contact support if your token has expired.
-  </Accordion>
-</AccordionGroup>
-
----
+Create or revoke developer tokens in **Account Settings → Developers**. Tokens expire after 90 days. A fresh token does not bypass account restrictions. See [Authentication](/developers/auth).
 
 ## Track & Upload Errors
 
-<Tabs>
-  <Tab title="Upload Validation">
-    <AccordionGroup>
-      <Accordion title="File too large" icon="file-arrow-up">
-        <Badge color="orange">422</Badge>
-         File exceeds maximum size (256 MB).
+`POST /tracks` validates required metadata and licensing declarations before saving. A normal new-track payload includes `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, and `src` for your completed authorized audio upload; additional fields depend on the offer, samples, and AI disclosure. Read the `422` field errors rather than using one generic upload-error message.
 
-        **Resolution:** Compress or reduce file size before uploading.
-      </Accordion>
-      <Accordion title="Invalid file format" icon="file-audio">
-        <Badge color="orange">422</Badge>
-         Unsupported audio format.
+An acoustic duplicate detected during creation can return `409`, with `is_duplicate`, `original_track`, and `similarity_score`. Stop and review the result instead of repeatedly uploading the same audio.
 
-        **Resolution:** Upload a WAV file. MP3, FLAC, AIFF, and other formats are not accepted by the current upload flow.
-      </Accordion>
-      <Accordion title="Duration issues" icon="clock">
-        <Badge color="orange">422</Badge>
-         Track duration must be at least 1 second.
-
-        **Resolution:** Ensure the uploaded file has a valid duration.
-      </Accordion>
-      <Accordion title="Missing required fields" icon="keyboard">
-        <Badge color="orange">422</Badge>
-         A required track field is missing, such as `name`, `image`, `duration`, `artists`, `licensing_type`, `key`, `scale`, `bpm`, `url`, or `src`.
-
-        **Resolution:** Fill in all required metadata fields.
-      </Accordion>
-    </AccordionGroup>
-  </Tab>
-  <Tab title="Processing">
-    <AccordionGroup>
-      <Accordion title="Transcode failed" icon="triangle-exclamation">
-        <Badge color="red">500</Badge>
-         Audio processing encountered an error.
-
-        **Resolution:** Re-export from your DAW and upload again.
-      </Accordion>
-      <Accordion title="Fingerprint collision" icon="fingerprint">
-        <Badge color="purple">409</Badge>
-         Duplicate audio detected.
-
-        **Resolution:** This track may already exist on the platform.
-      </Accordion>
-      <Accordion title="Processing timeout" icon="hourglass-end">
-        <Badge color="gray">504</Badge>
-         File took too long to process.
-
-        **Resolution:** Try a smaller file or retry later.
-      </Accordion>
-    </AccordionGroup>
-  </Tab>
-  <Tab title="Access">
-    <AccordionGroup>
-      <Accordion title="Track not found" icon="magnifying-glass">
-        <Badge color="gray">404</Badge>
-         Track ID doesn't exist or was deleted.
-
-        **Resolution:** Verify the track ID is correct.
-      </Accordion>
-      <Accordion title="Track unavailable" icon="circle-xmark">
-        <Badge color="gray">410</Badge>
-         Removed by owner or moderation.
-
-        **Resolution:** This track is no longer accessible.
-      </Accordion>
-      <Accordion title="Private track" icon="lock">
-        <Badge color="orange">403</Badge>
-         Track is not published.
-
-        **Resolution:** Only the owner can access unpublished tracks.
-      </Accordion>
-    </AccordionGroup>
-  </Tab>
-</Tabs>
-
----
+File limits, publication readiness, and processing failures are separate from track creation. Do not assume every file failure returns `422`, that every processing timeout returns `504`, or that deleting a track makes all subsequent reads return `410`. A successful save does not certify processing completion or rights clearance.
 
 ## Purchase & Licensing Errors
 
 ### Purchase Flow
 
-These responses apply to `POST /tracks/{track}/purchase/calculate-price` and `POST /tracks/{track}/purchase/initiate`:
+These cases apply to price calculation and purchase initiation:
 
-| Error | Code | Cause | Resolution |
-|-------|------|-------|------------|
-| Track purchases are not enabled | 403 | Purchase feature disabled | Stop the purchase flow |
-| Not available for exclusive purchase | 422 | Licensing type or exclusive status is ineligible | Check the current track state |
-| Already sold exclusively | 422 | Exclusive status is sold | Stop the purchase flow |
-| Already purchased | 422 | User already owns the purchase | Check purchase status |
-| Invalid purchase configuration | 422 | Price, currency, artist, payout readiness, or exclusive-license configuration is ineligible | Read the returned `message` |
-| Cannot purchase this track | 422 | Buyer owns the track or has a producer profile | Read the returned `message` |
+| Condition | Status | Recovery |
+| --- | --- | --- |
+| Purchases disabled | `403` | Stop checkout |
+| Offer, price, currency, payout setup, ownership, or account role is ineligible | `422` | Read the message and current purchase status |
+| Required legal identity or signed producer offer is missing | `422` | Complete the indicated identity or authorization step |
+| Explicit buyer acceptance or quote hash is invalid | `422` | Review the displayed quote and submit valid acceptance |
+| Accepted rights, price, fee, total, or currency changed | `409` | Fetch a fresh quote, display it, and obtain acceptance again |
 
-The `message` is human-readable; do not treat the labels above as machine-readable error codes.
+Producer accounts cannot start new exclusive catalog purchases. Existing purchases and valid licenses are separate from eligibility to start a new purchase. Purchase status includes `can_purchase`, `can_start_checkout`, `requires_legal_name`, and an optional `reason_code`; a human-readable `reason` is not a stable error code.
 
 ### Payment Errors
 
-| Error                | Code | Cause                       | Resolution                   |
-| -------------------- | ---- | --------------------------- | ---------------------------- |
-| `Payment failed`     | 402  | Card declined               | Try different payment method |
-| `Card declined`      | 402  | Issuer declined transaction | Contact card issuer          |
-| `Insufficient funds` | 402  | Not enough balance          | Use different card           |
-| `Invalid card`       | 422  | Card number invalid         | Check card details           |
-| `Expired card`       | 422  | Card past expiration        | Update card info             |
-| `Processing error`   | 500  | Stripe communication issue  | Retry in a moment            |
+Stripe.js payment confirmation and BeatPass API calls are different response surfaces. Do not convert every card decline into an assumed BeatPass `402` response. Show the safe error returned by the payment flow, then inspect purchase status before initiating another payment. Never log a client secret, card data, or a full payment payload.
 
 ### License Errors
 
-License response codes are endpoint-specific:
+| Operation and condition | Status | What to inspect |
+| --- | --- | --- |
+| Public UUID verification: malformed UUID or missing record | `404` | `valid: false` and `message` |
+| Public verification: record found | `200` | `valid`, `status`, `integrity_verified`, and replacement fields when present |
+| PDF-data retrieval: no active license | `404` | Returned message |
+| Certificate retrieval: current certificate is invalid or incomplete | `409` | Identity or certificate recovery guidance |
 
-| Endpoint and condition | Code | Response |
-|------------------------|------|----------|
-| Public UUID verification: malformed UUID or missing certificate | 404 | `valid: false` and `message` |
-| Public UUID verification: found but revoked, expired, or invalid certificate | 200 | Inspect `valid`, `status`, and `integrity_verified` |
-| PDF-data retrieval: no active license | 404 | No active license found for this track |
-| PDF-data retrieval or HTML certificate: active certificate invalid or incomplete | 409 | Certificate is invalid or incomplete |
-
-Do not treat every revoked certificate as an HTTP `410` or assume a universal download-expired status.
-
----
+A successful HTTP verification response is not itself proof of an active license. Original grants, replacement certificates, identity completion, expiration, revocation, and integrity are separate states. A certificate-view problem does not erase the original grant.
 
 ## Beat Request Errors
 
-### Creation
+Creation uses `422` for invalid fields or duration, `409` when a posting UUID is reused with changed details, and `429` for insufficient tokens or an exhausted posting allowance. A matching retry with the same posting UUID and unchanged payload returns the existing request without another debit. A token shortage is not fixed by repeating the request after a short HTTP backoff.
 
-| Error                        | Code | Cause                                    | Resolution                          |
-| ---------------------------- | ---- | ---------------------------------------- | ----------------------------------- |
-| `No tokens remaining`        | 429  | Monthly token allowance exhausted        | Wait for monthly reset or upgrade   |
-| `Insufficient tokens`        | 429  | Not enough tokens for chosen duration    | Choose a shorter duration or wait   |
-| `Description too short`      | 422  | Under minimum length (10 characters)     | Add more detail                     |
-| `Reference track required`   | 422  | Missing reference track URL              | Provide a valid URL                 |
-| `Invalid reference track`    | 422  | URL format invalid                       | Provide a valid URL up to 500 characters |
+Submission can return:
 
-### Submission
+- `403` for missing upload permission or lack of ownership/collaboration.
+- `422` for an invalid track, non-hosted audio, duplicate submission, or the five-submission per-producer limit.
+- `409` with `error: duplicate_audio` when duplicate audio is detected.
+- `400` for submitting to your own request.
+- `404` for a missing request; the endpoint can also use this when the request is no longer available.
+- `410` with `error: request_expired` when the fulfillment service identifies an expired request.
 
-| Error                        | Code | Cause                                    | Resolution                          |
-| ---------------------------- | ---- | ---------------------------------------- | ----------------------------------- |
-| `Request not found`          | 404  | Invalid request ID                       | Verify ID                           |
-| `Request expired`            | 410  | Duration window (24/48/72h) has closed   | Find an active request              |
-| `Duplicate submission`       | 422 | Same track already submitted             | Choose a different track            |
-| `Submission limit reached`   | 422  | Producer already submitted 5 tracks      | Maximum tracks per request reached  |
-| `Duplicate audio detected`   | 409  | Audio fingerprint matches existing submission | Try a different track          |
-| `Track not platform-hosted`  | 422  | Track is an external link, not uploaded  | Upload the track to the platform first |
-| `Not track owner`            | 403  | Producer doesn't own or collaborate on track | Submit only your own tracks     |
-| `Self-submission blocked`    | 400 | Cannot submit to your own request        | Find another user's request         |
-
-### Deletion & Renewal
-
-| Error                        | Code | Cause                                    | Resolution                          |
-| ---------------------------- | ---- | ---------------------------------------- | ----------------------------------- |
-| `Not request owner`          | 403  | Only the creator can delete or renew     | Verify ownership                    |
-| `Request still active`       | 400 | Cannot renew a request that hasn't expired | Wait for expiration or delete     |
-| `Renewal window expired`     | 400 | Request expired more than 30 days ago    | Create a new request instead        |
-| `No token for renewal`       | 429  | No tokens available to renew             | Wait for monthly reset or upgrade   |
-
----
+Renewal requires ownership and a request within its renewal window. An active request or expired renewal window returns `400`; an insufficient token balance returns `429`. See [Beat Requests](/developers/api-reference/beat-requests) for the current renewal behavior.
 
 ## Producer Program Request Errors
 
-These errors apply to Backstage request creation and submission eligibility checks.
+Backstage request creation uses explicit conflict codes:
 
-| Error | Code | Cause | Resolution |
-|-------|------|-------|------------|
-| `Unauthenticated` | 401 | Missing or invalid auth token | Authenticate with a valid Bearer token |
-| `Forbidden` | 403 | Missing `backstageRequests.create` permission | Grant/create permission for the user |
-| `backstage_request_pending` | 409 | User already has a pending request | Wait for the pending request decision before submitting again |
-| `backstage_request_revoked` | 409 | User has a revoked request in history | Direct the user to the contact page (`/contact`) to appeal |
+| `error_code` | Status | Recovery |
+| --- | --- | --- |
+| `backstage_request_pending` | `409` | Wait for the existing application decision |
+| `backstage_request_revoked` | `409` | Direct the applicant to `/contact` for an appeal |
 
-<Note>
-  Backstage create submissions are blocked globally per user when a `pending` or `revoked` request exists, regardless of request type (`become-artist`, `verify-artist`, or `claim-artist`). If both statuses exist, `pending` takes precedence.
-</Note>
-
----
+These guards apply across request types. If both histories exist, `pending` takes precedence. Missing creation permission returns `403`; API approval does not grant that permission.
 
 ## Audio Recon Errors
 
-| Error | Code | Cause | Resolution |
-|-------|------|-------|------------|
-| `Unauthorized` | 401 | No valid authentication token | Include a Bearer token in your request |
-| `Forbidden` | 403 | You are not a credited producer on this track | Only credited producers and admins can view Audio Recon matches |
-| `Not Found` | 404 | Track does not exist | Verify the track ID is correct |
+Track match retrieval requires sign-in and access as the direct track owner, a linked credited producer. Missing authentication returns `401`, denied access `403`, and a missing track `404`.
 
-<Note>
-  Audio Recon matches are only available for tracks with a verified artist profile. If the track's primary artist is not verified, the response will return an empty matches array with `artist_verified: false`.
-</Note>
-
----
+If no credited artist is verified, the response can be successful with an empty `placements` array and `artist_verified: false`. A verified collaborator can meet this eligibility requirement; it is not limited to the primary artist. An empty result is not evidence of infringement clearance.
 
 ## Messaging Errors
 
-### Sending Messages
+Message text is required and limited to 2,000 characters. Start-conversation validation also checks recipient IDs and group size. Missing both recipient fields returns `400`; invalid values, self-conversations, and groups without two other participants return `422`.
 
-| Error                 | Code | Cause                    | Resolution               |
-| --------------------- | ---- | ------------------------ | ------------------------ |
-| `Recipient not found` | 404  | Invalid user ID          | Verify recipient         |
-| `User blocked you`    | 403  | Recipient blocked sender | Cannot message this user |
-| `You blocked user`    | 403  | Sender blocked recipient | Unblock to message       |
-| `Message too long`    | 422  | Message exceeds limit    | Shorten message          |
-| `Rate limited`        | 429  | Too many messages        | Wait before sending more |
+The sender must follow recipients. A paused conversation or an unmet follow requirement returns a validation error. Membership checks apply to conversation reads and mutations; there is no documented universal blocked-user error contract.
 
-### Conversation
-
-| Error                    | Code | Cause                    | Resolution    |
-| ------------------------ | ---- | ------------------------ | ------------- |
-| `Conversation not found` | 404  | Invalid conversation ID  | Verify ID     |
-| `Not a participant`      | 403  | User not in conversation | Cannot access |
-
----
+For supported sends, use the same `client_message_id` UUID and unchanged payload to reconcile a retry. Reusing that UUID for different content returns a validation error. See [Messaging](/developers/api-reference/messaging).
 
 ## Collection & Library Errors
 
-### Saves & Playlists
+Do not assume fixed library, playlist, or editor ceilings that the endpoint has not documented. Use its validation response.
 
-| Error                       | Code | Cause                         | Resolution              |
-| --------------------------- | ---- | ----------------------------- | ----------------------- |
-| `Library full`              | 429  | Maximum saved items reached   | Remove old items        |
-| `Playlist full`             | 429  | Maximum tracks per playlist   | Create new playlist     |
-| `Playlist limit reached`    | 429  | Maximum playlists reached     | Delete unused playlists |
-| `Track already saved`       | 409  | Already in library            | No action needed        |
-| Track already in playlist | 200 | Existing tracks are skipped | Read `added_count` and `duplicate_count`; this is a successful response |
-
-### Collaborative Playlists
-
-| Error                  | Code | Cause                     | Resolution          |
-| ---------------------- | ---- | ------------------------- | ------------------- |
-| `Max editors reached`  | 429  | Maximum collaborators     | Remove editor first |
-| `Invitation expired`   | 410  | Invitation expired        | Send new invitation |
-| `Already invited`      | 409  | Pending invitation exists | Wait for response   |
-| `Cannot re-invite yet` | 429  | Cooldown period active    | Wait to re-invite   |
-
----
+Adding tracks already present in a playlist succeeds and reports `added_count` and `duplicate_count`. For collaborative invitation failures, read the returned status and message before retrying.
 
 ## Social & Following Errors
 
-### Following
+Repeating a user follow or unfollow succeeds without creating another relationship. Repeating an artist follow also succeeds; unfollowing an artist that is not followed returns `409`.
 
-| Error                  | Code | Cause                            | Resolution                 |
-| ---------------------- | ---- | -------------------------------- | -------------------------- |
-| Already following a user | 200 | Existing follow is kept | No action needed; response is `status: success` |
-| Unfollowing a user not followed | 200 | Detach is idempotent | No action needed; response is `status: success` |
-| `Follow limit reached` | 429  | Maximum following reached        | Unfollow some accounts     |
-| `Follow rate limited`  | 429  | Too many follows                 | Wait before following more |
-
-### Reposts
-
-| Error                     | Code | Cause                   | Resolution           |
-| ------------------------- | ---- | ----------------------- | -------------------- |
-| `Already reposted`        | 409  | Track already reposted  | No action needed     |
-| `Repost limit reached`    | 429  | Repost limit exceeded   | Wait for limit reset |
-| `Cannot repost own track` | 400  | Self-repost not allowed | N/A                  |
-
----
+Reposting is a toggle. A successful response returns `action: added` or `action: removed`; repeating a request can undo it. Do not treat it as an idempotent create, or expect a universal `409 Already reposted` response.
 
 ## Radio Errors
 
-| Error                     | Code | Cause                       | Resolution           |
-| ------------------------- | ---- | --------------------------- | -------------------- |
-| `Skip limit reached`      | 429  | Skip limit exceeded         | Wait for reset       |
-| `Station not found`       | 404  | Invalid station             | Choose valid station |
-| `Concurrent stream limit` | 429  | Already streaming elsewhere | Stop other stream    |
-
----
+Use the documented seed type and identifier, then handle the returned status and payload. This reference does not establish separate skip-limit or concurrent-stream error codes.
 
 ## Rate Limiting
 
-### Rate Limit Response
-
-```json
-{
-  "message": "Too Many Attempts.",
-  "retry_after": 60
-}
-```
-
-### Rate Limit Headers
+HTTP throttling normally provides its wait in the `Retry-After` header. A `retry_after` JSON field is not guaranteed. Illustrative headers only:
 
 ```http
-X-RateLimit-Limit: 60
+HTTP/1.1 429 Too Many Requests
+X-RateLimit-Limit: 300
 X-RateLimit-Remaining: 0
 X-RateLimit-Reset: 1700000060
 Retry-After: 60
 ```
 
-### Handling Rate Limits
-
-<Columns cols={2}>
-  <Card title="Exponential Backoff" icon="clock-rotate-left">
-    Wait, then double the delay on each retry attempt.
-  </Card>
-  <Card title="Check Headers" icon="code">
-    Monitor `X-RateLimit-Remaining` before making requests.
-  </Card>
-  <Card title="Queue Requests" icon="list-check">
-    Space out API calls to stay under limits.
-  </Card>
-  <Card title="Cache Responses" icon="database">
-    Reduce redundant calls by caching data locally.
-  </Card>
-</Columns>
-
----
+Pause the affected request budget, respect the returned wait, and use bounded retries for safe reads. See [Rate Limits](/developers/rate-limits) for a GET-only retry example.
 
 ## Server Errors (5xx)
 
-<AccordionGroup>
-  <Accordion title="500 - Internal Server Error" defaultOpen icon="server">
-    <Badge color="red">500</Badge>
-     An unexpected server-side issue occurred.
+A server error does not tell you whether a write completed. Before repeating a purchase, upload, message, or other mutation, read the available state and use only that endpoint's documented retry or reconciliation mechanism.
 
-    **Resolution:** Retry the request. If persistent, contact support with the timestamp and endpoint.
-  </Accordion>
-  <Accordion title="503 - Service Unavailable" icon="power-off">
-    <Badge color="orange">503</Badge>
-     Platform is undergoing maintenance.
+`503` can indicate maintenance or an unavailable scheduled snapshot; it does not always mean the whole platform is down. Check the [status page](https://status.beatpass.ca) when a service-wide issue is suspected.
 
-    **Resolution:** Check the [status page](https://status.beatpass.ca) for updates.
-  </Accordion>
-  <Accordion title="504 - Gateway Timeout" icon="hourglass-half">
-    <Badge color="gray">504</Badge>
-     Request took too long to process.
-
-    **Resolution:** Retry with a smaller payload or try again later.
-  </Accordion>
-</AccordionGroup>
-
-<Tip>
-  Server errors (5xx) are logged automatically. If you encounter persistent issues, contact support with the approximate time and endpoint details.
-</Tip>
-
----
+For persistent failures, contact [contact@beatpass.ca](mailto:contact@beatpass.ca) with the endpoint, method, approximate time and timezone, status, and a sanitized error. Exclude tokens, client secrets, personal records, and bank details.
 
 ## Troubleshooting Checklist
 
 <Steps>
-  <Step title="Check Error Message">
-    Read the `message` field for human-readable explanation.
+  <Step title="Read the status and payload">
+    Use `message`, field errors, or documented machine codes when present. Preserve enough sanitized context to diagnose the issue.
   </Step>
-  <Step title="Check Validation Errors">
-    Review `errors` object for field-specific issues.
+  <Step title="Check access and current state">
+    Verify the account, permissions, resource, feature allowance, and latest quote or purchase state.
   </Step>
-  <Step title="Verify Authentication">
-    Ensure your Bearer token is valid and included in the `Authorization` header.
+  <Step title="Choose the recovery step">
+    Correct validation fields, request the needed permission, wait for a rate-limit window, or reconcile an uncertain write. Retry only when safe.
   </Step>
-  <Step title="Check Rate Limits">
-    Review `X-RateLimit-*` headers.
-  </Step>
-  <Step title="Retry with Backoff">
-    For transient errors, wait and retry.
-  </Step>
-  <Step title="Contact Support">
-    For persistent issues, provide error details and timestamps.
+  <Step title="Ask for help if needed">
+    Send the sanitized context to support when the documented recovery does not resolve the issue.
   </Step>
 </Steps>
-
-```mermaid
-flowchart TD
-    A[Error Response] --> B[Read message field]
-    B --> C{Validation\nerrors object?}
-    C -->|Yes| D[Fix field-specific issues]
-    C -->|No| E{Auth error?\n401 / 403}
-    E -->|Yes| F[Check Bearer token]
-    E -->|No| G{Rate limited?\n429}
-    G -->|Yes| H[Wait & retry\nwith backoff]
-    G -->|No| I{Server error?\n5xx}
-    I -->|Yes| J[Retry later]
-    I -->|No| K[Contact support]
-```
-
----
 
 ## Related Resources
 
 <Columns cols={2}>
   <Card title="API Overview" icon="book" href="/developers/overview">
-    API fundamentals.
+    Response envelopes, permissions, and pagination.
   </Card>
   <Card title="Rate Limits" icon="gauge" href="/developers/rate-limits">
-    Throttling details.
+    Throttle budgets and safe read retries.
   </Card>
 </Columns>

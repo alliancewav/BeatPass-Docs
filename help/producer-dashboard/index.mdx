@@ -1,102 +1,71 @@
 ---
 audience: help
 title: "Producer Dashboard"
-sidebarTitle: "Dashboard Overview"
+sidebarTitle: "Producer Dashboard"
 description: "Use the Producer Dashboard to manage your catalog, activity, earnings, rankings, and XP."
 canonical: "https://docs.beatpass.ca/help/producer-dashboard"
 ---
 
+import DashboardFigure from "/snippets/media/dashboard.mdx";
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The Producer Dashboard is your central workspace for managing your catalog, monitoring performance, tracking earnings, and viewing your progress on BeatPass.
+Pick up your producer work in one place: find a beat, check your audience, or follow an earning. Your **Producer Dashboard** uses your own producer profile; producer access is free.
 
 <ProducerOnly />
 
-## Interface Preview
-
-<Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Producer Dashboard navigation on desktop in light mode">
-      <img src="/assets/screenshots/producer-dashboard-desktop-light.png" alt="Producer Dashboard navigation with Pro Page, Dashboard, Finances, Activity, Progress, Leaderboards, My Beats, and My Collections" />
-    </Frame>
-  </Tab>
-  <Tab title="Mobile">
-    <Frame caption="Producer Dashboard on mobile in dark mode">
-      <img src="/assets/screenshots/producer-dashboard-mobile-dark.png" alt="Mobile Producer Dashboard page in dark mode" />
-    </Frame>
-  </Tab>
-</Tabs>
+<DashboardFigure />
 
 ## Open the Dashboard
 
-Click your **profile avatar** in the top navigation bar, then select **Backstage**. Use the sidebar to navigate between dashboard pages. Producer profile owners can open **Pro Page** immediately after **My Collections**; the page shows whether the selected profile is locked, ready, live, or needs attention.
+Open your **profile avatar** menu and choose **Producer Dashboard**, or [go straight to the dashboard](https://open.beatpass.ca/producer-dashboard). On a phone, swipe the producer page links sideways to find more.
 
-<Note>
-  If your account does not have a linked artist profile, the dashboard shows a "No Artist Profile" state instead of redirecting. Complete your [Producer Program application](/help/producer-program) first.
-</Note>
+The desktop menu groups work into **Catalog**, **Audience**, **Business**, and **Tools**, with **Dashboard** at the top. Use the page name when you are following a guide.
 
 ## Dashboard Pages
 
-<Columns cols={3}>
-  <Card title="Dashboard" icon="house" href="/help/producer-dashboard/home">
-    Producer tools and a performance snapshot for the selected producer profile.
-  </Card>
-  <Card title="Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">
-    Prepare, unlock, share, and measure one focused producer storefront.
-  </Card>
-  <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">
-    Audience downloads, listener activity, licenses, and your yearly upload rhythm.
-  </Card>
-  <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">
-    Beat catalog management, concise legacy-detail review, and profile-genre collaboration connections.
-  </Card>
-  <Card title="My Collections" icon="compact-disc" href="/help/producer-dashboard/albums">
-    Collection management, release details, and labeled editing or insight actions.
-  </Card>
-  <Card title="Finances" icon="credit-card" href="/help/producer-dashboard/finances">
-    Currency-specific earnings, finance activity, and payout setup states.
-  </Card>
-  <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">
-    Earning share first, followed by clear progress and activity rankings.
-  </Card>
-  <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">
-    Level progress, recent XP, earning rules, and achievements.
-  </Card>
-</Columns>
+<Tabs sync={false}>
+  <Tab title="Your music" icon="music">
+    <Columns cols={2}>
+      <Card title="My Beats" icon="music" href="/help/producer-dashboard/tracks">Find, edit, feature, or review licensing choices for a beat.</Card>
+      <Card title="My Collections" icon="compact-disc" href="/help/producer-dashboard/albums">Group your releases and keep collection details current.</Card>
+      <Card title="Dashboard" icon="house" href="/help/producer-dashboard/home">Return to recent beats, play comparisons, and your progress.</Card>
+      <Card title="Upload a beat" icon="cloud-arrow-up" href="/help/uploading/upload-page">Add a WAV and work through the details before saving.</Card>
+    </Columns>
+  </Tab>
+  <Tab title="Your audience" icon="users">
+    <Columns cols={2}>
+      <Card title="Pro Page" icon="gem" href="/help/producer-dashboard/pro-page">Prepare and share a focused page for your music.</Card>
+      <Card title="Activity" icon="chart-line" href="/help/producer-dashboard/activity">Follow audience activity, downloads, and your upload rhythm.</Card>
+      <Card title="Progress" icon="bolt" href="/help/producer-dashboard/progress">Check your level, choose a goal, and explore achievements.</Card>
+      <Card title="Leaderboards" icon="trophy" href="/help/producer-dashboard/leaderboards">Compare a clear measure and find your producer position.</Card>
+    </Columns>
+  </Tab>
+  <Tab title="Your earnings" icon="building-columns">
+    <Columns cols={2}>
+      <Card title="Finances" icon="credit-card" href="/help/producer-dashboard/finances">Review earnings in one currency and follow individual records.</Card>
+      <Card title="BEATPAY setup" icon="building-columns" href="/help/earnings/beatpay">Follow the bank setup and readiness offered to your account.</Card>
+    </Columns>
+    A visible balance is not a completed bank payout. Follow the status in **Finance activity** and the readiness shown for each earning type.
+  </Tab>
+</Tabs>
 
 ## How the Dashboard Works
 
 <AccordionGroup>
-  <Accordion title="Artist context" icon="user" defaultOpen>
-    Most pages load data for your linked artist profile. **Pro Page**, **My Beats**, **My Collections**, **Finances**, and **Leaderboards** can show an artist switcher when your account manages more than one artist. Pro Page, My Beats, and My Collections keep that choice in the URL. The **Progress** ranking remains account-wide.
+  <Accordion title="My producer profile is missing">
+    Check the account you are signed in to, then review your [Producer Program application](/help/producer-program). A paid customer subscription does not create producer access.
   </Accordion>
-  <Accordion title="Overview first, editing second" icon="table-columns">
-    The dashboard is designed for quick stats and navigation. Uploading, editing tracks, and full insights live in the backstage editing tools.
+  <Accordion title="I have not added anything yet">
+    New accounts show genuine empty or setup states. Start with an upload, a payout setup action, or the task shown on that page. Example screenshots use invented records to show what a populated workspace looks like.
   </Accordion>
-  <Accordion title="Empty states" icon="circle-info">
-    If you do not have uploads, downloads, albums, achievements, or payout setup yet, you will see empty or setup states instead of placeholder data.
-  </Accordion>
-  <Accordion title="Loading and update behavior" icon="arrows-rotate">
-    Dashboard pages update in the background. **Progress**, **Leaderboards**, and **Finances** keep successfully loaded information visible when a later request is unavailable.
+  <Accordion title="A page cannot refresh">
+    **Progress**, **Leaderboards**, and **Finances** keep successfully loaded information visible when a later request is unavailable. Use the page's retry action and read the message before repeating a save or setup step.
   </Accordion>
 </AccordionGroup>
 
 ## Related Guides
 
-<Columns cols={2}>
-  <Card title="Uploading" icon="cloud-arrow-up" href="/help/uploading">
-    Upload beats, then return here to monitor performance.
-  </Card>
-  <Card title="Earnings" icon="dollar-sign" href="/help/earnings">
-    Understand the payout model behind your financial activity.
-  </Card>
-  <Card title="Analytics" icon="chart-bar" href="/help/analytics/backstage-insights">
-    Open backstage insights for track, album, and artist-level analytics.
-  </Card>
-  <Card title="Producer Program" icon="gear" href="/help/producer-program">
-    Onboarding, application, and profile management.
-  </Card>
-</Columns>
+Open [Backstage Insights](/help/analytics/backstage-insights) for deeper track, collection, and artist reports. [Earnings](/help/earnings) explains how the recorded amounts relate to payouts.
 
 <NeedHelp />

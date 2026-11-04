@@ -5,126 +5,50 @@ sidebarTitle: "Sharing & Embeds"
 description: "Share BeatPass content with direct links and embed supported players on external sites."
 canonical: "https://docs.beatpass.ca/help/social-features/sharing-and-embeds"
 ---
-
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-BeatPass lets you copy share links for major content types and embed players for tracks and albums on external sites.
+Send someone a beat, share a collection, or put a BeatPass player on your own website. Beats, collections, producer pages and playlists can be shared by link.
 
----
-
-## What You Can Share
-
-| Content type | Share link | Embed code |
-| --- | --- | --- |
-| **Track** | Yes | Yes |
-| **Album** | Yes | Yes |
-| **Producer page** | Yes | No |
-| **Playlist** | Yes | No |
-
----
-
-## Using the Share Dialog
+## Share a link
 
 <Steps>
   <Step title="Open Share">
-    Use the visible **Share** action on the page, or open the content's **More** menu and choose **Share**.
+    Select **Share** on the page, or open its **More** menu and choose **Share**.
   </Step>
-  <Step title="Copy the direct link">
-    The dialog shows the canonical link for that item. Click **Copy** to place it on your clipboard.
+  <Step title="Copy the link">
+    Select **Copy**, then paste the link into your message, social post, or website.
   </Step>
-  <Step title="Use native share when available">
-    On supported browsers and devices, click **Share via…** to hand the link off to your device's native share sheet.
-  </Step>
-</Steps>
-
-<Tip>
-  Native share support depends on the browser and device. If it is not available, the copy-link flow still works.
-</Tip>
-
-<Note>
-  The share dialog shows a **copy link** field and a **native share** button. Social platform buttons (Facebook, Twitter, Tumblr) are not part of the share dialog — they appear only on the upload success screen in Backstage.
-</Note>
-
----
-
-## Embedding Players
-
-<Note>
-  Embed functionality is available for **tracks** and **albums** only. Producer pages and playlists can be shared via link but cannot be embedded.
-</Note>
-
-<Steps>
-  <Step title="Open the Share dialog">
-    Click **Share** on any track or album page.
-  </Step>
-  <Step title="Switch to the Embed tab">
-    Click the **Embed** tab in the share dialog.
-  </Step>
-  <Step title="Preview the embed">
-    On desktop, the dialog shows a live preview of the embedded player.
-  </Step>
-  <Step title="Copy the code">
-    Copy the generated `<iframe>` code and paste it into your site's HTML.
+  <Step title="Share from your device">
+    When **Share via…** is available, use it to choose an app from your device's share sheet. Use **Copy** if your browser does not offer that option.
   </Step>
 </Steps>
 
-| Content Type | Default Height | Width |
-| --- | --- | --- |
-| **Track** | 174 px | 100% (responsive) |
-| **Album** | 384 px | 100% (responsive) |
+## Add a player to your website
 
-<Tip>
-  The iframe uses a responsive width, so it adjusts to the container on your site.
-</Tip>
+You can embed a **beat or collection** player. Producer pages and playlists use share links instead.
 
----
+1. Open **Share** on the beat or collection, then choose **Embed**.
+2. Review the player preview when shown on desktop.
+3. Copy the generated code.
+4. Paste it into your website builder's **Embed** or **HTML** block, then preview your page.
 
-## Where Embeds Work
+The player adjusts to the space on your page. Visitors may need to press Play before audio starts.
 
-Embeds work in any context that accepts raw iframe HTML:
+## Recommend music on BeatPass
 
-- Custom websites and landing pages
-- Blog posts with HTML blocks
-- Portfolio pages
+Use [Repost](/help/social-features/reposts) when you want a recommendation to appear in your BeatPass profile's **Reposts** tab. Use **Share** when you want to send a link somewhere else.
 
-**Browser notes:**
-
-- Some browsers require user interaction before playback starts (autoplay policy).
-- Your site must allow external iframes and the embed origin in its Content Security Policy.
-- HTTPS pages generally provide the best embed compatibility.
-
----
-
-## Sharing vs. Reposting
-
-| Feature | Share | Repost |
-| --- | --- | --- |
-| **Who sees it** | Anyone with the link | Visitors to your BeatPass profile |
-| **Where it appears** | External destinations | Your **Reposts** tab |
-| **Requires account** | No | Yes |
-| **Use case** | Promote content externally | Make a public recommendation inside BeatPass |
-
-Use **Share** to promote content outside BeatPass. Use **[Repost](/help/social-features/reposts)** to recommend content within the BeatPass community.
-
----
-
-## Troubleshooting
+## When something needs attention
 
 <AccordionGroup>
-  <Accordion title="Embed isn't displaying">
-    Check these common issues:
-
-    - The iframe code was not pasted correctly.
-    - Your site blocks external iframes.
-    - Your site's Content Security Policy does not allow the embed origin.
+  <Accordion title="The player does not appear on my website">
+    Copy the complete code again and check that your website accepts embedded external players. Use an Embed or HTML block rather than a normal text field. If the site blocks the player, ask your website editor or administrator to allow the BeatPass embed.
   </Accordion>
-
-  <Accordion title="Audio isn't playing in the embed">
-    Browser autoplay rules may require the listener to press play manually. Also confirm the track or album is still available.
+  <Accordion title="The embedded player has no sound">
+    Press Play first. Check that the beat or collection is still available on BeatPass, then review your browser's audio permissions.
   </Accordion>
-
-  <Accordion title="The share sheet didn't open on my device">
-    Your browser or device may not support the native share API. Use **Copy** instead.
+  <Accordion title="My device's share sheet did not open">
+    Use **Copy** in the Share dialog, then paste the link into the app you want to use.
   </Accordion>
 </AccordionGroup>
 

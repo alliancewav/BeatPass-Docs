@@ -1,64 +1,55 @@
 ---
 audience: help
-title: "Track Insights | Backstage Insights"
+title: "Track Insights"
 sidebarTitle: "Track Insights"
-description: "See the current BeatPass track-insights layout, including engagement metrics and audience charts."
+description: "Read a beat’s plays, average listening duration and completion in Overview, then explore devices, listeners and locations in Audience."
 canonical: "https://docs.beatpass.ca/help/analytics/backstage-insights/track-insights"
 ---
 
+import TrackOverviewFigure from "/snippets/media/insights-track-overview.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Track Insights is the most detailed analytics page BeatPass currently offers. It focuses on one track at a time and adds engagement reporting that does not appear on album or artist insight pages.
+Use a beat's **Track Insights** to see when people listen and how much of the beat they hear. Switch to **Audience** when you want to explore the listeners behind that activity.
 
 ## Opening Track Insights
 
-Open the **Insights** action on any track you manage from Backstage. The page loads with the **This year** date range by default — adjust it with the floating date-range selector if needed.
+Open **My Beats**, find the beat, and choose **Insights** from its actions. Check the name and artwork, then use the date selector. A fresh report starts at **This year**; saved links can keep other dates and views.
 
 ## What You See On This Page
 
-<Columns cols={2}>
-  <Card title="Header summary" icon="compass">
-    Identifies the track you are reviewing before you scroll into the charts.
-  </Card>
-  <Card title="Engagement Overview" icon="gauge">
-    A track-only summary of listener engagement quality.
-  </Card>
-  <Card title="Listen Duration" icon="clock">
-    Average listening time and duration trends.
-  </Card>
-  <Card title="Completion Breakdown" icon="chart-pie">
-    A distribution view showing how much of the track listeners hear.
-  </Card>
-  <Card title="Audience charts" icon="chart-bar">
-    Plays Over Time, Top Devices, Top Platforms, Top Listeners, and Top Locations.
-  </Card>
-  <Card title="Date range control" icon="clock">
-    Use the shared floating date selector to change the reporting window.
-  </Card>
-</Columns>
+<Tabs sync={false}>
+  <Tab title="Overview" icon="chart-line">
+    Start with **Plays Over Time**. When duration-tracked plays are available, the listening reports show:
 
-## Engagement Is Track-Only
+    - **Avg Listen Duration**, with average listening time, track length, total listening time, and completion context.
+    - **Completion Breakdown**, with the average portion heard and the completed, mostly, half, partial, and skipped bands.
 
-Only **Track Insights** includes:
+    <TrackOverviewFigure />
 
-- **Engagement Overview**
-- **Listen Duration**
-- **Completion Breakdown**
+    Inspect a point on the time chart to read its value. [Engagement help](/help/analytics/backstage-insights/engagement-metrics) explains why tracked-play totals can differ from the full play count.
+  </Tab>
+  <Tab title="Audience" icon="users">
+    Review **Top Devices**, **Top Platforms**, **Top Listeners**, and **Top Locations** for the same dates. Their subtitles explain the plays included in each share.
+  </Tab>
+</Tabs>
 
-If you need that level of detail, open the specific track's Insights page instead of the album or artist page.
+The summary identifies the beat and its available lifetime counts. Open **Details** for information such as its upload date, duration, BPM, and key. Counts marked **Lifetime** do not become period totals when you change the date selector.
 
 ## Empty States You May See
 
 <AccordionGroup>
   <Accordion title="No engagement data yet">
-    BeatPass shows this when the track does not yet have enough engagement data to summarise.
+    Listening detail appears when the beat has plays with duration tracking. A play count can exist before that detail is available.
   </Accordion>
-  <Accordion title="Engagement tracking coming soon">
-    Some tracks can show a placeholder state while the engagement layer is still being prepared.
+  <Accordion title="No tracked listens in this period">
+    Check the period. Plays without listening-duration information can still appear in play totals but do not supply duration or completion detail.
   </Accordion>
-  <Accordion title="Standard no-data chart states">
-    Charts can remain empty if there has not been enough activity in the selected date range.
+  <Accordion title="A chart could not load">
+    Choose **Try again** in the failed section. A failed request is different from a period with no activity.
   </Accordion>
 </AccordionGroup>
+
+Use the explanation on the report to distinguish analytics plays from plays counted toward payouts. A play is not itself a guaranteed earning.
 
 <NeedHelp />

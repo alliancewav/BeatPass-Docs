@@ -1,62 +1,63 @@
 ---
 audience: help
-title: "Analytics Quick Start"
-sidebarTitle: "Getting Started"
-description: "Get into BeatPass Backstage Insights and understand what you can access today."
+title: "Insights Quick Start"
+sidebarTitle: "Start with Insights"
+description: "Open your BeatPass Insights report, choose dates, and explore listening, audience and Pro Page activity."
 canonical: "https://docs.beatpass.ca/help/analytics/getting-started"
 ---
 
+import ArtistOverviewFigure from "/snippets/media/insights-artist-overview.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-This quick start walks through the current BeatPass Insights flow.
+Open your first **Insights** report, choose a period, and switch between listening activity and the people behind it.
 
 ## Before You Begin
 
-<AccordionGroup>
-  <Accordion title="You need to be signed in">
-    Insights are account-based. Anonymous visitors cannot open producer analytics pages.
-  </Accordion>
-  <Accordion title="You need access to the content">
-    BeatPass only shows insights for content you are allowed to manage or inspect — tracks, albums, or artist profiles you own or are credited on.
-  </Accordion>
-  <Accordion title="Some pages may be empty at first">
-    New releases or low-activity releases can show very little data until listeners have interacted with them.
-  </Accordion>
-</AccordionGroup>
+Sign in to the producer account that can manage the beat, collection, or producer profile. If an **Insights** action is missing or access is refused, check the account first.
 
 ## Open Your First Insights Page
 
-1. Go to **Backstage** and find the track, album, or artist you want to inspect.
-2. Open the **Insights** action for that item.
-3. Confirm the page header matches what you opened: **Track Insights**, **Album Insights**, or **Artist Insights**.
-4. The default date range is **This year**. Adjust it with the floating date-range selector if needed.
+<Steps>
+  <Step title="Choose your music">
+    Open **Insights** from a beat in **My Beats**, a release in **My Collections**, or your producer tools. On desktop, the top **Insights** shortcut opens your primary producer profile.
+  </Step>
+  <Step title="Check the report">
+    Read the name and artwork in the summary. **Details** opens more information about the beat, collection, or profile. Counts marked **Lifetime** are separate from the chosen reporting period.
+  </Step>
+  <Step title="Choose your dates">
+    Use the date selector above the report. A fresh report starts at **This year**. Saved links can reopen their chosen dates and view.
+  </Step>
+  <Step title="Choose what to explore">
+    Start in **Overview** for listening activity. Open **Audience** for devices, platforms, listeners, and locations. Your primary producer report also offers **Pro Page** for activity connected to your shared storefront.
+  </Step>
+</Steps>
 
-<Tip>
-  On desktop, approved producers can open **Insights** from the top navigation bar to go directly to their primary artist's Insights page.
-</Tip>
+<ArtistOverviewFigure />
 
 ## Learn The Layout
 
 <Columns cols={2}>
-  <Card title="Header" icon="compass">
-    Shows the content title and high-level stats for the current track, album, or artist.
+  <Card title="Overview" icon="chart-line" href="/help/analytics/backstage-insights">
+    Read plays over time. Collection and producer reports also rank their most-played beats.
   </Card>
-  <Card title="Date range selector" icon="clock">
-    Lets you switch the reporting window for the current page.
+  <Card title="Audience" icon="users" href="/help/analytics/reference/chart-types">
+    Explore who listens, where plays come from, and which devices and platforms are recorded.
   </Card>
-  <Card title="Charts" icon="chart-bar">
-    The chart set changes depending on whether you are viewing a track, album, or artist.
+  <Card title="One beat in detail" icon="wave-square" href="/help/analytics/backstage-insights/track-insights">
+    A beat's Overview adds listening duration and completion when tracked listening is available.
   </Card>
-  <Card title="Empty states" icon="inbox">
-    If there is not enough data yet, BeatPass shows a no-data message instead of forcing a chart.
+  <Card title="Your Pro Page" icon="link" href="/help/analytics/backstage-insights/artist-insights#pro-page-traffic">
+    Follow engaged visits and licensing activity connected to your shareable storefront.
   </Card>
 </Columns>
 
 ## Important Expectations
 
-- Track Insights is the only page with the full engagement section (Engagement Overview, Listen Duration, Completion Breakdown).
-- Album and artist insight pages focus on rolled-up listening and audience breakdowns.
-- The standard UI does not currently show a built-in export button.
-- Very recent activity can take time to appear, especially if the page is still serving cached results.
+- A play, a unique person, a Pro Page visit, and a completed license measure different things.
+- Check each chart's total and subtitle. A percentage can describe the rows shown or plays with recorded information, rather than every play.
+- Recent activity can take time to appear. Scroll to a chart and allow it to load. Choose **Try again** on a failed section; an error is different from zero activity.
+- Use [Finances](/help/producer-dashboard/finances) for earnings and [Progress](/help/producer-dashboard/progress) for XP.
+- [Save a report link or capture a chart](/help/analytics/backstage-insights/exporting-data) when you need a record.
 
 <NeedHelp />

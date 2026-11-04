@@ -6,6 +6,8 @@ description: "Understand the currencies BeatPass currently supports for track pr
 canonical: "https://docs.beatpass.ca/help/earnings/currencies-and-pricing"
 ---
 
+import PayoutSetupFigure from "/snippets/media/payout-setup.mdx";
+
 import PlatformFee from "/snippets/callouts/platform-fee.mdx";
 
 BeatPass supports multiple currencies for producer pricing and payout tracking. The most important rule is simple: your listed track price is your price. The platform fee is added on top when it applies, and an eligible active buyer plan can waive it without changing your amount.
@@ -24,7 +26,7 @@ BeatPass currently supports these currencies for track purchase pricing:
 | Canadian Dollar | CAD |
 
 <Note>
-  Current paid BeatPass subscription plans are listed in **CAD**.
+  Subscription prices and billing currency are shown on the [current pricing page](https://open.beatpass.ca/pricing) and confirmed before payment.
 </Note>
 
 ## For Producers
@@ -49,6 +51,8 @@ If the purchase currency does not match the card or bank's currency, conversion 
 
 ## BEATPAY Bank Account Currencies
 
+<PayoutSetupFigure />
+
 BEATPAY's **Bank account currency** list is intentionally narrower than the world's currency list. It includes currencies currently available for adding a bank recipient through BeatPass's Wise-powered payout account.
 
 The bank account currency does not have to match your country's local currency. It must match a currency that the receiving account accepts.
@@ -58,7 +62,7 @@ The bank account currency does not have to match your country's local currency. 
 - If the local currency is missing, ask the bank whether the account can receive USD, EUR, GBP, or another currency shown in BEATPAY
 
 <Info>
-  **Jamaica example:** JMD is not currently available for direct BEATPAY recipient setup. A Jamaican producer can select **USD** only if their bank confirms that the receiving account accepts USD, then use the bank's **SWIFT** details.
+  **Jamaica example:** If JMD is missing from the setup list and a Jamaican bank confirms that the account accepts USD, the producer can select **USD** and use that bank's **SWIFT** details.
 </Info>
 
 <Warning>
@@ -85,7 +89,7 @@ The bank account currency does not have to match your country's local currency. 
   </Accordion>
 
   <Accordion title="Who controls currency conversion after checkout?">
-    The active payment or payout provider and the payout destination handle most of that behavior, not the BeatPass help system.
+    The payment or payout provider and the receiving bank determine applicable conversion rates and fees. Review the checkout total or payout details, then check with your bank if a charge differs.
   </Accordion>
 
   <Accordion title="What if my country's local currency is not available in BEATPAY?">
@@ -93,6 +97,6 @@ The bank account currency does not have to match your country's local currency. 
   </Accordion>
 
   <Accordion title="Are subscriptions shown in the same currency as track pricing?">
-    Not necessarily. Current paid BeatPass plans are listed in CAD, while track pricing supports USD, EUR, GBP, and CAD.
+    Not necessarily. Check the plan's displayed billing currency. Exclusive track pricing supports USD, EUR, GBP, and CAD.
   </Accordion>
 </AccordionGroup>

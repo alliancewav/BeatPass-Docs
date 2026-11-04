@@ -1,56 +1,38 @@
 ---
 audience: help
-title: "Album Insights | Backstage Insights"
+title: "Album Insights"
 sidebarTitle: "Album Insights"
-description: "Review the current album-level analytics page in BeatPass Backstage Insights."
+description: "Explore a collection’s listening trend and most-played beats in Overview, then switch to Audience for listener and location breakdowns."
 canonical: "https://docs.beatpass.ca/help/analytics/backstage-insights/album-insights"
 ---
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-Album Insights rolls performance up across the tracks in one album or collection. Use it when you want one page for the release as a whole instead of opening tracks one by one.
+Use **Album Insights** to review a collection as a whole, find its most-played beats, and explore the audience behind the release.
 
 ## Opening Album Insights
 
-Open the **Insights** action on any album you manage from Backstage. The page loads with the **This year** date range by default — adjust it with the floating date-range selector if needed.
+Open **My Collections**, find the release, and choose **Insights** from its actions. Check its name, then select dates above the report. A fresh report starts at **This year**; saved links can keep other dates and views.
 
 ## Header Information
 
-The current album header can include:
+The summary identifies the release and its available lifetime **Plays**, **Likes**, and **Tracks**. Open **Details** for the release or creation date, duration, genres, and other available context. Counts marked **Lifetime** stay separate from period charts.
 
-- Release date
-- Track count
-- Total duration
-- Genres
-- Plays
-- Likes
+## Explore the charts
 
-## Current Chart Set
+<Tabs sync={false}>
+  <Tab title="Overview" icon="chart-line">
+    Read **Plays Over Time** for the selected dates. **Most Played Tracks** ranks beats within the collection; select a track to open its own Insights.
+  </Tab>
+  <Tab title="Audience" icon="users">
+    Review **Top Devices**, **Top Platforms**, **Top Listeners**, and **Top Locations**. Read each chart's subtitle and total before comparing shares.
+  </Tab>
+</Tabs>
 
-<Columns cols={2}>
-  <Card title="Plays Over Time" icon="chart-line">
-    Listenership trend across the selected date range.
-  </Card>
-  <Card title="Top Devices" icon="mobile">
-    The device types your listeners are using most.
-  </Card>
-  <Card title="Top Platforms" icon="desktop">
-    Operating-system style platform breakdown for listeners.
-  </Card>
-  <Card title="Top Listeners" icon="users">
-    The listeners generating the most play activity in the selected range.
-  </Card>
-  <Card title="Top Locations" icon="globe">
-    Geographic concentration of plays.
-  </Card>
-  <Card title="Most Played Tracks" icon="clipboard-list">
-    The strongest-performing tracks within that album.
-  </Card>
-</Columns>
+## Look closer at one beat
 
-## What Album Insights Does Not Show
+Open [Track Insights](/help/analytics/backstage-insights/track-insights) for **Avg Listen Duration** and **Completion Breakdown**. Duration and completion detail is available for individual beats.
 
-- No track-level engagement section (Engagement Overview, Listen Duration, Completion Breakdown).
-- Those modules are only available on individual [Track Insights](/help/analytics/backstage-insights/track-insights) pages.
+If a report is empty, check the period and whether the collection's beats have listening activity. If a chart failed, choose **Try again** in that section before drawing a conclusion.
 
 <NeedHelp />

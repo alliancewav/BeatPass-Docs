@@ -1,7 +1,7 @@
 ---
 audience: help
 title: "Social Features"
-sidebarTitle: "Overview"
+sidebarTitle: "Community"
 description: "Understand how following, comments, reposts, and sharing work across BeatPass."
 keywords: ["social","follow","comments","repost","share","community","embed"]
 og:title: "Social Features - BeatPass Help"
@@ -9,62 +9,44 @@ og:description: "Learn how public social features work on BeatPass."
 canonical: "https://docs.beatpass.ca/help/social-features"
 ---
 
-BeatPass includes a small set of public social features that work across profiles, producer pages, tracks, albums, and playlists. This section covers the features that are currently exposed in the web player: following, comments, reposts, and sharing.
+import ProfileFigure from "/snippets/media/profile.mdx";
 
-<Note>
-  Private conversations are documented separately in the [Messaging](/help/messaging) section.
-</Note>
+Follow a producer whose sound you love, leave a thoughtful comment, or share a beat with someone who should hear it. Public activity connects to your BeatPass profile; [messages](/help/messaging) are separate conversations.
 
----
+<ProfileFigure />
 
-## Included Features
+## Included features
 
 <Columns cols={2}>
-  <Card title="Following System" icon="user-plus" href="/help/social-features/following-system">
-    Follow user profiles and producers to keep your library, profile tabs, and notifications up to date.
+  <Card title="Follow people" icon="user-plus" href="/help/social-features/following-system">
+    Keep producers and user profiles close in your library and following lists.
   </Card>
-  <Card title="Comments" icon="comment-dots" href="/help/social-features/comments">
-    Leave public comments on tracks and albums, including time-stamped comments on track waveforms.
+  <Card title="Leave a comment" icon="comment-dots" href="/help/social-features/comments">
+    Comment on tracks and collections, or point to a moment on a track waveform.
   </Card>
-  <Card title="Reposts" icon="repeat" href="/help/social-features/reposts">
-    Repost tracks and albums to your public profile when reposts are enabled on your BeatPass instance.
+  <Card title="Repost a favorite" icon="repeat" href="/help/social-features/reposts">
+    Put a track or collection on your public profile when reposting is available.
   </Card>
-  <Card title="Sharing & Embeds" icon="share-nodes" href="/help/social-features/sharing-and-embeds">
-    Copy share links for tracks, albums, producers, and playlists, or embed tracks and albums on external sites.
+  <Card title="Share a link" icon="share-nodes" href="/help/social-features/sharing-and-embeds">
+    Send a beat, collection, producer page, or playlist to someone else.
   </Card>
 </Columns>
 
----
+## Where these features appear
 
-## Where These Features Appear
+<Tabs sync={false}>
+  <Tab title="People" icon="users">
+    On a user profile, follow the person, browse public followers and following, or start a message when you are signed in. On a producer page, follow, share, or message the claimed owner when that option is available.
+  </Tab>
+  <Tab title="Music" icon="music">
+    Tracks can have waveform-linked comments, replies, reposts, share links, and embeds. Collections have standard comments, reposts, sharing, and embeds. Playlists have share links.
+  </Tab>
+</Tabs>
 
-| Surface | Social actions currently exposed |
-| --- | --- |
-| **User profiles** | Follow or unfollow the user, open public follower/following tabs, start a message if you're logged in |
-| **Producer pages** | Follow the producer, share the page, message the claimed owner when available |
-| **Tracks** | Leave waveform-linked comments, reply to comments, repost, share, embed |
-| **Albums** | Leave standard comments, repost, share, embed |
-| **Playlists** | Share the playlist link |
+## What social features do not include
 
----
+BeatPass does not have a separate follower-activity feed. Embeds are available for tracks and collections, rather than producer pages or playlists. If a repost control is absent, that feature may not be available.
 
-## What Social Features Do Not Include
+## Community guidelines
 
-- BeatPass does not currently expose a separate follower activity feed page.
-- Embeds are available for **tracks** and **albums** only, not producer pages or playlists.
-- Reposts depend on the repost feature being enabled for the current BeatPass installation.
-
----
-
-## Community Guidelines
-
-<Warning>
-  **Keep it respectful.** Comments that contain harassment, spam, or inappropriate content may be removed and can result in account restrictions.
-</Warning>
-
-- Be constructive with feedback
-- Don't spam reposts or comments
-- Report content that violates the [Content Guidelines](/help/legal/content-guidelines)
-- Respect intellectual property
-
-For full details, see the [Content Guidelines](/help/legal/content-guidelines).
+Keep feedback constructive and respect the person behind the music. Harassment, spam, and inappropriate content can lead to removal or account restrictions. Report concerns through the [Content Guidelines](/help/legal/content-guidelines) and respect others' rights when sharing their work.

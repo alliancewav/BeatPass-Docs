@@ -1,0 +1,581 @@
+{
+  "schema_version": 2,
+  "reviewed_at": "2026-11-04T02:24:05.056376+00:00",
+  "note": "Exact reviewed consumer bytes; configuration and policy-owner limits remain distinct from source-confirmed behavior. Private findings stay outside this public ledger.",
+  "claims": [
+    {
+      "id": "producer-standard-eligibility",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/getting-started/understanding-roles.mdx",
+          "sha256": "1dc2e0c1b06f2d9a4daa0253e1a37deb64fa4d7108dd330db25c4a55a658e3dc"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/subscriber-guide.mdx",
+          "sha256": "a90ba803de97db7d62c5e6ab89ded20d9541c1894c03f9a2a70e50e8e2d83e58"
+        },
+        {
+          "path": "help/faq.mdx",
+          "sha256": "8b21d466cd22dba3d259af78bc41574e8dcca590d6a70de6013fd36c71c42a2e"
+        },
+        {
+          "path": "help/troubleshooting/download-issues.mdx",
+          "sha256": "24619f2ececf43cbba3bc15c180171f070116cf37c9caadcb418b3107953bb0b"
+        },
+        {
+          "path": "help/downloads-and-licensing/index.mdx",
+          "sha256": "0aa5f666c9acc870784671e246bb30a9d144c58dac6365ba6382bbeff40f06c9"
+        },
+        {
+          "path": "help/downloads-and-licensing/how-downloads-work.mdx",
+          "sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764"
+        },
+        {
+          "path": "help/downloads-and-licensing/faq.mdx",
+          "sha256": "b5d6d9a8aa5f0ca2684c50d5d216e10b71026931b614265b0d3b2320255dc24a"
+        },
+        {
+          "path": "help/legal/subscription-plan-terms.mdx",
+          "sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9"
+        },
+        {
+          "path": "help/legal/terms-of-service.mdx",
+          "sha256": "d0d73b422e4c8b9d9f3cf713833efdf6b13dbc572b311b65127a309158882be2"
+        },
+        {
+          "path": "help/licensing-for-producers/index.mdx",
+          "sha256": "2c4d14dc3d99cbf2a87fd30a8b172c1f62298ac5019f366719eaa79ab9a37d84"
+        },
+        {
+          "path": "help/licensing-for-producers/non-exclusive-licenses.mdx",
+          "sha256": "cb301c9a7b76afe52857268b8542c22044dd87c262f8e40d523407676de7bd49"
+        },
+        {
+          "path": "snippets/data/plan-comparison-table.mdx",
+          "sha256": "16e3ab7d7b156b658c57c3809cd6628a2d5f0e7a44d55940796b577eb9542b43"
+        },
+        {
+          "path": "help/index.mdx",
+          "sha256": "6c555ae136beeb00e220fa47bbe7a9c919252d044c7ed3ebf4224852cf145e76"
+        },
+        {
+          "path": "help/getting-started/index.mdx",
+          "sha256": "30cf473891aba9b4a9c8559400d99571e7c36f191b27858951a4c85369419127"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/producer-guide.mdx",
+          "sha256": "c1ed05efe9703704e794e0b8423ba43fdfed41c6c8f1aed3ec3423987439de88"
+        },
+        {
+          "path": "help/earnings/index.mdx",
+          "sha256": "1b62e1badcb08f72aace346f36eb81635f2947248d6cd7347ff1b15b784a4623"
+        },
+        {
+          "path": "release-notes/v4.0/4.2.1.mdx",
+          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+        }
+      ]
+    },
+    {
+      "id": "volatile-prices-fees-and-quotas",
+      "review_state": "upcoming",
+      "consumers": [
+        {
+          "path": "help/plans-and-pricing/index.mdx",
+          "sha256": "aae33e394de519844067562591c642e45e67a9fd89f10abf09e5b0f5cdcff765"
+        },
+        {
+          "path": "help/plans-and-pricing/choosing-a-plan.mdx",
+          "sha256": "c8cece369243761a01dfa0896b651f16625a397eb274cf122fe9b18b2c91e288"
+        },
+        {
+          "path": "help/plans-and-pricing/plan-comparison.mdx",
+          "sha256": "68abb352da3105b4a8896a894db95ee3be9ea822e4dc5a8fe7b18a41d962437c"
+        },
+        {
+          "path": "help/billing/index.mdx",
+          "sha256": "502ce1b70f07c374e5b676fa6b79f24cc3b4efb7c0e8ab4ba703ec8c72a7eac6"
+        },
+        {
+          "path": "help/billing/invoices.mdx",
+          "sha256": "fa7c52271ae7bb062b6f2c57f7dc8e09a805b242e2a23cf66b15d55a3fc3c977"
+        },
+        {
+          "path": "help/billing/faq.mdx",
+          "sha256": "964b5efc53b537b55999ea185829016f13522b39099d523cf40bc5191f5d5863"
+        },
+        {
+          "path": "help/billing/platform-fee.mdx",
+          "sha256": "291dde43f7f4fd6ebef5137450416ea1e633a09e1c4b5b1114eff7d75c6bab60"
+        },
+        {
+          "path": "help/billing/managing-subscription/upgrading-plan.mdx",
+          "sha256": "0cca2b187099bd84ac016bea95fa2f95f2074eff7c0e0f3faea7e4b24eeb7990"
+        },
+        {
+          "path": "help/billing/managing-subscription/downgrading-plan.mdx",
+          "sha256": "c1d0e9a808b135165f7f7de25be380abc4e337d6566430f95380f947e04b050a"
+        },
+        {
+          "path": "help/beat-requests/understanding-tokens.mdx",
+          "sha256": "3d66eb3001ac3086ad141d5834e0e633a2921fb7aaf1e19488f776f45bb81779"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/listener-guide.mdx",
+          "sha256": "5a6507fb57749d944ea37a8625925b5deb2e5a94fa85176376d13149295e00be"
+        },
+        {
+          "path": "help/producer-program/index.mdx",
+          "sha256": "e514b96eeb57ec7a169b5e111c8acecea461400502889f6c6e45e2e5494efa43"
+        },
+        {
+          "path": "help/producer-program/benefits.mdx",
+          "sha256": "977c9c98d3d29ac04596c32fa1a12c4ccd3b11ea2c59e018745fd92acdf0c341"
+        },
+        {
+          "path": "help/glossary.mdx",
+          "sha256": "cc79d9b5e2d428f24af7a1d6a760e57e62df25e8b809034bfd9295bc506b8cd3"
+        },
+        {
+          "path": "snippets/data/plan-comparison-table.mdx",
+          "sha256": "16e3ab7d7b156b658c57c3809cd6628a2d5f0e7a44d55940796b577eb9542b43"
+        },
+        {
+          "path": "snippets/data/platform-constants.mdx",
+          "sha256": "e9ee178f6e0b5d5c2712eac156b7ab922972118da18c97113caaa4049d08287a"
+        },
+        {
+          "path": "snippets/callouts/platform-fee.mdx",
+          "sha256": "9f66f3102f7693f8191d10d0953d99f227e05ffd472c660a3fd4862691499c04"
+        },
+        {
+          "path": "snippets/callouts/platform-fee-note.mdx",
+          "sha256": "1b581d34a65a22b5132d2b78c60056b01b237e5d255e804c225ff94b3d05ddab"
+        },
+        {
+          "path": "help/earnings/index.mdx",
+          "sha256": "1b62e1badcb08f72aace346f36eb81635f2947248d6cd7347ff1b15b784a4623"
+        }
+      ]
+    },
+    {
+      "id": "refund-eligibility",
+      "review_state": "live-observed",
+      "consumers": [
+        {
+          "path": "help/billing/refund-policy.mdx",
+          "sha256": "ee7acf717024229024f01521995037662be76e30c019019d48d24d9603fbb29f"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive.mdx",
+          "sha256": "73bf2b0143c7004283427ed6a21b9151c2bb7e84d38174347092c75f7a94b9ad"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/index.mdx",
+          "sha256": "c14379d686be0c2a7832ccbd03eaa09f74034057c1d0233d513c4a36e273c757"
+        },
+        {
+          "path": "help/contact-support/reporting-issues.mdx",
+          "sha256": "759fe2c200f2e249e9c5c3661c581a4dc9582f9469804b4320d27f1cce8bfebf"
+        }
+      ]
+    },
+    {
+      "id": "license-identity-and-retrieval",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/account-settings/account-details.mdx",
+          "sha256": "60f2b993f3459496b660d2e39c413c5543603544d782241c51226ae2dec29852"
+        },
+        {
+          "path": "help/downloads-and-licensing/license-certificates.mdx",
+          "sha256": "ab99a2c7198195d70414d149b8e6f09dc9144fe0f37ba4bfb7c02cdf880ee89f"
+        },
+        {
+          "path": "help/downloads-and-licensing/verifying-licenses.mdx",
+          "sha256": "40adaebafeb68cd337110bb43386467794caa3437c23d68ab37483ba60b8a46e"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive.mdx",
+          "sha256": "73bf2b0143c7004283427ed6a21b9151c2bb7e84d38174347092c75f7a94b9ad"
+        },
+        {
+          "path": "help/downloads-and-licensing/faq.mdx",
+          "sha256": "b5d6d9a8aa5f0ca2684c50d5d216e10b71026931b614265b0d3b2320255dc24a"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/subscriber-guide.mdx",
+          "sha256": "a90ba803de97db7d62c5e6ab89ded20d9541c1894c03f9a2a70e50e8e2d83e58"
+        },
+        {
+          "path": "help/licensing-for-producers/license-certificates.mdx",
+          "sha256": "a408ba574b882d074ef7f907c6c93c67b3cc6359bbee71a69dcb2478ac4abf66"
+        },
+        {
+          "path": "help/legal/exclusive-license-agreement.mdx",
+          "sha256": "95f91c3c3813fcfc09c3564f732911e17df8f3b465e5d1cfec4acf8d4364b721"
+        },
+        {
+          "path": "help/downloads-and-licensing/how-downloads-work.mdx",
+          "sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764"
+        },
+        {
+          "path": "help/index.mdx",
+          "sha256": "6c555ae136beeb00e220fa47bbe7a9c919252d044c7ed3ebf4224852cf145e76"
+        },
+        {
+          "path": "release-notes/v4.0/4.2.1.mdx",
+          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+        }
+      ]
+    },
+    {
+      "id": "producer-workspace",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/producer-dashboard/progress.mdx",
+          "sha256": "c120e43b7a7fbc8437f28bd436646b3dae402eacbfe6857944233f69e66c268b"
+        },
+        {
+          "path": "help/producer-dashboard/albums.mdx",
+          "sha256": "1abea410eae04e9c13ebf41fc83f95cd9ab2c774db6b86cd588b391dd1566304"
+        },
+        {
+          "path": "help/producer-dashboard/activity.mdx",
+          "sha256": "a0e1a2a9e38c08825503de34ff6434599cbdd81e00889b166ba3119f9a35b7c5"
+        },
+        {
+          "path": "help/producer-dashboard/finances.mdx",
+          "sha256": "11e2fba67064873b244eeb5302947915e163d02048f8935618e59b1c6fa1c064"
+        },
+        {
+          "path": "help/producer-dashboard/home.mdx",
+          "sha256": "929432e85b55ab29f3386098197d84d4c32ef149410b78464433a2eb242e5d7b"
+        },
+        {
+          "path": "help/producer-dashboard/pro-page.mdx",
+          "sha256": "ce3c81a045b51d7ad79a6b3dbba8bd11b5e39fffcd003e3968be7ba9eb710cca"
+        },
+        {
+          "path": "help/producer-dashboard/leaderboards.mdx",
+          "sha256": "541c0884ab27c380a112361d24880773ebb78dc22a272fbada8dc82ce59493ee"
+        },
+        {
+          "path": "help/producer-dashboard/tracks.mdx",
+          "sha256": "2977a19f3a97146f11e4baef0b02eeb2a6d9e8ac5e57aa5262114e006d2bc6e2"
+        },
+        {
+          "path": "help/producer-dashboard/index.mdx",
+          "sha256": "4c82245e09ffa0329fd2cf64b923b8988f7d33ec8867f59e3da6d7182c572fed"
+        },
+        {
+          "path": "help/licensing-for-producers/audio-recon.mdx",
+          "sha256": "719dc6b18fb9b0a55f77c6320f61f2849a636b0df174ca490943e8acb4b8c6eb"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/producer-guide.mdx",
+          "sha256": "c1ed05efe9703704e794e0b8423ba43fdfed41c6c8f1aed3ec3423987439de88"
+        },
+        {
+          "path": "release-notes/v4.0/4.2.1.mdx",
+          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+        }
+      ]
+    },
+    {
+      "id": "payout-stream-readiness",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/earnings/beatpay/index.mdx",
+          "sha256": "96b7efad65249ba5cd5f4b1413779cbaa0c62574d863da8f9ef31f88a700e0a6"
+        },
+        {
+          "path": "help/earnings/payout-eligibility.mdx",
+          "sha256": "0356837abc953499ff91c18fc6d1734297348f291c15b78867685bd6b86d3944"
+        },
+        {
+          "path": "help/earnings/payout-schedule.mdx",
+          "sha256": "e392d0ff024e41a0fa0c54548dde3ddf319ca58f3763f62d22aac40bfae8faa9"
+        },
+        {
+          "path": "help/earnings/stripe-connect/index.mdx",
+          "sha256": "ce3005f4bc7a5509038372bde1f113b62fd70a20984be2628ed1a36ffedb275a"
+        },
+        {
+          "path": "help/troubleshooting/stripe-issues.mdx",
+          "sha256": "a08c267792513163f0bba7813de6c0d1bdd756f60e8b9b8cd5fd49991d2c693d"
+        },
+        {
+          "path": "help/producer-dashboard/finances.mdx",
+          "sha256": "11e2fba67064873b244eeb5302947915e163d02048f8935618e59b1c6fa1c064"
+        },
+        {
+          "path": "help/producer-dashboard/pro-page.mdx",
+          "sha256": "ce3c81a045b51d7ad79a6b3dbba8bd11b5e39fffcd003e3968be7ba9eb710cca"
+        },
+        {
+          "path": "help/earnings/index.mdx",
+          "sha256": "1b62e1badcb08f72aace346f36eb81635f2947248d6cd7347ff1b15b784a4623"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/producer-guide.mdx",
+          "sha256": "c1ed05efe9703704e794e0b8423ba43fdfed41c6c8f1aed3ec3423987439de88"
+        },
+        {
+          "path": "release-notes/v4.0/4.2.1.mdx",
+          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+        }
+      ]
+    },
+    {
+      "id": "canonical-policy-owner-alignment",
+      "review_state": "owner-required",
+      "consumers": [
+        {
+          "path": "help/legal/copyright-and-dmca.mdx",
+          "sha256": "b03c8ef4dfd60796b52ff382b643da0ddc11c5bbaaf4a517e115dd5f35f17f85"
+        },
+        {
+          "path": "help/legal/terms-of-service.mdx",
+          "sha256": "d0d73b422e4c8b9d9f3cf713833efdf6b13dbc572b311b65127a309158882be2"
+        },
+        {
+          "path": "help/legal/license-terms/non-exclusive.mdx",
+          "sha256": "ca844514790831a6222e89454c773ae818f2cafcdd1bc57e38e4aade315e047a"
+        },
+        {
+          "path": "help/legal/subscription-plan-terms.mdx",
+          "sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9"
+        }
+      ]
+    },
+    {
+      "id": "privacy-and-upload-declarations",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/legal/cookie-tracking-policy.mdx",
+          "sha256": "674b89fc2c673984eea347029f246470526eed65fb00dab059c158419c20e33e"
+        },
+        {
+          "path": "help/legal/ai-audio-human-made-content.mdx",
+          "sha256": "bb538931d292fff13818dd54dee728ec4347664ccd38fe43e635b03c60b764fb"
+        },
+        {
+          "path": "help/uploading/upload-page.mdx",
+          "sha256": "12387cd19a18aef9013d8c8ec725d86037da2aafec09ad1a3b7d4b2a5fce6ee6"
+        },
+        {
+          "path": "help/uploading/sample-safe.mdx",
+          "sha256": "ea6ca9fb1c66d49ff50306ee50bd6dc5264975fcb1c4707639cea7dc7171db50"
+        },
+        {
+          "path": "help/legal/privacy-policy.mdx",
+          "sha256": "69c545a7579accd66ee6ea440bdac0fa65e1b54ebaab533154069775e45e2f0f"
+        },
+        {
+          "path": "help/uploading/index.mdx",
+          "sha256": "e23a5786955e5a00d5acc73e106e12301394cce97eff6944ba4f187f4d83c4f4"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/producer-guide.mdx",
+          "sha256": "c1ed05efe9703704e794e0b8423ba43fdfed41c6c8f1aed3ec3423987439de88"
+        },
+        {
+          "path": "release-notes/v4.0/4.2.1.mdx",
+          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+        }
+      ]
+    },
+    {
+      "id": "producer-exclusive-eligibility",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/getting-started/understanding-roles.mdx",
+          "sha256": "1dc2e0c1b06f2d9a4daa0253e1a37deb64fa4d7108dd330db25c4a55a658e3dc"
+        },
+        {
+          "path": "help/downloads-and-licensing/index.mdx",
+          "sha256": "0aa5f666c9acc870784671e246bb30a9d144c58dac6365ba6382bbeff40f06c9"
+        },
+        {
+          "path": "help/downloads-and-licensing/faq.mdx",
+          "sha256": "b5d6d9a8aa5f0ca2684c50d5d216e10b71026931b614265b0d3b2320255dc24a"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/index.mdx",
+          "sha256": "c14379d686be0c2a7832ccbd03eaa09f74034057c1d0233d513c4a36e273c757"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive.mdx",
+          "sha256": "73bf2b0143c7004283427ed6a21b9151c2bb7e84d38174347092c75f7a94b9ad"
+        },
+        {
+          "path": "help/legal/terms-of-service.mdx",
+          "sha256": "d0d73b422e4c8b9d9f3cf713833efdf6b13dbc572b311b65127a309158882be2"
+        },
+        {
+          "path": "help/legal/subscription-plan-terms.mdx",
+          "sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9"
+        },
+        {
+          "path": "help/producer-program/benefits.mdx",
+          "sha256": "977c9c98d3d29ac04596c32fa1a12c4ccd3b11ea2c59e018745fd92acdf0c341"
+        },
+        {
+          "path": "help/licensing-for-producers/index.mdx",
+          "sha256": "2c4d14dc3d99cbf2a87fd30a8b172c1f62298ac5019f366719eaa79ab9a37d84"
+        },
+        {
+          "path": "help/licensing-for-producers/non-exclusive-licenses.mdx",
+          "sha256": "cb301c9a7b76afe52857268b8542c22044dd87c262f8e40d523407676de7bd49"
+        },
+        {
+          "path": "snippets/data/plan-comparison-table.mdx",
+          "sha256": "16e3ab7d7b156b658c57c3809cd6628a2d5f0e7a44d55940796b577eb9542b43"
+        },
+        {
+          "path": "help/plans-and-pricing/index.mdx",
+          "sha256": "aae33e394de519844067562591c642e45e67a9fd89f10abf09e5b0f5cdcff765"
+        },
+        {
+          "path": "help/plans-and-pricing/plan-comparison.mdx",
+          "sha256": "68abb352da3105b4a8896a894db95ee3be9ea822e4dc5a8fe7b18a41d962437c"
+        },
+        {
+          "path": "help/earnings/index.mdx",
+          "sha256": "1b62e1badcb08f72aace346f36eb81635f2947248d6cd7347ff1b15b784a4623"
+        },
+        {
+          "path": "help/getting-started/quick-start-guides/producer-guide.mdx",
+          "sha256": "c1ed05efe9703704e794e0b8423ba43fdfed41c6c8f1aed3ec3423987439de88"
+        }
+      ]
+    },
+    {
+      "id": "browser-download-handoff",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/getting-started/quick-start-guides/subscriber-guide.mdx",
+          "sha256": "a90ba803de97db7d62c5e6ab89ded20d9541c1894c03f9a2a70e50e8e2d83e58"
+        },
+        {
+          "path": "help/troubleshooting/download-issues.mdx",
+          "sha256": "24619f2ececf43cbba3bc15c180171f070116cf37c9caadcb418b3107953bb0b"
+        },
+        {
+          "path": "help/downloads-and-licensing/index.mdx",
+          "sha256": "0aa5f666c9acc870784671e246bb30a9d144c58dac6365ba6382bbeff40f06c9"
+        },
+        {
+          "path": "help/downloads-and-licensing/how-downloads-work.mdx",
+          "sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764"
+        },
+        {
+          "path": "help/downloads-and-licensing/faq.mdx",
+          "sha256": "b5d6d9a8aa5f0ca2684c50d5d216e10b71026931b614265b0d3b2320255dc24a"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/index.mdx",
+          "sha256": "c14379d686be0c2a7832ccbd03eaa09f74034057c1d0233d513c4a36e273c757"
+        },
+        {
+          "path": "help/downloads-and-licensing/exclusive-licenses/purchasing-exclusive.mdx",
+          "sha256": "73bf2b0143c7004283427ed6a21b9151c2bb7e84d38174347092c75f7a94b9ad"
+        },
+        {
+          "path": "release-notes/v4.0/4.2.1.mdx",
+          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+        }
+      ]
+    },
+    {
+      "id": "current-standard-attendance-limit",
+      "review_state": "source-confirmed",
+      "consumers": [
+        {
+          "path": "help/downloads-and-licensing/index.mdx",
+          "sha256": "0aa5f666c9acc870784671e246bb30a9d144c58dac6365ba6382bbeff40f06c9"
+        },
+        {
+          "path": "help/downloads-and-licensing/releasing-music.mdx",
+          "sha256": "2c1a589bd7b7324d8a1690608a03114fcc8f27d0c60df74f89078da952f696ba"
+        },
+        {
+          "path": "help/downloads-and-licensing/faq.mdx",
+          "sha256": "b5d6d9a8aa5f0ca2684c50d5d216e10b71026931b614265b0d3b2320255dc24a"
+        },
+        {
+          "path": "help/downloads-and-licensing/license-certificates.mdx",
+          "sha256": "ab99a2c7198195d70414d149b8e6f09dc9144fe0f37ba4bfb7c02cdf880ee89f"
+        },
+        {
+          "path": "help/licensing-for-producers/index.mdx",
+          "sha256": "2c4d14dc3d99cbf2a87fd30a8b172c1f62298ac5019f366719eaa79ab9a37d84"
+        },
+        {
+          "path": "help/licensing-for-producers/non-exclusive-licenses.mdx",
+          "sha256": "cb301c9a7b76afe52857268b8542c22044dd87c262f8e40d523407676de7bd49"
+        },
+        {
+          "path": "help/licensing-for-producers/license-certificates.mdx",
+          "sha256": "a408ba574b882d074ef7f907c6c93c67b3cc6359bbee71a69dcb2478ac4abf66"
+        },
+        {
+          "path": "help/legal/license-terms/index.mdx",
+          "sha256": "3f247e3849bbcf6b759f534d47a7e71bb57feb7854d7f764ed459c99179419f8"
+        },
+        {
+          "path": "snippets/data/platform-constants.mdx",
+          "sha256": "e9ee178f6e0b5d5c2712eac156b7ab922972118da18c97113caaa4049d08287a"
+        },
+        {
+          "path": "help/legal/license-terms/usage-rights.mdx",
+          "sha256": "735a3ca177039f772ba3b2f4a577a5ebcf959c51447a1721893522b0e1dfbacd"
+        },
+        {
+          "path": "help/legal/license-terms/non-exclusive.mdx",
+          "sha256": "ca844514790831a6222e89454c773ae818f2cafcdd1bc57e38e4aade315e047a"
+        }
+      ]
+    },
+    {
+      "id": "expired-request-token-deletion-alignment",
+      "review_state": "owner-required",
+      "consumers": [
+        {
+          "path": "help/beat-requests/understanding-tokens.mdx",
+          "sha256": "3d66eb3001ac3086ad141d5834e0e633a2921fb7aaf1e19488f776f45bb81779"
+        },
+        {
+          "path": "help/billing/refund-policy.mdx",
+          "sha256": "ee7acf717024229024f01521995037662be76e30c019019d48d24d9603fbb29f"
+        },
+        {
+          "path": "help/legal/custom-beat-request-terms.mdx",
+          "sha256": "1a6ada1c5587b17b5ad446902af312cc5dde3098ddaafac4c49424a13cc1b2c5"
+        }
+      ]
+    },
+    {
+      "id": "producer-promotion-and-optout",
+      "review_state": "live-observed",
+      "consumers": [
+        {
+          "path": "help/producer-program/benefits.mdx",
+          "sha256": "977c9c98d3d29ac04596c32fa1a12c4ccd3b11ea2c59e018745fd92acdf0c341"
+        },
+        {
+          "path": "help/legal/terms-of-service.mdx",
+          "sha256": "d0d73b422e4c8b9d9f3cf713833efdf6b13dbc572b311b65127a309158882be2"
+        }
+      ]
+    }
+  ]
+}

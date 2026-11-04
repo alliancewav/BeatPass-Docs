@@ -7,10 +7,12 @@ keywords: ["beatpay", "wise payouts", "bank payouts", "producer payouts", "produ
 canonical: "https://docs.beatpass.ca/help/earnings/beatpay"
 ---
 
+import PayoutSetupFigure from "/snippets/media/payout-setup.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-**BEATPAY** is BeatPass's bank payout setup for eligible producers. It is powered by Wise and appears inside **Producer Finances** when it is available for an artist.
+**BEATPAY** is BeatPass's Wise-powered bank payout setup for eligible producers. Open [Finances](https://open.beatpass.ca/producer-dashboard/finances) to see whether it is available for your account.
 
 <ProducerOnly />
 
@@ -33,7 +35,7 @@ import NeedHelp from "/snippets/sections/need-help.mdx";
 
 ## Where BEATPAY Appears
 
-Open **Backstage** → **Finances**, then review **Payout setup**.
+Open **Producer Dashboard** → **Finances**, then review **Payout setup** inside the Earnings card.
 
 You may see:
 
@@ -51,7 +53,7 @@ New and resumed Stripe setup are not offered from **Finances**.
 
 <Steps>
   <Step title="Open Producer Finances">
-    Click your **profile avatar**, open **Backstage**, then select **Finances**.
+    Click your **profile avatar**, open **Producer Dashboard**, then select **Finances**.
   </Step>
   <Step title="Start BEATPAY">
     In **Payout setup**, select **Set up BEATPAY**. If legacy Stripe is active, select **Upgrade to BEATPAY**.
@@ -60,30 +62,34 @@ New and resumed Stripe setup are not offered from **Finances**.
     Select **Bank account currency**. Choose a currency that the receiving bank account can accept.
   </Step>
   <Step title="Enter bank details">
-    Select **Continue to bank details**, then enter the requested information for the bank account.
+    Select **Continue to bank details**, then enter the requested information for the bank account. Use the account holder's legal name, rather than your public producer name. This payout identity synchronizes with your account's legal details and can lock; contact support if a locked name needs correction.
   </Step>
   <Step title="Save the destination">
-    Select **Save bank details**. When setup is complete, select **Done**.
+    Select **Save bank details** once and wait for the result. If a field needs correction, follow its message before trying again. When the destination is saved, select **Done** and check the readiness shown in **Payout setup**.
   </Step>
 </Steps>
 
+
+
 <Note>
-  BEATPAY affects how eligible earnings reach you. It does not change your earning share or the amount recorded for a track sale or subscription earning.
+  BEATPAY affects how eligible earnings reach you. Subscription earnings and exclusive sales can have different readiness during a rollout. Follow the state shown for each earning type; an active bank destination does not by itself enable both streams.
 </Note>
 
 ## If You Currently Use Legacy Stripe
 
 You do not need to remove Stripe before setting up BEATPAY.
 
-- Legacy Stripe remains the current route until BEATPAY is active.
-- If BEATPAY details are under review, **Payout setup** explains that Stripe remains current.
-- After BEATPAY is active, new eligible earnings use BEATPAY.
+- An existing eligible Stripe route can remain in use until BEATPAY is ready for that earning type.
+- If bank details are under review, follow the explanation in **Payout setup**.
+- New earnings use BEATPAY when it is active for that stream; older routed earnings keep their original provider.
 - Stripe can remain visible while previously routed payouts and its remaining balance finish.
 - Stripe information on **Finances** is read-only.
 
 Retired or incomplete Stripe records do not create a setup action. Historical finance activity can still identify **Legacy Stripe** as the provider for an older earning.
 
 ## Choose a Bank Account Currency
+
+<PayoutSetupFigure />
 
 BEATPAY lists bank account currencies available for the Wise-powered payout destination. The list may not include every currency used in your country.
 
@@ -107,7 +113,7 @@ Your bank account currency can differ from your local currency, but the receivin
 
 ## Currency Context
 
-The separate **Currency context** section in **Finances** uses the BeatPass payout source currency and your saved bank currency. Before a destination is saved, it uses a comparison currency you can change.
+Expand **Currency context** below Finance activity to compare the available payout source and bank currencies. Before a destination is saved, a comparison currency may be available to change.
 
 Select **7D**, **30D**, or **90D** to review the recent rate, low, and high. Point to the graph or use the Left and Right Arrow keys to inspect a date.
 
@@ -127,10 +133,10 @@ See the [official Privacy Policy](https://open.beatpass.ca/pages/privacy-policy)
 
 <AccordionGroup>
   <Accordion title="Why do I not see BEATPAY?">
-    BEATPAY appears when it is available for the selected artist. **Payout setup** shows the current option or state.
+    BEATPAY appears when it is available for your producer account. **Payout setup** shows the current option or state. Contact support if you need help with an unavailable route.
   </Accordion>
   <Accordion title="Do I need to remove Stripe first?">
-    No. Select **Upgrade to BEATPAY** when it appears. Stripe remains the current route until BEATPAY becomes active.
+    No. Select **Upgrade to BEATPAY** when offered. Follow the route shown for each earning type while setup or review is in progress.
   </Accordion>
   <Accordion title="Does BEATPAY change my earnings share?">
     No. BEATPAY changes the payout destination for eligible earnings, not how BeatPass calculates the earning.
@@ -139,7 +145,7 @@ See the [official Privacy Policy](https://open.beatpass.ca/pages/privacy-policy)
     The list contains bank account currencies currently available for setup. Ask your bank whether the account can receive another listed currency.
   </Accordion>
   <Accordion title="Where do I check a payout problem?">
-    Open **Backstage** → **Finances**. In **Finance activity**, select **Delayed**. Also review **Payout setup** for an action.
+    Open **Producer Dashboard** → **Finances**. In **Finance activity**, select **Delayed**. Also review **Payout setup** for an action.
   </Accordion>
 </AccordionGroup>
 

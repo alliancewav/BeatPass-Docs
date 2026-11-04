@@ -1,0 +1,3315 @@
+{
+  "synthetic": true,
+  "note": "Invented user histories/statistics only. Progress descriptions/rewards use reviewed current source definitions and level math; no production records or transactions.",
+  "responses": {
+    "producer-intelligence/progress-data": {
+      "scope": "producer_account",
+      "level": {
+        "level": 10,
+        "title": "Experienced Producer",
+        "currentXP": 2978,
+        "nextLevelXP": 3162,
+        "xpToNextLevel": 184,
+        "progress": 60.2,
+        "isMaxLevel": false,
+        "badge": "experienced",
+        "color": "experienced"
+      },
+      "earningRules": [
+        {
+          "key": "track_upload",
+          "amount": 100,
+          "cadence": "once_per_track"
+        },
+        {
+          "key": "track_play",
+          "amount": 1,
+          "cadence": "once_per_track"
+        },
+        {
+          "key": "metadata_completion",
+          "amount": 50,
+          "cadence": "once_per_track"
+        },
+        {
+          "key": "collaboration",
+          "amount": 25,
+          "cadence": "once_per_track"
+        },
+        {
+          "key": "achievement",
+          "amount": null,
+          "cadence": "once_per_achievement"
+        }
+      ],
+      "recentXp": [
+        {
+          "id": 106,
+          "sourceKey": "achievement",
+          "amount": 1000,
+          "occurredAt": "2026-10-27T12:00:00Z"
+        },
+        {
+          "id": 105,
+          "sourceKey": "achievement",
+          "amount": 500,
+          "occurredAt": "2026-10-26T12:00:00Z"
+        },
+        {
+          "id": 104,
+          "sourceKey": "track_upload",
+          "amount": 100,
+          "occurredAt": "2026-10-26T11:59:00Z"
+        },
+        {
+          "id": 103,
+          "sourceKey": "metadata_completion",
+          "amount": 50,
+          "occurredAt": "2026-10-26T11:58:00Z"
+        },
+        {
+          "id": 102,
+          "sourceKey": "achievement",
+          "amount": 500,
+          "occurredAt": "2026-10-25T12:00:00Z"
+        }
+      ],
+      "achievements": {
+        "achievements": [
+          {
+            "key": "pro_page_storefront",
+            "id": "1001",
+            "name": "Producer Pro Page",
+            "description": "Your professional BeatPass storefront is ready.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 4,
+            "rarityLabel": "Legendary",
+            "level": 4,
+            "status": "unlocked",
+            "rewardXp": 0,
+            "awardedXp": 0,
+            "earnedAt": "2026-10-28T16:00:00Z",
+            "earned_at": "2026-10-28T16:00:00Z",
+            "locked": false,
+            "xp_reward": 0,
+            "xpAwarded": 0,
+            "points": 0,
+            "icon": "storefront"
+          },
+          {
+            "key": "rising_star",
+            "id": "1006",
+            "name": "Rising Star",
+            "description": "Have a track reach the top 25% by BeatPass play count.",
+            "category": "trending",
+            "type": "trending",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "unlocked",
+            "rewardXp": 1000,
+            "awardedXp": 1000,
+            "earnedAt": "2026-10-27T12:00:00Z",
+            "earned_at": "2026-10-27T12:00:00Z",
+            "locked": false,
+            "xp_reward": 1000,
+            "xpAwarded": 1000,
+            "points": 1000,
+            "icon": "\u2b50"
+          },
+          {
+            "key": "track_producer",
+            "id": "1002",
+            "name": "Track Producer",
+            "description": "Reach the top 50% of producers by published track count.",
+            "category": "upload",
+            "type": "upload",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "unlocked",
+            "rewardXp": 500,
+            "awardedXp": 500,
+            "earnedAt": "2026-10-26T12:00:00Z",
+            "earned_at": "2026-10-26T12:00:00Z",
+            "locked": false,
+            "xp_reward": 500,
+            "xpAwarded": 500,
+            "points": 500,
+            "icon": "\ud83c\udfb6"
+          },
+          {
+            "key": "collaboration_enthusiast",
+            "id": "1019",
+            "name": "Collaboration Enthusiast",
+            "description": "Complete your first eligible collaboration.",
+            "category": "collaboration",
+            "type": "collaboration",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "unlocked",
+            "rewardXp": 500,
+            "awardedXp": 500,
+            "earnedAt": "2026-10-25T12:00:00Z",
+            "earned_at": "2026-10-25T12:00:00Z",
+            "locked": false,
+            "xp_reward": 500,
+            "xpAwarded": 500,
+            "points": 500,
+            "icon": "\ud83e\udd1d"
+          },
+          {
+            "key": "oracle",
+            "id": "1015",
+            "name": "Oracle",
+            "description": "Complete your producer profile bio.",
+            "category": "profile",
+            "type": "profile",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "unlocked",
+            "rewardXp": 300,
+            "awardedXp": 300,
+            "earnedAt": "2026-09-29T12:30:00Z",
+            "earned_at": "2026-09-29T12:30:00Z",
+            "locked": false,
+            "xp_reward": 300,
+            "xpAwarded": 300,
+            "points": 300,
+            "icon": "\ud83d\udcdd"
+          },
+          {
+            "key": "photogenic",
+            "id": "1013",
+            "name": "Photogenic",
+            "description": "Add your first image to your producer profile.",
+            "category": "profile",
+            "type": "profile",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "unlocked",
+            "rewardXp": 200,
+            "awardedXp": 200,
+            "earnedAt": "2026-09-29T12:00:00Z",
+            "earned_at": "2026-09-29T12:00:00Z",
+            "locked": false,
+            "xp_reward": 200,
+            "xpAwarded": 200,
+            "points": 200,
+            "icon": "\ud83c\udfad"
+          },
+          {
+            "key": "prolific_creator",
+            "id": "prolific_creator",
+            "name": "Prolific Creator",
+            "description": "Reach the top 25% of producers by published track count.",
+            "category": "upload",
+            "type": "upload",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 1500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1500,
+            "xpAwarded": 0,
+            "points": 1500,
+            "icon": "\ud83c\udfbc"
+          },
+          {
+            "key": "production_master",
+            "id": "production_master",
+            "name": "Production Master",
+            "description": "Reach the top 10% of producers by published track count.",
+            "category": "upload",
+            "type": "upload",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 3000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 3000,
+            "xpAwarded": 0,
+            "points": 3000,
+            "icon": "\ud83c\udf9b\ufe0f"
+          },
+          {
+            "key": "studio_legend",
+            "id": "studio_legend",
+            "name": "Studio Legend",
+            "description": "Reach the top 5% of producers by published track count.",
+            "category": "upload",
+            "type": "upload",
+            "rarity": 4,
+            "rarityLabel": "Legendary",
+            "level": 4,
+            "status": "available",
+            "rewardXp": 5000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 5000,
+            "xpAwarded": 0,
+            "points": 5000,
+            "icon": "\ud83c\udfc6"
+          },
+          {
+            "key": "chart_topper",
+            "id": "chart_topper",
+            "name": "Chart Topper",
+            "description": "Have a track reach the top 10% by BeatPass play count.",
+            "category": "trending",
+            "type": "trending",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 2000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 2000,
+            "xpAwarded": 0,
+            "points": 2000,
+            "icon": "\ud83d\udcc8"
+          },
+          {
+            "key": "viral_hit",
+            "id": "viral_hit",
+            "name": "Viral Hit",
+            "description": "Have a track reach the top 5% by BeatPass play count.",
+            "category": "trending",
+            "type": "trending",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 3500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 3500,
+            "xpAwarded": 0,
+            "points": 3500,
+            "icon": "\ud83d\udd25"
+          },
+          {
+            "key": "metadata_whiz",
+            "id": "metadata_whiz",
+            "name": "Metadata Whiz",
+            "description": "Reach at least 70% metadata accuracy.",
+            "category": "metadata",
+            "type": "metadata",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 800,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 800,
+            "xpAwarded": 0,
+            "points": 800,
+            "icon": "\ud83d\udcca"
+          },
+          {
+            "key": "metadata_maven",
+            "id": "metadata_maven",
+            "name": "Metadata Maven",
+            "description": "Reach at least 80% metadata accuracy.",
+            "category": "metadata",
+            "type": "metadata",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 1500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1500,
+            "xpAwarded": 0,
+            "points": 1500,
+            "icon": "\ud83d\udc8e"
+          },
+          {
+            "key": "metadata_architect",
+            "id": "metadata_architect",
+            "name": "Metadata Architect",
+            "description": "Reach at least 90% metadata accuracy.",
+            "category": "metadata",
+            "type": "metadata",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 2500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 2500,
+            "xpAwarded": 0,
+            "points": 2500,
+            "icon": "\ud83c\udfd7\ufe0f"
+          },
+          {
+            "key": "model",
+            "id": "model",
+            "name": "Model",
+            "description": "Add at least five images to your producer profile.",
+            "category": "profile",
+            "type": "profile",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 500,
+            "xpAwarded": 0,
+            "points": 500,
+            "icon": "\ud83d\udcf8"
+          },
+          {
+            "key": "linked",
+            "id": "linked",
+            "name": "Linked",
+            "description": "Add at least three links to your producer profile.",
+            "category": "profile",
+            "type": "profile",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 400,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 400,
+            "xpAwarded": 0,
+            "points": 400,
+            "icon": "\ud83d\udd17"
+          },
+          {
+            "key": "genre_specialist",
+            "id": "genre_specialist",
+            "name": "Genre Specialist",
+            "description": "Have a track reach the top 10% within its genre.",
+            "category": "genre",
+            "type": "genre",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 1500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1500,
+            "xpAwarded": 0,
+            "points": 1500,
+            "icon": "\ud83c\udfaf"
+          },
+          {
+            "key": "genre_virtuoso",
+            "id": "genre_virtuoso",
+            "name": "Genre Virtuoso",
+            "description": "Reach the top 10% for genre diversity with at least five genres.",
+            "category": "genre",
+            "type": "genre",
+            "rarity": 4,
+            "rarityLabel": "Legendary",
+            "level": 4,
+            "status": "available",
+            "rewardXp": 4000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 4000,
+            "xpAwarded": 0,
+            "points": 4000,
+            "icon": "\ud83c\udfa8"
+          },
+          {
+            "key": "genre_master",
+            "id": "genre_master",
+            "name": "Genre Master",
+            "description": "Reach the top 20% for genre diversity with at least three genres.",
+            "category": "genre",
+            "type": "genre",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 2500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 2500,
+            "xpAwarded": 0,
+            "points": 2500,
+            "icon": "\ud83c\udf08"
+          },
+          {
+            "key": "team_player",
+            "id": "team_player",
+            "name": "Team Player",
+            "description": "Complete 10 eligible collaborations.",
+            "category": "collaboration",
+            "type": "collaboration",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 1500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1500,
+            "xpAwarded": 0,
+            "points": 1500,
+            "icon": "\ud83d\udc65"
+          },
+          {
+            "key": "bridge_builder",
+            "id": "bridge_builder",
+            "name": "Bridge Builder",
+            "description": "Complete 25 eligible collaborations.",
+            "category": "collaboration",
+            "type": "collaboration",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 3000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 3000,
+            "xpAwarded": 0,
+            "points": 3000,
+            "icon": "\ud83c\udf09"
+          },
+          {
+            "key": "network_spider",
+            "id": "network_spider",
+            "name": "Network Spider",
+            "description": "Complete 50 eligible collaborations.",
+            "category": "collaboration",
+            "type": "collaboration",
+            "rarity": 4,
+            "rarityLabel": "Legendary",
+            "level": 4,
+            "status": "available",
+            "rewardXp": 5000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 5000,
+            "xpAwarded": 0,
+            "points": 5000,
+            "icon": "\ud83d\udd77\ufe0f"
+          },
+          {
+            "key": "rising_talent",
+            "id": "rising_talent",
+            "name": "Rising Talent",
+            "description": "Reach the top 25% for overall performance with at least five tracks.",
+            "category": "composite",
+            "type": "composite",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 2000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 2000,
+            "xpAwarded": 0,
+            "points": 2000,
+            "icon": "\ud83c\udf1f"
+          },
+          {
+            "key": "elite_producer",
+            "id": "elite_producer",
+            "name": "Elite Producer",
+            "description": "Reach the top 15% for overall performance with at least 10 tracks.",
+            "category": "composite",
+            "type": "composite",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 3500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 3500,
+            "xpAwarded": 0,
+            "points": 3500,
+            "icon": "\ud83d\udcab"
+          },
+          {
+            "key": "legendary_producer",
+            "id": "legendary_producer",
+            "name": "Legendary Producer",
+            "description": "Reach the top 5% for overall performance with at least 20 tracks.",
+            "category": "composite",
+            "type": "composite",
+            "rarity": 4,
+            "rarityLabel": "Legendary",
+            "level": 4,
+            "status": "available",
+            "rewardXp": 6000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 6000,
+            "xpAwarded": 0,
+            "points": 6000,
+            "icon": "\ud83d\udc51"
+          },
+          {
+            "key": "track_excellence",
+            "id": "track_excellence",
+            "name": "Track Excellence",
+            "description": "Have a track reach the top 10% by overall track score.",
+            "category": "excellence",
+            "type": "excellence",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 1800,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1800,
+            "xpAwarded": 0,
+            "points": 1800,
+            "icon": "\u2728"
+          },
+          {
+            "key": "early_adopter",
+            "id": "early_adopter",
+            "name": "Early Adopter",
+            "description": "Be among the first 30 producer profiles created during the BeatPass beta.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 1000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1000,
+            "xpAwarded": 0,
+            "points": 1000,
+            "icon": "\ud83d\ude80"
+          },
+          {
+            "key": "rising",
+            "id": "rising",
+            "name": "Rising",
+            "description": "Keep your producer profile active for at least three months.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 150,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 150,
+            "xpAwarded": 0,
+            "points": 150,
+            "icon": "\ud83d\udcc5"
+          },
+          {
+            "key": "seasoned",
+            "id": "seasoned",
+            "name": "Seasoned",
+            "description": "Keep your producer profile active for at least six months.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 300,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 300,
+            "xpAwarded": 0,
+            "points": 300,
+            "icon": "\ud83d\udd50"
+          },
+          {
+            "key": "og",
+            "id": "og",
+            "name": "OG",
+            "description": "Keep your producer profile active for at least one year.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 600,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 600,
+            "xpAwarded": 0,
+            "points": 600,
+            "icon": "\ud83c\udf96\ufe0f"
+          },
+          {
+            "key": "veteran",
+            "id": "veteran",
+            "name": "Veteran",
+            "description": "Keep your producer profile active for at least two years.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 1000,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1000,
+            "xpAwarded": 0,
+            "points": 1000,
+            "icon": "\ud83c\udfc5"
+          },
+          {
+            "key": "legacy",
+            "id": "legacy",
+            "name": "Legacy",
+            "description": "Keep your producer profile active for at least three years.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 1500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1500,
+            "xpAwarded": 0,
+            "points": 1500,
+            "icon": "\ud83c\udfdb\ufe0f"
+          },
+          {
+            "key": "top_biller",
+            "id": "top_biller",
+            "name": "Top Biller",
+            "description": "Have the highest-earning track overall.",
+            "category": "milestone",
+            "type": "milestone",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 800,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 800,
+            "xpAwarded": 0,
+            "points": 800,
+            "icon": "\ud83d\udcb0"
+          },
+          {
+            "key": "shadow_regent",
+            "id": "shadow_regent",
+            "name": "Shadow Regent",
+            "description": "Upload a track from October 30 through November 1.",
+            "category": "seasonal",
+            "type": "seasonal",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 200,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 200,
+            "xpAwarded": 0,
+            "points": 200,
+            "icon": "\ud83c\udf83"
+          },
+          {
+            "key": "santas_helper",
+            "id": "santas_helper",
+            "name": "Santa's Helper",
+            "description": "Upload a track from December 23 through December 26.",
+            "category": "seasonal",
+            "type": "seasonal",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 200,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 200,
+            "xpAwarded": 0,
+            "points": 200,
+            "icon": "\ud83c\udf85"
+          },
+          {
+            "key": "opening_act",
+            "id": "opening_act",
+            "name": "Opening Act",
+            "description": "Upload a track from December 31 through January 2.",
+            "category": "seasonal",
+            "type": "seasonal",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 200,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 200,
+            "xpAwarded": 0,
+            "points": 200,
+            "icon": "\ud83c\udf8a"
+          },
+          {
+            "key": "lover_boy",
+            "id": "lover_boy",
+            "name": "Lover Boy",
+            "description": "Upload a track from February 13 through February 15.",
+            "category": "seasonal",
+            "type": "seasonal",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 200,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 200,
+            "xpAwarded": 0,
+            "points": 200,
+            "icon": "\ud83d\udc95"
+          },
+          {
+            "key": "request_responder",
+            "id": "request_responder",
+            "name": "Request Responder",
+            "description": "Submit your first track to a custom beat request.",
+            "category": "beat_request",
+            "type": "beat_request",
+            "rarity": 1,
+            "rarityLabel": "Common",
+            "level": 1,
+            "status": "available",
+            "rewardXp": 300,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 300,
+            "xpAwarded": 0,
+            "points": 300,
+            "icon": "\ud83c\udfaf"
+          },
+          {
+            "key": "beat_hunter",
+            "id": "beat_hunter",
+            "name": "Beat Hunter",
+            "description": "Submit tracks to five different custom beat requests.",
+            "category": "beat_request",
+            "type": "beat_request",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 800,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 800,
+            "xpAwarded": 0,
+            "points": 800,
+            "icon": "\ud83c\udfaa"
+          },
+          {
+            "key": "request_champion",
+            "id": "request_champion",
+            "name": "Request Champion",
+            "description": "Submit tracks to 15 different custom beat requests.",
+            "category": "beat_request",
+            "type": "beat_request",
+            "rarity": 3,
+            "rarityLabel": "Epic",
+            "level": 3,
+            "status": "available",
+            "rewardXp": 1500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 1500,
+            "xpAwarded": 0,
+            "points": 1500,
+            "icon": "\ud83c\udfc6"
+          },
+          {
+            "key": "custom_king",
+            "id": "custom_king",
+            "name": "Custom King",
+            "description": "Submit tracks to 50 different custom beat requests.",
+            "category": "beat_request",
+            "type": "beat_request",
+            "rarity": 4,
+            "rarityLabel": "Legendary",
+            "level": 4,
+            "status": "available",
+            "rewardXp": 3500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 3500,
+            "xpAwarded": 0,
+            "points": 3500,
+            "icon": "\ud83d\udc51"
+          },
+          {
+            "key": "quick_draw",
+            "id": "quick_draw",
+            "name": "Quick Draw",
+            "description": "Submit a track within one hour after a beat request is posted.",
+            "category": "beat_request",
+            "type": "beat_request",
+            "rarity": 2,
+            "rarityLabel": "Rare",
+            "level": 2,
+            "status": "available",
+            "rewardXp": 500,
+            "awardedXp": null,
+            "earnedAt": null,
+            "earned_at": null,
+            "locked": true,
+            "xp_reward": 500,
+            "xpAwarded": 0,
+            "points": 500,
+            "icon": "\u26a1"
+          }
+        ],
+        "stats": {
+          "total": 42,
+          "unlocked": 6,
+          "locked": 36,
+          "percentage": 14.3,
+          "total_xp": 2500
+        }
+      },
+      "achievementCommunity": {
+        "version": 1,
+        "scope": "producer_account",
+        "cohort": {
+          "key": "canonical_producer_accounts_with_attributed_tracks",
+          "count": 100
+        },
+        "generatedAt": "2026-10-29T18:00:00Z",
+        "isStale": false,
+        "achievements": {
+          "pro_page_storefront": {
+            "unlockedCount": 18,
+            "unlockedPercentage": 18
+          },
+          "track_producer": {
+            "unlockedCount": 62,
+            "unlockedPercentage": 62
+          },
+          "prolific_creator": {
+            "unlockedCount": 31,
+            "unlockedPercentage": 31
+          },
+          "production_master": {
+            "unlockedCount": 14,
+            "unlockedPercentage": 14
+          },
+          "studio_legend": {
+            "unlockedCount": 6,
+            "unlockedPercentage": 6
+          },
+          "rising_star": {
+            "unlockedCount": 41,
+            "unlockedPercentage": 41
+          },
+          "chart_topper": {
+            "unlockedCount": 21,
+            "unlockedPercentage": 21
+          },
+          "viral_hit": {
+            "unlockedCount": 10,
+            "unlockedPercentage": 10
+          },
+          "metadata_whiz": {
+            "unlockedCount": 48,
+            "unlockedPercentage": 48
+          },
+          "metadata_maven": {
+            "unlockedCount": 29,
+            "unlockedPercentage": 29
+          },
+          "metadata_architect": {
+            "unlockedCount": 18,
+            "unlockedPercentage": 18
+          },
+          "model": {
+            "unlockedCount": 40,
+            "unlockedPercentage": 40
+          },
+          "photogenic": {
+            "unlockedCount": 90,
+            "unlockedPercentage": 90
+          },
+          "linked": {
+            "unlockedCount": 55,
+            "unlockedPercentage": 55
+          },
+          "oracle": {
+            "unlockedCount": 72,
+            "unlockedPercentage": 72
+          },
+          "genre_specialist": {
+            "unlockedCount": 17,
+            "unlockedPercentage": 17
+          },
+          "genre_virtuoso": {
+            "unlockedCount": 4,
+            "unlockedPercentage": 4
+          },
+          "genre_master": {
+            "unlockedCount": 9,
+            "unlockedPercentage": 9
+          },
+          "collaboration_enthusiast": {
+            "unlockedCount": 48,
+            "unlockedPercentage": 48
+          },
+          "team_player": {
+            "unlockedCount": 22,
+            "unlockedPercentage": 22
+          },
+          "bridge_builder": {
+            "unlockedCount": 12,
+            "unlockedPercentage": 12
+          },
+          "network_spider": {
+            "unlockedCount": 4,
+            "unlockedPercentage": 4
+          },
+          "rising_talent": {
+            "unlockedCount": 23,
+            "unlockedPercentage": 23
+          },
+          "elite_producer": {
+            "unlockedCount": 11,
+            "unlockedPercentage": 11
+          },
+          "legendary_producer": {
+            "unlockedCount": 5,
+            "unlockedPercentage": 5
+          },
+          "track_excellence": {
+            "unlockedCount": 16,
+            "unlockedPercentage": 16
+          },
+          "early_adopter": {
+            "unlockedCount": 2,
+            "unlockedPercentage": 2
+          },
+          "rising": {
+            "unlockedCount": 78,
+            "unlockedPercentage": 78
+          },
+          "seasoned": {
+            "unlockedCount": 62,
+            "unlockedPercentage": 62
+          },
+          "og": {
+            "unlockedCount": 48,
+            "unlockedPercentage": 48
+          },
+          "veteran": {
+            "unlockedCount": 23,
+            "unlockedPercentage": 23
+          },
+          "legacy": {
+            "unlockedCount": 8,
+            "unlockedPercentage": 8
+          },
+          "top_biller": {
+            "unlockedCount": 1,
+            "unlockedPercentage": 1
+          },
+          "shadow_regent": {
+            "unlockedCount": 33,
+            "unlockedPercentage": 33
+          },
+          "santas_helper": {
+            "unlockedCount": 26,
+            "unlockedPercentage": 26
+          },
+          "opening_act": {
+            "unlockedCount": 29,
+            "unlockedPercentage": 29
+          },
+          "lover_boy": {
+            "unlockedCount": 21,
+            "unlockedPercentage": 21
+          },
+          "request_responder": {
+            "unlockedCount": 36,
+            "unlockedPercentage": 36
+          },
+          "beat_hunter": {
+            "unlockedCount": 16,
+            "unlockedPercentage": 16
+          },
+          "request_champion": {
+            "unlockedCount": 8,
+            "unlockedPercentage": 8
+          },
+          "custom_king": {
+            "unlockedCount": 2,
+            "unlockedPercentage": 2
+          },
+          "quick_draw": {
+            "unlockedCount": 18,
+            "unlockedPercentage": 18
+          }
+        }
+      },
+      "cached_at": "2026-10-29T18:00:00Z",
+      "cache_duration_seconds": 60
+    },
+    "producer-intelligence/leaderboards": {
+      "category": "earning_share",
+      "scope": "artist",
+      "period": {
+        "key": "current",
+        "start": "2026-10-01T00:00:00Z",
+        "end": "2026-10-28T12:00:00Z"
+      },
+      "generatedAt": "2026-10-28T12:00:00Z",
+      "sourceUpdatedAt": "2026-10-28T12:00:00Z",
+      "isStale": false,
+      "participantCount": 4,
+      "leaders": [
+        {
+          "rank": 1,
+          "artist": {
+            "id": 5,
+            "name": "Pine Avenue",
+            "image": "/browser-smoke-avatar.svg",
+            "url": "/artist/5/pine-avenue"
+          },
+          "value": 40,
+          "context": {
+            "contributingTracks": 12
+          }
+        },
+        {
+          "rank": 2,
+          "artist": {
+            "id": 6,
+            "name": "Nova Vale",
+            "image": "/browser-smoke-avatar.svg",
+            "url": "/artist/6/nova-vale"
+          },
+          "value": 30,
+          "context": {
+            "contributingTracks": 9
+          }
+        },
+        {
+          "rank": 3,
+          "artist": {
+            "id": 7,
+            "name": "Mira North",
+            "image": "/browser-smoke-avatar.svg",
+            "url": "/artist/7/mira-north"
+          },
+          "value": 20,
+          "context": {
+            "contributingTracks": 6
+          }
+        },
+        {
+          "rank": 4,
+          "artist": {
+            "id": 8,
+            "name": "Low Tide",
+            "image": "/browser-smoke-avatar.svg",
+            "url": "/artist/8/low-tide"
+          },
+          "value": 10,
+          "context": {
+            "contributingTracks": 3
+          }
+        }
+      ],
+      "current": {
+        "eligible": true,
+        "reason": null,
+        "entry": {
+          "rank": 1,
+          "artist": {
+            "id": 5,
+            "name": "Pine Avenue",
+            "image": "/browser-smoke-avatar.svg",
+            "url": "/artist/5/pine-avenue"
+          },
+          "value": 40,
+          "context": {
+            "contributingTracks": 12
+          }
+        },
+        "nearby": [
+          {
+            "rank": 2,
+            "artist": {
+              "id": 6,
+              "name": "Nova Vale",
+              "image": "/browser-smoke-avatar.svg",
+              "url": "/artist/6/nova-vale"
+            },
+            "value": 30,
+            "context": {
+              "contributingTracks": 9
+            }
+          },
+          {
+            "rank": 3,
+            "artist": {
+              "id": 7,
+              "name": "Mira North",
+              "image": "/browser-smoke-avatar.svg",
+              "url": "/artist/7/mira-north"
+            },
+            "value": 20,
+            "context": {
+              "contributingTracks": 6
+            }
+          },
+          {
+            "rank": 4,
+            "artist": {
+              "id": 8,
+              "name": "Low Tide",
+              "image": "/browser-smoke-avatar.svg",
+              "url": "/artist/8/low-tide"
+            },
+            "value": 10,
+            "context": {
+              "contributingTracks": 3
+            }
+          }
+        ]
+      }
+    },
+    "artists/5/finances/summary": {
+      "setup": {
+        "state": "ready",
+        "defaultProvider": "wise",
+        "streams": {
+          "sales": {
+            "eligible": true,
+            "provider": "wise"
+          },
+          "subscriptions": {
+            "eligible": true,
+            "provider": "wise"
+          }
+        },
+        "destination": {
+          "provider": "wise",
+          "state": "active",
+          "currency": "CAD",
+          "accountSummary": null
+        },
+        "providers": {
+          "beatpay": {
+            "available": true,
+            "active": true,
+            "state": "active",
+            "sourceCurrency": "CAD",
+            "currency": "CAD",
+            "accountSummary": null,
+            "canStart": false,
+            "canReplace": true
+          },
+          "legacyStripe": null
+        },
+        "actions": {
+          "canStartBeatpay": false,
+          "canResumeStripe": false,
+          "canReplaceDestination": true
+        }
+      },
+      "earnings": {
+        "defaultCurrency": "CAD",
+        "currencies": [
+          {
+            "currency": "CAD",
+            "minorUnitFactor": 100,
+            "totalEarnedMinor": 38450,
+            "waitingMinor": 1850,
+            "sendingMinor": 2600,
+            "sentMinor": 34000,
+            "delayedMinor": 0
+          }
+        ]
+      },
+      "attention": {
+        "count": 0
+      },
+      "freshness": {
+        "calculatedAt": "2026-10-28T12:00:00Z"
+      }
+    },
+    "artists/5/finances/transactions": {
+      "filter": "all",
+      "filters": {
+        "status": "all",
+        "type": "all"
+      },
+      "dateTimezone": "America/Toronto",
+      "items": [
+        {
+          "id": "demo-earning-1",
+          "type": "sale",
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "amountMinor": 12500,
+          "minorUnitFactor": 100,
+          "currency": "CAD",
+          "status": "completed",
+          "statusGroup": "completed",
+          "provider": "wise",
+          "track": {
+            "id": 11,
+            "name": "Golden Hour"
+          },
+          "billingPeriod": null,
+          "statusReason": null
+        },
+        {
+          "id": "demo-earning-2",
+          "type": "sale",
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "amountMinor": 9800,
+          "minorUnitFactor": 100,
+          "currency": "CAD",
+          "status": "completed",
+          "statusGroup": "completed",
+          "provider": "wise",
+          "track": {
+            "id": 12,
+            "name": "Afterglow"
+          },
+          "billingPeriod": null,
+          "statusReason": null
+        },
+        {
+          "id": "demo-earning-3",
+          "type": "sale",
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "amountMinor": 11700,
+          "minorUnitFactor": 100,
+          "currency": "CAD",
+          "status": "completed",
+          "statusGroup": "completed",
+          "provider": "wise",
+          "track": {
+            "id": 13,
+            "name": "Night Drive"
+          },
+          "billingPeriod": null,
+          "statusReason": null
+        },
+        {
+          "id": "demo-earning-4",
+          "type": "subscription",
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "amountMinor": 1850,
+          "minorUnitFactor": 100,
+          "currency": "CAD",
+          "status": "waiting",
+          "statusGroup": "waiting",
+          "provider": "wise",
+          "track": null,
+          "billingPeriod": {
+            "start": "2026-09-01",
+            "end": "2026-10-01"
+          },
+          "statusReason": null
+        },
+        {
+          "id": "demo-earning-5",
+          "type": "subscription",
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "amountMinor": 2600,
+          "minorUnitFactor": 100,
+          "currency": "CAD",
+          "status": "sending",
+          "statusGroup": "waiting",
+          "provider": "wise",
+          "track": null,
+          "billingPeriod": {
+            "start": "2026-09-01",
+            "end": "2026-10-01"
+          },
+          "statusReason": null
+        }
+      ],
+      "counts": {
+        "all": 5,
+        "completed": 3,
+        "waiting": 1,
+        "sending": 1,
+        "needs_attention": 0,
+        "refunded": 0,
+        "sales": 3,
+        "subscriptions": 2
+      },
+      "pagination": {
+        "page": 1,
+        "perPage": 20,
+        "total": 5,
+        "to": 5,
+        "hasPrevious": false,
+        "hasMore": false,
+        "from": 1
+      }
+    },
+    "artists/5/finances/provider-balance": {
+      "state": "available",
+      "balances": [],
+      "freshness": "2026-10-28T12:00:00Z",
+      "isStale": false
+    },
+    "artists/5/activity": {
+      "hasTracks": true,
+      "period": {
+        "key": "all",
+        "start": null,
+        "end": "2026-10-28T12:00:00Z"
+      },
+      "summary": {
+        "audienceDownloads": 38,
+        "uniqueDownloaders": 29,
+        "licensesIssued": 38,
+        "audiencePlays": 2864,
+        "likes": 142,
+        "reposts": 21,
+        "comments": 13,
+        "topDownloadedTrack": {
+          "id": 11,
+          "name": "Golden Hour",
+          "image": "/browser-smoke-cover.svg",
+          "downloads": 18
+        }
+      },
+      "downloadEvents": [
+        {
+          "id": 1,
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "track": {
+            "id": 11,
+            "name": "Golden Hour",
+            "image": "/browser-smoke-cover.svg"
+          },
+          "downloader": {
+            "id": 201,
+            "displayName": "Nova Vale",
+            "avatar": "/browser-smoke-avatar.svg"
+          },
+          "license": {
+            "uuid": "00000000-0000-4000-8000-000000000001",
+            "type": "non_exclusive",
+            "status": "active",
+            "is_valid": true,
+            "certificate_state": "ready"
+          }
+        },
+        {
+          "id": 2,
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "track": {
+            "id": 12,
+            "name": "Afterglow",
+            "image": "/browser-smoke-cover.svg"
+          },
+          "downloader": {
+            "id": 202,
+            "displayName": "Mira North",
+            "avatar": "/browser-smoke-avatar.svg"
+          },
+          "license": {
+            "uuid": "00000000-0000-4000-8000-000000000002",
+            "type": "non_exclusive",
+            "status": "active",
+            "is_valid": true,
+            "certificate_state": "ready"
+          }
+        },
+        {
+          "id": 3,
+          "occurredAt": "2026-10-28T12:00:00Z",
+          "track": {
+            "id": 13,
+            "name": "Night Drive",
+            "image": "/browser-smoke-cover.svg"
+          },
+          "downloader": {
+            "id": 203,
+            "displayName": "Low Tide",
+            "avatar": "/browser-smoke-avatar.svg"
+          },
+          "license": {
+            "uuid": "00000000-0000-4000-8000-000000000003",
+            "type": "non_exclusive",
+            "status": "active",
+            "is_valid": true,
+            "certificate_state": "ready"
+          }
+        }
+      ],
+      "pagination": {
+        "page": 1,
+        "perPage": 8,
+        "total": 3,
+        "hasMore": false
+      }
+    },
+    "producer-intelligence/artist/5/contribution-graph": {
+      "contributions": [
+        {
+          "date": "2026-05-21",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-21T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-05-25",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-25T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-25T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-25T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-05-29",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-29T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-29T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-05-29T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-02",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-02T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-02T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-02T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-06",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-06T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-06T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-10",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-10T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-14",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-14T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-14T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-14T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-18",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-18T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-18T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-18T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-22",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-22T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-22T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-22T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-26",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-26T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-26T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-06-30T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-04",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-04T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-04T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-04T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-08",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-08T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-08T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-08T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-12",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-12T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-12T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-12T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-16",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-16T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-16T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-20",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-20T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-24",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-24T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-24T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-24T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-07-28",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-28T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-28T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-07-28T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-01",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-01T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-01T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-01T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-05",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-05T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-05T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-09",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-09T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-13",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-13T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-13T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-13T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-17",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-17T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-17T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-17T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-21",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-21T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-21T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-21T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-25",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-25T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-25T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-08-29",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-08-29T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-02",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-02T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-02T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-02T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-06T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-06T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-06T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-10T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-10T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-10T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-14",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-14T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-14T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-18T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-22",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-22T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-22T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-22T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-26T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-26T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-26T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-09-30",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-30T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-30T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-09-30T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-04T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-04T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "count": 1,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-08T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-12",
+          "count": 5,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-12T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-12T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-12T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-16",
+          "count": 4,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-16T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-16T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-16T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-20",
+          "count": 3,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-20T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-20T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "name": "Night Drive",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-20T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2026-10-24",
+          "count": 2,
+          "tracks": [
+            {
+              "id": 11,
+              "name": "Golden Hour",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-24T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "name": "Afterglow",
+              "image": "/browser-smoke-cover.svg",
+              "created_at": "2026-10-24T12:00:00Z",
+              "artists": [
+                {
+                  "id": 5,
+                  "name": "Avery Lane",
+                  "image": "/browser-smoke-avatar.svg",
+                  "url": "/artist/5/avery-lane"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_uploads": 120,
+      "period": {
+        "start": "2026-01-01",
+        "end": "2026-10-28"
+      }
+    },
+    "producer-intelligence/platform/contribution-graph": {
+      "contributions": [
+        {
+          "date": "2026-05-21",
+          "count": 8
+        },
+        {
+          "date": "2026-05-25",
+          "count": 40
+        },
+        {
+          "date": "2026-05-29",
+          "count": 32
+        },
+        {
+          "date": "2026-06-02",
+          "count": 24
+        },
+        {
+          "date": "2026-06-06",
+          "count": 16
+        },
+        {
+          "date": "2026-06-10",
+          "count": 8
+        },
+        {
+          "date": "2026-06-14",
+          "count": 40
+        },
+        {
+          "date": "2026-06-18",
+          "count": 32
+        },
+        {
+          "date": "2026-06-22",
+          "count": 24
+        },
+        {
+          "date": "2026-06-26",
+          "count": 16
+        },
+        {
+          "date": "2026-06-30",
+          "count": 8
+        },
+        {
+          "date": "2026-07-04",
+          "count": 40
+        },
+        {
+          "date": "2026-07-08",
+          "count": 32
+        },
+        {
+          "date": "2026-07-12",
+          "count": 24
+        },
+        {
+          "date": "2026-07-16",
+          "count": 16
+        },
+        {
+          "date": "2026-07-20",
+          "count": 8
+        },
+        {
+          "date": "2026-07-24",
+          "count": 40
+        },
+        {
+          "date": "2026-07-28",
+          "count": 32
+        },
+        {
+          "date": "2026-08-01",
+          "count": 24
+        },
+        {
+          "date": "2026-08-05",
+          "count": 16
+        },
+        {
+          "date": "2026-08-09",
+          "count": 8
+        },
+        {
+          "date": "2026-08-13",
+          "count": 40
+        },
+        {
+          "date": "2026-08-17",
+          "count": 32
+        },
+        {
+          "date": "2026-08-21",
+          "count": 24
+        },
+        {
+          "date": "2026-08-25",
+          "count": 16
+        },
+        {
+          "date": "2026-08-29",
+          "count": 8
+        },
+        {
+          "date": "2026-09-02",
+          "count": 40
+        },
+        {
+          "date": "2026-09-06",
+          "count": 32
+        },
+        {
+          "date": "2026-09-10",
+          "count": 24
+        },
+        {
+          "date": "2026-09-14",
+          "count": 16
+        },
+        {
+          "date": "2026-09-18",
+          "count": 8
+        },
+        {
+          "date": "2026-09-22",
+          "count": 40
+        },
+        {
+          "date": "2026-09-26",
+          "count": 32
+        },
+        {
+          "date": "2026-09-30",
+          "count": 24
+        },
+        {
+          "date": "2026-10-04",
+          "count": 16
+        },
+        {
+          "date": "2026-10-08",
+          "count": 8
+        },
+        {
+          "date": "2026-10-12",
+          "count": 40
+        },
+        {
+          "date": "2026-10-16",
+          "count": 32
+        },
+        {
+          "date": "2026-10-20",
+          "count": 24
+        },
+        {
+          "date": "2026-10-24",
+          "count": 16
+        }
+      ],
+      "total_uploads": 960,
+      "period": {
+        "start": "2026-01-01",
+        "end": "2026-10-28"
+      }
+    }
+  }
+}

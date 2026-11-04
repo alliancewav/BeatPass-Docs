@@ -4,247 +4,120 @@ sidebarTitle: "Overview"
 description: "Explore BeatPass API endpoints with the interactive OpenAPI explorer."
 keywords: ["beatpass api reference","api endpoints","openapi","rest api","api documentation"]
 "og:title": "API Reference - BeatPass Developer Docs"
-"og:description": "Complete reference for all BeatPass API endpoints with interactive OpenAPI explorer."
+"og:description": "Browse documented BeatPass endpoint groups and the interactive OpenAPI explorer."
 audience: "developers"
 canonical: "https://docs.beatpass.ca/developers/api-reference/overview"
 ---
 
+import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 import SyntheticFixtures from "/snippets/developer/synthetic-fixtures.mdx";
 
-import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
+Choose the endpoint group for your approved integration. Each operation defines its own access requirements, request parameters, and response format.
 
-## API Reference
-
-This section documents all public-facing BeatPass API endpoints. Browse the OpenAPI specification or explore specific API domains:
-
-### API Documentation
-
-<Columns cols={3}>
-  <Card title="Dashboard API" icon="chart-line" href="/developers/api-reference/dashboard">
-    Producer dashboard metrics, track performance, and upload insights.
-  </Card>
-  <Card title="Insights API" icon="chart-line" href="/developers/api-reference/insights">
-    Analytics and insights for tracks, albums, and artists.
-  </Card>
-  <Card title="Commerce & Licensing" icon="cart-shopping" href="/developers/api-reference/commerce">
-    Purchases, licenses, safe finance references, and exclusive presets.
-  </Card>
-  <Card title="Messaging API" icon="comments" href="/developers/api-reference/messaging">
-    Direct messages, conversations, and real-time features.
-  </Card>
-  <Card title="Beat Requests API" icon="wave-square" href="/developers/api-reference/beat-requests">
-    Custom beat request marketplace and fulfillment.
-  </Card>
-  <Card title="Social API" icon="users" href="/developers/api-reference/social">
-    Following, reposts, user library, and social graph.
-  </Card>
-  <Card title="Content API" icon="record-vinyl" href="/developers/api-reference/content">
-    Tracks, albums, artists, lyrics, fingerprinting, Audio Recon, and Backstage producer requests.
-  </Card>
-  <Card title="Search & Discovery" icon="magnifying-glass" href="/developers/api-reference/search">
-    Search, genres, tags, radio, and leaderboards.
-  </Card>
-  <Card title="Producer Intelligence" icon="trophy" href="/developers/api-reference/producer-intelligence">
-    XP, achievements, social analytics, and charts.
-  </Card>
-</Columns>
-
-### OpenAPI Explorer
-
-The API reference uses the BeatPass OpenAPI specification to provide interactive documentation for all endpoints. Browse by category in the **Endpoint Explorer** section of the navigation.
+<ApiInviteOnly />
 
 <Info>
   **Base URL:** `https://open.beatpass.ca/api/v1`
 </Info>
 
----
+## API Documentation
 
-## Using the API Explorer
+<Columns cols={3}>
+  <Card title="Content" icon="record-vinyl" href="/developers/api-reference/content">
+    Tracks, artists, albums, playlists, and Audio Recon.
+  </Card>
+  <Card title="Search & Discovery" icon="magnifying-glass" href="/developers/api-reference/search">
+    Catalog search, genres, radio, and discovery.
+  </Card>
+  <Card title="Commerce & Licensing" icon="cart-shopping" href="/developers/api-reference/commerce">
+    Purchase quotes, certificates, presets, and finance history.
+  </Card>
+  <Card title="Dashboard" icon="chart-line" href="/developers/api-reference/dashboard">
+    Your producer profile, upload insights, and performance.
+  </Card>
+  <Card title="Insights" icon="chart-line" href="/developers/api-reference/insights">
+    Authorized content analytics and eligible exports.
+  </Card>
+  <Card title="Producer Intelligence" icon="trophy" href="/developers/api-reference/producer-intelligence">
+    Progress, achievements, rankings, and collaboration analytics.
+  </Card>
+  <Card title="Beat Requests" icon="wave-square" href="/developers/api-reference/beat-requests">
+    Requests, submissions, and request allowances.
+  </Card>
+  <Card title="Messaging" icon="comments" href="/developers/api-reference/messaging">
+    Conversations, messages, reactions, and read status.
+  </Card>
+  <Card title="Social" icon="users" href="/developers/api-reference/social">
+    Follows, reposts, libraries, and notification preferences.
+  </Card>
+</Columns>
+
+## OpenAPI Explorer
+
+The **Endpoint Explorer** in the sidebar provides an interactive reference for a selection of these operations. Read the endpoint guide for workflow details and recovery steps.
 
 <Steps>
-  <Step title="Select an Endpoint">
-    Expand the **Endpoint Explorer** in the sidebar and choose a category:
-
-    - **Search** — Full-text search across content
-    - **Tracks** — Track listing, details, and management
-    - **Artists** — Artist profiles and followers
-    - **Albums** — Album management
-    - **Playlists** — Playlist CRUD and collaboration
-    - **License Certificates** — License generation and verification
-    - And more...
+  <Step title="Choose the operation">
+    Check its HTTP method, path, authentication, parameters, and response type. Browser downloads, JSON responses, and CSV/PDF exports have different handling requirements.
   </Step>
-  <Step title="Review Parameters">
-    Each endpoint shows required and optional parameters, request body schemas, and example values.
+  <Step title="Authorize protected requests">
+    Use an approved developer token from **Account Settings → Developers**. Enter it in the explorer's **Authorization** field without adding a second `Bearer` prefix.
   </Step>
-  <Step title="Try It Out">
-    Use the **Try It** feature to test endpoints directly. Enter your Bearer token in the **Authorization** field for authenticated endpoints.
+  <Step title="Check the destination before sending">
+    **Try It** sends a real request to the configured server. The public host is production and there is no public sandbox. Use approved reads; arrange a separately authorized isolated environment for write and payment testing.
   </Step>
-  <Step title="Check Responses">
-    Response schemas show the expected data structure. Error responses (401, 403, 404, 422) are documented for each endpoint.
+  <Step title="Handle the result">
+    Inspect the HTTP status and endpoint-specific body. Do not infer payment completion, license validity, or file download completion from a successful request alone.
   </Step>
 </Steps>
 
----
-
 ## Authentication & Access Tiers
 
-The data you receive depends on your authentication level:
+Documented public reads can return public data without a token. Protected operations require valid authentication and the relevant account and resource permissions. A token does not authorize access to another account's private data.
 
-<AccordionGroup>
-  <Accordion title="Public (No Token)" icon="globe" defaultOpen>
-    <Badge color="gray" size="lg">Minimal Data</Badge>
-    
-    Public model serialization uses model-specific field lists:
-    - Tracks: `id`, `name`, `image`, `created_at`, `duration_text`, `model_type`, and loaded `artists`/`genres` relations
-    - Artists: `id`, `name`, `model_type`
-    - Genres: `id`, `name`, `display_name`, `model_type`
-
-    Endpoint controllers can add fields. Track listing also exposes `views`, `updated_at`, and `plays`; use each endpoint's response contract.
-  </Accordion>
-  <Accordion title="Bearer Token (Approved Developers)" icon="key">
-    <Badge color="blue" size="lg">Rich Data</Badge>
-    
-    Authenticated requests with a valid **Bearer token** return rich API data including pricing, play counts, BPM, key/scale, licensing type, and more.
-    
-    <ApiInviteOnly />
-  </Accordion>
-</AccordionGroup>
-
-### Using the Playground
-
-To get **rich responses** from the API playground, you must have an approved developer token:
-
-1. Once approved, go to **Account Settings → Developers** on [open.beatpass.ca](https://open.beatpass.ca) to generate a token
-2. Click the **Authorization** button in the playground
-3. Enter your token (without the `Bearer` prefix — Mintlify adds it automatically)
-4. Send your request
-
-<Info>
-  Public response fields vary by model and endpoint as described above. Enter your approved developer token for additional pricing, BPM, and licensing data.
-</Info>
-
----
+[Authentication](/developers/auth) explains token creation, expiry, and `401`/`403` recovery.
 
 ## Quick Examples
 
-### Public Request (Minimal Data)
-
 <SyntheticFixtures />
 
+### Public Request
+
 ```bash
-# Returns public track data; fields depend on the endpoint
 curl "https://api.example.com/api/v1/tracks" \
   -H "Accept: application/json"
 ```
 
-### Authenticated Request (Rich Data)
-
-<SyntheticFixtures />
-
-```bash
-# Returns full track data (pricing, plays, BPM, licensing, etc.)
-curl "https://api.example.com/api/v1/tracks" \
-  -H "Accept: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
-### JavaScript Example
-
-<SyntheticFixtures />
+### Authenticated Request
 
 ```javascript
 const response = await fetch('https://api.example.com/api/v1/tracks/900000007', {
   headers: {
-    'Accept': 'application/json',
-    'Authorization': 'Bearer YOUR_TOKEN_HERE'
+    Accept: 'application/json',
+    Authorization: 'Bearer YOUR_TOKEN_HERE'
   }
 });
+if (!response.ok) throw new Error(`Request failed: ${response.status}`);
 const data = await response.json();
-console.log(data.track.name); // "Synthetic Track Fixture"
+// Read the wrapper and fields documented for this operation.
 ```
-
----
 
 ## Endpoint Categories
 
-<Tabs>
-  <Tab title="Public">
-    These endpoints work without authentication (enhanced data when logged in):
-
-    <Columns cols={2}>
-      <Card title="Search" icon="magnifying-glass">
-        <Badge color="green">Optional Auth</Badge>
-         Full-text search across all content types.
-      </Card>
-      <Card title="Tracks" icon="record-vinyl">
-        <Badge color="green">Read: Optional</Badge>
-         Track listing and details.
-      </Card>
-      <Card title="Artists" icon="user">
-        <Badge color="green">Read: Optional</Badge>
-         Artist profiles and followers.
-      </Card>
-      <Card title="Albums" icon="layer-group">
-        <Badge color="green">Read: Optional</Badge>
-         Album listing and metadata.
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Mixed Auth">
-    Some operations require authentication:
-
-    <Columns cols={2}>
-      <Card title="Playlists" icon="list">
-        <Badge color="orange">Mixed</Badge>
-         Read public, write requires auth.
-      </Card>
-      <Card title="Users" icon="user">
-        <Badge color="orange">Mixed</Badge>
-         Public profiles, private data requires auth.
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Auth Required">
-    Full authentication required:
-
-    <Columns cols={2}>
-      <Card title="Insights" icon="chart-line">
-        <Badge color="red">Required</Badge>
-         Analytics and insights for content.
-      </Card>
-      <Card title="License Certificates" icon="file-contract">
-        <Badge color="red">Required</Badge>
-         Generation and verification.
-      </Card>
-      <Card title="Messaging" icon="comments">
-        <Badge color="red">Required</Badge>
-         Direct message conversations.
-      </Card>
-      <Card title="Beat Requests" icon="wave-square">
-        <Badge color="red">Required</Badge>
-         Beat request marketplace.
-      </Card>
-      <Card title="Audio Recon" icon="bullseye">
-        <Badge color="red">Required</Badge>
-         Detected audio similarities on streaming platforms.
-      </Card>
-    </Columns>
-  </Tab>
-</Tabs>
-
-<Tip>
-  The [Insights API](/developers/api-reference/insights) provides focused, domain-specific analytics endpoints with standardized error handling and export capabilities.
-</Tip>
-
----
+| Access pattern | Examples |
+| --- | --- |
+| Public reads | Catalog search and public content |
+| Public reads with protected changes | Playlists, profiles, and follows |
+| Protected personal or producer data | Messaging, finance history, and Insights |
+| Public verification with protected certificate retrieval | License certificates |
 
 ## Related Resources
 
 <Columns cols={2}>
   <Card title="Authentication" icon="key" href="/developers/auth">
-    Authentication methods and token generation.
+    Create and protect your token.
   </Card>
   <Card title="Error Catalog" icon="triangle-exclamation" href="/developers/error-catalog">
-    Error codes and resolutions.
+    Recover from rejected requests and changed state.
   </Card>
 </Columns>

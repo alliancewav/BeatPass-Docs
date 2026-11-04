@@ -6,29 +6,30 @@ description: "Compare earning share, producer progress, audience plays, releases
 canonical: "https://docs.beatpass.ca/help/producer-dashboard/leaderboards"
 ---
 
+import LeaderboardsFigure from "/snippets/media/leaderboards.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The **Leaderboards** page helps you understand where you stand using separate, clearly labeled measures. **Earning share** appears first because it connects directly to the contribution information used in **Finances**.
+The **Producer rankings** screen, opened from **Leaderboards**, helps you understand where you stand using separate, clearly labeled measures. **Earning share** appears first because it connects directly to the contribution information used in **Finances**.
 
 <ProducerOnly />
 
+<LeaderboardsFigure />
+
 ## Open Leaderboards
 
-Click your **profile avatar** → **Backstage**, then select **Leaderboards** in the sidebar.
+Click your **profile avatar** → **Producer Dashboard**, then select **Leaderboards** in the sidebar.
 
-The page always follows this order:
+Use **Ranking** to choose the measure you want to compare. **Earning share** is selected when you first open the page; a saved link can open another ranking.
 
-1. **Earning share**
-2. **Producer rankings**
-
-If you manage more than one artist profile, use **Artist profile** above the sections to choose which artist you want to review. **Progress** remains account-wide when you switch artists.
+The page uses your own producer profile. **Progress** tracks your account's level and XP.
 
 ## Earning Share
 
 **Earning share** compares each ranked artist's current contribution share. It uses the same current contribution formula as **Finances**, but it never shows anyone's private earnings amount.
 
-Each row shows:
+Producer cards and rows show:
 
 - Rank
 - Producer name and profile link
@@ -47,16 +48,17 @@ Use **Ranking** to compare one measure at a time:
 
 | Ranking | What it measures | Scope |
 | --- | --- | --- |
+| **Earning share** | Current contribution share used by Finances | Current snapshot |
 | **Progress** | Cumulative XP earned by the producer account | All time |
 | **Audience plays** | Plays from listeners who are not part of the artist team | 7 days, 30 days, or all time |
 | **Releases** | Tracks added to BeatPass during the selected period | 7 days, 30 days, or all time |
 | **Collaborations** | Collaborative tracks released during the selected period | 7 days, 30 days, or all time |
 
-On narrow screens, **Ranking** and **Period** use native selection fields. On wider screens, they appear as grouped controls.
+Open **Ranking** to choose a measure. **Period** appears for Audience plays, Releases, and Collaborations. Earning share uses the **Current snapshot**; Progress uses **All time**.
 
 ### Time Periods
 
-**7 days** and **30 days** are exact rolling periods ending when the ranking snapshot updates. **All time** has no artificial start date. **Progress** is cumulative, so it always uses all-time XP. Each artist profile appears once through its canonical producer account, so additional team access cannot create a duplicate producer row.
+**7 days** and **30 days** are exact rolling periods ending when the ranking snapshot updates. **All time** has no artificial start date. **Progress** is cumulative, so it always uses all-time XP. Each producer profile appears once through its linked producer owner account.
 
 ### Audience Plays
 
@@ -64,9 +66,13 @@ Known plays from people who manage the ranked artist are excluded. Anonymous lis
 
 ### Releases and Collaborations
 
-Tracks published on BeatPass count. A collaboration is a track credited to at least two artist profiles. These rankings count released tracks, not an opaque combined score.
+Tracks published on BeatPass count. A collaboration is a track credited to at least two artist profiles. These rankings count released tracks, rather than combining different activities into one score.
 
 ## How Positions Work
+
+**Leading producers** highlights the first three producers with their profile image, rank, and result. On your phone, swipe the cards or use the previous/next arrows. Select a producer's card to visit their profile. Your own card is marked **You** when you are among the leaders.
+
+If you appear in the top 20, select **View your position** to jump to your card or row. Otherwise, look for the separate **Your position** section.
 
 - Equal results share the same rank
 - The next rank skips the positions occupied by a tie
@@ -78,12 +84,12 @@ Select **Read the Leaderboards guide** to open this guide from the dashboard.
 
 ## Update and Error States
 
-Rankings are prepared in the background and normally refresh about every five minutes. This avoids running platform-wide calculations while producers open the page.
+Rankings use periodically updated snapshots. Check the displayed update context when comparing results; a refresh does not guarantee an immediate new calculation.
 
 - **Showing the most recent available ranking.** means the latest usable snapshot is being shown
 - **Ranking update failed. Showing the last available result.** keeps previously loaded rankings visible after a background update fails
 - **Producer rankings are temporarily unavailable** appears only when no usable result is available
-- A genuine no-activity state is explained separately and is never replaced with a realistic-looking zero
+- A no-activity state is explained separately and is never replaced with a realistic-looking zero
 
 ## Use Rankings Constructively
 

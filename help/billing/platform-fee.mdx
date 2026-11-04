@@ -9,94 +9,26 @@ keywords: ["platform fee", "service fee", "transaction fee", "track purchase fee
 canonical: "https://docs.beatpass.ca/help/billing/platform-fee"
 ---
 
-The platform fee is calculated from the configured percentage and flat amount and is shown before payment. Subscription checkout and renewal apply the subscription fee. An active plan may waive the fee for eligible exclusive purchases. Check the current checkout total.
-
-The calculation and plan-benefit checks are verified against application source. The active fee amounts and current plan configuration have not been independently verified for this guide.
+Review the **platform fee** and full total before paying on BeatPass. It is separate from the plan price or producer's listed beat price, and an eligible active plan may waive it for an exclusive purchase.
 
 ## Where the fee applies
 
-The source applies a platform fee to:
+- Subscription checkout and paid renewals include the subscription platform fee.
+- Exclusive checkout shows either its fee or a qualifying active-plan waiver.
+- Standard subscription downloads do not add a separate per-download fee.
 
-- Subscription checkout and renewal charges
-- Exclusive track purchases, unless the buyer's active plan waives the fee
+An exclusive-purchase benefit does not remove subscription checkout or renewal fees. Use the benefit and amount shown for your account at that checkout.
 
-<Note>
-  Standard subscription downloads do not trigger a separate per-download platform fee. An exclusive-purchase waiver does not remove the subscription checkout or renewal fee.
-</Note>
+## Read the total
 
-## How the calculation works
+The fee uses a percentage of the base price plus a flat amount. The percentage, flat amount, purchase currency, and applicable benefits can change, so a past example is not a current quote.
 
-BeatPass calculates the fee as **(base price × configured percentage) + configured flat amount**.
+For subscriptions, the summary shows the plan price, any applied coupon, fee, and total. A coupon reduces the percentage calculation against the discounted base; the flat fee remains. For exclusive purchases, check the track price, fee or waiver, and total before continuing.
 
-### Illustrative calculation
+If the amount changes before payment, review the updated quote again rather than relying on an earlier screen.
 
-These examples assume **12% + $3.00** solely to show the arithmetic. They do not establish the current fee or currency. Use the fee displayed at checkout.
+## Check your receipt later
 
-| Base price | Fee | Total |
-| --- | --- | --- |
-| $20.00 | $5.40 | $25.40 |
-| $50.00 | $9.00 | $59.00 |
-| $100.00 | $15.00 | $115.00 |
+Open [Billing → Payment history](https://open.beatpass.ca/billing) and use **View Invoice** for the payment. The record reflects the amount charged for that transaction; a later plan change does not rewrite an earlier exclusive receipt.
 
-For an exclusive purchase where the fee applies, the base price is the producer's listed track price. For subscriptions, the base price is the plan price before the platform fee is added.
-
-## What buyers see
-
-### Subscription checkout
-
-The shared checkout summary includes:
-
-- Plan price
-- Coupon discount, if one is applied
-- Platform fee
-- Total due today
-
-If a coupon is applied to a subscription, BeatPass reduces the percentage portion against the discounted base price. The configured flat portion still remains.
-
-### Exclusive track checkout
-
-The exclusive purchase dialog includes:
-
-- Track price
-- Platform fee with the current percentage and flat-fee formula, or a waived message when an active plan benefit applies
-- Total amount in the selected purchase currency
-
-The fee decision is checked again when payment starts. That final checkout amount is stored with the purchase so a later plan change does not rewrite the receipt.
-
-## How invoices and payment history relate
-
-- Subscription invoices can include the platform fee as its own line item
-- Payment history gives you the invoice entry and a link to the invoice view when that action is available
-- For exclusive purchases, the printable invoice uses the fee stored with that payment. Fee-exempt purchases show the producer price as the total and do not add a platform-fee line.
-
-## Why the fee is added on top
-
-BeatPass keeps the base subscription price or producer's listed track price separate from the platform fee. The producer amount is not reduced, including when an eligible subscriber's exclusive-purchase fee is waived.
-
-## Common questions
-
-<AccordionGroup>
-  <Accordion title="Is the current fee fixed?" icon="percent" defaultOpen>
-    The percentage and flat amount are configurable. Trust the amount shown in checkout at the time you pay; this guide does not confirm the current live setting.
-  </Accordion>
-  <Accordion title="Does the fee show before I pay?" icon="receipt">
-    Yes. Subscription checkout shows the fee before payment. Exclusive checkout shows either the fee or the active plan waiver before payment.
-  </Accordion>
-  <Accordion title="Does the fee come out of the producer's listed track price?" icon="dollar-sign">
-    No. The exclusive purchase flow keeps the producer amount equal to the listed track price. The buyer pays the fee when it applies; an eligible active plan can waive it.
-  </Accordion>
-  <Accordion title="Does an exclusive-purchase waiver remove the subscription fee?" icon="crown">
-    No. A qualifying plan benefit waives the fee only on eligible one-time exclusive license purchases. Subscription checkout and renewals still include the subscription platform fee. Check your current plan benefits for eligibility.
-  </Accordion>
-</AccordionGroup>
-
-## Related
-
-<Columns cols={2}>
-  <Card title="Invoices" icon="file-lines" href="/help/billing/invoices">
-    See how payment history and invoice access work.
-  </Card>
-  <Card title="Billing FAQ" icon="circle-question" href="/help/billing/faq">
-    Review the related billing answers.
-  </Card>
-</Columns>
+A full refund may include a fee refund, but fee treatment is not automatic for every adjustment. See [Refund Policy](/help/billing/refund-policy).

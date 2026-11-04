@@ -1,68 +1,58 @@
 ---
 audience: help
 title: "Troubleshooting"
-sidebarTitle: "Overview"
+sidebarTitle: "Fix a problem"
 description: "Find solutions to common issues on BeatPass. Get help with account access, downloads, payments, playback, uploads, and producer payouts."
 canonical: "https://docs.beatpass.ca/help/troubleshooting"
 ---
 
 import StillNeedHelp from "/snippets/sections/still-need-help.mdx";
 
-Having trouble with BeatPass? This section helps you quickly resolve common issues. Select the topic that best matches your situation.
-
----
+Something interrupted your session? Start with the task you were trying to finish. You do not need to know why it went wrong.
 
 ## Common Issues
 
 <Columns cols={2}>
-  <Card title="Account Access" icon="user" href="/help/troubleshooting/account-access">
-    Can't log in, forgot password, or having trouble with your account.
+  <Card title="I cannot sign in" icon="user-lock" href="/help/troubleshooting/account-access">
+    Recover account access, a password, or two-factor sign-in.
   </Card>
-  <Card title="Download Issues" icon="download" href="/help/troubleshooting/download-issues">
-    Downloads not working, missing files, or license problems.
+  <Card title="My download did not arrive" icon="download" href="/help/troubleshooting/download-issues">
+    Check the browser download, account access, and certificate action.
   </Card>
-  <Card title="Payment Issues" icon="credit-card" href="/help/troubleshooting/payment-issues">
-    Billing problems, subscription issues, or payment errors.
+  <Card title="I have a payment problem" icon="credit-card" href="/help/troubleshooting/payment-issues">
+    Review a charge, checkout error, or subscription status.
   </Card>
-  <Card title="Playback Issues" icon="play" href="/help/troubleshooting/playback-issues">
-    Audio not playing, buffering, or sound quality problems.
+  <Card title="The music will not play" icon="play" href="/help/troubleshooting/playback-issues">
+    Work through playback, buffering, and audio problems.
   </Card>
-  <Card title="Upload Issues" icon="cloud-arrow-up" href="/help/troubleshooting/upload-issues">
-    Track or album uploads failing, file errors, or duplicate detection.
+  <Card title="My upload is stuck" icon="cloud-arrow-up" href="/help/troubleshooting/upload-issues">
+    Check the WAV, required details, and audio verification.
   </Card>
-  <Card title="Stripe Connect Issues" icon="chart-line" href="/help/troubleshooting/stripe-issues">
-    Producer payout setup, BEATPAY, Stripe Connect, or payment receiving problems.
+  <Card title="My payout needs attention" icon="building-columns" href="/help/troubleshooting/stripe-issues">
+    Follow the current BEATPAY or legacy Stripe state in Finances.
   </Card>
 </Columns>
 
----
-
 ## Quick Fixes
 
-These general steps can sometimes help with minor or temporary issues:
+Before reloading, keep any unsaved work and wait for uploads or payments already in progress. Avoid repeating a purchase while you are checking its result.
 
 <AccordionGroup>
-  <Accordion title="Refresh the page">
-    Press **F5** or **Ctrl+R** (Windows) / **Cmd+R** (Mac) to reload and clear temporary glitches.
+  <Accordion title="Check your connection">
+    Try another website to see whether the problem affects your connection. Return to the same BeatPass page when the connection is stable.
   </Accordion>
-  
-  <Accordion title="Clear your browser cache">
-    Outdated cached data can occasionally cause problems. Clear your browser's cache and cookies, then try again.
+  <Accordion title="Reload when your work is safe">
+    On a computer, use **Ctrl+R** on Windows or **Cmd+R** on Mac. On your phone, use the browser's reload action. Check whether the same issue returns before repeating other actions.
   </Accordion>
-  
-  <Accordion title="Try a different browser">
-    If the issue continues, test with a different modern browser (Chrome, Firefox, Safari, or Edge).
+  <Accordion title="Compare with another browser">
+    Try the same task in another modern browser. This can help identify a browser-specific problem without clearing your current session.
   </Accordion>
-  
-  <Accordion title="Check your internet connection">
-    Make sure you have a stable connection. Try loading other websites to confirm.
+  <Accordion title="Check an extension">
+    If an extension appears to block a control or file, temporarily disable it and check the same page again.
   </Accordion>
-  
-  <Accordion title="Disable browser extensions">
-    Some extensions (especially ad blockers) can interfere with BeatPass. Try disabling them temporarily.
+  <Accordion title="Clear site data only if you need to">
+    Clearing BeatPass site data can sign you out and remove saved browser state. Keep needed records first. Use this after a normal reload or another browser has helped identify a local storage problem.
   </Accordion>
 </AccordionGroup>
-
----
 
 <StillNeedHelp />

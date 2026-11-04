@@ -6,63 +6,45 @@ description: "A step-by-step guide to uploading tracks on BeatPass using the upl
 canonical: "https://docs.beatpass.ca/help/uploading/upload-page"
 ---
 
+import RightsDeclarationsFigure from "/snippets/media/rights-declarations.mdx";
+import SampleSafeFigure from "/snippets/media/sample-safe.mdx";
+
 import ProducerOnly from "/snippets/warnings/producer-only.mdx";
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The upload page is where producers add new beats and build collections. This guide covers the upload flow, form fields, validation behavior, AI policy requirements, and tips for a smooth upload experience.
+Publish a beat with clear artwork, credits, and licensing choices. Start from [Upload beats](https://open.beatpass.ca/backstage/upload), keep your WAV ready, and work through the form in order.
 
 <ProducerOnly />
 
-## Interface Preview
 
-<Tabs>
-  <Tab title="Desktop">
-    <Frame caption="WAV upload area on desktop in light mode">
-      <img src="/assets/screenshots/uploading-desktop-light.png" alt="Upload your beats page with a WAV drag-and-drop area and Choose files to upload button" />
-    </Frame>
-  </Tab>
-  <Tab title="Mobile">
-    <Frame caption="WAV upload area on mobile in dark mode">
-      <img src="/assets/screenshots/uploading-mobile-dark.png" alt="Mobile Upload your beats page showing the WAV-only upload area and Create collection toggle" />
-    </Frame>
-  </Tab>
-</Tabs>
 
 ## Accessing the Upload Page
 
-Click **Upload beats** in the top navigation bar. The page heading reads **Upload your beats** with the subtext: "Drag and drop WAV files here, or click below to browse."
+From **Producer Dashboard** or **My Beats**, select **Upload beat**. The app navigation can also offer **Upload beats**. The page heading is **Upload your beats**.
 
 ## Upload Modes
 
-The upload page supports two modes:
-
-| Mode | Best for |
-|------|----------|
-| **Single-beat upload** | Standalone track releases |
-| **Create Collection** | Uploading multiple beats as a collection |
-
-Enable the **Create Collection** toggle before adding files to build a collection. The toggle description reads: "Automatically create a collection when multiple files are selected."
+Use the normal upload for a standalone beat. To group multiple files, turn on **Create Collection** before choosing them. The collection needs its own cover art, and every beat still needs its own audio file.
 
 ## Supported Audio Formats
 
-BeatPass only accepts **WAV** audio files.
-
-| Accepted | Not accepted |
-|----------|-------------|
-| **WAV** | MP3, FLAC, AAC, OGG, and other formats |
+Export your audio as **WAV**. MP3, FLAC, AAC, OGG, and other formats are not accepted.
 
 If you upload an unsupported format, a dialog titled **Unsupported File Format** appears with an **Upload a Different File** button.
 
 ## Adding Files
 
-You have two options:
-
-- **Drag and drop** your files directly into the upload area
-- Click **Choose files to upload** and select files from your computer
-
-After a file is accepted, BeatPass opens the track form and begins audio fingerprinting in the background.
-
-The form follows a guided sequence. **Cover Art & Style** opens first, and each next section becomes available after the sections before it are complete. When a new section opens, the previous section stays open so you can review both. Up to two sections remain open at a time.
+<Steps>
+  <Step title="Choose the WAV">
+    Drag it into the upload area or select **Choose files to upload**. After acceptance, the track form opens and audio fingerprinting begins.
+  </Step>
+  <Step title="Follow the open section">
+    **Cover Art & Style** opens first. Complete it to make the next section available. The preceding section stays open for review; up to two sections remain open at a time.
+  </Step>
+  <Step title="Review before saving">
+    Complete the details below and wait for **Verified Unique**. Then follow [Saving Your Upload](#saving-your-upload) and check the saved beat in **My Beats**.
+  </Step>
+</Steps>
 
 ## Track Form Sections
 
@@ -77,7 +59,7 @@ Upload cover art for your beat. You can use a custom image or select from **AI C
 | Field | Required | Notes |
 |-------|----------|-------|
 | **Track Name** | Yes | Enter the final catalog title; file names and embedded audio titles are not copied into this field |
-| **Producers** | Auto-filled | Automatically set to your producer profile |
+| **Artists** | Yes | Your producer profile is filled in; add agreed co-producer credits here |
 | **Description** | No | Describe the beat's style, mood, or intended use |
 | **Collection/Album** | No | Assign the beat to an existing or new collection |
 | **Tags** | No | Add searchable tags (custom values allowed) |
@@ -98,12 +80,12 @@ Choose your beat's sample clearance status:
   <Card title="Cleared" icon="shield">
     The beat is 100% original or all samples are fully cleared.
   </Card>
-  <Card title="Needs Clearance" icon="triangle-exclamation">
+  <Card title="Needs clearance" icon="triangle-exclamation">
     The beat contains samples that still require outside clearance.
   </Card>
 </Columns>
 
-If you choose **Needs Clearance**, an additional notes field appears and buyers are warned accordingly.
+If you choose **Needs clearance**, an additional notes field appears and buyers are warned accordingly.
 
 This section also shows the audio fingerprinting status as the duplicate check runs.
 
@@ -121,12 +103,23 @@ Choose one declaration before publishing:
 **AI-assisted** also requires the tool or service name, a brief explanation of how it affected the final audio, and confirmation that you can commercially use and license all AI-related material. Keep records that support your declaration in case BeatPass requests Proof of Rights.
 
 <Warning>
-  Sample-Safe status does not replace AI disclosure or AI rights verification. A beat marked **Needs Clearance** can still violate the AI policy if the AI source or commercial-use rights cannot be verified.
+  Sample-Safe status does not replace AI disclosure or AI rights verification. A beat marked **Needs clearance** can still violate the AI policy if the AI source or commercial-use rights cannot be verified.
 </Warning>
+
+Look for these separate declarations in the form. The examples use a saved demo beat; they are not a completed new upload.
+
+<Tabs sync={false}>
+  <Tab title="Sample clearance" icon="shield-halved">
+    <SampleSafeFigure />
+  </Tab>
+  <Tab title="AI use" icon="wand-magic-sparkles">
+    <RightsDeclarationsFigure />
+  </Tab>
+</Tabs>
 
 ### Licensing Options
 
-This is the final step in the guided form. BeatPass only presents licensing models that are available for every credited producer. Depending on payout readiness, a new producer may see **Exclusive Only** as the available model.
+This is the final step in the guided form. Choose how you want customers to license the beat. You can save and organize your catalog before payout setup is complete; customer downloads and purchases still depend on the payout readiness shown for each route.
 
 If you want to offer exclusive licensing, expand the section and choose a model:
 
@@ -136,7 +129,7 @@ If you want to offer exclusive licensing, expand the section and choose a model:
 | **Standard + Exclusive** | Offer both standard licensing and exclusive purchase |
 | **Exclusive Only** | Offer the beat only as an exclusive opportunity |
 
-If a licensing model is not available for your producer account yet, the option stays visible with an explanation. BeatPass will notify you when it becomes available.
+Read any payout notice below your choice. Saving the beat does not by itself make that licensing route available to customers. Follow **Set up payouts** when offered, then check [Finances](/help/earnings/index).
 
 <Note>
   **Exclusive Only** tracks earn from direct sales and do not contribute to subscription revenue sharing. See the [Contribution System](/help/earnings/contribution-system) before choosing this model.
@@ -145,9 +138,9 @@ If a licensing model is not available for your producer account yet, the option 
 When exclusive licensing is enabled, additional fields appear:
 
 - **Exclusive price** and **currency** (USD, EUR, GBP, or CAD) for an **Available** offer
-- **Price & availability** — **Available** enables checkout, while **Private** removes the price and directs buyers to chat
+- **Price & availability**: **Available** lists a checkout price, subject to payout readiness; **Private** removes the price and directs buyers to chat
 - **Exclusive contact email** (auto-filled with your email)
-- **Files delivered to the buyer** — the original WAV plus stems and any other files you guarantee
+- **Files delivered to the buyer**: the original WAV plus stems and any other files you guarantee
 
 **Sold** is not a publishing choice. BeatPass applies it automatically when an exclusive certificate is issued. After that, the audio and licensing settings are locked and only the cover art can be changed.
 
@@ -173,7 +166,9 @@ If a matching beat is detected, a modal shows the original track details and sim
 
 ## Saving Your Upload
 
-When the required fields are complete, click **Save Track**. The form is locked while BeatPass publishes the beat, so wait for the confirmation before leaving the page. For collection uploads:
+When the required fields are complete, click **Save Track**. The form is locked while BeatPass publishes the beat, so wait for the confirmation before leaving the page. After saving, open the beat from **My Beats** and check its artwork, credits, and licensing display. If saving fails, read the missing-field message and check the upload and verification status before trying again.
+
+For collection uploads:
 
 - The collection itself needs its own cover art
 - Each track still needs its own audio file
@@ -182,7 +177,7 @@ If the beat includes an exclusive offer, BeatPass asks you to confirm that the l
 
 ## Upload Minutes
 
-Your plan determines how many minutes of audio you can upload. A notice at the top of the page shows your remaining minutes. If you run out, consider upgrading your plan for more upload capacity.
+Producer access is free. If your account has an upload allowance, the page shows the minutes remaining. Follow the limit message if an upload is blocked, or contact support if the allowance looks wrong. A paid customer subscription is not a producer upload upgrade.
 
 ## Tips
 

@@ -11,7 +11,7 @@ canonical: "https://docs.beatpass.ca/developers/overview"
 
 import ApiInviteOnly from "/snippets/warnings/api-invite-only.mdx";
 
-The BeatPass API provides access to platform data for approved developer integrations and partnerships. All authenticated requests use <Tooltip tip="A secret credential sent in the Authorization header to authenticate API requests. Granted by the BeatPass team on a case-by-case basis." cta="Auth guide" href="/developers/auth">Bearer token</Tooltip> authentication.
+The BeatPass API provides access to platform data for approved developer integrations and partnerships. For protected operations, use <Tooltip tip="A secret credential sent in the Authorization header to authenticate API requests. Create your token after integration approval." cta="Auth guide" href="/developers/auth">Bearer token</Tooltip> authentication.
 
 <ApiInviteOnly />
 
@@ -25,7 +25,7 @@ The BeatPass API provides access to platform data for approved developer integra
     Learn the auth flow
   </Card>
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
-    Explore all endpoints
+    Browse documented endpoint groups
   </Card>
 </Columns>
 
@@ -45,7 +45,7 @@ If you're interested in integrating with BeatPass (partnerships, data licensing,
 
 All API requests use the base URL:
 
-```
+```text
 https://open.beatpass.ca/api/v1
 ```
 
@@ -53,113 +53,16 @@ https://open.beatpass.ca/api/v1
 
 ## API Surface
 
-The BeatPass API provides comprehensive functionality across the platform:
+The [API Reference](/developers/api-reference/overview) groups the supported operations for approved integrations. Start with catalog reads, then add only the personal or producer workflows your integration needs.
 
-<Tabs>
-  <Tab title="Content & Discovery">
-    <Columns cols={2}>
-      <Card title="Tracks" icon="record-vinyl">
-        List, view, upload, update, delete tracks
-      </Card>
-      <Card title="Albums" icon="layer-group">
-        Album management and metadata
-      </Card>
-      <Card title="Artists" icon="user">
-        Artist profiles, followers, tracks
-      </Card>
-      <Card title="Playlists" icon="list">
-        Create, manage, share playlists
-      </Card>
-      <Card title="Search" icon="magnifying-glass">
-        Full-text search across content types
-      </Card>
-      <Card title="Genres" icon="tags">
-        Genre listing and filtering
-      </Card>
-      <Card title="Lyrics" icon="align-left">
-        Synced and plain lyrics management
-      </Card>
-      <Card title="Radio" icon="radio">
-        Personalized music recommendations
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Commerce & Licensing">
-    <Columns cols={2}>
-      <Card title="Track Purchases" icon="cart-shopping">
-        Per-track purchase and license flow
-      </Card>
-      <Card title="License Certificates" icon="file-contract">
-        Generate, verify, revoke licenses
-      </Card>
-      <Card title="Exclusive Licenses" icon="lock">
-        Preset management for exclusive sales
-      </Card>
-      <Card title="Subscription Payouts" icon="money-bill-transfer">
-        Artist earnings from subscriptions
-      </Card>
-      <Card title="Producer payouts" icon="money-bill-transfer">
-        Read-only payout summaries where documented; setup stays in **Finances**
-      </Card>
-      <Card title="Coupons" icon="ticket">
-        Discount code management
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Producer Tools">
-    <Columns cols={2}>
-      <Card title="Producer Intelligence" icon="trophy">
-        XP, achievements, leaderboards
-      </Card>
-      <Card title="Analytics" icon="chart-line">
-        Track performance, engagement metrics
-      </Card>
-      <Card title="Contribution Pool" icon="coins">
-        Earnings estimates, track breakdowns
-      </Card>
-      <Card title="Payout Analytics" icon="money-check-dollar">
-        History, projections, trends
-      </Card>
-      <Card title="Audio Fingerprinting" icon="fingerprint">
-        Duplicate detection, content ID
-      </Card>
-      <Card title="Audio Recon" icon="bullseye">
-        Detected audio similarities on streaming platforms
-      </Card>
-      <Card title="Producer Access Requests" icon="user-check">
-        Backstage submission status checks and conflict guidance
-      </Card>
-      <Card title="Cover Art" icon="image">
-        Template-based cover art generation
-      </Card>
-      <Card title="Artist Credits" icon="id-badge">
-        Professional portfolio credits
-      </Card>
-    </Columns>
-  </Tab>
-  <Tab title="Social & Collaboration">
-    <Columns cols={2}>
-      <Card title="Messaging" icon="comments">
-        Direct messages with typing indicators
-      </Card>
-      <Card title="Beat Requests" icon="wave-square">
-        Custom beat request marketplace
-      </Card>
-      <Card title="Following" icon="user-plus">
-        User and artist follow system
-      </Card>
-      <Card title="Reposts" icon="retweet">
-        Content sharing within platform
-      </Card>
-      <Card title="Collections" icon="layer-group">
-        Curated content collections
-      </Card>
-      <Card title="User Library" icon="bookmark">
-        Liked tracks, albums, and artists
-      </Card>
-    </Columns>
-  </Tab>
-</Tabs>
+<Columns cols={2}>
+  <Card title="Browse the catalog" icon="record-vinyl" href="/developers/api-reference/content">
+    Search and read tracks, albums, artists, and playlists.
+  </Card>
+  <Card title="Build an account integration" icon="code" href="/developers/api-reference/overview">
+    Review commerce, messaging, analytics, and producer operations.
+  </Card>
+</Columns>
 
 ---
 
@@ -203,6 +106,8 @@ Response envelopes vary by endpoint. Track listing returns `status` and `paginat
 
 ### Error Response
 
+Illustrative validation error only. Endpoints use different envelopes; see the [Error Catalog](/developers/error-catalog).
+
 ```json
 {
   "message": "Error description",
@@ -214,11 +119,11 @@ Response envelopes vary by endpoint. Track listing returns `status` and `paginat
 
 ### Pagination
 
-Pagination is endpoint-specific. `GET /tracks` wraps its page in `pagination` alongside `status: "success"`. It uses the following source-supported page-number forms; other endpoints can use different field names or cursor/offset pagination.
+Pagination is endpoint-specific. `GET /tracks` wraps its page in `pagination` alongside `status: "success"`. It uses the following page-number forms; other endpoints can use different field names or cursor/offset pagination.
 
-Length-aware pages include `total`, `last_page`, and numeric `next_page`/`prev_page`. Simple pages omit totals and last-page counts and instead include `next_page_url`/`prev_page_url`. The `paginate=simple` query parameter, or the runtime `simple_pagination_tables` setting, selects simple pagination. The deployed setting has not been verified here.
+Length-aware pages include `total`, `last_page`, and numeric `next_page`/`prev_page`. Simple pages omit totals and last-page counts and instead include `next_page_url`/`prev_page_url`. Use `paginate=simple` to request simple pagination, and handle the form returned by the endpoint.
 
-For track listing, `per_page` defaults to 15 and is capped at 500 in source. `from` and `to` are 1-based positions for the displayed items and are null on an empty page. A length-aware `last_page` is at least 1, including when `total` is 0. Retain the request's page size and filters when moving between pages.
+For track listing, `per_page` defaults to 15 and is capped at 500. `from` and `to` are 1-based positions for the displayed items and are null on an empty page. A length-aware `last_page` is at least 1, including when `total` is 0. Retain the request's page size and filters when moving between pages.
 
 Synthetic, nonfunctional documentation fixtures only. Names, identifiers, URLs and counts are invented, not copied from accounts or a live response. Numeric IDs can coincide with real records; never send these fixtures to a live API.
 
@@ -313,23 +218,9 @@ An empty simple page uses `data: []`, null `from`/`to`, and null `next_page_url`
 
 ## Authentication & Data Access
 
-The BeatPass API uses a **<Tooltip tip="Public and token response fields vary by model and endpoint. Public Track data can include image, timestamps and loaded artist/genre relations.">two-tier access model</Tooltip>** for external consumers:
+Documented public reads return public endpoint data without a token. Protected operations require an approved Bearer token and the relevant account and resource permissions. A missing or rejected token does not turn a protected request into a public read.
 
-| Tier | Auth | Data |
-|------|------|------|
-| **Public** | None | Model-specific fields; Track includes image, created_at, duration_text and loaded artists/genres |
-| **Token** | `Bearer {token}` | Rich (pricing, plays, BPM, licensing) |
-
-<Warning>
-  **Unauthenticated requests return minimal data.** You must have an approved Bearer token to access rich API responses. See [Authentication](/developers/auth) for details.
-</Warning>
-
-```mermaid
-flowchart LR
-    A[API Request] --> B{Bearer token\nincluded?}
-    B -->|Yes| C[Rich Data\nPricing, plays, BPM,\nlicensing, tags]
-    B -->|No| D[Public Data\nModel-specific fields]
-```
+Response fields are endpoint-specific. See [Authentication](/developers/auth) for token creation, expiry, and error handling.
 
 ---
 
@@ -364,7 +255,7 @@ The API enforces rate limits to ensure fair usage and platform stability. Exceed
   - **Redistributing** API data without permission
   - **Automated bulk collection** of catalog data
   
-  Violations result in immediate token revocation and account termination.
+  API use is governed by the [Terms of Service](https://open.beatpass.ca/pages/terms-of-service); misuse can lead to token revocation or account action.
 </Warning>
 
 <Tip>
@@ -380,6 +271,6 @@ The API enforces rate limits to ensure fair usage and platform stability. Exceed
     Learn how API authentication works.
   </Card>
   <Card title="API Reference" icon="code" href="/developers/api-reference/overview">
-    Complete endpoint reference.
+    Browse documented endpoint groups.
   </Card>
 </Columns>

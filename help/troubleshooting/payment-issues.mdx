@@ -8,99 +8,42 @@ canonical: "https://docs.beatpass.ca/help/troubleshooting/payment-issues"
 
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-If billing is failing, first confirm what BeatPass is currently showing on the **Billing** page.
+Check BeatPass **Billing** before retrying a payment. A pending checkout, an unpaid renewal, and an exclusive purchase can need different next steps.
 
-## Where to Check Billing
+## Start with the recorded status
 
-Open the avatar menu and choose **Billing**.
+Open [Billing](https://open.beatpass.ca/billing) to check the current plan and **Payment history**. For an exclusive purchase, also check its confirmation page and [Your licenses](https://open.beatpass.ca/library/licenses).
 
-Depending on your current state, BeatPass shows either:
+For a subscription, **Your BeatPass is ready.** confirms activation. Use **Go to Billing** to review the recorded plan and receipt.
 
-- **Current plan**, with options like **Change plan** and **Cancel plan**
-- **No active subscription**, with a **View Plans** action
+If **Confirmation is still pending** appears, use **Check again** or open Billing. Do not make another payment while confirmation is pending. **Payment needs your attention** means you should check Billing and the displayed message before using **Back to checkout** when offered.
 
-## My Payment Was Declined
+## Your sign-in session ended
 
-<AccordionGroup>
-  <Accordion title="Card was declined">
-    Re-enter the card details carefully, make sure the card has not expired, and ask your bank to authorize the transaction if needed.
-  </Accordion>
-  <Accordion title="Payment processing error">
-    Wait a few minutes, refresh, and try again. If the problem continues, contact support with the error message and your account email.
-  </Accordion>
-</AccordionGroup>
+If checkout says **Your session has ended. Sign in again to continue.**, choose **Sign in**. Review the plan, dates, and full total again before paying. If the charge changes, checkout asks you to review the updated total and submit again.
 
-## Updating My Payment Method
+## A card or renewal failed
 
-BeatPass currently uses card billing in this environment.
+Check the card expiry, provider error, and any bank authentication request. In **Billing → Payment method**, select **Update** to change the subscription method. Use only payment options offered for the current checkout.
 
-To update your card:
+A bank decline may need the card issuer's help. Updating a card does not itself confirm a retry succeeded: check the plan and payment status afterwards. Overdue payment can block new standard licenses; valid earlier licenses are checked separately.
 
-1. Open **Billing**
-2. Find the payment-method panel
-3. Click **Update**
-4. Enter the replacement card details
+## The amount or plan looks wrong
 
-## Changing or Canceling My Plan
+Compare the invoice with the checkout total, billing interval, platform fee, and any promo code or plan benefit. An exclusive-purchase benefit does not automatically change subscription fees.
 
-Use the Billing page to:
+For a plan change, check its effective date. A scheduled change keeps the current plan until renewal; an immediate upgrade can include a provider-calculated prorated charge.
 
-- Change plans with **Change plan**
-- Cancel with **Cancel plan**
+## A charge is duplicated or unauthorized
 
-After cancellation, you keep your current paid access until the end of the billing period and then fall back to the standard free-account state.
+For two completed charges or failed delivery, [contact support](/help/contact-support) with the date, amount, and purchase or invoice reference. Redact unrelated information from evidence. For an unauthorized charge, contact your card issuer as well as BeatPass.
 
-## My Premium Benefits Stopped Working
+Do not send full card numbers, security codes, bank details, passwords, or sign-in links.
 
-<AccordionGroup>
-  <Accordion title="My subscription is overdue">
-    BeatPass can disable downloads and licensing until payment is resolved. Use the billing flow to retry payment or switch back to the free state.
-  </Accordion>
-  <Accordion title="Billing says active but the app still looks wrong">
-    Sign out and back in, then refresh the app. If the account still looks unsynced, contact support.
-  </Accordion>
-</AccordionGroup>
+## A refund or cancellation is needed
 
-## I Was Charged Incorrectly
+[Cancel a subscription](/help/billing/managing-subscription/cancelling-subscription) to stop future renewals. This does not automatically refund an earlier charge.
 
-Contact **contact@beatpass.ca** and include:
-
-- Your account email
-- Charge date
-- Charge amount
-- A screenshot or bank-statement reference
-
-This is especially important for duplicate charges or charges that do not match the current plan shown in Billing.
-
-## Refund Questions
-
-BeatPass documents refund handling in the refund-policy page.
-
-<AccordionGroup>
-  <Accordion title="Can I get a refund on a subscription?">
-    Subscription payments are generally non-refundable. Cancellation stops future renewal and keeps access until the end of the billing period.
-  </Accordion>
-  <Accordion title="What about exclusive purchases?">
-    BeatPass has a separate refund-policy process for exclusive purchases and disputes. Do not rely on troubleshooting summaries alone for eligibility.
-  </Accordion>
-  <Accordion title="Should I file a chargeback immediately?">
-    Contact BeatPass support first. The refund policy explains why starting with support is the safer path.
-  </Accordion>
-</AccordionGroup>
-
-<Card title="Read the full refund policy" icon="rotate-left" href="/help/billing/refund-policy">
-  Review the current refund rules, dispute handling, and exception windows.
-</Card>
+For an accidental exclusive purchase, the [24-hour exception](/help/billing/refund-policy) requires a request within 24 hours and unused files and certificate. Other problems, including verified rights issues, have separate review grounds. Approval is not guaranteed.
 
 <NeedHelp />
-
-## Related
-
-<Columns cols={2}>
-  <Card title="Account Access" icon="user" href="/help/troubleshooting/account-access">
-    Having trouble logging in?
-  </Card>
-  <Card title="Download Issues" icon="download" href="/help/troubleshooting/download-issues">
-    Problems downloading tracks?
-  </Card>
-</Columns>

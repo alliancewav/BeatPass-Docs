@@ -10,135 +10,41 @@ keywords: ["verify license", "license verification", "certificate validation", "
 canonical: "https://docs.beatpass.ca/help/downloads-and-licensing/verifying-licenses"
 ---
 
-BeatPass includes a public verification page for license certificates. Anyone with the license UUID can check whether the certificate exists and whether it is currently valid.
+import LicenseVerificationFigure from "/snippets/media/license-verification.mdx";
 
-<Info>
-  Verification is public. The person checking the certificate does not need to log in.
-</Info>
+Open a certificate's public verification link to check the current BeatPass record. You do not need to sign in to check it. Use the result together with the full license document, which defines the rights and obligations for the release.
 
-<Note>
-  Verification confirms BeatPass's certificate record and current status. It does not guarantee that no third-party claim, AI-origin dispute, or rights-verification issue can ever arise.
-</Note>
+<LicenseVerificationFigure />
 
-## Verification link format
-
-Every certificate points to the public [license verification page](https://open.beatpass.ca/verify-license/) followed by its unique license UUID.
-
-## How to verify a certificate
+## Check a certificate
 
 <Steps>
-  <Step title="Get the license UUID">
-    You can copy it from the certificate, the printable certificate page, or the **Licenses** area in the app.
+  <Step title="Open the complete verification link">
+    Use the link supplied on the certificate, or open a card's **Details** in [Your licenses](https://open.beatpass.ca/library/licenses) and select **Verify**. Keep the complete certificate ID in the link.
   </Step>
-  <Step title="Open the public page">
-    Visit <a href="https://open.beatpass.ca/verify-license/">https://open.beatpass.ca/verify-license/</a> followed by that UUID.
+  <Step title="Compare the record">
+    On **Verify a BeatPass license**, compare the **Beat**, **License type**, masked **Licensed party**, **Issued on**, and **Certificate ID** with the document you received.
   </Step>
-  <Step title="Review the result">
-    BeatPass returns a public status page for that specific certificate.
+  <Step title="Read the result">
+    **License record confirmed** with **Active license** means the current record passed the check. Review the full license terms before deciding whether a specific use is covered.
   </Step>
 </Steps>
 
-## What the page shows
+The page can also show **Expiry**, **License status**, and **View licenses**. Public verification does not disclose the holder's full account email or legal name.
 
-The current public verification page shows the certificate status plus the core identity details tied to that license:
+## If the result needs attention
 
-| Field | What it means |
+| Result | Next step |
 | --- | --- |
-| **Certificate Valid / Invalid** | High-level result shown in the page header |
-| **License UUID** | The certificate ID being checked |
-| **Track name** | Track tied to the license |
-| **Artists** | Credited artists on the track |
-| **License type** | Standard or exclusive |
-| **Licensed User** | Masked email only |
-| **Issued date** | When the license was created |
-| **Status** | Current record status, such as `active` or another non-active state |
-| **Database Verification** | Confirms the license exists in BeatPass records |
-| **Verification Count** | Number of times the page has been checked |
+| **Certificate identity is incomplete** | The holder or producer needs to complete account details or a review. Eligible certificates complete automatically when missing details are saved. This result does not itself revoke the original grant. |
+| **Original certificate preserved** | A new license was issued separately. Use **Check the new certificate** when offered to inspect its current status and terms. The original remains history. |
+| **License is not currently valid** | The record does not currently confirm active permission. Contact the holder or BeatPass support with its ID. |
+| **No matching license record** | Check the full link or ID with the person who supplied it. A missing record does not confirm permission. |
+| **Too many verification attempts** | Wait a few minutes before checking again. |
+| **Verification could not be completed** | Select **Try again**. A failed check is not a completed verification. |
 
-<Note>
-  BeatPass stores additional verification metadata internally, but the current public page focuses on the fields above rather than exposing every stored timestamp or audit detail.
-</Note>
+## Share proof for a release
 
-## What the page does not expose
+Send the verification link, certificate document, beat title, release or project name, and any claim reference to the person reviewing your release. A screenshot alone cannot establish the current status.
 
-- It does not reveal the full email address of the license holder
-- It does not require the viewer to open the user account
-- It does not replace reading the actual certificate terms when rights questions get specific
-- It does not grant AI training, dataset, model-development, sample-pack, or competing-library rights
-- It does not certify that a beat is AI-free or immune from future rights review
-
-## Privacy boundary
-
-Public verification is designed to prove a license without exposing unnecessary account data. It uses masked licensee information and does not reveal the account's full email address.
-
-## Common use cases
-
-<AccordionGroup>
-  <Accordion title="For licensees" icon="user" defaultOpen>
-    Use the verification page when a distributor, label, platform, or collaborator asks you to prove you have a valid license.
-  </Accordion>
-  <Accordion title="For producers" icon="music">
-    Use it to confirm whether a downloader or buyer has an active certificate for one of your tracks.
-  </Accordion>
-  <Accordion title="For third parties" icon="shield">
-    Use it to verify that a certificate is real before acting on a rights dispute or release review.
-  </Accordion>
-</AccordionGroup>
-
-## What to send when someone asks for proof
-
-Send:
-
-1. The public verification URL
-2. The certificate PDF or printable certificate page
-3. The track title and artist name
-4. The release or project name that uses the beat
-5. Any distributor or platform case number, if applicable
-
-The verification link confirms that the certificate exists in BeatPass records and shows its current status without requiring the reviewer to log in.
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="The page says the license was not found" icon="triangle-exclamation" defaultOpen>
-    Double-check the UUID. A bad or incomplete UUID is the most common cause.
-  </Accordion>
-  <Accordion title="The page says the license is revoked" icon="ban">
-    The certificate exists, but it is no longer valid. The public page still helps confirm that the UUID is real, while the status badge tells you the license is not active.
-  </Accordion>
-  <Accordion title="The page shows review or rights issue status" icon="triangle-exclamation">
-    A review, dispute, or rights-issue status means BeatPass has identified a license, rights, compliance, AI-origin, or verification issue that may require support. It does not automatically mean the buyer acted wrongly.
-  </Accordion>
-  <Accordion title="I need the full legal terms too" icon="file-lines">
-    The verification page confirms status. The certificate itself remains the right place to read the full terms and restrictions.
-  </Accordion>
-</AccordionGroup>
-
-## Related
-
-<Columns cols={2}>
-  <Card title="License Certificates" icon="file-lines" href="/help/downloads-and-licensing/license-certificates">
-    Learn what the certificate includes beyond verification status.
-  </Card>
-  <Card title="Content ID Claims" icon="shield" href="/help/downloads-and-licensing/content-id-claims">
-    Use the verification link when disputing claims.
-  </Card>
-  <Card title="BeatPassID" icon="fingerprint" href="/help/downloads-and-licensing/beatpass-id">
-    Understand the fingerprint details tied to certificate tools.
-  </Card>
-  <Card title="FAQ" icon="circle-question" href="/help/downloads-and-licensing/faq">
-    More common certificate questions.
-  </Card>
-  <Card title="Non-Exclusive License" icon="users" href="/help/legal/license-terms/non-exclusive">
-    Review the standard license scope and Content ID restriction.
-  </Card>
-  <Card title="Releasing Music" icon="rocket" href="/help/downloads-and-licensing/releasing-music">
-    Prepare a finished song for distribution with its certificate ready.
-  </Card>
-  <Card title="Library Licenses" icon="bookmark" href="/help/library/licenses">
-    Find the certificate and verification action in your library.
-  </Card>
-  <Card title="Trust Stack" icon="layer-group" href="/help/getting-started/beatpass-trust-stack">
-    See how public verification fits into BeatPass's proof system.
-  </Card>
-</Columns>
+A confirmed record does not guarantee sample clearance, AI-free audio, acceptance by a distributor, or the absence of future rights claims. If details look wrong or a review remains unresolved, [contact support](/help/contact-support). See [license certificates](/help/downloads-and-licensing/license-certificates) for legal-name and download help.

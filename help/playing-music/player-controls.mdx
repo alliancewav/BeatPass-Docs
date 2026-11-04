@@ -6,87 +6,44 @@ description: "Playback buttons and secondary player actions on BeatPass across d
 canonical: "https://docs.beatpass.ca/help/playing-music/player-controls"
 ---
 
+import PlayerFigure from "/snippets/media/player.mdx";
+
 import NeedHelp from "/snippets/sections/need-help.mdx";
 
-The BeatPass player provides core playback controls everywhere, then shows additional actions depending on screen size, instance settings, and the cued track.
 
-## Core Playback Controls
+Keep BeatPass playing while you browse. The player gives you quick listening controls and opens the queue, lyrics, or download choices when those actions are available for the current beat.
 
-| Control | What it does |
+<PlayerFigure />
+
+## Control your listening
+
+| Control | What you can do |
 | --- | --- |
-| **Play / Pause** | Starts or pauses the current item. |
-| **Previous** | Moves to the previous item in the queue. |
-| **Next** | Skips forward in the queue. |
-| **Shuffle** | Randomizes queue order. |
-| **Repeat** | Cycles repeat behavior for the current queue. |
-| **Seekbar** | Jumps to a position in the current track. |
+| **Play / Pause** | Start or pause the cued beat |
+| **Previous** and **Next** | Move through the current queue |
+| **Shuffle** | Change the listening order |
+| **Repeat** | Cycle through repeat modes |
+| Progress bar | Choose another point in the beat |
+| **Volume** | Adjust playback volume where the control is shown |
 
-## Desktop Player Layout
+## Use the compact or expanded player
 
-The persistent bottom bar is split into three areas:
+On desktop, the bottom player bar shows track information, playback controls, and available secondary actions. On smaller screens, tap the mini player to open **Now playing**. Open **Queue** or **Lyrics** there; use the close/back control or the supported downward gesture to return to browsing.
 
-| Area | Contents |
-| --- | --- |
-| **Left** | Track image (circular, linked), track name, artist links, and a **Like** button (hidden below medium breakpoints). |
-| **Center** | Playback controls plus the main seekbar (max width ~722 px). |
-| **Right** | **Download**, **Queue** toggle. On larger screens: **Lyrics**, **Volume**, and **Expand**. |
+The compact layout keeps the most useful controls first. Some secondary actions move into **More** or the expanded player as space changes. Producer workspaces can show different navigation beneath the player.
 
-### Responsive visibility
+## Download audio
 
-| Control | Minimum screen width |
-| --- | --- |
-| **Like** (left area) | Medium (`md`) |
-| **Download** | Always visible when a track is cued |
-| **Queue** | Always visible |
-| **Lyrics** | Large (`lg`) |
-| **Volume** | Large (`lg`) |
-| **Expand** | Extra-large (`xl`), hidden if the overlay button is disabled |
+Select **Download** to review the available action for that beat and your account. The flow may offer your own original file, licensed audio, an existing purchase, or plan/exclusive-license guidance. A **Download requested** message means the browser has been asked to save audio; find any issued certificate separately in **My licenses**.
 
-## Mobile Player Layout
+See [How downloads work](/help/downloads-and-licensing/how-downloads-work). The browser handoff does not prove that a file finished saving or that a certificate is ready.
 
-Mobile uses two layers:
-
-- **Mini player bar**: square track image, track name, artist names, **Previous**, **Play / Pause**, **Next**, and a thin progress bar at the bottom.
-- **Bottom navigation bar**: the mobile site navigation appears below the mini player.
-- **Fullscreen overlay**: tap the mini player to open the expanded view with larger cover art, full playback controls, **Download**, **Queue** toggle, and **Lyrics**. Drag down to close.
-
-## Download Button
-
-The **Download** button is always present in the desktop right area and the mobile fullscreen overlay. Its behavior depends on your account:
-
-| Condition | What happens |
-| --- | --- |
-| You have download permission | Opens the standard download flow (pre-download modal → file download → license modal). |
-| You do not have download permission | Opens an upgrade prompt so you can subscribe. |
-| Your subscription payment is overdue | Opens a payment dialog. |
-| The track is exclusive-only | Shows the exclusive licensing info modal. |
-
-The button is hidden entirely only when downloads are globally disabled, no track is cued, or the track is not locally uploaded.
-
-## Keyboard Shortcuts
+## Keyboard shortcuts
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd>Space</kbd> or <kbd>K</kbd> | Toggle play / pause (blocked inside text inputs) |
-| <kbd>Ctrl</kbd> or <kbd>Shift</kbd> + <kbd>→</kbd> | Next track |
-| <kbd>Ctrl</kbd> or <kbd>Shift</kbd> + <kbd>←</kbd> | Previous track |
+| <kbd>Space</kbd> or <kbd>K</kbd> | Play or pause |
+| <kbd>Ctrl</kbd> or <kbd>Shift</kbd> + <kbd>→</kbd> | Next beat |
+| <kbd>Ctrl</kbd> or <kbd>Shift</kbd> + <kbd>←</kbd> | Previous beat |
 
-<Note>
-  Plain arrow keys do not seek within a track or adjust volume. Use the seekbar or volume slider directly.
-</Note>
-
-## What Changes by Context
-
-<AccordionGroup>
-  <Accordion title="No track selected" icon="circle-stop">
-    The player hides entirely until something is cued.
-  </Accordion>
-  <Accordion title="Mobile" icon="mobile-screen">
-    Desktop-only controls (volume slider, expand) move out of the bottom bar. The compact mini player stays visible and advanced controls appear in the fullscreen overlay.
-  </Accordion>
-  <Accordion title="Instance settings" icon="gear">
-    Administrators can hide certain features such as lyrics or the expand button, so your player may show fewer actions than described here.
-  </Accordion>
-</AccordionGroup>
-
-<NeedHelp />
+Focused buttons, links, sliders, and editing fields keep their own keyboard behavior. Use the progress or volume control directly to seek or adjust volume.
