@@ -1,109 +1,257 @@
 {
   "schema_version": 1,
-  "retrieved_at": "2026-10-29T03:05:00.649281+00:00",
-  "method": "Unauthenticated public custom-pages API; body HTML decoded and UTF-8 hashed. No credentials or customer rows.",
-  "link_closure": "15 first-party policies; no external HTTP policy links.",
+  "retrieved_at": "2026-11-05T18:29:27.140810+00:00",
+  "method": "Fresh unauthenticated browser: public page and same-origin API responses decoded and UTF-8 hashed; rendered content and actual native language navigation verified. No credentials, account submissions or customer records.",
+  "link_closure": "15 policy families with 30 actual English/French pages; policy references stay in their document language.",
   "policies": [
     {
       "slug": "terms-of-service",
       "url": "https://open.beatpass.ca/pages/terms-of-service",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "9d2308ff827dcc37b0882dac9d87d3351052309a77830cd22e5e182b8da69a60"
+      "body_sha256": "b801ce8aa33c7f2f3811222a5a4d6f314e4a1bd67bb367b6e0ce4037dfcd5496",
+      "french": {
+        "slug": "terms-of-service-fr",
+        "url": "https://open.beatpass.ca/pages/terms-of-service-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "96c46d7eb3941aa8d5ae045f2b0dc1172ff2f4850845aacfa93aede305c5cd1c"
+      }
     },
     {
       "slug": "privacy-policy",
       "url": "https://open.beatpass.ca/pages/privacy-policy",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "76832dbb8a924dad2ed5af675eee3f158d9b0a1b474c409252af4e62f3fbe1ed"
+      "body_sha256": "0f8c9e718a6c3dd5199d17a51fa6910f3faed418580c6f161d6c1f160aecbb22",
+      "french": {
+        "slug": "privacy-policy-fr",
+        "url": "https://open.beatpass.ca/pages/privacy-policy-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "a42f85eff15944b993c1b57de6f6d4c2af6fcc29f2370c706a451eeb7e3b56b1"
+      }
     },
     {
       "slug": "refund-policy",
       "url": "https://open.beatpass.ca/pages/refund-policy",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "fa145d715e382e87db440753b2620ba0d980837f7ef42e9c4f89eb493109f0dd"
+      "body_sha256": "55f9fce6b25d8ef886f011d0d420b2a3cb0518b53718dbf135ac77469ff9e8c3",
+      "french": {
+        "slug": "refund-policy-fr",
+        "url": "https://open.beatpass.ca/pages/refund-policy-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "f89ad173006c4b26580e43b26eb870670b1368c82f5fd6a2f384cbd86977425e"
+      }
     },
     {
       "slug": "dmca-notice-and-takedown-policy",
       "url": "https://open.beatpass.ca/pages/dmca-notice-and-takedown-policy",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "47c6e5bf223699e0bbb0a601527736941683dd3e036b761b0a5f9b68b05926dd"
+      "body_sha256": "03c71cae0b57e89c9fafce19cb89d7ee246a2a588961e0a8c9274bd9dd4deb74",
+      "french": {
+        "slug": "dmca-notice-and-takedown-policy-fr",
+        "url": "https://open.beatpass.ca/pages/dmca-notice-and-takedown-policy-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "39c7989fecd0726593d6f35b350cce5defaecd47c4ef64f6a06bf8e60cd9832d"
+      }
     },
     {
       "slug": "ai-audio-human-made-content-policy",
       "url": "https://open.beatpass.ca/pages/ai-audio-human-made-content-policy",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "b55a5d7abbcd3738b5ffbc36b23c8176d175374a788a20e9f0bc5e77c5c9e5f2"
+      "body_sha256": "ae6cfffb59c5519cb77ff40877550c3a572a4a152fcbdef9565f3f36afeffe16",
+      "french": {
+        "slug": "ai-audio-human-made-content-policy-fr",
+        "url": "https://open.beatpass.ca/pages/ai-audio-human-made-content-policy-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "a9c5bb8d667f85509ef4813407e07a9dbebcf00618c05813bd05f0e96455d63d"
+      }
     },
     {
       "slug": "producer-upload-and-seller-agreement",
       "url": "https://open.beatpass.ca/pages/producer-upload-and-seller-agreement",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "0a7655454591b33af5d109f8bd2107ee7bceb985f345ed61e5bb2dfd2c9bb93e"
+      "body_sha256": "60e687dbd1186010ccd46c0749563e3ff84361be642075f1a703b12655351d73",
+      "french": {
+        "slug": "producer-upload-and-seller-agreement-fr",
+        "url": "https://open.beatpass.ca/pages/producer-upload-and-seller-agreement-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "d54c1f370e75fe03fca2e7205847391a774c6bbc25a35db84742277a01928e0d"
+      }
     },
     {
       "slug": "non-exclusive-license-agreement",
       "url": "https://open.beatpass.ca/pages/non-exclusive-license-agreement",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "9f18a286c7566dcc627bd7c0099ffc5cb37b1931bc5aa18d029266d60ba81391"
+      "body_sha256": "fa00a4600d6da16103e3b4397b44f0cedf78f634a21f91ab6061d4b31960be99",
+      "french": {
+        "slug": "non-exclusive-license-agreement-fr",
+        "url": "https://open.beatpass.ca/pages/non-exclusive-license-agreement-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "8ae1ed054757f29d68c4ede805305977f5265162748098140df4dfeb2a93f639"
+      }
     },
     {
       "slug": "exclusive-license-agreement",
       "url": "https://open.beatpass.ca/pages/exclusive-license-agreement",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "b18814b55ca2b2f179541f5fe90701fd1ac26600838c1387aae57b8e8fb66273"
+      "body_sha256": "472e7a39c36fa970833a3297b001535b93354f838369d0d0097e212c0915f04f",
+      "french": {
+        "slug": "exclusive-license-agreement-fr",
+        "url": "https://open.beatpass.ca/pages/exclusive-license-agreement-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "201f2def7a8406507175dbbe74f9cc5d02746ad69a028feb97a826d323e29455"
+      }
     },
     {
       "slug": "exclusive-license-ai-and-rights-addendum",
       "url": "https://open.beatpass.ca/pages/exclusive-license-ai-and-rights-addendum",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "35582729c309e633059da66f97c3389898c34bcb071990ad1af5aa77cc49048c"
+      "body_sha256": "95602135af8bb5e041f60f446e2d334f009590a800fc290b762dc7d627824870",
+      "french": {
+        "slug": "exclusive-license-ai-and-rights-addendum-fr",
+        "url": "https://open.beatpass.ca/pages/exclusive-license-ai-and-rights-addendum-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "4688e6b529d61091aed9f6746247111882a5815ed3cfd997da12f43e4835cbed"
+      }
     },
     {
       "slug": "custom-beat-and-beat-request-terms",
       "url": "https://open.beatpass.ca/pages/custom-beat-and-beat-request-terms",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "45c43f0e14fc5f0ec2a8ef2e935f8f58ef4babecb281ef917f176848119b6be0"
+      "body_sha256": "cc6c1989ae9c81bd9ef5a5ead6a4bb17f62424f6c723bebe61a6cec28d9f19cf",
+      "french": {
+        "slug": "custom-beat-and-beat-request-terms-fr",
+        "url": "https://open.beatpass.ca/pages/custom-beat-and-beat-request-terms-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "5774906d712b1313553414169c031a08490ad71d4f5350c09afe8be8120c6f9f"
+      }
     },
     {
       "slug": "subscription-and-plan-terms",
       "url": "https://open.beatpass.ca/pages/subscription-and-plan-terms",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "1a4422c6f007f488f1908183dc42d7b83cf5ccf30d0bdd71f874a7c46f52ce47"
+      "body_sha256": "08c027cb898c4218345ca434a7c1d122576223a6c174307edf06b757263322a0",
+      "french": {
+        "slug": "subscription-and-plan-terms-fr",
+        "url": "https://open.beatpass.ca/pages/subscription-and-plan-terms-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "c0853b513605dac821346046cb9c0d3aa88b0e261b4cb0dc9ae6d46ba2f71971"
+      }
     },
     {
       "slug": "cookie-and-tracking-policy",
       "url": "https://open.beatpass.ca/pages/cookie-and-tracking-policy",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "d5d8047317c8aef794184fafba758bbf641da66a5dbd03c45e6da5c15b3545fa"
+      "body_sha256": "77eb3aa8783d4c9e78c9c67c666f56bca543271dc3ffcb24051634dab1db1d5a",
+      "french": {
+        "slug": "cookie-and-tracking-policy-fr",
+        "url": "https://open.beatpass.ca/pages/cookie-and-tracking-policy-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "62c19e7c9456670794882353c9ff5164b3da454dbc9fbce82c749380a019060b"
+      }
     },
     {
       "slug": "marketing-communications-and-casl-consent-notice",
       "url": "https://open.beatpass.ca/pages/marketing-communications-and-casl-consent-notice",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "1dbe68b67514d20eb2d0d91dc53b42136b360b80e4b16d45a28781a365232115"
+      "body_sha256": "b27be22ad4cbe96a33958322dad8dc35762bf4f2ec7105d3f25ff0530f61e29c",
+      "french": {
+        "slug": "marketing-communications-and-casl-consent-notice-fr",
+        "url": "https://open.beatpass.ca/pages/marketing-communications-and-casl-consent-notice-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "d736e3460e5cdfd5e4127337631df711239398ca48130c0297ccf5e1ecfff758"
+      }
     },
     {
       "slug": "privacy-governance-and-privacy-officer-notice",
       "url": "https://open.beatpass.ca/pages/privacy-governance-and-privacy-officer-notice",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "9954e7db03e12953c81a2f2cea8570c8ce6126e5ba233574ec237c7ac2de0b9c"
+      "body_sha256": "564c25fdfd39f02ad4f827b20c6744d4959ade8583d195b6ad639eba95ad786a",
+      "french": {
+        "slug": "privacy-governance-and-privacy-officer-notice-fr",
+        "url": "https://open.beatpass.ca/pages/privacy-governance-and-privacy-officer-notice-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "070172504cc6d4301e6489e2e0e81351053d586b7bd55096f048cd53e8b6897c"
+      }
     },
     {
       "slug": "non-dmca-rights-and-trust-report-policy",
       "url": "https://open.beatpass.ca/pages/non-dmca-rights-and-trust-report-policy",
+      "language": "en",
+      "version": "2026-11-05",
       "http_status": 200,
-      "body_sha256": "cdf25bb1d5e540c6c3976f7b1c699386207ed99302d0929fe5856b9d81dcb485"
+      "body_sha256": "096400e86dcfe8aa362caffe8ee581b064b31e26e8129800c7fda90a179dffcc",
+      "french": {
+        "slug": "non-dmca-rights-and-trust-report-policy-fr",
+        "url": "https://open.beatpass.ca/pages/non-dmca-rights-and-trust-report-policy-fr",
+        "language": "fr",
+        "version": "2026-11-05",
+        "http_status": 200,
+        "body_sha256": "e629fa0202c1841de1542da8b9d11ed4c2303fe74b79d2aaef7dcb3b7f976900"
+      }
     }
   ],
-  "reverified_at": "2026-10-29T06:14:31.785108+00:00",
   "reverification": {
-    "policies": 15,
-    "http_200": 15,
-    "body_hashes_unchanged": 15,
-    "method": "Unauthenticated public custom-pages API; body HTML decoded and UTF-8 hashed. No credentials or customer rows.",
-    "evidence": "audit/policy-freshness.json"
+    "policy_families": 15,
+    "language_pages": 30,
+    "http_200": 30,
+    "exact_body_hashes": 30,
+    "native_language_switches": "passed on desktop and iPhone in both configured themes",
+    "scope": "Public policy content/navigation and registration document supply; no authenticated purchase or operating-compliance certification."
   },
-  "final_freshness_record": "audit/handoff-policy-recheck-20261103.json",
-  "final_attempted_at": "2026-11-04T04:20:49.078582+00:00",
-  "final_freshness_status": "unverified403; all 15 anonymous retry responses denied; retain prior successful policy body evidence without claiming current alignment"
+  "final_freshness_status": "verified30_single_language_pages_and_native_links"
 }

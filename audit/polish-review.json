@@ -89,16 +89,19 @@
     {
       "path": "help/account-settings/localization.mdx",
       "reviewed": true,
-      "reviewed_sha256": "c020d98a67627edbefad73d9f7e451f3c02ac85225e0d0498e0dbfec85a7f3b0",
+      "reviewed_sha256": "48cb9687aa101cc0c31746f23128df0b442b92adfc411927c5b6d39b73be1a43",
       "generated": false,
       "source_paths": [
         "common/resources/client/auth/ui/account-settings/localization-panel.tsx",
-        "common/resources/client/auth/ui/account-settings/account-settings-sidenav.tsx"
+        "common/resources/client/auth/ui/account-settings/account-settings-sidenav.tsx",
+        "common/resources/client/i18n/legal-language-notice.tsx",
+        "common/resources/client/legal/contract-review.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "retained_prior_review_with_current_registration_agreement_delta",
+      "reviewed_at": "2026-11-05T17:08:34.205289+00:00"
     },
     {
       "path": "help/account-settings/password/changing-password.mdx",
@@ -601,16 +604,20 @@
     {
       "path": "help/billing/invoices.mdx",
       "reviewed": true,
-      "reviewed_sha256": "fa7c52271ae7bb062b6f2c57f7dc8e09a805b242e2a23cf66b15d55a3fc3c977",
+      "reviewed_sha256": "86a3605c7198415b43a3e67a6ca8fc995b5e8ad2abf09c01fae174c05396cfcf",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/invoice-history-panel.tsx",
-        "https://open.beatpass.ca/pages/refund-policy"
+        "https://open.beatpass.ca/pages/refund-policy",
+        "common/resources/client/legal/contract-review.tsx",
+        "app/Services/SubscriptionAgreementReceipt.php",
+        "common/Billing/Invoices/SubscriptionInvoiceSnapshotFactory.php",
+        "common/resources/views/billing/invoice.blade.php"
       ],
       "remaining_gaps": [
-        "Deployed configuration and authenticated transactions are outside static documentation verification."
+        "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
     },
     {
       "path": "help/billing/managing-subscription/cancelling-subscription.mdx",
@@ -630,17 +637,21 @@
     {
       "path": "help/billing/managing-subscription/downgrading-plan.mdx",
       "reviewed": true,
-      "reviewed_sha256": "c1d0e9a808b135165f7f7de25be380abc4e337d6566430f95380f947e04b050a",
+      "reviewed_sha256": "230011cfbc2f3138cb5162eb3143f54d9c3dc01af1fd8efb19b8d1a18e14832a",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/active-plan-panel.tsx",
         "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
-        "https://open.beatpass.ca/pages/subscription-and-plan-terms"
+        "https://open.beatpass.ca/pages/subscription-and-plan-terms",
+        "common/resources/client/billing/checkout/subscription-contract-step.tsx",
+        "common/resources/client/billing/billing-page/plan-change-status-panel.tsx",
+        "common/Billing/Gateways/Stripe/StripeScheduledPlanChange.php",
+        "common/Billing/Gateways/Paypal/PaypalPlanChange.php"
       ],
       "remaining_gaps": [
-        "Deployed configuration and authenticated transactions are outside static documentation verification."
+        "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "retained_exact_prior_review_with_current_source_spot_check"
+      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
     },
     {
       "path": "help/billing/managing-subscription/index.mdx",
@@ -675,17 +686,23 @@
     {
       "path": "help/billing/managing-subscription/upgrading-plan.mdx",
       "reviewed": true,
-      "reviewed_sha256": "0cca2b187099bd84ac016bea95fa2f95f2074eff7c0e0f3faea7e4b24eeb7990",
+      "reviewed_sha256": "b346a8b9977d546becb424979d23f2271c4deb7f17516de22afb2401a4b26667",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/active-plan-panel.tsx",
         "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
-        "https://open.beatpass.ca/pages/subscription-and-plan-terms"
+        "https://open.beatpass.ca/pages/subscription-and-plan-terms",
+        "common/resources/client/billing/checkout/subscription-contract-step.tsx",
+        "common/resources/client/legal/contract-review.tsx",
+        "common/resources/client/billing/billing-page/plan-change-status-panel.tsx",
+        "app/Services/PlanChangeQuote.php",
+        "common/Billing/Gateways/Stripe/StripePlanChange.php",
+        "common/Billing/Gateways/Paypal/PaypalPlanChange.php"
       ],
       "remaining_gaps": [
-        "Deployed configuration and authenticated transactions are outside static documentation verification."
+        "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "retained_exact_prior_review_with_current_source_spot_check"
+      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
     },
     {
       "path": "help/billing/payment-methods/index.mdx",
@@ -1690,7 +1707,7 @@
     {
       "path": "help/getting-started/creating-account.mdx",
       "reviewed": true,
-      "reviewed_sha256": "7491dce253504799af7d60a74de0209f046edd9a3ee66c72a652b56e0107d01d",
+      "reviewed_sha256": "a079a80f7b34a8e0e3257f209e782effc23a3b62a60e961710a91706a90518c4",
       "generated": false,
       "source_paths": [
         "common/resources/client/auth/ui/register-page.tsx",
@@ -1701,12 +1718,20 @@
         "common/resources/client/auth/ui/reset-password-page.tsx",
         "common/resources/client/auth/ui/email-verification-page/email-verification-page.tsx",
         "common/resources/client/auth/requests/send-reset-password-email.ts",
-        "common/resources/client/auth/requests/reset-password.ts"
+        "common/resources/client/auth/requests/reset-password.ts",
+        "common/resources/client/legal/contract-review.tsx",
+        "common/resources/client/legal/contract-copy-dialog.tsx",
+        "common/resources/client/auth/ui/social-registration-agreement-dialog.tsx",
+        "common/resources/client/auth/requests/use-register.ts",
+        "common/resources/client/auth/requests/use-social-login.ts",
+        "app/Services/SubscriptionAgreementReview.php",
+        "app/Services/SubscriptionAgreementReceipt.php"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "full_page_current_source_refresh"
+      "review_method": "retained_prior_review_with_current_registration_agreement_delta",
+      "reviewed_at": "2026-11-05T17:08:34.205289+00:00"
     },
     {
       "path": "help/getting-started/index.mdx",
@@ -1741,7 +1766,7 @@
     {
       "path": "help/getting-started/logging-in.mdx",
       "reviewed": true,
-      "reviewed_sha256": "f26c7a84fe1f37c18e779c1340f84f73792720dd29df2e1c1aa8c5f5ca6530d4",
+      "reviewed_sha256": "e3e3d456ae69aa9f41e349dfef75fa253528258006d924545c5d2841a42f3eb0",
       "generated": false,
       "source_paths": [
         "common/resources/client/auth/ui/login-page.tsx",
@@ -1752,12 +1777,16 @@
         "common/resources/client/auth/ui/email-verification-page/email-verification-page.tsx",
         "common/resources/client/auth/requests/send-reset-password-email.ts",
         "common/resources/client/auth/requests/reset-password.ts",
-        "config/auth.php"
+        "config/auth.php",
+        "common/resources/client/auth/ui/social-registration-agreement-dialog.tsx",
+        "common/resources/client/legal/contract-review.tsx",
+        "common/resources/client/legal/contract-copy-dialog.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "full_page_current_source_refresh"
+      "review_method": "retained_prior_review_with_current_registration_agreement_delta",
+      "reviewed_at": "2026-11-05T17:08:34.205289+00:00"
     },
     {
       "path": "help/getting-started/navigating-beatpass.mdx",
@@ -2039,7 +2068,7 @@
     {
       "path": "help/legal/index.mdx",
       "reviewed": true,
-      "reviewed_sha256": "8f6eef2c6a14f39a0eb651979e86040c0ddfa0fe8beffab4506644697e999393",
+      "reviewed_sha256": "2070430d5ff430f14b9cb28cc798d388e8d31ee5b43a0850a4f40a5c96e8a5e4",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/terms-of-service",
@@ -2049,7 +2078,7 @@
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "prior_full_review_plus_live_native_policy_page_and_link_verification"
     },
     {
       "path": "help/legal/license-terms/exclusive.mdx",
@@ -2194,17 +2223,20 @@
     {
       "path": "help/legal/subscription-plan-terms.mdx",
       "reviewed": true,
-      "reviewed_sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9",
+      "reviewed_sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/subscription-and-plan-terms",
         "app/Policies/TrackPolicy.php",
-        "app/Services/StandardNonExclusiveTerms.php"
+        "app/Services/StandardNonExclusiveTerms.php",
+        "common/resources/client/billing/checkout/subscription-contract-step.tsx",
+        "app/Services/SubscriptionAgreementReview.php",
+        "app/Services/TermsChangeNotice.php"
       ],
       "remaining_gaps": [
-        "Deployed configuration and authenticated transactions are outside static documentation verification."
+        "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
     },
     {
       "path": "help/legal/terms-of-service.mdx",
@@ -3555,7 +3587,7 @@
     {
       "path": "help/troubleshooting/account-access.mdx",
       "reviewed": true,
-      "reviewed_sha256": "213fc18d8894e97eae5e9790bb41eeba0d2b11b5648cc0b5974a9d0670fc2ddc",
+      "reviewed_sha256": "726835d249114461b462426bb60a6b396ae641d7c367df8a75043b936849c6a1",
       "generated": false,
       "source_paths": [
         "common/Auth/Fortify/FortifyServiceProvider.php",
@@ -3567,12 +3599,18 @@
         "common/resources/client/auth/ui/email-verification-page/email-verification-page.tsx",
         "common/resources/client/auth/requests/send-reset-password-email.ts",
         "common/resources/client/auth/requests/reset-password.ts",
-        "config/auth.php"
+        "config/auth.php",
+        "common/resources/client/auth/ui/social-registration-agreement-dialog.tsx",
+        "common/resources/client/legal/contract-review.tsx",
+        "common/resources/client/legal/contract-copy-dialog.tsx",
+        "common/resources/client/auth/requests/use-register.ts",
+        "common/resources/client/auth/requests/use-social-login.ts"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "full_page_current_source_refresh"
+      "review_method": "retained_prior_review_with_current_registration_agreement_delta",
+      "reviewed_at": "2026-11-05T17:08:34.205289+00:00"
     },
     {
       "path": "help/troubleshooting/download-issues.mdx",
@@ -5212,15 +5250,19 @@
     {
       "path": "release-notes/v4.0/4.2.1.mdx",
       "reviewed": true,
-      "reviewed_sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95",
+      "reviewed_sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423",
       "generated": false,
       "source_paths": [
-        "audit/pending-release.json"
+        "audit/pending-release.json",
+        "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
+        "common/resources/client/billing/billing-page/plan-change-status-panel.tsx",
+        "common/resources/client/billing/checkout/subscription-contract-step.tsx",
+        "app/Services/SubscriptionAgreementReceipt.php"
       ],
       "remaining_gaps": [
-        "Deployed configuration and authenticated transactions are outside static documentation verification."
+        "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "current-source audience review and four-entry-point synchronization"
+      "review_method": "prior_full_review_plus_live_native_policy_page_and_link_verification"
     },
     {
       "path": "release-notes/v4.0/index.mdx",
@@ -5788,6 +5830,10 @@
       "review_method": "retained exact bytes from previous full editorial review; current source delta scans"
     }
   ],
-  "last_targeted_review_at": "2026-11-04T04:27:17.949400+00:00",
-  "support_inbox_review": {"reviewed_at": "2026-11-04T17:48:14+00:00", "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.", "authority": "Owner confirmed support@beatpass.ca on 2026-11-04; existing formal copyright/privacy and partnership contacts retained."}
+  "last_targeted_review_at": "2026-11-05T18:36:40.028338+00:00",
+  "support_inbox_review": {
+    "reviewed_at": "2026-11-04T17:48:14+00:00",
+    "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.",
+    "authority": "Owner confirmed support@beatpass.ca on 2026-11-04; existing formal copyright/privacy and partnership contacts retained."
+  }
 }

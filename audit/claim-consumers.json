@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "reviewed_at": "2026-11-04T02:24:05.056376+00:00",
+  "reviewed_at": "2026-11-05T18:36:40.028338+00:00",
   "note": "Exact reviewed consumer bytes; configuration and policy-owner limits remain distinct from source-confirmed behavior. Private findings stay outside this public ledger.",
   "claims": [
     {
@@ -37,7 +37,7 @@
         },
         {
           "path": "help/legal/subscription-plan-terms.mdx",
-          "sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9"
+          "sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89"
         },
         {
           "path": "help/legal/terms-of-service.mdx",
@@ -73,7 +73,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
         }
       ]
     },
@@ -99,7 +99,7 @@
         },
         {
           "path": "help/billing/invoices.mdx",
-          "sha256": "fa7c52271ae7bb062b6f2c57f7dc8e09a805b242e2a23cf66b15d55a3fc3c977"
+          "sha256": "86a3605c7198415b43a3e67a6ca8fc995b5e8ad2abf09c01fae174c05396cfcf"
         },
         {
           "path": "help/billing/faq.mdx",
@@ -111,11 +111,11 @@
         },
         {
           "path": "help/billing/managing-subscription/upgrading-plan.mdx",
-          "sha256": "0cca2b187099bd84ac016bea95fa2f95f2074eff7c0e0f3faea7e4b24eeb7990"
+          "sha256": "b346a8b9977d546becb424979d23f2271c4deb7f17516de22afb2401a4b26667"
         },
         {
           "path": "help/billing/managing-subscription/downgrading-plan.mdx",
-          "sha256": "c1d0e9a808b135165f7f7de25be380abc4e337d6566430f95380f947e04b050a"
+          "sha256": "230011cfbc2f3138cb5162eb3143f54d9c3dc01af1fd8efb19b8d1a18e14832a"
         },
         {
           "path": "help/beat-requests/understanding-tokens.mdx",
@@ -227,7 +227,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
         }
       ]
     },
@@ -281,7 +281,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
         }
       ]
     },
@@ -327,7 +327,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
         }
       ]
     },
@@ -349,7 +349,7 @@
         },
         {
           "path": "help/legal/subscription-plan-terms.mdx",
-          "sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9"
+          "sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89"
         }
       ]
     },
@@ -387,7 +387,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
         }
       ]
     },
@@ -421,7 +421,7 @@
         },
         {
           "path": "help/legal/subscription-plan-terms.mdx",
-          "sha256": "2c7900809aeb1bd2a2ee8ec03a8b53fec2ae4639f74edd81081fcdf3590af4a9"
+          "sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89"
         },
         {
           "path": "help/producer-program/benefits.mdx",
@@ -491,7 +491,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "1aa202acf1eb3ea59cd42700319082ceb73cc9770fbbea3c64e83fc453c09c95"
+          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
         }
       ]
     },
@@ -578,5 +578,9 @@
       ]
     }
   ],
-  "support_inbox_review": {"reviewed_at": "2026-11-04T17:48:14+00:00", "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.", "authority": "Owner confirmed support@beatpass.ca on 2026-11-04; existing formal copyright/privacy and partnership contacts retained."}
+  "support_inbox_review": {
+    "reviewed_at": "2026-11-04T17:48:14+00:00",
+    "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.",
+    "authority": "Owner confirmed support@beatpass.ca on 2026-11-04; existing formal copyright/privacy and partnership contacts retained."
+  }
 }
