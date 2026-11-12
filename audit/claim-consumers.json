@@ -37,7 +37,7 @@
         },
         {
           "path": "help/legal/subscription-plan-terms.mdx",
-          "sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89"
+          "sha256": "f0ad0dd8822cb5d231706f6415f0ddf7b3e45fb687bcdcfae9f910fc4a6f700e"
         },
         {
           "path": "help/legal/terms-of-service.mdx",
@@ -73,7 +73,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
+          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
         }
       ]
     },
@@ -99,7 +99,7 @@
         },
         {
           "path": "help/billing/invoices.mdx",
-          "sha256": "86a3605c7198415b43a3e67a6ca8fc995b5e8ad2abf09c01fae174c05396cfcf"
+          "sha256": "d05cea3a14aa8ca2b36ffb474b43ac765d08472ef3922a01c1f2d4bb170cb0ad"
         },
         {
           "path": "help/billing/faq.mdx",
@@ -111,11 +111,11 @@
         },
         {
           "path": "help/billing/managing-subscription/upgrading-plan.mdx",
-          "sha256": "b346a8b9977d546becb424979d23f2271c4deb7f17516de22afb2401a4b26667"
+          "sha256": "048fa8f737fbea00e93c49c613a9a1166b4871b4905f3d01c6685bd6b629a2f0"
         },
         {
           "path": "help/billing/managing-subscription/downgrading-plan.mdx",
-          "sha256": "230011cfbc2f3138cb5162eb3143f54d9c3dc01af1fd8efb19b8d1a18e14832a"
+          "sha256": "31fe79566a63e850a72f93f049db4704f7437d31b1533f47b28e124c27898783"
         },
         {
           "path": "help/beat-requests/understanding-tokens.mdx",
@@ -227,7 +227,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
+          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
         }
       ]
     },
@@ -281,7 +281,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
+          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
         }
       ]
     },
@@ -327,7 +327,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
+          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
         }
       ]
     },
@@ -349,7 +349,7 @@
         },
         {
           "path": "help/legal/subscription-plan-terms.mdx",
-          "sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89"
+          "sha256": "f0ad0dd8822cb5d231706f6415f0ddf7b3e45fb687bcdcfae9f910fc4a6f700e"
         }
       ]
     },
@@ -387,7 +387,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
+          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
         }
       ]
     },
@@ -421,7 +421,7 @@
         },
         {
           "path": "help/legal/subscription-plan-terms.mdx",
-          "sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89"
+          "sha256": "f0ad0dd8822cb5d231706f6415f0ddf7b3e45fb687bcdcfae9f910fc4a6f700e"
         },
         {
           "path": "help/producer-program/benefits.mdx",
@@ -491,7 +491,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423"
+          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
         }
       ]
     },
