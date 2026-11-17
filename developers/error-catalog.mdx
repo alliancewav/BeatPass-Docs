@@ -110,7 +110,9 @@ Backstage request creation uses explicit conflict codes:
 | `backstage_request_pending` | `409` | Wait for the existing application decision |
 | `backstage_request_revoked` | `409` | Direct the applicant to `/contact` for an appeal |
 
-These guards apply across request types. If both histories exist, `pending` takes precedence. Missing creation permission returns `403`; API approval does not grant that permission.
+These guards apply across request types. If both histories exist, `pending` takes precedence. Missing creation permission returns `403`; API approval does not grant that permission. Invalid application fields, including an unsupported role or an already-owned profile selected for a claim, return `422`.
+
+Verification-file uploads are no longer accepted for producer applications. A stale client attempting that upload receives `410`; refresh the application flow and use the portfolio link instead of retrying the upload.
 
 ## Audio Recon Errors
 

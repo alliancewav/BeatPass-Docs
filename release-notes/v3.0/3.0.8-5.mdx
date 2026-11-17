@@ -18,7 +18,7 @@ A critical fix for engagement metrics ensuring that partial listens, skips, and 
 ## What's New
 
 - **Partial Listen Tracking**: The system now captures duration data for all listens over 10 seconds, even if the track isn't finished.
-- **Reliable Data Delivery**: Implemented `navigator.sendBeacon` to improve delivery when a user closes the tab or navigates away.
+- **More Reliable Reports**: Playback activity is more likely to reach your reports when a listener closes the tab or leaves the page.
 - **Guest Tracking**: Anonymous plays are now properly recorded and visible in "Top Listeners" as aggregated guest traffic.
 - **Entity Scoping**: Fixed a bug where track and album analytics were showing global artist data. Now, insights are strictly scoped to the specific entity.
 
@@ -30,9 +30,8 @@ A critical fix for engagement metrics ensuring that partial listens, skips, and 
 
 ## Technical Details
 
-- **Event Triggers**: Duration is now sent on `pause`, `seek`, `track_change`, and `page_unload`.
-- **Threshold**: A 10-second minimum threshold filters out accidental clicks.
-- **Backend**: `TrackPlaysController` now accepts and aggregates partial duration updates.
+- Pausing, seeking, changing tracks and leaving the page can contribute listening-duration updates.
+- The historical 10-second minimum excludes very brief plays from these duration metrics.
 
 ## Related
 

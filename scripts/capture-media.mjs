@@ -9,6 +9,7 @@ import { promisify } from "node:util";
 import { workflows } from "../tests/fixtures/media/workflows.mjs";
 import { assertRuntimeReady, unrefreshedVariants } from "../tests/fixtures/media/safety.mjs";
 import { publicFontStyles } from "../tests/fixtures/media/public-fonts.mjs";
+import { reusableThemeSnapshot } from "./media-theme-snapshot.mjs";
 const startedAt = Date.now();
 let activeWorkdir,
   activeSelected = [],
@@ -253,7 +254,16 @@ async function main() {
     if (!workflows.some((w) => w.id === id))
       throw new Error(`Unknown workflow: ${id}`);
   if (!opts.worker) {
-    await freshThemes(path.join(workdir, "public-themes.json"));
+    const themeFile = path.join(workdir, "public-themes.json");
+    let previous;
+    try { previous = JSON.parse(await fs.readFile(themeFile, "utf8")); } catch {}
+    // Freeze the public pair once per run rather than refetching the platform
+    // and its configured fonts for every serial screenshot case.
+    if (!reusableThemeSnapshot(previous)) {
+      const observed = await freshThemes(themeFile);
+      if (previous && previous.sha256 !== observed.sha256)
+        throw new Error("Configured themes changed; use a new capture run instead of mixing variants.");
+    }
     await command(
       process.execPath,
       [
@@ -273,10 +283,7 @@ async function main() {
   const themes = JSON.parse(
     await fs.readFile(path.join(workdir, "public-themes.json"), "utf8"),
   );
-  if (
-    Date.now() - Date.parse(themes.verified_at) > 3600000 ||
-    themes.source !== "https://open.beatpass.ca/"
-  )
+  if (!reusableThemeSnapshot(themes))
     throw new Error("Public themes must be freshly verified");
   let snapshot, provenance;
   if (opts.snapshot) {

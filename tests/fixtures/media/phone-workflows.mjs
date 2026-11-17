@@ -39,7 +39,35 @@ export async function preparePhoneTask({
     if (!selector) throw new Error("Native phone task was not found: " + label);
     return selector;
   };
-  if (flow.id === "dashboard") {
+  if (flow.id === "track") {
+    // Focus a complete native licensing task instead of cutting a paragraph
+    // below the track hero. A radio or accordion action changes only local UI.
+    const standard = await page.$('[data-track-licensing] input[value="standard"]');
+    if (standard && !(await standard.evaluate(node => node.checked))) {
+      const label = (await standard.evaluateHandle(node => node.closest("label"))).asElement();
+      if (!label) throw new Error("Standard licensing choice has no real label");
+      await clickVisibleElement(page, label);
+    }
+    const inclusions = "[data-track-licensing] [data-license-inclusions]";
+    await page.waitForSelector(inclusions, { visible: true });
+    const expanded = await page.$(`${inclusions} button[aria-expanded="true"]`);
+    if (expanded) await clickVisibleElement(page, expanded);
+    const completeStandard = await page.$eval(inclusions, node =>
+      node.textContent.includes("Make one finished song") &&
+      !node.textContent.includes("Not specified") &&
+      !!node.querySelector('button[aria-expanded="false"]'),
+    );
+    if (!completeStandard)
+      throw new Error("Track capture needs the complete current standard offer and collapsed terms action");
+    focusSelector = "[data-track-licensing]";
+    // Keep published image URLs stable when improving the native task framing.
+    state = "populated";
+    caption = "The current standard-license limits and included files, with Usage rights and royalties ready to expand. This offer summary does not replace an issued agreement.";
+  } else if (flow.id === "producer-application") {
+    state = "portfolio-link";
+    focusSelector = await byHeading("Let your beats speak");
+    caption = "The portfolio-link section of a new producer application. Optional context is collapsed and nothing has been submitted.";
+  } else if (flow.id === "dashboard") {
     state = "recent-beats";
     focusSelector = 'section[aria-labelledby="recent-producer-beats"]';
     caption = "Recent beats and View all on the producer dashboard.";

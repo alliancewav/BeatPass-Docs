@@ -1,5 +1,45 @@
 import { insightsResponse } from "./insights-data.mjs";
 import dashboardFixtures from "./dashboard-data.json" with { type: "json" };
+// Invented, nonfunctional application draft; it is typed into the real form only.
+export const producerApplicationDraft = Object.freeze({
+  artist_name: "Avery Lane",
+  first_name: "Avery",
+  last_name: "Lane",
+  beats_url: "https://example.com/avery-lane/beats",
+  company: "Lane Room Records",
+  instagram_handle: "@averylane_demo",
+});
+// Current offer projection from StandardNonExclusiveTerms::configuration and
+// the track loader reader, not an issued grant or a production response.
+// Captures are labelled demo data; existing exclusive settings stay intact.
+export const demoStandardLicenseTerms = Object.freeze({
+  terms_version: "standard-non-exclusive-2026-10-24",
+  license_type: "non_exclusive",
+  projects_allowed: 1,
+  audio_streams_allowed: 500000,
+  distribute_copies_allowed: 100000,
+  music_videos_allowed: 1,
+  max_music_video_duration_minutes: 5,
+  performances_for_profit_max_attendees: 50,
+  attribution_required: true,
+  content_id_registration_allowed: false,
+  performance_royalty_split: Object.freeze({ producer: 50, licensee: 50 }),
+  synchronization_income_split: Object.freeze({ producer: 50, licensee: 50 }),
+  territory: "Worldwide",
+});
+export function demoTrackOfferTerms(track, current = {}) {
+  return {
+    standard_license_terms: structuredClone(
+      current.standard_license_terms ?? demoStandardLicenseTerms,
+    ),
+    exclusive_license_terms: structuredClone(
+      Object.hasOwn(current, "exclusive_license_terms")
+        ? current.exclusive_license_terms
+        : track?.exclusive_license_config ?? null,
+    ),
+  };
+}
+
 export function avatarData(name) {
   const palettes = [
     ["#183f45", "#b9d9ce"],
@@ -74,6 +114,8 @@ export function normaliseDemo(value) {
     const out = Object.fromEntries(
       Object.entries(value).map(([key, item]) => [key, normaliseDemo(item)]),
     );
+    if (out.loader === "trackPage" && out.track)
+      Object.assign(out, demoTrackOfferTerms(out.track, out));
     if (out.model_type === "track" && out.id) {
       out.name = beatNames[Math.abs(Number(out.id) - 11) % beatNames.length];
       out.bpm = out.bpm || 96;
@@ -448,6 +490,8 @@ export function specialResponse(endpoint, fixture, params = new URLSearchParams(
 }
 export function improveResponse(endpoint, body, params) {
   body = normaliseDemo(body);
+  if (/^tracks\/\d+$/.test(endpoint) && params?.get("loader") === "trackPage" && body.track)
+    Object.assign(body, demoTrackOfferTerms(body.track, body));
   if (endpoint === "artists/5/producer-analytics" && body.playGrowth)
     Object.assign(body.playGrowth, { currentPlays: 8400, previousPlays: 7000, rate: 20 });
   if (endpoint === "users/me/liked-tracks" && body.pagination?.data) {

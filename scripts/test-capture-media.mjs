@@ -6,6 +6,7 @@ import {
   localRequestAllowed,
   assertSingleOwnedProfile,
   assertRuntimeReady,
+  assertDiscoveryTouchActions,
 } from "../tests/fixtures/media/safety.mjs";
 import { workflows, variants } from "../tests/fixtures/media/workflows.mjs";
 test("capture paths cannot escape the media root", () => {
@@ -56,6 +57,17 @@ test("browser requests only reach the isolated origin", () => {
     false,
   );
 });
+test("touch collection controls cannot pass capture while transparent or missing", () => {
+  const action = {buttons:2,opacity:'1',display:'flex',visibility:'visible',pointer_events:'auto',width:96,height:44,ancestors:[]};
+  const record = value => ({coarse:true,cards:[{actions:value}]});
+  assert.doesNotThrow(()=>assertDiscoveryTouchActions(record([action])));
+  for(const patch of [{opacity:'0'},{buttons:0},{display:'none'},{pointer_events:'none'},{ancestors:[{opacity:'0',display:'block',visibility:'visible'}]}]) {
+    assert.throws(()=>assertDiscoveryTouchActions(record([{...action,...patch}])),/Play and More/);
+  }
+  assert.throws(()=>assertDiscoveryTouchActions(record([])),/Play and More/);
+  // Fine-pointer cards may intentionally reveal their actions only on hover.
+  assert.doesNotThrow(()=>assertDiscoveryTouchActions({coarse:false,cards:[]}));
+});
 test("demo identity and runtime fail closed", () => {
   assert.throws(() =>
     assertSingleOwnedProfile({ artists: [{ id: 1 }, { id: 2 }] }),
@@ -64,7 +76,7 @@ test("demo identity and runtime fail closed", () => {
   assert.doesNotThrow(() => assertRuntimeReady({ ready: true, serial: true }));
 });
 test("every requested workflow has four real-device/theme variants", () => {
-  assert.equal(new Set(workflows.map((w) => w.id)).size, 35);
+  assert.equal(new Set(workflows.map((w) => w.id)).size, 36);
   assert.deepEqual(
     variants.map((v) => v.device + "-" + v.theme),
     ["desktop-light", "desktop-dark", "mobile-light", "mobile-dark"],
@@ -192,10 +204,11 @@ test("public phone navigation uses actual routes and distinct configured icons",
 
 import roleContract from "../tests/fixtures/media/audience-contract.json" with { type: "json" };
 import { applyDemoBootstrap } from "../tests/fixtures/media/bootstrap.mjs";
+import { demoStandardLicenseTerms } from "../tests/fixtures/media/demo-data.mjs";
 test("guide actors never inherit admin or another audience's producer access", () => {
   assert.equal(
     workflows.filter((flow) => flow.audience === "customer").length,
-    15,
+    16,
   );
   assert.equal(
     workflows.filter((flow) => flow.audience === "producer").length,
@@ -267,6 +280,7 @@ test("guide actors never inherit admin or another audience's producer access", (
         name: "fixture-contract",
         audience: role,
         roleContract,
+        standardTerms: demoStandardLicenseTerms,
         themes: { light: { values: {}, font: { family: "Roboto" } } },
         artwork: Array(6).fill("demo-cover"),
         collectionArtwork: Array(6).fill("demo-collection"),
@@ -277,6 +291,9 @@ test("guide actors never inherit admin or another audience's producer access", (
         logos: { light: "demo-light", dark: "demo-dark" },
         menus: [{ positions: ["mobile-bottom"], items: [] }],
       });
+      assert.deepEqual(data.loaders.trackPage.standard_license_terms, demoStandardLicenseTerms);
+      assert.equal(data.loaders.trackPage.exclusive_license_terms, null);
+      assert.equal(data.loaders.trackPage.track.license, undefined);
       assert.deepEqual(data.user.roles, []);
       assert.equal(
         data.user.permissions.some((permission) => permission.name === "admin"),
@@ -440,4 +457,25 @@ test("request fixtures retain one explicit clock despite host date changes", () 
     }
     assert.deepEqual(observed,[109,109]);
   } finally { Date.now = originalNow; }
+});
+
+
+test("demo offer terms fill missing loader details without issuing or rewriting a grant", async () => {
+  const {demoTrackOfferTerms, normaliseDemo, improveResponse} = await import("../tests/fixtures/media/demo-data.mjs");
+  const config = {publishing_share:{producer:25,licensee:75},files_to_deliver:["wav","stems"]};
+  const input = {loader:"trackPage",track:{id:11,model_type:"track",exclusive_license_config:config}};
+  const projected = normaliseDemo(input);
+  assert.deepEqual(projected.exclusive_license_terms, config);
+  assert.notEqual(projected.exclusive_license_terms, config);
+  assert.equal(projected.standard_license_terms.audio_streams_allowed, 500000);
+  assert.equal(projected.standard_license_terms.distribute_copies_allowed, 100000);
+  assert.equal(projected.standard_license_terms.content_id_registration_allowed, false);
+  assert.equal(projected.license, undefined);
+  assert.equal(projected.track.license, undefined);
+  assert.equal(input.standard_license_terms, undefined);
+  const explicit = {standard_license_terms:{terms_version:"synthetic-existing-offer"},exclusive_license_terms:null};
+  assert.deepEqual(demoTrackOfferTerms(input.track, explicit), explicit);
+  const fetched = improveResponse("tracks/11", {track:input.track}, new URLSearchParams({loader:"trackPage"}));
+  assert.equal(fetched.standard_license_terms.projects_allowed, 1);
+  assert.deepEqual(demoTrackOfferTerms({}).exclusive_license_terms, null);
 });

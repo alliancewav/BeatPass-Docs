@@ -52,3 +52,14 @@ export function insightsActionVisible(diagnostic) {
     child.visibility !== "hidden" && child.clip !== "rect(0px, 0px, 0px, 0px)"
   );
 }
+
+export function assertDiscoveryTouchActions(diagnostic) {
+  if (!diagnostic.coarse) return;
+  const actions = diagnostic.cards?.[0]?.actions;
+  if (!actions?.length || actions.some(action =>
+    action.buttons < 2 || Number(action.opacity) !== 1 ||
+    action.display === 'none' || action.visibility !== 'visible' ||
+    action.pointer_events === 'none' || action.width <= 0 || action.height <= 0 ||
+    action.ancestors?.some(parent => Number(parent.opacity) !== 1 || parent.display === 'none' || parent.visibility !== 'visible')
+  )) throw new Error('Native touch collection Play and More controls must be visible before capture');
+}

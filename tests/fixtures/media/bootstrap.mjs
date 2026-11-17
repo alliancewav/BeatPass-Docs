@@ -13,6 +13,7 @@ export function applyDemoBootstrap(data, fixture) {
     peopleArtwork,
     audience,
     roleContract,
+    standardTerms,
   } = fixture;
   if (name === "request-send") {
     // Match the original frontend freeze for the entire request figure. Export
@@ -143,6 +144,20 @@ export function applyDemoBootstrap(data, fixture) {
     return value;
   }
   rename(data);
+  const trackLoader = data.loaders?.trackPage;
+  if (trackLoader?.track) {
+    // Explicit serialized source-shaped input: no duplicated term constants and
+    // no construction, acceptance or alteration of a license grant.
+    if (!trackLoader.standard_license_terms) {
+      if (!standardTerms || standardTerms.license_type !== "non_exclusive")
+        throw new Error("Current demo standard offer terms are required");
+      trackLoader.standard_license_terms = structuredClone(standardTerms);
+    }
+    if (!Object.hasOwn(trackLoader, "exclusive_license_terms"))
+      trackLoader.exclusive_license_terms = structuredClone(
+        trackLoader.track.exclusive_license_config ?? null,
+      );
+  }
   if (!["customer", "producer"].includes(audience) || !roleContract?.[audience])
     throw new Error("Explicit source-backed audience contract is required");
   const declaredRole = roleContract[audience];

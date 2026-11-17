@@ -27,6 +27,7 @@ export function validateRepositoryCandidates(names, {mintignore,gitignore}={}) {
     if(name.startsWith('audit/')&&!publicAuditFiles.has(name))errors.push(`${name}: private review artifact must not be committed to the public repository.`);
     if(/\.orig$/.test(name)||/\.patch$/.test(name)&&!name.startsWith('patches/'))errors.push(`${name}: local backup/review patch must not be committed.`);
     if(name.split('/').some(part=>part.startsWith('.env')))errors.push(`${name}: environment files must not be committed.`);
+    if(/(?:^|\/)(?:\.npmrc|\.netrc|\.pypirc|id_rsa|id_ed25519)$|\.(?:pem|key|p12|pfx|har|log|sqlite3?|db)$/i.test(name))errors.push(`${name}: credential files and private diagnostic exports must not be committed.`);
   }
   for(const [label,text] of [['.mintignore',mintignore],['.gitignore',gitignore]]) {
     if(typeof text==='string'&&!text.split(/\r?\n/).some(line=>['_source/','/_source/'].includes(line.trim())))errors.push(`${label}: private CI source checkout exclusion is required.`);
@@ -35,15 +36,15 @@ export function validateRepositoryCandidates(names, {mintignore,gitignore}={}) {
 }
 export function credentialIssues(name,bytes) {
   const text=bytes.toString();
-  const patterns=[['private key',/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/],['live payment credential',/\b(?:sk|rk)_live_[A-Za-z0-9]{16,}\b/],['GitHub credential',/\bgh[pousr]_[A-Za-z0-9]{30,}\b/],['cloud access key',/\bAKIA[0-9A-Z]{16}\b/]];
+  const patterns=[['private key',/-----BEGIN (?:[A-Z0-9]+ )*PRIVATE KEY-----/],['payment credential',/\b(?:sk|rk)_(?:live|test)_[A-Za-z0-9]{16,}\b/],['GitHub credential',/\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,})\b/],['cloud access key',/\b(?:AKIA|ASIA)[0-9A-Z]{16}\b/],['credential-bearing URL',/\b(?:https?|postgres(?:ql)?|mysql|mongodb|redis):\/\/[^\s/@:]+:[^\s/@]+@/]];
   return patterns.filter(([,pattern])=>pattern.test(text)).map(([category])=>`${name}: credential-looking ${category}; remove it without copying its value into reports.`);
 }
 export function hostLayoutIssues(name,bytes) {
-  return /\/home\/(?:sshscorpio|beatpass-open)\/(?:htdocs|\.cache|\.codex|\.agents)\//.test(bytes.toString()) ? [name+': actual host account/layout must not be published. Use a generic path or opaque evidence reference.'] : [];
+  return /\/(?:home|Users)\/[^/\s"\'<>]+\/(?:htdocs|\.cache|\.codex|\.agents)\//.test(bytes.toString()) ? [name+': actual host account/layout must not be published. Use a generic path or opaque evidence reference.'] : [];
 }
 export function privateProvenanceIssues(name,bytes) {
   if(!['audit/media-catalog.json','audit/screenshots.json','audit/source-baseline.json','audit/pending-release.json','audit/polish-review.json'].includes(name))return [];
-  return /(?:\/home\/(?:sshscorpio|beatpass-open)\/|\/tmp\/beatpass-|\/@fs\/(?:tmp|home)\/)/.test(bytes.toString()) ? [name+': host-specific capture/source diagnostics belong in private review evidence.'] : [];
+  return /(?:\/(?:home|Users)\/[^/\s"\'<>]+\/|\/tmp\/beatpass-|\/@fs\/(?:tmp|home)\/)/.test(bytes.toString()) ? [name+': host-specific capture/source diagnostics belong in private review evidence.'] : [];
 }
 function walk(dir) {
   return fs.existsSync(dir)?fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(dir,entry.name)):entry.name.endsWith('.mdx')?[path.join(dir,entry.name)]:[]):[];

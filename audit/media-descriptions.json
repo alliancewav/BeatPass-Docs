@@ -4,8 +4,8 @@
     "caption": "Explore a featured collection and find your next sound. Example with demo data."
   },
   "track": {
-    "alt": "A beat page with artwork, producer details and licensing actions",
-    "caption": "Explore a beat before choosing its license. Example with demo data."
+    "alt": "A beat page and its standard license limits, included files and licensing actions",
+    "caption": "Review the current offer before downloading. The phone view focuses the complete licensing panel. Example with demo data; issued licenses keep their accepted terms."
   },
   "player": {
     "alt": "The music player with a beat ready to play",
@@ -77,11 +77,11 @@
   },
   "beat-catalog": {
     "alt": "My Beats controls for editing a beat, viewing insights and changing its featured status",
-    "caption": "Open a beat’s actions to find its next step. Example with demo data."
+    "caption": "Open a beat\u2019s actions to find its next step. Example with demo data."
   },
   "collection-catalog": {
     "alt": "My Collections with release artwork on desktop and a collection action menu on phone",
-    "caption": "Organize your beats into releases. The phone view shows a collection’s action menu. Example with demo data."
+    "caption": "Organize your beats into releases. The phone view shows a collection\u2019s action menu. Example with demo data."
   },
   "upload": {
     "alt": "An existing demo beat in the editor with its title, collection, tags and description",
@@ -146,5 +146,9 @@
   "insights-audience": {
     "alt": "Audience reports on desktop and Top Devices on phone",
     "caption": "Explore the audience behind your plays. The phone view focuses on Top Devices. Example with demo data."
+  },
+  "producer-application": {
+    "alt": "A producer application draft with profile details and a portfolio link; the phone view focuses the portfolio section",
+    "caption": "Introduce your music with a portfolio link. Optional context is open on desktop and collapsed on the phone. Demo data; no application has been submitted."
   }
 }

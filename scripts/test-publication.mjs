@@ -26,7 +26,33 @@ test('public provenance excludes private host paths without banning normal autho
 });
 
 test('actual host layouts are rejected while generic isolation instructions remain publishable',()=>{
-  const actual='/'+'home/'+'beatpass-open/'+'htdocs/'+'open.beatpass.ca/Documentation';
+  const actual='/'+'home/'+'docs-user/'+'htdocs/'+'open.beatpass.ca/Documentation';
   assert.equal(hostLayoutIssues('tests/example.mjs',Buffer.from(actual)).length,1);
+  const other='/'+'Users/'+'another-user/'+'htdocs/'+'example-app';
+  assert.equal(hostLayoutIssues('tests/example.mjs',Buffer.from(other)).length,1);
   assert.deepEqual(hostLayoutIssues('README.md',Buffer.from('Use /srv/production/Documentation or /tmp/review as the appropriate test input.')),[]);
+});
+
+
+test('credential screening covers modern keys and credential URLs without echoing them',()=>{
+  const samples=[
+    'github_'+'pat_'+'A'.repeat(50),
+    'AS'+'IA'+'A'.repeat(16),
+    'sk_'+'test_'+'A'.repeat(24),
+    '-----BEGIN '+'ENCRYPTED PRIVATE KEY-----',
+    '-----BEGIN '+'DSA PRIVATE KEY-----',
+    'postgres'+'://example-user:example-password@db.example.test/app',
+  ];
+  for(const value of samples){
+    const errors=credentialIssues('sample.txt',Buffer.from(value));
+    assert(errors.length>0);
+    assert(errors.every(error=>!error.includes(value)));
+  }
+  assert.deepEqual(credentialIssues('sample.txt',Buffer.from('G-EXAMPLE123 secrets.READ_TOKEN Authorization: Bearer YOUR_BEATPASS_TOKEN')),[]);
+});
+
+test('forced Git candidates cannot publish credential files or diagnostic exports',()=>{
+  const paths=['.npmrc','backup/id_rsa','session.har','capture.log','local.sqlite3','key.pem'];
+  for(const name of paths)assert.equal(validateRepositoryCandidates([name]).length,1,name);
+  assert.deepEqual(validateRepositoryCandidates(['tests/fixtures/media/demo-data.mjs','assets/logo/light.svg','developers/api-reference/openapi.json']),[]);
 });

@@ -49,6 +49,12 @@ export const workflows = [
   ],
   ["billing", "billing-active", "/billing", "[data-billing-overview]"],
   ["privacy", "docs-privacy", "/library/songs", "[data-cookie-notice]"],
+  [
+    "producer-application",
+    "application",
+    "/backstage/requests/become-artist",
+    "[data-producer-application] form",
+  ],
   ["requests", "request-send", "/beat-requests", "[data-requests-experience]"],
   ["insights-artist-overview", "artist-insights", "/backstage/artists/5/insights?from=2026-10-05T04%3A00%3A00Z&to=2026-11-04T04%3A59%3A59Z", "[data-insights-header]"],
   ["insights-artist-pro-page", "artist-insights", "/backstage/artists/5/insights?view=pro-page&from=2026-10-05T04%3A00%3A00Z&to=2026-11-04T04%3A59%3A59Z", "[data-insights-header]"],
@@ -161,6 +167,8 @@ export const workflows = [
   state: "populated",
   placement:
     {
+      "producer-application":
+        "Beside the new producer application steps: the desktop view shows the prepared form; the phone view focuses the portfolio link. No application has been submitted.",
       upload:
         "Beside the steps for editing an existing beat's details. This is the backstage editor with an unsaved description change, not the new-upload drop zone or a publishing receipt.",
       "rights-declarations":

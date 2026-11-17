@@ -574,17 +574,21 @@
     {
       "path": "help/billing/faq.mdx",
       "reviewed": true,
-      "reviewed_sha256": "964b5efc53b537b55999ea185829016f13522b39099d523cf40bc5191f5d5863",
+      "reviewed_sha256": "6a759859f8da5a810c5542f5308bcbee2bb155793ca36aedf53c60c08e1f20a1",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/active-plan-panel.tsx",
         "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
-        "https://open.beatpass.ca/pages/subscription-and-plan-terms"
+        "https://open.beatpass.ca/pages/subscription-and-plan-terms",
+        "app/Services/PlanChangeQuote.php",
+        "common/resources/client/billing/billing-page/plan-change-return.tsx",
+        "common/resources/client/billing/billing-page/plan-change-status-panel.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text plan-change state/cancellation review against current frontend and provider-specific services",
+      "reviewed_at": "2026-11-13T19:45:32.064482+00:00"
     },
     {
       "path": "help/billing/index.mdx",
@@ -604,7 +608,7 @@
     {
       "path": "help/billing/invoices.mdx",
       "reviewed": true,
-      "reviewed_sha256": "86a3605c7198415b43a3e67a6ca8fc995b5e8ad2abf09c01fae174c05396cfcf",
+      "reviewed_sha256": "a6de4f72cf3b37794baff8e50eaabbb2062efad6429e9f2bcf1dbaf88ab2899c",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/invoice-history-panel.tsx",
@@ -617,7 +621,8 @@
       "remaining_gaps": [
         "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
+      "review_method": "independent full-text review of committed November12 changes and current working-source behavior; actual invoice lines and public signup configuration checked",
+      "reviewed_at": "2026-11-13T19:54:10.398981+00:00"
     },
     {
       "path": "help/billing/managing-subscription/cancelling-subscription.mdx",
@@ -637,7 +642,7 @@
     {
       "path": "help/billing/managing-subscription/downgrading-plan.mdx",
       "reviewed": true,
-      "reviewed_sha256": "230011cfbc2f3138cb5162eb3143f54d9c3dc01af1fd8efb19b8d1a18e14832a",
+      "reviewed_sha256": "4311be0a820b8053efbdcbc53842f6b3dde2691f4c143467436fb3079fede11a",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/active-plan-panel.tsx",
@@ -646,27 +651,34 @@
         "common/resources/client/billing/checkout/subscription-contract-step.tsx",
         "common/resources/client/billing/billing-page/plan-change-status-panel.tsx",
         "common/Billing/Gateways/Stripe/StripeScheduledPlanChange.php",
-        "common/Billing/Gateways/Paypal/PaypalPlanChange.php"
+        "common/Billing/Gateways/Paypal/PaypalPlanChange.php",
+        "app/Services/PlanChangeQuote.php",
+        "common/resources/client/billing/billing-page/plan-change-return.tsx"
       ],
       "remaining_gaps": [
         "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
+      "review_method": "full-text plan-change state/cancellation review against current frontend and provider-specific services",
+      "reviewed_at": "2026-11-13T19:45:32.064482+00:00"
     },
     {
       "path": "help/billing/managing-subscription/index.mdx",
       "reviewed": true,
-      "reviewed_sha256": "58e1fc8999fa7f53f95b162e7f2fec97084dcb40053b5648a7b6cda4793d4fd7",
+      "reviewed_sha256": "23e402e736301c8c0477623c7737ad9fb1c0e67d7c1424e290d7c8e9de83cd32",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/active-plan-panel.tsx",
         "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
-        "https://open.beatpass.ca/pages/subscription-and-plan-terms"
+        "https://open.beatpass.ca/pages/subscription-and-plan-terms",
+        "app/Services/PlanChangeQuote.php",
+        "common/resources/client/billing/billing-page/plan-change-return.tsx",
+        "common/resources/client/billing/billing-page/plan-change-status-panel.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text plan-change state/cancellation review against current frontend and provider-specific services",
+      "reviewed_at": "2026-11-13T19:45:32.064482+00:00"
     },
     {
       "path": "help/billing/managing-subscription/resuming-subscription.mdx",
@@ -686,7 +698,7 @@
     {
       "path": "help/billing/managing-subscription/upgrading-plan.mdx",
       "reviewed": true,
-      "reviewed_sha256": "b346a8b9977d546becb424979d23f2271c4deb7f17516de22afb2401a4b26667",
+      "reviewed_sha256": "048fa8f737fbea00e93c49c613a9a1166b4871b4905f3d01c6685bd6b629a2f0",
       "generated": false,
       "source_paths": [
         "common/resources/client/billing/billing-page/panels/active-plan-panel.tsx",
@@ -697,12 +709,14 @@
         "common/resources/client/billing/billing-page/plan-change-status-panel.tsx",
         "app/Services/PlanChangeQuote.php",
         "common/Billing/Gateways/Stripe/StripePlanChange.php",
-        "common/Billing/Gateways/Paypal/PaypalPlanChange.php"
+        "common/Billing/Gateways/Paypal/PaypalPlanChange.php",
+        "common/resources/client/legal/plan-change-quote-summary.tsx"
       ],
       "remaining_gaps": [
         "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
+      "review_method": "independent full-text review of committed November12 changes and current working-source behavior; actual invoice lines and public signup configuration checked",
+      "reviewed_at": "2026-11-13T19:54:10.398981+00:00"
     },
     {
       "path": "help/billing/payment-methods/index.mdx",
@@ -964,7 +978,7 @@
     {
       "path": "help/discovering-music/producer-pages.mdx",
       "reviewed": true,
-      "reviewed_sha256": "f6ba702a45e680359fe621d952c53f1941984ccaa10f8312a169a2625195052a",
+      "reviewed_sha256": "9de54297d93f427340d8a4a0668df52edf1125520a2a103ac709074c8a2da6f0",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/channels/channel-page.tsx",
@@ -979,12 +993,25 @@
         "resources/client/web-player/library/use-library-navigation.ts",
         "resources/client/web-player/library/library-navigation.tsx",
         "resources/client/web-player/layout/account-menu-shortcuts.tsx",
-        "resources/client-translations.json"
+        "resources/client-translations.json",
+        "app/Services/Artists/PaginateArtistAlbums.php",
+        "resources/client/landing-page/landing-page.css",
+        "resources/client/landing-page/landing-page.tsx",
+        "resources/client/web-player/layout/producer-create-menu.tsx",
+        "resources/client/web-player/layout/web-player-layout.tsx",
+        "resources/client/web-player/library/library-licenses-page.tsx",
+        "resources/client/web-player/library/library-page-header.tsx",
+        "resources/client/web-player/library/license-wallet.css",
+        "resources/client/web-player/player-controls/use-mobile-navigation-visibility.ts",
+        "resources/client/web-player/tracks/track-actions-bar.tsx",
+        "resources/client/web-player/tracks/track-page.tsx",
+        "resources/client/web-player/layout/use-queue-page-intent.ts"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "independent current working-source journey and exact-label review",
+      "reviewed_at": "2026-11-13T19:46:45.917106+00:00"
     },
     {
       "path": "help/discovering-music/radio.mdx",
@@ -1134,7 +1161,7 @@
     {
       "path": "help/downloads-and-licensing/how-downloads-work.mdx",
       "reviewed": true,
-      "reviewed_sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764",
+      "reviewed_sha256": "5ed487254035b970be1fe128294bbe28810fb287140050a8844c3d5f3edfce31",
       "generated": false,
       "source_paths": [
         "app/Policies/TrackPolicy.php",
@@ -1146,12 +1173,15 @@
         "resources/client/web-player/library/use-library-navigation.ts",
         "resources/client/web-player/library/library-navigation.tsx",
         "resources/client/web-player/layout/account-menu-shortcuts.tsx",
-        "resources/client-translations.json"
+        "resources/client-translations.json",
+        "resources/client/web-player/tracks/track-licensing-display.tsx",
+        "resources/client/web-player/tracks/track-license-inclusions.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/downloads-and-licensing/index.mdx",
@@ -1707,7 +1737,7 @@
     {
       "path": "help/getting-started/creating-account.mdx",
       "reviewed": true,
-      "reviewed_sha256": "a079a80f7b34a8e0e3257f209e782effc23a3b62a60e961710a91706a90518c4",
+      "reviewed_sha256": "3ca7a6cb75f47f2209b326b02e11516911645a66f6796ab07abe859d74c8269c",
       "generated": false,
       "source_paths": [
         "common/resources/client/auth/ui/register-page.tsx",
@@ -1725,13 +1755,15 @@
         "common/resources/client/auth/requests/use-register.ts",
         "common/resources/client/auth/requests/use-social-login.ts",
         "app/Services/SubscriptionAgreementReview.php",
-        "app/Services/SubscriptionAgreementReceipt.php"
+        "app/Services/SubscriptionAgreementReceipt.php",
+        "common/Auth/Fortify/PasswordValidationRules.php",
+        "common/resources/client/auth/ui/registration-policies.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_prior_review_with_current_registration_agreement_delta",
-      "reviewed_at": "2026-11-05T17:08:34.205289+00:00"
+      "review_method": "independent full-text review of committed November12 changes and current working-source behavior; actual invoice lines and public signup configuration checked",
+      "reviewed_at": "2026-11-13T19:54:10.398981+00:00"
     },
     {
       "path": "help/getting-started/index.mdx",
@@ -1791,7 +1823,7 @@
     {
       "path": "help/getting-started/navigating-beatpass.mdx",
       "reviewed": true,
-      "reviewed_sha256": "e5816941a84e2cf1e5a5ce3b69003f6f8f9e1679b6c00c1427c8eac457d8c531",
+      "reviewed_sha256": "cd88d34e46ebd62f9be6f4497c54a4c8dc32876dbf084666806edb1911b703fe",
       "generated": false,
       "source_paths": [
         "resources/client/site-config.tsx",
@@ -1803,12 +1835,25 @@
         "common/resources/client/menus/custom-menu.tsx",
         "resources/client/web-player/library/use-library-navigation.ts",
         "resources/client/web-player/library/library-navigation.tsx",
-        "resources/client-translations.json"
+        "resources/client-translations.json",
+        "app/Services/Artists/PaginateArtistAlbums.php",
+        "resources/client/landing-page/landing-page.css",
+        "resources/client/landing-page/landing-page.tsx",
+        "resources/client/web-player/layout/producer-create-menu.tsx",
+        "resources/client/web-player/layout/web-player-layout.tsx",
+        "resources/client/web-player/library/library-licenses-page.tsx",
+        "resources/client/web-player/library/library-page-header.tsx",
+        "resources/client/web-player/library/license-wallet.css",
+        "resources/client/web-player/player-controls/use-mobile-navigation-visibility.ts",
+        "resources/client/web-player/tracks/track-actions-bar.tsx",
+        "resources/client/web-player/tracks/track-page.tsx",
+        "resources/client/web-player/layout/use-queue-page-intent.ts"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "independent current working-source journey and exact-label review",
+      "reviewed_at": "2026-11-13T19:46:45.917106+00:00"
     },
     {
       "path": "help/getting-started/password-reset.mdx",
@@ -1995,17 +2040,21 @@
     {
       "path": "help/legal/cookie-tracking-policy.mdx",
       "reviewed": true,
-      "reviewed_sha256": "674b89fc2c673984eea347029f246470526eed65fb00dab059c158419c20e33e",
+      "reviewed_sha256": "3aad720700b50106ce915576145653cd189021d0375086338d04714fea6fea74",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/cookie-and-tracking-policy",
         "common/resources/client/ui/cookie-notice/cookie-notice.tsx",
-        "common/resources/client/ui/footer/footer.tsx"
+        "common/resources/client/ui/footer/footer.tsx",
+        "common/resources/client/analytics/consented-tags.ts",
+        "common/resources/client/analytics/tracking-consent.ts",
+        "Documentation/analytics.js"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_with_current_source_spot_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/legal/copyright-and-dmca.mdx",
@@ -2195,17 +2244,21 @@
     {
       "path": "help/legal/privacy-policy.mdx",
       "reviewed": true,
-      "reviewed_sha256": "69c545a7579accd66ee6ea440bdac0fa65e1b54ebaab533154069775e45e2f0f",
+      "reviewed_sha256": "1cb84c9e0ea76427847eb35ec2c1ab90983655fe653a2802636763f2d34da241",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/privacy-policy",
         "app/Services/Wise/WiseRecipientService.php",
-        "common/resources/client/ui/cookie-notice/cookie-notice.tsx"
+        "common/resources/client/ui/cookie-notice/cookie-notice.tsx",
+        "common/resources/client/analytics/consented-tags.ts",
+        "common/resources/client/analytics/tracking-consent.ts",
+        "Documentation/analytics.js"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/legal/producer-upload-seller-agreement.mdx",
@@ -2223,7 +2276,7 @@
     {
       "path": "help/legal/subscription-plan-terms.mdx",
       "reviewed": true,
-      "reviewed_sha256": "8c17c16da00dd9fc70336dfb68a0fca34a009182fdb31b1e5d996c05a3373f89",
+      "reviewed_sha256": "f0ad0dd8822cb5d231706f6415f0ddf7b3e45fb687bcdcfae9f910fc4a6f700e",
       "generated": false,
       "source_paths": [
         "https://open.beatpass.ca/pages/subscription-and-plan-terms",
@@ -2231,12 +2284,17 @@
         "app/Services/StandardNonExclusiveTerms.php",
         "common/resources/client/billing/checkout/subscription-contract-step.tsx",
         "app/Services/SubscriptionAgreementReview.php",
-        "app/Services/TermsChangeNotice.php"
+        "app/Services/TermsChangeNotice.php",
+        "common/resources/client/billing/checkout/checkout.tsx",
+        "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
+        "common/resources/client/billing/checkout/subscription-confirmation.tsx",
+        "app/Services/TrackPurchaseService.php"
       ],
       "remaining_gaps": [
         "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "targeted_current_source_billing_agreement_review_with_prior_unchanged_copy_retained"
+      "review_method": "independent full-text review of committed November12 changes and current working-source behavior; actual invoice lines and public signup configuration checked",
+      "reviewed_at": "2026-11-13T19:54:10.398981+00:00"
     },
     {
       "path": "help/legal/terms-of-service.mdx",
@@ -2921,19 +2979,32 @@
     {
       "path": "help/playing-music/queue-and-playback.mdx",
       "reviewed": true,
-      "reviewed_sha256": "d542217ac2cb8eb4a823ffa9e4add359b52a1c245c9e84335e10baea776fe395",
+      "reviewed_sha256": "f1a9fbdce3d69dd85c1dc8c3fb5aa8ddfa09cd3aa43a9225a85dc8477b3e77a7",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/player-controls/mobile-player-controls.tsx",
         "common/resources/client/player/handle-player-keybinds.ts",
         "resources/client/web-player/layout/queue/playback-queue.tsx",
         "resources/client/web-player/tracks/use-track-download-action.ts",
-        "resources/client/web-player/tracks/lyrics/requests/use-lyrics.ts"
+        "resources/client/web-player/tracks/lyrics/requests/use-lyrics.ts",
+        "app/Services/Artists/PaginateArtistAlbums.php",
+        "resources/client/landing-page/landing-page.css",
+        "resources/client/landing-page/landing-page.tsx",
+        "resources/client/web-player/layout/producer-create-menu.tsx",
+        "resources/client/web-player/layout/web-player-layout.tsx",
+        "resources/client/web-player/library/library-licenses-page.tsx",
+        "resources/client/web-player/library/library-page-header.tsx",
+        "resources/client/web-player/library/license-wallet.css",
+        "resources/client/web-player/player-controls/use-mobile-navigation-visibility.ts",
+        "resources/client/web-player/tracks/track-actions-bar.tsx",
+        "resources/client/web-player/tracks/track-page.tsx",
+        "resources/client/web-player/layout/use-queue-page-intent.ts"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "independent current working-source journey and exact-label review",
+      "reviewed_at": "2026-11-13T19:46:45.917106+00:00"
     },
     {
       "path": "help/playing-music/waveform-comments.mdx",
@@ -3091,18 +3162,21 @@
     {
       "path": "help/producer-dashboard/finances.mdx",
       "reviewed": true,
-      "reviewed_sha256": "11e2fba67064873b244eeb5302947915e163d02048f8935618e59b1c6fa1c064",
+      "reviewed_sha256": "587e82693ca131909468cd99d517fa38bcd6382609212117dce8c561e25790c0",
       "generated": false,
       "source_paths": [
         "resources/client/producer-dashboard/producer-dashboard-layout.tsx",
         "resources/client/producer-dashboard/producer-navigation.ts",
         "resources/client/producer-dashboard/pages/producer-finances.tsx",
+        "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx",
+        "app/Services/Finances/ProducerFinancesDashboardService.php",
         "resources/client/producer-dashboard/components/finances-dashboard-sections.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/producer-dashboard/home.mdx",
@@ -3210,23 +3284,29 @@
     {
       "path": "help/producer-program/after-approval.mdx",
       "reviewed": true,
-      "reviewed_sha256": "e12d94bf1925227c60f36edeac07cba7567ec65ab8475c7131b5949ba53ae5dd",
+      "reviewed_sha256": "f07e0216ec3ae2e99de218bba2d5c9a935375ae6cf325a00c43bb72a644c0f03",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
         "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
-        "app/Services/Backstage/ApproveBackstageRequest.php"
+        "app/Services/Backstage/ApproveBackstageRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/producer-program/application-process.mdx",
       "reviewed": true,
-      "reviewed_sha256": "9b7412db978e69c338950be4a99df9aa0559c73e18fb4cde03080d1b733c5d96",
+      "reviewed_sha256": "890315bebe8e32d0513540907faf7cffe919c7938de038c67e8b20967d773298",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
@@ -3234,17 +3314,21 @@
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
         "app/Services/Backstage/ApproveBackstageRequest.php",
         "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
-        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "prior full current-source copy review plus personally reviewed four-variant unsubmitted application figure; exact Start Application label checked",
+      "reviewed_at": "2026-11-13T19:58:22.968866+00:00"
     },
     {
       "path": "help/producer-program/application-types/become-producer.mdx",
       "reviewed": true,
-      "reviewed_sha256": "2c489c27afd10c7980957a8aa699b31411dc468d62bf236ada9a356ec756c017",
+      "reviewed_sha256": "a6fdb1b72a8d2b03d652d7bdb4a1f431853e68a380185f564856de30f4d3e309",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
@@ -3252,61 +3336,85 @@
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
         "app/Services/Backstage/ApproveBackstageRequest.php",
         "app/Policies/TrackPolicy.php",
-        "app/Services/TrackPurchaseService.php"
+        "app/Services/TrackPurchaseService.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "prior full current-source copy review plus personally reviewed four-variant unsubmitted application figure; exact Start Application label checked",
+      "reviewed_at": "2026-11-13T19:58:22.968866+00:00"
     },
     {
       "path": "help/producer-program/application-types/claim-existing-artist.mdx",
       "reviewed": true,
-      "reviewed_sha256": "a215735ad7ee43e88ccfda8eb29d7ebe94c78fc32321693ffb726178065e6a00",
+      "reviewed_sha256": "24032866943606f3dfd30a4f9bfa89fc856a1c58985a0f378479ef8698a0eb1d",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
         "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
         "app/Services/Backstage/ApproveBackstageRequest.php",
-        "resources/client/web-player/backstage/backstage-request-form/backstage-role-select.tsx"
+        "resources/client/web-player/backstage/backstage-request-form/backstage-role-select.tsx",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/producer-program/application-types/get-verified.mdx",
       "reviewed": true,
-      "reviewed_sha256": "52e845ca4dcbfaae7c6aa6408ce589d2c122b612ba6f7258858eaa96b4671e4c",
+      "reviewed_sha256": "c76cb2b55c764ae9fa26285f005b6ce852375393f7e48eb0212708e337f6f6a8",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
         "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
-        "app/Services/Backstage/ApproveBackstageRequest.php"
+        "app/Services/Backstage/ApproveBackstageRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/producer-program/application-types/index.mdx",
       "reviewed": true,
-      "reviewed_sha256": "b2dec375738f53afbfb70102f6914e60f31ac3f3002082c771151f56b9929075",
+      "reviewed_sha256": "0991612ecfc9fc66c8621cccc6c020b20db3a687e3ea8400644b67f2d11c6440",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
         "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
-        "app/Services/Backstage/ApproveBackstageRequest.php"
+        "app/Services/Backstage/ApproveBackstageRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/producer-program/benefits.mdx",
@@ -3346,35 +3454,46 @@
     {
       "path": "help/producer-program/index.mdx",
       "reviewed": true,
-      "reviewed_sha256": "e514b96eeb57ec7a169b5e111c8acecea461400502889f6c6e45e2e5494efa43",
-      "generated": false,
-      "source_paths": [
-        "resources/client/web-player/producer-program/producer-program-action.tsx",
-        "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
-        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
-        "app/Services/Backstage/ApproveBackstageRequest.php"
-      ],
-      "remaining_gaps": [
-        "Deployed configuration and authenticated transactions are outside static documentation verification."
-      ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
-    },
-    {
-      "path": "help/producer-program/requirements.mdx",
-      "reviewed": true,
-      "reviewed_sha256": "d9488aa69c74be2fc23829015ec976b514ea02a3c1452271ee47090dae67f018",
+      "reviewed_sha256": "ccab87f07520bbe70a780aeb24c486450f31bc873636002172013be994c06685",
       "generated": false,
       "source_paths": [
         "resources/client/web-player/producer-program/producer-program-action.tsx",
         "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
         "app/Http/Requests/CrupdateBackstageRequestRequest.php",
         "app/Services/Backstage/ApproveBackstageRequest.php",
-        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx"
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_exact_prior_review_and_dependency_delta_check"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
+    },
+    {
+      "path": "help/producer-program/requirements.mdx",
+      "reviewed": true,
+      "reviewed_sha256": "7b70d86c999a5be71b9f461a4af705a275f56218267b6a3ec86fd0cbdaabe1d0",
+      "generated": false,
+      "source_paths": [
+        "resources/client/web-player/producer-program/producer-program-action.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
+        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+        "app/Services/Backstage/ApproveBackstageRequest.php",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
+      ],
+      "remaining_gaps": [
+        "Deployed configuration and authenticated transactions are outside static documentation verification."
+      ],
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "help/profiles/index.mdx",
@@ -3587,7 +3706,7 @@
     {
       "path": "help/troubleshooting/account-access.mdx",
       "reviewed": true,
-      "reviewed_sha256": "726835d249114461b462426bb60a6b396ae641d7c367df8a75043b936849c6a1",
+      "reviewed_sha256": "da7a988c4894f5fb8f81ceea0602abe0866ce3d88fcc66fb4c20aef618925620",
       "generated": false,
       "source_paths": [
         "common/Auth/Fortify/FortifyServiceProvider.php",
@@ -3604,13 +3723,14 @@
         "common/resources/client/legal/contract-review.tsx",
         "common/resources/client/legal/contract-copy-dialog.tsx",
         "common/resources/client/auth/requests/use-register.ts",
-        "common/resources/client/auth/requests/use-social-login.ts"
+        "common/resources/client/auth/requests/use-social-login.ts",
+        "common/resources/client/auth/ui/account-settings/basic-info-panel/basic-info-panel.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained_prior_review_with_current_registration_agreement_delta",
-      "reviewed_at": "2026-11-05T17:08:34.205289+00:00"
+      "review_method": "independent full-text review of committed November12 changes and current working-source behavior; actual invoice lines and public signup configuration checked",
+      "reviewed_at": "2026-11-13T19:54:10.398981+00:00"
     },
     {
       "path": "help/troubleshooting/download-issues.mdx",
@@ -4002,7 +4122,7 @@
     {
       "path": "developers/api-reference/content.mdx",
       "reviewed": true,
-      "reviewed_sha256": "d4781a3b3adf99dea6086ad0fc069e16fb9c1d7bdbee594271ba0402e76960fb",
+      "reviewed_sha256": "0fb760b10315c84a995c1b0a27e8d7fa210152e30d84d530519ff7e636ca03bb",
       "generated": false,
       "source_paths": [
         "routes/api.php",
@@ -4011,12 +4131,16 @@
         "app/Http/Requests/ModifyTracks.php",
         "app/Services/Tracks/PublishedTrackAudioSource.php",
         "app/Http/Controllers/AudioFingerprintController.php",
-        "app/Http/Controllers/ContentInsightsController.php"
+        "app/Http/Controllers/ContentInsightsController.php",
+        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "complete full-text public copy/exposure review; current-source consequential contracts checked"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "developers/api-reference/dashboard.mdx",
@@ -4171,7 +4295,7 @@
     {
       "path": "developers/error-catalog.mdx",
       "reviewed": true,
-      "reviewed_sha256": "2324365f3c7c9e55fc370d2ebefb470f099cdcead2ae4f7ac05a6f8c2a44d44f",
+      "reviewed_sha256": "2a16b75863ca0c6cc9d85e65d2356637bb863301334f55fcfdcba198ad35b430",
       "generated": false,
       "source_paths": [
         "routes/api.php",
@@ -4180,12 +4304,16 @@
         "app/Http/Requests/CreateBeatRequestRequest.php",
         "app/Http/Controllers/TrackPurchaseController.php",
         "app/Http/Controllers/LicenseCertificateController.php",
-        "app/Http/Requests/ModifyTracks.php"
+        "app/Http/Requests/ModifyTracks.php",
+        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "complete full-text public copy/exposure review; current-source consequential contracts checked"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "developers/overview.mdx",
@@ -4257,15 +4385,23 @@
     {
       "path": "release-notes/changelog.mdx",
       "reviewed": true,
-      "reviewed_sha256": "f6435239b347cb6e0fc32a1ba25fa78e896fe7365804b5e1d3ed40b49bd629ae",
+      "reviewed_sha256": "400568d6da89a34d268597b6242a4da9287d5633b8b65b5267d9895c167571af",
       "generated": false,
       "source_paths": [
-        "audit/pending-release.json"
+        "audit/pending-release.json",
+        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx"
       ],
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "current-source audience review and four-entry-point synchronization"
+      "review_method": "full-text current-source delta review and independent copy review; rendered and transaction limits retained",
+      "reviewed_at": "2026-11-13T19:38:45.999264+00:00"
     },
     {
       "path": "release-notes/index.mdx",
@@ -4573,7 +4709,7 @@
     {
       "path": "release-notes/v3.0/3.0.8-10.mdx",
       "reviewed": true,
-      "reviewed_sha256": "7d0252513e698ba73868b9fe60fa8ebf8a0ba73d2197c174a2ac17d1cbc79220",
+      "reviewed_sha256": "0cca07baf7d669766280ed0a685ed11d0d8ce444176345fcb3e96df0fcf3f27f",
       "generated": false,
       "source_paths": [
         "Documentation/release-notes/v3.0/3.0.8-10.mdx",
@@ -4585,7 +4721,8 @@
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained exact bytes from previous full editorial review; historical scope preserved"
+      "review_method": "Public-copy privacy review: removed implementation names, operational endpoints, maintenance counts and absolute security assurances; historical dates, feature outcomes and current-help links preserved. No current app-behavior recertification.",
+      "reviewed_at": "2026-11-17T03:41:21.112042+00:00"
     },
     {
       "path": "release-notes/v3.0/3.0.8-11.mdx",
@@ -4808,7 +4945,7 @@
     {
       "path": "release-notes/v3.0/3.0.8-23.mdx",
       "reviewed": true,
-      "reviewed_sha256": "d8f3fe4c530489c7f54fb54b1f8c869fbd509391ae691bd02d2be89fa971ee5f",
+      "reviewed_sha256": "0aaa03d17b720bff272ca7d702cd57f2fae29dae574486fd21ce3ee075b68332",
       "generated": false,
       "source_paths": [
         "Documentation/release-notes/v3.0/3.0.8-23.mdx",
@@ -4819,7 +4956,8 @@
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained exact bytes from previous full editorial review; historical scope preserved"
+      "review_method": "Public-copy privacy review: removed implementation names, operational endpoints, maintenance counts and absolute security assurances; historical dates, feature outcomes and current-help links preserved. No current app-behavior recertification.",
+      "reviewed_at": "2026-11-17T03:41:21.111945+00:00"
     },
     {
       "path": "release-notes/v3.0/3.0.8-24.mdx",
@@ -4890,7 +5028,7 @@
     {
       "path": "release-notes/v3.0/3.0.8-5.mdx",
       "reviewed": true,
-      "reviewed_sha256": "c0244b865b3ddfe994070238e4b5573d43a371e24a8b3013ee2a7d8253338156",
+      "reviewed_sha256": "710a0d336ec27eb65b2325abae0e0c3d5e23db3cdfdae18b0691d799a2517104",
       "generated": false,
       "source_paths": [
         "Documentation/release-notes/v3.0/3.0.8-5.mdx",
@@ -4901,7 +5039,8 @@
       "remaining_gaps": [
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
-      "review_method": "retained exact bytes from previous full editorial review; historical scope preserved"
+      "review_method": "Public-copy privacy review: removed implementation names, operational endpoints, maintenance counts and absolute security assurances; historical dates, feature outcomes and current-help links preserved. No current app-behavior recertification.",
+      "reviewed_at": "2026-11-17T03:41:21.111797+00:00"
     },
     {
       "path": "release-notes/v3.0/3.0.8-6.mdx",
@@ -5250,19 +5389,32 @@
     {
       "path": "release-notes/v4.0/4.2.1.mdx",
       "reviewed": true,
-      "reviewed_sha256": "0a08e4ad17152eb330b9813cc1a47651bdcb6daa0e8e9a12c45b048a32ecc423",
+      "reviewed_sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea",
       "generated": false,
       "source_paths": [
         "audit/pending-release.json",
         "common/resources/client/billing/billing-page/confirm-plan-change-page.tsx",
         "common/resources/client/billing/billing-page/plan-change-status-panel.tsx",
         "common/resources/client/billing/checkout/subscription-contract-step.tsx",
-        "app/Services/SubscriptionAgreementReceipt.php"
+        "app/Services/SubscriptionAgreementReceipt.php",
+        "app/Http/Requests/CrupdateBackstageRequestRequest.php",
+        "app/Services/Backstage/CrupdateBackstageRequest.php",
+        "app/Http/Controllers/BackstageEvidenceController.php",
+        "resources/client/web-player/backstage/backstage-type-selector.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-request-form-page.tsx",
+        "resources/client/web-player/backstage/backstage-request-form/backstage-form-attachments.tsx",
+        "resources/client/web-player/backstage/backstage-request-submitted-page.tsx",
+        "resources/client/web-player/library/library-licenses-page.tsx",
+        "resources/client/web-player/tracks/track-page.tsx",
+        "resources/client/web-player/layout/use-queue-page-intent.ts",
+        "resources/client/web-player/player-controls/use-mobile-navigation-visibility.ts",
+        "app/Services/Artists/PaginateArtistAlbums.php"
       ],
       "remaining_gaps": [
         "Reviewed against isolated source; deployment, authenticated payment-provider journeys and policy publication remain release verification steps."
       ],
-      "review_method": "prior_full_review_plus_live_native_policy_page_and_link_verification"
+      "review_method": "independent full-text review of committed November12 changes and current working-source behavior; actual invoice lines and public signup configuration checked; rendered sidebar label aligned with the reviewed release title",
+      "reviewed_at": "2026-11-14T04:36:33.838490+00:00"
     },
     {
       "path": "release-notes/v4.0/index.mdx",
@@ -5500,21 +5652,30 @@
       "reviewed": true,
       "reviewed_sha256": "7231eab454ce6f8690fbbcdc4eed2b6536abafb73629bbf77d18bb7ba5159fb9",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T19:29:08.667Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "capture-9ca7ab8e67a0"
     },
     {
       "path": "snippets/media/discover.mdx",
       "reviewed": true,
       "reviewed_sha256": "a950717a2e0c0c6e02349cd07d84e56ef5f48e66217a77922f750ed4f43f5bd7",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T20:14:26.517Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "current-2328b1bd2598"
     },
     {
       "path": "snippets/media/download.mdx",
       "reviewed": true,
       "reviewed_sha256": "0680c52681eee5ad5bf7c670122ce9a66227493f8283ccb6293b282c541ff073",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T20:14:26.516Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "current-2328b1bd2598"
     },
     {
       "path": "snippets/media/finances.mdx",
@@ -5577,7 +5738,10 @@
       "reviewed": true,
       "reviewed_sha256": "13187cbe36d7c7a221c326956c517cc31981d2486108cc5295b029e05db46c1b",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-14T04:40:24.686Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "wallet-final-a614f840d54b"
     },
     {
       "path": "snippets/media/messaging.mdx",
@@ -5605,7 +5769,10 @@
       "reviewed": true,
       "reviewed_sha256": "35a19e772b96a51d3d4877027e391ac87f75e17119b7b294fe0719a0f62cf913",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T20:14:26.485Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "current-2328b1bd2598"
     },
     {
       "path": "snippets/media/playlist.mdx",
@@ -5647,14 +5814,20 @@
       "reviewed": true,
       "reviewed_sha256": "ccda11a972d61d1301a93ddb512c7ff41566f37c5da3f27aec3fd9c14e5a4bf1",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T20:14:26.516Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "current-2328b1bd2598"
     },
     {
       "path": "snippets/media/requests.mdx",
       "reviewed": true,
       "reviewed_sha256": "f2f7383de69757027bd15e4ce5b9ff6b88ad8c051f4dd5d62add908489bf5756",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T20:14:26.517Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "current-2328b1bd2598"
     },
     {
       "path": "snippets/media/rights-declarations.mdx",
@@ -5673,9 +5846,12 @@
     {
       "path": "snippets/media/track.mdx",
       "reviewed": true,
-      "reviewed_sha256": "77230653f47c50f2053426fc921fe4e0265b9f30ee62848fca772db398f20117",
+      "reviewed_sha256": "e5a3b43e1774733ad05b3e7c1b50aa26efafdd289b3b8efc1203eb96d8d576ae",
       "generated": true,
-      "review_method": "catalog-generated; separate complete-variant visual acceptance required"
+      "review_method": "catalog-generated; separate complete-variant visual acceptance required",
+      "reviewed_at": "2026-11-13T20:14:26.485Z",
+      "generated_from": "audit/media-catalog.json",
+      "refresh_run": "current-2328b1bd2598"
     },
     {
       "path": "snippets/media/upload.mdx",
@@ -5828,9 +6004,18 @@
         "Deployed configuration and authenticated transactions are outside static documentation verification."
       ],
       "review_method": "retained exact bytes from previous full editorial review; current source delta scans"
+    },
+    {
+      "path": "snippets/media/producer-application.mdx",
+      "reviewed": true,
+      "reviewed_sha256": "5dda4995edf47efca654313080653f672e0fedeab075938abeb3a7c69725e23d",
+      "generated": true,
+      "review_method": "catalog-generated; all four original application captures personally reviewed before promotion",
+      "reviewed_at": "2026-11-13T19:58:22.968866+00:00",
+      "generated_from": "audit/media-catalog.json"
     }
   ],
-  "last_targeted_review_at": "2026-11-05T18:36:40.028338+00:00",
+  "last_targeted_review_at": "2026-11-13T19:54:10.398981+00:00",
   "support_inbox_review": {
     "reviewed_at": "2026-11-04T17:48:14+00:00",
     "scope": "Support inbox and mailto links only; prior product, policy and release verification limits remain unchanged.",

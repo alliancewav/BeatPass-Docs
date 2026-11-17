@@ -15,19 +15,19 @@ This is an archived release note for the version and date shown. For current ins
 
 ## Summary
 
-The Beat Request system has been upgraded to a production-ready state with a new database-backed architecture, resolving critical security issues and ensuring data integrity.
+This release improved beat-request reliability, token handling and the option to send a beat from your existing catalog.
 
 ## What's New
 
-- **Database Persistence**: Moved from unreliable file storage to a robust database schema with transaction support.
-- **Security Fixes**: Resolved a critical issue where deleting a request could refund tokens to the wrong user.
+- **Reliable Requests**: Request records and token updates are handled together more consistently.
+- **Correct Refund Handling**: Request-deletion refunds are applied to the appropriate request owner.
 - **Duplicate Prevention**: Added strict checks to prevent accidental duplicate submissions of the same track.
 - **Existing Track Selection**: Producers can now select from their existing catalog when fulfilling requests, instead of re-uploading.
 - **Improved Feedback**: Clearer error messages (e.g., "Already submitted") instead of generic server errors.
 
 ## Why It Matters
 
-These changes ensure that your tokens are safe, your requests are reliable, and the fulfillment process is smoother. The move to a database architecture prevents data loss and race conditions, especially during high traffic.
+More reliable request records, clearer submission feedback and existing-beat selection make it easier to respond to a brief without repeating work.
 
 ## How to Use
 
@@ -37,7 +37,7 @@ No action is required from users. The system works seamlessly with the existing 
 
 ## Known Issues
 
-- None. All identified critical issues from the audit have been resolved.
+These notes describe the historical release. For current assistance, use [Troubleshooting](/help/troubleshooting).
 
 ## Related
 

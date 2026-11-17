@@ -51,9 +51,29 @@ export function completeCaptureSet(captures, ids) {
     const rows=selected.filter(row=>row.id===id);
     const keys=rows.map(row=>(row.viewport?.width===390?'mobile':'desktop')+'-'+row.theme);
     if(rows.length!==4 || variantNames.some(key=>keys.filter(value=>value===key).length!==1))throw new Error(id+': requires exactly four device/theme captures.');
-    if(new Set(rows.map(row=>JSON.stringify([row.source?.head,row.source?.frontend_sha256,row.source?.theme_sha256,row.source?.navigation_sha256,row.source?.role_contract_sha256]))).size!==1)throw new Error(id+': source/theme/role drift between variants.');
+    if(new Set(rows.map(row=>JSON.stringify([row.source?.head,row.source?.frontend_sha256,row.source?.theme_sha256,row.source?.navigation_sha256,row.source?.role_contract_sha256,row.source?.fixture_sha256,row.source?.harness_sha256]))).size!==1)throw new Error(id+': source/theme/role/fixture drift between variants.');
   }
   return selected;
+}
+export function captureBatches() {
+  // One browser case per guarded child keeps current app bundles within the
+  // production host's fixed memory ceiling. Every workflow still gets a quad.
+  return ['light','dark'].flatMap(theme=>['desktop','mobile'].map(device=>({theme,device})));
+}
+// Merge only the generated entries this run reviewed. Other editors may update
+// unrelated pages or ledger metadata while promotion children are running.
+export function mergeGeneratedReviews({baselineLedger,currentLedger,baselineSnippets,currentSnippets,updates}) {
+  const result=structuredClone(currentLedger),seen=new Set();
+  for(const update of updates) {
+    const name=update.path;
+    if(seen.has(name))throw new Error('Duplicate generated review update: '+name);
+    seen.add(name);
+    const before=baselineLedger.pages.filter(entry=>entry.path===name),after=result.pages.filter(entry=>entry.path===name);
+    if(before.length!==1 || after.length!==1 || before[0].generated!==true || JSON.stringify(before[0])!==JSON.stringify(after[0]))throw new Error('Generated review changed during acceptance; preserving it: '+name);
+    if(!baselineSnippets.has(name) || !currentSnippets.has(name) || sha(baselineSnippets.get(name))!==sha(currentSnippets.get(name)))throw new Error('Generated figure changed during acceptance; preserving it: '+name);
+    Object.assign(after[0],{reviewed_sha256:sha(update.content),reviewed_at:update.reviewed_at,generated_from:'audit/media-catalog.json',refresh_run:update.refresh_run});
+  }
+  return result;
 }
 function run(script,args=[]) {
   return new Promise((resolve,reject)=>{
@@ -88,15 +108,11 @@ async function capture(opts) {
   }
   const common=['--source',plan.source,'--workdir',workdir,'--runtime-safe',path.join(workdir,'runtime-safe.json'),...(plan.browser?['--browser',plan.browser]:[])];
   const sourceManifest=path.join(workdir,'source-manifest.json');
-  if(!fs.existsSync(sourceManifest))await run('capture-media.mjs',[...common,'--workflows',ids[0],'--device','desktop']);
+  if(!fs.existsSync(sourceManifest))await run('capture-media.mjs',[...common,'--workflows',ids[0],'--device','desktop','--theme','light']);
   const frozenSource=read(sourceManifest),snapshot=frozenSource.snapshot_root;
   console.log('Frozen app candidate: '+frozenSource.frontend_sha256+'; captured '+frozenSource.captured_at+(opts.resume?' (resumed, not a new source snapshot)':''));
-  // The first desktop set is already captured; resumptions can safely recapture the same immutable source.
-  if(opts.resume)await run('capture-media-batch.mjs',[...common,'--snapshot',snapshot,'--workflows',ids.join(',')]);
-  else {
-    await run('capture-media-batch.mjs',[...common,'--snapshot',snapshot,'--workflows',ids[0],'--device','mobile']);
-    if(ids.length>1)await run('capture-media-batch.mjs',[...common,'--snapshot',snapshot,'--workflows',ids.slice(1).join(',')]);
-  }
+  // A resumed run reuses the exact source, with one case in each browser child.
+  for(const {theme,device} of captureBatches())await run('capture-media-batch.mjs',[...common,'--snapshot',snapshot,'--workflows',ids.join(','),'--device',device,'--theme',theme]);
   const data=read(path.join(workdir,'media-captures.json'));const rows=completeCaptureSet(data.captures,ids);
   if(data.gaps?.length)throw new Error('Capture gaps remain; see media-captures.json and batch logs.');
   reviewIndex(workdir,rows);
@@ -123,33 +139,50 @@ async function accept(opts) {
   }
   const next={...catalog,figures:catalog.figures.map(figure=>ids.includes(figure.id)?{...figure,variants:Object.fromEntries(reviewed.filter(row=>row.id===figure.id).map(row=>[(row.viewport.width===390?'mobile':'desktop')+'-'+row.theme,row]))}:figure)};
   const errors=validateCatalog(next,files);if(errors.length)throw new Error(errors.join('\n'));
+  const baselineSnippets=new Map();
   for(const id of ids) {
     const name='snippets/media/'+id+'.mdx',bytes=fs.readFileSync(path.join(docs,name));
     const entry=ledger.pages.find(item=>item.path===name);
     if(entry?.generated!==true || entry.reviewed_sha256!==sha(bytes) || bytes.toString()!==renderFigure(catalog.figures.find(figure=>figure.id===id)))throw new Error('Preserve unreviewed or manually edited figure: '+name);
+    baselineSnippets.set(name,bytes);
   }
+  // Refuse unrelated unreviewed prose before replacing any approved assets.
+  await run('review-coverage.mjs');
   const backup=path.join(workdir,'before-accept');
   for(const rel of ['audit/media-catalog.json','audit/polish-review.json',...ids.map(id=>'snippets/media/'+id+'.mdx')]) {
     const target=path.join(backup,rel);fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(path.join(docs,rel),target,fs.constants.COPYFILE_EXCL);
   }
   for(const id of ids)await run('promote-media.mjs',['--workdir',workdir,'--workflow',id,'--previous-manifest',path.join(workdir,'previous-reviewed-media.json'),'--visual-review',opts['visual-review']]);
   await run('import-reviewed-media.mjs',[path.join(workdir,'media-captures.json'),'--write']);
-  const updated=read(catalogFile);
-  for(const id of ids) {
-    const name='snippets/media/'+id+'.mdx',content=renderFigure(updated.figures.find(figure=>figure.id===id));
-    fs.writeFileSync(path.join(docs,name),content);
-    Object.assign(ledger.pages.find(item=>item.path===name),{reviewed_sha256:sha(content),reviewed_at:new Date().toISOString(),generated_from:'audit/media-catalog.json',refresh_run:plan.id});
-  }
-  fs.writeFileSync(ledgerFile,JSON.stringify(ledger,null,2)+'\n');
-  await run('media-catalog.mjs');await run('review-coverage.mjs');
-  const record={...plan,accepted_at:new Date().toISOString(),visual_review:opts['visual-review'],images:read(path.join(workdir,'media-captures.json')).captures.map(row=>({id:row.id,path:row.path,sha256:row.image.sha256,source:row.source,captured_at:row.captured_at})),previous_manifest:path.join(workdir,'previous-reviewed-media.json'),backups:path.join(workdir,'retained-reviewed-assets'),scope:'Local documentation only; no commit, publish, application write or database connection.'};
+  const record={...plan,phase:'assets-and-catalog-promoted',metadata_status:'pending',final_checks:'pending',promoted_at:new Date().toISOString(),visual_review:opts['visual-review'],images:read(path.join(workdir,'media-captures.json')).captures.map(row=>({id:row.id,path:row.path,sha256:row.image.sha256,source:row.source,captured_at:row.captured_at})),previous_manifest:path.join(workdir,'previous-reviewed-media.json'),backups:path.join(workdir,'retained-reviewed-assets'),scope:'Local documentation only; no commit, publish, application write or database connection.'};
   const sourceManifest=read(path.join(workdir,'source-manifest.json'));
   const sourceDirectory=path.join(docs,'audit/media-source-snapshots');fs.mkdirSync(sourceDirectory,{recursive:true});
   const sourceRecord={head:sourceManifest.head,frontend_sha256:sourceManifest.frontend_sha256,sourceFiles:sourceManifest.sourceFiles,excluded_non_web_paths:sourceManifest.excluded_non_web_paths,captured_at:sourceManifest.captured_at};
   const sourceFile=path.join(sourceDirectory,sourceManifest.frontend_sha256+'.json');
   if(!fs.existsSync(sourceFile))fs.writeFileSync(sourceFile,JSON.stringify(sourceRecord,null,2)+'\n');
   record.source_manifest=path.relative(docs,sourceFile);
-  const history=path.join(docs,'audit/media-refresh-history');fs.mkdirSync(history,{recursive:true});fs.writeFileSync(path.join(history,plan.id+'.json'),JSON.stringify(record,null,2)+'\n');
+  const history=path.join(docs,'audit/media-refresh-history');fs.mkdirSync(history,{recursive:true});
+  const saveRecord=()=>fs.writeFileSync(path.join(history,plan.id+'.json'),JSON.stringify(record,null,2)+'\n');
+  // Retain recovery instructions before a concurrent generated-entry edit can
+  // stop acceptance after images/catalog were promoted but before metadata.
+  saveRecord();
+  const updated=read(catalogFile),latestLedgerBytes=fs.readFileSync(ledgerFile,'utf8');
+  const updates=ids.map(id=>({path:'snippets/media/'+id+'.mdx',content:renderFigure(updated.figures.find(figure=>figure.id===id)),reviewed_at:new Date().toISOString(),refresh_run:plan.id}));
+  const currentSnippets=new Map(updates.map(update=>[update.path,fs.readFileSync(path.join(docs,update.path))]));
+  const merged=mergeGeneratedReviews({baselineLedger:ledger,currentLedger:JSON.parse(latestLedgerBytes),baselineSnippets,currentSnippets,updates});
+  // No awaited work separates the final drift checks from these local writes.
+  for(const update of updates) {
+    const target=path.join(docs,update.path);
+    if(sha(fs.readFileSync(target))!==sha(currentSnippets.get(update.path)))throw new Error('Generated figure changed during metadata write; preserving it: '+update.path);
+    fs.writeFileSync(target,update.content);
+  }
+  if(fs.readFileSync(ledgerFile,'utf8')!==latestLedgerBytes)throw new Error('Editorial ledger changed during metadata write; preserving it. See the recovery receipt.');
+  fs.writeFileSync(ledgerFile,JSON.stringify(merged,null,2)+'\n');
+  Object.assign(record,{phase:'metadata-updated',metadata_status:'complete',accepted_at:new Date().toISOString()});
+  saveRecord();
+  // Keep the completed metadata receipt even if final validation fails.
+  await run('media-catalog.mjs');await run('review-coverage.mjs');
+  Object.assign(record,{phase:'complete',final_checks:'passed',checks_completed_at:new Date().toISOString()});saveRecord();
   console.log('Updated '+ids.join(', ')+'. Existing public paths retained; reviewed originals backed up. No publication performed.');
 }
 export async function main(args=process.argv.slice(2)) {

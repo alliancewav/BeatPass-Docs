@@ -137,53 +137,20 @@ When you download a track, you now automatically follow all artists associated w
 
 ### Backfilled Historical Downloads
 
-Existing downloads have been processed to create artist follows:
+This release also connected listeners with producers whose beats they had already downloaded, while skipping existing follows and their own profiles.
 
-- **52 download pairs processed**
-- **16 new artist follows created**
-- **33 already following (skipped)**
-- **7 self-owned artists (skipped)**
-
-This helps connect users with artists they've already shown interest in by downloading their beats.
+For today's options, see [Following producers](/help/social-features/following-system).
 
 ---
 
 ## Technical Details
 
-<Accordion title="For Developers & Technical Users" icon="code">
-  ### Email Notification Updates
+<span id="email-notification-updates" />
+<span id="promotional-notification-system" />
+<span id="payment-recovery-implementation" />
+<span id="auto-follow-service" />
 
-  | Notification                  | Change                                                             |
-  | ----------------------------- | ------------------------------------------------------------------ |
-  | `NewUserRegistered`           | Added `GetsUserPreferredChannels` and `HasEmailUnsubscribe` traits |
-  | `BackstageRequestWasHandled`  | Added unsubscribe support                                          |
-  | `AnalyticsReportNotification` | Added encouraging messaging logic, fixed growth calculation        |
-  | Email templates               | Removed hardcoded "The producer hub." duplications |
-
-  ### Promotional Notification System
-
-  - **20+ seasonal themes** added to `promotional-notification-item.tsx`
-  - **Countdown component** uses `coupon_starts_at` and `coupon_expires_at` from notification data
-  - **Auto-destruct** filters expired promotional notifications from API responses and unread counts
-  - **Color coding**: muted → amber-500 → red-500 → red-600 (bold) based on urgency
-
-  ### Payment Recovery Implementation
-
-  - **Real-time Stripe checks** via `/api/billing/subscription-status` endpoint
-  - **Polling strategy**: 60 seconds normal, 10 seconds when overdue
-  - **Three new API endpoints**:
-    - `GET /api/billing/subscription-status` — Real-time Stripe status
-    - `POST /api/billing/retry-payment` — Idempotent payment retry
-    - `POST /api/billing/switch-to-free` — Cancel and downgrade
-  - **Error handling**: Specific handling for 401 (session expired), 402 (payment declined), 429 (rate limited)
-
-  ### Auto-Follow Service
-
-  - **`AutoFollowService`** handles following logic with transactional safety
-  - **`DownloadLocalTrackController`** calls `autoFollowArtistsOnDownload()` after successful download
-  - **`BackfillDownloadFollows`** command processes historical analytics events
-  - **Non-blocking** — Follow failures are logged but don't prevent downloads
-</Accordion>
+For current integration guidance, use [API & Developers](/developers/overview). This archived announcement does not define today's API contract.
 
 ---
 

@@ -44,6 +44,8 @@ const signatures = new Set(
       row.source.theme_sha256,
       row.source.navigation_sha256,
       row.source.role_contract_sha256,
+      row.source.fixture_sha256,
+      row.source.harness_sha256,
     ]),
   ),
 );

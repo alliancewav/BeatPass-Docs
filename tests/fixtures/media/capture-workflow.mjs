@@ -1,9 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { safeAssetPath, documentClip, insightsActionVisible } from "./safety.mjs";
+import { safeAssetPath, documentClip, insightsActionVisible, assertDiscoveryTouchActions } from "./safety.mjs";
 import { iphone13 } from "./device-profiles.mjs";
 import { preparePhoneTask } from "./phone-workflows.mjs";
+import { producerApplicationDraft } from "./demo-data.mjs";
 import { assertDownloadPresentation as assertNativeDownloadPresentation } from "./download-presentation.mjs";
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function clickVisibleElement(page, element) {
@@ -361,6 +362,46 @@ export async function captureWorkflow({
   let state = "populated";
   await observeActor(page, flow.audience, eligibility);
   if (device === "mobile") await phoneMetrics(page);
+  if (flow.id === "producer-application") {
+    // Populate the existing form through real keyboard interaction. Never accept
+    // its agreements, submit it, connect a social account or navigate externally.
+    const form = await page.waitForSelector("[data-producer-application] form", {
+      visible: true,
+    });
+    const draft = { ...producerApplicationDraft };
+    const fillDraftField = async (name) => {
+      const input = await form.$(`input[name="${name}"]`);
+      if (!input) throw new Error("Application field changed: " + name);
+      await clickVisibleElement(page, input);
+      await input.focus();
+      await page.keyboard.down("Control");
+      await page.keyboard.press("KeyA");
+      await page.keyboard.up("Control");
+      await page.keyboard.type(draft[name], { delay: 25 });
+      await page.keyboard.press("Tab");
+    };
+    for (const name of ["artist_name", "first_name", "last_name", "beats_url"])
+      await fillDraftField(name);
+    if (device === "desktop") {
+      const context = await form.$("details > summary");
+      if (!context) throw new Error("Application optional context changed");
+      await clickVisibleElement(page, context);
+      for (const name of ["company", "instagram_handle"])
+        await fillDraftField(name);
+    }
+    const draftIntact = await form.evaluate((node, draft) => {
+      const fields = ["artist_name", "first_name", "last_name", "beats_url"];
+      const agreements = ["agree_to_terms", "confirm_producer_requirements"];
+      return fields.every(name => node.querySelector(`input[name="${name}"]`)?.value === draft[name]) &&
+        agreements.every(name => {
+          const checkbox = node.querySelector(`input[name="${name}"]`);
+          return checkbox?.type === "checkbox" && !checkbox.checked;
+        });
+    }, draft);
+    if (!draftIntact || new URL(page.url()).pathname !== flow.route)
+      throw new Error("Application capture left its unsubmitted draft state");
+    state = "application-draft";
+  }
   if (device === "mobile" && flow.id === "beat-catalog") {
     const search = await page.waitForSelector(
       'input[placeholder="Search beats"]',
@@ -617,6 +658,7 @@ export async function captureWorkflow({
   if (flow.id === "privacy") state = "choose-tracking";
   if (flow.id === "pro-page") state = "live-status";
   const focusedSelectors = {
+    "producer-application": "[data-producer-application] form",
     download: "[data-download-dialog]",
     "payout-setup": "[role=dialog]",
     "rights-declarations": "[data-docs-declaration-task]",
@@ -1117,11 +1159,36 @@ export async function captureWorkflow({
     throw new Error("No usable controls in " + flow.id);
   const target = safeAssetPath(output, flow.id, state, device + "-" + theme);
   await fs.mkdir(path.dirname(target), { recursive: true });
+  if (flow.id === "discover") {
+    // Private native-state evidence for controls that must stay reachable on touch.
+    // This observes the real DOM; it does not reveal, restyle or replace controls.
+    const controls = await page.evaluate(() => ({
+      fine: matchMedia("(pointer: fine)").matches,
+      coarse: matchMedia("(pointer: coarse)").matches,
+      hover: matchMedia("(hover: hover)").matches,
+      cards: [...document.querySelectorAll("[data-media-release-card]")].slice(0, 6).map(card => ({
+        title: card.textContent.trim().slice(0, 120),
+        actions: [...card.querySelectorAll(".media-release-actions")].map(node => ({
+          buttons: node.querySelectorAll("button").length,
+          opacity: getComputedStyle(node).opacity,
+          display: getComputedStyle(node).display,
+          visibility: getComputedStyle(node).visibility,
+          pointer_events: getComputedStyle(node).pointerEvents,
+          width: node.getBoundingClientRect().width,
+          height: node.getBoundingClientRect().height,
+          ancestors: (() => {const rows=[];for(let p=node.parentElement;p&&p!==card;p=p.parentElement)rows.push({class:p.className,opacity:getComputedStyle(p).opacity,display:getComputedStyle(p).display,visibility:getComputedStyle(p).visibility});return rows;})(),
+        })),
+      })),
+    }));
+    await fs.writeFile(target + ".diagnostic.json", JSON.stringify(controls, null, 2) + "\n");
+    assertDiscoveryTouchActions(controls);
+  }
   // Native browser clips keep the full intended panel without partial surrounding sections.
   let clip;
   if (
     device === "desktop" &&
     [
+      "producer-application",
       "rights-declarations",
       "sample-safe",
       "audio-recon",
@@ -1232,6 +1299,8 @@ export async function captureWorkflow({
         : null) ||
       "Example with demo data. " +
         ({
+          "producer-application":
+            "Preparing a new producer application with profile details, a portfolio link and optional context. No application has been submitted.",
           progress: "The level overview and its Recent XP and Earn XP actions.",
           "achievement-goal":
             "One selected achievement goal, with its real source-defined reward and conditions.",

@@ -26,3 +26,21 @@ audit/*
 *.orig
 *.patch
 !patches/*.patch
+
+# Local credentials, keys and diagnostic exports never belong in public docs.
+.env
+.env.*
+.npmrc
+.netrc
+.pypirc
+id_rsa
+id_ed25519
+*.pem
+*.key
+*.p12
+*.pfx
+*.har
+*.log
+*.sqlite
+*.sqlite3
+*.db

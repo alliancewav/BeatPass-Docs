@@ -369,20 +369,32 @@ POST /api/v1/backstage-request
 </ParamField>
 
 <ParamField body="artist_name" type="string" required>
-  Display name for the producer/artist request.
+  Display name for the producer/artist request. Use at least 3 characters for `become-artist` and `verify-artist`, or at least 1 character for `claim-artist`.
 </ParamField>
 
 <ParamField body="artist_id" type="integer">
-  Required for `claim-artist`, where it must identify an existing artist. For other new requests, omitting this field defaults to the authenticated user's primary artist when available. `CURRENT_USER` is not resolved as an artist ID by this endpoint.
+  Required for `claim-artist`, where it must identify an existing artist profile that is not already owned. For `verify-artist`, use the authenticated user's primary artist ID. New `become-artist` requests use that account's primary artist when available, rather than an artist supplied by the integration.
 </ParamField>
 
 <ParamField body="data" type="object" required>
-  Request payload object. Must include `beats_url` as a valid URL. Optional supporting fields include `first_name`, `last_name`, `role`, and `company`.
+  Request payload object. Must include `beats_url` as a valid URL. Optional supporting fields include `first_name`, `last_name`, `company`, `role`, and `instagram_handle`.
 </ParamField>
 
 <ParamField body="data.beats_url" type="string" required>
   Valid URL linking to the applicant's beats.
 </ParamField>
+
+<ParamField body="data.role" type="string">
+  Optional role for the application. Supported values: `artist` or `manager`.
+</ParamField>
+
+<ParamField body="data.instagram_handle" type="string">
+  Optional Instagram handle. Maximum 100 characters.
+</ParamField>
+
+<Note>
+  Producer applications no longer accept verification-file uploads. Use the portfolio link and optional Instagram handle; do not attach identity documents. For the in-app steps, see [Apply for producer access](/help/producer-program/application-process).
+</Note>
 
 ### Submission Guard Policy
 

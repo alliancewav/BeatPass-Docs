@@ -15,12 +15,33 @@ import {
 } from "./demo-data.mjs";
 import { applyDemoBootstrap } from "./bootstrap.mjs";
 import { originalDownloadHelper } from "./download-presentation.mjs";
+import { loadHarnessSnapshot } from "./harness-snapshot.mjs";
 function replaceOnce(source, old, value, label) {
   if (!source.includes(old))
     throw new Error(
       `Current app harness changed at ${label}; inspect before adapting`,
     );
   return source.replace(old, value);
+}
+export function extendBootstrapArguments(source) {
+  // Keep the application's current scenario and configured-theme inputs intact.
+  // An unfamiliar bootstrap shape must stop capture for source review.
+  const original = `({
+            dark,
+            name,
+            language,
+            lines,
+            proYoutube,
+            proMediaCount,
+            proDetailState,
+            licenseStress,
+            configuredTheme,
+            configuredThemes,
+          }) => {`;
+  return replaceOnce(source, original, original.replace(
+    "            configuredThemes,",
+    "            configuredThemes,\n            mediaThemes, mediaFontCss, mediaArtwork, mediaCollectionArtwork, mediaLogos, mediaMenus, mediaRoleContract, mediaActorByScenario, mediaPeopleArtwork, mediaStandardLicenseTerms,",
+  ), "bootstrap arguments");
 }
 export async function prepareAdapter({
   docs,
@@ -48,32 +69,10 @@ export async function prepareAdapter({
       snapshot,
       "scripts/ci/browser-smoke/visual-followup-scenario.mjs",
     );
-  let s = await fs.readFile(
-    path.join(
-      sourceRoot,
-      "scripts/ci/browser-smoke/visual-followup-scenario.mjs",
-    ),
-    "utf8",
-  );
-  let runner = await fs.readFile(
-    path.join(sourceRoot, "scripts/ci/run-browser-smoke.mjs"),
-    "utf8",
-  );
-  const harnessSha = createHash("sha256")
-    .update(s)
-    .update("\n--runner--\n")
-    .update(runner)
-    .digest("hex");
-  const harnessDirectory = path.join(workdir, "harness-sources", harnessSha);
-  await fs.mkdir(harnessDirectory, { recursive: true });
-  await fs.writeFile(
-    path.join(harnessDirectory, "visual-followup-scenario.mjs"),
-    s,
-  );
-  await fs.writeFile(
-    path.join(harnessDirectory, "run-browser-smoke.mjs"),
-    runner,
-  );
+  const harness = await loadHarnessSnapshot({sourceRoot: snapshot, workdir});
+  let s = harness.scenario;
+  let runner = harness.runner;
+  const harnessSha = harness.sha256;
   // The documentation wallet contains two coherent synthetic records. Names
   // must exist before the source harness applies real search/type filtering.
   s = replaceOnce(
@@ -168,7 +167,7 @@ export async function prepareAdapter({
   s =
     `import * as mediaDownloadEligibility from ${JSON.stringify(
       eligibilityModule,
-    )};\nimport {specialResponse,improveResponse} from ${JSON.stringify(
+    )};\nimport {specialResponse,improveResponse,demoStandardLicenseTerms} from ${JSON.stringify(
       path.join(fixtureRoot, "demo-data.mjs"),
     )};\nimport {captureWorkflow} from ${JSON.stringify(
       path.join(fixtureRoot, "capture-workflow.mjs"),
@@ -194,7 +193,7 @@ export async function prepareAdapter({
       audienceContract,
     )};\nconst mediaActorByScenario=${JSON.stringify(
       Object.fromEntries(chosen.map((flow) => [flow.scenario, flow.audience])),
-    )};\nconst mediaThemes=${JSON.stringify(
+    )};\nconst mediaStandardLicenseTerms=demoStandardLicenseTerms;\nconst mediaThemes=${JSON.stringify(
       themes.themes,
     )};\nconst mediaArtwork=${JSON.stringify(
       Array.from({ length: 6 }, (_, i) => coverData(11 + i)),
@@ -248,7 +247,7 @@ export async function prepareAdapter({
   const desktopWidth =
     chosen.length === 1 && chosen[0].id === "requests" ? 780 : 1440;
   const viewportList = [
-    { width: desktopWidth, height: 1000 },
+    { width: desktopWidth, height: chosen.some(flow => flow.id === "track") ? 1160 : 1000 },
     { ...iphone13.viewport },
   ].filter(
     (viewport) =>
@@ -301,12 +300,7 @@ export async function prepareAdapter({
     )})`,
     "selected capture themes",
   );
-  s = replaceOnce(
-    s,
-    "({ dark, name, language, lines, proYoutube }) => {",
-    "({ dark, name, language, lines, proYoutube, mediaThemes, mediaFontCss, mediaArtwork, mediaCollectionArtwork, mediaLogos, mediaMenus, mediaRoleContract, mediaActorByScenario, mediaPeopleArtwork }) => {",
-    "bootstrap arguments",
-  );
+  s = extendBootstrapArguments(s);
   s = replaceOnce(
     s,
     "            window.__visualSmoke = true;",
@@ -314,7 +308,7 @@ export async function prepareAdapter({
     "self-contained demo bootstrap",
   );
   const bootstrap = `
-                applyDemoBootstrap(data,{dark,name,themes:mediaThemes,fontCss:mediaFontCss,artwork:mediaArtwork,collectionArtwork:mediaCollectionArtwork,logos:mediaLogos,menus:mediaMenus,peopleArtwork:mediaPeopleArtwork,audience:mediaActorByScenario[name],roleContract:mediaRoleContract});
+                applyDemoBootstrap(data,{dark,name,themes:mediaThemes,fontCss:mediaFontCss,artwork:mediaArtwork,collectionArtwork:mediaCollectionArtwork,logos:mediaLogos,menus:mediaMenus,peopleArtwork:mediaPeopleArtwork,audience:mediaActorByScenario[name],roleContract:mediaRoleContract,standardTerms:mediaStandardLicenseTerms});
                 bootstrap = JSON.stringify(data);`;
   s = replaceOnce(
     s,
@@ -325,7 +319,7 @@ export async function prepareAdapter({
   s = replaceOnce(
     s,
     "            proYoutube: {",
-    "            mediaThemes,mediaFontCss,mediaArtwork,mediaCollectionArtwork,mediaLogos,mediaMenus,mediaRoleContract,mediaActorByScenario,mediaPeopleArtwork,\n            proYoutube: {",
+    "            mediaThemes,mediaFontCss,mediaArtwork,mediaCollectionArtwork,mediaLogos,mediaMenus,mediaRoleContract,mediaActorByScenario,mediaPeopleArtwork,mediaStandardLicenseTerms,\n            proYoutube: {",
     "public theme input",
   );
   s = replaceOnce(
@@ -374,7 +368,8 @@ export async function prepareAdapter({
           }
 ` +
     s.slice(end);
-  s = s.replace("timeout: 120000", "timeout: 45000");
+  // Retain the source harness's startup deadline; cold current-app bundles
+  // can take longer than the former documentation-only 45-second override.
   await fs.writeFile(target, s);
 
   runner = replaceOnce(
@@ -420,11 +415,20 @@ export async function prepareAdapter({
     '"--disable-setuid-sandbox",',
     '"--disable-setuid-sandbox", "--renderer-process-limit=1",',
   );
+  // The current runner validates cache identity immediately after allocation.
+  // Create this owned persistent cache before substituting for mkdtemp.
+  await fs.mkdir(path.join(workdir, "vite-cache"), { recursive: true });
   runner = replaceOnce(
     runner,
     'const smokeCache = await mkdtemp(\n  path.join(tmpdir(), "beatpass-browser-smoke-cache-"),\n);',
     `const smokeCache = ${JSON.stringify(path.join(workdir, "vite-cache"))};`,
     "persistent isolated Vite cache",
+  );
+  runner = replaceOnce(
+    runner,
+    '          path.dirname(smokeCache) !== path.resolve(tmpdir()) ||\n          !path.basename(smokeCache).startsWith("beatpass-browser-smoke-cache-")',
+    `          smokeCache !== ${JSON.stringify(path.join(workdir, "vite-cache"))}`,
+    "owned documentation cache identity",
   );
   runner = replaceOnce(
     runner,

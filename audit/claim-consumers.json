@@ -29,7 +29,7 @@
         },
         {
           "path": "help/downloads-and-licensing/how-downloads-work.mdx",
-          "sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764"
+          "sha256": "5ed487254035b970be1fe128294bbe28810fb287140050a8844c3d5f3edfce31"
         },
         {
           "path": "help/downloads-and-licensing/faq.mdx",
@@ -73,7 +73,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
+          "sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea"
         }
       ]
     },
@@ -99,11 +99,11 @@
         },
         {
           "path": "help/billing/invoices.mdx",
-          "sha256": "d05cea3a14aa8ca2b36ffb474b43ac765d08472ef3922a01c1f2d4bb170cb0ad"
+          "sha256": "a6de4f72cf3b37794baff8e50eaabbb2062efad6429e9f2bcf1dbaf88ab2899c"
         },
         {
           "path": "help/billing/faq.mdx",
-          "sha256": "964b5efc53b537b55999ea185829016f13522b39099d523cf40bc5191f5d5863"
+          "sha256": "6a759859f8da5a810c5542f5308bcbee2bb155793ca36aedf53c60c08e1f20a1"
         },
         {
           "path": "help/billing/platform-fee.mdx",
@@ -115,7 +115,7 @@
         },
         {
           "path": "help/billing/managing-subscription/downgrading-plan.mdx",
-          "sha256": "31fe79566a63e850a72f93f049db4704f7437d31b1533f47b28e124c27898783"
+          "sha256": "4311be0a820b8053efbdcbc53842f6b3dde2691f4c143467436fb3079fede11a"
         },
         {
           "path": "help/beat-requests/understanding-tokens.mdx",
@@ -127,7 +127,7 @@
         },
         {
           "path": "help/producer-program/index.mdx",
-          "sha256": "e514b96eeb57ec7a169b5e111c8acecea461400502889f6c6e45e2e5494efa43"
+          "sha256": "ccab87f07520bbe70a780aeb24c486450f31bc873636002172013be994c06685"
         },
         {
           "path": "help/producer-program/benefits.mdx",
@@ -219,7 +219,7 @@
         },
         {
           "path": "help/downloads-and-licensing/how-downloads-work.mdx",
-          "sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764"
+          "sha256": "5ed487254035b970be1fe128294bbe28810fb287140050a8844c3d5f3edfce31"
         },
         {
           "path": "help/index.mdx",
@@ -227,7 +227,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
+          "sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea"
         }
       ]
     },
@@ -249,7 +249,7 @@
         },
         {
           "path": "help/producer-dashboard/finances.mdx",
-          "sha256": "11e2fba67064873b244eeb5302947915e163d02048f8935618e59b1c6fa1c064"
+          "sha256": "587e82693ca131909468cd99d517fa38bcd6382609212117dce8c561e25790c0"
         },
         {
           "path": "help/producer-dashboard/home.mdx",
@@ -281,7 +281,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
+          "sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea"
         }
       ]
     },
@@ -311,7 +311,7 @@
         },
         {
           "path": "help/producer-dashboard/finances.mdx",
-          "sha256": "11e2fba67064873b244eeb5302947915e163d02048f8935618e59b1c6fa1c064"
+          "sha256": "587e82693ca131909468cd99d517fa38bcd6382609212117dce8c561e25790c0"
         },
         {
           "path": "help/producer-dashboard/pro-page.mdx",
@@ -327,7 +327,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
+          "sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea"
         }
       ]
     },
@@ -359,7 +359,7 @@
       "consumers": [
         {
           "path": "help/legal/cookie-tracking-policy.mdx",
-          "sha256": "674b89fc2c673984eea347029f246470526eed65fb00dab059c158419c20e33e"
+          "sha256": "3aad720700b50106ce915576145653cd189021d0375086338d04714fea6fea74"
         },
         {
           "path": "help/legal/ai-audio-human-made-content.mdx",
@@ -375,7 +375,7 @@
         },
         {
           "path": "help/legal/privacy-policy.mdx",
-          "sha256": "69c545a7579accd66ee6ea440bdac0fa65e1b54ebaab533154069775e45e2f0f"
+          "sha256": "1cb84c9e0ea76427847eb35ec2c1ab90983655fe653a2802636763f2d34da241"
         },
         {
           "path": "help/uploading/index.mdx",
@@ -387,7 +387,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
+          "sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea"
         }
       ]
     },
@@ -475,7 +475,7 @@
         },
         {
           "path": "help/downloads-and-licensing/how-downloads-work.mdx",
-          "sha256": "4765b256954c3c18a5631037a70589389edc9383324652f83aa3f9b007255764"
+          "sha256": "5ed487254035b970be1fe128294bbe28810fb287140050a8844c3d5f3edfce31"
         },
         {
           "path": "help/downloads-and-licensing/faq.mdx",
@@ -491,7 +491,7 @@
         },
         {
           "path": "release-notes/v4.0/4.2.1.mdx",
-          "sha256": "c6878ec32dfdbbdfe626546f6b43a038bf2f1ea255c970f3a118b5ec2bcd6a54"
+          "sha256": "2fa575d9c1cba3e7cd2a0a66b001bd601a0636db22faf41b1ec99a54735877ea"
         }
       ]
     },
