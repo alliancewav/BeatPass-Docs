@@ -1,12 +1,45 @@
-# BeatPass documentation
+<div align="center">
+  <a href="https://docs.beatpass.ca#gh-dark-mode-only">
+    <img src="assets/logo/dark.svg#gh-dark-mode-only" alt="BeatPass" width="300" />
+  </a>
+  <a href="https://docs.beatpass.ca#gh-light-mode-only">
+    <img src="assets/logo/light.svg#gh-light-mode-only" alt="BeatPass" width="300" />
+  </a>
 
-Find answers about discovering beats, releasing music, managing your account and growing as a producer. This repository contains the BeatPass Help Center, release notes and developer reference, published at [docs.beatpass.ca](https://docs.beatpass.ca).
+  <h1>BeatPass documentation</h1>
+  <p><strong>Find your sound. Keep creating.</strong></p>
+  <p>Discover your next beat, prepare your next release, or build your producer catalog.</p>
+  <p>
+    <a href="https://docs.beatpass.ca/help"><strong>Explore the Help Center</strong></a>
+    &nbsp;·&nbsp;
+    <a href="https://open.beatpass.ca">Launch BeatPass</a>
+    &nbsp;·&nbsp;
+    <a href="https://docs.beatpass.ca/release-notes">What's New</a>
+    &nbsp;·&nbsp;
+    <a href="https://docs.beatpass.ca/developers/overview">API &amp; Developers</a>
+  </p>
+</div>
 
-- [Help Center](https://docs.beatpass.ca/help): practical guides for customers and producers.
-- [API & Developers](https://docs.beatpass.ca/developers/overview): approved integrations and public API reference.
-- [What's New](https://docs.beatpass.ca/release-notes): product updates and release notes.
+## Find your next step
 
-For product support, email [support@beatpass.ca](mailto:support@beatpass.ca). Report security concerns privately to [contact@beatpass.ca](mailto:contact@beatpass.ca), rather than opening a public issue.
+- **[Listen & discover](https://docs.beatpass.ca/help/getting-started/quick-start-guides/listener-guide)**: find a sound you love, save your favorites and build a playlist.
+- **[Download & release music](https://docs.beatpass.ca/help/getting-started/quick-start-guides/subscriber-guide)**: check your access, review a license and keep your audio and certificate together.
+- **[Produce & get paid](https://docs.beatpass.ca/help/getting-started/quick-start-guides/producer-guide)**: apply for producer access, grow your catalog and follow your payout setup.
+
+<p align="center">
+  <a href="https://docs.beatpass.ca/help#gh-dark-mode-only">
+    <img src="assets/media/screenshots/discover/populated/desktop-dark.png#gh-dark-mode-only" alt="BeatPass Discover in dark mode, with example collections and artwork" width="900" />
+  </a>
+  <a href="https://docs.beatpass.ca/help#gh-light-mode-only">
+    <img src="assets/media/screenshots/discover/populated/desktop-light.png#gh-light-mode-only" alt="BeatPass Discover in light mode, with example collections and artwork" width="900" />
+  </a>
+  <br />
+  <sub>Explore a sound. Find your next idea. Interface example with invented demo data.</sub>
+</p>
+
+This repository brings together the official BeatPass Help Center, release notes and developer reference at [docs.beatpass.ca](https://docs.beatpass.ca).
+
+Need a hand? Email [support@beatpass.ca](mailto:support@beatpass.ca). Report security concerns privately to [contact@beatpass.ca](mailto:contact@beatpass.ca), rather than opening a public issue.
 
 ## Repository guide
 
